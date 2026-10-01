@@ -111,6 +111,51 @@ Ceny w zł przeliczam po około 4 zł za 1 USD. **Koszty zakupu to moje szacunki
 
 ---
 
+## Sklepy i linki do dostawców (AliExpress)
+
+Linki do AliExpress pochodzą z wyszukiwarki, a stron produktów nie otwierałem (ceny zmieniają się co chwilę). Przed zamówieniem sprawdź cenę z wysyłką do Polski, oceny i liczbę zamówień. Sklepy to strony WWW, bez linków do Facebooka.
+
+### 1. Grabie do sierści z dywanu
+- **Sklep (oryginał, USA):** https://uprootclean.com/products/uproot-lint-pro (Uproot Cleaner Pro: 15,29 USD w promocji, normalnie 19,99 USD; 2 szt. za 24,29 USD)
+- **AliExpress:**
+  - https://www.aliexpress.com/item/1005005780438180.html (zestaw: grabie z kijem teleskopowym do 140 cm + mała szczotka, metalowa krawędź; najbliższe temu, co pokazują klipy)
+  - https://www.aliexpress.com/i/3256805708055974.html (grabie z obrotową głowicą 180°, kij 60–120 cm)
+  - lista porównawcza: https://www.aliexpress.com/w/wholesale-carpet-rakes.html
+
+### 2. Kubek do mycia łap psa
+- **Sklep (oryginał, USA):** https://store.dexas.com/products/mudbuster%C2%AE-as-seen-on-tv-new-colors (MudBuster 13,99 USD, z pokrywką 26,99 USD)
+- **AliExpress:**
+  - https://www.aliexpress.us/item/3256806985001374.html (silikonowy kubek, rozmiary S/M/L, kilka kolorów, od około 4 USD)
+  - https://www.aliexpress.us/item/3256806481540464.html (kubek + ręcznik, gotowe pod zestaw)
+  - https://www.aliexpress.com/item/4000070938466.html (kubek z rękawicą do sierści, około 9 USD)
+  - nie bierz wersji elektrycznych (bateria)
+
+### 3. Samoczyszcząca szczotka
+- **Sklep (oryginał):** https://myhertzko.com/ (Hertzko, około 15–20 USD)
+- **Sklep w PL (konkurencja):** https://elegant-paws.pl/
+- **AliExpress:**
+  - https://www.aliexpress.com/item/1005003838242457.html (Aumuca, około 15 USD, wygląda najbardziej „markowo”)
+  - https://www.aliexpress.com/item/1005001728751528.html (klasyczna szczotka z przyciskiem)
+  - https://www.aliexpress.us/item/3256804826901899.html (wersja tańsza)
+
+### 4. Wielorazowy wałek do sierści
+- **Sklep (oryginał, USA):** https://mychomchom.com/ (ChomChom, od 25 USD)
+- **Sklep (klon z TikTok Shop):** https://www.petlovers.com/ (EzRoll)
+- **AliExpress:**
+  - https://www.aliexpress.com/item/1005012176458389.html (wałek dwustronny, na kanapę i łóżko)
+  - https://www.aliexpress.com/item/1005008948630642.html (wałek zmywalny)
+  - nie kopiuj kształtu ani nazwy ChomChom (ryzyko wzoru)
+
+### 5. Zestaw do naprawy rys na meblach i panelach
+- **Sklep w PL (główna konkurencja):** https://www.golio.shop/
+- **Inne sklepy w PL:** https://picobello-shop.pl/products, https://marketstolarski.pl/product/duzy-zestaw-naprawczy-do-paneli-mebli-drewna-25-elementow-wosk-marker/
+- **AliExpress:**
+  - https://www.aliexpress.com/i/3256808560805094.html (zestaw 19 elementów, 12 kolorów, wosk i kit)
+  - https://www.aliexpress.us/item/3256808361321745.html (zestaw 34 elementów)
+  - https://www.aliexpress.us/item/3256806580198447.html (pasta, 27 kolorów; pojedyncze sztuki)
+
+---
+
 ## Odrzucone
 
 - **Ściereczka nano do rys na aucie (nano sparkle cloth):** efekt jest widowiskowy, ale usuwa tylko płytkie rysy, więc rosną zwroty, a komentarze pod klipami często to wyśmiewają. Cena 10–15 USD utrudnia 99 zł. W PL już działa Krystalis („Usuń tę rysę raz na zawsze!”, od 28.08.2026, kilka kreacji). Zostaje jako rezerwa.
