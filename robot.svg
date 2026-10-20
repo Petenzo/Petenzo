@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1254"
+   height="1254"
+   viewBox="0 0 1254 1254"
+   version="1.1"
+   id="robot"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+  <sodipodi:namedview
+     id="namedview"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     inkscape:document-units="px"
+     inkscape:zoom="0.6"
+     inkscape:cx="627"
+     inkscape:cy="627" />
+
+  <!-- Każda część robota to osobna warstwa (Warstwa > Warstwy i obiekty, Ctrl+Shift+L).
+       Każdy kształt to osobny obiekt – można go kliknąć, przesunąć, zmienić kolor. -->
+
+  <g inkscape:groupmode="layer" id="warstwa_tlo" inkscape:label="Tło">
+    <rect id="tlo" inkscape:label="tło" x="0" y="0" width="1254" height="1254" fill="#ffffff" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_antena" inkscape:label="Antena"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="antena_drazek" inkscape:label="antena – drążek" x="617" y="58" width="17" height="112" fill="#7f8b97" />
+    <circle id="antena_kulka" inkscape:label="antena – kulka" cx="625.5" cy="46" r="21" fill="#4fcfd8" />
+    <circle id="antena_blysk" inkscape:label="antena – błysk" cx="619" cy="40" r="5" fill="#ffffff" stroke="none" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_uszy" inkscape:label="Uszy"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="ucho_lewe_baza" inkscape:label="ucho lewe – podstawa" x="378" y="254" width="50" height="124" rx="14" fill="#9aa4ae" />
+    <rect id="ucho_lewe" inkscape:label="ucho lewe – nakładka" x="350" y="274" width="52" height="86" rx="24" fill="#7f8b97" />
+    <rect id="ucho_prawe_baza" inkscape:label="ucho prawe – podstawa" x="826" y="254" width="50" height="124" rx="14" fill="#9aa4ae" />
+    <rect id="ucho_prawe" inkscape:label="ucho prawe – nakładka" x="852" y="274" width="52" height="86" rx="24" fill="#7f8b97" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_szyja" inkscape:label="Szyja"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="szyja" inkscape:label="szyja" x="560" y="455" width="134" height="45" fill="#7f8b97" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_glowa" inkscape:label="Głowa"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="glowa" inkscape:label="głowa" x="418" y="168" width="418" height="294" rx="36" fill="#6fdbf0" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_oczy" inkscape:label="Oczy"
+     style="stroke:#1e2b33;stroke-width:6">
+    <circle id="oko_lewe_bialko" inkscape:label="oko lewe – białko" cx="528" cy="296" r="57" fill="#ffffff" />
+    <circle id="oko_lewe_zrenica" inkscape:label="oko lewe – źrenica" cx="528" cy="296" r="40" fill="#15232c" stroke="none" />
+    <circle id="oko_lewe_blysk" inkscape:label="oko lewe – błysk" cx="540" cy="284" r="11" fill="#ffffff" stroke="none" />
+    <circle id="oko_prawe_bialko" inkscape:label="oko prawe – białko" cx="726" cy="296" r="57" fill="#ffffff" />
+    <circle id="oko_prawe_zrenica" inkscape:label="oko prawe – źrenica" cx="726" cy="296" r="40" fill="#15232c" stroke="none" />
+    <circle id="oko_prawe_blysk" inkscape:label="oko prawe – błysk" cx="738" cy="284" r="11" fill="#ffffff" stroke="none" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_usta" inkscape:label="Usta"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="usta" inkscape:label="usta" x="539" y="363" width="177" height="73" rx="14" fill="#c9ced3" />
+    <rect id="zab_1" inkscape:label="kreska 1" x="580" y="378" width="9" height="43" rx="3" fill="#1e2b33" stroke="none" />
+    <rect id="zab_2" inkscape:label="kreska 2" x="623" y="378" width="9" height="43" rx="3" fill="#1e2b33" stroke="none" />
+    <rect id="zab_3" inkscape:label="kreska 3" x="666" y="378" width="9" height="43" rx="3" fill="#1e2b33" stroke="none" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_biodra" inkscape:label="Biodra"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="biodro_lewe" inkscape:label="biodro lewe" x="483" y="812" width="98" height="38" rx="6" fill="#7f8b97" />
+    <rect id="biodro_prawe" inkscape:label="biodro prawe" x="669" y="812" width="98" height="38" rx="6" fill="#7f8b97" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_nogi" inkscape:label="Nogi"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="noga_lewa" inkscape:label="noga lewa" x="486" y="847" width="90" height="262" fill="#6fdbf0" />
+    <rect id="noga_prawa" inkscape:label="noga prawa" x="677" y="847" width="90" height="262" fill="#6fdbf0" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_kolana" inkscape:label="Kolana"
+     style="stroke:#1e2b33;stroke-width:6">
+    <circle id="kolano_lewe" inkscape:label="kolano lewe" cx="530" cy="973" r="49" fill="#8794a1" />
+    <circle id="kolano_prawe" inkscape:label="kolano prawe" cx="723" cy="973" r="49" fill="#8794a1" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_stopy" inkscape:label="Stopy"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <path id="but_lewy" inkscape:label="but lewy" fill="#4fcfd8"
+          d="M 392,1184 V 1146 Q 392,1103 438,1103 H 566 Q 602,1103 602,1140 V 1184 Z" />
+    <rect id="podeszwa_lewa" inkscape:label="podeszwa lewa" x="386" y="1182" width="223" height="36" rx="6" fill="#7f8b97" />
+    <path id="but_prawy" inkscape:label="but prawy" fill="#4fcfd8"
+          d="M 652,1184 V 1140 Q 652,1103 688,1103 H 816 Q 862,1103 862,1146 V 1184 Z" />
+    <rect id="podeszwa_prawa" inkscape:label="podeszwa prawa" x="645" y="1182" width="223" height="36" rx="6" fill="#7f8b97" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_rece" inkscape:label="Ręce"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <path id="ramie_lewe" inkscape:label="ramię lewe" fill="#6fdbf0"
+          d="M 380,570 L 432,592 L 372,724 L 320,702 Z" />
+    <path id="przedramie_lewe" inkscape:label="przedramię lewe" fill="#6fdbf0"
+          d="M 312,722 L 362,732 L 334,836 L 286,828 Z" />
+    <path id="ramie_prawe" inkscape:label="ramię prawe" fill="#6fdbf0"
+          d="M 874,570 L 822,592 L 882,724 L 934,702 Z" />
+    <path id="przedramie_prawe" inkscape:label="przedramię prawe" fill="#6fdbf0"
+          d="M 942,722 L 892,732 L 920,836 L 968,828 Z" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_dlonie" inkscape:label="Dłonie (chwytaki)"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <path id="dlon_lewa" inkscape:label="dłoń lewa" fill="#7f8b97"
+          d="M 274,826 H 380 Q 388,826 388,834 V 914 L 376,928 H 350 V 870 H 312 V 918 L 300,928 H 278 L 266,916 V 834 Q 266,826 274,826 Z" />
+    <path id="dlon_prawa" inkscape:label="dłoń prawa" fill="#7f8b97"
+          d="M 980,826 H 874 Q 866,826 866,834 V 914 L 878,928 H 904 V 870 H 942 V 918 L 954,928 H 976 L 988,916 V 834 Q 988,826 980,826 Z" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_barki" inkscape:label="Barki i łokcie"
+     style="stroke:#1e2b33;stroke-width:6">
+    <circle id="bark_lewy" inkscape:label="bark lewy" cx="405" cy="554" r="44" fill="#9aa4ae" />
+    <circle id="bark_prawy" inkscape:label="bark prawy" cx="848" cy="554" r="44" fill="#9aa4ae" />
+    <circle id="lokiec_lewy" inkscape:label="łokieć lewy" cx="342" cy="716" r="40" fill="#8794a1" />
+    <circle id="lokiec_prawy" inkscape:label="łokieć prawy" cx="910" cy="716" r="40" fill="#8794a1" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_tulow" inkscape:label="Tułów"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <rect id="tulow" inkscape:label="tułów" x="447" y="494" width="360" height="326" rx="18" fill="#4fcfd8" />
+    <circle id="srubka_1" inkscape:label="śrubka lewa górna" cx="494" cy="541" r="13" fill="#7f8b97" stroke-width="5" />
+    <circle id="srubka_2" inkscape:label="śrubka prawa górna" cx="759" cy="541" r="13" fill="#7f8b97" stroke-width="5" />
+    <circle id="srubka_3" inkscape:label="śrubka lewa dolna" cx="494" cy="774" r="13" fill="#7f8b97" stroke-width="5" />
+    <circle id="srubka_4" inkscape:label="śrubka prawa dolna" cx="759" cy="774" r="13" fill="#7f8b97" stroke-width="5" />
+  </g>
+
+  <g inkscape:groupmode="layer" id="warstwa_przycisk" inkscape:label="Przycisk zasilania"
+     style="stroke:#1e2b33;stroke-width:6;stroke-linejoin:round">
+    <circle id="przycisk_pierscien" inkscape:label="przycisk – pierścień" cx="627" cy="662" r="76" fill="#ffffff" />
+    <circle id="przycisk_srodek" inkscape:label="przycisk – środek" cx="627" cy="662" r="47" fill="#4fcfd8" />
+    <rect id="przycisk_kreska" inkscape:label="przycisk – kreska" x="611" y="566" width="32" height="100" rx="16" fill="#ffffff" />
+  </g>
+
+</svg>
