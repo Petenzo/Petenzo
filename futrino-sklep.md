@@ -28,7 +28,7 @@ Sklep ma jeden produkt: rękawicę do usuwania sierści psa i kota z tkanin. Nis
 - Hero: „Mniej sierści w domu.” / podtytuł: „Proste rzeczy na kanapę, łóżko i ubrania.” / przycisk: „Zobacz produkty”
 - Kolekcje: „Wybierz, co chcesz ogarnąć”
 - Bestsellery: „Najczęściej wybierane”
-- Korzyści: „Dostawa 7–12 dni roboczych” · „Zwrot do 14 dni” · „Płatność przy zamówieniu, bez kont”
+- Korzyści: „Dostawa 7–12 dni roboczych” · „Zwrot do 14 dni” · „Wysyłka z numerem śledzenia”
 - Newsletter: „Napiszemy, gdy pojawi się coś nowego.”
 
 ## Stopka (wgrana do kopii motywu)
