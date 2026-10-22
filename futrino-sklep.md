@@ -62,3 +62,18 @@ Reklamacje: produkt uszkodzony lub niezgodny z opisem zgłoś na [e-mail] ze zdj
 Sprzedawca: [dane firmy do uzupełnienia].
 
 Uwaga: obecne polityki w pliku `Polityki-Petenzo.txt` mówią o 30 dniach na zwrot i dostawie w 6–10 dni. Ten szkic stosuje Twoje nowe założenia (14 dni, 7–12 dni). Zdecyduj, która wersja obowiązuje. 30 dni to więcej niż wymaga prawo, więc wolno ją zostawić.
+
+## Stan po drugim uruchomieniu (22.10.2026)
+
+Strona główna w kopii motywu, sekcje po kolei:
+1. Hero: zdjęcie salonu, nagłówek, przycisk do kolekcji.
+2. Pasek korzyści: dostawa 7–12 dni, zwrot 14 dni, bez taśm i kleju.
+3. Kafle 4 kolekcji: Sierść pod kontrolą, Kanapa i łóżko, Pielęgnacja zwierzaka, Zestawy.
+4. Produkty: najczęściej wybierane.
+5. Obraz i tekst: krótko o Futrino i link do „O nas”.
+6. FAQ: 3 pytania.
+7. Stopka z zapisem do newslettera.
+
+Układu petbutik.pl nie odczytano: domena nie odpowiada i nie ma jej w wyszukiwarce. Układ jest typowy dla sklepu zoologicznego.
+
+Obrazy: zdjęcia produktu z Canvy (z referencją zdjęcia dostawcy), hero i kafle z Gammy. HeyGen w tym połączeniu ma tylko model portretowy, więc nie był użyty.
