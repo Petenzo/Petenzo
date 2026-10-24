@@ -27,7 +27,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
 import {
-  animations,
   PRICE,
   PRICE_OLD,
   PRODUCT_NAME,
@@ -51,7 +50,7 @@ const LOGO = "[LOGO PRODUKTU]";
 const CONTACT_EMAIL = "[EMAIL]";
 
 const gallery = [
-  { src: "/images/hero.jpg", alt: "Elektryczna odśnieżarka 3000 W na zaśnieżonym podjeździe", label: "[FOTO 1]" },
+  { src: "/images/hero.jpg", gif: "/images/hero.gif", alt: "Elektryczna odśnieżarka 3000 W na zaśnieżonym podjeździe", label: "[FOTO 1]" },
   { src: "/images/studio.jpg", alt: "Odśnieżarka elektryczna na białym tle", label: "[FOTO 2]" },
   { src: "/images/detal.jpg", alt: "Zbliżenie na ślimak odśnieżarki zbierający śnieg", label: "[FOTO 3]" },
   { src: "/images/proces.jpg", alt: "Odśnieżarka wyrzuca śnieg i zostawia czysty chodnik", label: "[FOTO 4]" },
@@ -67,39 +66,6 @@ function MicroTrust() {
         <ShieldCheck className="size-3.5" aria-hidden /> [MIKROZAUFANIE — 14 dni na zwrot]
       </span>
     </p>
-  );
-}
-
-// Zapętlona, wyciszona animacja (zachowuje się jak GIF), z plakatem jako fallback.
-function LoopClip({
-  src,
-  poster,
-  label,
-  width,
-  height,
-  className,
-}: {
-  src: string;
-  poster: string;
-  label: string;
-  width: number;
-  height: number;
-  className?: string;
-}) {
-  return (
-    <video
-      src={src}
-      poster={poster}
-      width={width}
-      height={height}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-label={label}
-      className={cn("shadow-soft aspect-[4/3] w-full rounded-[20px] object-cover", className)}
-    />
   );
 }
 
@@ -263,7 +229,7 @@ export function LandingPage() {
               <div className="bg-surface aspect-square overflow-hidden rounded-2xl">
                 {current.src ? (
                   <img
-                    src={current.src}
+                    src={"gif" in current ? current.gif : current.src}
                     alt={current.alt}
                     width={1200}
                     height={1200}
@@ -413,13 +379,13 @@ export function LandingPage() {
         {/* 5. Rozwiązanie */}
         <Section id="rozwiazanie">
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-            <LoopClip
-              src={animations.detal}
-              poster="/images/detal.jpg"
-              label="Animacja: ślimak odśnieżarki wgryza się w śnieg i wyrzuca go kominem"
-              width={768}
-              height={768}
-              className="order-1 lg:order-1"
+            <img
+              src="/images/detal.gif"
+              alt="Animacja: ślimak odśnieżarki zbiera śnieg, a z nieba sypie śnieg"
+              width={480}
+              height={480}
+              loading="lazy"
+              className="shadow-soft order-1 aspect-[4/3] w-full rounded-[20px] object-cover lg:order-1"
             />
             <div className="order-2">
               <Eyebrow className="lg:text-left">[EYEBROW — rozwiązanie]</Eyebrow>
@@ -443,12 +409,13 @@ export function LandingPage() {
           <Eyebrow>[EYEBROW — jak to działa]</Eyebrow>
           <SectionTitle>[NAGŁÓWEK — „3 kroki do czystego podjazdu”: prostota]</SectionTitle>
           <div className="mt-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-            <LoopClip
-              src={animations.proces}
-              poster="/images/proces.jpg"
-              label="Animacja: odśnieżarka wyrzuca śnieg i zostawia czysty chodnik"
-              width={1024}
-              height={768}
+            <img
+              src="/images/proces.gif"
+              alt="Animacja: odśnieżarka wyrzuca śnieg i zostawia czysty chodnik"
+              width={560}
+              height={420}
+              loading="lazy"
+              className="shadow-soft aspect-[4/3] w-full rounded-[20px] object-cover"
             />
             <ol className="grid grid-cols-1 gap-4">
               {steps.map((s, i) => (
