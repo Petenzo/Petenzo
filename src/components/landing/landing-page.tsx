@@ -27,6 +27,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
 import {
+  animations,
   PRICE,
   PRICE_OLD,
   PRODUCT_NAME,
@@ -51,9 +52,9 @@ const CONTACT_EMAIL = "[EMAIL]";
 
 const gallery = [
   { src: "/images/hero.jpg", alt: "Elektryczna odśnieżarka 3000 W na zaśnieżonym podjeździe", label: "[FOTO 1]" },
-  { src: "/images/process.jpg", alt: "Odśnieżarka wyrzuca śnieg i zostawia czystą ścieżkę", label: "[FOTO 2]" },
-  { src: null, alt: "", label: "[FOTO 3]" },
-  { src: null, alt: "", label: "[FOTO 4]" },
+  { src: "/images/studio.jpg", alt: "Odśnieżarka elektryczna na białym tle", label: "[FOTO 2]" },
+  { src: "/images/detal.jpg", alt: "Zbliżenie na ślimak odśnieżarki zbierający śnieg", label: "[FOTO 3]" },
+  { src: "/images/proces.jpg", alt: "Odśnieżarka wyrzuca śnieg i zostawia czysty chodnik", label: "[FOTO 4]" },
 ];
 
 function MicroTrust() {
@@ -66,6 +67,39 @@ function MicroTrust() {
         <ShieldCheck className="size-3.5" aria-hidden /> [MIKROZAUFANIE — 14 dni na zwrot]
       </span>
     </p>
+  );
+}
+
+// Zapętlona, wyciszona animacja (zachowuje się jak GIF), z plakatem jako fallback.
+function LoopClip({
+  src,
+  poster,
+  label,
+  width,
+  height,
+  className,
+}: {
+  src: string;
+  poster: string;
+  label: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  return (
+    <video
+      src={src}
+      poster={poster}
+      width={width}
+      height={height}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={label}
+      className={cn("shadow-soft aspect-[4/3] w-full rounded-[20px] object-cover", className)}
+    />
   );
 }
 
@@ -315,7 +349,7 @@ export function LandingPage() {
 
               <div className="border-border mt-5 flex items-center gap-3 rounded-xl border border-dashed p-3">
                 <img
-                  src="/images/addon.jpg"
+                  src="/images/przedluzacz.jpg"
                   alt="Przedłużacz zimowy na bębnie"
                   width={64}
                   height={64}
@@ -366,10 +400,10 @@ export function LandingPage() {
               </p>
             </div>
             <img
-              src="/images/hero.jpg"
-              alt="Zaśnieżony podjazd czekający na odśnieżenie"
+              src="/images/problem.jpg"
+              alt="Zmęczony mężczyzna z łopatą przed zasypanym podjazdem"
               width={1200}
-              height={900}
+              height={896}
               loading="lazy"
               className="shadow-soft aspect-[4/3] w-full rounded-[20px] object-cover"
             />
@@ -379,13 +413,13 @@ export function LandingPage() {
         {/* 5. Rozwiązanie */}
         <Section id="rozwiazanie">
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-            <img
-              src="/images/process.jpg"
-              alt="Odśnieżarka oczyszcza chodnik z jednej strony na drugą"
-              width={1200}
-              height={900}
-              loading="lazy"
-              className="shadow-soft order-1 aspect-[4/3] w-full rounded-[20px] object-cover lg:order-1"
+            <LoopClip
+              src={animations.detal}
+              poster="/images/detal.jpg"
+              label="Animacja: ślimak odśnieżarki wgryza się w śnieg i wyrzuca go kominem"
+              width={768}
+              height={768}
+              className="order-1 lg:order-1"
             />
             <div className="order-2">
               <Eyebrow className="lg:text-left">[EYEBROW — rozwiązanie]</Eyebrow>
@@ -409,13 +443,12 @@ export function LandingPage() {
           <Eyebrow>[EYEBROW — jak to działa]</Eyebrow>
           <SectionTitle>[NAGŁÓWEK — „3 kroki do czystego podjazdu”: prostota]</SectionTitle>
           <div className="mt-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-            <img
-              src="/images/process.jpg"
-              alt="Wizualizacja procesu odśnieżania w trzech krokach"
-              width={1200}
-              height={900}
-              loading="lazy"
-              className="shadow-soft aspect-[4/3] w-full rounded-[20px] object-cover"
+            <LoopClip
+              src={animations.proces}
+              poster="/images/proces.jpg"
+              label="Animacja: odśnieżarka wyrzuca śnieg i zostawia czysty chodnik"
+              width={1024}
+              height={768}
             />
             <ol className="grid grid-cols-1 gap-4">
               {steps.map((s, i) => (
@@ -566,10 +599,10 @@ export function LandingPage() {
           <Card className="mt-10">
             <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-2 lg:gap-10">
               <img
-                src="/images/addon.jpg"
-                alt="Przedłużacz zimowy 20 m na bębnie, IP44"
+                src="/images/przedluzacz.jpg"
+                alt="Przedłużacz zimowy 20 m na bębnie"
                 width={1200}
-                height={900}
+                height={896}
                 loading="lazy"
                 className="aspect-[4/3] w-full rounded-2xl object-cover"
               />
@@ -597,21 +630,17 @@ export function LandingPage() {
           <SectionTitle>[NAGŁÓWEK BUNDLE — wszystko na zimę w jednym zamówieniu]</SectionTitle>
           <Card className="mx-auto mt-10 max-w-4xl">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {bundleItems.map((b, i) => (
+              {bundleItems.map((b) => (
                 <div key={b.name} className="border-border bg-background rounded-2xl border p-4 text-center">
-                  <div className="bg-surface mx-auto flex aspect-square w-full max-w-40 items-center justify-center overflow-hidden rounded-xl">
-                    {i < 2 ? (
-                      <img
-                        src={i === 0 ? "/images/hero.jpg" : "/images/addon.jpg"}
-                        alt={i === 0 ? "Odśnieżarka 3000 W" : "Przedłużacz zimowy"}
-                        width={300}
-                        height={300}
-                        loading="lazy"
-                        className="size-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-muted-foreground text-xs font-semibold">[FOTO PRODUKTU 3]</span>
-                    )}
+                  <div className="bg-surface mx-auto aspect-square w-full max-w-40 overflow-hidden rounded-xl">
+                    <img
+                      src={b.image}
+                      alt={b.alt}
+                      width={300}
+                      height={300}
+                      loading="lazy"
+                      className="size-full object-cover"
+                    />
                   </div>
                   <p className="mt-3 text-sm font-semibold">{b.name}</p>
                   <p className="text-muted-foreground text-xs">{b.price}</p>

@@ -4,6 +4,15 @@ export const PRODUCT_NAME = "[NAZWA PRODUKTU — odśnieżarka elektryczna 3000 
 export const PRICE = "[CENA] zł";
 export const PRICE_OLD = "[CENA PRZED] zł";
 
+// Animacje wygenerowane w HeyGen (image-to-video ze zdjęć produktu).
+// TODO: linki HeyGen mogą wygasnąć — docelowo pobrać pliki do public/videos i podmienić ścieżki.
+export const animations = {
+  proces:
+    "https://resource2.heygen.ai/videos/431f75bb19e9462c933bbd509231ac75/431f75bb19e9462c933bbd509231ac75/01a16fcd-843e-774e-9b84-94c258e47640.mp4",
+  detal:
+    "https://resource2.heygen.ai/videos/431f75bb19e9462c933bbd509231ac75/431f75bb19e9462c933bbd509231ac75/01a16fcd-8caa-70ff-a9f3-8c1f86bc8314.mp4",
+};
+
 export const heroBadges = [
   "[BADGE 1 — bestseller / nr 1]",
   "[BADGE 2 — wysyłka 24 h]",
@@ -120,9 +129,24 @@ export const reviews = [
 ];
 
 export const bundleItems = [
-  { name: "[PRODUKT 1 — odśnieżarka 3000 W]", price: "[CENA 1] zł" },
-  { name: "[PRODUKT 2 — przedłużacz zimowy 20 m]", price: "[CENA 2] zł" },
-  { name: "[PRODUKT 3 — pokrowiec / skrobak]", price: "[CENA 3] zł" },
+  {
+    name: "[PRODUKT 1 — odśnieżarka 3000 W]",
+    price: "[CENA 1] zł",
+    image: "/images/studio.jpg",
+    alt: "Odśnieżarka elektryczna 3000 W",
+  },
+  {
+    name: "[PRODUKT 2 — przedłużacz zimowy 20 m]",
+    price: "[CENA 2] zł",
+    image: "/images/przedluzacz.jpg",
+    alt: "Przedłużacz zimowy na bębnie",
+  },
+  {
+    name: "[PRODUKT 3 — pokrowiec ochronny]",
+    price: "[CENA 3] zł",
+    image: "/images/pokrowiec.jpg",
+    alt: "Złożony pokrowiec ochronny",
+  },
 ];
 
 export const faqs = [
