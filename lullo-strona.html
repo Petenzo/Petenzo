@@ -342,6 +342,9 @@
   .reviews { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .review { padding: 22px; }
   .review .stars { color: #f5a623; letter-spacing: 2px; }
+  .review-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .review .stars .off { color: #d5dbe5; }
+  .sample { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--red); background: #fde8e8; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
   .review blockquote { margin: 10px 0 16px; font-size: 15px; color: var(--text); }
   .who { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
   .who .av { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-2)); }
@@ -681,24 +684,24 @@
     </div>
     <div class="reviews">
       <div class="card review">
-        <div class="stars">★★★★★</div>
-        <blockquote>„[Co się zmieniło, konkretnie: np. ile trwało usypianie przed i po].”</blockquote>
-        <div class="who"><div class="av"></div><div><b>[Imię i inicjał]</b>[mama/tata X-latka]</div></div>
+        <div class="review-top"><div class="stars" aria-label="4 na 5 gwiazdek">★★★★<span class="off">★</span></div><span class="sample">Przykład – podmień</span></div>
+        <blockquote>„Synek zasypia sam przy swojej bajce, a my mamy wreszcie wieczór dla siebie. Gwiazdka mniej, bo rzep mógłby trzymać mocniej.”</blockquote>
+        <div class="who"><div class="av"></div><div><b>Anna K.</b>mama 5-latka</div></div>
       </div>
       <div class="card review">
-        <div class="stars">★★★★★</div>
-        <blockquote>„[Co się zmieniło, konkretnie: np. ile trwało usypianie przed i po].”</blockquote>
-        <div class="who"><div class="av"></div><div><b>[Imię i inicjał]</b>[mama/tata X-latka]</div></div>
+        <div class="review-top"><div class="stars" aria-label="4 na 5 gwiazdek">★★★★<span class="off">★</span></div><span class="sample">Przykład – podmień</span></div>
+        <blockquote>„Córka śpi w niej w aucie i u babci. Materiał miękki, nie grzeje w nocy. Dźwięk mógłby być odrobinę głośniejszy.”</blockquote>
+        <div class="who"><div class="av"></div><div><b>Tomasz W.</b>tata 7-latki</div></div>
       </div>
       <div class="card review">
-        <div class="stars">★★★★★</div>
-        <blockquote>„[Co się zmieniło, konkretnie: np. ile trwało usypianie przed i po].”</blockquote>
-        <div class="who"><div class="av"></div><div><b>[Imię i inicjał]</b>[mama/tata X-latka]</div></div>
+        <div class="review-top"><div class="stars" aria-label="4 na 5 gwiazdek">★★★★<span class="off">★</span></div><span class="sample">Przykład – podmień</span></div>
+        <blockquote>„Usypianie skróciło się z godziny do kilkunastu minut. Parowanie z telefonem bez problemu, tylko ładowanie trwa ok. 2 godziny.”</blockquote>
+        <div class="who"><div class="av"></div><div><b>Kasia M.</b>mama 4-latka</div></div>
       </div>
       <div class="card review">
-        <div class="stars">★★★★★</div>
-        <blockquote>„[Co się zmieniło, konkretnie: np. ile trwało usypianie przed i po].”</blockquote>
-        <div class="who"><div class="av"></div><div><b>[Imię i inicjał]</b>[mama/tata X-latka]</div></div>
+        <div class="review-top"><div class="stars" aria-label="4 na 5 gwiazdek">★★★★<span class="off">★</span></div><span class="sample">Przykład – podmień</span></div>
+        <blockquote>„Ładnie uszyta, sówka od razu się spodobała. Po wyjęciu głośniczków pierze się bez kłopotu. Paczka szła prawie 2 tygodnie.”</blockquote>
+        <div class="who"><div class="av"></div><div><b>Magda P.</b>mama 6-latki</div></div>
       </div>
     </div>
   </div>
