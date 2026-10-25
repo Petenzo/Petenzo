@@ -119,11 +119,21 @@
   .topbar {
     background: linear-gradient(90deg, var(--navy), var(--blue-2));
     color: #fff;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 9px 16px;
+    overflow: hidden;
+    padding: 11px 0;
   }
+  .ticker { display: flex; width: max-content; animation: ticker 22s linear infinite; }
+  .ticker span {
+    flex: 0 0 auto;
+    padding: 0 28px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker { animation-duration: 60s; } }
   header.site { border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 10; }
   header.site .wrap { display: flex; align-items: center; justify-content: center; height: 64px; position: relative; }
   .logo { display: inline-flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -.01em; }
@@ -355,7 +365,9 @@
 <body>
 
 <!-- 0. PASEK NA GÓRZE -->
-<div class="topbar">🌙 Darmowa wysyłka od 99 zł · 30 dni na zwrot · Wysyłka w 24 h</div>
+<div class="topbar" aria-label="Darmowa wysyłka od 99 zł, 30 dni na zwrot, wysyłka w 24 h">
+  <div class="ticker" aria-hidden="true"><span>Darmowa wysyłka od 99 zł</span><span>30 dni na zwrot</span><span>Wysyłka w 24 h</span><span>Darmowa wysyłka od 99 zł</span><span>30 dni na zwrot</span><span>Wysyłka w 24 h</span><span>Darmowa wysyłka od 99 zł</span><span>30 dni na zwrot</span><span>Wysyłka w 24 h</span><span>Darmowa wysyłka od 99 zł</span><span>30 dni na zwrot</span><span>Wysyłka w 24 h</span><span>Darmowa wysyłka od 99 zł</span><span>30 dni na zwrot</span><span>Wysyłka w 24 h</span><span>Darmowa wysyłka od 99 zł</span><span>30 dni na zwrot</span><span>Wysyłka w 24 h</span></div>
+</div>
 
 <!-- 1. LOGO -->
 <header class="site">
