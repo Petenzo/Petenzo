@@ -183,19 +183,57 @@
     border: 1px solid #cfe0fb;
     font-size: 14px; font-weight: 500; color: var(--navy);
   }
-  .variant-label { font-size: 14px; font-weight: 600; margin: 20px 0 10px; color: var(--navy); }
-  .variants { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .variant {
-    padding: 11px 6px;
+  .bundle-head { display: flex; align-items: center; gap: 12px; margin: 22px 0 12px; }
+  .bundle-head::before, .bundle-head::after { content: ""; flex: 1; height: 1.5px; background: var(--navy); opacity: .85; }
+  .bundle-head span { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .offers { display: grid; gap: 12px; }
+  .offer {
+    position: relative;
+    display: block;
+    padding: 14px 16px;
     border: 1.5px solid var(--line);
-    border-radius: 10px;
+    border-radius: 14px;
     background: #fff;
-    font-size: 14px; font-weight: 500;
-    font-family: inherit;
-    color: var(--text);
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .offer:hover { border-color: #b9cff0; }
+  .offer.on { border: 2px solid var(--blue); background: var(--blue-soft); padding: 13.5px 15.5px; }
+  .offer input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+  .offer-row { display: flex; align-items: center; gap: 12px; }
+  .dot { flex: 0 0 20px; height: 20px; border-radius: 50%; border: 2px solid #b7c0cf; background: #fff; display: grid; place-items: center; }
+  .offer.on .dot { border-color: var(--blue); }
+  .offer.on .dot::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
+  .offer input:focus-visible ~ .offer-row .dot { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .offer-name { flex: 1; min-width: 0; }
+  .offer-name b { display: block; font-size: 16px; color: var(--navy); }
+  .offer-name small { font-size: 13px; color: var(--muted); }
+  .offer-name small.green { color: var(--green); font-weight: 600; }
+  .offer-price { text-align: right; font-variant-numeric: tabular-nums; }
+  .offer-price b { display: block; font-size: 18px; font-weight: 800; color: var(--navy); }
+  .offer-price s { font-size: 13px; color: var(--muted); }
+  .offer-badge {
+    position: absolute; top: -11px; right: 14px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--blue); color: #fff;
+    font-size: 11.5px; font-weight: 700; letter-spacing: .02em;
+  }
+  .picks { display: none; gap: 8px; margin: 12px 0 2px 32px; }
+  .offer.on .picks { display: grid; }
+  .pick { display: flex; align-items: center; gap: 10px; }
+  .pick span { flex: 0 0 26px; font-weight: 700; color: var(--navy); font-size: 14px; }
+  .pick select {
+    flex: 1; min-width: 0;
+    padding: 9px 34px 9px 12px;
+    border: 1.5px solid var(--line);
+    border-radius: 9px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%230b1b3f' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+    font-family: inherit; font-size: 14px; color: var(--text);
+    appearance: none; -webkit-appearance: none;
     cursor: pointer;
   }
-  .variant[aria-pressed="true"] { border-color: var(--blue); background: var(--blue-soft); color: var(--blue-2); font-weight: 600; }
+  .pick select:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
   .guarantee {
     display: flex; gap: 12px; align-items: center;
     margin: 18px 0;
@@ -415,7 +453,6 @@
           <span class="old">129 zł</span>
           <span class="save">oszczędzasz 40 zł</span>
         </div>
-        <div class="promo">🎁 Kup 2 i zapłać 149 zł, wysyłka gratis</div>
 
         <ul class="ticks">
           <li>Zasłania 100% światła: dziecko śpi także w dzień i w podróży</li>
@@ -426,11 +463,38 @@
           <li>Do prania: głośniczki wyjmujesz w 10 sekund</li>
         </ul>
 
-        <div class="variant-label">Wybierz zwierzątko:</div>
-        <div class="variants">
-          <button class="variant" type="button" aria-pressed="true">🦉 Sówka</button>
-          <button class="variant" type="button" aria-pressed="false">🦊 Lisek</button>
-          <button class="variant" type="button" aria-pressed="false">🐼 Panda</button>
+        <div class="bundle-head"><span>Kup więcej, zapłać mniej</span></div>
+        <div class="offers" role="radiogroup" aria-label="Wybierz zestaw">
+          <label class="offer">
+            <input type="radio" name="pakiet" value="1" data-price="89">
+            
+            <div class="offer-row">
+              <span class="dot"></span>
+              <div class="offer-name"><b>Kup 1</b><small>89 zł za sztukę</small></div>
+              <div class="offer-price"><b>89 zł</b></div>
+            </div>
+            <div class="picks" data-count="1"></div>
+          </label>
+          <label class="offer on">
+            <input type="radio" name="pakiet" value="2" data-price="149" checked>
+            <span class="offer-badge">Najczęściej wybierane</span>
+            <div class="offer-row">
+              <span class="dot"></span>
+              <div class="offer-name"><b>Kup 2</b><small class="green">Oszczędzasz 29 zł · darmowa wysyłka</small></div>
+              <div class="offer-price"><b>149 zł</b><s>178 zł</s></div>
+            </div>
+            <div class="picks" data-count="2"></div>
+          </label>
+          <label class="offer">
+            <input type="radio" name="pakiet" value="3" data-price="199">
+            <span class="offer-badge">Najlepsza cena</span>
+            <div class="offer-row">
+              <span class="dot"></span>
+              <div class="offer-name"><b>Kup 3</b><small class="green">Oszczędzasz 68 zł · darmowa wysyłka</small></div>
+              <div class="offer-price"><b>199 zł</b><s>267 zł</s></div>
+            </div>
+            <div class="picks" data-count="3"></div>
+          </label>
         </div>
 
         <div class="guarantee">
@@ -441,7 +505,7 @@
           </div>
         </div>
 
-        <button class="btn" type="button">Chcę spokojne wieczory: dodaj do koszyka</button>
+        <button class="btn" type="button" id="cta-koszyk">Dodaj do koszyka: 149 zł</button>
         <p class="under-btn">🚚 Dostawa 6–10 dni roboczych · bezpieczna płatność BLIK, karta, przelew</p>
       </div>
     </div>
@@ -698,13 +762,30 @@
 </footer>
 
 <script>
-  // wybór zwierzątka
-  document.querySelectorAll('.variant').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('.variant').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-      btn.setAttribute('aria-pressed', 'true');
-    });
+  // wybór zestawu i kolorów
+  var KOLORY = ['Żółta', 'Zielona', 'Różowa', 'Niebieska', 'Szara'];
+  var cta = document.getElementById('cta-koszyk');
+  document.querySelectorAll('.picks').forEach(function (box) {
+    var n = +box.dataset.count;
+    for (var i = 1; i <= n; i++) {
+      var row = document.createElement('div');
+      row.className = 'pick';
+      var sel = document.createElement('select');
+      sel.id = 'kolor-' + n + '-' + i;
+      sel.setAttribute('aria-label', 'Kolor opaski nr ' + i);
+      KOLORY.forEach(function (k) { var o = document.createElement('option'); o.textContent = k; sel.appendChild(o); });
+      row.innerHTML = '<span>#' + i + '</span>';
+      row.appendChild(sel);
+      box.appendChild(row);
+    }
   });
+  function odswiez() {
+    var wybrany = document.querySelector('input[name="pakiet"]:checked');
+    document.querySelectorAll('.offer').forEach(function (o) { o.classList.toggle('on', o.contains(wybrany)); });
+    cta.textContent = 'Dodaj do koszyka: ' + wybrany.dataset.price + ' zł';
+  }
+  document.querySelectorAll('input[name="pakiet"]').forEach(function (r) { r.addEventListener('change', odswiez); });
+  odswiez();
 
   // zakładki „Co jest w zestawie”
   document.querySelectorAll('.tab').forEach(function (tab) {
