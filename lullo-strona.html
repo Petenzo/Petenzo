@@ -80,6 +80,11 @@
     box-shadow: var(--shadow);
   }
 
+  /* zdjęcia */
+  .photo { display: block; width: 100%; max-width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); background: var(--bg-alt); }
+  .photo.square { aspect-ratio: 1 / 1; }
+  .photo.mini { aspect-ratio: 1 / 1; border-radius: 10px; cursor: pointer; border: 2px solid transparent; transition: border-color .15s; }
+  .photo.mini:hover { border-color: var(--blue); }
   /* miejsce na zdjęcie */
   .ph {
     position: relative;
@@ -438,12 +443,12 @@
 
     <div class="hero-grid">
       <div class="gallery">
-        <div class="ph square"><b>Zdjęcie 1</b><small>Zdjęcie główne produktu</small></div>
+        <img id="foto-glowne" class="photo square" src="zdjecia/zdjecie-1.jpg" alt="Dziecko śpiące w opasce Lullo Sówka" loading="eager">
         <div class="thumbs">
-          <div class="ph mini"><b>Zdjęcie 2</b></div>
-          <div class="ph mini"><b>Zdjęcie 3</b></div>
-          <div class="ph mini"><b>Zdjęcie 4</b></div>
-          <div class="ph mini"><b>Zdjęcie 5</b></div>
+          <img tabindex="0" role="button" class="photo mini" src="zdjecia/zdjecie-2.jpg" alt="Opaski Lullo w różnych kolorach" loading="eager">
+          <img tabindex="0" role="button" class="photo mini" src="zdjecia/zdjecie-3.jpg" alt="Opaska Lullo Sówka" loading="eager">
+          <img tabindex="0" role="button" class="photo mini" src="zdjecia/zdjecie-4.jpg" alt="Wyjmowany moduł z głośniczkami" loading="eager">
+          <img tabindex="0" role="button" class="photo mini" src="zdjecia/zdjecie-5.jpg" alt="Opaska Lullo obok telefonu z włączoną bajką" loading="eager">
         </div>
       </div>
 
@@ -538,7 +543,7 @@
       <div class="summary">Efekt? Zmęczone dziecko, zmęczony rodzic i zero czasu dla siebie.</div>
     </div>
     <div class="media">
-      <div class="ph"><b>Zdjęcie 6</b><small>Sekcja „Problem”</small></div>
+      <img class="photo" src="zdjecia/zdjecie-6.jpg" alt="Dziecko, które nie może zasnąć przez światło z korytarza" loading="lazy">
     </div>
   </div>
 </section>
@@ -547,7 +552,7 @@
 <section>
   <div class="wrap split">
     <div class="media">
-      <div class="ph"><b>Zdjęcie 7</b><small>Sekcja „Rozwiązanie”</small></div>
+      <img class="photo" src="zdjecia/zdjecie-7.jpg" alt="Dziecko śpiące spokojnie w opasce Lullo" loading="lazy">
     </div>
     <div class="body">
       <span class="eyebrow">Poznaj Lullo</span>
@@ -574,7 +579,7 @@
     </div>
     <div class="split">
       <div class="media">
-        <div class="ph"><b>Zdjęcie 8</b><small>Sekcja „Jak to działa”</small></div>
+        <img class="photo" src="zdjecia/zdjecie-8.jpg" alt="Mama zakłada dziecku opaskę Lullo" loading="lazy">
       </div>
       <div class="steps">
         <div class="card step"><div class="num">1</div><p><b>Włącz i połącz.</b>Przytrzymaj przycisk, wybierz „Lullo” w Bluetooth telefonu. Gotowe.</p></div>
@@ -770,6 +775,14 @@
 </footer>
 
 <script>
+  // galeria: kliknięta miniaturka zamienia się ze zdjęciem głównym
+  var glowne = document.getElementById('foto-glowne');
+  document.querySelectorAll('.photo.mini').forEach(function (m) {
+    function zamien() { var src = glowne.src, alt = glowne.alt; glowne.src = m.src; glowne.alt = m.alt; m.src = src; m.alt = alt; }
+    m.addEventListener('click', zamien);
+    m.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); zamien(); } });
+  });
+
   // wybór zestawu i kolorów
   var KOLORY = ['Żółta', 'Zielona', 'Różowa', 'Niebieska', 'Szara'];
   var cta = document.getElementById('cta-koszyk');
