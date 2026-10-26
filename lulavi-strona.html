@@ -222,6 +222,16 @@
   .panel-list { background: var(--cream); border-radius: 14px; padding: 20px; }
   .panel-title { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
 
+  .box-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 22px 16px; }
+  .item img, .item .ico { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; background: var(--peach); display: grid; place-items: center; font-size: 46px; margin-bottom: 10px; }
+  .item b { font-family: var(--display); font-weight: 600; font-size: 19px; color: var(--ink); }
+  .item span { color: var(--muted); font-size: 14.5px; }
+  .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .spec { padding: 24px 26px; }
+  .spec h3 { font-size: 21px; margin-bottom: 16px; }
+  .spec .ticks li { font-size: 16px; }
+
   /* ---------- porównanie ---------- */
   .table-wrap { overflow-x: auto; border-radius: var(--radius); }
   table.cmp { width: 100%; table-layout: fixed; border-collapse: collapse; background: #fff; font-size: 15px; }
@@ -278,6 +288,7 @@
   /* ---------- telefon ---------- */
   @media (max-width: 1060px) { .nav { display: none; } }
   @media (max-width: 900px) {
+    .box-items { grid-template-columns: 1fr 1fr; }
     .hero-grid, .split, .box, .faq, .cta { grid-template-columns: 1fr; gap: 26px; }
     .gallery { position: static; }
     .arrow, .thumbs, .trust { display: none; }
@@ -286,6 +297,10 @@
     .cta img { min-height: 0; aspect-ratio: 4 / 3; }
   }
   @media (max-width: 560px) {
+    .box-items { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .item img, .item .ico { width: 84px; height: 84px; font-size: 36px; }
+    .item b { font-size: 16.5px; }
+    .specs { grid-template-columns: 1fr; }
     section { padding-block: 54px; }
     .hero { padding-top: 22px; }
     .uses { grid-template-columns: 1fr; }
@@ -424,22 +439,6 @@
   </div>
 </section>
 
-<!-- GDZIE SIĘ PRZYDAJE -->
-<section class="tint" id="gdzie">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Gdzie się przydaje</span>
-      <h2>Wszędzie tam, gdzie potrzebujesz <span class="hl">chwili spokoju</span></h2>
-      <p>Jedna opaska na podróże, wyjścia i domowe kryzysy.</p>
-    </div>
-    <div class="uses">
-      <article class="card use"><img src="zdjecia/lulavi/samolot-lisek.jpg" alt="Chłopiec w opasce Lulavi Lisek w samolocie" loading="lazy"><div><h3>W samolocie</h3><p>Bajka w uszach zamiast płaczu i spojrzeń innych pasażerów.</p></div></article>
-      <article class="card use"><img src="zdjecia/lulavi/restauracja-hipcio.jpg" alt="Dziewczynka w opasce Lulavi Hipcio koloruje w restauracji" loading="lazy"><div><h3>W restauracji</h3><p>Zjesz obiad w spokoju, a dziecko słucha swojej muzyki.</p></div></article>
-      <article class="card use"><img src="zdjecia/lulavi/placz-mis.jpg" alt="Tata zakłada synkowi opaskę Lulavi Miś" loading="lazy"><div><h3>Gdy jest płacz</h3><p>Ulubiona piosenka uspokaja szybciej niż tłumaczenie.</p></div></article>
-    </div>
-  </div>
-</section>
-
 <!-- PROBLEM -->
 <section>
   <div class="wrap split">
@@ -463,8 +462,24 @@
   </div>
 </section>
 
+<!-- GDZIE SIĘ PRZYDAJE -->
+<section class="tint" id="gdzie">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Gdzie się przydaje</span>
+      <h2>Wszędzie tam, gdzie potrzebujesz <span class="hl">chwili spokoju</span></h2>
+      <p>Jedna opaska na podróże, wyjścia i domowe kryzysy.</p>
+    </div>
+    <div class="uses">
+      <article class="card use"><img src="zdjecia/lulavi/samolot-lisek.jpg" alt="Chłopiec w opasce Lulavi Lisek w samolocie" loading="lazy"><div><h3>W samolocie</h3><p>Bajka w uszach zamiast płaczu i spojrzeń innych pasażerów.</p></div></article>
+      <article class="card use"><img src="zdjecia/lulavi/restauracja-hipcio.jpg" alt="Dziewczynka w opasce Lulavi Hipcio koloruje w restauracji" loading="lazy"><div><h3>W restauracji</h3><p>Zjesz obiad w spokoju, a dziecko słucha swojej muzyki.</p></div></article>
+      <article class="card use"><img src="zdjecia/lulavi/placz-mis.jpg" alt="Tata zakłada synkowi opaskę Lulavi Miś" loading="lazy"><div><h3>Gdy jest płacz</h3><p>Ulubiona piosenka uspokaja szybciej niż tłumaczenie.</p></div></article>
+    </div>
+  </div>
+</section>
+
 <!-- ROZWIĄZANIE -->
-<section class="tint">
+<section>
   <div class="wrap split">
     <div class="media">
       <img class="photo" src="zdjecia/lulavi/relaks-sowka.jpg" alt="Chłopiec w opasce Lulavi Sówka słucha muzyki na dywanie, mama odpoczywa" loading="lazy">
@@ -485,7 +500,7 @@
 </section>
 
 <!-- JAK TO DZIAŁA -->
-<section id="kroki">
+<section class="tint" id="kroki">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Proste jak klik</span>
@@ -511,44 +526,31 @@
     <div class="sec-head">
       <span class="eyebrow">W paczce</span>
       <h2>Co dokładnie <span class="hl">dostajesz</span></h2>
+      <p>Wszystko w jednym pudełku. Wyjmij, naładuj i włącz pierwszą bajkę jeszcze dziś.</p>
     </div>
-    <div class="tabs" role="tablist">
-      <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="tab-zawartosc">Zawartość</button>
-      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="tab-parametry">Parametry</button>
-      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="tab-pielegnacja">Pielęgnacja</button>
+    <div class="box-items">
+      <div class="item card"><img src="zdjecia/warianty/lisek.jpg" alt="Opaska Lulavi Lisek" loading="lazy"><b>Opaska Lulavi</b><span>z wybranym zwierzakiem</span></div>
+      <div class="item card"><div class="ico">🎧</div><b>Moduł z głośniczkami</b><span>płaski, wyjmowany</span></div>
+      <div class="item card"><div class="ico">🔌</div><b>Kabel USB-C</b><span>do ładowania</span></div>
+      <div class="item card"><div class="ico">📖</div><b>Instrukcja</b><span>po polsku</span></div>
     </div>
-    <div class="card box">
-      <div>
-        <h3>Lulavi: gotowa od pierwszego dnia</h3>
-        <p>Wszystko w jednym pudełku. Wyjmij, naładuj i włącz pierwszą bajkę jeszcze dziś.</p>
+    <div class="specs">
+      <div class="card spec">
+        <h3>⚙️ Parametry</h3>
+        <ul class="ticks">
+          <li>Bluetooth 5.x, zasięg do 10 m</li>
+          <li>Do 10 h grania, ładowanie ok. 2 h</li>
+          <li>Obwód regulowany rzepem: od przedszkolaka do nastolatka</li>
+          <li>Wbudowany mikrofon do rozmów</li>
+        </ul>
       </div>
-      <div class="panel-list">
-        <div role="tabpanel" id="tab-zawartosc">
-          <div class="panel-title">Zawartość</div>
-          <ul class="ticks">
-            <li>Opaska Lulavi z wybranym zwierzakiem</li>
-            <li>Wyjmowany moduł z głośniczkami</li>
-            <li>Kabel do ładowania USB-C</li>
-            <li>Instrukcja po polsku</li>
-          </ul>
-        </div>
-        <div role="tabpanel" id="tab-parametry" hidden>
-          <div class="panel-title">Parametry</div>
-          <ul class="ticks">
-            <li>Bluetooth 5.x, zasięg do 10 m</li>
-            <li>Bateria: do 10 h grania, ładowanie ok. 2 h</li>
-            <li>Regulowany obwód na rzep: od przedszkolaka do nastolatka</li>
-            <li>Wbudowany mikrofon: można odebrać rozmowę</li>
-          </ul>
-        </div>
-        <div role="tabpanel" id="tab-pielegnacja" hidden>
-          <div class="panel-title">Pielęgnacja</div>
-          <ul class="ticks">
-            <li>Wyjmij moduł z głośniczkami</li>
-            <li>Pierz ręcznie lub w woreczku w 30°C</li>
-            <li>Susz na płasko, potem włóż moduł z powrotem</li>
-          </ul>
-        </div>
+      <div class="card spec">
+        <h3>🧺 Pielęgnacja</h3>
+        <ul class="ticks">
+          <li>Wyjmij moduł z głośniczkami</li>
+          <li>Pierz ręcznie lub w woreczku w 30°C</li>
+          <li>Susz na płasko, potem włóż moduł z powrotem</li>
+        </ul>
       </div>
     </div>
   </div>
