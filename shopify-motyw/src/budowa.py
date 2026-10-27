@@ -3,6 +3,7 @@ src=open('/home/user/Petenzo/lulavi-strona.html').read()
 CDN='https://cdn.shopify.com/s/files/1/1123/3876/4114/files/'
 head=src[:src.index('</head>')]
 head=head.replace('<title>Lulavi</title>','<title>{{ page_title }}</title>\n<link rel="canonical" href="{{ canonical_url }}">')
+head=head.replace('logo/favicon-192.png',CDN+'favicon-192.png').replace('logo/favicon-512.png',CDN+'favicon-512.png')
 layout=head+'{{ content_for_header }}\n</head>\n<body>\n{{ content_for_layout }}\n</body>\n</html>\n'
 body=src[src.index('<body>')+6:src.index('</body>')]
 body=re.sub(r'(?:src|href)="zdjecia/(?:lulavi|opinie)/([\w-]+)\.jpg"',lambda m:m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=1200"' if 'opinie' not in m.group(0) else m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=120"',body)
