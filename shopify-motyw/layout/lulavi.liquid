@@ -250,6 +250,7 @@
   .review { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
   .review:hover, .review:active { border-color: var(--coral); box-shadow: 0 0 0 1px var(--coral), 0 10px 24px rgba(255, 106, 61, .18); }
   .marquee.stop .marquee-track { animation-play-state: paused; }
+  @media (hover: hover) and (pointer: fine) { .marquee:hover .marquee-track { animation-play-state: paused; } }
   .review { aspect-ratio: auto; width: 300px; min-height: 290px; }
   .review blockquote { display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
   .review .avatar-wzor { flex: 0 0 52px; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; background: var(--peach); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--peach); }

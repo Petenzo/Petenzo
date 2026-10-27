@@ -439,9 +439,9 @@
   document.querySelectorAll('input[name="pakiet"]').forEach(function (r) { r.addEventListener('change', odswiez); });
   odswiez();
 
-  // opinie: kliknięcie zatrzymuje, kolejne kliknięcie puszcza dalej
+  // opinie: na komputerze stoją pod kursorem, na telefonie dotknięcie zatrzymuje i puszcza
   document.querySelectorAll('.marquee').forEach(function (m) {
-    m.addEventListener('click', function () { m.classList.toggle('stop'); });
+    m.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') m.classList.toggle('stop'); });
   });
 
   // zakładki „W paczce”
