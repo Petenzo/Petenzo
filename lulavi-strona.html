@@ -248,6 +248,7 @@
   .zaleta p { font-size: 15px; line-height: 1.5; color: var(--muted); }
   .review { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
   .review:hover, .review:active { border-color: var(--coral); box-shadow: 0 0 0 1px var(--coral), 0 10px 24px rgba(255, 106, 61, .18); }
+  .marquee.stop .marquee-track { animation-play-state: paused; }
   .review .who { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); line-height: 1.3; }
   .review .who img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
   .review .who b { display: block; color: var(--ink); font-size: 15px; }
@@ -759,6 +760,12 @@
   }
   document.querySelectorAll('input[name="pakiet"]').forEach(function (r) { r.addEventListener('change', odswiez); });
   odswiez();
+
+  // opinie: na komputerze stoją, dopóki trzymasz wciśniętą myszkę
+  document.querySelectorAll('.marquee').forEach(function (m) {
+    m.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse') m.classList.add('stop'); });
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { m.addEventListener(t, function () { m.classList.remove('stop'); }); });
+  });
 
   // zakładki „W paczce”
   document.querySelectorAll('.tab').forEach(function (tab) {

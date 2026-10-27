@@ -438,6 +438,12 @@
   document.querySelectorAll('input[name="pakiet"]').forEach(function (r) { r.addEventListener('change', odswiez); });
   odswiez();
 
+  // opinie: na komputerze stoją, dopóki trzymasz wciśniętą myszkę
+  document.querySelectorAll('.marquee').forEach(function (m) {
+    m.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse') m.classList.add('stop'); });
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { m.addEventListener(t, function () { m.classList.remove('stop'); }); });
+  });
+
   // zakładki „W paczce”
   document.querySelectorAll('.tab').forEach(function (tab) {
     tab.addEventListener('click', function () {
