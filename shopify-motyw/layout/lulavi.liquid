@@ -251,17 +251,19 @@
   .review:hover, .review:active { border-color: var(--coral); box-shadow: 0 0 0 1px var(--coral), 0 10px 24px rgba(255, 106, 61, .18); }
   .marquee.stop .marquee-track { animation-play-state: paused; }
   @media (hover: hover) and (pointer: fine) { .marquee:hover .marquee-track { animation-play-state: paused; } }
-  .review { aspect-ratio: auto; width: 300px; min-height: 290px; }
-  .review blockquote { display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+  .review { aspect-ratio: auto; width: 300px; height: 300px; }
+  .review blockquote { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
   .review .avatar-wzor { flex: 0 0 52px; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; background: var(--peach); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--peach); }
   .review .avatar { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-family: var(--display); font-weight: 700; font-size: 20px; }
   .review .ok { font-style: normal; color: var(--green); }
+  .review .tytul { font-size: 16px; font-weight: 800; color: var(--ink); line-height: 1.3; }
   .sec-head .zrodlo { font-size: 13.5px; }
   .review .who { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); line-height: 1.3; }
   .review .who img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
   .review .who b { display: block; color: var(--ink); font-size: 15px; }
   .review .stars { color: var(--star); letter-spacing: 2px; font-size: 17px; }
-  .review blockquote { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text); flex: 1; }
+  .review blockquote { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text); flex: none; height: calc(1.5em * 4); }
+  .review .who { margin-top: auto; }
   .sample { align-self: flex-start; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--red); background: #fde8e8; padding: 3px 8px; border-radius: 6px; }
 
   /* ---------- CTA ---------- */
