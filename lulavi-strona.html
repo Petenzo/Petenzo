@@ -118,7 +118,10 @@
   .slider-wrap { position: relative; }
   .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: var(--radius); scrollbar-width: none; -webkit-overflow-scrolling: touch; background: var(--peach); }
   .slider::-webkit-scrollbar { display: none; }
-  .slide { flex: 0 0 100%; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; scroll-snap-align: start; }
+  .slide { position: relative; flex: 0 0 100%; width: 100%; margin: 0; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slide figcaption { position: absolute; left: 14px; bottom: 14px; right: 14px; display: flex; align-items: center; gap: 8px; width: max-content; max-width: calc(100% - 28px); padding: 9px 14px; border-radius: 999px; background: rgba(255,255,255,.94); color: var(--ink); font-weight: 800; font-size: 15px; box-shadow: 0 6px 18px rgba(28,36,64,.18); }
+  .slide figcaption span { font-size: 18px; }
   .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: var(--ink); font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px rgba(28,36,64,.18); display: grid; place-items: center; }
   .arrow.prev { left: 12px; } .arrow.next { right: 12px; }
   .thumbs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 14px; }
@@ -166,12 +169,12 @@
   .offer-price b { display: block; font-size: 18px; font-weight: 800; color: var(--ink); }
   .offer-price s { font-size: 13px; color: var(--muted); }
   .offer-badge { position: absolute; top: -11px; right: 14px; padding: 3px 10px; border-radius: 6px; background: var(--ink); color: #fff; font-size: 11.5px; font-weight: 800; }
-  .picks { display: none; gap: 14px; margin: 14px 0 2px; }
+  .picks { display: none; gap: 10px; margin: 12px 0 2px; }
   .offer.on .picks { display: grid; }
-  .pick-label { font-size: 13.5px; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
+  .pick-label { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
   .pick-label span { color: var(--coral-dark); }
-  .swatches { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px; }
-  .swatch { padding: 0; border: 2px solid var(--line); border-radius: 12px; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 1 / 1; transition: border-color .12s, transform .12s; }
+  .swatches { display: grid; grid-template-columns: repeat(9, minmax(0, 40px)); gap: 6px; }
+  .swatch { padding: 0; border: 2px solid var(--line); border-radius: 50%; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 1 / 1; transition: border-color .12s, transform .12s; }
   .swatch img { width: 100%; height: 100%; object-fit: cover; }
   .swatch:hover { transform: translateY(-1px); }
   .swatch[aria-checked="true"] { border-color: var(--coral); box-shadow: 0 0 0 2px var(--coral); }
@@ -289,7 +292,12 @@
     section { padding-block: 54px; }
     .hero { padding-top: 22px; }
     .uses { grid-template-columns: 1fr; }
-    .swatches { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .swatches { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 4px; }
+    .offer { padding: 12px 13px; }
+    .offer.on { padding: 11.5px 12.5px; }
+    .offer-name b { font-size: 15.5px; }
+    .offer-price b { font-size: 16.5px; }
+    .slide figcaption { font-size: 13.5px; padding: 7px 12px; left: 10px; bottom: 10px; }
     .box, .cta div { padding: 22px; }
     .cmp th, .cmp td { padding: 12px 6px; font-size: 13px; }
     .cmp th:first-child, .cmp td:first-child { padding-left: 12px; }
@@ -337,18 +345,18 @@
     <div class="gallery">
       <div class="slider-wrap">
         <div class="slider" id="slider" tabindex="0" aria-label="Zdjęcia Lulavi – przesuń w bok">
-          <img class="slide" src="zdjecia/lulavi/dom-panda.jpg" alt="Mama zakłada córce opaskę Lulavi Panda w salonie">
-          <img class="slide" src="zdjecia/lulavi/auto-zabka.jpg" alt="Dziewczynka w opasce Lulavi Żabka w foteliku samochodowym" loading="lazy">
-          <img class="slide" src="zdjecia/lulavi/pociag-panda.jpg" alt="Dziewczynka w opasce Lulavi Panda w pociągu, obok mama czyta" loading="lazy">
-          <img class="slide" src="zdjecia/lulavi/dziadek-mis.jpg" alt="Wnuk w opasce Lulavi Brązowy miś bawi się obok dziadka w ogrodzie" loading="lazy">
-          <img class="slide" src="zdjecia/lulavi/kuchnia-hipcio.jpg" alt="Chłopiec w opasce Lulavi Hipcio rysuje przy stole, mama gotuje" loading="lazy">
-          <img class="slide" src="zdjecia/lulavi/drzemka-kotek.jpg" alt="Dziewczynka śpi w opasce Lulavi Kotek" loading="lazy">
+          <figure class="slide"><img src="zdjecia/lulavi/samolot-lisek.jpg" alt="Chłopiec w opasce Lulavi Lisek spokojnie słucha bajki w samolocie"><figcaption><span>✈️</span>Cały lot bez płaczu</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/auto-zabka.jpg" alt="Dziewczynka w opasce Lulavi Żabka spokojnie jedzie w foteliku" loading="lazy"><figcaption><span>🚗</span>Spokojna jazda autem</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/kuchnia-hipcio.jpg" alt="Chłopiec w opasce Lulavi Hipcio rysuje, a mama w spokoju gotuje" loading="lazy"><figcaption><span>🍳</span>Gotujesz, a dziecko słucha bajki</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/dziadek-mis.jpg" alt="Wnuk w opasce Lulavi Brązowy miś bawi się obok odpoczywającego dziadka" loading="lazy"><figcaption><span>☕</span>Dziadkowie mają chwilę oddechu</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/drzemka-kotek.jpg" alt="Dziewczynka spokojnie śpi w opasce Lulavi Kotek" loading="lazy"><figcaption><span>😴</span>Łatwiej zasnąć przy ulubionej bajce</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/dom-panda.jpg" alt="Mama zakłada córce opaskę Lulavi Panda" loading="lazy"><figcaption><span>🧸</span>Zakładasz w sekundę, rzep pasuje na każdą główkę</figcaption></figure>
         </div>
         <button class="arrow prev" type="button" aria-label="Poprzednie zdjęcie">‹</button>
         <button class="arrow next" type="button" aria-label="Następne zdjęcie">›</button>
       </div>
       <div class="dots" id="dots"></div>
-      <div class="thumbs"><button class="thumb" type="button" data-i="0" aria-label="Pokaż zdjęcie 1"><img src="zdjecia/lulavi/dom-panda.jpg" alt=""></button><button class="thumb" type="button" data-i="1" aria-label="Pokaż zdjęcie 2"><img src="zdjecia/lulavi/auto-zabka.jpg" alt=""></button><button class="thumb" type="button" data-i="2" aria-label="Pokaż zdjęcie 3"><img src="zdjecia/lulavi/pociag-panda.jpg" alt=""></button><button class="thumb" type="button" data-i="3" aria-label="Pokaż zdjęcie 4"><img src="zdjecia/lulavi/dziadek-mis.jpg" alt=""></button><button class="thumb" type="button" data-i="4" aria-label="Pokaż zdjęcie 5"><img src="zdjecia/lulavi/kuchnia-hipcio.jpg" alt=""></button><button class="thumb" type="button" data-i="5" aria-label="Pokaż zdjęcie 6"><img src="zdjecia/lulavi/drzemka-kotek.jpg" alt=""></button></div>
+      <div class="thumbs"><button class="thumb" type="button" data-i="0" aria-label="Pokaż zdjęcie 1"><img src="zdjecia/lulavi/samolot-lisek.jpg" alt=""></button><button class="thumb" type="button" data-i="1" aria-label="Pokaż zdjęcie 2"><img src="zdjecia/lulavi/auto-zabka.jpg" alt=""></button><button class="thumb" type="button" data-i="2" aria-label="Pokaż zdjęcie 3"><img src="zdjecia/lulavi/kuchnia-hipcio.jpg" alt=""></button><button class="thumb" type="button" data-i="3" aria-label="Pokaż zdjęcie 4"><img src="zdjecia/lulavi/dziadek-mis.jpg" alt=""></button><button class="thumb" type="button" data-i="4" aria-label="Pokaż zdjęcie 5"><img src="zdjecia/lulavi/drzemka-kotek.jpg" alt=""></button><button class="thumb" type="button" data-i="5" aria-label="Pokaż zdjęcie 6"><img src="zdjecia/lulavi/dom-panda.jpg" alt=""></button></div>
       <ul class="trust">
         <li><span>🚚</span><b>Darmowa wysyłka</b>w cenie każdego zamówienia</li>
         <li><span>↩️</span><b>14 dni na zwrot</b>bez podawania przyczyny</li>
@@ -456,7 +464,7 @@
       <p>Jedna opaska na podróże, wyjścia i domowe kryzysy.</p>
     </div>
     <div class="uses">
-      <article class="card use"><img src="zdjecia/lulavi/samolot-lisek.jpg" alt="Chłopiec w opasce Lulavi Lisek w samolocie" loading="lazy"><div><h3>W samolocie</h3><p>Bajka w uszach zamiast płaczu i spojrzeń innych pasażerów.</p></div></article>
+      <article class="card use"><img src="zdjecia/lulavi/pociag-panda.jpg" alt="Dziewczynka w opasce Lulavi Panda w pociągu, obok mama czyta" loading="lazy"><div><h3>W podróży</h3><p>Pociąg czy samolot: bajka w uszach zamiast płaczu i spojrzeń innych pasażerów.</p></div></article>
       <article class="card use"><img src="zdjecia/lulavi/restauracja-hipcio.jpg" alt="Dziewczynka w opasce Lulavi Hipcio koloruje w restauracji" loading="lazy"><div><h3>W restauracji</h3><p>Zjesz obiad w spokoju, a dziecko słucha swojej muzyki.</p></div></article>
       <article class="card use"><img src="zdjecia/lulavi/placz-mis.jpg" alt="Tata zakłada synkowi opaskę Lulavi Miś" loading="lazy"><div><h3>Gdy jest płacz</h3><p>Ulubiona piosenka uspokaja szybciej niż tłumaczenie.</p></div></article>
     </div>

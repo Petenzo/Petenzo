@@ -1,0 +1,154 @@
+<!-- WYSUWANY KOSZYK -->
+<style>
+  .cart { position: relative; }
+  .cart-count { position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--coral); color: #fff; font-size: 11.5px; font-weight: 800; display: grid; place-items: center; }
+  .cart-count[hidden] { display: none; }
+  .kosz-tlo { position: fixed; inset: 0; background: rgba(28,36,64,.45); opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 50; }
+  .kosz { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100%); background: #fff; z-index: 51; display: flex; flex-direction: column; transform: translateX(100%); transition: transform .3s ease; box-shadow: -10px 0 40px rgba(28,36,64,.18); }
+  body.kosz-otwarty { overflow: hidden; }
+  body.kosz-otwarty .kosz { transform: none; }
+  body.kosz-otwarty .kosz-tlo { opacity: 1; pointer-events: auto; }
+  .kosz-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+  .kosz-head h2 { font-size: 21px; }
+  .kosz-x { width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--peach); color: var(--ink); font-size: 22px; cursor: pointer; }
+  .kosz-body { flex: 1; overflow-y: auto; padding: 16px 18px; display: grid; gap: 14px; align-content: start; }
+  .postep { padding: 14px; border-radius: 14px; background: var(--cream); border: 1px solid var(--line); }
+  .postep p { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .postep p b { color: var(--coral-dark); }
+  .pasek { position: relative; height: 8px; border-radius: 999px; background: #eee6df; margin: 12px 0 10px; }
+  .pasek i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: linear-gradient(90deg, var(--coral), #ff9a6b); transition: width .4s; }
+  .etapy { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 800; color: var(--muted); }
+  .etapy span.ok { color: var(--green); }
+  .poz { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; }
+  .poz img { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; background: var(--peach); }
+  .poz b { display: block; font-size: 14.5px; color: var(--ink); }
+  .poz small { color: var(--muted); font-size: 13px; }
+  .ilosc { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: 999px; margin-top: 6px; }
+  .ilosc button { width: 30px; height: 30px; border: 0; background: none; font-size: 17px; cursor: pointer; color: var(--ink); }
+  .ilosc span { min-width: 18px; text-align: center; font-weight: 800; font-size: 14px; }
+  .poz-cena { text-align: right; font-weight: 800; color: var(--ink); font-size: 15px; }
+  .poz-cena s { display: block; font-weight: 600; color: var(--muted); font-size: 12.5px; }
+  .usun { border: 0; background: none; color: var(--muted); font-size: 12.5px; text-decoration: underline; cursor: pointer; padding: 4px 0 0; }
+  .pusty { text-align: center; padding: 30px 10px; color: var(--muted); }
+  .upsell { border: 2px dashed #ffc6b2; border-radius: 14px; padding: 14px; background: #fffaf6; }
+  .upsell p { font-size: 14px; color: var(--ink); font-weight: 700; }
+  .upsell p span { color: var(--green); }
+  .upsell .swatches { margin-top: 10px; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 5px; }
+  .kosz-foot { border-top: 1px solid var(--line); padding: 14px 18px calc(14px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 8px; }
+  .linia { display: flex; justify-content: space-between; font-size: 14.5px; color: var(--muted); }
+  .linia.rabat { color: var(--green); font-weight: 700; }
+  .linia.razem { color: var(--ink); font-weight: 800; font-size: 18px; }
+  .kosz-foot .btn { margin-top: 4px; }
+  .kosz-foot .under-btn { margin-top: 0; }
+</style>
+<div class="kosz-tlo" id="kosz-tlo"></div>
+<aside class="kosz" id="kosz" role="dialog" aria-modal="true" aria-label="Koszyk" aria-hidden="true">
+  <div class="kosz-head"><h2>Twój koszyk</h2><button class="kosz-x" type="button" id="kosz-x" aria-label="Zamknij koszyk">×</button></div>
+  <div class="kosz-body" id="kosz-body"></div>
+  <div class="kosz-foot" id="kosz-foot"></div>
+</aside>
+<script>
+  // wysuwany koszyk: postęp rabatu, zmiana ilości, dobranie kolejnej opaski
+  (function () {
+    var kosz = document.getElementById('kosz');
+    var body = document.getElementById('kosz-body');
+    var foot = document.getElementById('kosz-foot');
+    var ikona = document.querySelector('.cart');
+    var licznik = document.createElement('span');
+    licznik.className = 'cart-count';
+    licznik.hidden = true;
+    ikona.appendChild(licznik);
+
+    function zl(gr) { return (gr / 100).toFixed(2).replace('.', ',') + ' zł'; }
+    function rabatZestawu(szt) { return szt >= 3 ? 11998 : szt === 2 ? 4999 : 0; }
+
+    function otworz() { document.body.classList.add('kosz-otwarty'); kosz.setAttribute('aria-hidden', 'false'); }
+    function zamknij() { document.body.classList.remove('kosz-otwarty'); kosz.setAttribute('aria-hidden', 'true'); }
+    document.getElementById('kosz-x').addEventListener('click', zamknij);
+    document.getElementById('kosz-tlo').addEventListener('click', zamknij);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zamknij(); });
+    ikona.addEventListener('click', function (e) { e.preventDefault(); otworz(); pokaz(); });
+
+    function api(url, dane) {
+      return fetch(url, dane ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dane) } : {})
+        .then(function (r) { if (!r.ok) throw r; return r.json(); });
+    }
+
+    function postep(szt) {
+      var tekst = szt >= 3 ? '🎉 Masz <b>najlepszą cenę</b>: oszczędzasz 120 zł!'
+        : szt === 2 ? '🎉 Rabat <b>−50 zł</b> odblokowany! Dodaj 3. opaskę i oszczędź <b>120 zł</b>'
+        : '🚚 Darmowa dostawa odblokowana! Dodaj 2. opaskę i oszczędź <b>50 zł</b>';
+      var pr = Math.min(szt, 3) / 3 * 100;
+      return '<div class="postep"><p>' + tekst + '</p><div class="pasek"><i style="width:' + pr + '%"></i></div>' +
+        '<div class="etapy"><span class="' + (szt >= 1 ? 'ok' : '') + '">✓ Darmowa dostawa</span>' +
+        '<span class="' + (szt >= 2 ? 'ok' : '') + '">' + (szt >= 2 ? '✓ ' : '') + '−50 zł</span>' +
+        '<span class="' + (szt >= 3 ? 'ok' : '') + '">' + (szt >= 3 ? '✓ ' : '') + '−120 zł</span></div></div>';
+    }
+
+    function upsell(szt) {
+      if (szt < 1 || szt >= 3) return '';
+      var ile = szt === 1 ? 'Dobierz drugą opaskę za <span>100 zł</span> (zamiast 149,99 zł)' : 'Dobierz trzecią opaskę za <span>80 zł</span> (zamiast 149,99 zł)';
+      return '<div class="upsell"><p>➕ ' + ile + ', np. dla rodzeństwa:</p><div class="swatches">' +
+        WZORY.map(function (w) {
+          return '<button class="swatch" type="button" data-dobierz="' + w.vid + '" title="' + w.nazwa + '" aria-label="Dodaj ' + w.nazwa + '"><img src="' + w.img + '" alt=""></button>';
+        }).join('') + '</div></div>';
+    }
+
+    function pokaz() {
+      return api('/cart.js').then(function (c) {
+        var szt = c.item_count;
+        licznik.textContent = szt;
+        licznik.hidden = !szt;
+        if (!szt) {
+          body.innerHTML = '<div class="pusty">Twój koszyk jest pusty.<br>Wybierz swojego zwierzaka 🦊🐼🐸</div>';
+          foot.innerHTML = '<button class="btn" type="button" id="kosz-wroc">Wybierz opaskę</button>';
+          document.getElementById('kosz-wroc').onclick = function () { zamknij(); document.getElementById('kup').scrollIntoView({ behavior: 'smooth' }); };
+          return;
+        }
+        body.innerHTML = postep(szt) + c.items.map(function (it) {
+          return '<div class="poz"><img src="' + (it.image || '') + '" alt="">' +
+            '<div><b>Lulavi – ' + (it.variant_title || it.product_title) + '</b><small>Opaska ze słuchawkami</small><br>' +
+            '<span class="ilosc"><button type="button" data-zmien="' + it.key + '" data-ile="' + (it.quantity - 1) + '" aria-label="Mniej">−</button><span>' + it.quantity + '</span>' +
+            '<button type="button" data-zmien="' + it.key + '" data-ile="' + (it.quantity + 1) + '" aria-label="Więcej">+</button></span></div>' +
+            '<div class="poz-cena">' + zl(it.original_line_price) + '<br><button class="usun" type="button" data-zmien="' + it.key + '" data-ile="0">Usuń</button></div></div>';
+        }).join('') + upsell(szt);
+        var rabat = c.total_discount || rabatZestawu(szt);
+        var razem = c.original_total_price - rabat;
+        foot.innerHTML = '<div class="linia"><span>Suma</span><span>' + zl(c.original_total_price) + '</span></div>' +
+          (rabat ? '<div class="linia rabat"><span>Rabat za zestaw</span><span>−' + zl(rabat) + '</span></div>' : '') +
+          '<div class="linia rabat"><span>Dostawa</span><span>GRATIS</span></div>' +
+          '<div class="linia razem"><span>Razem</span><span>' + zl(razem) + '</span></div>' +
+          '<a class="btn" href="/checkout">Przejdź do kasy · ' + zl(razem) + '</a>' +
+          '<p class="under-btn">🔒 Bezpieczne płatności · BLIK, karta · 14 dni na zwrot</p>';
+      });
+    }
+
+    body.addEventListener('click', function (e) {
+      var z = e.target.closest('[data-zmien]');
+      var d = e.target.closest('[data-dobierz]');
+      if (z) api('/cart/change.js', { id: z.dataset.zmien, quantity: +z.dataset.ile }).then(pokaz);
+      if (d) api('/cart/add.js', { items: [{ id: +d.dataset.dobierz, quantity: 1 }] }).then(pokaz);
+    });
+
+    // „Dodaj do koszyka”: wybrane wzory trafiają do koszyka, a koszyk się wysuwa
+    cta.addEventListener('click', function () {
+      var wybrany = document.querySelector('input[name="pakiet"]:checked');
+      var ilosci = {};
+      wybrany.closest('.offer').querySelectorAll('.swatches').forEach(function (g) {
+        var s = g.querySelector('.swatch[aria-checked="true"]');
+        if (s) ilosci[s.dataset.vid] = (ilosci[s.dataset.vid] || 0) + 1;
+      });
+      var items = Object.keys(ilosci).map(function (id) { return { id: +id, quantity: ilosci[id] }; });
+      var tekst = cta.textContent;
+      cta.disabled = true;
+      cta.textContent = 'Dodaję do koszyka…';
+      api('/cart/add.js', { items: items })
+        .then(pokaz)
+        .then(otworz)
+        .catch(function () { alert('Nie udało się dodać do koszyka. Spróbuj jeszcze raz.'); })
+        .then(function () { cta.disabled = false; cta.textContent = tekst; });
+    });
+
+    pokaz();
+  })();
+</script>
