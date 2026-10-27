@@ -57,7 +57,7 @@
     var licznik = document.createElement('span');
     licznik.className = 'cart-count';
     licznik.hidden = true;
-    ikona.appendChild(licznik);
+    if (ikona) ikona.appendChild(licznik);
 
     function zl(gr) { return (gr / 100).toFixed(2).replace('.', ',') + ' zł'; }
     function rabatZestawu(szt) { return szt >= 3 ? 11998 : szt === 2 ? 4999 : 0; }
@@ -67,7 +67,7 @@
     document.getElementById('kosz-x').addEventListener('click', zamknij);
     document.getElementById('kosz-tlo').addEventListener('click', zamknij);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zamknij(); });
-    ikona.addEventListener('click', function (e) { e.preventDefault(); otworz(); pokaz(); });
+    if (ikona) ikona.addEventListener('click', function (e) { e.preventDefault(); otworz(); pokaz(); });
 
     function api(url, dane) {
       return fetch(url, dane ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dane) } : {})
