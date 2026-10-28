@@ -8,6 +8,7 @@ layout=head+'{{ content_for_header }}\n</head>\n<body>\n{{ content_for_layout }}
 body=src[src.index('<body>')+6:src.index('</body>')]
 body=re.sub(r'(?:src|href)="zdjecia/(?:lulavi|opinie)/([\w-]+)\.jpg"',lambda m:m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=1200"' if 'opinie' not in m.group(0) else m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=120"',body)
 body=body.replace(' decoding="sync"','')
+body=re.sub(r'src="zdjecia/opinie-amazon/([\w-]+)\.jpg"',lambda m:'src="'+CDN+'lv-op-'+m.group(1)+'.jpg"',body)
 body=re.sub(r'src="zdjecia/warianty/mini-([\w-]+)\.jpg"',lambda m:'src="'+CDN+m.group(1)+'.jpg?width=120"',body)
 assert 'zdjecia/lulavi' not in body and 'zdjecia/opinie' not in body
 # linki
