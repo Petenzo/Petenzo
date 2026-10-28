@@ -34,6 +34,6 @@ top=top.replace('<a href="#','<a href="/#')
 foot=body[body.index('<footer class="site">'):body.index('</footer>')+9]
 pod=top+'\n'+open('/home/user/Petenzo/shopify-motyw/src/podstrona.html').read()+'\n'+foot+'\n{% schema %}\n{"name": "Lulavi – podstrona", "settings": []}\n{% endschema %}\n'
 open(d+'sections/lulavi-podstrona.liquid','w').write(pod)
-open(d+'templates/page.lulavi.json','w').write(tpl.replace('lulavi-strona','lulavi-podstrona'))
-for t in ['product.lulavi','index','collection','list-collections','search']: open(d+'templates/'+t+'.json','w').write(tpl)
+for t in ['page.lulavi','page','page.contact','404','cart','blog','article']: open(d+'templates/'+t+'.json','w').write(tpl.replace('lulavi-strona','lulavi-podstrona'))
+for t in ['product.lulavi','product','index','collection','list-collections','search']: open(d+'templates/'+t+'.json','w').write(tpl)
 print(len(layout),len(section))

@@ -42,8 +42,28 @@
 </style>
 <main class="podstrona">
   <div class="wrap pod-wrap">
+    {%- if template.name == '404' -%}
+    <h1>Nie ma takiej strony</h1>
+    <div class="pod-tresc"><p>Ta strona nie istnieje albo została przeniesiona. Wróć na stronę główną i wybierz swojego zwierzaka 🦊🐼🐸</p><p><a class="btn" href="/">Wróć do sklepu</a></p></div>
+    {%- elsif template.name == 'cart' -%}
+    <h1>Twój koszyk</h1>
+    <div class="pod-tresc">
+      {%- if cart.item_count == 0 -%}
+      <p>Twój koszyk jest pusty.</p><p><a class="btn" href="/#kup">Wybierz opaskę</a></p>
+      {%- else -%}
+      <ul>{%- for it in cart.items -%}<li><b>Lulavi – {{ it.variant.title }}</b> × {{ it.quantity }} · {{ it.final_line_price | money }}</li>{%- endfor -%}</ul>
+      {%- if cart.total_discount > 0 -%}<p>Rabat: −{{ cart.total_discount | money }}</p>{%- endif -%}
+      <p><b>Razem: {{ cart.total_price | money }}</b> · dostawa GRATIS</p>
+      <p><a class="btn" href="/checkout">Przejdź do kasy</a></p>
+      {%- endif -%}
+    </div>
+    {%- elsif page -%}
     <h1>{{ page.title }}</h1>
     <div class="pod-tresc">{{ page.content }}</div>
+    {%- else -%}
+    <h1>Lulavi</h1>
+    <div class="pod-tresc"><p><a class="btn" href="/">Wróć do sklepu</a></p></div>
+    {%- endif -%}
   </div>
   <section class="pod-kontakt">
     <div class="wrap pod-wrap">
