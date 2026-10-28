@@ -289,12 +289,18 @@
   .faq-list details p { padding: 0 2px 18px; color: var(--muted); font-size: 15.5px; }
 
   /* ---------- stopka ---------- */
-  footer.site { background: var(--ink); color: #c9cfe0; padding-block: 34px; font-size: 14px; }
-  footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; }
-  footer.site .logo { color: #fff; font-size: 26px; }
-  footer.site nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
-  footer.site nav a { text-decoration: none; }
-  footer.site nav a:hover { color: #fff; }
+  footer.site { background: var(--cream); color: var(--muted); border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; }
+  footer.site .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; }
+  footer.site .logo { font-size: 28px; }
+  .f-brand p { margin: 12px 0 18px; max-width: 360px; line-height: 1.6; }
+  .f-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; color: var(--ink); text-decoration: none; }
+  .f-ico { flex: 0 0 38px; height: 38px; border: 1.5px solid var(--coral); border-radius: 10px; display: grid; place-items: center; }
+  .f-ico svg { width: 18px; height: 18px; stroke: var(--coral); }
+  .f-nav { display: flex; flex-direction: column; gap: 14px; }
+  .f-head { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .f-nav a { color: var(--ink); text-decoration: none; }
+  .f-nav a:hover { color: var(--coral); }
+  footer.site .f-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12.5px; letter-spacing: .04em; }
 
   /* ---------- telefon ---------- */
   @media (max-width: 1060px) { .nav { display: none; } }
@@ -322,8 +328,8 @@
     .cmp th { font-size: 11.5px; }
     .cmp th.us { font-size: 15px; }
     .cmp col.c-name { width: 38%; }
-    footer.site .wrap { flex-direction: column; text-align: center; }
-    footer.site nav { flex-direction: column; align-items: center; gap: 12px; }
+    footer.site .wrap { grid-template-columns: 1fr; gap: 30px; }
+    footer.site .f-bottom { flex-direction: column; }
   }
 </style>
 </head>
@@ -680,15 +686,24 @@
 
 <footer class="site">
   <div class="wrap">
-    <a class="logo" href="#">lulavi</a>
-    <nav aria-label="Informacje">
+    <div class="f-brand">
+      <a class="logo" href="/">lulavi</a>
+      <p>Miękka opaska ze słuchawkami dla dzieci. Bajka w uszach, a Ty masz chwilę spokoju w podróży i w domu.</p>
+      <a class="f-row" href="mailto:kontakt@lulavi.pl"><span class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>kontakt@lulavi.pl</a>
+      <div class="f-row"><span class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Odpowiadamy w 24 h · Pon–Pt</div>
+    </div>
+    <nav class="f-nav" aria-label="Informacje">
+      <span class="f-head">Informacje</span>
       <a href="/pages/regulamin">Regulamin</a>
       <a href="/pages/polityka-prywatnosci">Polityka prywatności</a>
       <a href="/pages/polityka-wysylki">Polityka wysyłki</a>
       <a href="/pages/polityka-zwrotow">Zwroty i reklamacje</a>
       <a href="/pages/dane-kontaktowe">Kontakt</a>
     </nav>
-    <div>✉️ <a href="mailto:kontakt@lulavi.pl" style="text-decoration:none">kontakt@lulavi.pl</a><br>© 2026 Lulavi</div>
+  </div>
+  <div class="wrap f-bottom">
+    <span>LULAVI.PL © 2026</span>
+    <span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span>
   </div>
 </footer>
 

@@ -1,0 +1,44 @@
+<style>
+  .podstrona { padding-block: 48px 0; }
+  .pod-wrap { max-width: 760px; }
+  .podstrona h1 { font-size: clamp(32px, 6vw, 46px); text-align: center; margin-bottom: 34px; }
+  .pod-tresc { color: var(--text); font-size: 16px; line-height: 1.75; }
+  .pod-tresc h2 { font-size: 23px; margin: 34px 0 12px; }
+  .pod-tresc h2:first-child { margin-top: 0; }
+  .pod-tresc p { margin: 0 0 14px; }
+  .pod-tresc ul, .pod-tresc ol { margin: 0 0 14px; padding-left: 22px; }
+  .pod-tresc li { margin-bottom: 6px; }
+  .pod-tresc b, .pod-tresc strong { color: var(--ink); }
+  .pod-tresc a { color: var(--coral-dark); }
+  .pod-kontakt { padding-block: 56px 64px; }
+  .pod-kontakt h2 { font-size: clamp(26px, 5vw, 34px); text-align: center; margin-bottom: 26px; }
+  .pod-form { display: grid; gap: 14px; }
+  .pod-form input, .pod-form textarea { width: 100%; padding: 15px 18px; border: 1.5px solid var(--line); border-radius: 14px; font: inherit; font-size: 16px; color: var(--ink); background: #fff; }
+  .pod-form input:focus, .pod-form textarea:focus { outline: none; border-color: var(--coral); }
+  .pod-form textarea { min-height: 130px; resize: vertical; }
+  .pod-ok { padding: 14px 18px; border-radius: 14px; background: #e7f6ef; color: var(--green); font-weight: 700; text-align: center; }
+  .pod-blad { padding: 14px 18px; border-radius: 14px; background: #fde8e8; color: var(--red); font-weight: 700; }
+</style>
+<main class="podstrona">
+  <div class="wrap pod-wrap">
+    <h1>{{ page.title }}</h1>
+    <div class="pod-tresc">{{ page.content }}</div>
+  </div>
+  <section class="pod-kontakt">
+    <div class="wrap pod-wrap">
+      <h2>Skontaktuj się <span class="hl">z nami</span></h2>
+      {%- form 'contact', class: 'pod-form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="pod-ok">Dziękujemy! Odpiszemy najszybciej, jak się da.</p>
+        {%- elsif form.errors -%}
+          <p class="pod-blad">Uzupełnij poprawnie e-mail i wiadomość.</p>
+        {%- endif -%}
+        <input type="text" name="contact[name]" placeholder="Imię" autocomplete="name" value="{{ form.name }}">
+        <input type="email" name="contact[email]" placeholder="E-mail" autocomplete="email" required value="{{ form.email }}">
+        <input type="tel" name="contact[phone]" placeholder="Numer telefonu (opcjonalnie)" autocomplete="tel" value="{{ form.phone }}">
+        <textarea name="contact[body]" placeholder="Wiadomość" required>{{ form.body }}</textarea>
+        <button class="btn" type="submit">Wyślij</button>
+      {%- endform -%}
+    </div>
+  </section>
+</main>

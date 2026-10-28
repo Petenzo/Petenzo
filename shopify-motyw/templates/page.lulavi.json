@@ -1,0 +1,5 @@
+{
+  "layout": "lulavi",
+  "sections": { "main": { "type": "lulavi-podstrona", "settings": {} } },
+  "order": ["main"]
+}

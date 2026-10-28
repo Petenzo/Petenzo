@@ -1,0 +1,91 @@
+<div class="topbar" aria-label="Darmowa wysyłka, 14 dni na zwrot, promocja −50 zł">
+  <div class="ticker" aria-hidden="true"><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span></div>
+</div>
+
+<!-- NAGŁÓWEK -->
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Lulavi – strona główna">
+      <svg viewBox="0 0 200 150" aria-hidden="true"><g>  <path d="M38 52 L52 10 Q55 2 62 8 L88 40 Z" fill="#FF6A3D"/>  <path d="M162 52 L148 10 Q145 2 138 8 L112 40 Z" fill="#FF6A3D"/>  <path d="M50 40 L58 18 L74 38 Z" fill="#FFB59A"/>  <path d="M150 40 L142 18 L126 38 Z" fill="#FFB59A"/>  <rect x="6" y="36" width="188" height="112" rx="56" fill="#FF6A3D"/>  <path d="M66 88 Q78 76 90 88" fill="none" stroke="#1C2440" stroke-width="9" stroke-linecap="round"/>  <path d="M110 88 Q122 76 134 88" fill="none" stroke="#1C2440" stroke-width="9" stroke-linecap="round"/>  <path d="M88 110 Q100 122 112 110" fill="none" stroke="#1C2440" stroke-width="8" stroke-linecap="round"/>  <circle cx="62" cy="108" r="7" fill="#FFB59A" opacity=".9"/>  <circle cx="138" cy="108" r="7" fill="#FFB59A" opacity=".9"/>  <rect x="16" y="70" width="22" height="44" rx="7" fill="#1C2440"/>  <circle cx="27" cy="82" r="3" fill="#FF6A3D"/><circle cx="27" cy="92" r="3" fill="#FF6A3D"/><circle cx="27" cy="102" r="3" fill="#FF6A3D"/></g></svg>
+      lulavi
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a href="/#gdzie">Gdzie się przydaje</a>
+      <a href="/#kroki">Jak to działa</a>
+      <a href="/#paczka">Co dostajesz</a>
+      <a href="/#porownanie">Dlaczego Lulavi</a>
+      <a href="/#opinie">Opinie</a>
+      <a href="/#faq">Pytania</a>
+    </nav>
+  </div>
+</header>
+<style>
+  .podstrona { padding-block: 48px 0; }
+  .pod-wrap { max-width: 760px; }
+  .podstrona h1 { font-size: clamp(32px, 6vw, 46px); text-align: center; margin-bottom: 34px; }
+  .pod-tresc { color: var(--text); font-size: 16px; line-height: 1.75; }
+  .pod-tresc h2 { font-size: 23px; margin: 34px 0 12px; }
+  .pod-tresc h2:first-child { margin-top: 0; }
+  .pod-tresc p { margin: 0 0 14px; }
+  .pod-tresc ul, .pod-tresc ol { margin: 0 0 14px; padding-left: 22px; }
+  .pod-tresc li { margin-bottom: 6px; }
+  .pod-tresc b, .pod-tresc strong { color: var(--ink); }
+  .pod-tresc a { color: var(--coral-dark); }
+  .pod-kontakt { padding-block: 56px 64px; }
+  .pod-kontakt h2 { font-size: clamp(26px, 5vw, 34px); text-align: center; margin-bottom: 26px; }
+  .pod-form { display: grid; gap: 14px; }
+  .pod-form input, .pod-form textarea { width: 100%; padding: 15px 18px; border: 1.5px solid var(--line); border-radius: 14px; font: inherit; font-size: 16px; color: var(--ink); background: #fff; }
+  .pod-form input:focus, .pod-form textarea:focus { outline: none; border-color: var(--coral); }
+  .pod-form textarea { min-height: 130px; resize: vertical; }
+  .pod-ok { padding: 14px 18px; border-radius: 14px; background: #e7f6ef; color: var(--green); font-weight: 700; text-align: center; }
+  .pod-blad { padding: 14px 18px; border-radius: 14px; background: #fde8e8; color: var(--red); font-weight: 700; }
+</style>
+<main class="podstrona">
+  <div class="wrap pod-wrap">
+    <h1>{{ page.title }}</h1>
+    <div class="pod-tresc">{{ page.content }}</div>
+  </div>
+  <section class="pod-kontakt">
+    <div class="wrap pod-wrap">
+      <h2>Skontaktuj się <span class="hl">z nami</span></h2>
+      {%- form 'contact', class: 'pod-form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="pod-ok">Dziękujemy! Odpiszemy najszybciej, jak się da.</p>
+        {%- elsif form.errors -%}
+          <p class="pod-blad">Uzupełnij poprawnie e-mail i wiadomość.</p>
+        {%- endif -%}
+        <input type="text" name="contact[name]" placeholder="Imię" autocomplete="name" value="{{ form.name }}">
+        <input type="email" name="contact[email]" placeholder="E-mail" autocomplete="email" required value="{{ form.email }}">
+        <input type="tel" name="contact[phone]" placeholder="Numer telefonu (opcjonalnie)" autocomplete="tel" value="{{ form.phone }}">
+        <textarea name="contact[body]" placeholder="Wiadomość" required>{{ form.body }}</textarea>
+        <button class="btn" type="submit">Wyślij</button>
+      {%- endform -%}
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-brand">
+      <a class="logo" href="/">lulavi</a>
+      <p>Miękka opaska ze słuchawkami dla dzieci. Bajka w uszach, a Ty masz chwilę spokoju w podróży i w domu.</p>
+      <a class="f-row" href="mailto:kontakt@lulavi.pl"><span class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>kontakt@lulavi.pl</a>
+      <div class="f-row"><span class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Odpowiadamy w 24 h · Pon–Pt</div>
+    </div>
+    <nav class="f-nav" aria-label="Informacje">
+      <span class="f-head">Informacje</span>
+      <a href="/pages/regulamin">Regulamin</a>
+      <a href="/pages/polityka-prywatnosci">Polityka prywatności</a>
+      <a href="/pages/polityka-wysylki">Polityka wysyłki</a>
+      <a href="/pages/polityka-zwrotow">Zwroty i reklamacje</a>
+      <a href="/pages/dane-kontaktowe">Kontakt</a>
+    </nav>
+  </div>
+  <div class="wrap f-bottom">
+    <span>LULAVI.PL © 2026</span>
+    <span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span>
+  </div>
+</footer>
+{% schema %}
+{"name": "Lulavi – podstrona", "settings": []}
+{% endschema %}
