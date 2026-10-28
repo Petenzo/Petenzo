@@ -128,12 +128,7 @@
           </div>
           {%- endfor -%}
         </div>
-        <div class="kp-box kp-uwagi">
-          <h2>✏️ Dodatkowe instrukcje do zamówienia <small>(opcjonalnie)</small></h2>
-          <p>Masz specjalne życzenia lub uwagi dla nas? Wpisz je tutaj.</p>
-          <textarea name="note" maxlength="500" id="kp-uwagi" placeholder="Np. prośba o dodatkowe zabezpieczenie paczki">{{ cart.note }}</textarea>
-          <div class="kp-licz"><span id="kp-licz">{{ cart.note | size }}</span>/500</div>
-        </div>
+</div>
       </div>
       <div class="kp-prawa">
         <div class="kp-box kp-pods">
@@ -148,12 +143,6 @@
         <div class="kp-ssl">🔒 Bezpieczna płatność · Szyfrowanie SSL</div>
       </div>
     </form>
-    <script>
-      (function () {
-        var t = document.getElementById('kp-uwagi'), l = document.getElementById('kp-licz');
-        if (t) t.addEventListener('input', function () { l.textContent = t.value.length; });
-      })();
-    </script>
     {%- endif -%}
   </div>
 </main>
