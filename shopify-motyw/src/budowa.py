@@ -15,10 +15,6 @@ assert 'zdjecia/lulavi' not in body and 'zdjecia/opinie' not in body
 body=body.replace('<a class="logo" href="#" aria-label','<a class="logo" href="/" aria-label')
 body=body.replace('<a class="cart" href="#kup" aria-label="Koszyk">','<a class="cart" href="/cart" aria-label="Koszyk">')
 body=body.replace('<a class="logo" href="#">lulavi</a>','<a class="logo" href="/">lulavi</a>')
-body=body.replace('<a href="#">Regulamin</a>','<a href="/policies/terms-of-service">Regulamin</a>')
-body=body.replace('<a href="#">Polityka prywatności</a>','<a href="/policies/privacy-policy">Polityka prywatności</a>')
-body=body.replace('<a href="#">Zwroty i reklamacje</a>','<a href="/policies/refund-policy">Zwroty i reklamacje</a>')
-body=body.replace('<a href="#">Kontakt</a>','<a href="mailto:kontakt@lulavi.pl">Kontakt</a>')
 # warianty z Shopify
 old_w=body[body.index('  var WZORY = ['):body.index('];',body.index('  var WZORY = ['))+2]
 body=body.replace(old_w,'''  var WZORY = [{% for v in product.variants %}
