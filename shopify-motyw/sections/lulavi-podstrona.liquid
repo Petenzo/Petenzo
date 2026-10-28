@@ -52,11 +52,11 @@
         {%- if form.posted_successfully? -%}
           <p class="pod-ok">Dziękujemy! Odpiszemy najszybciej, jak się da.</p>
         {%- elsif form.errors -%}
-          <p class="pod-blad">Uzupełnij poprawnie e-mail i wiadomość.</p>
+          <p class="pod-blad">Uzupełnij poprawnie e-mail, telefon i wiadomość.</p>
         {%- endif -%}
         <input type="text" name="contact[name]" placeholder="Imię" autocomplete="name" value="{{ form.name }}">
         <input type="email" name="contact[email]" placeholder="E-mail" autocomplete="email" required value="{{ form.email }}">
-        <input type="tel" name="contact[phone]" placeholder="Numer telefonu (opcjonalnie)" autocomplete="tel" value="{{ form.phone }}">
+        <input type="tel" name="contact[phone]" placeholder="Numer telefonu" autocomplete="tel" required value="{{ form.phone }}">
         <textarea name="contact[body]" placeholder="Wiadomość" required>{{ form.body }}</textarea>
         <button class="btn" type="submit">Wyślij</button>
       {%- endform -%}
