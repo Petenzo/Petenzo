@@ -520,9 +520,12 @@
   @media (min-width: 700px) { .dostawa-tlo { align-items: center; } }
   .dostawa h2 { font-size: 28px; margin-bottom: 18px; padding-right: 50px; }
   .dostawa-x { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: var(--peach); color: var(--ink); font-size: 24px; cursor: pointer; }
-  .dostawa a { display: flex; align-items: center; gap: 12px; padding: 20px 22px; border-radius: 14px; border: 1.5px solid var(--line); color: var(--ink); font-weight: 800; font-size: 19px; text-decoration: none; }
+  .dostawa a { display: flex; align-items: center; gap: 12px; padding: 20px 22px; border-radius: 14px; border: 1.5px solid var(--line); color: var(--ink); font-weight: 800; font-size: 19px; text-decoration: none; transition: background .15s, color .15s, border-color .15s, box-shadow .15s; }
   .dostawa a + a { margin-top: 10px; }
-  .dostawa a.glowna { background: var(--ink); border-color: var(--ink); color: #fff; box-shadow: 0 0 0 4px #fff, 0 0 0 5.5px var(--line); }
+  .dostawa a.glowna, .dostawa a:hover, .dostawa a:focus-visible { background: var(--ink); border-color: var(--ink); color: #fff; box-shadow: 0 0 0 4px #fff, 0 0 0 5.5px var(--line); outline: none; }
+  .dostawa:hover a.glowna:not(:hover) { background: #fff; border-color: var(--line); color: var(--ink); box-shadow: none; }
+  .dostawa a:hover small, .dostawa a:focus-visible small { color: #8ff0bf; }
+  .dostawa:hover a.glowna:not(:hover) small { color: var(--green); }
   .dostawa a small { margin-left: auto; font-size: 14px; font-weight: 800; color: var(--green); }
   .dostawa a.glowna small { color: #8ff0bf; }
   .dostawa-info { margin-top: 14px; text-align: center; color: var(--muted); font-size: 14px; }
