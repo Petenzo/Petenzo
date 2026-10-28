@@ -18,24 +18,127 @@
   .pod-form textarea { min-height: 130px; resize: vertical; }
   .pod-ok { padding: 14px 18px; border-radius: 14px; background: #e7f6ef; color: var(--green); font-weight: 700; text-align: center; }
   .pod-blad { padding: 14px 18px; border-radius: 14px; background: #fde8e8; color: var(--red); font-weight: 700; }
+  /* STRONA KOSZYKA */
+  .kp { padding-block: 44px 72px; }
+  .kp-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+  .kp-head h1 { font-size: clamp(30px, 5vw, 40px); margin: 0; text-align: left; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .kp-ile { font-family: inherit; font-size: 15px; font-weight: 800; color: var(--coral-dark); background: var(--peach); padding: 5px 12px; border-radius: 999px; }
+  .kp-wroc { color: var(--coral-dark); font-weight: 800; text-decoration: none; font-size: 15.5px; }
+  .kp-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 26px; align-items: start; }
+  .kp-box { background: #fff; border: 1.5px solid var(--line); border-radius: 22px; padding: 24px; }
+  .kp-lewa { display: grid; gap: 18px; }
+  .kp-poz { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto auto; gap: 18px; align-items: center; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .kp-poz:last-child { padding-bottom: 0; border-bottom: 0; }
+  .kp-poz img { width: 110px; height: 110px; border-radius: 14px; object-fit: cover; background: var(--peach); }
+  .kp-nazwa { font-weight: 800; color: var(--ink); font-size: 16.5px; line-height: 1.35; }
+  .kp-wzor { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .kp-szt { color: var(--muted); font-size: 14.5px; margin-top: 10px; }
+  .kp-usun { display: inline-block; margin-top: 10px; color: var(--muted); font-size: 12.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+  .kp-usun:hover { color: var(--ink); }
+  .kp-ilosc { display: inline-flex; align-items: center; border: 1.5px solid #ffc6b2; border-radius: 12px; background: var(--cream); }
+  .kp-ilosc a { width: 40px; height: 42px; display: grid; place-items: center; color: var(--coral-dark); font-size: 20px; font-weight: 800; text-decoration: none; }
+  .kp-ilosc span { min-width: 30px; text-align: center; font-weight: 800; color: var(--ink); }
+  .kp-cena { text-align: right; font-weight: 800; color: var(--ink); font-size: 18px; white-space: nowrap; }
+  .kp-cena s { display: block; color: var(--muted); font-weight: 600; font-size: 13.5px; }
+  .kp-uwagi h2 { font-size: 18px; margin: 0 0 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .kp-uwagi h2 small { font-family: inherit; color: var(--muted); font-size: 13.5px; font-weight: 600; }
+  .kp-uwagi p { color: var(--muted); font-size: 14.5px; margin: 0 0 12px; }
+  .kp-uwagi textarea { width: 100%; min-height: 110px; padding: 14px 16px; border: 1.5px solid #ffc6b2; border-radius: 14px; background: var(--cream); font: inherit; font-size: 15px; color: var(--ink); resize: vertical; }
+  .kp-uwagi textarea:focus { outline: none; border-color: var(--coral); }
+  .kp-licz { text-align: right; color: var(--muted); font-size: 13px; font-weight: 700; margin-top: 6px; }
+  .kp-prawa { display: grid; gap: 14px; position: sticky; top: 90px; }
+  .kp-pods h2 { font-size: 20px; margin: 0 0 18px; }
+  .kp-wiersz { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 15.5px; }
+  .kp-wiersz.rabat { color: var(--green); font-weight: 800; }
+  .kp-wiersz.dost { color: var(--ink); font-weight: 800; }
+  .kp-wiersz.dost b { color: var(--green); }
+  .kp-razem { display: flex; justify-content: space-between; align-items: baseline; padding-top: 16px; margin-top: 4px; border-top: 2px solid var(--line); font-family: var(--display); font-weight: 700; font-size: 24px; color: var(--ink); }
+  .kp-punkt { background: var(--cream); border: 1.5px solid var(--line); border-radius: 16px; padding: 16px 18px; font-size: 14.5px; color: var(--muted); }
+  .kp-punkt b { display: block; color: var(--ink); font-size: 15.5px; margin-bottom: 4px; }
+  .kp-prawa .btn { width: 100%; font-size: 18px; color: #fff; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 10px; cursor: pointer; }
+  .kp-prawa .btn svg { width: 22px; height: 22px; stroke: #fff; }
+  .kp-ssl { text-align: center; color: var(--muted); font-size: 13.5px; font-weight: 700; }
+  .kp-pusty { text-align: center; padding: 50px 24px; }
+  .kp-pusty p { color: var(--muted); font-size: 17px; margin-bottom: 20px; }
+  .kp-pusty .btn { display: inline-flex; width: auto; color: #fff; text-decoration: none; }
+  @media (max-width: 900px) {
+    .kp { padding-block: 28px 56px; }
+    .kp-grid { grid-template-columns: 1fr; }
+    .kp-prawa { position: static; }
+    .kp-box { padding: 18px; border-radius: 18px; }
+    .kp-poz { grid-template-columns: 84px minmax(0, 1fr); gap: 12px 14px; }
+    .kp-poz img { width: 84px; height: 84px; grid-row: span 2; }
+    .kp-dol { grid-column: 2; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  }
+  @media (min-width: 901px) { .kp-dol { display: contents; } }
 </style>
+{%- if template.name == 'cart' -%}
+<main class="kp">
+  <div class="wrap">
+    <div class="kp-head">
+      <h1>Twój koszyk{% if cart.item_count > 0 %} <span class="kp-ile">{{ cart.item_count }} {% if cart.item_count == 1 %}produkt{% elsif cart.item_count < 5 %}produkty{% else %}produktów{% endif %}</span>{% endif %}</h1>
+      <a class="kp-wroc" href="/#kup">← Kontynuuj zakupy</a>
+    </div>
+    {%- if cart.item_count == 0 -%}
+    <div class="kp-box kp-pusty">
+      <p>Twój koszyk jest pusty. Wybierz swojego zwierzaka 🦊🐼🐸</p>
+      <a class="btn" href="/#kup">Wybierz opaskę</a>
+    </div>
+    {%- else -%}
+    <form class="kp-grid" action="{{ routes.cart_url }}" method="post">
+      <div class="kp-lewa">
+        <div class="kp-box">
+          {%- for it in cart.items -%}
+          <div class="kp-poz">
+            <img src="{{ it.image | image_url: width: 240 }}" alt="{{ it.variant.title | escape }}">
+            <div>
+              <div class="kp-nazwa">Lulavi – opaska ze słuchawkami</div>
+              <div class="kp-wzor">{{ it.variant.title }}</div>
+              <div class="kp-szt">{{ it.final_price | money }} / szt.</div>
+              <a class="kp-usun" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0">× Usuń</a>
+            </div>
+            <div class="kp-dol">
+              <span class="kp-ilosc"><a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ it.quantity | minus: 1 }}" aria-label="Mniej">−</a><span>{{ it.quantity }}</span><a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity={{ it.quantity | plus: 1 }}" aria-label="Więcej">+</a></span>
+              <div class="kp-cena">{% if it.original_line_price > it.final_line_price %}<s>{{ it.original_line_price | money }}</s>{% endif %}{{ it.final_line_price | money }}</div>
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+        <div class="kp-box kp-uwagi">
+          <h2>✏️ Dodatkowe instrukcje do zamówienia <small>(opcjonalnie)</small></h2>
+          <p>Masz specjalne życzenia lub uwagi dla nas? Wpisz je tutaj.</p>
+          <textarea name="note" maxlength="500" id="kp-uwagi" placeholder="Np. prośba o dodatkowe zabezpieczenie paczki">{{ cart.note }}</textarea>
+          <div class="kp-licz"><span id="kp-licz">{{ cart.note | size }}</span>/500</div>
+        </div>
+      </div>
+      <div class="kp-prawa">
+        <div class="kp-box kp-pods">
+          <h2>Podsumowanie</h2>
+          <div class="kp-wiersz"><span>Produkty ({{ cart.item_count }})</span><span>{{ cart.original_total_price | money }}</span></div>
+          {%- if cart.total_discount > 0 -%}<div class="kp-wiersz rabat"><span>Rabat za zestaw</span><span>−{{ cart.total_discount | money }}</span></div>{%- endif -%}
+          <div class="kp-wiersz dost"><span>🚚 Dostawa</span><b>GRATIS 🎉</b></div>
+          <div class="kp-razem"><span>Razem</span><span>{{ cart.total_price | money }}</span></div>
+        </div>
+        <div class="kp-punkt"><b>📦 Dostawa do punktu odbioru</b>Paczkomat InPost, Orlen Paczka lub DPD Pickup. Rodzaj dostawy zaznaczysz w kasie, a punkt wybierzesz z listy lub mapy zaraz po zapłacie.</div>
+        <button class="btn" type="submit" name="checkout"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Realizuj zamówienie</button>
+        <div class="kp-ssl">🔒 Bezpieczna płatność · Szyfrowanie SSL</div>
+      </div>
+    </form>
+    <script>
+      (function () {
+        var t = document.getElementById('kp-uwagi'), l = document.getElementById('kp-licz');
+        if (t) t.addEventListener('input', function () { l.textContent = t.value.length; });
+      })();
+    </script>
+    {%- endif -%}
+  </div>
+</main>
+{%- else -%}
 <main class="podstrona">
   <div class="wrap pod-wrap">
     {%- if template.name == '404' -%}
     <h1>Nie ma takiej strony</h1>
     <div class="pod-tresc"><p>Ta strona nie istnieje albo została przeniesiona. Wróć na stronę główną i wybierz swojego zwierzaka 🦊🐼🐸</p><p><a class="btn" href="/">Wróć do sklepu</a></p></div>
-    {%- elsif template.name == 'cart' -%}
-    <h1>Twój koszyk</h1>
-    <div class="pod-tresc">
-      {%- if cart.item_count == 0 -%}
-      <p>Twój koszyk jest pusty.</p><p><a class="btn" href="/#kup">Wybierz opaskę</a></p>
-      {%- else -%}
-      <ul>{%- for it in cart.items -%}<li><b>Lulavi – {{ it.variant.title }}</b> × {{ it.quantity }} · {{ it.final_line_price | money }}</li>{%- endfor -%}</ul>
-      {%- if cart.total_discount > 0 -%}<p>Rabat: −{{ cart.total_discount | money }}</p>{%- endif -%}
-      <p><b>Razem: {{ cart.total_price | money }}</b> · dostawa GRATIS</p>
-      <p><a class="btn" href="/checkout">Przejdź do kasy</a></p>
-      {%- endif -%}
-    </div>
     {%- elsif page -%}
     <h1>{{ page.title }}</h1>
     <div class="pod-tresc">{{ page.content }}</div>
@@ -62,3 +165,4 @@
     </div>
   </section>
 </main>
+{%- endif -%}
