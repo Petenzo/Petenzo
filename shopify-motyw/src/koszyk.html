@@ -46,6 +46,18 @@
   .platnosci .mc { display: flex; padding: 0 8px; }
   .platnosci .mc i { width: 14px; height: 14px; border-radius: 50%; background: #eb001b; }
   .platnosci .mc i + i { background: #f79e1b; margin-left: -5px; opacity: .9; }
+  /* okno „Wybierz dostawę” przed kasą */
+  .dostawa-tlo { position: fixed; inset: 0; z-index: 60; background: rgba(28,36,64,.45); display: none; align-items: flex-end; justify-content: center; padding: 12px; }
+  .dostawa-tlo.on { display: flex; }
+  .dostawa { position: relative; width: min(460px, 100%); background: #fff; border-radius: 22px; padding: 26px 22px 22px; box-shadow: 0 20px 50px rgba(28,36,64,.3); margin-bottom: env(safe-area-inset-bottom, 0px); }
+  @media (min-width: 700px) { .dostawa-tlo { align-items: center; } }
+  .dostawa h2 { font-size: 28px; margin-bottom: 18px; padding-right: 50px; }
+  .dostawa-x { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: var(--peach); color: var(--ink); font-size: 24px; cursor: pointer; }
+  .dostawa a { display: flex; align-items: center; gap: 12px; padding: 20px 22px; border-radius: 14px; border: 1.5px solid var(--line); color: var(--ink); font-weight: 800; font-size: 19px; text-decoration: none; }
+  .dostawa a + a { margin-top: 10px; }
+  .dostawa a.glowna { background: var(--ink); border-color: var(--ink); color: #fff; box-shadow: 0 0 0 4px #fff, 0 0 0 5.5px var(--line); }
+  .dostawa a small { margin-left: auto; font-size: 14px; font-weight: 800; color: var(--green); }
+  .dostawa a.glowna small { color: #8ff0bf; }
 </style>
 <div class="kosz-tlo" id="kosz-tlo"></div>
 <aside class="kosz" id="kosz" role="dialog" aria-modal="true" aria-label="Koszyk" aria-hidden="true">
@@ -54,6 +66,13 @@
   <div class="kosz-body" id="kosz-body"></div>
   <div class="kosz-foot" id="kosz-foot"></div>
 </aside>
+<div class="dostawa-tlo" id="dostawa-tlo">
+  <div class="dostawa" role="dialog" aria-modal="true" aria-labelledby="dostawa-tytul">
+    <h2 id="dostawa-tytul">Wybierz dostawę</h2>
+    <button class="dostawa-x" type="button" id="dostawa-x" aria-label="Zamknij">×</button>
+    <a class="glowna" href="/checkout">📦 Paczkomat InPost<small>GRATIS</small></a>
+  </div>
+</div>
 <script>
   // wysuwany koszyk: pozycje z rabatem, zmiana ilości, dobranie kolejnej opaski
   (function () {
@@ -74,6 +93,13 @@
     function otworz() { document.body.classList.add('kosz-otwarty'); kosz.setAttribute('aria-hidden', 'false'); }
     function zamknij() { document.body.classList.remove('kosz-otwarty'); kosz.setAttribute('aria-hidden', 'true'); }
     document.getElementById('kosz-x').addEventListener('click', zamknij);
+    // „Realizuj zakup”: najpierw okno z wyborem dostawy, potem kasa (tam klient wybiera punkt)
+    var dostawa = document.getElementById('dostawa-tlo');
+    foot.addEventListener('click', function (e) {
+      if (e.target.closest('a[href="/checkout"]')) { e.preventDefault(); dostawa.classList.add('on'); }
+    });
+    document.getElementById('dostawa-x').addEventListener('click', function () { dostawa.classList.remove('on'); });
+    dostawa.addEventListener('click', function (e) { if (e.target === dostawa) dostawa.classList.remove('on'); });
     document.getElementById('kosz-tlo').addEventListener('click', zamknij);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zamknij(); });
     if (ikona) ikona.addEventListener('click', function (e) { e.preventDefault(); otworz(); pokaz(); });
