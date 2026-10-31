@@ -2,7 +2,7 @@ import re
 src=open('/home/user/Petenzo/lulavi-strona.html').read()
 CDN='https://cdn.shopify.com/s/files/1/1123/3876/4114/files/'
 head=src[:src.index('</head>')]
-head=head.replace('<title>Lulavi</title>','<title>{{ page_title }}</title>\n<link rel="canonical" href="{{ canonical_url }}">\n<meta name="google-site-verification" content="E9s8FqFXQeFQdFco-fwGXVXTbGTXxlWEIoX38WEWwCQ">')
+head=head.replace('<title>Lulavi</title>','<title>{{ page_title }}</title>\n<link rel="canonical" href="{{ canonical_url }}">\n<meta name="google-site-verification" content="E9s8FqFXQeFQdFco-fwGXVXTbGTXxlWEIoX38WEWwCQ">\n<meta name="google-site-verification" content="FRsTgHyJqZ9ys7oGa75t6w0XuMFcXuZ640u5CHN8zjE">')
 head=re.sub(r'logo/(kot-ikona-\d+\.png)',lambda m:CDN+m.group(1),head)
 layout=head+'{{ content_for_header }}\n</head>\n<body>\n{{ content_for_layout }}\n</body>\n</html>\n'
 body=src[src.index('<body>')+6:src.index('</body>')]
