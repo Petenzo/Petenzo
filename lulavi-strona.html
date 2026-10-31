@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lulavi</title>
+<meta name="description" content="Lulavi – miękka opaska z wbudowanymi słuchawkami dla dzieci. Spokój w samolocie, w aucie, w restauracji i w domu.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+  /* Jasny, przejrzysty sklep: dużo bieli, zdjęcia w roli głównej, koral jako jedyny mocny kolor */
+  :root {
+    color-scheme: light;
+    --ink: #1c2440;
+    --text: #2b3350;
+    --muted: #66708a;
+    --coral: #ff6a3d;
+    --coral-dark: #e8532a;
+    --peach: #fff1ea;
+    --cream: #fffaf6;
+    --sky: #eef5ff;
+    --line: #ece7e2;
+    --green: #17a06a;
+    --red: #e04848;
+    --star: #ffb020;
+    --radius: 20px;
+    --shadow: 0 12px 32px rgba(28, 36, 64, .08);
+    --display: "Fredoka", "Nunito Sans", system-ui, sans-serif;
+    --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    color: var(--text);
+    background: #fff;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--display); color: var(--ink); line-height: 1.15; margin: 0; font-weight: 600; text-wrap: balance; }
+  p { margin: 0; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .hl { color: var(--coral); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  section { padding-block: 76px; }
+  section.tint { background: var(--cream); }
+  section.sky { background: var(--sky); }
+
+  /* ---------- wspólne ---------- */
+  .eyebrow {
+    display: inline-block;
+    font-size: 12.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 10px;
+  }
+  .sec-head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+  .sec-head h2 { font-size: clamp(26px, 3.6vw, 38px); }
+  .sec-head p { color: var(--muted); margin-top: 10px; font-size: 17px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%;
+    padding: 17px 24px;
+    border: 0; border-radius: 999px;
+    background: var(--coral);
+    color: #fff;
+    font-family: var(--body); font-size: 17px; font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(255, 106, 61, .32);
+    transition: transform .15s, background .15s;
+  }
+  .btn:hover { background: var(--coral-dark); transform: translateY(-1px); }
+  .btn:focus-visible, .swatch:focus-visible, .tab:focus-visible, summary:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .btn.inline { width: auto; }
+
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  .photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); background: var(--peach); }
+
+  .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .ticks li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; }
+  .ticks li::before {
+    content: "✓";
+    flex: 0 0 22px; height: 22px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    background: var(--peach); color: var(--coral);
+    font-size: 12px; font-weight: 800;
+    margin-top: 1px;
+  }
+
+  /* ---------- pasek + nagłówek ---------- */
+  .topbar { background: var(--ink); color: #fff; overflow: hidden; padding-block: 10px; }
+  .ticker { display: flex; width: max-content; animation: ticker 30s linear infinite; will-change: transform; backface-visibility: hidden; }
+  .ticker span { flex: 0 0 auto; padding: 0 28px; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+  .ticker span::before { content: "●"; color: var(--coral); margin-right: 14px; font-size: 9px; vertical-align: 2px; }
+  @keyframes ticker { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+  @media (prefers-reduced-motion: reduce) { .ticker { animation-duration: 80s; } }
+
+  header.site { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; backdrop-filter: blur(8px); }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 11; background: #fff; }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 30px; color: var(--ink); letter-spacing: -.01em; }
+  .logo svg { width: 46px; height: 35px; }
+  .nav { display: flex; gap: 20px; font-weight: 700; font-size: 14.5px; white-space: nowrap; }
+  .nav a { text-decoration: none; color: var(--muted); }
+  .nav a:hover { color: var(--ink); }
+  .cart { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--peach); text-decoration: none; }
+  .cart svg { width: 21px; height: 21px; stroke: var(--ink); }
+
+  /* ---------- HERO ---------- */
+  .hero { padding-top: 40px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: start; }
+  .gallery { position: sticky; top: 90px; min-width: 0; }
+  .slider-wrap { position: relative; }
+  .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: var(--radius); scrollbar-width: none; -webkit-overflow-scrolling: touch; background: var(--peach); }
+  .slider::-webkit-scrollbar { display: none; }
+  .slide { position: relative; flex: 0 0 100%; width: 100%; margin: 0; aspect-ratio: 4 / 3; scroll-snap-align: start; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slide figcaption { position: absolute; left: 14px; bottom: 14px; right: 14px; display: flex; align-items: center; gap: 8px; width: max-content; max-width: calc(100% - 28px); padding: 9px 14px; border-radius: 999px; background: rgba(255,255,255,.94); color: var(--ink); font-weight: 800; font-size: 15px; box-shadow: 0 6px 18px rgba(28,36,64,.18); }
+  .slide figcaption span { font-size: 18px; }
+  .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: var(--ink); font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px rgba(28,36,64,.18); display: grid; place-items: center; }
+  .arrow.prev { left: 12px; } .arrow.next { right: 12px; }
+  .thumbs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 14px; }
+  .thumb { padding: 0; border: 2px solid transparent; border-radius: 10px; background: none; cursor: pointer; overflow: hidden; }
+  .thumb img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  .thumb[aria-current="true"] { border-color: var(--coral); }
+  .trust { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trust li { display: grid; grid-template-columns: 36px 1fr; column-gap: 10px; align-items: center; padding: 12px 14px; border-radius: 14px; background: var(--cream); border: 1px solid var(--line); font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .trust li span { grid-row: span 2; width: 36px; height: 36px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 17px; }
+  .trust li b { color: var(--ink); font-size: 14px; }
+  .dots { display: flex; justify-content: center; gap: 7px; margin-top: 12px; }
+  .dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: #d9d4cf; cursor: pointer; transition: width .2s, background .2s; }
+  .dots button[aria-current="true"] { width: 22px; background: var(--coral); }
+
+  .buy { min-width: 0; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: var(--peach); color: var(--coral-dark); font-size: 13px; font-weight: 800; }
+  .buy h1 { font-size: clamp(30px, 4.2vw, 46px); margin-top: 14px; }
+  .buy .lead { color: var(--muted); font-size: 17px; margin-top: 12px; }
+  .rating { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; font-size: 14.5px; color: var(--muted); }
+  .rating .stars { color: var(--star); letter-spacing: 1px; font-size: 16px; }
+  .price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .price { font-family: var(--display); font-size: 36px; font-weight: 700; color: var(--ink); }
+  .old { color: var(--muted); text-decoration: line-through; font-size: 18px; }
+  .save { font-size: 13px; font-weight: 800; color: #fff; background: var(--green); padding: 3px 10px; border-radius: 999px; }
+  .buy .ticks { margin-top: 20px; }
+
+  .bundle-head { display: flex; align-items: center; gap: 12px; margin: 26px 0 14px; }
+  .bundle-head::before, .bundle-head::after { content: ""; flex: 1; height: 1.5px; background: var(--line); }
+  .bundle-head span { font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+  .offers { display: grid; gap: 12px; }
+  .offer { position: relative; display: block; padding: 14px 16px; border: 1.5px solid var(--line); border-radius: 16px; background: #fff; cursor: pointer; transition: border-color .15s, background .15s; }
+  .offer:hover { border-color: #ffc6b2; }
+  .offer.on { border: 2px solid var(--coral); background: var(--cream); padding: 13.5px 15.5px; }
+  .offer input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+  .offer-row { display: flex; align-items: center; gap: 12px; }
+  .dot { flex: 0 0 20px; height: 20px; border-radius: 50%; border: 2px solid #c9ced9; background: #fff; display: grid; place-items: center; }
+  .offer.on .dot { border-color: var(--coral); }
+  .offer.on .dot::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--coral); }
+  .offer input:focus-visible ~ .offer-row .dot { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .offer-name { flex: 1; min-width: 0; }
+  .offer-name b { display: block; font-size: 16.5px; color: var(--ink); }
+  .offer-name small { font-size: 13px; color: var(--muted); }
+  .offer-name small.green { color: var(--green); font-weight: 700; }
+  .offer-price { text-align: right; font-variant-numeric: tabular-nums; }
+  .offer-price b { display: block; font-size: 18px; font-weight: 800; color: var(--ink); }
+  .offer-price s { font-size: 13px; color: var(--muted); }
+  .offer-badge { position: absolute; top: -11px; right: 14px; padding: 3px 10px; border-radius: 6px; background: var(--ink); color: #fff; font-size: 11.5px; font-weight: 800; }
+  .picks { display: none; gap: 10px; margin: 12px 0 2px; }
+  .offer.on .picks { display: grid; }
+  .pick-label { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .pick-label span { color: var(--coral-dark); }
+  .swatches { display: grid; grid-template-columns: repeat(9, minmax(0, 40px)); gap: 6px; }
+  .swatch { padding: 0; border: 2px solid var(--line); border-radius: 50%; background: #fff; cursor: pointer; overflow: hidden; aspect-ratio: 1 / 1; transition: border-color .12s, transform .12s; }
+  .swatch img { width: 100%; height: 100%; object-fit: cover; }
+  .swatch:hover { transform: translateY(-1px); }
+  .swatch[aria-checked="true"] { border-color: var(--coral); box-shadow: 0 0 0 2px var(--coral); }
+
+  .guarantee { display: flex; gap: 12px; align-items: center; margin: 18px 0; padding: 13px 15px; border-radius: 14px; background: var(--sky); }
+  .guarantee .ico { flex: 0 0 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: #fff; font-size: 20px; }
+  .guarantee b { display: block; color: var(--ink); font-size: 15px; }
+  .guarantee span { font-size: 13.5px; color: var(--muted); }
+  .under-btn { text-align: center; font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+  /* ---------- gdzie się przydaje ---------- */
+  .uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .use { overflow: hidden; }
+  .use img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .use div { padding: 16px 18px 20px; }
+  .use h3 { font-size: 20px; }
+  .use p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+
+  /* ---------- dwie kolumny ---------- */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .split h2 { font-size: clamp(26px, 3.4vw, 36px); }
+  .split .lead { color: var(--muted); margin-top: 10px; font-size: 16.5px; }
+  .split .body > .ticks, .split .body > .xlist { margin-top: 22px; }
+  .split .body { min-width: 0; }
+  .xlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .xlist li { display: flex; gap: 10px; align-items: flex-start; padding: 11px 14px; background: #fff; border: 1px solid var(--line); border-radius: 12px; font-size: 15px; }
+  .xlist li::before { content: "✕"; flex: 0 0 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: #fde8e8; color: var(--red); font-size: 11px; font-weight: 800; margin-top: 1px; }
+  .summary { margin-top: 16px; padding: 14px 16px; border-radius: 12px; background: var(--peach); font-weight: 800; color: var(--ink); font-size: 15.5px; }
+
+  /* ---------- kroki ---------- */
+  .steps { display: grid; gap: 14px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; padding: 20px; }
+  .step .num { flex: 0 0 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--coral); color: #fff; font-family: var(--display); font-weight: 700; font-size: 19px; }
+  .step p { font-size: 15px; color: var(--muted); }
+  .step p b { display: block; font-size: 17px; color: var(--ink); margin-bottom: 2px; }
+
+  /* ---------- 9 wzorów ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chip { padding: 7px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-weight: 700; font-size: 14px; color: var(--ink); }
+
+  /* ---------- zestaw ---------- */
+  .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tab { padding: 9px 20px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font-family: var(--body); font-size: 14.5px; font-weight: 700; color: var(--muted); cursor: pointer; }
+  .tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .box { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 28px; align-items: center; }
+  .box h3 { font-size: 22px; }
+  .box p { color: var(--muted); margin-top: 8px; }
+  .panel-list { background: var(--cream); border-radius: 14px; padding: 20px; }
+  .panel-title { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
+
+  /* ---------- porównanie ---------- */
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); }
+  table.cmp { width: 100%; table-layout: fixed; border-collapse: collapse; background: #fff; font-size: 15px; }
+  .cmp col.c-name { width: 40%; }
+  .cmp th, .cmp td { padding: 15px 12px; text-align: center; border-bottom: 1px solid var(--line); }
+  .cmp th { font-weight: 800; color: var(--ink); font-size: 14px; }
+  .cmp th:first-child, .cmp td:first-child { text-align: left; font-weight: 600; }
+  .cmp tr:last-child td { border-bottom: 0; }
+  .cmp .us { background: var(--peach); }
+  .cmp th.us { color: var(--coral-dark); font-family: var(--display); font-size: 17px; }
+  .yes { color: var(--coral); font-weight: 800; font-size: 18px; }
+  .no { color: #c4c9d4; font-weight: 800; font-size: 16px; }
+
+  /* ---------- opinie ---------- */
+  .marquee { overflow: hidden; padding-block: 6px 14px; }
+  .marquee-track { display: flex; width: max-content; animation: ticker 38s linear infinite; will-change: transform; backface-visibility: hidden; transform: translate3d(0, 0, 0); }
+  .review { flex: 0 0 auto; margin-right: 16px; width: 270px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; gap: 10px; padding: 20px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 6px 16px rgba(28, 36, 64, .06); }
+  .zaleta { justify-content: center; gap: 12px; }
+  .zaleta .ikona { width: 58px; height: 58px; border-radius: 18px; background: var(--peach); display: grid; place-items: center; font-size: 30px; }
+  .zaleta b { font-family: var(--display); font-weight: 600; font-size: 21px; color: var(--ink); }
+  .zaleta p { font-size: 15px; line-height: 1.5; color: var(--muted); }
+  .review { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+  .review:hover, .review:active { border-color: var(--coral); box-shadow: 0 0 0 1px var(--coral), 0 10px 24px rgba(255, 106, 61, .18); }
+  .marquee.stop .marquee-track { animation-play-state: paused; }
+  @media (hover: hover) and (pointer: fine) { .marquee:hover .marquee-track { animation-play-state: paused; } }
+  .review { aspect-ratio: auto; width: 300px; height: 256px; }
+  .review blockquote { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .review .avatar-foto { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .review .avatar-wzor { flex: 0 0 52px; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; background: var(--peach); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--peach); }
+  .review .avatar { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-family: var(--display); font-weight: 700; font-size: 20px; }
+  .review .ok { font-style: normal; color: var(--green); }
+  .review .tytul { font-size: 16px; font-weight: 800; color: var(--ink); line-height: 1.3; }
+  .sec-head .zrodlo { font-size: 13.5px; }
+  .review .who { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); line-height: 1.3; }
+  .review .who img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .review .who b { display: block; color: var(--ink); font-size: 15px; }
+  .review .stars { color: var(--star); letter-spacing: 2px; font-size: 17px; }
+  .review blockquote { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text); flex: none; height: calc(1.5em * 4); }
+  .review .who { margin-top: auto; }
+  .sample { align-self: flex-start; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--red); background: #fde8e8; padding: 3px 8px; border-radius: 6px; }
+
+  /* ---------- CTA ---------- */
+  .cta { display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: hidden; }
+  .cta img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
+  .cta div { padding: 40px 36px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+  .cta h2 { font-size: clamp(26px, 3.2vw, 34px); }
+  .cta p { color: var(--muted); }
+
+  /* ---------- FAQ ---------- */
+  .faq { display: grid; grid-template-columns: 1fr; gap: 28px; max-width: 820px; }
+  .faq-head { text-align: center; }
+  .faq h2 { font-size: clamp(26px, 3.4vw, 36px); }
+  .faq .lead { color: var(--muted); margin-top: 10px; font-size: 15.5px; }
+  .faq .lead b { color: var(--ink); word-break: break-all; user-select: all; }
+  .faq-list details { border-bottom: 1px solid var(--line); }
+  .faq-list summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 2px; font-weight: 800; color: var(--ink); font-size: 16px; cursor: pointer; }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after { content: "+"; flex: 0 0 auto; font-size: 24px; font-weight: 400; color: var(--coral); transition: transform .2s; }
+  .faq-list details[open] summary::after { transform: rotate(45deg); }
+  .faq-list details p { padding: 0 2px 18px; color: var(--muted); font-size: 15.5px; }
+
+  /* ---------- stopka ---------- */
+  footer.site { background: var(--cream); color: var(--muted); border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; }
+  footer.site .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; }
+  footer.site .logo { font-size: 28px; }
+  .f-brand p { margin: 12px 0 18px; max-width: 360px; line-height: 1.6; }
+  .f-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; color: var(--ink); text-decoration: none; }
+  .f-ico { flex: 0 0 38px; height: 38px; border: 1.5px solid var(--coral); border-radius: 10px; display: grid; place-items: center; }
+  .f-ico svg { width: 18px; height: 18px; stroke: var(--coral); }
+  .f-nav { display: flex; flex-direction: column; gap: 14px; }
+  .f-head { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .f-nav a { color: var(--ink); text-decoration: none; }
+  .f-nav a:hover { color: var(--coral); }
+  footer.site .f-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12.5px; letter-spacing: .04em; }
+
+  /* ---------- telefon ---------- */
+  @media (max-width: 1060px) { .nav { display: none; } }
+  @media (max-width: 900px) {
+    .hero-grid, .split, .box, .faq, .cta { grid-template-columns: 1fr; gap: 26px; }
+    .gallery { position: static; }
+    .arrow, .thumbs, .trust { display: none; }
+    .uses { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .split .media { order: -1; }
+    .cta img { min-height: 0; aspect-ratio: 4 / 3; }
+  }
+  @media (max-width: 560px) {
+    section { padding-block: 54px; }
+    .hero { padding-top: 22px; }
+    .uses { grid-template-columns: 1fr; }
+    .swatches { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 4px; }
+    .offer { padding: 12px 13px; }
+    .offer.on { padding: 11.5px 12.5px; }
+    .offer-name b { font-size: 15.5px; }
+    .offer-price b { font-size: 16.5px; }
+    .slide figcaption { font-size: 13.5px; padding: 7px 12px; left: 10px; bottom: 10px; }
+    .box, .cta div { padding: 22px; }
+    .cmp th, .cmp td { padding: 12px 6px; font-size: 13px; }
+    .cmp th:first-child, .cmp td:first-child { padding-left: 12px; }
+    .cmp th { font-size: 11.5px; }
+    .cmp th.us { font-size: 15px; }
+    .cmp col.c-name { width: 38%; }
+    footer.site .wrap { grid-template-columns: 1fr; gap: 30px; }
+    footer.site .f-bottom { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASEK -->
+<div class="topbar" aria-label="Darmowa wysyłka, 14 dni na zwrot, promocja −50 zł">
+  <div class="ticker" aria-hidden="true"><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span><span>Darmowa wysyłka</span><span>14 dni na zwrot</span><span>Promocja −50 zł</span><span>Chwila spokoju dla całej rodziny</span></div>
+</div>
+
+<!-- NAGŁÓWEK -->
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Lulavi – strona główna">
+      <svg viewBox="0 0 200 150" aria-hidden="true"><g>  <path d="M38 52 L52 10 Q55 2 62 8 L88 40 Z" fill="#FF6A3D"/>  <path d="M162 52 L148 10 Q145 2 138 8 L112 40 Z" fill="#FF6A3D"/>  <path d="M50 40 L58 18 L74 38 Z" fill="#FFB59A"/>  <path d="M150 40 L142 18 L126 38 Z" fill="#FFB59A"/>  <rect x="6" y="36" width="188" height="112" rx="56" fill="#FF6A3D"/>  <path d="M66 88 Q78 76 90 88" fill="none" stroke="#1C2440" stroke-width="9" stroke-linecap="round"/>  <path d="M110 88 Q122 76 134 88" fill="none" stroke="#1C2440" stroke-width="9" stroke-linecap="round"/>  <path d="M88 110 Q100 122 112 110" fill="none" stroke="#1C2440" stroke-width="8" stroke-linecap="round"/>  <circle cx="62" cy="108" r="7" fill="#FFB59A" opacity=".9"/>  <circle cx="138" cy="108" r="7" fill="#FFB59A" opacity=".9"/>  <rect x="16" y="70" width="22" height="44" rx="7" fill="#1C2440"/>  <circle cx="27" cy="82" r="3" fill="#FF6A3D"/><circle cx="27" cy="92" r="3" fill="#FF6A3D"/><circle cx="27" cy="102" r="3" fill="#FF6A3D"/></g></svg>
+      lulavi
+    </a>
+    <nav class="nav" aria-label="Menu">
+      <a href="#gdzie">Gdzie się przydaje</a>
+      <a href="#kroki">Jak to działa</a>
+      <a href="#paczka">Co dostajesz</a>
+      <a href="#porownanie">Dlaczego Lulavi</a>
+      <a href="#opinie">Opinie</a>
+      <a href="#faq">Pytania</a>
+    </nav>
+    <a class="cart" href="#kup" aria-label="Koszyk">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="kup">
+  <div class="wrap hero-grid">
+    <div class="gallery">
+      <div class="slider-wrap">
+        <div class="slider" id="slider" tabindex="0" aria-label="Zdjęcia Lulavi – przesuń w bok">
+          <figure class="slide"><img src="zdjecia/lulavi/dom-panda.jpg" alt="Mama zakłada córce opaskę Lulavi Panda"><figcaption><span>🧸</span>Zakładasz w sekundę</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/samolot-lisek.jpg" alt="Chłopiec w opasce Lulavi Lisek spokojnie słucha bajki w samolocie" loading="lazy"><figcaption><span>✈️</span>Cały lot bez płaczu</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/auto-zabka.jpg" alt="Dziewczynka w opasce Lulavi Żabka spokojnie jedzie w foteliku" loading="lazy"><figcaption><span>🚗</span>Spokojna jazda autem</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/kuchnia-hipcio.jpg" alt="Chłopiec w opasce Lulavi Hipcio rysuje, a mama w spokoju gotuje" loading="lazy"><figcaption><span>🍳</span>Gotujesz, a dziecko słucha bajki</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/dziadek-mis.jpg" alt="Wnuk w opasce Lulavi Brązowy miś bawi się obok odpoczywającego dziadka" loading="lazy"><figcaption><span>☕</span>Dziadkowie mają chwilę oddechu</figcaption></figure>
+          <figure class="slide"><img src="zdjecia/lulavi/drzemka-kotek.jpg" alt="Dziewczynka spokojnie śpi w opasce Lulavi Kotek" loading="lazy"><figcaption><span>😴</span>Łatwiej zasnąć przy ulubionej bajce</figcaption></figure>
+        </div>
+        <button class="arrow prev" type="button" aria-label="Poprzednie zdjęcie">‹</button>
+        <button class="arrow next" type="button" aria-label="Następne zdjęcie">›</button>
+      </div>
+      <div class="dots" id="dots"></div>
+      <div class="thumbs"><button class="thumb" type="button" data-i="0" aria-label="Pokaż zdjęcie 1"><img src="zdjecia/lulavi/dom-panda.jpg" alt=""></button><button class="thumb" type="button" data-i="1" aria-label="Pokaż zdjęcie 2"><img src="zdjecia/lulavi/samolot-lisek.jpg" alt=""></button><button class="thumb" type="button" data-i="2" aria-label="Pokaż zdjęcie 3"><img src="zdjecia/lulavi/auto-zabka.jpg" alt=""></button><button class="thumb" type="button" data-i="3" aria-label="Pokaż zdjęcie 4"><img src="zdjecia/lulavi/kuchnia-hipcio.jpg" alt=""></button><button class="thumb" type="button" data-i="4" aria-label="Pokaż zdjęcie 5"><img src="zdjecia/lulavi/dziadek-mis.jpg" alt=""></button><button class="thumb" type="button" data-i="5" aria-label="Pokaż zdjęcie 6"><img src="zdjecia/lulavi/drzemka-kotek.jpg" alt=""></button></div>
+      <ul class="trust">
+        <li><span>🚚</span><b>Darmowa wysyłka</b>dostawa w 6–9 dni roboczych</li>
+        <li><span>↩️</span><b>14 dni na zwrot</b>bez podawania przyczyny</li>
+        <li><span>🔒</span><b>Bezpieczne płatności</b>BLIK, karta, przelew</li>
+        <li><span>🧸</span><b>Miękki polar</b>bez twardych nauszników</li>
+      </ul>
+    </div>
+
+    <div class="buy">
+      <span class="pill">🎧 Opaska ze słuchawkami · dla dzieci 3–12 lat</span>
+      <h1>Płacz w samolocie? Marudzenie w aucie? Załóż Lulavi i miej <span class="hl">święty spokój</span></h1>
+      <p class="lead">Miękka opaska z wbudowanymi słuchawkami. Dziecko słucha swojej bajki albo muzyki, a Ty w końcu łapiesz oddech: w podróży, w domu i w restauracji.</p>
+      <div class="rating">🚚 Darmowa wysyłka · ↩️ 14 dni na zwrot · 🦊 9 zwierzaków do wyboru</div>
+
+      <div class="price-row">
+        <span class="price">149,99 zł</span>
+        <span class="old">199,99 zł</span>
+        <span class="save">−50 zł</span>
+      </div>
+
+      <ul class="ticks">
+        <li>Ulubiona bajka, muzyka lub audiobook zawsze pod ręką</li>
+        <li>Bluetooth: łączy się z telefonem w 3 sekundy</li>
+        <li>Do 10 h słuchania na jednym ładowaniu</li>
+        <li>Miękki polar i płaskie głośniczki: nie uciska, nie spada</li>
+        <li>Do prania: moduł z głośniczkami wyjmujesz w 10 sekund</li>
+      </ul>
+
+      <div class="bundle-head"><span>Kup więcej, zapłać mniej</span></div>
+      <div class="offers" role="radiogroup" aria-label="Wybierz zestaw">
+        <label class="offer">
+          <input type="radio" name="pakiet" value="1" data-price="149,99">
+          <div class="offer-row">
+            <span class="dot"></span>
+            <div class="offer-name"><b>Kup 1</b><small class="green">Darmowa wysyłka</small></div>
+            <div class="offer-price"><b>149,99 zł</b><s>199,99 zł</s></div>
+          </div>
+          <div class="picks" data-count="1"></div>
+        </label>
+        <label class="offer on">
+          <input type="radio" name="pakiet" value="2" data-price="249,99" checked>
+          <span class="offer-badge">Najczęściej wybierane</span>
+          <div class="offer-row">
+            <span class="dot"></span>
+            <div class="offer-name"><b>Kup 2</b><small class="green">Oszczędzasz 50 zł · darmowa wysyłka</small></div>
+            <div class="offer-price"><b>249,99 zł</b><s>299,98 zł</s></div>
+          </div>
+          <div class="picks" data-count="2"></div>
+        </label>
+        <label class="offer">
+          <input type="radio" name="pakiet" value="3" data-price="329,99">
+          <span class="offer-badge">Najlepsza cena</span>
+          <div class="offer-row">
+            <span class="dot"></span>
+            <div class="offer-name"><b>Kup 3</b><small class="green">Oszczędzasz 120 zł · darmowa wysyłka</small></div>
+            <div class="offer-price"><b>329,99 zł</b><s>449,97 zł</s></div>
+          </div>
+          <div class="picks" data-count="3"></div>
+        </label>
+      </div>
+
+      <div class="guarantee">
+        <div class="ico">🛡️</div>
+        <div>
+          <b>14 dni na zwrot</b>
+          <span>Jeśli dziecko nie polubi Lulavi, oddasz ją bez podawania przyczyny i odzyskasz pieniądze.</span>
+        </div>
+      </div>
+
+      <button class="btn" type="button" id="cta-koszyk">Dodaj do koszyka: 249,99 zł</button>
+      <p class="under-btn">🚚 Darmowa wysyłka · 14 dni na zwrot · BLIK, karta, przelew</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="wrap split">
+    <div class="body">
+      <span class="eyebrow">Brzmi znajomo?</span>
+      <h2>Dziecko płacze, a Ty potrzebujesz <span class="hl">chwili spokoju</span></h2>
+      <p class="lead">To nie wina dziecka. Nudzi się, jest zmęczone i nie ma czym zająć głowy.</p>
+      <ul class="xlist">
+        <li>Płacz w samolocie i spojrzenia całego rzędu</li>
+        <li>„Daleko jeszcze?” w aucie co pięć minut</li>
+        <li>Bajka z telefonu na głos i cały dom jej słucha</li>
+        <li>Zwykłe słuchawki są twarde, uciskają i spadają</li>
+        <li>W restauracji nuda zaczyna się po dziesięciu minutach</li>
+        <li>Rodzeństwo kłóci się, co włączyć</li>
+      </ul>
+      <div class="summary">Efekt? Zmęczone dziecko, zestresowany rodzic i zero chwili dla siebie.</div>
+    </div>
+    <div class="media">
+      <img class="photo" src="zdjecia/lulavi/placz-dom-v2.jpg" alt="Mama przytula płaczącą córkę, obok leży opaska Lulavi Żółty miś" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- GDZIE SIĘ PRZYDAJE -->
+<section class="tint" id="gdzie">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Gdzie się przydaje</span>
+      <h2>Wszędzie tam, gdzie potrzebujesz <span class="hl">chwili spokoju</span></h2>
+      <p>Jedna opaska na podróże, wyjścia i domowe kryzysy.</p>
+    </div>
+    <div class="uses">
+      <article class="card use"><img src="zdjecia/lulavi/pociag-sowka.jpg" alt="Chłopiec w opasce Lulavi Sówka ogląda bajkę w pociągu, tata spokojnie pije kawę" loading="lazy"><div><h3>W podróży</h3><p>Pociąg czy samolot: bajka w uszach zamiast płaczu i spojrzeń innych pasażerów.</p></div></article>
+      <article class="card use"><img src="zdjecia/lulavi/restauracja-hipcio.jpg" alt="Dziewczynka w opasce Lulavi Hipcio koloruje w restauracji" loading="lazy"><div><h3>W restauracji</h3><p>Zjesz obiad w spokoju, a dziecko słucha swojej muzyki.</p></div></article>
+      <article class="card use"><img src="zdjecia/lulavi/placz-mis.jpg" alt="Tata zakłada synkowi opaskę Lulavi Miś" loading="lazy"><div><h3>Gdy jest płacz</h3><p>Ulubiona piosenka uspokaja szybciej niż tłumaczenie.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ROZWIĄZANIE -->
+<section>
+  <div class="wrap split">
+    <div class="media">
+      <img class="photo" src="zdjecia/lulavi/relaks-sowka.jpg" alt="Chłopiec w opasce Lulavi Sówka słucha muzyki na dywanie, mama odpoczywa" loading="lazy">
+    </div>
+    <div class="body">
+      <span class="eyebrow">Poznaj Lulavi</span>
+      <h2>Ulubiona bajka w <span class="hl">miękkiej opasce</span>, która nie spada</h2>
+      <ul class="ticks">
+        <li>Dziecko słucha swojej bajki, muzyki albo audiobooka</li>
+        <li>Nie przeszkadza innym: w samolocie, w aucie i przy rodzeństwie</li>
+        <li>Miękki polar zamiast twardych nauszników</li>
+        <li>Nie spada przy zabawie, kręceniu się i na boku</li>
+        <li>Zakładasz w sekundę, rozmiar regulujesz rzepem</li>
+        <li>Zabawne zwierzaki, które dzieci chcą nosić</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- JAK TO DZIAŁA -->
+<section class="tint" id="kroki">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Proste jak klik</span>
+      <h2>Spokój w <span class="hl">3 krokach</span></h2>
+      <p>Bez aplikacji i bez plątających się kabli.</p>
+    </div>
+    <div class="split">
+      <div class="media">
+        <img class="photo" src="zdjecia/lulavi/zaloz-lisek.jpg" alt="Mama zakłada synkowi opaskę Lulavi Lisek w jego pokoju" loading="lazy">
+      </div>
+      <div class="steps">
+        <div class="card step"><div class="num">1</div><p><b>Włącz i połącz</b>Przytrzymaj przycisk i wybierz opaskę na liście Bluetooth w telefonie.</p></div>
+        <div class="card step"><div class="num">2</div><p><b>Włącz bajkę lub muzykę</b>Audiobook, piosenki, biały szum: cokolwiek dziecko lubi.</p></div>
+        <div class="card step"><div class="num">3</div><p><b>Załóż i odpocznij</b>Rzep dopasujesz w sekundę. Dziecko słucha, Ty masz chwilę dla siebie.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- W PACZCE -->
+<section id="paczka">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">W paczce</span>
+      <h2>Co dokładnie <span class="hl">dostajesz</span></h2>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="tab-zawartosc">Zawartość</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="tab-parametry">Parametry</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="tab-pielegnacja">Pielęgnacja</button>
+    </div>
+    <div class="card box">
+      <div>
+        <h3>Lulavi: gotowa od pierwszego dnia</h3>
+        <p>Wszystko w jednym pudełku. Wyjmij, naładuj i włącz pierwszą bajkę jeszcze dziś.</p>
+      </div>
+      <div class="panel-list">
+        <div role="tabpanel" id="tab-zawartosc">
+          <div class="panel-title">Zawartość</div>
+          <ul class="ticks">
+            <li>Opaska Lulavi z wybranym zwierzakiem</li>
+            <li>Wyjmowany moduł z głośniczkami</li>
+            <li>Kabel do ładowania USB-C</li>
+            <li>Instrukcja po polsku</li>
+          </ul>
+        </div>
+        <div role="tabpanel" id="tab-parametry" hidden>
+          <div class="panel-title">Parametry</div>
+          <ul class="ticks">
+            <li>Bluetooth 5.x, zasięg do 10 m</li>
+            <li>Bateria: do 10 h słuchania, ładowanie ok. 2 h</li>
+            <li>Regulowany obwód na rzep: od przedszkolaka do nastolatka</li>
+            <li>Wbudowany mikrofon: można odebrać rozmowę</li>
+          </ul>
+        </div>
+        <div role="tabpanel" id="tab-pielegnacja" hidden>
+          <div class="panel-title">Pielęgnacja</div>
+          <ul class="ticks">
+            <li>Wyjmij moduł z głośniczkami</li>
+            <li>Pierz ręcznie lub w woreczku w 30 °C</li>
+            <li>Susz na płasko, potem włóż moduł z powrotem</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORÓWNANIE -->
+<section class="tint" id="porownanie">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Porównanie</span>
+      <h2>Dlaczego <span class="hl">Lulavi</span>, a nie zwykłe słuchawki?</h2>
+    </div>
+    <div class="table-wrap card">
+      <table class="cmp">
+        <colgroup><col class="c-name"><col><col><col></colgroup>
+        <thead>
+          <tr><th>Cecha</th><th class="us">Lulavi</th><th>Zwykłe słuchawki</th><th>Bajka na głos z telefonu</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Miękka, nie uciska uszu</td><td class="us yes">✓</td><td class="no">✕</td><td class="yes">✓</td></tr>
+          <tr><td>Nie spada przy zabawie</td><td class="us yes">✓</td><td class="no">✕</td><td class="yes">✓</td></tr>
+          <tr><td>Nie przeszkadza innym</td><td class="us yes">✓</td><td class="yes">✓</td><td class="no">✕</td></tr>
+          <tr><td>Sprawdza się w samolocie</td><td class="us yes">✓</td><td class="yes">✓</td><td class="no">✕</td></tr>
+          <tr><td>Wygodna do drzemki</td><td class="us yes">✓</td><td class="no">✕</td><td class="yes">✓</td></tr>
+          <tr><td>Dziecko chce ją nosić</td><td class="us yes">✓</td><td class="no">✕</td><td class="no">✕</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIE -->
+<section id="opinie">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Opinie kupujących</span>
+      <h2>Zobacz, co mówią <span class="hl">rodzice</span></h2>
+      <p class="zrodlo">Opinie tego modelu opaski od kupujących na Amazon w Europie, przetłumaczone na polski.</p>
+    </div>
+  </div>
+  <div class="marquee" aria-label="Opinie kupujących">
+    <div class="marquee-track"><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Idealna</b><blockquote>„Łączy się z telefonem łatwo i szybko. Super miękka, a płaskie głośniczki nie przeszkadzają przy spaniu na boku.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/beatriz.jpg" alt=""><div><b>Beata <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Miś</div></div></article><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Pasuje też na małe głowy</b><blockquote>„Słuchawki siedzą dokładnie na uszach, a dźwięk do audiobooków na noc w pełni wystarcza.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/stefanie.jpg" alt=""><div><b>Tomasz <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Sówka</div></div></article><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Do tańca, zabawy i spania</b><blockquote>„Idealna dla dzieci, a rodzice odzyskują spokój. Tańczą w niej bez hałasu i lepiej zasypiają.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/nicole.jpg" alt=""><div><b>Nikola <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Panda</div></div></article><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Piękne słuchawki</b><blockquote>„Kupiliśmy na Sylwestra. Działa super, chętnie noszona i łatwo łączy się z telefonem albo tabletem.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/kathi.jpg" alt=""><div><b>Paweł <i class="ok">✔</i></b>Zweryfikowany zakup · wzór szary</div></div></article><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Dobra w samolocie</b><blockquote>„Świetna w samolocie. Pasuje nawet na główkę 18-miesięcznego malucha, nie jest za duża.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/andrzej.jpg" alt=""><div><b>Andrzej <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Lisek</div></div></article><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Świetne słuchawki</b><blockquote>„Miękka i wygodna, a dźwięk w słuchawkach jest naprawdę świetny. Dziecko jest bardzo zadowolone.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/elisabeth.jpg" alt=""><div><b>Elżbieta <i class="ok">✔</i></b>Zweryfikowany zakup · wzór szary</div></div></article><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Wszystko super</b><blockquote>„Mega słodka i spełnia u nas swoje zadanie. Po praniu bez zapachu, a materiał nie farbuje.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/domi87.jpg" alt=""><div><b>Dominika <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Lisek</div></div></article><article class="review"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Super 👍</b><blockquote>„Bardzo wygodna i łatwa w ustawieniu. Moja córka jest nią po prostu zachwycona.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/marvel.jpg" alt=""><div><b>Marvel <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Sówka</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Idealna</b><blockquote>„Łączy się z telefonem łatwo i szybko. Super miękka, a płaskie głośniczki nie przeszkadzają przy spaniu na boku.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/beatriz.jpg" alt=""><div><b>Beata <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Miś</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Pasuje też na małe głowy</b><blockquote>„Słuchawki siedzą dokładnie na uszach, a dźwięk do audiobooków na noc w pełni wystarcza.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/stefanie.jpg" alt=""><div><b>Tomasz <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Sówka</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Do tańca, zabawy i spania</b><blockquote>„Idealna dla dzieci, a rodzice odzyskują spokój. Tańczą w niej bez hałasu i lepiej zasypiają.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/nicole.jpg" alt=""><div><b>Nikola <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Panda</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Piękne słuchawki</b><blockquote>„Kupiliśmy na Sylwestra. Działa super, chętnie noszona i łatwo łączy się z telefonem albo tabletem.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/kathi.jpg" alt=""><div><b>Paweł <i class="ok">✔</i></b>Zweryfikowany zakup · wzór szary</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Dobra w samolocie</b><blockquote>„Świetna w samolocie. Pasuje nawet na główkę 18-miesięcznego malucha, nie jest za duża.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/andrzej.jpg" alt=""><div><b>Andrzej <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Lisek</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Świetne słuchawki</b><blockquote>„Miękka i wygodna, a dźwięk w słuchawkach jest naprawdę świetny. Dziecko jest bardzo zadowolone.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/elisabeth.jpg" alt=""><div><b>Elżbieta <i class="ok">✔</i></b>Zweryfikowany zakup · wzór szary</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Wszystko super</b><blockquote>„Mega słodka i spełnia u nas swoje zadanie. Po praniu bez zapachu, a materiał nie farbuje.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/domi87.jpg" alt=""><div><b>Dominika <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Lisek</div></div></article><article class="review" aria-hidden="true"><div class="stars" aria-label="5 na 5 gwiazdek">★★★★★</div><b class="tytul">Super 👍</b><blockquote>„Bardzo wygodna i łatwa w ustawieniu. Moja córka jest nią po prostu zachwycona.”</blockquote><div class="who"><img class="avatar-foto" src="zdjecia/opinie-amazon/marvel.jpg" alt=""><div><b>Marvel <i class="ok">✔</i></b>Zweryfikowany zakup · wzór Sówka</div></div></article></div>
+  </div>
+</section>
+
+<!-- OPINIE -->
+
+
+<!-- CTA -->
+<section class="tint">
+  <div class="wrap">
+    <div class="card cta">
+      <img src="zdjecia/lulavi/rodzenstwo-pingwin-misio.jpg" alt="Rodzeństwo w opaskach Lulavi na kanapie" loading="lazy">
+      <div>
+        <h2>Chwila spokoju jest <span class="hl">bliżej, niż myślisz</span></h2>
+        <p>Daj dziecku jego bajkę, a sobie święty spokój. Masz 14 dni na zwrot, więc nic nie ryzykujesz.</p>
+        <a class="btn inline" href="#kup">Zamawiam Lulavi: 149,99 zł</a>
+        <p class="under-btn" style="text-align:left">Darmowa wysyłka · 14 dni na zwrot</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap faq">
+    <div class="faq-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Najczęściej zadawane <span class="hl">pytania</span></h2>
+      <p class="lead">Nie ma tu Twojego pytania? Napisz:<br><b>kontakt@mivro.pl</b></p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Od jakiego wieku jest Lulavi?</summary>
+        <p>Polecamy od 3 lat. Obwód reguluje się na rzep, więc pasuje też starszym dzieciom, a nawet dorosłym.</p>
+      </details>
+      <details>
+        <summary>Czy można jej używać w samolocie?</summary>
+        <p>Tak. Włącz w telefonie tryb samolotowy i zostaw włączony Bluetooth. Bajki i muzykę pobierz wcześniej do telefonu.</p>
+      </details>
+      <details>
+        <summary>Czy głośność jest bezpieczna dla uszu dziecka?</summary>
+        <p>Głośność ustawiasz z telefonu. Zalecamy połowę skali i włączenie limitu głośności w ustawieniach telefonu.</p>
+      </details>
+      <details>
+        <summary>Jak długo działa bateria?</summary>
+        <p>Do 10 godzin słuchania, czyli cały lot albo cały dzień w podróży. Pełne ładowanie trwa około 2 godzin.</p>
+      </details>
+      <details>
+        <summary>Jak ją wyprać?</summary>
+        <p>Wyjmij moduł z głośniczkami i wypierz opaskę ręcznie lub w woreczku w 30 °C.</p>
+      </details>
+      <details>
+        <summary>Czy połączę ją z każdym telefonem?</summary>
+        <p>Tak, działa z każdym telefonem i tabletem z Bluetooth (Android i iPhone).</p>
+      </details>
+      <details>
+        <summary>Co, jeśli dziecko jej nie polubi?</summary>
+        <p>Masz 14 dni na zwrot bez podawania przyczyny. Napisz do nas i odzyskasz pieniądze.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-brand">
+      <a class="logo" href="/">lulavi</a>
+      <p>Miękka opaska ze słuchawkami dla dzieci. Bajka w uszach, a Ty masz chwilę spokoju w podróży i w domu.</p>
+      <a class="f-row" href="mailto:kontakt@mivro.pl"><span class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>kontakt@mivro.pl</a>
+      <div class="f-row"><span class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Odpowiadamy w 24 h · Pon–Pt</div>
+    </div>
+    <nav class="f-nav" aria-label="Informacje">
+      <span class="f-head">Informacje</span>
+      <a href="/pages/regulamin">Regulamin</a>
+      <a href="/pages/polityka-prywatnosci">Polityka prywatności</a>
+      <a href="/pages/polityka-wysylki">Polityka wysyłki</a>
+      <a href="/pages/polityka-zwrotow">Zwroty i reklamacje</a>
+      <a href="/pages/dane-kontaktowe">Kontakt</a>
+    </nav>
+  </div>
+  <div class="wrap f-bottom">
+    <span>LULAVI.PL © 2026</span>
+    <span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span>
+  </div>
+</footer>
+
+<script>
+  function obraz(p) { return (window.OBRAZY && window.OBRAZY[p]) || p; }
+  var WZORY = [
+    { id: 'lisek', nazwa: 'Lisek' },
+    { id: 'panda', nazwa: 'Panda' },
+    { id: 'sowka', nazwa: 'Sówka' },
+    { id: 'zabka', nazwa: 'Żabka' },
+    { id: 'misio-zolty', nazwa: 'Żółty miś' },
+    { id: 'kotek', nazwa: 'Kotek' },
+    { id: 'pingwin', nazwa: 'Pingwin' },
+    { id: 'mis', nazwa: 'Brązowy miś' },
+    { id: 'hipcio', nazwa: 'Hipcio' }
+  ];
+  // karuzela zdjęć: przesuwanie palcem, kropki i strzałki
+  var slider = document.getElementById('slider');
+  var slajdy = slider.querySelectorAll('.slide');
+  var kropki = document.getElementById('dots');
+  slajdy.forEach(function (sl, i) {
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Zdjęcie ' + (i + 1));
+    d.addEventListener('click', function () { idz(i); });
+    kropki.appendChild(d);
+  });
+  function aktualny() { return Math.round(slider.scrollLeft / slider.clientWidth); }
+  function idz(i) { i = (i + slajdy.length) % slajdy.length; slider.scrollTo({ left: i * slider.clientWidth, behavior: 'smooth' }); }
+  function zaznacz() { var a = aktualny(); document.querySelectorAll('#dots button, .thumb').forEach(function (d) { var i = d.classList.contains('thumb') ? +d.dataset.i : [].indexOf.call(kropki.children, d); d.setAttribute('aria-current', i === a ? 'true' : 'false'); }); }
+  document.querySelectorAll('.thumb').forEach(function (t) { t.addEventListener('click', function () { idz(+t.dataset.i); }); });
+  slider.addEventListener('scroll', function () { window.requestAnimationFrame(zaznacz); });
+  document.querySelector('.arrow.prev').addEventListener('click', function () { idz(aktualny() - 1); });
+  document.querySelector('.arrow.next').addEventListener('click', function () { idz(aktualny() + 1); });
+  slider.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') idz(aktualny() + 1); if (e.key === 'ArrowLeft') idz(aktualny() - 1); });
+  zaznacz();
+
+  // wybór zestawu i wzorów na zdjęciach
+  var cta = document.getElementById('cta-koszyk');
+  document.querySelectorAll('.picks').forEach(function (box) {
+    var n = +box.dataset.count;
+    for (var i = 1; i <= n; i++) {
+      (function (i) {
+        var wrap = document.createElement('div');
+        var label = document.createElement('div');
+        label.className = 'pick-label';
+        var grid = document.createElement('div');
+        grid.className = 'swatches';
+        grid.setAttribute('role', 'radiogroup');
+        grid.setAttribute('aria-label', 'Wzór opaski nr ' + i);
+        var start = (i - 1) % WZORY.length;
+        WZORY.forEach(function (w, k) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'swatch';
+          b.setAttribute('role', 'radio');
+          b.setAttribute('aria-checked', k === start ? 'true' : 'false');
+          b.setAttribute('aria-label', w.nazwa);
+          b.title = w.nazwa;
+          b.innerHTML = '<img src="' + obraz('zdjecia/warianty/mini-' + w.id + '.jpg') + '" alt="">';
+          b.addEventListener('click', function (e) {
+            e.preventDefault();
+            grid.querySelectorAll('.swatch').forEach(function (s) { s.setAttribute('aria-checked', 'false'); });
+            b.setAttribute('aria-checked', 'true');
+            label.innerHTML = (n > 1 ? 'Opaska ' + i + ': ' : 'Wzór: ') + '<span>' + w.nazwa + '</span>';
+          });
+          grid.appendChild(b);
+        });
+        label.innerHTML = (n > 1 ? 'Opaska ' + i + ': ' : 'Wzór: ') + '<span>' + WZORY[start].nazwa + '</span>';
+        wrap.appendChild(label);
+        wrap.appendChild(grid);
+        box.appendChild(wrap);
+      })(i);
+    }
+  });
+  function odswiez() {
+    var wybrany = document.querySelector('input[name="pakiet"]:checked');
+    document.querySelectorAll('.offer').forEach(function (o) { o.classList.toggle('on', o.contains(wybrany)); });
+    cta.textContent = 'Dodaj do koszyka: ' + wybrany.dataset.price + ' zł';
+  }
+  document.querySelectorAll('input[name="pakiet"]').forEach(function (r) { r.addEventListener('change', odswiez); });
+  odswiez();
+
+  // opinie: na komputerze stoją pod kursorem, na telefonie dotknięcie zatrzymuje i puszcza
+  document.querySelectorAll('.marquee').forEach(function (m) {
+    m.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') m.classList.toggle('stop'); });
+  });
+
+  // zakładki „W paczce”
+  document.querySelectorAll('.tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    });
+  });
+</script>
+</body>
+</html>
