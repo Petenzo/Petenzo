@@ -24,7 +24,7 @@ body=body.replace("obraz('zdjecia/warianty/mini-' + w.id + '.jpg')","w.img")
 body=body.replace("b.setAttribute('aria-label', w.nazwa);","b.setAttribute('aria-label', w.nazwa);\n          b.dataset.vid = w.vid;")
 # koszyk
 body=body.replace('</script>','</script>\n'+open('/home/user/Petenzo/shopify-motyw/src/koszyk.html').read(),1)
-section="{%- if product == blank -%}{%- assign product = all_products['lulavi-opaska-ze-sluchawkami-dla-dzieci'] -%}{%- endif -%}\n"+body+'\n{% schema %}\n{"name": "Lulavi – strona produktu", "settings": []}\n{% endschema %}\n'
+section="{%- if product == blank -%}{%- assign product = all_products['lulavi'] -%}{%- endif -%}\n"+body+'\n{% schema %}\n{"name": "Lulavi – strona produktu", "settings": []}\n{% endschema %}\n'
 tpl='{\n  "layout": "lulavi",\n  "sections": { "main": { "type": "lulavi-strona", "settings": {} } },\n  "order": ["main"]\n}\n'
 d='/home/user/Petenzo/shopify-motyw/'
 open(d+'layout/lulavi.liquid','w').write(layout)
