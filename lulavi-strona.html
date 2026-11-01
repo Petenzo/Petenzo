@@ -750,6 +750,7 @@
   // wybór zestawu i wzorów na zdjęciach
   var cta = document.getElementById('cta-koszyk');
   document.querySelectorAll('.picks').forEach(function (box) {
+    if (!WZORY.length) return;
     var n = +box.dataset.count;
     for (var i = 1; i <= n; i++) {
       (function (i) {
