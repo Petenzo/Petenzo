@@ -19,7 +19,8 @@ body=body.replace('<a class="logo" href="#">lulavi</a>','<a class="logo" href="/
 old_w=body[body.index('  var WZORY = ['):body.index('];',body.index('  var WZORY = ['))+2]
 body=body.replace(old_w,'''  var WZORY = [{% for v in product.variants %}
     { vid: {{ v.id }}, nazwa: {{ v.title | json }}, img: {{ v.featured_image | image_url: width: 200 | json }}, ok: {{ v.available | json }} }{% unless forloop.last %},{% endunless %}{% endfor %}
-  ];''')
+  ];
+  if (!WZORY.length) WZORY = [{ vid: 55217757913426, nazwa: \'Panda\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/panda.jpg?width=200\', ok: true },{ vid: 55217757946194, nazwa: \'Lisek\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/lisek.jpg?width=200\', ok: true },{ vid: 55217757978962, nazwa: \'Sówka\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/sowka.jpg?width=200\', ok: true },{ vid: 55217758011730, nazwa: \'Żabka\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/zabka.jpg?width=200\', ok: true },{ vid: 55217758044498, nazwa: \'Żółty miś\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/misio-zolty.jpg?width=200\', ok: true },{ vid: 55217758077266, nazwa: \'Kotek\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/kotek.jpg?width=200\', ok: true },{ vid: 55217758110034, nazwa: \'Pingwin\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/pingwin.jpg?width=200\', ok: true },{ vid: 55217758142802, nazwa: \'Brązowy miś\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/mis.jpg?width=200\', ok: true },{ vid: 55217758175570, nazwa: \'Hipcio\', img: \'https://cdn.shopify.com/s/files/1/1123/3876/4114/files/hipcio.jpg?width=200\', ok: true }];''')
 body=body.replace("obraz('zdjecia/warianty/mini-' + w.id + '.jpg')","w.img")
 body=body.replace("b.setAttribute('aria-label', w.nazwa);","b.setAttribute('aria-label', w.nazwa);\n          b.dataset.vid = w.vid;")
 # koszyk
