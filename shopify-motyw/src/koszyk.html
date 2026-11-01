@@ -112,7 +112,7 @@
 
     function api(url, dane) {
       return fetch(url, dane ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dane) } : {})
-        .then(function (r) { if (!r.ok) throw r; return r.json(); });
+        .then(function (r) { if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) { throw new Error(j.description || j.message || ('kod ' + r.status)); }); return r.json(); });
     }
 
     function upsell(szt) {
@@ -179,7 +179,7 @@
       api('/cart/add.js', { items: items })
         .then(pokaz)
         .then(otworz)
-        .catch(function () { alert('Nie udało się dodać do koszyka. Spróbuj jeszcze raz.'); })
+        .catch(function (e) { alert('Nie udało się dodać do koszyka (' + (e && e.message ? e.message : 'brak odpowiedzi') + '). Przenoszę do kasy.'); if (items.length) window.location.href = '/cart/' + items.map(function (x) { return x.id + ':' + x.quantity; }).join(','); })
         .then(function () { cta.disabled = false; cta.textContent = tekst; });
     });
 
