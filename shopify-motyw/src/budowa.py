@@ -3,7 +3,6 @@ src=open('/home/user/Petenzo/lulavi-strona.html').read()
 CDN='https://cdn.shopify.com/s/files/1/1123/3876/4114/files/'
 head=src[:src.index('</head>')]
 head=head.replace('<title>Lulavi</title>','<title>{{ page_title }}</title>\n<link rel="canonical" href="{{ canonical_url }}">\n<meta name="google-site-verification" content="E9s8FqFXQeFQdFco-fwGXVXTbGTXxlWEIoX38WEWwCQ">\n<meta name="google-site-verification" content="FRsTgHyJqZ9ys7oGa75t6w0XuMFcXuZ640u5CHN8zjE">')
-head=head.replace('<meta charset="utf-8">','<meta charset="utf-8">\n{%- if template.name == \'index\' -%}<meta http-equiv="refresh" content="0;url=/products/lulavi"><script>location.replace(\'/products/lulavi\')</script>{%- endif -%}',1)
 head=re.sub(r'logo/(kot-ikona-\d+\.png)',lambda m:CDN+m.group(1),head)
 layout=head+'{{ content_for_header }}\n</head>\n<body>\n{{ content_for_layout }}\n</body>\n</html>\n'
 body=src[src.index('<body>')+6:src.index('</body>')]
@@ -25,7 +24,7 @@ body=body.replace("obraz('zdjecia/warianty/mini-' + w.id + '.jpg')","w.img")
 body=body.replace("b.setAttribute('aria-label', w.nazwa);","b.setAttribute('aria-label', w.nazwa);\n          b.dataset.vid = w.vid;")
 # koszyk
 body=body.replace('</script>','</script>\n'+open('/home/user/Petenzo/shopify-motyw/src/koszyk.html').read(),1)
-section="{%- if product == blank -%}{%- assign product = all_products['lulavi'] -%}{%- endif -%}\n"+body+'\n{% schema %}\n{"name": "Lulavi – strona produktu", "settings": []}\n{% endschema %}\n'
+section="{%- if product == blank -%}{%- assign product = section.settings.produkt -%}{%- endif -%}{%- if product == blank -%}{%- assign product = all_products['lulavi'] -%}{%- endif -%}\n"+body+'\n{% schema %}\n{"name": "Lulavi – strona produktu", "settings": [{"type": "product", "id": "produkt", "label": "Produkt"}]}\n{% endschema %}\n'
 tpl='{\n  "layout": "lulavi",\n  "sections": { "main": { "type": "lulavi-strona", "settings": {} } },\n  "order": ["main"]\n}\n'
 d='/home/user/Petenzo/shopify-motyw/'
 open(d+'layout/lulavi.liquid','w').write(layout)
@@ -36,5 +35,5 @@ foot=body[body.index('<footer class="site">'):body.index('</footer>')+9]
 pod=top+'\n'+open('/home/user/Petenzo/shopify-motyw/src/podstrona.html').read()+'\n'+foot+'\n{% schema %}\n{"name": "Lulavi – podstrona", "settings": []}\n{% endschema %}\n'
 open(d+'sections/lulavi-podstrona.liquid','w').write(pod)
 for t in ['page.lulavi','page','page.contact','404','cart','blog','article']: open(d+'templates/'+t+'.json','w').write(tpl.replace('lulavi-strona','lulavi-podstrona'))
-for t in ['product.lulavi','product','index','collection','list-collections','search']: open(d+'templates/'+t+'.json','w').write(tpl)
+for t in ['product.lulavi','product','index','collection','list-collections','search']: open(d+'templates/'+t+'.json','w').write(tpl.replace('"settings": {}','"settings": { "produkt": "lulavi" }') if t=='index' else tpl)
 print(len(layout),len(section))

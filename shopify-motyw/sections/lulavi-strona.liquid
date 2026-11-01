@@ -1,4 +1,4 @@
-{%- if product == blank -%}{%- assign product = all_products['lulavi'] -%}{%- endif -%}
+{%- if product == blank -%}{%- assign product = section.settings.produkt -%}{%- endif -%}{%- if product == blank -%}{%- assign product = all_products['lulavi'] -%}{%- endif -%}
 
 
 <!-- PASEK -->
@@ -661,5 +661,5 @@
 
 
 {% schema %}
-{"name": "Lulavi – strona produktu", "settings": []}
+{"name": "Lulavi – strona produktu", "settings": [{"type": "product", "id": "produkt", "label": "Produkt"}]}
 {% endschema %}
