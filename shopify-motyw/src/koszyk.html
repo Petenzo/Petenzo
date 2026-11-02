@@ -117,7 +117,7 @@
 
     function upsell(szt) {
       if (szt < 1 || szt >= 3) return '';
-      var ile = szt === 1 ? 'Dobierz drugą opaskę za <span>100 zł</span> (zamiast 149,99 zł)' : 'Dobierz trzecią opaskę za <span>80 zł</span> (zamiast 149,99 zł)';
+      var ile = szt === 1 ? 'Dobierz drugą opaskę za <span>90 zł</span> (zamiast 139,99 zł)' : 'Dobierz trzecią opaskę za <span>70 zł</span> (zamiast 139,99 zł)';
       return '<div class="upsell"><p>➕ ' + ile + ', np. dla rodzeństwa:</p><div class="swatches">' +
         WZORY.map(function (w) {
           return '<button class="swatch" type="button" data-dobierz="' + w.vid + '" title="' + w.nazwa + '" aria-label="Dodaj ' + w.nazwa + '"><img src="' + w.img + '" alt=""></button>';
