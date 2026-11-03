@@ -6,7 +6,7 @@ Kiedy użytkownik napisze **„Filmy”** i wyśle filmiki (zwykle 3 lub więcej
 
 1. **Wyciągnij napisy z ekranu z każdego filmu** – dokładnie, co do klatki:
    - dla każdego napisu podaj, od kiedy do kiedy jest widoczny,
-   - czasy podawaj w formacie **CapCut `MM:SS:KK`** (KK = klatka, 30 klatek = 1 sekunda, czyli `00:03:15` = 3,5 s), a obok w sekundach,
+   - czasy podawaj **prosto, co pół sekundy, jak na osi CapCut**: `3.00`, `3.30`, `4.00`, `4.30`… (`.30` = pół sekundy). Bez klatek, bez setnych, zaokrąglaj do najbliższego pół sekundy,
    - zaznacz też momenty, kiedy na ekranie **nie ma żadnego napisu**,
    - przepisz oryginalny tekst 1:1, ze wszystkimi znakami i emotkami.
    - Metoda: `ffmpeg` (klatki co 0,5 s + wykrywanie cięć `select='gt(scene,0.2)'` + klatka po klatce w miejscach zmian napisu).
