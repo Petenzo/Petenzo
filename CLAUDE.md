@@ -8,7 +8,8 @@ Kiedy użytkownik napisze **„Filmy”** i wyśle filmiki (zwykle 3 lub więcej
 - Wyciągasz **wszystkie napisy z ekranu**, dokładnie co do klatki (ffmpeg: wykrywanie cięć `select='gt(scene,0.2)'` + klatka po klatce tam, gdzie zmienia się napis).
 - Czas zapisujesz **jak w CapCut: `sekundy:klatki`**, 30 klatek = 1 sekunda (np. `4:01`, `7:02`, `12:06`). Bez zaokrąglania, dokładnie z filmu.
 - W tabelce są tylko kolumny: **Od | Do | Napis**.
-- Napis wpisujesz **od razu po polsku**: przetłumaczony, z wszystkimi znakami i emotkami (możesz dodać pasujące emotki). Hasło do komentarza też tłumaczysz (np. „LIS”).
+- Napis wpisujesz **od razu po polsku**, z wszystkimi znakami i emotkami. **Nie tłumacz słowo w słowo**: ma brzmieć tak, jak napisałby to Polak na TikToku, naturalnie i chwytliwie.
+- **Ostatni napis to zawsze dobre CTA** dopasowane do filmu, w stylu polskich kont: „Skomentuj „LIS”, a wyślę Ci link 👇”, „Napisz „lampki”, jeśli takie chcesz 🥰”. Hasło ma być krótkie, po polsku i pasować do produktu z filmu (np. LIS, SÓWKA, OPASKA). Jeśli film nie ma CTA albo ma słabe („Link in bio”), zamień je albo dodaj na ostatnim ujęciu i zaznacz, że to dodane.
 - Jeśli przez chwilę nie ma napisu, robisz wiersz `(bez napisu)`.
 
 Wzór:
@@ -27,12 +28,12 @@ Do każdego filmu dajesz krótki opis na YT, TikTok, FB i IG. Robisz go według 
 
 Lot z maluchem? Już bez łez 🦊🎧 Napisz „LIS”, a podeślę link 👇
 
-#mama #dziecko #maluch #podróż #samolot #spokój #cisza #sen #słuchawki #lis
+#lotzmaluchem #słuchawkidladzieci #lisiaopaska
 ```
 
 - Nagłówek: emotka + „Film X – krótka nazwa”.
 - Opis ma 1–2 krótkie zdania z emotkami i CTA (to samo hasło co w filmie).
-- Na końcu ok. 10 hashtagów, każdy jako jedno polskie słowo.
+- Na końcu **maks. 3 hashtagi**, konkretne do tego filmu (każdy film ma inne). Żadnych ogólnych typu #samolot czy #mama.
 
 ### 3. Zasady
 - Wszystko po polsku.
