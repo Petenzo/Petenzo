@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "vmake-dynamic-caption": {
+      "source": "meitu/vmake-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vmake-dynamic-caption/SKILL.md",
+      "computedHash": "a2b1e3987d26287a1120d8c71832bbb5891772b48b77a2fb7b12927897ef59ad"
+    },
+    "vmake-image-remove-watermark": {
+      "source": "meitu/vmake-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vmake-image-remove-watermark/SKILL.md",
+      "computedHash": "9a5e57ba2f9230912b0b0ced4825618ae5325edf100707bd4fda450aad9cf356"
+    },
+    "vmake-image-repair": {
+      "source": "meitu/vmake-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vmake-image-repair/SKILL.md",
+      "computedHash": "362e3b12dca766ff042a1e0e93a98b674a1080ecdc2556f70dcd7738e9ae06eb"
+    },
+    "vmake-smart-montage": {
+      "source": "meitu/vmake-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vmake-smart-montage/SKILL.md",
+      "computedHash": "17d54d437c6f91651a3e11150d18f726025e9b02d95d054c8cb2455432e69e82"
+    },
+    "vmake-video-remove-subtitle": {
+      "source": "meitu/vmake-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vmake-video-remove-subtitle/SKILL.md",
+      "computedHash": "d0879fde1082a90143facf50dbef59160afe7a795150fb761ed9520121a7df28"
+    },
+    "vmake-video-remove-watermark": {
+      "source": "meitu/vmake-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vmake-video-remove-watermark/SKILL.md",
+      "computedHash": "47217c518c2f8aae8f4a9b220f8d8fcd0df7cf15c5ee416a0abc58b49c4650ae"
+    },
+    "vmake-video-repair": {
+      "source": "meitu/vmake-skills",
+      "sourceType": "github",
+      "skillPath": "skills/vmake-video-repair/SKILL.md",
+      "computedHash": "dad824dddf89a3262314ee018a83a189e5d3bbd671a85938d914ef2c21b3db74"
+    }
+  }
+}
