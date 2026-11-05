@@ -26,14 +26,14 @@ Do każdego filmu dajesz krótki opis na YT, TikTok, FB i IG. Robisz go według 
 ```
 🦊 Film 1 – Lis
 
-Każda mama boi się lotu z płaczącym maluchem ✈️😰 Ten lisek zamienił nasz koszmar w drzemkę, napisz „LIS”, a Ci to wyślę 🦊👇
+Skomentuj „LIS”, jeśli chcesz spokojny lot z maluchem 🦊✈️
 
-#podróżezdzieckiem #wakacjezdzieckiem #mama
+#podrozezdzieckiem #sluchawkidladzieci #mama
 ```
 
 - Nagłówek: emotka + „Film X – krótka nazwa”.
-- Opis: **1 zdanie, maks. 2**, ale **mocny psychologicznie**: 1) zaczepka w ból/emocję mamy, z którą się utożsamia („Znasz ten wstyd, gdy…”, „Każda mama boi się…”), 2) produkt jako ulga/rozwiązanie, 3) CTA z tym samym hasłem co w filmie („napisz „LIS”, a Ci to wyślę 👇”). Emotki pasujące do emocji.
-- Na końcu **dokładnie 3 hashtagi**, tylko **prawdziwe, popularne w Polsce** (np. #mama, #macierzyństwo, #rodzicielstwo, #maluch, #dziecko, #podróżezdzieckiem, #wakacjezdzieckiem, #prezentdladziecka). Dobór: 1 szeroki (grupa docelowa, np. #mama), 1 pod temat/sytuację z filmu (np. #podróżezdzieckiem), 1 zakupowy lub niszowy (np. #prezentdladziecka). Nigdy nie wymyślaj własnych.
+- Opis: **JEDNO krótkie zdanie** w stylu polskich kont sklepowych (np. „Napisz „lampki”, jeśli takie chcesz 🥰”, „Skomentuj „choinka”, jeśli chcesz jeden! 🎄✨”, „Napisz „drzewko”, jeśli też takie chcesz 🤩🎄”). To samo hasło co w CTA w filmie + krótki powód/emocja + 1–2 emotki. Bez długich historii.
+- Na końcu **maks. 3 hashtagi**, prawdziwe i popularne, zapisane bez polskich znaków jak u konkurencji (np. #dekoracjeswiateczne). Kolejność: 1) produktowy, czego ludzie szukają (np. #sluchawkidladzieci, #lampkiswiateczne), 2) sytuacja z filmu (np. #podrozezdzieckiem), 3) grupa docelowa lub zakupowy (np. #mama, #prezentdladziecka). Nigdy nie wymyślaj własnych.
 
 ### 3. Zasady
 - Wszystko po polsku.
