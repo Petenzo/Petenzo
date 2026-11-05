@@ -26,14 +26,14 @@ Do każdego filmu dajesz krótki opis na YT, TikTok, FB i IG. Robisz go według 
 ```
 🦊 Film 1 – Lis
 
-Lot z maluchem bez łez 🦊🎧 Napisz „LIS”, a Ci to wyślę 👇
+Każda mama boi się lotu z płaczącym maluchem ✈️😰 Ten lisek zamienił nasz koszmar w drzemkę, napisz „LIS”, a Ci to wyślę 🦊👇
 
-#podróżzdzieckiem #macierzyństwo #mama
+#podróżezdzieckiem #wakacjezdzieckiem #mama
 ```
 
 - Nagłówek: emotka + „Film X – krótka nazwa”.
-- Opis jest **bardzo krótki: najlepiej 1 zdanie, maks. 2**, z emotkami i CTA (to samo hasło co w filmie).
-- Na końcu **maks. 3 hashtagi**. Mają to być **prawdziwe, popularne hashtagi, których ludzie naprawdę używają** w polskim TikToku i na IG (np. #mama, #macierzyństwo, #dziecko, #maluch, #podróżzdzieckiem). Nie wymyślaj własnych typu #lisiaopaska. Dobierasz je do tematu filmu.
+- Opis: **1 zdanie, maks. 2**, ale **mocny psychologicznie**: 1) zaczepka w ból/emocję mamy, z którą się utożsamia („Znasz ten wstyd, gdy…”, „Każda mama boi się…”), 2) produkt jako ulga/rozwiązanie, 3) CTA z tym samym hasłem co w filmie („napisz „LIS”, a Ci to wyślę 👇”). Emotki pasujące do emocji.
+- Na końcu **dokładnie 3 hashtagi**, tylko **prawdziwe, popularne w Polsce** (np. #mama, #macierzyństwo, #rodzicielstwo, #maluch, #dziecko, #podróżezdzieckiem, #wakacjezdzieckiem, #prezentdladziecka). Dobór: 1 szeroki (grupa docelowa, np. #mama), 1 pod temat/sytuację z filmu (np. #podróżezdzieckiem), 1 zakupowy lub niszowy (np. #prezentdladziecka). Nigdy nie wymyślaj własnych.
 
 ### 3. Zasady
 - Wszystko po polsku.
