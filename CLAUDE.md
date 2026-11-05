@@ -26,14 +26,14 @@ Do każdego filmu dajesz krótki opis na YT, TikTok, FB i IG. Robisz go według 
 ```
 🦊 Film 1 – Lis
 
-Lot z maluchem? Już bez łez 🦊🎧 Napisz „LIS”, a podeślę link 👇
+Lot z maluchem bez łez 🦊🎧 Napisz „LIS”, a Ci to wyślę 👇
 
-#lotzmaluchem #słuchawkidladzieci #lisiaopaska
+#podróżzdzieckiem #macierzyństwo #mama
 ```
 
 - Nagłówek: emotka + „Film X – krótka nazwa”.
-- Opis ma 1–2 krótkie zdania z emotkami i CTA (to samo hasło co w filmie).
-- Na końcu **maks. 3 hashtagi**, konkretne do tego filmu (każdy film ma inne). Żadnych ogólnych typu #samolot czy #mama.
+- Opis jest **bardzo krótki: najlepiej 1 zdanie, maks. 2**, z emotkami i CTA (to samo hasło co w filmie).
+- Na końcu **maks. 3 hashtagi**. Mają to być **prawdziwe, popularne hashtagi, których ludzie naprawdę używają** w polskim TikToku i na IG (np. #mama, #macierzyństwo, #dziecko, #maluch, #podróżzdzieckiem). Nie wymyślaj własnych typu #lisiaopaska. Dobierasz je do tematu filmu.
 
 ### 3. Zasady
 - Wszystko po polsku.
