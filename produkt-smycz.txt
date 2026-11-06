@@ -1,0 +1,60 @@
+==================================================
+PRODUKT: PODWÓJNA SMYCZ AUTOMATYCZNA DLA 2 PSÓW
+(skopiuj pola do Shopify: Produkty → Dodaj produkt)
+==================================================
+
+TYTUŁ
+Podwójna smycz automatyczna dla 2 psów, bez plątania
+
+CENA
+99,00 zł
+Cena przed obniżką (porównawcza): 149,00 zł
+
+WARIANTY (opcja „Kolor”)
+• Różowa
+• Czarna
+• Niebieska
+
+TYP PRODUKTU: Smycze
+DOSTAWCA (vendor): Petenzo
+TAGI: smycz, dwa psy, spacer, smycz automatyczna
+
+--------------------------------------------------
+OPIS (wklej w pole „Opis”)
+--------------------------------------------------
+
+Dwa psy, jedna ręka, zero plątania.
+
+Spacer z dwoma psami nie musi kończyć się supłem ze smyczy. Ta smycz ma dwie niezależne taśmy w jednej rączce. Każdy pies chodzi na swojej, a obrotowa głowica sama rozplątuje taśmy, gdy psy zamieniają się stronami.
+
+Dlaczego warto:
+• Dwie osobne taśmy, każda z własnym hamulcem (zielony i pomarańczowy przycisk). Zatrzymujesz jednego psa, a drugi idzie dalej.
+• Obrót 360°: taśmy nie skręcają się, nawet gdy psy krążą wokół Ciebie.
+• Jedna rączka zamiast dwóch smyczy, więc druga ręka jest wolna na telefon, woreczki albo kawę.
+• Taśmy chowają się automatycznie, nic nie wlecze się po ziemi.
+• Wygodny, antypoślizgowy uchwyt.
+
+Dla kogo:
+Dla właścicieli dwóch psów małej i średniej wielkości, którzy chcą spokojnego spaceru bez ciągłego rozplątywania smyczy.
+
+Specyfikacja:
+• Długość taśmy: 2 × 3 m (SPRAWDŹ U DOSTAWCY)
+• Maksymalna waga psa: do 2 × 20 kg (SPRAWDŹ U DOSTAWCY)
+• Materiał: tworzywo ABS, taśma nylonowa
+• W zestawie: smycz z dwiema taśmami
+
+Wysyłka i zwroty:
+Darmowa wysyłka od 99 zł, dostawa w 6–10 dni roboczych. Masz 30 dni na zwrot bez podania przyczyny.
+
+--------------------------------------------------
+SEO (sekcja „Wyszukiwarka” na dole produktu)
+--------------------------------------------------
+
+Tytuł strony:
+Podwójna smycz dla 2 psów, bez plątania | Petenzo
+
+Opis meta:
+Smycz automatyczna dla dwóch psów: dwie taśmy, dwa hamulce, obrót 360° bez plątania. Darmowa wysyłka od 99 zł, 30 dni na zwrot.
+
+Uchwyt adresu URL:
+podwojna-smycz-dla-2-psow
