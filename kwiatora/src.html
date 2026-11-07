@@ -122,7 +122,7 @@ button{font-family:inherit;cursor:pointer}
 .kw-dots{display:flex;justify-content:center;gap:6px;margin:12px 0}
 .kw-dots button{width:8px;height:8px;border-radius:4px;border:0;background:#D8D0C2;padding:0;transition:width .2s}
 .kw-dots button.on{width:24px;background:var(--kw-primary)}
-.kw-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.kw-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
 .kw-thumbs button{border:2px solid transparent;border-radius:12px;overflow:hidden;padding:0;aspect-ratio:1/1;background:none}
 .kw-thumbs button.on{border-color:var(--kw-primary)}
 .kw-thumbs img{width:100%;height:100%;object-fit:cover}
@@ -176,7 +176,7 @@ button{font-family:inherit;cursor:pointer}
 /* benefit strip */
 .kw-strip{background:var(--kw-primary-dark);color:#fff}
 .kw-strip-in{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px 0}
-@media(min-width:768px){.kw-strip-in{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.kw-strip-in{grid-template-columns:repeat(4,1fr)}}
 .kw-strip-item{display:flex;gap:10px;align-items:center;justify-content:center;font-size:13px}
 .kw-strip-item b{display:block;font-size:14px}
 .kw-strip-item small{opacity:.75}
@@ -388,8 +388,7 @@ img[width][height]{height:auto}
 .kw-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--kw-gold)}
 @media(max-width:420px){.kw-deal-timer div{width:78px}.kw-deal-timer b{font-size:32px}}
 .kw-rev-row{padding-left:32px}
-@media(max-width:767px){.kw-strip-in .kw-strip-item:nth-child(3){grid-column:1/-1}}
-.kw-strip-item{justify-content:center}
+@media(max-width:767px){.kw-strip-in{gap:16px 10px}.kw-strip-item{font-size:12px;justify-content:flex-start}}
 .kw-ring{transform-origin:50% 20%;animation:kw-ring 2.4s ease-in-out infinite}
 @keyframes kw-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
 .kw-pulse{display:inline-block;animation:kw-pulse 1.6s ease-in-out infinite}
@@ -398,11 +397,11 @@ img[width][height]{height:auto}
 @keyframes kw-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
 .kw-deal .kw-btn{animation:kw-glow 2.2s ease-in-out infinite}
 @keyframes kw-glow{0%,100%{box-shadow:var(--kw-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
-.kw-shine{background:linear-gradient(100deg,var(--kw-primary) 0%,var(--kw-primary) 40%,#E2B866 50%,var(--kw-primary) 60%,var(--kw-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:kw-shine 3s linear infinite,kw-bob 3.2s ease-in-out infinite;display:inline-block}
+.kw-shine{background:linear-gradient(100deg,var(--kw-primary) 0%,var(--kw-primary) 40%,#E2B866 50%,var(--kw-primary) 60%,var(--kw-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:kw-shine 1s linear infinite,kw-bob 3.2s ease-in-out infinite;display:inline-block}
 @keyframes kw-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
 @keyframes kw-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.kw-nudge{animation:kw-nudge 4s ease-in-out infinite}
-@keyframes kw-nudge{0%,80%,100%{transform:translateX(0)}84%{transform:translateX(-4px)}88%{transform:translateX(4px)}92%{transform:translateX(-3px)}96%{transform:translateX(2px)}}
+.kw-nudge{animation:kw-nudge 2s ease-in-out infinite}
+@keyframes kw-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
 .kw-beat{display:inline-block;animation:kw-pulse 1s ease-in-out infinite}
 </style>
 </head>
@@ -461,19 +460,13 @@ img[width][height]{height:auto}
   <div class="kw-container kw-hero-grid">
     <div>
       <div class="kw-gallery-main">
-        <img id="kwMain" src="{{IMG}}/00-hero-ludzie.jpg" width="1200" height="1200" alt="Para z kalendarzem Kwiatora i bukietem z klocków w świątecznym salonie">
+        <img id="kwMain" src="{{IMG}}/00-hero-skladaja.jpg" width="1200" height="1200" alt="Para składa kwiaty z klocków przy stole w świątecznym salonie">
         <button class="kw-gallery-arrow prev" aria-label="Poprzednie zdjęcie" onclick="kwGal(-1)">‹</button>
         <button class="kw-gallery-arrow next" aria-label="Następne zdjęcie" onclick="kwGal(1)">›</button>
         <div class="kw-gallery-caption" id="kwCaption">🎁 Prezent, który rozpakowuje się 24 razy</div>
       </div>
       <div class="kw-dots" id="kwDots"></div>
       <div class="kw-thumbs" id="kwThumbs"></div>
-      <div class="kw-trust-tiles">
-        <div class="kw-trust-tile"><span class="ic">🚚</span><div><b>Darmowa wysyłka</b><small>Paczkomat InPost lub kurier</small></div></div>
-        <div class="kw-trust-tile"><span class="ic">↩️</span><div><b>14 dni na zwrot</b><small>Bez podawania przyczyny</small></div></div>
-        <div class="kw-trust-tile"><span class="ic">🔒</span><div><b>Bezpieczne płatności</b><small>BLIK, karta, Apple Pay</small></div></div>
-        <div class="kw-trust-tile"><span class="ic">⭐</span><div><b>4,9 / 5</b><small>Ponad 1 200 zadowolonych rodzin</small></div></div>
-      </div>
     </div>
 
     <div class="kw-buy">
@@ -509,9 +502,10 @@ img[width][height]{height:auto}
 
 <div class="kw-strip">
   <div class="kw-container kw-strip-in">
-    <div class="kw-strip-item"><span style="font-size:22px">🚚</span><div><b>Darmowa dostawa</b><small>InPost Paczkomat i kurier</small></div></div>
-    <div class="kw-strip-item"><span style="font-size:22px">↩️</span><div><b>14 dni na zwrot</b><small>Bez tłumaczenia się</small></div></div>
-    <div class="kw-strip-item"><span style="font-size:22px">🔒</span><div><b>Bezpieczne płatności</b><small>Szyfrowane połączenie SSL</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">🚚</span><div><b>Darmowa wysyłka</b><small>Paczkomat lub kurier</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">↩️</span><div><b>14 dni na zwrot</b><small>Bez podania przyczyny</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">🔒</span><div><b>Bezpieczne płatności</b><small>BLIK, karta, Apple Pay</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">⭐</span><div><b>4,9 / 5</b><small>1 200+ zadowolonych rodzin</small></div></div>
   </div>
 </div>
 
@@ -780,14 +774,12 @@ var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="kontakt@mivro.pl";
 
 var gallery=[
- ["00-hero-ludzie.jpg","🎁 24 okienka, 24 kwiaty, 1 bukiet"],
+ ["00-hero-skladaja.jpg","🌸 Codziennie nowy kwiat – składacie go razem"],
+ ["02-szufladka.jpg","✨ Codziennie nowe okienko i nowy kwiat"],
  ["00-hero-dorosli.jpg","😊 Prezent, który rozpakowuje się 24 razy"],
  ["04-prezent.jpg","🎄 Pięknie zapakowany, gotowy pod choinkę"],
- ["02-szufladka.jpg","✨ Codziennie nowe okienko i nowy kwiat"],
  ["03-bukiet.jpg","🌻 W Wigilię: bukiet z 24 kwiatów"],
- ["05-razem.jpg","💛 15 minut razem, bez ekranów"],
- ["01-hero.jpg","🎄 Ozdoba, która cieszy przez cały grudzień"],
- ["10-krok3.jpg","🌷 Bukiet rośnie z dnia na dzień"]
+ ["05-razem.jpg","💛 15 minut razem, bez ekranów"]
 ];
 var gi=0,main=document.getElementById("kwMain"),cap=document.getElementById("kwCaption"),dots=document.getElementById("kwDots"),th=document.getElementById("kwThumbs");
 gallery.forEach(function(g,i){
