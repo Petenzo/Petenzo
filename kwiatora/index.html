@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kwiatora – Kalendarz adwentowy z kwiatami z klocków</title>
+<meta name="description" content="24 okienka, 24 kwiaty z klocków, 1 bukiet, który zostaje na lata. Kalendarz adwentowy Kwiatora: darmowa wysyłka InPost, 14 dni na zwrot.">
+<meta property="og:title" content="Kwiatora – 24 dni budowania bukietu, który nie zwiędnie">
+<meta property="og:description" content="Kalendarz adwentowy z kwiatami z klocków. Codziennie nowy kwiat, w Wigilię gotowy bukiet.">
+<meta property="og:type" content="product">
+<meta property="og:image" content="img/04-prezent.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kw-bg:#FFFFFF;
+  --kw-surface:#FBF7F0;
+  --kw-surface-2:#F3EDE2;
+  --kw-fg:#18241D;
+  --kw-muted:#5E6B63;
+  --kw-border:#E8E0D2;
+  --kw-primary:#1E5B3D;
+  --kw-primary-dark:#123826;
+  --kw-primary-soft:#E8F1EA;
+  --kw-gold:#C9963A;
+  --kw-gold-soft:#FBF1DC;
+  --kw-sale:#B8323A;
+  --kw-sale-soft:#FBE9EA;
+  --kw-ok:#2E8B57;
+  --kw-gradient:linear-gradient(135deg,#2B7A50 0%,#123826 100%);
+  --kw-gradient-gold:linear-gradient(135deg,#E2B866 0%,#B9822A 100%);
+  --kw-shadow-card:0 6px 28px -10px rgba(18,56,38,.22);
+  --kw-shadow-cta:0 12px 30px -10px rgba(18,56,38,.55);
+  --kw-radius:20px;
+  --kw-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --kw-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--kw-font);color:var(--kw-fg);background:var(--kw-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.kw-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.kw-section{padding:56px 0}
+@media(min-width:768px){.kw-section{padding:84px 0}}
+.kw-alt{background:var(--kw-surface)}
+.kw-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--kw-gold);margin-bottom:10px}
+.kw-eyebrow.left{text-align:left}
+.kw-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.kw-h2{font-size:38px}}
+.kw-h2.left{text-align:left}
+.kw-lead{color:var(--kw-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.kw-lead.left{text-align:left;margin-left:0}
+.kw-accent{color:var(--kw-primary);background:var(--kw-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.kw-gold{color:var(--kw-gold)}
+.kw-card{background:#fff;border:1px solid var(--kw-border);border-radius:var(--kw-radius);box-shadow:var(--kw-shadow-card)}
+.kw-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--kw-gradient);box-shadow:var(--kw-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.kw-btn:hover{transform:scale(1.02)}
+.kw-btn.full{width:100%}
+.kw-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.kw-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--kw-primary-soft);color:var(--kw-primary)}
+.kw-pill.gold{background:var(--kw-gold-soft);color:#8A6015}
+.kw-pill.sale{background:var(--kw-sale);color:#fff}
+.kw-stars{color:#F2B33D;letter-spacing:1px}
+.kw-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--kw-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.kw-check svg{width:12px;height:12px}
+.kw-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--kw-sale-soft);color:var(--kw-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.kw-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.kw-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.kw-list b{font-weight:700}
+.kw-photo{border-radius:var(--kw-radius);overflow:hidden;box-shadow:var(--kw-shadow-card)}
+.kw-photo img{width:100%;height:100%;object-fit:cover}
+
+/* top bar marquee */
+.kw-topbar{background:var(--kw-primary-dark);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:9px 0}
+.kw-marquee{display:inline-flex;gap:42px;animation:kw-scroll 32s linear infinite;padding-left:42px}
+.kw-marquee span{display:inline-flex;align-items:center;gap:42px}
+.kw-marquee span::after{content:"✦";color:var(--kw-gold)}
+@keyframes kw-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* nav */
+.kw-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--kw-border)}
+.kw-nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.kw-logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--kw-logo);font-size:24px;color:var(--kw-primary-dark);letter-spacing:.01em}
+.kw-logo-mark{width:34px;height:34px;border-radius:10px;background:var(--kw-gradient);display:grid;place-items:center}
+.kw-menu{display:none;gap:22px;font-size:13.5px;font-weight:500}
+.kw-menu a{text-decoration:none;color:var(--kw-muted)}
+.kw-menu a:hover{color:var(--kw-primary)}
+@media(min-width:960px){.kw-menu{display:flex}}
+.kw-icon-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--kw-border);background:#fff;display:grid;place-items:center;position:relative}
+.kw-cart-count[hidden]{display:none}
+.kw-cart-count{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:10px;background:var(--kw-sale);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px}
+.kw-burger{display:grid}
+@media(min-width:960px){.kw-burger{display:none}}
+.kw-mobile-menu{position:fixed;inset:0;z-index:100;background:#fff;display:none;flex-direction:column}
+.kw-mobile-menu.open{display:flex}
+.kw-mobile-menu .kw-mm-top{display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 16px;border-bottom:1px solid var(--kw-border)}
+.kw-mobile-menu nav{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.kw-mobile-menu nav a{font-size:24px;font-weight:700;text-decoration:none}
+.kw-mobile-menu .kw-mm-close{margin:0 auto 40px;background:none;border:0;text-decoration:underline;color:var(--kw-muted);font-size:15px}
+
+/* hero */
+.kw-hero{padding:28px 0 56px}
+.kw-hero-grid{display:grid;gap:28px}
+@media(min-width:960px){.kw-hero-grid{grid-template-columns:1.05fr 1fr;gap:44px;align-items:start}}
+.kw-gallery-main{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:1/1;background:var(--kw-surface);box-shadow:var(--kw-shadow-card)}
+.kw-gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.kw-gallery-caption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;display:flex;gap:6px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.kw-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.kw-gallery-arrow.prev{left:12px}.kw-gallery-arrow.next{right:12px}
+.kw-dots{display:flex;justify-content:center;gap:6px;margin:12px 0}
+.kw-dots button{width:8px;height:8px;border-radius:4px;border:0;background:#D8D0C2;padding:0;transition:width .2s}
+.kw-dots button.on{width:24px;background:var(--kw-primary)}
+.kw-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.kw-thumbs button{border:2px solid transparent;border-radius:12px;overflow:hidden;padding:0;aspect-ratio:1/1;background:none}
+.kw-thumbs button.on{border-color:var(--kw-primary)}
+.kw-thumbs img{width:100%;height:100%;object-fit:cover}
+.kw-trust-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.kw-trust-tile{display:flex;gap:10px;align-items:center;border:1px solid var(--kw-border);border-radius:14px;padding:12px;background:#fff}
+.kw-trust-tile .ic{width:36px;height:36px;border-radius:10px;background:var(--kw-primary-soft);display:grid;place-items:center;flex:0 0 36px}
+.kw-trust-tile b{display:block;font-size:13px}
+.kw-trust-tile small{color:var(--kw-muted);font-size:11.5px;line-height:1.35;display:block}
+
+.kw-buy h1{font-size:28px;line-height:1.18;font-weight:800;margin:12px 0 10px;letter-spacing:-.015em}
+@media(min-width:768px){.kw-buy h1{font-size:36px}}
+.kw-sub{color:var(--kw-muted);font-size:15px;margin:0 0 14px}
+.kw-rating{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--kw-muted);margin-bottom:16px;flex-wrap:wrap}
+.kw-rating b{color:var(--kw-fg)}
+.kw-price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.kw-price{font-size:34px;font-weight:800;color:var(--kw-primary)}
+.kw-old{font-size:18px;color:var(--kw-muted);text-decoration:line-through}
+.kw-save{background:var(--kw-sale);color:#fff;border-radius:8px;padding:3px 9px;font-size:12.5px;font-weight:700}
+.kw-klarna{display:flex;align-items:center;gap:10px;border:1px solid rgba(30,91,61,.25);background:rgba(30,91,61,.05);border-radius:12px;padding:10px 12px;font-size:13px;margin:12px 0 18px}
+.kw-countdown{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--kw-sale-soft);border:1px dashed rgba(184,50,58,.4);border-radius:14px;padding:10px 14px;margin:18px 0;font-size:13px;font-weight:600;color:var(--kw-sale)}
+.kw-timer{display:flex;gap:6px}
+.kw-timer span{background:#fff;border-radius:8px;padding:4px 7px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--kw-fg);min-width:34px;text-align:center}
+.kw-bundles{display:grid;gap:12px;margin:18px 0}
+.kw-bundles-title{text-align:center;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--kw-muted);display:flex;align-items:center;gap:12px}
+.kw-bundles-title::before,.kw-bundles-title::after{content:"";flex:1;height:1px;background:var(--kw-border)}
+.kw-bundle{position:relative;border:2px solid var(--kw-border);border-radius:18px;padding:14px 16px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
+.kw-bundle.on{border-color:var(--kw-primary);background:var(--kw-primary-soft)}
+.kw-bundle-head{display:flex;align-items:center;gap:12px}
+.kw-radio{width:20px;height:20px;border-radius:50%;border:2px solid #C9C0B0;flex:0 0 20px;display:grid;place-items:center}
+.kw-bundle.on .kw-radio{border-color:var(--kw-primary)}
+.kw-bundle.on .kw-radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--kw-primary)}
+.kw-bundle-name{font-weight:700;font-size:15px}
+.kw-bundle-desc{font-size:12.5px;color:var(--kw-muted)}
+.kw-bundle-price{margin-left:auto;text-align:right}
+.kw-bundle-price b{display:block;font-size:17px;color:var(--kw-primary)}
+.kw-bundle-price s{font-size:12.5px;color:var(--kw-muted)}
+.kw-bundle-tag{position:absolute;top:-11px;right:14px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;color:#fff;background:var(--kw-gradient)}
+.kw-bundle-tag.gold{background:var(--kw-gradient-gold)}
+.kw-variants{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(30,91,61,.25)}
+.kw-bundle.on .kw-variants{display:grid;gap:10px}
+.kw-var-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px}
+.kw-var-row .lbl{color:var(--kw-muted);min-width:118px}
+.kw-var-row .lbl b{color:var(--kw-primary)}
+.kw-swatch{width:38px;height:38px;border-radius:50%;border:2px solid #fff;outline:2px solid var(--kw-border);padding:0;overflow:hidden;background:#fff}
+.kw-swatch.on{outline-color:var(--kw-primary)}
+.kw-swatch img{width:100%;height:100%;object-fit:cover}
+.kw-ship-box{display:flex;gap:10px;align-items:flex-start;background:var(--kw-surface);border-radius:14px;padding:12px 14px;font-size:13px;margin:14px 0}
+.kw-pay{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
+.kw-pay span{font-size:11px;font-weight:700;border:1px solid var(--kw-border);border-radius:7px;padding:5px 9px;background:#fff}
+.kw-pay .blik{background:#111;color:#fff;border-color:#111}
+.kw-pay .visa{background:#1A1F71;color:#fff;border-color:#1A1F71}
+.kw-micro{text-align:center;font-size:12.5px;color:var(--kw-muted);margin-top:10px}
+
+/* benefit strip */
+.kw-strip{background:var(--kw-primary-dark);color:#fff}
+.kw-strip-in{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px 0}
+@media(min-width:768px){.kw-strip-in{grid-template-columns:repeat(4,1fr)}}
+.kw-strip-item{display:flex;gap:10px;align-items:center;font-size:13px}
+.kw-strip-item b{display:block;font-size:14px}
+.kw-strip-item small{opacity:.75}
+
+/* two col */
+.kw-two{display:grid;gap:32px;align-items:center}
+@media(min-width:900px){.kw-two{grid-template-columns:1fr 1fr;gap:56px}}
+.kw-pain{display:grid;gap:10px}
+.kw-pain li{background:#fff;border:1px solid var(--kw-border);border-radius:14px;padding:12px 14px}
+.kw-bridge{margin-top:18px;border-radius:16px;background:var(--kw-primary-soft);padding:16px 18px;font-size:15px;font-weight:600;color:var(--kw-primary-dark)}
+
+/* use cards */
+.kw-uses{display:grid;gap:18px}
+@media(min-width:768px){.kw-uses{grid-template-columns:repeat(3,1fr)}}
+.kw-use{overflow:hidden}
+.kw-use img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.kw-use div{padding:18px 20px 22px}
+.kw-use h3{margin:0 0 6px;font-size:17px}
+.kw-use p{margin:0;color:var(--kw-muted);font-size:14px}
+
+/* steps */
+.kw-steps{display:grid;gap:18px}
+@media(min-width:768px){.kw-steps{grid-template-columns:repeat(3,1fr)}}
+.kw-step{overflow:hidden;position:relative}
+.kw-step img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.kw-step .num{position:absolute;top:14px;left:14px;width:44px;height:44px;border-radius:14px;background:var(--kw-gradient);color:#fff;font-weight:800;display:grid;place-items:center;box-shadow:var(--kw-shadow-cta)}
+.kw-step div.t{padding:18px 20px 22px}
+.kw-step h3{margin:0 0 6px;font-size:17px}
+.kw-step p{margin:0;color:var(--kw-muted);font-size:14px}
+.kw-steps-foot{text-align:center;margin-top:26px;color:var(--kw-muted);font-size:14.5px}
+
+/* tabs */
+.kw-tabs-list{display:flex;justify-content:center;gap:6px;background:var(--kw-surface);border-radius:999px;padding:6px;width:max-content;max-width:100%;margin:0 auto 22px;overflow-x:auto}
+.kw-tabs-list button{border:0;background:none;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;color:var(--kw-muted);white-space:nowrap}
+.kw-tabs-list button.on{background:#fff;color:var(--kw-primary);box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.kw-tab{display:none;padding:24px;gap:24px}
+.kw-tab.on{display:grid}
+@media(min-width:768px){.kw-tab{grid-template-columns:1fr 1fr;padding:32px}}
+.kw-tab h3{margin:0 0 8px;font-size:20px}
+.kw-tab p{margin:0;color:var(--kw-muted);font-size:14.5px}
+.kw-tab-panel{background:var(--kw-surface);border-radius:16px;padding:18px 20px}
+.kw-tab-panel small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--kw-gold);margin-bottom:10px}
+
+/* compare */
+.kw-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.kw-table{width:100%;min-width:680px;border-collapse:separate;border-spacing:0;font-size:14px;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--kw-border)}
+.kw-table th,.kw-table td{padding:15px 14px;text-align:center;border-bottom:1px solid var(--kw-border)}
+.kw-table tr:last-child td{border-bottom:0}
+.kw-table th{font-size:12.5px;font-weight:700;color:var(--kw-muted);background:var(--kw-surface)}
+.kw-table td:first-child,.kw-table th:first-child{text-align:left;font-weight:600;color:var(--kw-fg)}
+.kw-table .us{background:var(--kw-primary-soft)}
+.kw-table th.us{background:var(--kw-primary);color:#fff}
+.kw-yes{color:var(--kw-primary);font-weight:800;font-size:17px}
+.kw-no{color:#C3BBAF;font-weight:700;font-size:17px}
+.kw-mid{color:#C3BBAF;font-weight:800}
+
+/* reviews marquee */
+.kw-rev-head{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px}
+.kw-rev-score{display:flex;align-items:center;gap:10px;font-size:15px}
+.kw-rev-score b{font-size:28px}
+.kw-rev-track{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.kw-rev-row{display:flex;gap:16px;width:max-content;animation:kw-scroll 70s linear infinite;padding:6px 0}
+.kw-rev-row.rev2{animation-duration:80s;animation-direction:reverse;margin-top:16px}
+.kw-rev-track:hover .kw-rev-row{animation-play-state:paused}
+.kw-rev{width:290px;flex:0 0 290px;overflow:hidden;display:flex;flex-direction:column}
+.kw-rev img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.kw-rev .b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kw-rev p{margin:0;font-size:13.5px;color:#36433B;min-height:84px}
+.kw-rev .who{display:flex;align-items:center;gap:10px;margin-top:auto}
+.kw-avatar{width:34px;height:34px;border-radius:50%;background:var(--kw-gradient);color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.kw-rev .who b{font-size:13.5px;display:block}
+.kw-rev .who small{font-size:11.5px;color:var(--kw-ok);font-weight:600}
+.kw-rev .var{font-size:11.5px;color:var(--kw-muted)}
+
+/* adult */
+.kw-adult{background:var(--kw-gold-soft)}
+
+/* upsell / bundle */
+.kw-upsell{display:grid;gap:0;overflow:hidden}
+@media(min-width:768px){.kw-upsell{grid-template-columns:1fr 1fr}}
+.kw-upsell img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+.kw-upsell .b{padding:28px}
+
+/* final cta */
+.kw-final{text-align:center;max-width:680px;margin:0 auto;padding:36px 24px}
+.kw-final .ic{width:56px;height:56px;border-radius:16px;background:var(--kw-gradient);display:grid;place-items:center;margin:0 auto 16px}
+
+/* faq */
+.kw-faq-grid{display:grid;gap:28px}
+@media(min-width:900px){.kw-faq-grid{grid-template-columns:minmax(0,1fr) 1.4fr;gap:48px}}
+.kw-acc{border:1px solid var(--kw-border);border-radius:16px;background:#fff;margin-bottom:10px;overflow:hidden}
+.kw-acc button{width:100%;background:none;border:0;text-align:left;padding:17px 18px;font-weight:600;font-size:15px;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--kw-fg)}
+.kw-acc button::after{content:"+";font-size:22px;font-weight:400;color:var(--kw-primary);transition:transform .2s}
+.kw-acc.open button::after{transform:rotate(45deg)}
+.kw-acc .a{display:none;padding:0 18px 18px;color:var(--kw-muted);font-size:14.5px}
+.kw-acc.open .a{display:block}
+
+/* footer */
+.kw-footer{background:var(--kw-surface);padding:52px 0 26px;border-top:1px solid var(--kw-border)}
+.kw-footer-grid{display:grid;gap:30px}
+@media(min-width:768px){.kw-footer-grid{grid-template-columns:1.3fr 1fr}}
+.kw-footer h4{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--kw-muted);margin:0 0 14px}
+.kw-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:14px}
+.kw-footer ul a{text-decoration:none}
+.kw-footer ul a:hover{color:var(--kw-primary)}
+.kw-foot-contact{display:grid;gap:10px;margin-top:16px;font-size:13.5px}
+.kw-foot-contact div{display:flex;gap:10px;align-items:center}
+.kw-foot-contact .ic{width:32px;height:32px;border-radius:9px;border:1px solid rgba(30,91,61,.3);display:grid;place-items:center}
+.kw-foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--kw-border);margin-top:34px;padding-top:18px;font-size:12px;color:var(--kw-muted)}
+
+/* policy pages */
+.kw-page{display:none}
+.kw-page.on{display:block}
+.kw-policy{max-width:720px;margin:0 auto;padding:48px 16px 24px}
+.kw-policy h1{text-align:center;font-size:34px;margin:0 0 28px}
+.kw-policy h2{font-size:18px;margin:28px 0 8px}
+.kw-policy p,.kw-policy li{color:#3B4740;font-size:14.5px}
+.kw-back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--kw-primary);text-decoration:none;font-weight:600;margin-bottom:12px}
+.kw-form{max-width:560px;margin:48px auto 64px;padding:0 16px}
+.kw-form h2{text-align:center;font-size:26px;margin:0 0 20px}
+.kw-form input,.kw-form textarea{width:100%;border:1px solid var(--kw-border);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14.5px;margin-bottom:12px;background:#fff}
+.kw-form input:focus,.kw-form textarea:focus{outline:2px solid var(--kw-primary-soft);border-color:var(--kw-primary)}
+.kw-form textarea{min-height:120px;resize:vertical}
+.kw-form-ok{display:none;text-align:center;background:var(--kw-primary-soft);color:var(--kw-primary-dark);border-radius:14px;padding:14px;font-weight:600;margin-top:12px}
+
+/* drawer */
+.kw-overlay{position:fixed;inset:0;background:rgba(15,25,20,.55);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
+.kw-overlay.on{opacity:1;pointer-events:auto}
+.kw-drawer{position:fixed;top:0;right:0;height:100%;width:100%;max-width:440px;background:#fff;z-index:95;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column}
+.kw-drawer.on{transform:none}
+.kw-dr-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px}
+.kw-dr-head h3{margin:0;font-size:22px}
+.kw-dr-bar{background:var(--kw-primary-dark);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:10px}
+.kw-dr-progress{padding:14px 20px 0;font-size:12.5px;color:var(--kw-muted)}
+.kw-dr-progress .bar{height:7px;border-radius:4px;background:var(--kw-surface-2);margin-top:6px;overflow:hidden}
+.kw-dr-progress .bar i{display:block;height:100%;background:var(--kw-gradient);transition:width .3s}
+.kw-dr-items{flex:1;overflow:auto;padding:16px 20px;display:grid;gap:14px;align-content:start}
+.kw-item{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start}
+.kw-item img{width:72px;height:72px;border-radius:12px;object-fit:cover}
+.kw-item-top{display:flex;justify-content:space-between;gap:8px}
+.kw-item-top b{font-size:14px}
+.kw-item small{color:var(--kw-muted);font-size:12px;display:block}
+.kw-item-bot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.kw-qty{display:inline-flex;border:1px solid var(--kw-border);border-radius:10px;overflow:hidden}
+.kw-qty button{width:30px;height:30px;border:0;background:#fff;font-size:16px}
+.kw-qty span{width:30px;display:grid;place-items:center;font-size:13px;font-weight:600}
+.kw-item-price{text-align:right;font-size:14px;font-weight:700;color:var(--kw-primary)}
+.kw-item-price s{font-weight:400;color:var(--kw-muted);font-size:12px;margin-right:4px}
+.kw-trash{border:0;background:none;color:var(--kw-muted);padding:2px}
+.kw-upsell-mini{border:2px dashed rgba(30,91,61,.3);border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;font-size:13px}
+.kw-upsell-mini img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.kw-dr-foot{border-top:1px solid var(--kw-border);padding:16px 20px 20px;display:grid;gap:8px;background:var(--kw-surface)}
+.kw-dr-line{display:flex;justify-content:space-between;font-size:14px}
+.kw-dr-line.disc{color:var(--kw-ok);font-weight:700}
+.kw-dr-line.total{font-size:19px;font-weight:800}
+.kw-empty{text-align:center;color:var(--kw-muted);padding:40px 0}
+
+/* modal */
+.kw-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(15,25,20,.55)}
+.kw-modal.on{display:flex}
+.kw-modal-box{background:#fff;border-radius:22px;width:100%;max-width:440px;padding:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.35)}
+.kw-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.kw-modal-head h3{margin:0;font-size:22px}
+.kw-close{width:36px;height:36px;border-radius:50%;border:0;background:var(--kw-surface);font-size:18px}
+.kw-ship-opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;border:2px solid var(--kw-border);border-radius:16px;padding:16px 18px;background:#fff;margin-bottom:10px;font-size:15px;font-weight:700;text-align:left;color:var(--kw-fg)}
+.kw-ship-opt small{display:block;font-weight:500;color:var(--kw-muted);font-size:12px}
+.kw-ship-opt .p{color:var(--kw-ok);font-size:14px;white-space:nowrap}
+.kw-ship-opt.on{background:var(--kw-primary-dark);color:#fff;border-color:var(--kw-primary-dark)}
+.kw-ship-opt.on small{color:rgba(255,255,255,.75)}
+.kw-ship-opt.on .p{color:#9FE0B8}
+
+/* sticky mobile */
+.kw-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--kw-border);padding:10px 16px;display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .25s;box-shadow:0 -8px 24px rgba(0,0,0,.08)}
+.kw-sticky.on{transform:none}
+.kw-sticky .n{font-size:13px;font-weight:700;line-height:1.2}
+.kw-sticky .p{font-size:13px;color:var(--kw-primary);font-weight:700}
+.kw-sticky .kw-btn{margin-left:auto}
+@media(min-width:960px){.kw-sticky{display:none}}
+.kw-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--kw-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.kw-toast.on{opacity:1;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+
+<div class="kw-topbar" aria-label="Promocje">
+  <div class="kw-marquee" id="kwMarquee">
+    <span>Darmowa wysyłka InPost</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna: do −40%</span><span>24 kwiaty · 1 bukiet · 0 więdnięcia</span><span>Bezpieczne płatności BLIK i karta</span>
+    <span>Darmowa wysyłka InPost</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna: do −40%</span><span>24 kwiaty · 1 bukiet · 0 więdnięcia</span><span>Bezpieczne płatności BLIK i karta</span>
+  </div>
+</div>
+
+<header class="kw-nav">
+  <div class="kw-container kw-nav-in">
+    <button class="kw-icon-btn kw-burger" aria-label="Otwórz menu" onclick="kwMenu(true)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a href="#" class="kw-logo" onclick="kwShow('home');return false">
+      <span class="kw-logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="7" r="3.2"/><circle cx="7.2" cy="10.6" r="3.2"/><circle cx="16.8" cy="10.6" r="3.2"/><circle cx="9" cy="15.4" r="3.2"/><circle cx="15" cy="15.4" r="3.2"/><circle cx="12" cy="11.8" r="2.2" fill="#E2B866"/></svg></span>
+      Kwiatora
+    </a>
+    <nav class="kw-menu">
+      <a href="#zastosowania" onclick="kwShow('home')">Dla kogo</a>
+      <a href="#jak-dziala" onclick="kwShow('home')">Jak to działa</a>
+      <a href="#zestaw" onclick="kwShow('home')">Co dostajesz</a>
+      <a href="#porownanie" onclick="kwShow('home')">Porównanie</a>
+      <a href="#opinie" onclick="kwShow('home')">Opinie</a>
+      <a href="#faq" onclick="kwShow('home')">FAQ</a>
+    </nav>
+    <button class="kw-icon-btn" aria-label="Koszyk" onclick="kwCart(true)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span class="kw-cart-count" id="kwCount" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<div class="kw-mobile-menu" id="kwMobile">
+  <div class="kw-mm-top">
+    <span class="kw-logo">Kwiatora</span>
+    <button class="kw-icon-btn" aria-label="Zamknij menu" onclick="kwMenu(false)">✕</button>
+  </div>
+  <nav>
+    <a href="#hero" onclick="kwMenu(false);kwShow('home')">Kalendarz Kwiatora</a>
+    <a href="#jak-dziala" onclick="kwMenu(false);kwShow('home')">Jak to działa</a>
+    <a href="#opinie" onclick="kwMenu(false);kwShow('home')">Opinie</a>
+    <a href="#faq" onclick="kwMenu(false);kwShow('home')">FAQ</a>
+    <a href="#" onclick="kwMenu(false);kwShow('kontakt');return false">Kontakt</a>
+  </nav>
+  <button class="kw-mm-close" onclick="kwMenu(false)">Zamknij menu.</button>
+</div>
+
+<main id="kwHome" class="kw-page on">
+
+<!-- HERO -->
+<section class="kw-hero" id="hero">
+  <div class="kw-container kw-hero-grid">
+    <div>
+      <div class="kw-gallery-main">
+        <img id="kwMain" src="img/04-prezent.jpg" width="1200" height="1200" alt="Kalendarz adwentowy Kwiatora z czerwoną kokardą pod choinką">
+        <button class="kw-gallery-arrow prev" aria-label="Poprzednie zdjęcie" onclick="kwGal(-1)">‹</button>
+        <button class="kw-gallery-arrow next" aria-label="Następne zdjęcie" onclick="kwGal(1)">›</button>
+        <div class="kw-gallery-caption" id="kwCaption">🎁 Prezent, który rozpakowuje się 24 razy</div>
+      </div>
+      <div class="kw-dots" id="kwDots"></div>
+      <div class="kw-thumbs" id="kwThumbs"></div>
+      <div class="kw-trust-tiles">
+        <div class="kw-trust-tile"><span class="ic">🚚</span><div><b>Darmowa wysyłka</b><small>Paczkomat InPost lub kurier</small></div></div>
+        <div class="kw-trust-tile"><span class="ic">↩️</span><div><b>14 dni na zwrot</b><small>Bez podawania przyczyny</small></div></div>
+        <div class="kw-trust-tile"><span class="ic">🔒</span><div><b>Bezpieczne płatności</b><small>BLIK, karta, Apple Pay</small></div></div>
+        <div class="kw-trust-tile"><span class="ic">⭐</span><div><b>4,9 / 5</b><small>Ponad 1 200 zadowolonych rodzin</small></div></div>
+      </div>
+    </div>
+
+    <div class="kw-buy">
+      <span class="kw-pill gold">★ Hit Adwentu 2026 · Edycja limitowana</span>
+      <h1>Odliczaj do Świąt, budując <span class="kw-accent">bukiet, który nigdy nie zwiędnie</span></h1>
+      <p class="kw-sub">Każdego ranka otwierasz okienko, składasz jeden kwiat z klocków i dokładasz go do wazonu. W Wigilię na stole stoi bukiet z 24 kwiatów, który zrobiliście sami i który zostanie z Wami na lata.</p>
+      <div class="kw-rating"><span class="kw-stars">★★★★★</span><b>4,9</b> · 1 248 opinii · <span style="color:var(--kw-ok);font-weight:600">● 37 osób ogląda teraz</span></div>
+      <div class="kw-price-row">
+        <span class="kw-price" id="kwPrice">149,99 zł</span>
+        <span class="kw-old" id="kwOld">249,99 zł</span>
+        <span class="kw-save" id="kwSave">−40%</span>
+      </div>
+      <div class="kw-klarna">
+        <svg width="26" height="18" viewBox="0 0 26 18" fill="none"><rect x="1" y="1" width="24" height="16" rx="3" stroke="#1E5B3D" stroke-width="1.6"/><path d="M1 6h24" stroke="#1E5B3D" stroke-width="1.6"/></svg>
+        <span>lub <b>3 × <span id="kwKlarna">50,00</span> zł</b> bez odsetek · płatność odroczona</span>
+      </div>
+      <ul class="kw-list">
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>24 okienka, 24 różne kwiaty</b>: słonecznik, lilia, lawenda, hortensja i 20 innych</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Ponad 2 600 elementów</b> i obrazkowa instrukcja w każdym okienku</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>15–20 minut dziennie</b> wspólnego czasu bez ekranu</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Zero cukru</b>, zero zapachu, nic się nie psuje ani nie kruszy</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Gotowy bukiet zostaje</b> jako ozdoba na cały rok</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Od 6 do 99 lat</b>: dla dzieci, par i dorosłych, którzy chcą zwolnić</span></li>
+      </ul>
+
+      <div class="kw-countdown"><span>⏳ Cena promocyjna kończy się za:</span><div class="kw-timer"><span id="kwH">00</span><span id="kwM">00</span><span id="kwS">00</span></div></div>
+
+      <div class="kw-bundles" id="kwBundles">
+        <div class="kw-bundles-title">Wybierz zestaw</div>
+      </div>
+
+      <div class="kw-ship-box"><span>📦</span><span><b>Zamów dziś, a wyślemy paczkę w ciągu 24 h.</b> Dostawa do paczkomatu InPost lub kurierem w 2–4 dni robocze. Kalendarz dotrze przed 1 grudnia przy zamówieniu do 26 listopada.</span></div>
+
+      <button class="kw-btn full" onclick="kwAddBundle()">Dodaj do koszyka · <span id="kwCtaPrice">149,99 zł</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="kw-pay"><span class="blik">blik</span><span class="visa">VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span><span>Przelewy24</span></div>
+      <p class="kw-micro">🔒 Bezpieczna płatność · 14 dni na zwrot · Odpowiadamy w 24 h</p>
+    </div>
+  </div>
+</section>
+
+<div class="kw-strip">
+  <div class="kw-container kw-strip-in">
+    <div class="kw-strip-item"><span style="font-size:22px">🚚</span><div><b>Darmowa dostawa</b><small>InPost Paczkomat i kurier</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">↩️</span><div><b>14 dni na zwrot</b><small>Bez tłumaczenia się</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">🔒</span><div><b>Bezpieczne płatności</b><small>Szyfrowane połączenie SSL</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">🎁</span><div><b>Gotowe na prezent</b><small>Pudełko, które cieszy oko</small></div></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="kw-section kw-alt" id="problem">
+  <div class="kw-container kw-two">
+    <div>
+      <span class="kw-eyebrow left">Brzmi znajomo?</span>
+      <h2 class="kw-h2 left">Grudzień miał być magiczny, a <span class="kw-accent">znów mija przy ekranach</span></h2>
+      <p class="kw-lead left">Wszyscy jesteście w domu, a jednak każdy siedzi osobno. Święta pędzą, a wspomnień z nich jest coraz mniej.</p>
+      <ul class="kw-list kw-pain">
+        <li><span class="kw-x">✕</span><span>Dzieci po szkole znikają w telefonie i tablecie, a Ty nie masz siły na kolejną kłótnię o ekran.</span></li>
+        <li><span class="kw-x">✕</span><span>Czekoladka z kalendarza znika w 3 sekundy i zostaje tylko pusta tekturka i więcej cukru.</span></li>
+        <li><span class="kw-x">✕</span><span>Co roku kupujesz prezenty, o których wszyscy zapominają przed Sylwestrem.</span></li>
+        <li><span class="kw-x">✕</span><span>Wieczory zlewają się w jedno: kolacja, serial, sen. Nic, na co się czeka.</span></li>
+        <li><span class="kw-x">✕</span><span>Chcesz zwolnić i zrobić coś rękami, ale nie wiesz od czego zacząć.</span></li>
+        <li><span class="kw-x">✕</span><span>Kwiaty na święta więdną po tygodniu, a wydane na nie pieniądze lądują w koszu.</span></li>
+      </ul>
+      <div class="kw-bridge">A gdyby odliczanie do Świąt było codziennym, 15-minutowym rytuałem, na który wszyscy czekają, a na końcu zostawało coś pięknego?</div>
+    </div>
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="img/06-problem.jpg" width="1200" height="900" loading="lazy" alt="Dzieci wpatrzone w telefon i tablet, mama patrzy z boku"></div>
+  </div>
+</section>
+
+<!-- USES -->
+<section class="kw-section" id="zastosowania">
+  <div class="kw-container">
+    <span class="kw-eyebrow">Jeden kalendarz, wiele okazji</span>
+    <h2 class="kw-h2">Komu sprawisz <span class="kw-accent">największą radość?</span></h2>
+    <p class="kw-lead">Kwiatora łączy to, czego brakuje w grudniu: wspólny czas, chwilę spokoju i prezent, który ma sens.</p>
+    <div class="kw-uses">
+      <article class="kw-card kw-use"><img src="img/05-razem.jpg" width="1200" height="1200" loading="lazy" alt="Mama i córka składają kwiat z klocków"><div><h3>Dla dziecka i całej rodziny</h3><p>Zamiast cukru: 24 poranki pełne ciekawości. Dziecko ćwiczy cierpliwość i skupienie, a Wy macie wspólny rytuał.</p></div></article>
+      <article class="kw-card kw-use"><img src="img/11-dla-doroslych.jpg" width="1200" height="900" loading="lazy" alt="Kobieta z herbatą składa lawendę z klocków"><div><h3>Dla niej, dla niego, dla siebie</h3><p>Kwadrans uważności po pracy. Składanie kwiatów wycisza głowę lepiej niż przewijanie telefonu.</p></div></article>
+      <article class="kw-card kw-use"><img src="img/03-bukiet.jpg" width="1200" height="1200" loading="lazy" alt="Bukiet z klocków na parapecie zimą"><div><h3>Jako ozdoba na cały rok</h3><p>Bukiet, który nie więdnie i nie wymaga wody. Pięknie wygląda na stole wigilijnym i na biurku w lipcu.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="kw-section kw-alt">
+  <div class="kw-container kw-two">
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="img/07-rozwiazanie.jpg" width="1200" height="900" loading="lazy" alt="Rodzina razem składa kwiaty z klocków przy stole"></div>
+    <div>
+      <span class="kw-eyebrow left">Odzyskaj wspólny czas</span>
+      <h2 class="kw-h2 left">Telefony lądują na stole <span class="kw-accent">ekranem w dół</span></h2>
+      <p class="kw-lead left">Kwiatora zamienia każdy grudniowy dzień w małe wydarzenie. Nie trzeba niczego planować, wystarczy otworzyć kolejne okienko.</p>
+      <ul class="kw-list">
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Codzienna niespodzianka</b>, która wyciąga dzieci z łóżka szybciej niż budzik</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Wspólny cel</b>: każdy kwiat to kolejny krok do świątecznego bukietu</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Rozmowy przy stole</b>, śmiech i duma z tego, co zrobiliście razem</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Rozwija wyobraźnię</b>, motorykę małą i cierpliwość bez nudnych ćwiczeń</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Instrukcja obrazkowa</b>: poradzi sobie 6-latek i dziadek bez okularów</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Pamiątka z tych Świąt</b>, która co roku wraca na stół</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="kw-section" id="jak-dziala">
+  <div class="kw-container">
+    <span class="kw-eyebrow">24 dni małych niespodzianek</span>
+    <h2 class="kw-h2">Twój bukiet w <span class="kw-accent">3 prostych krokach</span></h2>
+    <p class="kw-lead">Codziennie ten sam miły rytuał. Żadnego kleju, nożyczek ani bałaganu.</p>
+    <ol class="kw-steps" style="list-style:none;padding:0;margin:0">
+      <li class="kw-card kw-step"><span class="num">01</span><img src="img/08-krok1.jpg" width="1200" height="900" loading="lazy" alt="Dziecko otwiera okienko numer 12"><div class="t"><h3>Otwórz okienko dnia</h3><p>W środku czekają klocki na jeden kwiat i obrazkowa instrukcja. Każdy dzień to inna niespodzianka.</p></div></li>
+      <li class="kw-card kw-step"><span class="num">02</span><img src="img/09-krok2.jpg" width="1200" height="900" loading="lazy" alt="Dłonie składają lilię z klocków"><div class="t"><h3>Złóż swój kwiat</h3><p>15–20 minut skupienia, krok po kroku. Proste dla dziecka, satysfakcjonujące dla dorosłego.</p></div></li>
+      <li class="kw-card kw-step"><span class="num">03</span><img src="img/10-krok3.jpg" width="1200" height="900" loading="lazy" alt="Dokładanie tulipana do wazonu z bukietem"><div class="t"><h3>Dodaj go do bukietu</h3><p>Wstaw kwiat do wazonu i patrz, jak bukiet rośnie z dnia na dzień aż do Wigilii.</p></div></li>
+    </ol>
+    <p class="kw-steps-foot">24 dni otwierania, składania i czekania. W Wigilię na stole stoi bukiet, który <b>zrobiliście sami</b>.</p>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="kw-section kw-alt" id="zestaw">
+  <div class="kw-container">
+    <span class="kw-eyebrow">Wszystko w jednym pudełku</span>
+    <h2 class="kw-h2">Co dokładnie <span class="kw-accent">dostajesz</span></h2>
+    <p class="kw-lead">Otwierasz paczkę i możesz zaczynać. Nie trzeba niczego dokupować.</p>
+    <div class="kw-tabs-list" role="tablist">
+      <button class="on" onclick="kwTab(0)">W pudełku</button>
+      <button onclick="kwTab(1)">Kwiaty</button>
+      <button onclick="kwTab(2)">Wymiary</button>
+    </div>
+    <div class="kw-card kw-tab on">
+      <div><h3>Kalendarz adwentowy Kwiatora</h3><p>Świąteczne pudełko w czerwono-zielone okienka ze złotymi numerami. Pięknie wygląda na komodzie, a z kokardą jest gotowym prezentem.</p></div>
+      <div class="kw-tab-panel"><small>W zestawie</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>24 numerowane okienka z klockami</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Ponad 2 600 elementów</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>24 obrazkowe instrukcje</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Świąteczne pudełko prezentowe</li></ul></div>
+    </div>
+    <div class="kw-card kw-tab">
+      <div><h3>24 różne kwiaty, 1 kolorowy bukiet</h3><p>Każdy dzień to inny gatunek. Razem tworzą bogaty, kolorowy bukiet pełen faktur i odcieni.</p></div>
+      <div class="kw-tab-panel"><small>Między innymi</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Słonecznik, stokrotka i róża</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Lilia, tulipan i narcyz</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Lawenda i hortensja</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Goździk, gipsówka i zielone liście</li></ul></div>
+    </div>
+    <div class="kw-card kw-tab">
+      <div><h3>Wymiary i bezpieczeństwo</h3><p>Klocki z gładkiego, trwałego tworzywa ABS, bez ostrych krawędzi i bez zapachu. Zalecany wiek: od 6 lat.</p></div>
+      <div class="kw-tab-panel"><small>Specyfikacja</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Wysokość kwiatu: ok. 25–30 cm</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Materiał: tworzywo ABS</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Kompatybilne z popularnymi klockami</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Wiek: 6+ (drobne elementy)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="kw-section" id="porownanie">
+  <div class="kw-container">
+    <span class="kw-eyebrow">Zobacz różnicę</span>
+    <h2 class="kw-h2">Dlaczego <span class="kw-accent">Kwiatora</span>, a nie zwykły kalendarz?</h2>
+    <p class="kw-lead">Porównaj, co realnie zostaje po 24 dniach.</p>
+    <div class="kw-table-wrap">
+      <table class="kw-table">
+        <thead><tr><th>Kryterium</th><th class="us">Kwiatora</th><th>Kalendarz ze słodyczami</th><th>Zwykłe klocki</th><th>Żywe kwiaty</th></tr></thead>
+        <tbody>
+          <tr><td>Codzienna niespodzianka przez 24 dni</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>Wspólny czas bez ekranu</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>Zero cukru</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td></tr>
+          <tr><td>Zostaje coś na lata</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>Ozdoba domu na Święta i cały rok</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td></tr>
+          <tr><td>Dla dzieci i dorosłych</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="kw-section kw-alt" id="opinie">
+  <div class="kw-container">
+    <span class="kw-eyebrow">Opinie klientów</span>
+    <h2 class="kw-h2">Zobacz, co mówią <span class="kw-accent">rodziny z całej Polski</span></h2>
+    <div class="kw-rev-head">
+      <div class="kw-rev-score"><b>4,9</b><span class="kw-stars" style="font-size:20px">★★★★★</span></div>
+      <div style="font-size:13.5px;color:var(--kw-muted)">Na podstawie 1 248 zweryfikowanych zakupów</div>
+    </div>
+  </div>
+  <div class="kw-rev-track"><div class="kw-rev-row" id="kwRev1"></div><div class="kw-rev-row rev2" id="kwRev2"></div></div>
+</section>
+
+<!-- ADULT -->
+<section class="kw-section kw-adult">
+  <div class="kw-container kw-two">
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="img/11-dla-doroslych.jpg" width="1200" height="900" loading="lazy" alt="Kobieta relaksuje się, składając kwiat z klocków"></div>
+    <div>
+      <span class="kw-eyebrow left">Nie tylko dla dzieci</span>
+      <h2 class="kw-h2 left">Kto powiedział, że klocki są <span class="kw-accent">tylko dla dzieci?</span></h2>
+      <p class="kw-lead left">Coraz więcej dorosłych odkrywa, że składanie kwiatów działa jak medytacja: telefon odłożony, głowa wolna, ręce zajęte czymś przyjemnym.</p>
+      <ul class="kw-list">
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>15 minut tylko dla siebie</b> każdego grudniowego wieczoru</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Idealny prezent dla partnerki</b>, mamy lub przyjaciółki</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Kwiaty, które nie więdną</b>, więc cieszą długo po Świętach</span></li>
+      </ul>
+      <button class="kw-btn" style="margin-top:22px" onclick="kwScrollBuy()">Chcę swój bukiet</button>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<section class="kw-section">
+  <div class="kw-container">
+    <span class="kw-eyebrow">Dopełnij bukiet</span>
+    <h2 class="kw-h2">Twoje kwiaty zasługują na <span class="kw-accent">piękny wazon</span></h2>
+    <p class="kw-lead">Dobierz go teraz, a w Wigilię nie będziesz szukać słoika po ogórkach.</p>
+    <div class="kw-card kw-upsell">
+      <img src="img/12-wazon.jpg" width="1200" height="1200" loading="lazy" alt="Szklany wazon z bukietem kwiatów z klocków">
+      <div class="b">
+        <span class="kw-pill">Dodatek do zestawu</span>
+        <h3 style="font-size:24px;margin:12px 0 8px">Szklany wazon Kwiatora</h3>
+        <p style="color:var(--kw-muted);margin:0 0 16px">Ciężka, stabilna podstawa i smukły kształt, w którym bukiet z 24 kwiatów wygląda jak z kwiaciarni.</p>
+        <ul class="kw-list">
+          <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Grube, przejrzyste szkło</li>
+          <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Dopasowany do całego bukietu</li>
+          <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Bezpiecznie zapakowany</li>
+        </ul>
+        <div class="kw-price-row" style="margin-top:18px"><span class="kw-price" style="font-size:28px">39,99 zł</span><span class="kw-old">69,99 zł</span></div>
+        <button class="kw-btn" style="margin-top:10px" onclick="kwAddVase()">Dodaj wazon do koszyka</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="kw-section kw-alt">
+  <div class="kw-container">
+    <div class="kw-card kw-final">
+      <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
+      <h2 class="kw-h2">Te Święta mogą wyglądać <span class="kw-accent">zupełnie inaczej</span></h2>
+      <p class="kw-lead" style="margin-bottom:22px">24 poranki pełne ekscytacji, 24 wieczory razem przy stole i bukiet, który za rok przypomni Wam o tym grudniu. Zostało niewiele sztuk w cenie promocyjnej.</p>
+      <button class="kw-btn" onclick="kwScrollBuy()">Zamawiam Kwiatorę i odliczam do Świąt</button>
+      <p class="kw-micro">🚚 Darmowa wysyłka · ↩️ 14 dni na zwrot · 🔒 Bezpieczna płatność</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="kw-section" id="faq">
+  <div class="kw-container kw-faq-grid">
+    <div>
+      <span class="kw-eyebrow left">FAQ</span>
+      <h2 class="kw-h2 left">Najczęściej zadawane <span class="kw-accent">pytania</span></h2>
+      <p class="kw-lead left">Nie znalazłeś odpowiedzi? Napisz do nas, odpowiadamy w ciągu 24 godzin.</p>
+      <button class="kw-btn small" onclick="kwShow('kontakt')">Napisz do nas</button>
+    </div>
+    <div id="kwFaq"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- POLICY PAGES -->
+<main id="kwPages"></main>
+
+<footer class="kw-footer">
+  <div class="kw-container">
+    <div class="kw-footer-grid">
+      <div>
+        <span class="kw-logo">Kwiatora</span>
+        <p style="color:var(--kw-muted);font-size:14px;max-width:360px">Kalendarze adwentowe z kwiatami z klocków. Tworzymy prezenty, które łączą rodziny i zostają na dłużej niż jeden sezon.</p>
+        <div class="kw-foot-contact">
+          <div><span class="ic">✉️</span><a href="mailto:wojciechmotyka604@gmail.com">wojciechmotyka604@gmail.com</a></div>
+          <div><span class="ic">🕘</span>Odpowiadamy pon.–pt. w 24 h</div>
+        </div>
+      </div>
+      <div>
+        <h4>Informacje</h4>
+        <ul>
+          <li><a href="#" onclick="kwShow('regulamin');return false">Regulamin</a></li>
+          <li><a href="#" onclick="kwShow('prywatnosc');return false">Polityka prywatności</a></li>
+          <li><a href="#" onclick="kwShow('wysylka');return false">Polityka wysyłki</a></li>
+          <li><a href="#" onclick="kwShow('zwroty');return false">Zwroty i reklamacje</a></li>
+          <li><a href="#" onclick="kwShow('kontakt');return false">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="kw-foot-bottom"><span>Kwiatora © 2026</span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="kw-overlay" id="kwOverlay" onclick="kwCart(false)"></div>
+<aside class="kw-drawer" id="kwDrawer" aria-label="Koszyk">
+  <div class="kw-dr-head"><h3>Koszyk · <span id="kwDrCount">0</span></h3><button class="kw-close" aria-label="Zamknij koszyk" onclick="kwCart(false)">✕</button></div>
+  <div class="kw-dr-bar">🚚 Darmowa dostawa InPost · ↩️ 14 dni na zwrot</div>
+  <div class="kw-dr-progress" id="kwProgress"></div>
+  <div class="kw-dr-items" id="kwItems"></div>
+  <div class="kw-dr-foot">
+    <div class="kw-dr-line disc"><span>Łączny rabat</span><span id="kwDisc">−0,00 zł</span></div>
+    <div class="kw-dr-line total"><span>Łączna kwota</span><span id="kwTotal">0,00 zł</span></div>
+    <div class="kw-dr-line" style="color:var(--kw-muted)"><span>Dostawa</span><span id="kwShipLine">Wybierzesz w następnym kroku</span></div>
+    <button class="kw-btn full" id="kwCheckout" onclick="kwShipModal(true)">Realizuj zakup</button>
+    <div class="kw-pay"><span class="blik">blik</span><span class="visa">VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span></div>
+  </div>
+</aside>
+
+<!-- SHIPPING MODAL -->
+<div class="kw-modal" id="kwShip" onclick="if(event.target===this)kwShipModal(false)">
+  <div class="kw-modal-box">
+    <div class="kw-modal-head"><h3>Wybierz dostawę</h3><button class="kw-close" onclick="kwShipModal(false)">✕</button></div>
+    <button class="kw-ship-opt on" data-ship="paczkomat" onclick="kwPickShip(this)"><span>📦 Paczkomat InPost<small>2–4 dni robocze · 24/7 odbiór</small></span><span class="p">0,00 zł</span></button>
+    <button class="kw-ship-opt" data-ship="kurier" onclick="kwPickShip(this)"><span>🚚 Kurier InPost<small>2–4 dni robocze · pod same drzwi</small></span><span class="p">0,00 zł</span></button>
+    <button class="kw-btn full" style="margin-top:6px" onclick="kwGoCheckout()">Przejdź do płatności</button>
+    <p class="kw-micro">Adres i punkt odbioru wskażesz w kasie na następnym ekranie.</p>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="kw-modal" id="kwContact" onclick="if(event.target===this)this.classList.remove('on')">
+  <div class="kw-modal-box" style="text-align:center">
+    <div class="kw-modal-head"><h3>Kontakt</h3><button class="kw-close" onclick="document.getElementById('kwContact').classList.remove('on')">✕</button></div>
+    <p>Skontaktuj się tutaj z nami: <a href="mailto:wojciechmotyka604@gmail.com" style="color:var(--kw-primary);font-weight:700">wojciechmotyka604@gmail.com</a></p>
+    <button class="kw-btn full" onclick="document.getElementById('kwContact').classList.remove('on')">Zamknij</button>
+  </div>
+</div>
+
+<div class="kw-sticky" id="kwSticky">
+  <div><div class="n">Kalendarz Kwiatora</div><div class="p" id="kwStickyPrice">149,99 zł <s style="color:var(--kw-muted);font-weight:400">249,99 zł</s></div></div>
+  <button class="kw-btn small" onclick="kwAddBundle()">Do koszyka</button>
+</div>
+<div class="kw-toast" id="kwToast">Dodano do koszyka ✓</div>
+
+<script>
+(function(){
+var IMG="img";
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="wojciechmotyka604@gmail.com";
+
+var gallery=[
+ ["04-prezent.jpg","🎁 Prezent, który rozpakowuje się 24 razy"],
+ ["02-szufladka.jpg","✨ Codziennie nowe okienko i nowy kwiat"],
+ ["03-bukiet.jpg","🌻 W Wigilię: bukiet z 24 kwiatów"],
+ ["05-razem.jpg","💛 15 minut razem, bez ekranów"],
+ ["01-hero.jpg","🎄 Ozdoba, która cieszy przez cały grudzień"],
+ ["10-krok3.jpg","🌷 Bukiet rośnie z dnia na dzień"]
+];
+var gi=0,main=document.getElementById("kwMain"),cap=document.getElementById("kwCaption"),dots=document.getElementById("kwDots"),th=document.getElementById("kwThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+IMG+'/'+g[0]+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=IMG+"/"+gallery[gi][0];main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.kwGal=function(s){setG(gi+s)};setG(0);
+
+/* BUNDLES */
+var VARIANTS=[{id:"slonecznik",name:"Słoneczny Bukiet",img:"03-bukiet.jpg"},{id:"roza",name:"Różany Bukiet",img:"16-opinia-roza.jpg"},{id:"lawenda",name:"Lawendowy Bukiet",img:"12-wazon.jpg"}];
+var BUNDLES=[
+ {q:1,name:"1 kalendarz",desc:"Pakiet startowy",price:149.99,old:249.99},
+ {q:2,name:"2 kalendarze",desc:"Dla Ciebie i na prezent · 134,99 zł/szt.",price:269.98,old:499.98,tag:"Najczęściej wybierany"},
+ {q:3,name:"3 kalendarze",desc:"Zestaw rodzinny · 124,99 zł/szt.",price:374.97,old:749.97,tag:"Najlepsza cena",gold:true}
+];
+var sel=0,choice=[[0],[0,1],[0,1,2]];
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
+var bw=document.getElementById("kwBundles");
+BUNDLES.forEach(function(b,i){
+  var el=document.createElement("div");el.className="kw-bundle";el.onclick=function(e){if(e.target.closest(".kw-swatch"))return;pick(i)};
+  var v="";for(var k=0;k<b.q;k++){v+='<div class="kw-var-row"><span class="lbl">Sztuka '+(k+1)+': <b data-l="'+k+'"></b></span>';VARIANTS.forEach(function(x,j){v+='<button class="kw-swatch" data-k="'+k+'" data-j="'+j+'" title="'+x.name+'"><img src="'+IMG+'/'+x.img+'" alt="'+x.name+'"></button>'});v+='</div>'}
+  el.innerHTML=(b.tag?'<span class="kw-bundle-tag'+(b.gold?' gold':'')+'">'+b.tag+'</span>':'')+
+   '<div class="kw-bundle-head"><span class="kw-radio"></span><div><div class="kw-bundle-name">'+b.name+'</div><div class="kw-bundle-desc">'+b.desc+'</div></div><div class="kw-bundle-price"><b>'+zl(b.price)+'</b><s>'+zl(b.old)+'</s></div></div><div class="kw-variants">'+v+'</div>';
+  el.querySelectorAll(".kw-swatch").forEach(function(s){s.onclick=function(){choice[i][+s.dataset.k]=+s.dataset.j;render()}});
+  bw.appendChild(el);
+});
+function pick(i){sel=i;render()}
+function render(){
+  [].forEach.call(bw.querySelectorAll(".kw-bundle"),function(el,i){el.classList.toggle("on",i===sel);
+    el.querySelectorAll(".kw-swatch").forEach(function(s){s.classList.toggle("on",choice[i][+s.dataset.k]===+s.dataset.j)});
+    el.querySelectorAll("[data-l]").forEach(function(l){l.textContent=VARIANTS[choice[i][+l.dataset.l]].name})});
+  var b=BUNDLES[sel];
+  document.getElementById("kwPrice").textContent=zl(b.price);document.getElementById("kwOld").textContent=zl(b.old);
+  document.getElementById("kwSave").textContent="−"+Math.round((1-b.price/b.old)*100)+"%";
+  document.getElementById("kwCtaPrice").textContent=zl(b.price);document.getElementById("kwKlarna").textContent=(b.price/3).toFixed(2).replace(".",",");
+  document.getElementById("kwStickyPrice").innerHTML=zl(b.price)+' <s style="color:var(--kw-muted);font-weight:400">'+zl(b.old)+'</s>';
+}
+render();
+
+/* CART */
+var cart=[];
+function save(){try{localStorage.setItem("kwCart",JSON.stringify(cart))}catch(e){}}
+try{cart=JSON.parse(localStorage.getItem("kwCart")||"[]")}catch(e){cart=[]}
+var VASE={key:"wazon",name:"Szklany wazon Kwiatora",variant:"Dodatek",img:"12-wazon.jpg",price:39.99,old:69.99};
+function unitFor(q){return q>=3?124.99:q===2?134.99:149.99}
+function calCount(){return cart.filter(function(i){return i.key!=="wazon"}).reduce(function(s,i){return s+i.qty},0)}
+function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
+window.kwAddBundle=function(){var b=BUNDLES[sel];choice[sel].forEach(function(j){var v=VARIANTS[j];addItem({key:"kal-"+v.id,name:"Kalendarz Kwiatora",variant:v.name,img:v.img,qty:1,old:249.99})});kwCart(true)};
+window.kwAddVase=function(){addItem(Object.assign({qty:1},VASE));kwCart(true)};
+function drawCart(){
+  var n=calCount(),u=unitFor(n),items=document.getElementById("kwItems"),tot=0,old=0,cnt=0;
+  items.innerHTML="";
+  if(!cart.length){items.innerHTML='<div class="kw-empty">Twój koszyk jest pusty 🌷<br><br><button class="kw-btn small" onclick="kwCart(false);kwScrollBuy()">Wybierz zestaw</button></div>'}
+  cart.forEach(function(it,idx){
+    var p=it.key==="wazon"?it.price:u;tot+=p*it.qty;old+=it.old*it.qty;cnt+=it.qty;
+    var d=document.createElement("div");d.className="kw-item";
+    d.innerHTML='<img src="'+IMG+'/'+it.img+'" alt=""><div><div class="kw-item-top"><div><b>'+it.name+'</b><small>'+it.variant+'</small></div><button class="kw-trash" aria-label="Usuń">🗑</button></div><div class="kw-item-bot"><div class="kw-qty"><button aria-label="Mniej">−</button><span>'+it.qty+'</span><button aria-label="Więcej">+</button></div><div class="kw-item-price"><s>'+zl(it.old*it.qty)+'</s>'+zl(p*it.qty)+'<small style="color:var(--kw-ok)">Oszczędzasz '+zl((it.old-p)*it.qty)+'</small></div></div></div>';
+    var bs=d.querySelectorAll("button");
+    bs[0].onclick=function(){cart.splice(idx,1);save();drawCart()};
+    bs[1].onclick=function(){it.qty--;if(it.qty<1)cart.splice(idx,1);save();drawCart()};
+    bs[2].onclick=function(){it.qty++;save();drawCart()};
+    items.appendChild(d);
+  });
+  if(cart.length&&!cart.some(function(c){return c.key==="wazon"})){
+    var up=document.createElement("div");up.className="kw-upsell-mini";
+    up.innerHTML='<img src="'+IMG+'/12-wazon.jpg" alt=""><div style="flex:1">➕ <b>Dobierz szklany wazon</b> za <b style="color:var(--kw-ok)">39,99 zł</b> <s style="color:var(--kw-muted)">69,99 zł</s></div><button class="kw-btn small">Dodaj</button>';
+    up.querySelector("button").onclick=function(){addItem(Object.assign({qty:1},VASE))};items.appendChild(up);
+  }
+  var pr=document.getElementById("kwProgress");
+  if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>'+(n===1?"1 kalendarz":"1 kalendarz")+'</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>124,99 zł</b> za kalendarz<div class="bar"><i style="width:100%"></i></div>';
+  document.getElementById("kwTotal").textContent=zl(tot);document.getElementById("kwDisc").textContent="−"+zl(old-tot);
+  document.getElementById("kwDrCount").textContent=cnt;var c=document.getElementById("kwCount");c.textContent=cnt;c.hidden=!cnt;
+  document.getElementById("kwCheckout").disabled=!cnt;document.getElementById("kwCheckout").style.opacity=cnt?1:.5;
+}
+drawCart();
+function toast(){var t=document.getElementById("kwToast");t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1600)}
+window.kwCart=function(o){document.getElementById("kwDrawer").classList.toggle("on",o);document.getElementById("kwOverlay").classList.toggle("on",o);document.body.style.overflow=o?"hidden":""};
+window.kwShipModal=function(o){document.getElementById("kwShip").classList.toggle("on",o)};
+window.kwPickShip=function(b){document.querySelectorAll(".kw-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("kwShipLine").textContent=b.dataset.ship==="kurier"?"Kurier InPost · 0,00 zł":"Paczkomat InPost · 0,00 zł"};
+window.kwGoCheckout=function(){window.location.href=CHECKOUT_URL};
+window.kwMenu=function(o){document.getElementById("kwMobile").classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
+window.kwScrollBuy=function(){kwShow("home");document.getElementById("kwBundles").scrollIntoView({behavior:"smooth",block:"center"})};
+
+/* TABS */
+window.kwTab=function(i){document.querySelectorAll(".kw-tabs-list button").forEach(function(b,k){b.classList.toggle("on",k===i)});document.querySelectorAll(".kw-tab").forEach(function(t,k){t.classList.toggle("on",k===i)})};
+
+/* COUNTDOWN (do północy) */
+function tick(){var n=new Date(),e=new Date(n);e.setHours(23,59,59,999);var s=Math.max(0,Math.floor((e-n)/1000));
+  document.getElementById("kwH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");document.getElementById("kwS").textContent=String(s%60).padStart(2,"0")}
+tick();setInterval(tick,1000);
+
+/* STICKY */
+window.addEventListener("scroll",function(){document.getElementById("kwSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("kwHome").classList.contains("on"))},{passive:true});
+
+/* REVIEWS */
+var R=[
+ ["Amelia","Kraków","13-opinia-slonecznik.jpg","Słoneczny Bukiet","Córka codziennie rano biegnie do kalendarza przed śniadaniem. Słonecznik złożyła sama i nie odstępuje go na krok. Najlepszy kalendarz, jaki u nas był."],
+ ["Piotr","Wrocław","07-rozwiazanie.jpg","Słoneczny Bukiet","Wieczorami siadamy całą rodziną i każdy pomaga przy kwiatku. Telefony leżą odłożone, a dzieci same pytają, kiedy składamy. Polecam każdemu."],
+ ["Julia","Gdańsk","14-opinia-kuchnia.jpg","Różany Bukiet","Paczka przyszła szybko i była świetnie zapakowana. Pudełko wygląda na żywo jeszcze ładniej niż na zdjęciach. Stoi u nas w kuchni jako ozdoba."],
+ ["Aleksander","Poznań","09-krok2.jpg","Lawendowy Bukiet","Kupiłem dla żony, a sam też się wciągnąłem. Instrukcje są czytelne, klocki dobrze do siebie pasują. Każdy kwiat wygląda bardzo realistycznie."],
+ ["Natalia","Łódź","15-opinia-biurko.jpg","Słoneczny Bukiet","Bukiet stoi teraz na moim biurku w pracy i każdy o niego pyta. Nie trzeba go podlewać, a wygląda pięknie. Kupię znowu na kolejne Święta."],
+ ["Zofia","Lublin","05-razem.jpg","Różany Bukiet","Składamy z córką codziennie po szkole. To nasz kwadrans tylko dla siebie i obie na niego czekamy. Klocki są solidne i nie mają zapachu."],
+ ["Kacper","Katowice","16-opinia-roza.jpg","Różany Bukiet","Róża wyszła tak ładnie, że dałem ją mamie od razu. Składanie jest proste, ale daje dużo satysfakcji. Bardzo udany prezent na Mikołajki."],
+ ["Maja","Szczecin","03-bukiet.jpg","Słoneczny Bukiet","Gotowy bukiet stoi na parapecie i wygląda jak prawdziwe kwiaty. Goście nie wierzą, że jest z klocków. Na pewno zostaje z nami na cały rok."],
+ ["Oliwia","Bydgoszcz","11-dla-doroslych.jpg","Lawendowy Bukiet","Kupiłam dla siebie, żeby wieczorem odpocząć od telefonu. Składanie bardzo mnie uspokaja. Kwadrans dziennie i głowa od razu lżejsza."],
+ ["Szymon","Rzeszów","08-krok1.jpg","Słoneczny Bukiet","Syn sam pilnuje, który numer dziś otwieramy. Każde okienko to dla niego wielka niespodzianka. Zero cukru, a radość większa niż z czekoladek."],
+ ["Hanna","Toruń","10-krok3.jpg","Lawendowy Bukiet","Codziennie dokładamy nowy kwiat do wazonu i bukiet rośnie w oczach. Dzieci są dumne, że zrobiły go same. Piękna świąteczna tradycja."],
+ ["Mateusz","Białystok","04-prezent.jpg","Różany Bukiet","Dałem dziewczynie z kokardą pod choinkę i trafiłem idealnie. Pudełko wygląda bardzo elegancko. Cena jest uczciwa za taką jakość."]
+];
+function card(r){return '<article class="kw-card kw-rev"><img src="'+IMG+'/'+r[2]+'" width="400" height="300" alt="Zdjęcie od klienta"><div class="b"><span class="kw-stars">★★★★★</span><p>'+r[4]+'</p><span class="var">Wariant: '+r[3]+'</span><div class="who"><span class="kw-avatar">'+r[0][0]+'</span><div><b>'+r[0]+', '+r[1]+'</b><small>✓ Zweryfikowany zakup</small></div></div></div></article>'}
+var a=R.slice(0,6),b=R.slice(6);
+document.getElementById("kwRev1").innerHTML=(a.concat(a)).map(card).join("");
+document.getElementById("kwRev2").innerHTML=(b.concat(b)).map(card).join("");
+
+/* FAQ */
+var F=[
+ ["Od jakiego wieku jest kalendarz?","Zalecamy od 6 lat. Młodsze dzieci świetnie bawią się z pomocą rodzica. Wielu naszych klientów to dorośli, którzy kupują Kwiatorę dla siebie."],
+ ["Czy złożenie kwiatu jest trudne?","Nie. Każde okienko ma obrazkową instrukcję krok po kroku. Jeden kwiat zajmuje zwykle 15–20 minut."],
+ ["Co jest w każdym okienku?","Klocki potrzebne do złożenia jednego kwiatu i instrukcja. Codziennie jest to inny kwiat, a razem tworzą bukiet z 24 kwiatów."],
+ ["Czy kwiaty pasują do innych klocków?","Tak, elementy są kompatybilne z najpopularniejszymi klockami konstrukcyjnymi dostępnymi w Polsce."],
+ ["Ile trwa dostawa?","Wysyłamy w ciągu 24 godzin, a dostawa do paczkomatu InPost lub kurierem trwa zwykle 2–4 dni robocze. Wysyłka jest darmowa."],
+ ["Czy mogę zwrócić produkt?","Tak. Masz 14 dni od otrzymania paczki na zwrot bez podawania przyczyny. Wystarczy napisać na "+EMAIL+"."],
+ ["Czy mogę zacząć później niż 1 grudnia?","Oczywiście. Możesz otworzyć kilka okienek naraz albo potraktować kalendarz jako 24 wieczory budowania w dowolnym momencie."],
+ ["Czy to dobry prezent dla dorosłego?","Zdecydowanie. Składanie kwiatów relaksuje, a gotowy bukiet to elegancka ozdoba, która nie więdnie."]
+];
+document.getElementById("kwFaq").innerHTML=F.map(function(f){return '<div class="kw-acc"><button>'+f[0]+'</button><div class="a">'+f[1]+'</div></div>'}).join("");
+document.querySelectorAll("#kwFaq .kw-acc button").forEach(function(b){b.onclick=function(){var p=b.parentNode,o=p.classList.contains("open");document.querySelectorAll("#kwFaq .kw-acc").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")}});
+
+/* POLICY PAGES */
+var SELLER="Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło";
+var P={
+ regulamin:["Regulamin",[
+  ["1. Informacje ogólne","Sklep internetowy <b>Kwiatora</b> prowadzi "+SELLER+". Kontakt ze sprzedawcą: <b>"+EMAIL+"</b>."],
+  ["2. Składanie zamówień","Zamówienie składasz przez stronę sklepu. Umowa zostaje zawarta w chwili otrzymania e-maila z potwierdzeniem zamówienia. Ceny są podane w złotych i zawierają podatki."],
+  ["3. Płatności","Dostępne metody płatności (m.in. <b>BLIK, karta płatnicza, Apple Pay, Google Pay, Przelewy24</b>) wyświetlają się w kasie. Zamówienie realizujemy po zaksięgowaniu płatności."],
+  ["4. Dostawa","Dostawa jest <b>bezpłatna</b> (Paczkomat InPost lub Kurier InPost), a czas realizacji wynosi zwykle <b>2–4 dni robocze</b> od wysyłki. Szczegóły w <a href='#' onclick=\"kwShow('wysylka');return false\" style='color:var(--kw-primary)'>Polityce wysyłki</a>."],
+  ["5. Zwroty","Masz <b>14 dni od otrzymania produktu</b> na odstąpienie od umowy bez podawania przyczyny. Szczegóły w <a href='#' onclick=\"kwShow('zwroty');return false\" style='color:var(--kw-primary)'>Zwrotach i reklamacjach</a>."],
+  ["6. Reklamacje","Odpowiadamy za zgodność produktu z umową. Reklamację zgłoś na <b>"+EMAIL+"</b>, odpowiemy w ciągu <b>14 dni</b>."],
+  ["7. Spory","Możesz skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów albo Inspekcji Handlowej."],
+  ["8. Postanowienia końcowe","W sprawach nieuregulowanych stosuje się prawo polskie, w szczególności Kodeks cywilny i ustawę o prawach konsumenta. Zasady przetwarzania danych opisuje <a href='#' onclick=\"kwShow('prywatnosc');return false\" style='color:var(--kw-primary)'>Polityka prywatności</a>."]]],
+ prywatnosc:["Polityka prywatności",[
+  ["1. Administrator danych","Administratorem Twoich danych osobowych jest "+SELLER+", e-mail: <b>"+EMAIL+"</b>."],
+  ["2. Jakie dane zbieramy","Imię i nazwisko, adres dostawy, e-mail i numer telefonu podane przy zamówieniu lub w formularzu kontaktowym."],
+  ["3. Cel przetwarzania","Realizacja zamówienia, obsługa zwrotów i reklamacji, odpowiedź na wiadomość oraz wypełnienie obowiązków prawnych (np. księgowych)."],
+  ["4. Komu przekazujemy dane","Firmie kurierskiej InPost, operatorom płatności oraz dostawcy platformy sklepu, wyłącznie w zakresie potrzebnym do realizacji zamówienia."],
+  ["5. Twoje prawa","Masz prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz wniesienia skargi do Prezesa UODO."],
+  ["6. Pliki cookies","Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Możesz je wyłączyć w ustawieniach przeglądarki."]]],
+ wysylka:["Polityka wysyłki",[
+  ["1. Koszt dostawy","Dostawa na terenie Polski jest <b>bezpłatna</b> dla każdego zamówienia."],
+  ["2. Metody dostawy","<b>Paczkomat InPost</b> (odbiór 24/7) lub <b>Kurier InPost</b> pod wskazany adres."],
+  ["3. Czas realizacji","Zamówienia wysyłamy w ciągu <b>24 godzin</b> w dni robocze. Dostawa trwa zwykle <b>2–4 dni robocze</b>."],
+  ["4. Śledzenie przesyłki","Po nadaniu paczki otrzymasz e-mail z numerem przesyłki i linkiem do śledzenia."],
+  ["5. Uszkodzona paczka","Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na <b>"+EMAIL+"</b>. Wyślemy nowy produkt."]]],
+ zwroty:["Zwroty i reklamacje",[
+  ["1. 14 dni na zwrot","Masz <b>14 dni od otrzymania paczki</b>, żeby zwrócić produkt bez podania przyczyny."],
+  ["2. Jak zwrócić produkt","Napisz na <b>"+EMAIL+"</b>, podając numer zamówienia. W odpowiedzi podamy adres do odesłania produktu."],
+  ["3. Zwrot pieniędzy","Zwrócimy pieniądze w ciągu <b>14 dni</b> od otrzymania Twojego oświadczenia, tą samą metodą płatności."],
+  ["4. Reklamacje","Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na <b>"+EMAIL+"</b> i dołącz zdjęcie. Odpowiemy w ciągu <b>14 dni</b>."],
+  ["5. Brakujące elementy","Brakuje klocka? Napisz, którego okienka dotyczy, a doślemy brakujące elementy bezpłatnie."]]],
+ kontakt:["Kontakt",[
+  ["Jesteśmy tu dla Ciebie","Masz pytanie o zamówienie, dostawę lub kalendarz? Napisz na <b>"+EMAIL+"</b> albo skorzystaj z formularza poniżej. Odpowiadamy w ciągu 24 godzin w dni robocze."],
+  ["Dane sprzedawcy",SELLER]]]
+};
+var pages=document.getElementById("kwPages");
+Object.keys(P).forEach(function(k){
+  var d=document.createElement("section");d.className="kw-page";d.id="kwp-"+k;
+  d.innerHTML='<div class="kw-policy"><a href="#" class="kw-back" onclick="kwShow(\'home\');return false">← Wróć do sklepu</a><h1>'+P[k][0]+'</h1>'+P[k][1].map(function(s){return '<h2>'+s[0]+'</h2><p>'+s[1]+'</p>'}).join("")+'</div>'+
+  '<form class="kw-form" onsubmit="return kwSend(this)"><h2>Skontaktuj się <span class="kw-accent">z nami</span></h2><input name="imie" placeholder="Imię" required><input name="email" type="email" placeholder="E-mail" required><input name="tel" placeholder="Numer telefonu"><textarea name="msg" placeholder="Wiadomość" required></textarea><button class="kw-btn full" type="submit">Wyślij</button><div class="kw-form-ok">Dziękujemy! Otworzyliśmy Twoją pocztę z gotową wiadomością.</div></form>';
+  pages.appendChild(d);
+});
+window.kwSend=function(f){var b="Imię: "+f.imie.value+"%0D%0AE-mail: "+f.email.value+"%0D%0ATelefon: "+f.tel.value+"%0D%0A%0D%0A"+encodeURIComponent(f.msg.value);
+  window.location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Wiadomość ze sklepu Kwiatora")+"&body="+b;f.querySelector(".kw-form-ok").style.display="block";return false};
+window.kwShow=function(k){var home=k==="home";document.getElementById("kwHome").classList.toggle("on",home);
+  document.querySelectorAll("#kwPages .kw-page").forEach(function(p){p.classList.toggle("on",p.id==="kwp-"+k)});
+  if(!home){window.scrollTo(0,0);document.getElementById("kwSticky").classList.remove("on")}};
+})();
+</script>
+</body>
+</html>
