@@ -175,7 +175,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* benefit strip */
 .kw-strip{background:var(--kw-primary-dark);color:#fff}
-.kw-strip-in{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px 0}
+.kw-strip-in{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px 0;max-width:900px}
 @media(min-width:768px){.kw-strip-in{grid-template-columns:repeat(4,1fr)}}
 .kw-strip-item{display:flex;gap:10px;align-items:center;justify-content:flex-start;font-size:13px;justify-self:center;width:100%;max-width:250px}
 .kw-strip-item b{display:block;font-size:14px}
@@ -403,6 +403,8 @@ img[width][height]{height:auto}
 .kw-nudge{animation:kw-nudge 2s ease-in-out infinite}
 @keyframes kw-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
 .kw-beat{display:inline-block;animation:kw-pulse 1s ease-in-out infinite}
+.kw-strip-item b{font-size:13px}.kw-strip-item small{font-size:11.5px}.kw-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.kw-strip-in{max-width:420px;padding:12px 16px}}
 </style>
 </head>
 <body>
