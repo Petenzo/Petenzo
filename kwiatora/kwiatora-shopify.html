@@ -76,7 +76,7 @@ button{font-family:inherit;cursor:pointer}
 
 /* top bar marquee */
 .kw-topbar{background:var(--kw-primary-dark);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:9px 0}
-.kw-marquee{display:inline-flex;gap:42px;animation:kw-scroll 32s linear infinite;padding-left:42px}
+.kw-marquee{display:inline-flex;gap:42px;animation:kw-scroll 40s linear infinite;padding-left:42px}
 .kw-marquee span{display:inline-flex;align-items:center;gap:42px}
 .kw-marquee span::after{content:"✦";color:var(--kw-gold)}
 @keyframes kw-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -85,7 +85,15 @@ button{font-family:inherit;cursor:pointer}
 .kw-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--kw-border)}
 .kw-nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .kw-logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--kw-logo);font-size:24px;color:var(--kw-primary-dark);letter-spacing:.01em}
-.kw-logo-mark{width:34px;height:34px;border-radius:10px;background:var(--kw-gradient);display:grid;place-items:center}
+.kw-logo img{height:46px;width:auto}
+.kw-logo span{font-family:var(--kw-logo);font-size:26px;line-height:1;color:var(--kw-primary-dark)}
+.kw-logo small{display:block;font-family:var(--kw-font);font-size:9px;font-weight:700;letter-spacing:.24em;color:var(--kw-gold);margin-top:3px}
+.kw-salebar{background:var(--kw-sale);color:#fff;text-align:center;padding:8px 12px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.kw-salebar .kw-timer span{background:#fff;color:var(--kw-sale);border-radius:7px;padding:3px 7px;font-weight:800;font-variant-numeric:tabular-nums;min-width:30px;display:inline-block}
+.kw-salebar .kw-timer i{font-style:normal;font-size:10px;font-weight:600;opacity:.85;margin:0 4px 0 2px}
+.kw-pay span{display:inline-flex;align-items:center;gap:4px;height:28px;border-radius:7px;padding:0 10px;font-size:12px;font-weight:800;color:#fff;border:0;letter-spacing:.01em}
+.pay-blik{background:#111}.pay-visa{background:#1A1F71;font-style:italic;letter-spacing:.04em!important}.pay-mc{background:#2B2B33}.pay-apple{background:#000}.pay-google{background:#3C4043}.pay-p24{background:#D13239}
+.kw-rev .pfp{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:0 0 38px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .kw-menu{display:none;gap:22px;font-size:13.5px;font-weight:500}
 .kw-menu a{text-decoration:none;color:var(--kw-muted)}
 .kw-menu a:hover{color:var(--kw-primary)}
@@ -163,9 +171,6 @@ button{font-family:inherit;cursor:pointer}
 .kw-swatch img{width:100%;height:100%;object-fit:cover}
 .kw-ship-box{display:flex;gap:10px;align-items:flex-start;background:var(--kw-surface);border-radius:14px;padding:12px 14px;font-size:13px;margin:14px 0}
 .kw-pay{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
-.kw-pay span{font-size:11px;font-weight:700;border:1px solid var(--kw-border);border-radius:7px;padding:5px 9px;background:#fff}
-.kw-pay .blik{background:#111;color:#fff;border-color:#111}
-.kw-pay .visa{background:#1A1F71;color:#fff;border-color:#1A1F71}
 .kw-micro{text-align:center;font-size:12.5px;color:var(--kw-muted);margin-top:10px}
 
 /* benefit strip */
@@ -233,8 +238,7 @@ button{font-family:inherit;cursor:pointer}
 .kw-rev-score{display:flex;align-items:center;gap:10px;font-size:15px}
 .kw-rev-score b{font-size:28px}
 .kw-rev-track{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.kw-rev-row{display:flex;gap:16px;width:max-content;animation:kw-scroll 70s linear infinite;padding:6px 0}
-.kw-rev-row.rev2{animation-duration:80s;animation-direction:reverse;margin-top:16px}
+.kw-rev-row{display:flex;gap:16px;width:max-content;animation:kw-scroll 90s linear infinite;padding:6px 0}
 .kw-rev-track:hover .kw-rev-row{animation-play-state:paused}
 .kw-rev{width:290px;flex:0 0 290px;overflow:hidden;display:flex;flex-direction:column}
 .kw-rev img{width:100%;aspect-ratio:4/3;object-fit:cover}
@@ -356,10 +360,12 @@ button{font-family:inherit;cursor:pointer}
 </head>
 <body>
 
+<div class="kw-salebar">🎄 Promocja przedświąteczna · Cena promocyjna kończy się za: <span class="kw-timer"><span id="kwM">30</span><i>min</i><span id="kwS">00</span><i>sek</i></span></div>
 <div class="kw-topbar" aria-label="Promocje">
-  <div class="kw-marquee" id="kwMarquee">
-    <span>Darmowa wysyłka InPost</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna: do −40%</span><span>24 kwiaty · 1 bukiet · 0 więdnięcia</span><span>Bezpieczne płatności BLIK i karta</span>
-    <span>Darmowa wysyłka InPost</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna: do −40%</span><span>24 kwiaty · 1 bukiet · 0 więdnięcia</span><span>Bezpieczne płatności BLIK i karta</span>
+  <div class="kw-marquee">
+    <span>Darmowa wysyłka</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna</span><span>Bezpieczna płatność BLIK i kartą</span>
+    <span>Darmowa wysyłka</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna</span><span>Bezpieczna płatność BLIK i kartą</span>
+    <span>Darmowa wysyłka</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna</span><span>Bezpieczna płatność BLIK i kartą</span>
   </div>
 </div>
 
@@ -369,8 +375,7 @@ button{font-family:inherit;cursor:pointer}
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <a href="#" class="kw-logo" onclick="kwShow('home');return false">
-      <span class="kw-logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="7" r="3.2"/><circle cx="7.2" cy="10.6" r="3.2"/><circle cx="16.8" cy="10.6" r="3.2"/><circle cx="9" cy="15.4" r="3.2"/><circle cx="15" cy="15.4" r="3.2"/><circle cx="12" cy="11.8" r="2.2" fill="#E2B866"/></svg></span>
-      Kwiatora
+      <img src="https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/kwiatora/img/logo-ikona.png" width="26" height="46" alt=""><div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div>
     </a>
     <nav class="kw-menu">
       <a href="#zastosowania" onclick="kwShow('home')">Dla kogo</a>
@@ -389,7 +394,7 @@ button{font-family:inherit;cursor:pointer}
 
 <div class="kw-mobile-menu" id="kwMobile">
   <div class="kw-mm-top">
-    <span class="kw-logo">Kwiatora</span>
+    <span class="kw-logo"><img src="https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/kwiatora/img/logo-ikona.png" width="26" height="46" alt=""><div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div></span>
     <button class="kw-icon-btn" aria-label="Zamknij menu" onclick="kwMenu(false)">✕</button>
   </div>
   <nav>
@@ -434,10 +439,6 @@ button{font-family:inherit;cursor:pointer}
         <span class="kw-old" id="kwOld">249,99 zł</span>
         <span class="kw-save" id="kwSave">−40%</span>
       </div>
-      <div class="kw-klarna">
-        <svg width="26" height="18" viewBox="0 0 26 18" fill="none"><rect x="1" y="1" width="24" height="16" rx="3" stroke="#1E5B3D" stroke-width="1.6"/><path d="M1 6h24" stroke="#1E5B3D" stroke-width="1.6"/></svg>
-        <span>lub <b>3 × <span id="kwKlarna">50,00</span> zł</b> bez odsetek · płatność odroczona</span>
-      </div>
       <ul class="kw-list">
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>24 okienka, 24 różne kwiaty</b>: słonecznik, lilia, lawenda, hortensja i 20 innych</span></li>
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Ponad 2 600 elementów</b> i obrazkowa instrukcja w każdym okienku</span></li>
@@ -447,8 +448,6 @@ button{font-family:inherit;cursor:pointer}
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Od 6 do 99 lat</b>: dla dzieci, par i dorosłych, którzy chcą zwolnić</span></li>
       </ul>
 
-      <div class="kw-countdown"><span>⏳ Cena promocyjna kończy się za:</span><div class="kw-timer"><span id="kwH">00</span><span id="kwM">00</span><span id="kwS">00</span></div></div>
-
       <div class="kw-bundles" id="kwBundles">
         <div class="kw-bundles-title">Wybierz zestaw</div>
       </div>
@@ -457,7 +456,7 @@ button{font-family:inherit;cursor:pointer}
 
       <button class="kw-btn full" onclick="kwAddBundle()">Dodaj do koszyka · <span id="kwCtaPrice">149,99 zł</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
-      <div class="kw-pay"><span class="blik">blik</span><span class="visa">VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span><span>Przelewy24</span></div>
+      <div class="kw-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
       <p class="kw-micro">🔒 Bezpieczna płatność · 14 dni na zwrot · Odpowiadamy w 24 h</p>
     </div>
   </div>
@@ -600,7 +599,7 @@ button{font-family:inherit;cursor:pointer}
       <div style="font-size:13.5px;color:var(--kw-muted)">Na podstawie 1 248 zweryfikowanych zakupów</div>
     </div>
   </div>
-  <div class="kw-rev-track"><div class="kw-rev-row" id="kwRev1"></div><div class="kw-rev-row rev2" id="kwRev2"></div></div>
+  <div class="kw-rev-track"><div class="kw-rev-row" id="kwRev1"></div></div>
 </section>
 
 <!-- ADULT -->
@@ -621,29 +620,6 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- UPSELL -->
-<section class="kw-section">
-  <div class="kw-container">
-    <span class="kw-eyebrow">Dopełnij bukiet</span>
-    <h2 class="kw-h2">Twoje kwiaty zasługują na <span class="kw-accent">piękny wazon</span></h2>
-    <p class="kw-lead">Dobierz go teraz, a w Wigilię nie będziesz szukać słoika po ogórkach.</p>
-    <div class="kw-card kw-upsell">
-      <img src="https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/kwiatora/img/12-wazon.jpg" width="1200" height="1200" loading="lazy" alt="Szklany wazon z bukietem kwiatów z klocków">
-      <div class="b">
-        <span class="kw-pill">Dodatek do zestawu</span>
-        <h3 style="font-size:24px;margin:12px 0 8px">Szklany wazon Kwiatora</h3>
-        <p style="color:var(--kw-muted);margin:0 0 16px">Ciężka, stabilna podstawa i smukły kształt, w którym bukiet z 24 kwiatów wygląda jak z kwiaciarni.</p>
-        <ul class="kw-list">
-          <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Grube, przejrzyste szkło</li>
-          <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Dopasowany do całego bukietu</li>
-          <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Bezpiecznie zapakowany</li>
-        </ul>
-        <div class="kw-price-row" style="margin-top:18px"><span class="kw-price" style="font-size:28px">39,99 zł</span><span class="kw-old">69,99 zł</span></div>
-        <button class="kw-btn" style="margin-top:10px" onclick="kwAddVase()">Dodaj wazon do koszyka</button>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- FINAL CTA -->
 <section class="kw-section kw-alt">
@@ -680,10 +656,10 @@ button{font-family:inherit;cursor:pointer}
   <div class="kw-container">
     <div class="kw-footer-grid">
       <div>
-        <span class="kw-logo">Kwiatora</span>
+        <span class="kw-logo"><img src="https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/kwiatora/img/logo-ikona.png" width="26" height="46" alt=""><div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div></span>
         <p style="color:var(--kw-muted);font-size:14px;max-width:360px">Kalendarze adwentowe z kwiatami z klocków. Tworzymy prezenty, które łączą rodziny i zostają na dłużej niż jeden sezon.</p>
         <div class="kw-foot-contact">
-          <div><span class="ic">✉️</span><a href="mailto:wojciechmotyka604@gmail.com">wojciechmotyka604@gmail.com</a></div>
+          <div><span class="ic">✉️</span><a href="mailto:kontakt@mibro.pl">kontakt@mibro.pl</a></div>
           <div><span class="ic">🕘</span>Odpowiadamy pon.–pt. w 24 h</div>
         </div>
       </div>
@@ -714,7 +690,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="kw-dr-line total"><span>Łączna kwota</span><span id="kwTotal">0,00 zł</span></div>
     <div class="kw-dr-line" style="color:var(--kw-muted)"><span>Dostawa</span><span id="kwShipLine">Wybierzesz w następnym kroku</span></div>
     <button class="kw-btn full" id="kwCheckout" onclick="kwShipModal(true)">Realizuj zakup</button>
-    <div class="kw-pay"><span class="blik">blik</span><span class="visa">VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span></div>
+    <div class="kw-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
   </div>
 </aside>
 
@@ -733,7 +709,7 @@ button{font-family:inherit;cursor:pointer}
 <div class="kw-modal" id="kwContact" onclick="if(event.target===this)this.classList.remove('on')">
   <div class="kw-modal-box" style="text-align:center">
     <div class="kw-modal-head"><h3>Kontakt</h3><button class="kw-close" onclick="document.getElementById('kwContact').classList.remove('on')">✕</button></div>
-    <p>Skontaktuj się tutaj z nami: <a href="mailto:wojciechmotyka604@gmail.com" style="color:var(--kw-primary);font-weight:700">wojciechmotyka604@gmail.com</a></p>
+    <p>Skontaktuj się tutaj z nami: <a href="mailto:kontakt@mibro.pl" style="color:var(--kw-primary);font-weight:700">kontakt@mibro.pl</a></p>
     <button class="kw-btn full" onclick="document.getElementById('kwContact').classList.remove('on')">Zamknij</button>
   </div>
 </div>
@@ -747,8 +723,9 @@ button{font-family:inherit;cursor:pointer}
 <script>
 (function(){
 var IMG="https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/kwiatora/img";
+var KWI=window.KW_IMG||{};function kwSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
-var EMAIL="wojciechmotyka604@gmail.com";
+var EMAIL="kontakt@mibro.pl";
 
 var gallery=[
  ["04-prezent.jpg","🎁 Prezent, który rozpakowuje się 24 razy"],
@@ -761,72 +738,60 @@ var gallery=[
 var gi=0,main=document.getElementById("kwMain"),cap=document.getElementById("kwCaption"),dots=document.getElementById("kwDots"),th=document.getElementById("kwThumbs");
 gallery.forEach(function(g,i){
   var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
-  var t=document.createElement("button");t.innerHTML='<img src="'+IMG+'/'+g[0]+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+  var t=document.createElement("button");t.innerHTML='<img src="'+kwSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
 });
-function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=IMG+"/"+gallery[gi][0];main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=kwSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
   [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
 window.kwGal=function(s){setG(gi+s)};setG(0);
 
 /* BUNDLES */
-var VARIANTS=[{id:"slonecznik",name:"Słoneczny Bukiet",img:"03-bukiet.jpg"},{id:"roza",name:"Różany Bukiet",img:"16-opinia-roza.jpg"},{id:"lawenda",name:"Lawendowy Bukiet",img:"12-wazon.jpg"}];
 var BUNDLES=[
  {q:1,name:"1 kalendarz",desc:"Pakiet startowy",price:149.99,old:249.99},
  {q:2,name:"2 kalendarze",desc:"Dla Ciebie i na prezent · 134,99 zł/szt.",price:269.98,old:499.98,tag:"Najczęściej wybierany"},
  {q:3,name:"3 kalendarze",desc:"Zestaw rodzinny · 124,99 zł/szt.",price:374.97,old:749.97,tag:"Najlepsza cena",gold:true}
 ];
-var sel=0,choice=[[0],[0,1],[0,1,2]];
+var sel=0;
 function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 var bw=document.getElementById("kwBundles");
 BUNDLES.forEach(function(b,i){
-  var el=document.createElement("div");el.className="kw-bundle";el.onclick=function(e){if(e.target.closest(".kw-swatch"))return;pick(i)};
-  var v="";for(var k=0;k<b.q;k++){v+='<div class="kw-var-row"><span class="lbl">Sztuka '+(k+1)+': <b data-l="'+k+'"></b></span>';VARIANTS.forEach(function(x,j){v+='<button class="kw-swatch" data-k="'+k+'" data-j="'+j+'" title="'+x.name+'"><img src="'+IMG+'/'+x.img+'" alt="'+x.name+'"></button>'});v+='</div>'}
+  var el=document.createElement("div");el.className="kw-bundle";el.onclick=function(){pick(i)};
   el.innerHTML=(b.tag?'<span class="kw-bundle-tag'+(b.gold?' gold':'')+'">'+b.tag+'</span>':'')+
-   '<div class="kw-bundle-head"><span class="kw-radio"></span><div><div class="kw-bundle-name">'+b.name+'</div><div class="kw-bundle-desc">'+b.desc+'</div></div><div class="kw-bundle-price"><b>'+zl(b.price)+'</b><s>'+zl(b.old)+'</s></div></div><div class="kw-variants">'+v+'</div>';
-  el.querySelectorAll(".kw-swatch").forEach(function(s){s.onclick=function(){choice[i][+s.dataset.k]=+s.dataset.j;render()}});
+   '<div class="kw-bundle-head"><span class="kw-radio"></span><div><div class="kw-bundle-name">'+b.name+'</div><div class="kw-bundle-desc">'+b.desc+'</div></div><div class="kw-bundle-price"><b>'+zl(b.price)+'</b><s>'+zl(b.old)+'</s></div></div>';
   bw.appendChild(el);
 });
 function pick(i){sel=i;render()}
 function render(){
-  [].forEach.call(bw.querySelectorAll(".kw-bundle"),function(el,i){el.classList.toggle("on",i===sel);
-    el.querySelectorAll(".kw-swatch").forEach(function(s){s.classList.toggle("on",choice[i][+s.dataset.k]===+s.dataset.j)});
-    el.querySelectorAll("[data-l]").forEach(function(l){l.textContent=VARIANTS[choice[i][+l.dataset.l]].name})});
+  [].forEach.call(bw.querySelectorAll(".kw-bundle"),function(el,i){el.classList.toggle("on",i===sel);});
   var b=BUNDLES[sel];
   document.getElementById("kwPrice").textContent=zl(b.price);document.getElementById("kwOld").textContent=zl(b.old);
   document.getElementById("kwSave").textContent="−"+Math.round((1-b.price/b.old)*100)+"%";
-  document.getElementById("kwCtaPrice").textContent=zl(b.price);document.getElementById("kwKlarna").textContent=(b.price/3).toFixed(2).replace(".",",");
+  document.getElementById("kwCtaPrice").textContent=zl(b.price);
   document.getElementById("kwStickyPrice").innerHTML=zl(b.price)+' <s style="color:var(--kw-muted);font-weight:400">'+zl(b.old)+'</s>';
 }
 render();
 
 /* CART */
 var cart=[];
-function save(){try{localStorage.setItem("kwCart",JSON.stringify(cart))}catch(e){}}
-try{cart=JSON.parse(localStorage.getItem("kwCart")||"[]")}catch(e){cart=[]}
-var VASE={key:"wazon",name:"Szklany wazon Kwiatora",variant:"Dodatek",img:"12-wazon.jpg",price:39.99,old:69.99};
+function save(){try{localStorage.setItem("kwCart2",JSON.stringify(cart))}catch(e){}}
+try{cart=JSON.parse(localStorage.getItem("kwCart2")||"[]")}catch(e){cart=[]}
 function unitFor(q){return q>=3?124.99:q===2?134.99:149.99}
-function calCount(){return cart.filter(function(i){return i.key!=="wazon"}).reduce(function(s,i){return s+i.qty},0)}
+function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
 function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
-window.kwAddBundle=function(){var b=BUNDLES[sel];choice[sel].forEach(function(j){var v=VARIANTS[j];addItem({key:"kal-"+v.id,name:"Kalendarz Kwiatora",variant:v.name,img:v.img,qty:1,old:249.99})});kwCart(true)};
-window.kwAddVase=function(){addItem(Object.assign({qty:1},VASE));kwCart(true)};
+window.kwAddBundle=function(){addItem({key:"kal",name:"Kalendarz adwentowy Kwiatora",variant:"24 kwiaty z klocków",img:"04-prezent.jpg",qty:BUNDLES[sel].q,old:249.99});kwCart(true)};
 function drawCart(){
   var n=calCount(),u=unitFor(n),items=document.getElementById("kwItems"),tot=0,old=0,cnt=0;
   items.innerHTML="";
   if(!cart.length){items.innerHTML='<div class="kw-empty">Twój koszyk jest pusty 🌷<br><br><button class="kw-btn small" onclick="kwCart(false);kwScrollBuy()">Wybierz zestaw</button></div>'}
   cart.forEach(function(it,idx){
-    var p=it.key==="wazon"?it.price:u;tot+=p*it.qty;old+=it.old*it.qty;cnt+=it.qty;
+    var p=u;tot+=p*it.qty;old+=it.old*it.qty;cnt+=it.qty;
     var d=document.createElement("div");d.className="kw-item";
-    d.innerHTML='<img src="'+IMG+'/'+it.img+'" alt=""><div><div class="kw-item-top"><div><b>'+it.name+'</b><small>'+it.variant+'</small></div><button class="kw-trash" aria-label="Usuń">🗑</button></div><div class="kw-item-bot"><div class="kw-qty"><button aria-label="Mniej">−</button><span>'+it.qty+'</span><button aria-label="Więcej">+</button></div><div class="kw-item-price"><s>'+zl(it.old*it.qty)+'</s>'+zl(p*it.qty)+'<small style="color:var(--kw-ok)">Oszczędzasz '+zl((it.old-p)*it.qty)+'</small></div></div></div>';
+    d.innerHTML='<img src="'+kwSrc(it.img)+'" alt=""><div><div class="kw-item-top"><div><b>'+it.name+'</b><small>'+it.variant+'</small></div><button class="kw-trash" aria-label="Usuń">🗑</button></div><div class="kw-item-bot"><div class="kw-qty"><button aria-label="Mniej">−</button><span>'+it.qty+'</span><button aria-label="Więcej">+</button></div><div class="kw-item-price"><s>'+zl(it.old*it.qty)+'</s>'+zl(p*it.qty)+'<small style="color:var(--kw-ok)">Oszczędzasz '+zl((it.old-p)*it.qty)+'</small></div></div></div>';
     var bs=d.querySelectorAll("button");
     bs[0].onclick=function(){cart.splice(idx,1);save();drawCart()};
     bs[1].onclick=function(){it.qty--;if(it.qty<1)cart.splice(idx,1);save();drawCart()};
     bs[2].onclick=function(){it.qty++;save();drawCart()};
     items.appendChild(d);
   });
-  if(cart.length&&!cart.some(function(c){return c.key==="wazon"})){
-    var up=document.createElement("div");up.className="kw-upsell-mini";
-    up.innerHTML='<img src="'+IMG+'/12-wazon.jpg" alt=""><div style="flex:1">➕ <b>Dobierz szklany wazon</b> za <b style="color:var(--kw-ok)">39,99 zł</b> <s style="color:var(--kw-muted)">69,99 zł</s></div><button class="kw-btn small">Dodaj</button>';
-    up.querySelector("button").onclick=function(){addItem(Object.assign({qty:1},VASE))};items.appendChild(up);
-  }
   var pr=document.getElementById("kwProgress");
   if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>'+(n===1?"1 kalendarz":"1 kalendarz")+'</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>124,99 zł</b> za kalendarz<div class="bar"><i style="width:100%"></i></div>';
   document.getElementById("kwTotal").textContent=zl(tot);document.getElementById("kwDisc").textContent="−"+zl(old-tot);
@@ -845,9 +810,10 @@ window.kwScrollBuy=function(){kwShow("home");document.getElementById("kwBundles"
 /* TABS */
 window.kwTab=function(i){document.querySelectorAll(".kw-tabs-list button").forEach(function(b,k){b.classList.toggle("on",k===i)});document.querySelectorAll(".kw-tab").forEach(function(t,k){t.classList.toggle("on",k===i)})};
 
-/* COUNTDOWN (do północy) */
-function tick(){var n=new Date(),e=new Date(n);e.setHours(23,59,59,999);var s=Math.max(0,Math.floor((e-n)/1000));
-  document.getElementById("kwH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");document.getElementById("kwS").textContent=String(s%60).padStart(2,"0")}
+/* COUNTDOWN: 30 min od wejścia */
+var kwEnd=Date.now()+30*60*1000;
+function tick(){var s=Math.max(0,Math.ceil((kwEnd-Date.now())/1000));
+  document.getElementById("kwM").textContent=String(Math.floor(s/60)).padStart(2,"0");document.getElementById("kwS").textContent=String(s%60).padStart(2,"0")}
 tick();setInterval(tick,1000);
 
 /* STICKY */
@@ -868,10 +834,8 @@ var R=[
  ["Hanna","Toruń","10-krok3.jpg","Lawendowy Bukiet","Codziennie dokładamy nowy kwiat do wazonu i bukiet rośnie w oczach. Dzieci są dumne, że zrobiły go same. Piękna świąteczna tradycja."],
  ["Mateusz","Białystok","04-prezent.jpg","Różany Bukiet","Dałem dziewczynie z kokardą pod choinkę i trafiłem idealnie. Pudełko wygląda bardzo elegancko. Cena jest uczciwa za taką jakość."]
 ];
-function card(r){return '<article class="kw-card kw-rev"><img src="'+IMG+'/'+r[2]+'" width="400" height="300" alt="Zdjęcie od klienta"><div class="b"><span class="kw-stars">★★★★★</span><p>'+r[4]+'</p><span class="var">Wariant: '+r[3]+'</span><div class="who"><span class="kw-avatar">'+r[0][0]+'</span><div><b>'+r[0]+', '+r[1]+'</b><small>✓ Zweryfikowany zakup</small></div></div></div></article>'}
-var a=R.slice(0,6),b=R.slice(6);
-document.getElementById("kwRev1").innerHTML=(a.concat(a)).map(card).join("");
-document.getElementById("kwRev2").innerHTML=(b.concat(b)).map(card).join("");
+function card(r){return '<article class="kw-card kw-rev"><img src="'+kwSrc(r[2])+'" width="400" height="300" alt="Zdjęcie od klienta"><div class="b"><span class="kw-stars">★★★★★</span><p>'+r[4]+'</p><div class="who"><img class="pfp" src="'+kwSrc('av'+(R.indexOf(r)%12+1)+'.jpg')+'" alt=""><div><b>'+r[0]+', '+r[1]+'</b><small>✓ Zweryfikowany zakup</small></div></div></div></article>'}
+document.getElementById("kwRev1").innerHTML=(R.concat(R)).map(card).join("");
 
 /* FAQ */
 var F=[
@@ -888,10 +852,10 @@ document.getElementById("kwFaq").innerHTML=F.map(function(f){return '<div class=
 document.querySelectorAll("#kwFaq .kw-acc button").forEach(function(b){b.onclick=function(){var p=b.parentNode,o=p.classList.contains("open");document.querySelectorAll("#kwFaq .kw-acc").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")}});
 
 /* POLICY PAGES */
-var SELLER="Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło";
+var SELLER="Kwiatora";
 var P={
  regulamin:["Regulamin",[
-  ["1. Informacje ogólne","Sklep internetowy <b>Kwiatora</b> prowadzi "+SELLER+". Kontakt ze sprzedawcą: <b>"+EMAIL+"</b>."],
+  ["1. Informacje ogólne","Sklep internetowy <b>Kwiatora</b> prowadzi sprzedaż na odległość za pośrednictwem tej strony. Kontakt ze sprzedawcą: <b>"+EMAIL+"</b>."],
   ["2. Składanie zamówień","Zamówienie składasz przez stronę sklepu. Umowa zostaje zawarta w chwili otrzymania e-maila z potwierdzeniem zamówienia. Ceny są podane w złotych i zawierają podatki."],
   ["3. Płatności","Dostępne metody płatności (m.in. <b>BLIK, karta płatnicza, Apple Pay, Google Pay, Przelewy24</b>) wyświetlają się w kasie. Zamówienie realizujemy po zaksięgowaniu płatności."],
   ["4. Dostawa","Dostawa jest <b>bezpłatna</b> (Paczkomat InPost lub Kurier InPost), a czas realizacji wynosi zwykle <b>2–4 dni robocze</b> od wysyłki. Szczegóły w <a href='#' onclick=\"kwShow('wysylka');return false\" style='color:var(--kw-primary)'>Polityce wysyłki</a>."],
@@ -900,7 +864,7 @@ var P={
   ["7. Spory","Możesz skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów albo Inspekcji Handlowej."],
   ["8. Postanowienia końcowe","W sprawach nieuregulowanych stosuje się prawo polskie, w szczególności Kodeks cywilny i ustawę o prawach konsumenta. Zasady przetwarzania danych opisuje <a href='#' onclick=\"kwShow('prywatnosc');return false\" style='color:var(--kw-primary)'>Polityka prywatności</a>."]]],
  prywatnosc:["Polityka prywatności",[
-  ["1. Administrator danych","Administratorem Twoich danych osobowych jest "+SELLER+", e-mail: <b>"+EMAIL+"</b>."],
+  ["1. Administrator danych","Administratorem Twoich danych osobowych jest sklep <b>Kwiatora</b>, e-mail: <b>"+EMAIL+"</b>."],
   ["2. Jakie dane zbieramy","Imię i nazwisko, adres dostawy, e-mail i numer telefonu podane przy zamówieniu lub w formularzu kontaktowym."],
   ["3. Cel przetwarzania","Realizacja zamówienia, obsługa zwrotów i reklamacji, odpowiedź na wiadomość oraz wypełnienie obowiązków prawnych (np. księgowych)."],
   ["4. Komu przekazujemy dane","Firmie kurierskiej InPost, operatorom płatności oraz dostawcy platformy sklepu, wyłącznie w zakresie potrzebnym do realizacji zamówienia."],
@@ -920,7 +884,7 @@ var P={
   ["5. Brakujące elementy","Brakuje klocka? Napisz, którego okienka dotyczy, a doślemy brakujące elementy bezpłatnie."]]],
  kontakt:["Kontakt",[
   ["Jesteśmy tu dla Ciebie","Masz pytanie o zamówienie, dostawę lub kalendarz? Napisz na <b>"+EMAIL+"</b> albo skorzystaj z formularza poniżej. Odpowiadamy w ciągu 24 godzin w dni robocze."],
-  ["Dane sprzedawcy",SELLER]]]
+  ["Dane sklepu","Kwiatora · e-mail: <b>"+EMAIL+"</b>"]]]
 };
 var pages=document.getElementById("kwPages");
 Object.keys(P).forEach(function(k){
