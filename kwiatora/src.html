@@ -387,6 +387,17 @@ img[width][height]{height:auto}
 .kw-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--kw-muted)}
 .kw-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--kw-gold)}
 @media(max-width:420px){.kw-deal-timer div{width:78px}.kw-deal-timer b{font-size:32px}}
+.kw-rev-row{padding-left:32px}
+@media(max-width:767px){.kw-strip-in .kw-strip-item:nth-child(3){grid-column:1/-1}}
+.kw-strip-item{justify-content:center}
+.kw-ring{transform-origin:50% 20%;animation:kw-ring 2.4s ease-in-out infinite}
+@keyframes kw-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.kw-pulse{display:inline-block;animation:kw-pulse 1.6s ease-in-out infinite}
+@keyframes kw-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.kw-deal-timer div b.tick{animation:kw-tick .35s ease}
+@keyframes kw-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.kw-deal .kw-btn{animation:kw-glow 2.2s ease-in-out infinite}
+@keyframes kw-glow{0%,100%{box-shadow:var(--kw-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
 </style>
 </head>
 <body>
@@ -398,7 +409,6 @@ img[width][height]{height:auto}
     <span>Darmowa wysyłka</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna</span><span>Bezpieczna płatność BLIK i kartą</span>
   </div>
 </div>
-<div class="kw-salebar">🎄 Promocja przedświąteczna · Cena promocyjna kończy się za: <span class="kw-timer"><span id="kwM">30</span><i>min</i><span id="kwS">00</span><i>sek</i></span></div>
 
 <header class="kw-nav">
   <div class="kw-container kw-nav-in">
@@ -483,8 +493,6 @@ img[width][height]{height:auto}
         <div class="kw-bundles-title">Wybierz zestaw</div>
       </div>
 
-      <div class="kw-ship-box"><span>📦</span><span><b>Zamów dziś, a wyślemy paczkę w ciągu 24 h.</b> Dostawa do paczkomatu InPost lub kurierem w 2–4 dni robocze. Kalendarz dotrze przed 1 grudnia przy zamówieniu do 26 listopada.</span></div>
-
       <button class="kw-btn full" onclick="kwAddBundle()">Dodaj do koszyka · <span id="kwCtaPrice">149,99 zł</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
       <div class="kw-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
@@ -530,7 +538,7 @@ img[width][height]{height:auto}
     <p class="kw-lead">Kwiatora łączy to, czego brakuje w grudniu: wspólny czas, chwilę spokoju i prezent, który ma sens.</p>
     <div class="kw-uses">
       <article class="kw-card kw-use"><img src="{{IMG}}/05-razem.jpg" width="1200" height="1200" loading="lazy" alt="Mama i córka składają kwiat z klocków"><div><h3>Dla dziecka i całej rodziny</h3><p>Zamiast cukru: 24 poranki pełne ciekawości. Dziecko ćwiczy cierpliwość i skupienie, a Wy macie wspólny rytuał.</p></div></article>
-      <article class="kw-card kw-use"><img src="{{IMG}}/11-dla-doroslych.jpg" width="1200" height="900" loading="lazy" alt="Kobieta z herbatą składa lawendę z klocków"><div><h3>Dla niej, dla niego, dla siebie</h3><p>Kwadrans uważności po pracy. Składanie kwiatów wycisza głowę lepiej niż przewijanie telefonu.</p></div></article>
+      <article class="kw-card kw-use"><img src="{{IMG}}/11b-dla-niej.jpg" width="1200" height="900" loading="lazy" alt="Kobieta z herbatą składa lawendę z klocków"><div><h3>Dla niej, dla niego, dla siebie</h3><p>Kwadrans uważności po pracy. Składanie kwiatów wycisza głowę lepiej niż przewijanie telefonu.</p></div></article>
       <article class="kw-card kw-use"><img src="{{IMG}}/03-bukiet.jpg" width="1200" height="1200" loading="lazy" alt="Bukiet z klocków na parapecie zimą"><div><h3>Jako ozdoba na cały rok</h3><p>Bukiet, który nie więdnie i nie wymaga wody. Pięknie wygląda na stole wigilijnym i na biurku w lipcu.</p></div></article>
     </div>
   </div>
@@ -661,7 +669,7 @@ img[width][height]{height:auto}
       </div>
       <div class="kw-deal-body">
         <h2>Kalendarz Kwiatora</h2>
-        <div class="kw-deal-badge"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2M5 4 2.5 6.5M19 4l2.5 2.5"/></svg><b>48h!</b></div>
+        <div class="kw-deal-badge"><svg class="kw-ring" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2M5 4 2.5 6.5M19 4l2.5 2.5"/></svg><b class="kw-pulse">48h!</b></div>
         <p>Nie przegap – cena promocyjna tylko przez 48 godzin! <span class="kw-gold">♡</span></p>
         <div class="kw-deal-timer">
           <div><b id="kwDH">48</b><small>godzin</small></div><i>:</i>
@@ -849,16 +857,11 @@ window.kwScrollBuy=function(){kwShow("home");document.getElementById("kwBundles"
 /* TABS */
 window.kwTab=function(i){document.querySelectorAll(".kw-tabs-list button").forEach(function(b,k){b.classList.toggle("on",k===i)});document.querySelectorAll(".kw-tab").forEach(function(t,k){t.classList.toggle("on",k===i)})};
 
-/* COUNTDOWN: 30 min od wejścia */
-var kwEnd=Date.now()+30*60*1000;
-function tick(){var s=Math.max(0,Math.ceil((kwEnd-Date.now())/1000));
-  document.getElementById("kwM").textContent=String(Math.floor(s/60)).padStart(2,"0");document.getElementById("kwS").textContent=String(s%60).padStart(2,"0")}
-tick();setInterval(tick,1000);
 
 /* 48h licznik w sekcji promocji */
 var kwDEnd=Date.now()+48*3600*1000;
 function dtick(){var s=Math.max(0,Math.ceil((kwDEnd-Date.now())/1000));
-  document.getElementById("kwDH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwDM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");document.getElementById("kwDS").textContent=String(s%60).padStart(2,"0")}
+  document.getElementById("kwDH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwDM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");var ds=document.getElementById("kwDS");ds.textContent=String(s%60).padStart(2,"0");ds.classList.remove("tick");void ds.offsetWidth;ds.classList.add("tick")}
 dtick();setInterval(dtick,1000);
 /* STICKY */
 window.addEventListener("scroll",function(){document.getElementById("kwSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("kwHome").classList.contains("on"))},{passive:true});
@@ -870,16 +873,19 @@ var R=[
  ["Julia","Gdańsk","14-opinia-kuchnia.jpg","Różany Bukiet","Paczka przyszła szybko i była świetnie zapakowana. Pudełko wygląda na żywo jeszcze ładniej niż na zdjęciach. Stoi u nas w kuchni jako ozdoba."],
  ["Aleksander","Poznań","09-krok2.jpg","Lawendowy Bukiet","Kupiłem dla żony, a sam też się wciągnąłem. Instrukcje są czytelne, klocki dobrze do siebie pasują. Każdy kwiat wygląda bardzo realistycznie."],
  ["Natalia","Łódź","15-opinia-biurko.jpg","Słoneczny Bukiet","Bukiet stoi teraz na moim biurku w pracy i każdy o niego pyta. Nie trzeba go podlewać, a wygląda pięknie. Kupię znowu na kolejne Święta."],
- ["Zofia","Lublin","05-razem.jpg","Różany Bukiet","Składamy z córką codziennie po szkole. To nasz kwadrans tylko dla siebie i obie na niego czekamy. Klocki są solidne i nie mają zapachu."],
+ ["Zofia","Lublin","02-szufladka.jpg","Różany Bukiet","Składamy z córką codziennie po szkole. To nasz kwadrans tylko dla siebie i obie na niego czekamy. Klocki są solidne i nie mają zapachu."],
  ["Kacper","Katowice","16-opinia-roza.jpg","Różany Bukiet","Róża wyszła tak ładnie, że dałem ją mamie od razu. Składanie jest proste, ale daje dużo satysfakcji. Bardzo udany prezent na Mikołajki."],
  ["Maja","Szczecin","03-bukiet.jpg","Słoneczny Bukiet","Gotowy bukiet stoi na parapecie i wygląda jak prawdziwe kwiaty. Goście nie wierzą, że jest z klocków. Na pewno zostaje z nami na cały rok."],
- ["Oliwia","Bydgoszcz","11-dla-doroslych.jpg","Lawendowy Bukiet","Kupiłam dla siebie, żeby wieczorem odpocząć od telefonu. Składanie bardzo mnie uspokaja. Kwadrans dziennie i głowa od razu lżejsza."],
+ ["Oliwia","Bydgoszcz","01-hero.jpg","Lawendowy Bukiet","Kupiłam dla siebie, żeby wieczorem odpocząć od telefonu. Składanie bardzo mnie uspokaja. Kwadrans dziennie i głowa od razu lżejsza."],
  ["Szymon","Rzeszów","08-krok1.jpg","Słoneczny Bukiet","Syn sam pilnuje, który numer dziś otwieramy. Każde okienko to dla niego wielka niespodzianka. Zero cukru, a radość większa niż z czekoladek."],
  ["Hanna","Toruń","10-krok3.jpg","Lawendowy Bukiet","Codziennie dokładamy nowy kwiat do wazonu i bukiet rośnie w oczach. Dzieci są dumne, że zrobiły go same. Piękna świąteczna tradycja."],
  ["Mateusz","Białystok","04-prezent.jpg","Różany Bukiet","Dałem dziewczynie z kokardą pod choinkę i trafiłem idealnie. Pudełko wygląda bardzo elegancko. Cena jest uczciwa za taką jakość."]
 ];
 function card(r){return '<article class="kw-card kw-rev"><img src="'+kwSrc(r[2])+'" width="400" height="300" alt="Zdjęcie od klienta"><div class="b"><span class="kw-stars">★★★★★</span><p>'+r[4]+'</p><div class="who"><img class="pfp" src="'+kwSrc('av'+(R.indexOf(r)%12+1)+'.jpg')+'" alt=""><div><b>'+r[0]+', '+r[1]+'</b><small>✓ Zweryfikowany zakup</small></div></div></div></article>'}
 document.getElementById("kwRev1").innerHTML=(R.concat(R)).map(card).join("");
+(function(){var row=document.getElementById("kwRev1");function restart(){row.style.animation="none";void row.offsetWidth;row.style.animation=""}
+ if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)restart()})},{threshold:.15}).observe(row)}
+ document.querySelectorAll('a[href="#opinie"]').forEach(function(a){a.addEventListener("click",function(){setTimeout(restart,300)})});})();
 
 /* FAQ */
 var F=[
