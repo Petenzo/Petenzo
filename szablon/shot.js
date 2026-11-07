@@ -1,0 +1,14 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch();const D='/home/user/Petenzo/szablon/';
+const url='file://'+D+'szablon-sklepu.html';
+let p=await b.newPage({viewport:{width:1280,height:900}});await p.goto(url);await p.waitForTimeout(1500);
+await p.addStyleTag({content:'.marquee-track{animation:none!important}'});
+await p.screenshot({path:D+'1-komputer-cala-strona.png',fullPage:true});
+await p.click('#cta-koszyk');await p.waitForTimeout(800);
+await p.screenshot({path:D+'3-koszyk.png'});
+await p.click('#kosz-foot a.btn');await p.waitForTimeout(500);
+await p.screenshot({path:D+'4-wybierz-dostawe.png'});
+p=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:2});await p.goto(url);await p.waitForTimeout(1500);
+await p.addStyleTag({content:'.marquee-track{animation:none!important}'});
+await p.screenshot({path:D+'2-telefon-cala-strona.png',fullPage:true});
+await b.close();})();
