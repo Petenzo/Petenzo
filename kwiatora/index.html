@@ -266,7 +266,10 @@ button{font-family:inherit;cursor:pointer}
 /* faq */
 .kw-faq-grid{display:grid;gap:28px}
 @media(min-width:900px){.kw-faq-grid{grid-template-columns:minmax(0,1fr) 1.4fr;gap:48px}}
-.kw-faq-list{max-width:1070px;margin:0 auto}
+.kw-faq-list{max-width:760px;margin:0 auto}
+.kw-acc .q{display:flex;align-items:center;gap:14px}
+.kw-acc .n{flex:0 0 34px;height:34px;border-radius:10px;background:var(--kw-primary-soft);color:var(--kw-primary);font-size:13px;font-weight:800;display:grid;place-items:center}
+.kw-acc.open .n{background:var(--kw-gradient);color:#fff}
 .kw-acc{border-bottom:1px solid var(--kw-border);background:none}
 .kw-acc button{width:100%;background:none;border:0;text-align:left;padding:28px 4px;font-weight:700;font-size:16px;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--kw-fg)}
 .kw-acc button::after{content:"+";font-size:22px;font-weight:400;color:var(--kw-primary);transition:transform .2s}
@@ -854,7 +857,7 @@ var F=[
  ["Czy mogę zacząć później niż 1 grudnia?","Oczywiście. Możesz otworzyć kilka okienek naraz albo potraktować kalendarz jako 24 wieczory budowania w dowolnym momencie."],
  ["Czy to dobry prezent dla dorosłego?","Zdecydowanie. Składanie kwiatów relaksuje, a gotowy bukiet to elegancka ozdoba, która nie więdnie."]
 ];
-document.getElementById("kwFaq").innerHTML=F.map(function(f){return '<div class="kw-acc"><button>'+f[0]+'</button><div class="a">'+f[1]+'</div></div>'}).join("");
+document.getElementById("kwFaq").innerHTML=F.map(function(f,i){return '<div class="kw-acc"><button><span class="q"><span class="n">'+String(i+1).padStart(2,'0')+'</span>'+f[0]+'</span></button><div class="a">'+f[1]+'</div></div>'}).join("");
 document.querySelectorAll("#kwFaq .kw-acc button").forEach(function(b){b.onclick=function(){var p=b.parentNode,o=p.classList.contains("open");document.querySelectorAll("#kwFaq .kw-acc").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")}});
 
 /* POLICY PAGES */
