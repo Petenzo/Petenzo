@@ -366,6 +366,27 @@ img[width][height]{height:auto}
 .kw-photo img{aspect-ratio:4/3;height:auto}
 .kw-gallery-main img{height:100%!important;width:100%}
 .kw-thumbs img{height:100%!important}
+.kw-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--kw-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.kw-deal{grid-template-columns:.85fr 1.15fr}}
+.kw-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.kw-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.kw-float{animation:kw-float 3.2s ease-in-out infinite}
+@keyframes kw-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.kw-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--kw-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--kw-gold) 2px,transparent 3px);opacity:.8;animation:kw-tw 2.4s ease-in-out infinite}
+.kw-spark.s1{top:28px;right:34px}.kw-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes kw-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.kw-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.kw-deal-body{padding:36px 40px}}
+.kw-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--kw-primary)}
+.kw-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--kw-sale);margin:6px 0 4px}
+.kw-deal-badge b{font-size:34px;font-weight:800}
+.kw-deal-body p{color:var(--kw-muted);font-size:14.5px;margin:0 0 20px}
+.kw-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.kw-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--kw-border);box-shadow:var(--kw-shadow-card)}
+.kw-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--kw-primary);font-variant-numeric:tabular-nums}
+.kw-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--kw-muted)}
+.kw-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--kw-gold)}
+@media(max-width:420px){.kw-deal-timer div{width:78px}.kw-deal-timer b{font-size:32px}}
 </style>
 </head>
 <body>
@@ -630,15 +651,25 @@ img[width][height]{height:auto}
 </section>
 
 
-<!-- FINAL CTA -->
+<!-- FINAL CTA: 48h -->
 <section class="kw-section kw-alt">
   <div class="kw-container">
-    <div class="kw-card kw-final">
-      <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
-      <h2 class="kw-h2">Te Święta mogą wyglądać <span class="kw-accent">zupełnie inaczej</span></h2>
-      <p class="kw-lead" style="margin-bottom:22px">24 poranki pełne ekscytacji, 24 wieczory razem przy stole i bukiet, który za rok przypomni Wam o tym grudniu. Zostało niewiele sztuk w cenie promocyjnej.</p>
-      <button class="kw-btn" onclick="kwScrollBuy()">Zamawiam Kwiatorę i odliczam do Świąt</button>
-      <p class="kw-micro">🚚 Darmowa wysyłka · ↩️ 14 dni na zwrot · 🔒 Bezpieczna płatność</p>
+    <div class="kw-deal">
+      <div class="kw-deal-img">
+        <span class="kw-spark s1"></span><span class="kw-spark s2"></span>
+        <img class="kw-float" src="https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/kwiatora/img/02-szufladka.jpg" width="1200" height="1200" loading="lazy" alt="Kalendarz adwentowy Kwiatora">
+      </div>
+      <div class="kw-deal-body">
+        <h2>Kalendarz Kwiatora</h2>
+        <div class="kw-deal-badge"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2M5 4 2.5 6.5M19 4l2.5 2.5"/></svg><b>48h!</b></div>
+        <p>Nie przegap – cena promocyjna tylko przez 48 godzin! <span class="kw-gold">♡</span></p>
+        <div class="kw-deal-timer">
+          <div><b id="kwDH">48</b><small>godzin</small></div><i>:</i>
+          <div><b id="kwDM">00</b><small>minut</small></div><i>:</i>
+          <div><b id="kwDS">00</b><small>sekund</small></div>
+        </div>
+        <button class="kw-btn full" onclick="kwScrollBuy()">Kup teraz i skorzystaj z rabatu! →</button>
+      </div>
     </div>
   </div>
 </section>
@@ -824,6 +855,11 @@ function tick(){var s=Math.max(0,Math.ceil((kwEnd-Date.now())/1000));
   document.getElementById("kwM").textContent=String(Math.floor(s/60)).padStart(2,"0");document.getElementById("kwS").textContent=String(s%60).padStart(2,"0")}
 tick();setInterval(tick,1000);
 
+/* 48h licznik w sekcji promocji */
+var kwDEnd=Date.now()+48*3600*1000;
+function dtick(){var s=Math.max(0,Math.ceil((kwDEnd-Date.now())/1000));
+  document.getElementById("kwDH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwDM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");document.getElementById("kwDS").textContent=String(s%60).padStart(2,"0")}
+dtick();setInterval(dtick,1000);
 /* STICKY */
 window.addEventListener("scroll",function(){document.getElementById("kwSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("kwHome").classList.contains("on"))},{passive:true});
 
