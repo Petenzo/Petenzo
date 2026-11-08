@@ -756,8 +756,8 @@ img[width][height]{height:auto}
 <div class="kw-modal" id="kwShip" onclick="if(event.target===this)kwShipModal(false)">
   <div class="kw-modal-box">
     <div class="kw-modal-head"><h3>Wybierz dostawę</h3><button class="kw-close" onclick="kwShipModal(false)">✕</button></div>
-    <button class="kw-ship-opt on" data-ship="paczkomat" onclick="kwPickShip(this)"><span>📦 Paczkomat InPost</span><span class="p">0,00 zł</span></button>
-    <button class="kw-ship-opt" data-ship="kurier" onclick="kwPickShip(this)"><span>🚚 Kurier na adres</span><span class="p">0,00 zł</span></button>
+    <button class="kw-ship-opt on" data-ship="paczkomat" onclick="kwPickShip(this)"><span>📦 Paczkomat InPost</span><span class="p">GRATIS</span></button>
+    <button class="kw-ship-opt" data-ship="kurier" onclick="kwPickShip(this)"><span>🚚 Kurier pod adres</span><span class="p">GRATIS</span></button>
     <button class="kw-btn full" style="margin-top:6px" onclick="kwGoCheckout()">Przejdź do płatności</button>
     <p class="kw-micro">Adres i punkt odbioru wskażesz w kasie na następnym ekranie.</p>
   </div>
@@ -864,7 +864,7 @@ drawCart();
 function toast(){var t=document.getElementById("kwToast");t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1600)}
 window.kwCart=function(o){document.getElementById("kwDrawer").classList.toggle("on",o);document.getElementById("kwOverlay").classList.toggle("on",o);document.body.style.overflow=o?"hidden":""};
 window.kwShipModal=function(o){document.getElementById("kwShip").classList.toggle("on",o)};
-window.kwPickShip=function(b){document.querySelectorAll(".kw-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("kwShipLine").textContent=b.dataset.ship==="kurier"?"Kurier na adres · 0,00 zł":"Paczkomat InPost · 0,00 zł"};
+window.kwPickShip=function(b){document.querySelectorAll(".kw-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("kwShipLine").textContent=b.dataset.ship==="kurier"?"Kurier pod adres · GRATIS":"Paczkomat InPost · GRATIS"};
 window.kwGoCheckout=function(){window.location.href=CHECKOUT_URL};
 window.kwMenu=function(o){document.getElementById("kwMobile").classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
 window.kwScrollBuy=function(){kwShow("home");document.getElementById("kwBundles").scrollIntoView({behavior:"smooth",block:"center"})};
@@ -947,13 +947,13 @@ var P={
   ["4. Reklamacje","Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na <b>"+EMAIL+"</b> i dołącz zdjęcie. Odpowiemy w ciągu <b>14 dni</b>."],
   ["5. Brakujące elementy","Brakuje klocka? Napisz, którego okienka dotyczy, a doślemy brakujące elementy bezpłatnie."]]],
  kontakt:["Kontakt",[
-  ["Napisz do nas","<a href='mailto:"+EMAIL+"' style='font-size:20px;font-weight:700;color:var(--kw-primary)'>"+EMAIL+"</a>"]]]
+  ["Napisz do nas","Masz pytanie o zamówienie, wysyłkę albo zwrot? Napisz na <b>"+EMAIL+"</b> albo skorzystaj z formularza poniżej.</p><p>Odpowiadamy zwykle w ciągu <b>24 godzin</b>, od poniedziałku do piątku."]]]
 };
 var pages=document.getElementById("kwPages");
 Object.keys(P).forEach(function(k){
   var d=document.createElement("section");d.className="kw-page";d.id="kwp-"+k;
   d.innerHTML='<div class="kw-policy"><a href="#" class="kw-back" onclick="kwShow(\'home\');return false">← Wróć do sklepu</a><h1>'+P[k][0]+'</h1>'+P[k][1].map(function(s){return '<h2>'+s[0]+'</h2><p>'+s[1]+'</p>'}).join("")+'</div>'+
- (k==="kontakt"?'':'<form class="kw-form" onsubmit="return kwSend(this)"><h2>Skontaktuj się <span class="kw-accent">z nami</span></h2><input name="imie" placeholder="Imię" required><input name="email" type="email" placeholder="E-mail" required><input name="tel" placeholder="Numer telefonu"><textarea name="msg" placeholder="Wiadomość" required></textarea><button class="kw-btn full" type="submit">Wyślij</button><div class="kw-form-ok">Dziękujemy! Otworzyliśmy Twoją pocztę z gotową wiadomością.</div></form>');
+  '<form class="kw-form" onsubmit="return kwSend(this)"><h2>Skontaktuj się <span class="kw-accent">z nami</span></h2><input name="imie" placeholder="Imię" required><input name="email" type="email" placeholder="E-mail" required><input name="tel" placeholder="Numer telefonu"><textarea name="msg" placeholder="Wiadomość" required></textarea><button class="kw-btn full" type="submit">Wyślij</button><div class="kw-form-ok">Dziękujemy! Otworzyliśmy Twoją pocztę z gotową wiadomością.</div></form>';
   pages.appendChild(d);
 });
 window.kwSend=function(f){var b="Imię: "+f.imie.value+"%0D%0AE-mail: "+f.email.value+"%0D%0ATelefon: "+f.tel.value+"%0D%0A%0D%0A"+encodeURIComponent(f.msg.value);
