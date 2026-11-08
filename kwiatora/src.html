@@ -408,6 +408,8 @@ img[width][height]{height:auto}
 .kw-beat{display:inline-block;animation:kw-pulse 1s ease-in-out infinite}
 .kw-strip-item b{font-size:13px}.kw-strip-item small{font-size:11.5px}.kw-strip-item>span{font-size:18px!important}
 @media(max-width:767px){.kw-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.kw-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
 </style>
 </head>
 <body>
@@ -657,8 +659,9 @@ img[width][height]{height:auto}
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>15 minut tylko dla siebie</b> każdego grudniowego wieczoru</span></li>
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Idealny prezent dla partnerki</b>, mamy lub przyjaciółki</span></li>
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Kwiaty, które nie więdną</b>, więc cieszą długo po Świętach</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Limitowana edycja na Święta 2026</b> – liczba sztuk ograniczona</span></li>
       </ul>
-      <button class="kw-btn" style="margin-top:22px" onclick="kwScrollBuy()">Chcę swój bukiet</button>
+      
     </div>
   </div>
 </section>
@@ -779,7 +782,7 @@ var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="kontakt@mivro.pl";
 
 var gallery=[
- ["00-hero-stol.jpg","🌸 Codziennie nowy kwiat – składacie go razem"],
+ ["00-hero-stol.jpg","🌸 Każdego dnia nowy kwiat"],
  ["02-szufladka.jpg","✨ Codziennie nowe okienko i nowy kwiat"],
  ["00-hero-dorosli.jpg","😊 Prezent, który rozpakowuje się 24 razy"],
  ["04-prezent.jpg","🎄 Pięknie zapakowany, gotowy pod choinkę"],
