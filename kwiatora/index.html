@@ -768,7 +768,6 @@ img[width][height]{height:auto}
   <div class="kw-modal-box" style="text-align:center">
     <div class="kw-modal-head"><h3>Kontakt</h3><button class="kw-close" onclick="document.getElementById('kwContact').classList.remove('on')">✕</button></div>
     <p>Skontaktuj się tutaj z nami: <a href="mailto:kontakt@mivro.pl" style="color:var(--kw-primary);font-weight:700">kontakt@mivro.pl</a></p>
-    <button class="kw-btn full" onclick="document.getElementById('kwContact').classList.remove('on')">Zamknij</button>
   </div>
 </div>
 
@@ -948,14 +947,13 @@ var P={
   ["4. Reklamacje","Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na <b>"+EMAIL+"</b> i dołącz zdjęcie. Odpowiemy w ciągu <b>14 dni</b>."],
   ["5. Brakujące elementy","Brakuje klocka? Napisz, którego okienka dotyczy, a doślemy brakujące elementy bezpłatnie."]]],
  kontakt:["Kontakt",[
-  ["Jesteśmy tu dla Ciebie","Masz pytanie o zamówienie, dostawę lub kalendarz? Napisz na <b>"+EMAIL+"</b> albo skorzystaj z formularza poniżej. Odpowiadamy w ciągu 24 godzin w dni robocze."],
-  ["Dane sklepu","Kwiatora · e-mail: <b>"+EMAIL+"</b>"]]]
+  ["Napisz do nas","<a href='mailto:"+EMAIL+"' style='font-size:20px;font-weight:700;color:var(--kw-primary)'>"+EMAIL+"</a>"]]]
 };
 var pages=document.getElementById("kwPages");
 Object.keys(P).forEach(function(k){
   var d=document.createElement("section");d.className="kw-page";d.id="kwp-"+k;
   d.innerHTML='<div class="kw-policy"><a href="#" class="kw-back" onclick="kwShow(\'home\');return false">← Wróć do sklepu</a><h1>'+P[k][0]+'</h1>'+P[k][1].map(function(s){return '<h2>'+s[0]+'</h2><p>'+s[1]+'</p>'}).join("")+'</div>'+
-  '<form class="kw-form" onsubmit="return kwSend(this)"><h2>Skontaktuj się <span class="kw-accent">z nami</span></h2><input name="imie" placeholder="Imię" required><input name="email" type="email" placeholder="E-mail" required><input name="tel" placeholder="Numer telefonu"><textarea name="msg" placeholder="Wiadomość" required></textarea><button class="kw-btn full" type="submit">Wyślij</button><div class="kw-form-ok">Dziękujemy! Otworzyliśmy Twoją pocztę z gotową wiadomością.</div></form>';
+ (k==="kontakt"?'':'<form class="kw-form" onsubmit="return kwSend(this)"><h2>Skontaktuj się <span class="kw-accent">z nami</span></h2><input name="imie" placeholder="Imię" required><input name="email" type="email" placeholder="E-mail" required><input name="tel" placeholder="Numer telefonu"><textarea name="msg" placeholder="Wiadomość" required></textarea><button class="kw-btn full" type="submit">Wyślij</button><div class="kw-form-ok">Dziękujemy! Otworzyliśmy Twoją pocztę z gotową wiadomością.</div></form>');
   pages.appendChild(d);
 });
 window.kwSend=function(f){var b="Imię: "+f.imie.value+"%0D%0AE-mail: "+f.email.value+"%0D%0ATelefon: "+f.tel.value+"%0D%0A%0D%0A"+encodeURIComponent(f.msg.value);
