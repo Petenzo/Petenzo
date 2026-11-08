@@ -79,7 +79,7 @@ button{font-family:inherit;cursor:pointer}
 .kw-marquee{display:inline-flex;gap:42px;animation:kw-scroll 40s linear infinite;padding-left:42px}
 .kw-marquee span{display:inline-flex;align-items:center;gap:42px}
 .kw-marquee span::after{content:"✦";color:var(--kw-gold)}
-@keyframes kw-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes kw-scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 
 /* nav */
 .kw-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--kw-border)}
@@ -239,7 +239,10 @@ button{font-family:inherit;cursor:pointer}
 .kw-rev-score b{font-size:28px}
 .kw-rev-track{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .kw-rev-row{display:flex;gap:16px;width:max-content;animation:kw-scroll 90s linear infinite;padding:6px 0}
-.kw-rev-track:hover .kw-rev-row{animation-play-state:paused}
+.kw-rev-row{animation-play-state:paused;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
+.kw-rev-row.run{animation-play-state:running}
+@media(hover:hover){.kw-rev-track:hover .kw-rev-row.run{animation-play-state:paused}}
+.kw-rev{contain:layout paint}
 .kw-rev{width:290px;flex:0 0 290px;overflow:hidden;display:flex;flex-direction:column}
 .kw-rev img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .kw-rev .b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
@@ -885,9 +888,8 @@ var R=[
 ];
 function card(r){return '<article class="kw-card kw-rev"><img src="'+kwSrc(r[2])+'" width="400" height="300" alt="Zdjęcie od klienta"><div class="b"><span class="kw-stars">★★★★★</span><p>'+r[4]+'</p><div class="who"><img class="pfp" src="'+kwSrc('av'+(R.indexOf(r)%12+1)+'.jpg')+'" alt=""><div><b>'+r[0]+', '+r[1]+'</b><small>✓ Zweryfikowany zakup</small></div></div></div></article>'}
 document.getElementById("kwRev1").innerHTML=(R.concat(R)).map(card).join("");
-(function(){var row=document.getElementById("kwRev1");function restart(){row.style.animation="none";void row.offsetWidth;row.style.animation=""}
- if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)restart()})},{threshold:.15}).observe(row)}
- document.querySelectorAll('a[href="#opinie"]').forEach(function(a){a.addEventListener("click",function(){setTimeout(restart,300)})});})();
+(function(){var row=document.getElementById("kwRev1");row.querySelectorAll("img").forEach(function(i){i.decoding="async"});
+ if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){row.classList.add("run");io.disconnect()}},{threshold:.05});io.observe(row)}else{row.classList.add("run")}})();
 
 /* FAQ */
 var F=[
