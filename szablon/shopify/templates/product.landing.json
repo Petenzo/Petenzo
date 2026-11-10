@@ -1,0 +1,12 @@
+{
+  "layout": "landing",
+  "sections": {
+    "main": {
+      "type": "landing",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

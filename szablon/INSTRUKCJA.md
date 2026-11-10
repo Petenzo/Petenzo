@@ -1,0 +1,30 @@
+# Twój szablon sklepu w Shopify: instrukcja wklejania
+
+Robisz to raz na sklep (na nowy produkt wymieniasz tylko plik sekcji i zdjęcia).
+
+## Pliki (folder `szablon/shopify/`)
+
+| Plik | Co to jest |
+|---|---|
+| `layout/landing.liquid` | „Rama” strony: czcionki i kod Shopify, bez nagłówka i stopki motywu (strona ma własne). |
+| `sections/landing.liquid` | Cała strona produktu: pasek, galeria, zestawy, sekcje, opinie, licznik 48h, FAQ, polityki, koszyk i okno dostawy. |
+| `templates/product.landing.json` | Krótki kod szablonu, który łączy jedno z drugim (taki jak u ziomka). |
+
+## Krok 1: wgraj zdjęcia
+Shopify → **Treści → Pliki → Prześlij pliki**. Wrzuć wszystkie zdjęcia z folderu `img/` danego sklepu (np. `kwiatora/img/`) **bez zmieniania nazw**.
+
+## Krok 2: dodaj 3 pliki do motywu
+Shopify → **Sklep online → Motywy → … → Edytuj kod**.
+1. Folder **layout** → *Dodaj nowy layout* → nazwa `landing` → wklej całą zawartość `layout/landing.liquid` → Zapisz.
+2. Folder **sections** → *Dodaj nową sekcję* → nazwa `landing` → wklej `sections/landing.liquid` → Zapisz.
+3. Folder **templates** → *Dodaj nowy szablon* → typ **product**, format **JSON**, nazwa `landing` → wklej `templates/product.landing.json` → Zapisz.
+
+## Krok 3: podepnij szablon pod produkt
+Produkty → Twój produkt → po prawej **Szablon motywu** → wybierz `landing` → Zapisz.
+
+Gotowe. Strona produktu wygląda jak podgląd, a „Przejdź do płatności” dodaje kalendarze do koszyka Shopify i otwiera kasę.
+
+## Ważne
+- **Rabat za 2 i 3 sztuki** musisz ustawić w Shopify: Rabaty → Rabat automatyczny → „Kup X, rabat na ilość” (strona tylko pokazuje ceny zestawów).
+- **Nowy produkt** = nowy `src.html` → w terminalu: `python3 szablon/zbuduj.py <ścieżka-do-src.html>` → podmieniasz tylko `sections/landing.liquid` (layout i JSON zostają) + wgrywasz nowe zdjęcia.
+- Plik sekcji ma ok. 80 KB, mieści się w limicie Shopify (256 KB).
