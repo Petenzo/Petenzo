@@ -4,6 +4,7 @@ CDN='https://cdn.shopify.com/s/files/1/1123/3876/4114/files/'
 head=src[:src.index('</head>')]
 head=head.replace('<title>Lulavi</title>','<title>{{ page_title }}</title>\n<link rel="canonical" href="{{ canonical_url }}">\n<meta name="google-site-verification" content="E9s8FqFXQeFQdFco-fwGXVXTbGTXxlWEIoX38WEWwCQ">\n<meta name="google-site-verification" content="FRsTgHyJqZ9ys7oGa75t6w0XuMFcXuZ640u5CHN8zjE">')
 head=re.sub(r'logo/(kot-ikona-\d+\.png)',lambda m:CDN+m.group(1),head)
+head=head.replace('<link rel="preconnect" href="https://fonts.googleapis.com">','<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>\n<link rel="preconnect" href="https://fonts.googleapis.com">',1)
 layout=head+'{{ content_for_header }}\n</head>\n<body>\n{{ content_for_layout }}\n</body>\n</html>\n'
 body=src[src.index('<body>')+6:src.index('</body>')]
 body=re.sub(r'(?:src|href)="zdjecia/(?:lulavi|opinie)/([\w-]+)\.jpg"',lambda m:m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=1200"' if 'opinie' not in m.group(0) else m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=120"',body)
@@ -25,6 +26,30 @@ body=body.replace("obraz('zdjecia/warianty/mini-' + w.id + '.jpg')","w.img")
 body=body.replace("b.setAttribute('aria-label', w.nazwa);","b.setAttribute('aria-label', w.nazwa);\n          b.dataset.vid = w.vid;")
 # koszyk
 body=body.replace('</script>','</script>\n'+open('/home/user/Petenzo/shopify-motyw/src/koszyk.html').read(),1)
+# szybkość: mniejsze zdjęcia, pierwsze zdjęcie z priorytetem, reszta leniwie
+import re as _re
+_hero=True
+def _img(m):
+    global _hero
+    tag=m.group(0)
+    src=_re.search(r'src="([^"]+)"',tag).group(1)
+    if 'cdn.shopify.com' not in src: return tag
+    base=src.split('?')[0]
+    if 'avatar-foto' in tag:
+        tag=tag.replace(src,base+'?width=96')
+    elif 'class="thumb"' in tag or src.endswith('?width=120'):
+        tag=tag.replace(src,base+'?width=160')
+    else:
+        tag=tag.replace('src="'+src+'"','src="'+base+'?width=800" srcset="'+base+'?width=500 500w, '+base+'?width=800 800w, '+base+'?width=1100 1100w" sizes="(max-width: 700px) 100vw, 560px"')
+    tag=tag.replace(' loading="lazy"','')
+    if _hero and 'avatar-foto' not in tag:
+        _hero=False
+        return tag.replace('<img ','<img fetchpriority="high" decoding="async" ',1)
+    return tag.replace('<img ','<img loading="lazy" decoding="async" ',1)
+body=_re.sub(r'<img [^>]*>',_img,body)
+def _thumbs(m):
+    return _re.sub(r'\?width=800" srcset="[^"]*" sizes="[^"]*"','?width=160"',m.group(0))
+body=_re.sub(r'<div class="thumbs">.*?</div>',_thumbs,body,flags=_re.S)
 section="{%- if product == blank -%}{%- assign product = section.settings.produkt -%}{%- endif -%}{%- if product == blank -%}{%- assign product = all_products['lulavi'] -%}{%- endif -%}\n"+body+'\n{% schema %}\n{"name": "Lulavi – strona produktu", "settings": [{"type": "product", "id": "produkt", "label": "Produkt"}]}\n{% endschema %}\n'
 tpl='{\n  "layout": "lulavi",\n  "sections": { "main": { "type": "lulavi-strona", "settings": {} } },\n  "order": ["main"]\n}\n'
 d='/home/user/Petenzo/shopify-motyw/'
