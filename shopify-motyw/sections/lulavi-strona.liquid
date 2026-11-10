@@ -583,6 +583,15 @@
     });
     document.getElementById('dostawa-x').addEventListener('click', function () { dostawa.classList.remove('on'); });
     dostawa.addEventListener('click', function (e) { if (e.target === dostawa) dostawa.classList.remove('on'); });
+    // wybór dostawy: od razu do kasy z tym, co klient widzi w koszyku (bez czekania na zapis w tle)
+    dostawa.querySelectorAll('a[href="/checkout"]').forEach(function (l) {
+      l.addEventListener('click', function (e) {
+        if (!stan || !stan.items.length) return;
+        e.preventDefault();
+        clearTimeout(timer);
+        window.location.href = '/cart/' + stan.items.map(function (it) { return it.variant_id + ':' + it.quantity; }).join(',');
+      });
+    });
     document.getElementById('kosz-tlo').addEventListener('click', zamknij);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zamknij(); });
     if (ikona) ikona.addEventListener('click', function (e) { e.preventDefault(); otworz(); pokaz(); });
@@ -704,14 +713,27 @@
         if (s) ilosci[s.dataset.vid] = (ilosci[s.dataset.vid] || 0) + 1;
       });
       var items = Object.keys(ilosci).map(function (id) { return { id: +id, quantity: ilosci[id] }; });
-      var tekst = cta.textContent;
-      cta.disabled = true;
-      cta.textContent = 'Dodaję do koszyka…';
+      // koszyk otwiera się od razu z wybranymi wzorami, a Shopify zapisuje je w tle
+      var jedna = document.querySelector('input[name="pakiet"][value="1"]');
+      var cenaSzt = Math.round(parseFloat((jedna ? jedna.dataset.price : '0').replace(',', '.')) * 100);
+      var c = JSON.parse(JSON.stringify(stan || { items: [], item_count: 0, original_total_price: 0 }));
+      items.forEach(function (x) {
+        var jest = c.items.filter(function (it) { return it.variant_id === x.id; })[0];
+        if (jest) { jest.quantity += x.quantity; jest.original_line_price = jest.final_line_price = (jest.original_price || cenaSzt) * jest.quantity; }
+        else {
+          var w = WZORY.filter(function (v) { return v.vid === x.id; })[0] || {};
+          c.items.push({ key: 'nowy-' + x.id, variant_id: x.id, quantity: x.quantity, variant_title: w.nazwa, image: w.img, original_price: cenaSzt, original_line_price: cenaSzt * x.quantity, final_line_price: cenaSzt * x.quantity });
+        }
+      });
+      c.item_count = c.items.reduce(function (a, it) { return a + it.quantity; }, 0);
+      c.original_total_price = c.items.reduce(function (a, it) { return a + it.original_line_price; }, 0);
+      c.total_discount = 0;
+      rysuj(c);
+      otworz();
+      var nr = ++licznikSync;
       api('/cart/add.js', { items: items })
-        .then(pokaz)
-        .then(otworz)
-        .catch(function () { alert('Nie udało się dodać do koszyka. Spróbuj jeszcze raz.'); })
-        .then(function () { cta.disabled = false; cta.textContent = tekst; });
+        .then(function () { if (nr === licznikSync && !Object.keys(czekajace).length) return pokaz(); })
+        .catch(function () { alert('Nie udało się dodać do koszyka. Spróbuj jeszcze raz.'); pokaz(); });
     });
 
     pokaz();
