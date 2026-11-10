@@ -519,6 +519,10 @@
   .platnosci .mc { display: flex; padding: 0 8px; }
   .platnosci .mc i { width: 14px; height: 14px; border-radius: 50%; background: #eb001b; }
   .platnosci .mc i + i { background: #f79e1b; margin-left: -5px; opacity: .9; }
+  .platnosci .apay { background: #000; color: #fff; border-color: #000; gap: 3px; display: inline-flex; align-items: center; justify-content: center; }
+  .platnosci .apay svg { width: 10px; height: 12px; margin-top: -2px; }
+  .platnosci .gpay { background: #fff; color: #5f6368; border-color: #dadce0; display: inline-flex; align-items: center; justify-content: center; }
+  .platnosci .gpay b { font-weight: 800; background: conic-gradient(from -45deg, #ea4335 0 25%, #4285f4 0 50%, #34a853 0 75%, #fbbc05 0); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
   /* okno „Wybierz dostawę” przed kasą */
   .dostawa-tlo { position: fixed; inset: 0; z-index: 60; background: rgba(28,36,64,.45); display: none; align-items: flex-end; justify-content: center; padding: 12px; }
   .dostawa-tlo.on { display: flex; }
@@ -588,6 +592,10 @@
         .then(function (r) { if (!r.ok) throw r; return r.json(); });
     }
 
+    var PLATNOSCI = '<div class="platnosci" aria-label="Metody płatności"><span class="blik">blik</span><span class="visa">VISA</span><span class="mc"><i></i><i></i></span>' +
+      '<span class="apay"><svg viewBox="0 0 14 17" aria-hidden="true"><path fill="#fff" d="M11.6 9c0-2 1.7-3 1.8-3-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.6 0-1.6-.7-2.7-.7C3.1 4.5 1.8 5.3 1 6.6c-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.3-.9-2.3-3.6zM9.5 3c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/></svg>Pay</span>' +
+      '<span class="gpay"><b style="color:#4285f4">G</b>&nbsp;Pay</span></div>';
+
     function upsell(szt) {
       if (szt < 1 || szt >= 3) return '';
       var ile = szt === 1 ? 'Dobierz drugą opaskę za <span>90 zł</span> (zamiast 139,99 zł)' : 'Dobierz trzecią opaskę za <span>70 zł</span> (zamiast 139,99 zł)';
@@ -597,44 +605,94 @@
         }).join('') + '</div></div>';
     }
 
-    function pokaz() {
-      return api('/cart.js').then(function (c) {
-        var szt = c.item_count;
-        licznik.textContent = szt;
-        licznik.hidden = !szt;
-        tytul.textContent = szt ? 'Koszyk • ' + szt : 'Koszyk';
-        if (!szt) {
-          body.innerHTML = '<div class="pusty">Twój koszyk jest pusty.<br>Wybierz swojego zwierzaka 🦊🐼🐸</div>';
-          foot.innerHTML = '<button class="btn" type="button" id="kosz-wroc">Wybierz opaskę</button>';
-          document.getElementById('kosz-wroc').onclick = function () { zamknij(); document.getElementById('kup').scrollIntoView({ behavior: 'smooth' }); };
-          return;
-        }
-        // rabat za zestaw: z Shopify, a gdy go brak (podgląd) – liczony na miejscu i dzielony na pozycje
-        var rabat = c.total_discount || rabatZestawu(szt);
-        body.innerHTML = c.items.map(function (it) {
-          var rabatPoz = c.total_discount ? it.original_line_price - it.final_line_price : Math.round(rabat * it.original_line_price / c.original_total_price);
-          return '<div class="poz"><img src="' + (it.image || '') + '" alt="">' +
-            '<div><b class="poz-tytul">Lulavi – opaska ze słuchawkami</b><div class="poz-wzor">' + (it.variant_title || it.product_title) + '</div>' +
-            '<div class="poz-dol"><span class="ilosc"><button type="button" data-zmien="' + it.key + '" data-ile="' + (it.quantity - 1) + '" aria-label="Mniej">−</button><span>' + it.quantity + '</span>' +
-            '<button type="button" data-zmien="' + it.key + '" data-ile="' + (it.quantity + 1) + '" aria-label="Więcej">+</button></span>' +
-            '<div class="poz-cena">' + (rabatPoz ? '<s>' + zl(it.original_line_price) + '</s>' : '') + '<b>' + zl(it.original_line_price - rabatPoz) + '</b>' +
-            (rabatPoz ? '<small>(Oszczędzasz ' + zl(rabatPoz) + ')</small>' : '') + '</div></div></div>' +
-            '<button class="usun" type="button" data-zmien="' + it.key + '" data-ile="0" aria-label="Usuń">' + KOSZ + '</button></div>';
-        }).join('') + upsell(szt);
-        var razem = c.original_total_price - rabat;
-        foot.innerHTML = (rabat ? '<div class="linia rabat"><span>Łączny rabat</span><span>−' + zl(rabat) + '</span></div>' : '') +
-          '<div class="linia razem"><span>Łączna kwota</span><span>' + zl(razem) + '</span></div>' +
-          '<div class="linia dost"><span>Dostawa</span><span>GRATIS</span></div>' +
-          '<a class="btn" href="/checkout">Realizuj zakup</a>' +
-          '<div class="platnosci" aria-label="Metody płatności"><span class="blik">blik</span><span class="visa">VISA</span><span class="mc"><i></i><i></i></span><span>Apple Pay</span><span>G Pay</span></div>';
+    // stan koszyka trzymany na miejscu: zmiany widać od razu, a Shopify synchronizuje się w tle
+    var stan = null, czekajace = {}, licznikSync = 0, timer = null;
+
+    function rysuj(c) {
+      stan = c;
+      var szt = c.item_count;
+      licznik.textContent = szt;
+      licznik.hidden = !szt;
+      tytul.textContent = szt ? 'Koszyk • ' + szt : 'Koszyk';
+      if (!szt) {
+        body.innerHTML = '<div class="pusty">Twój koszyk jest pusty.<br>Wybierz swojego zwierzaka 🦊🐼🐸</div>';
+        foot.innerHTML = '<button class="btn" type="button" id="kosz-wroc">Wybierz opaskę</button>';
+        document.getElementById('kosz-wroc').onclick = function () { zamknij(); document.getElementById('kup').scrollIntoView({ behavior: 'smooth' }); };
+        return;
+      }
+      // rabat za zestaw: z Shopify, a gdy go brak (podgląd albo zmiana jeszcze w drodze) – liczony na miejscu i dzielony na pozycje
+      var rabat = c.total_discount || rabatZestawu(szt);
+      body.innerHTML = c.items.map(function (it) {
+        var rabatPoz = c.total_discount ? it.original_line_price - it.final_line_price : Math.round(rabat * it.original_line_price / c.original_total_price);
+        return '<div class="poz"><img src="' + (it.image || '') + '" alt="">' +
+          '<div><b class="poz-tytul">Lulavi – opaska ze słuchawkami</b><div class="poz-wzor">' + (it.variant_title || it.product_title) + '</div>' +
+          '<div class="poz-dol"><span class="ilosc"><button type="button" data-zmien="' + it.key + '" data-ile="' + (it.quantity - 1) + '" aria-label="Mniej">−</button><span>' + it.quantity + '</span>' +
+          '<button type="button" data-zmien="' + it.key + '" data-ile="' + (it.quantity + 1) + '" aria-label="Więcej">+</button></span>' +
+          '<div class="poz-cena">' + (rabatPoz ? '<s>' + zl(it.original_line_price) + '</s>' : '') + '<b>' + zl(it.original_line_price - rabatPoz) + '</b>' +
+          (rabatPoz ? '<small>(Oszczędzasz ' + zl(rabatPoz) + ')</small>' : '') + '</div></div></div>' +
+          '<button class="usun" type="button" data-zmien="' + it.key + '" data-ile="0" aria-label="Usuń">' + KOSZ + '</button></div>';
+      }).join('') + upsell(szt);
+      var razem = c.original_total_price - rabat;
+      foot.innerHTML = (rabat ? '<div class="linia rabat"><span>Łączny rabat</span><span>−' + zl(rabat) + '</span></div>' : '') +
+        '<div class="linia razem"><span>Łączna kwota</span><span>' + zl(razem) + '</span></div>' +
+        '<div class="linia dost"><span>Dostawa</span><span>GRATIS</span></div>' +
+        '<a class="btn" href="/checkout">Realizuj zakup</a>' + PLATNOSCI;
+    }
+
+    function pokaz() { return api('/cart.js').then(rysuj); }
+
+    // przelicza koszyk na miejscu po zmianie ilości jednej pozycji
+    function zmienLokalnie(key, ile) {
+      var c = JSON.parse(JSON.stringify(stan));
+      c.items = c.items.filter(function (it) {
+        if (it.key !== key) return true;
+        var cena = it.original_price || Math.round(it.original_line_price / it.quantity);
+        it.quantity = ile;
+        it.original_line_price = it.final_line_price = cena * ile;
+        return ile > 0;
       });
+      c.item_count = c.items.reduce(function (a, it) { return a + it.quantity; }, 0);
+      c.original_total_price = c.items.reduce(function (a, it) { return a + it.original_line_price; }, 0);
+      c.total_discount = 0;
+      rysuj(c);
+    }
+
+    // wysyła do Shopify wszystkie zmiany naraz, chwilę po ostatnim kliknięciu
+    function wyslij() {
+      var zmiany = czekajace; czekajace = {};
+      var nr = ++licznikSync;
+      api('/cart/update.js', { updates: zmiany }).then(function (c) {
+        if (nr === licznikSync && !Object.keys(czekajace).length) rysuj(c);
+      }).catch(function () { pokaz(); });
     }
 
     body.addEventListener('click', function (e) {
       var z = e.target.closest('[data-zmien]');
       var d = e.target.closest('[data-dobierz]');
-      if (z) api('/cart/change.js', { id: z.dataset.zmien, quantity: +z.dataset.ile }).then(pokaz);
-      if (d) api('/cart/add.js', { items: [{ id: +d.dataset.dobierz, quantity: 1 }] }).then(pokaz);
+      if (z && stan) {
+        var ile = Math.max(0, +z.dataset.ile);
+        zmienLokalnie(z.dataset.zmien, ile);
+        czekajace[z.dataset.zmien] = ile;
+        clearTimeout(timer); timer = setTimeout(wyslij, 350);
+      }
+      if (d && stan) {
+        var vid = +d.dataset.dobierz;
+        var jest = stan.items.filter(function (it) { return it.variant_id === vid; })[0];
+        if (jest) {
+          zmienLokalnie(jest.key, jest.quantity + 1);
+          czekajace[jest.key] = jest.quantity + 1;
+          clearTimeout(timer); timer = setTimeout(wyslij, 350);
+        } else {
+          var w = WZORY.filter(function (x) { return x.vid === vid; })[0] || {};
+          var cena = stan.items.length ? (stan.items[0].original_price || Math.round(stan.items[0].original_line_price / stan.items[0].quantity)) : 0;
+          var c = JSON.parse(JSON.stringify(stan));
+          c.items.push({ key: 'nowy-' + vid, variant_id: vid, quantity: 1, variant_title: w.nazwa, image: w.img, original_price: cena, original_line_price: cena, final_line_price: cena });
+          c.item_count += 1; c.original_total_price += cena; c.total_discount = 0;
+          rysuj(c);
+          var nr = ++licznikSync;
+          api('/cart/add.js', { items: [{ id: vid, quantity: 1 }] }).then(function () { if (nr === licznikSync) pokaz(); }).catch(function () { pokaz(); });
+        }
+      }
     });
 
     // „Dodaj do koszyka”: wybrane wzory trafiają do koszyka, a koszyk się wysuwa
