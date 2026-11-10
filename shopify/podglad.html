@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumka Shopify podgląd</title>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#121212;--muted:#5c5c5c;--bg:#fff;--bg2:#f3f3f3;--line:#e2e2e2}
+  *{box-sizing:border-box;margin:0}
+  body{font-family:Assistant,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+  .bar{background:var(--ink);color:#fff;text-align:center;font-size:13px;padding:8px}
+  header{border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;height:70px}
+  .logo{font-weight:700;font-size:24px}
+  header nav{display:flex;gap:22px;color:var(--muted);font-size:15px}
+  h1,h2{font-weight:600;letter-spacing:.3px;line-height:1.2}
+  h2{font-size:clamp(28px,4vw,40px);text-align:center;margin-bottom:36px}
+  section{padding:52px 0}
+  .alt{background:var(--bg2)}
+  /* main product */
+  .product{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;padding-top:36px}
+  .media{background:radial-gradient(circle at 50% 40%,#1d2d55,#0c1220 75%);border-radius:4px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .media .str{width:2px;height:50px;background:linear-gradient(#0000,#c9a35a)}
+  .media .cap{width:36px;height:18px;background:linear-gradient(90deg,#8a6a2c,#f2d28c,#8a6a2c);border-radius:5px 5px 2px 2px;margin-bottom:-5px;position:relative;z-index:1}
+  .orb{width:58%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 55%,#ffd9a0,#e88a5a 25%,#6b5bd6 55%,#1b2450 80%);box-shadow:0 0 70px 10px rgba(127,180,255,.35);position:relative;animation:sway 6s ease-in-out infinite;transform-origin:50% -60px}
+  .orb::after{content:"";position:absolute;top:12%;left:18%;width:30%;height:20%;border-radius:50%;background:radial-gradient(rgba(255,255,255,.7),#0000 70%);transform:rotate(-30deg)}
+  @keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+  .thumbs{display:flex;gap:10px;margin-top:10px}
+  .thumbs div{flex:1;aspect-ratio:1;background:var(--bg2);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center}
+  .info{position:sticky;top:20px;align-self:start}
+  .tag{font-size:13px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
+  .info h1{font-size:clamp(30px,4vw,42px);margin:6px 0 10px}
+  .price{font-size:20px;margin-bottom:6px}
+  .price-note{font-size:13px;color:var(--muted);margin-bottom:18px}
+  .sub{color:var(--muted);margin-bottom:22px}
+  .label{font-size:14px;color:var(--muted);margin-bottom:8px}
+  .qty{display:inline-flex;border:1px solid var(--ink);margin-bottom:20px}
+  .qty span{width:45px;height:45px;display:grid;place-items:center}
+  .btn{display:block;width:100%;text-align:center;padding:14px;border:1px solid var(--ink);font-size:15px;margin-bottom:10px;background:#fff}
+  .btn.dark{background:#5a31f4;color:#fff;border-color:#5a31f4;font-weight:600}
+  .desc{color:var(--muted);margin:20px 0;font-size:15px;border:1px dashed var(--line);padding:12px}
+  details{border-top:1px solid var(--line);padding:14px 0}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  summary::after{content:"⌄"}
+  details p{color:var(--muted);margin-top:8px;font-size:15px}
+  .share{margin-top:16px;color:var(--muted);font-size:14px}
+  /* multicolumn */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+  .col h3{font-size:20px;font-weight:600;margin-bottom:8px}
+  .col p{color:var(--muted)}
+  .col.box{background:var(--bg2);padding:28px 22px}
+  .rich{text-align:center;max-width:760px;margin:0 auto}
+  .rich p{color:var(--muted);font-size:18px}
+  .faq{max-width:760px;margin:0 auto}
+  .news{text-align:center}
+  .news p{color:var(--muted);margin:-20px 0 24px}
+  .field{display:flex;max-width:440px;margin:0 auto;border:1px solid var(--ink);background:#fff}
+  .field span{flex:1;text-align:left;padding:14px;color:var(--muted)}
+  .field b{padding:14px 18px}
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px;text-align:center}
+  @media(max-width:760px){
+    header nav{display:none}
+    .product{grid-template-columns:1fr;gap:24px}
+    .info{position:static}
+    .cols{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">Podgląd szablonu „lumka” w motywie Dawn · wygląd w sklepie przejmie Twoje kolory i czcionki</div>
+<header><div class="wrap"><div class="logo">Petenzo</div><nav><span>Strona główna</span><span>Katalog</span><span>Kontakt</span></nav><span>🛒</span></div></header>
+
+<main>
+<div class="wrap product">
+  <div>
+    <div class="media"><div class="str"></div><div class="cap"></div><div class="orb"></div></div>
+    <div class="thumbs"><div>Twoje<br>zdjęcie</div><div>Twój<br>filmik</div><div>Zdjęcie<br>na choince</div><div>Opakowanie</div></div>
+  </div>
+  <div class="info">
+    <div class="tag">Prezent na święta 2026</div>
+    <h1>Lumka – bombka z filmem</h1>
+    <div class="price">99,00 zł</div>
+    <div class="price-note">Podatek wliczony w cenę.</div>
+    <p class="sub">Bombka, która odtwarza wspomnienia. Wgraj film, powieś na choince i patrz, jak wszyscy się wzruszają.</p>
+    <div class="label">Ilość</div>
+    <div class="qty"><span>−</span><span>1</span><span>+</span></div>
+    <div class="btn">Dodaj do koszyka</div>
+    <div class="btn dark">Kup teraz</div>
+    <div class="desc">Tu pojawi się opis z produktu w Shopify (jak wgrać film, ładowanie, wymiary).</div>
+    <details open><summary>🚚 Darmowa dostawa od 99 zł</summary><p>Wysyłamy na terenie Polski. Dostawa trwa zwykle 6–10 dni roboczych. Zamów do 5 grudnia, żeby mieć spokojny zapas przed Wigilią.</p></details>
+    <details><summary>↩️ 30 dni na zwrot</summary><p>Masz 30 dni od otrzymania paczki na zwrot bez podania przyczyny. Pieniądze oddajemy w ciągu 14 dni.</p></details>
+    <div class="share">↗ Udostępnij</div>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <h2>Trzy kroki do wzruszenia</h2>
+  <div class="cols">
+    <div class="col"><h3>1. Wybierz film</h3><p>Nagranie z telefonu: pierwsze kroki, Wigilia u dziadków, oświadczyny. Kilka sekund wystarczy.</p></div>
+    <div class="col"><h3>2. Wgraj do bombki</h3><p>Przesyłasz plik z telefonu do bombki. Zajmuje to dosłownie chwilę.</p></div>
+    <div class="col"><h3>3. Powieś na choince</h3><p>Bombka odtwarza film w pętli. Każdy, kto podejdzie do drzewka, zatrzyma się na dłużej.</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap rich">
+  <h2>Co do niej wgrać?</h2>
+  <p>👶 Pierwsze urodziny · 💍 Ślub · 🎄 Wigilia sprzed lat · 👵 Babcia i dziadek · 🐶 Szczeniak w domu · 🏖️ Wakacje marzeń · 🎓 Obrona dyplomu · ❤️ Pierwsza randka</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Najlepszy prezent tego roku</h2>
+  <div class="cols">
+    <div class="col box"><h3>🥹 Prawdziwe emocje</h3><p>To nie kolejna rzecz na półkę. To wspomnienie, które wraca co roku, gdy wyciągacie ozdoby.</p></div>
+    <div class="col box"><h3>✨ Wygląda jak magia</h3><p>Wyłączona wygląda jak zwykła szklana bombka. Włączona świeci filmem w środku kuli.</p></div>
+    <div class="col box"><h3>🔁 Zmieniasz, kiedy chcesz</h3><p>W tym roku urodziny, w przyszłym ślub. Film podmieniasz w każdej chwili.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap faq">
+  <h2>Pytania</h2>
+  <details><summary>⏱️ Jak długi film mogę wgrać?</summary><p>Najlepiej sprawdzają się krótkie klipy, bo bombka odtwarza je w pętli. Szczegóły są w instrukcji w paczce.</p></details>
+  <details><summary>🚚 Ile kosztuje dostawa?</summary><p>Od 99 zł dostawa jest darmowa. Poniżej tej kwoty kosztuje 14,99 zł. Dostarczamy na terenie Polski.</p></details>
+  <details><summary>↩️ A jeśli mi się nie spodoba?</summary><p>Masz 30 dni od otrzymania paczki na zwrot bez podania przyczyny. Zwracamy pieniądze w ciągu 14 dni.</p></details>
+  <details><summary>❤️ Czy mogę kupić kilka sztuk?</summary><p>Jasne. Jedna dla rodziców, jedna dla teściów, jedna dla siebie. Każdą możesz zaprogramować innym filmem.</p></details>
+</div></section>
+
+<section class="alt"><div class="wrap news">
+  <h2>Daj komuś wspomnienie na choinkę</h2>
+  <p>Zapisz się, a damy znać o świątecznych promocjach i ostatnim terminie wysyłki przed Wigilią.</p>
+  <div class="field"><span>E-mail</span><b>→</b></div>
+</div></section>
+</main>
+<footer>© 2026 Petenzo · Obsługiwane przez Shopify</footer>
+</body>
+</html>
