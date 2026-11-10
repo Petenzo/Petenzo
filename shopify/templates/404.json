@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": { "type": "main-404", "settings": {} },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Nie przegap świątecznych promocji", "heading_size": "h1" } },
+        "paragraph": { "type": "paragraph", "settings": { "text": "<p>Zapisz się, a damy znać o rabatach na Lumkę i ostatnim terminie wysyłki przed Wigilią.</p>" } },
+        "email-form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email-form"],
+      "settings": { "color_scheme": "background-2", "full_width": true, "padding_top": 68, "padding_bottom": 52 }
+    }
+  },
+  "order": ["main", "newsletter"]
+}
