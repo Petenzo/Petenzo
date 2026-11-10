@@ -1,0 +1,163 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "tag": {
+          "type": "text",
+          "settings": { "text": "PREZENT NA ŚWIĘTA 2026", "text_style": "uppercase" }
+        },
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "subtitle": {
+          "type": "text",
+          "settings": { "text": "Bombka, która odtwarza wspomnienia. Wgraj film, powieś na choince i patrz, jak wszyscy się wzruszają.", "text_style": "body" }
+        },
+        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button" } },
+        "quantity_selector": { "type": "quantity_selector", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true } },
+        "description": { "type": "description", "settings": {} },
+        "tab_delivery": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Darmowa dostawa od 99 zł",
+            "icon": "truck",
+            "content": "<p>Wysyłamy na terenie Polski. Dostawa trwa zwykle 6–10 dni roboczych. Zamów do 5 grudnia, żeby mieć spokojny zapas przed Wigilią.</p>"
+          }
+        },
+        "tab_return": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "30 dni na zwrot",
+            "icon": "return",
+            "content": "<p>Masz 30 dni od otrzymania paczki na zwrot bez podania przyczyny. Pieniądze oddajemy w ciągu 14 dni.</p>"
+          }
+        },
+        "share": { "type": "share", "settings": { "share_label": "Udostępnij" } }
+      },
+      "block_order": [
+        "tag", "title", "price", "subtitle", "variant_picker", "quantity_selector",
+        "buy_buttons", "description", "tab_delivery", "tab_return", "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "steps": {
+      "type": "multicolumn",
+      "blocks": {
+        "step1": {
+          "type": "column",
+          "settings": { "title": "1. Wybierz film", "text": "<p>Nagranie z telefonu: pierwsze kroki, Wigilia u dziadków, oświadczyny. Kilka sekund wystarczy.</p>", "link_label": "" }
+        },
+        "step2": {
+          "type": "column",
+          "settings": { "title": "2. Wgraj do bombki", "text": "<p>Przesyłasz plik z telefonu do bombki. Zajmuje to dosłownie chwilę.</p>", "link_label": "" }
+        },
+        "step3": {
+          "type": "column",
+          "settings": { "title": "3. Powieś na choince", "text": "<p>Bombka odtwarza film w pętli. Każdy, kto podejdzie do drzewka, zatrzyma się na dłużej.</p>", "link_label": "" }
+        }
+      },
+      "block_order": ["step1", "step2", "step3"],
+      "settings": {
+        "title": "Trzy kroki do wzruszenia",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "color_scheme": "background-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "ideas": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Co do niej wgrać?", "heading_size": "h1" } },
+        "text": {
+          "type": "text",
+          "settings": { "text": "<p>👶 Pierwsze urodziny · 💍 Ślub · 🎄 Wigilia sprzed lat · 👵 Babcia i dziadek · 🐶 Szczeniak w domu · 🏖️ Wakacje marzeń · 🎓 Obrona dyplomu · ❤️ Pierwsza randka</p>" }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": { "color_scheme": "background-2", "full_width": true, "padding_top": 52, "padding_bottom": 52 }
+    },
+    "why": {
+      "type": "multicolumn",
+      "blocks": {
+        "why1": {
+          "type": "column",
+          "settings": { "title": "🥹 Prawdziwe emocje", "text": "<p>To nie kolejna rzecz na półkę. To wspomnienie, które wraca co roku, gdy wyciągacie ozdoby.</p>", "link_label": "" }
+        },
+        "why2": {
+          "type": "column",
+          "settings": { "title": "✨ Wygląda jak magia", "text": "<p>Wyłączona wygląda jak zwykła szklana bombka. Włączona świeci filmem w środku kuli.</p>", "link_label": "" }
+        },
+        "why3": {
+          "type": "column",
+          "settings": { "title": "🔁 Zmieniasz, kiedy chcesz", "text": "<p>W tym roku urodziny, w przyszłym ślub. Film podmieniasz w każdej chwili.</p>", "link_label": "" }
+        }
+      },
+      "block_order": ["why1", "why2", "why3"],
+      "settings": {
+        "title": "Najlepszy prezent tego roku",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "color_scheme": "background-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "q1": {
+          "type": "collapsible_row",
+          "settings": { "heading": "Jak długi film mogę wgrać?", "icon": "stopwatch", "row_content": "<p>Najlepiej sprawdzają się krótkie klipy, bo bombka odtwarza je w pętli. Szczegóły są w instrukcji w paczce.</p>" }
+        },
+        "q2": {
+          "type": "collapsible_row",
+          "settings": { "heading": "Ile kosztuje dostawa?", "icon": "truck", "row_content": "<p>Od 99 zł dostawa jest darmowa. Poniżej tej kwoty kosztuje 14,99 zł. Dostarczamy na terenie Polski.</p>" }
+        },
+        "q3": {
+          "type": "collapsible_row",
+          "settings": { "heading": "A jeśli mi się nie spodoba?", "icon": "return", "row_content": "<p>Masz 30 dni od otrzymania paczki na zwrot bez podania przyczyny. Zwracamy pieniądze w ciągu 14 dni.</p>" }
+        },
+        "q4": {
+          "type": "collapsible_row",
+          "settings": { "heading": "Czy mogę kupić kilka sztuk?", "icon": "heart", "row_content": "<p>Jasne. Jedna dla rodziców, jedna dla teściów, jedna dla siebie. Każdą możesz zaprogramować innym filmem.</p>" }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {
+        "caption": "",
+        "heading": "Pytania",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "background-1",
+        "open_first_collapsible_row": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Daj komuś wspomnienie na choinkę", "heading_size": "h1" } },
+        "paragraph": { "type": "paragraph", "settings": { "text": "<p>Zapisz się, a damy znać o świątecznych promocjach i ostatnim terminie wysyłki przed Wigilią.</p>" } },
+        "email-form": { "type": "email_form", "settings": {} }
+      },
+      "block_order": ["heading", "paragraph", "email-form"],
+      "settings": { "color_scheme": "background-2", "full_width": true, "padding_top": 68, "padding_bottom": 52 }
+    }
+  },
+  "order": ["main", "steps", "ideas", "why", "faq", "newsletter"]
+}
