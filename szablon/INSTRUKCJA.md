@@ -1,5 +1,11 @@
 # Twój szablon sklepu w Shopify
 
+## Pliki
+- `Szablon_motyw.zip` – OGÓLNY szablon (pomarańczowo-granatowy, z [PLACEHOLDERAMI]) jako gotowy motyw Shopify.
+- `szablon.html` – ten sam szablon jako kod do wypełniania przez czat.
+- `Kwiatora_motyw.zip` – przykład gotowego sklepu zrobionego z szablonu.
+- `zrob_ogolny.py`, `zbuduj_motyw.py`, `zbuduj.py` – skrypty (robi je za Ciebie czat).
+
 ## NAJPROŚCIEJ: jeden plik `Kwiatora_motyw.zip`
 W środku jest wszystko: strona, zdjęcia, koszyk, polityki.
 1. Shopify → **Sklep online → Motywy → Dodaj motyw → Prześlij plik zip** → wybierz `Kwiatora_motyw.zip`.

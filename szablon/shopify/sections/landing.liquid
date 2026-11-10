@@ -9,23 +9,23 @@
 <style>
 :root{
   --kw-bg:#FFFFFF;
-  --kw-surface:#FBF7F0;
-  --kw-surface-2:#F3EDE2;
-  --kw-fg:#18241D;
-  --kw-muted:#5E6B63;
-  --kw-border:#E8E0D2;
-  --kw-primary:#1E5B3D;
-  --kw-primary-dark:#123826;
-  --kw-primary-soft:#E8F1EA;
-  --kw-gold:#C9963A;
-  --kw-gold-soft:#FBF1DC;
+  --kw-surface:#FFF8F3;
+  --kw-surface-2:#FCEDE4;
+  --kw-fg:#1F2547;
+  --kw-muted:#646A85;
+  --kw-border:#F1E4DB;
+  --kw-primary:#E9693F;
+  --kw-primary-dark:#1F2547;
+  --kw-primary-soft:#FDEDE5;
+  --kw-gold:#E9693F;
+  --kw-gold-soft:#FDEDE5;
   --kw-sale:#B8323A;
   --kw-sale-soft:#FBE9EA;
   --kw-ok:#2E8B57;
-  --kw-gradient:linear-gradient(135deg,#2B7A50 0%,#123826 100%);
-  --kw-gradient-gold:linear-gradient(135deg,#E2B866 0%,#B9822A 100%);
-  --kw-shadow-card:0 6px 28px -10px rgba(18,56,38,.22);
-  --kw-shadow-cta:0 12px 30px -10px rgba(18,56,38,.55);
+  --kw-gradient:linear-gradient(135deg,#F28A5C 0%,#E2572C 100%);
+  --kw-gradient-gold:linear-gradient(135deg,#2B3266 0%,#1F2547 100%);
+  --kw-shadow-card:0 6px 28px -10px rgba(233,105,63,.18);
+  --kw-shadow-cta:0 12px 30px -10px rgba(233,105,63,.45);
   --kw-radius:20px;
   --kw-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --kw-logo:'Russo One','Poppins',sans-serif;
@@ -407,15 +407,17 @@ img[width][height]{height:auto}
 .kw-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
 @media(max-width:400px){.kw-pills .kw-pill{font-size:10.5px;padding:5px 9px}}
 .kw-gallery-main{touch-action:pan-y}
+.kw-hero-grid>*{min-width:0}
+.kw-pills{flex-wrap:wrap!important;white-space:normal!important}
 </style>
 <script>window.KW_VARIANT={{ kw_variant | json }};</script>
 
 
 <div class="kw-topbar" aria-label="Promocje">
   <div class="kw-marquee">
-    <span>Darmowa wysyłka</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna</span><span>Bezpieczna płatność BLIK i kartą</span>
-    <span>Darmowa wysyłka</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna</span><span>Bezpieczna płatność BLIK i kartą</span>
-    <span>Darmowa wysyłka</span><span>14 dni na zwrot bez podania przyczyny</span><span>Promocja przedświąteczna</span><span>Bezpieczna płatność BLIK i kartą</span>
+    <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
+    <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
+    <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
   </div>
 </div>
 
@@ -425,15 +427,15 @@ img[width][height]{height:auto}
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <a href="#" class="kw-logo" onclick="kwShow('home');return false">
-      <img src="{{ kw_img }}/logo-ikona.png" width="26" height="46" alt=""><div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div>
+      <img src="{{ kw_img }}/logo.png" width="26" height="46" alt=""><div><span>[NAZWA]</span><small>[PODPIS POD LOGO]</small></div>
     </a>
     <nav class="kw-menu">
-      <a href="#zastosowania" onclick="kwShow('home')">Dla kogo</a>
-      <a href="#jak-dziala" onclick="kwShow('home')">Jak to działa</a>
-      <a href="#zestaw" onclick="kwShow('home')">Co dostajesz</a>
-      <a href="#porownanie" onclick="kwShow('home')">Porównanie</a>
-      <a href="#opinie" onclick="kwShow('home')">Opinie</a>
-      <a href="#faq" onclick="kwShow('home')">FAQ</a>
+      <a href="#zastosowania" onclick="kwShow('home')">[MENU 1 – zastosowania]</a>
+      <a href="#jak-dziala" onclick="kwShow('home')">[MENU 2 – jak działa]</a>
+      <a href="#zestaw" onclick="kwShow('home')">[MENU 3 – zestaw]</a>
+      <a href="#porownanie" onclick="kwShow('home')">[MENU 4 – porównanie]</a>
+      <a href="#opinie" onclick="kwShow('home')">[MENU 5 – opinie]</a>
+      <a href="#faq" onclick="kwShow('home')">[MENU 6 – FAQ]</a>
     </nav>
     <button class="kw-icon-btn" aria-label="Koszyk" onclick="kwCart(true)">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
@@ -444,11 +446,11 @@ img[width][height]{height:auto}
 
 <div class="kw-mobile-menu" id="kwMobile">
   <div class="kw-mm-top">
-    <span class="kw-logo"><img src="{{ kw_img }}/logo-ikona.png" width="26" height="46" alt=""><div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div></span>
+    <span class="kw-logo"><img src="{{ kw_img }}/logo.png" width="26" height="46" alt=""><div><span>[NAZWA]</span><small>[PODPIS POD LOGO]</small></div></span>
     <button class="kw-icon-btn" aria-label="Zamknij menu" onclick="kwMenu(false)">✕</button>
   </div>
   <nav>
-    <a href="#hero" onclick="kwMenu(false);kwShow('home')">Kalendarz Kwiatora</a>
+    <a href="#hero" onclick="kwMenu(false);kwShow('home')">[NAZWA PRODUKTU]</a>
     <a href="#jak-dziala" onclick="kwMenu(false);kwShow('home')">Jak to działa</a>
     <a href="#opinie" onclick="kwMenu(false);kwShow('home')">Opinie</a>
     <a href="#faq" onclick="kwMenu(false);kwShow('home')">FAQ</a>
@@ -464,52 +466,52 @@ img[width][height]{height:auto}
   <div class="kw-container kw-hero-grid">
     <div>
       <div class="kw-gallery-main">
-        <img id="kwMain" src="{{ kw_img }}/00-hero-stol.jpg" width="1200" height="1200" alt="Para składa kwiaty z klocków przy stole w świątecznym salonie">
+        <img id="kwMain" src="{{ kw_img }}/foto-1.jpg" width="1200" height="1200" alt="[OPIS ZDJĘCIA 1]">
         <button class="kw-gallery-arrow prev" aria-label="Poprzednie zdjęcie" onclick="kwGal(-1)">‹</button>
         <button class="kw-gallery-arrow next" aria-label="Następne zdjęcie" onclick="kwGal(1)">›</button>
-        <div class="kw-gallery-caption" id="kwCaption">🎁 Prezent, który rozpakowuje się 24 razy</div>
+        <div class="kw-gallery-caption" id="kwCaption">⭐ [PODPIS ZDJĘCIA 1 – korzyść]</div>
       </div>
       <div class="kw-dots" id="kwDots"></div>
       <div class="kw-thumbs" id="kwThumbs"></div>
     </div>
 
     <div class="kw-buy">
-      <div class="kw-pills"><span class="kw-pill gold">★ Hit Adwentu 2026</span><span class="kw-pill sale">⚠️ Liczba sztuk ograniczona</span></div>
-      <h1>Odliczaj do Świąt, budując <span class="kw-accent">bukiet, który nigdy nie zwiędnie</span></h1>
-      <p class="kw-sub">Każdego ranka otwierasz okienko, składasz jeden kwiat z klocków i dokładasz go do wazonu. W Wigilię na stole stoi bukiet z 24 kwiatów, który zrobiliście sami i który zostanie z Wami na lata.</p>
-      <div class="kw-rating"><span class="kw-stars">★★★★★</span><b>4,9</b> · 1 248 opinii · <span style="color:var(--kw-ok);font-weight:600">● 37 osób ogląda teraz</span></div>
+      <div class="kw-pills"><span class="kw-pill gold">★ [PLAKIETKA – np. Bestseller 2026]</span><span class="kw-pill sale">⚠️ [PILNOŚĆ – np. Liczba sztuk ograniczona]</span></div>
+      <h1>[NAGŁÓWEK GŁÓWNY – problem klienta + obietnica] <span class="kw-accent">[EFEKT KOŃCOWY]</span></h1>
+      <p class="kw-sub">[PODTYTUŁ – jak produkt zmienia dzień klienta, 1–2 zdania]</p>
+      <div class="kw-rating"><span class="kw-stars">★★★★★</span><b>[OCENA]</b> · [LICZBA] opinii · <span style="color:var(--kw-ok);font-weight:600">● [LICZBA] osób ogląda teraz</span></div>
       <div class="kw-price-row">
         <span class="kw-price" id="kwPrice">149,99 zł</span>
         <span class="kw-old" id="kwOld">249,99 zł</span>
         <span class="kw-save" id="kwSave">−40%</span>
       </div>
       <ul class="kw-list">
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>24 okienka, 24 różne kwiaty</b>: słonecznik, lilia, lawenda, hortensja i 20 innych</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Ponad 2 600 elementów</b> i obrazkowa instrukcja w każdym okienku</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>15–20 minut dziennie</b> wspólnego czasu bez ekranu</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Zero cukru</b>, zero zapachu, nic się nie psuje ani nie kruszy</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Gotowy bukiet zostaje</b> jako ozdoba na cały rok</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Od 6 do 99 lat</b>: dla dzieci, par i dorosłych, którzy chcą zwolnić</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 1]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 2]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 3]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 4]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 5]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 6]</b> [dopowiedzenie]</span></li>
       </ul>
 
       <div class="kw-bundles" id="kwBundles">
-        <div class="kw-bundles-title">Wybierz zestaw</div>
+        <div class="kw-bundles-title">[WYBIERZ ZESTAW]</div>
       </div>
 
       <button class="kw-btn full" onclick="kwAddBundle()">Dodaj do koszyka · <span id="kwCtaPrice">149,99 zł</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
       <div class="kw-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
-      <p class="kw-micro">🔒 Bezpieczna płatność · 14 dni na zwrot · Odpowiadamy w 24 h</p>
+      <p class="kw-micro">🔒 [MIKROZAUFANIE – płatność · zwroty · kontakt]</p>
     </div>
   </div>
 </section>
 
 <div class="kw-strip">
   <div class="kw-container kw-strip-in">
-    <div class="kw-strip-item"><span style="font-size:22px">🚚</span><div><b>Darmowa wysyłka</b><small>Paczkomat lub kurier</small></div></div>
-    <div class="kw-strip-item"><span style="font-size:22px">↩️</span><div><b>14 dni na zwrot</b><small>Bez podania przyczyny</small></div></div>
-    <div class="kw-strip-item"><span style="font-size:22px">🔒</span><div><b>Bezpieczne płatności</b><small>BLIK, karta, Apple Pay</small></div></div>
-    <div class="kw-strip-item"><span style="font-size:22px">⭐</span><div><b>4,9 / 5</b><small>1 200+ zadowolonych rodzin</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">🚚</span><div><b>[DOSTAWA]</b><small>[sposób dostawy]</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">↩️</span><div><b>[ZWROTY]</b><small>[krótki dopisek]</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">🔒</span><div><b>[PŁATNOŚCI]</b><small>[metody płatności]</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">⭐</span><div><b>[OCENA]</b><small>[liczba zadowolonych]</small></div></div>
   </div>
 </div>
 
@@ -517,33 +519,33 @@ img[width][height]{height:auto}
 <section class="kw-section kw-alt" id="problem">
   <div class="kw-container kw-two">
     <div>
-      <span class="kw-eyebrow left">Brzmi znajomo?</span>
-      <h2 class="kw-h2 left">Grudzień miał być magiczny, a <span class="kw-accent">znów mija przy ekranach</span></h2>
-      <p class="kw-lead left">Wszyscy jesteście w domu, a jednak każdy siedzi osobno. Święta pędzą, a wspomnień z nich jest coraz mniej.</p>
+      <span class="kw-eyebrow left">[NADTYTUŁ – np. Brzmi znajomo?]</span>
+      <h2 class="kw-h2 left">[NAGŁÓWEK PROBLEMU – frustracja klienta] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+      <p class="kw-lead left">[ZDANIE WYJAŚNIAJĄCE PROBLEM]</p>
       <ul class="kw-list kw-pain">
-        <li><span class="kw-x">✕</span><span>Dzieci po szkole znikają w telefonie i tablecie, a Ty nie masz siły na kolejną kłótnię o ekran.</span></li>
-        <li><span class="kw-x">✕</span><span>Czekoladka z kalendarza znika w 3 sekundy i zostaje tylko pusta tekturka i więcej cukru.</span></li>
-        <li><span class="kw-x">✕</span><span>Co roku kupujesz prezenty, o których wszyscy zapominają przed Sylwestrem.</span></li>
-        <li><span class="kw-x">✕</span><span>Wieczory zlewają się w jedno: kolacja, serial, sen. Nic, na co się czeka.</span></li>
-        <li><span class="kw-x">✕</span><span>Chcesz zwolnić i zrobić coś rękami, ale nie wiesz od czego zacząć.</span></li>
-        <li><span class="kw-x">✕</span><span>Kwiaty na święta więdną po tygodniu, a wydane na nie pieniądze lądują w koszu.</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 1]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 2]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 3]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 4]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 5]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 6]</span></li>
       </ul>
-      <div class="kw-bridge">A gdyby odliczanie do Świąt było codziennym, 15-minutowym rytuałem, na który wszyscy czekają, a na końcu zostawało coś pięknego?</div>
+      <div class="kw-bridge">[PODSUMOWANIE – skutek problemów w 1 zdaniu, pytanie „a gdyby…”]</div>
     </div>
-    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{ kw_img }}/06-problem.jpg" width="1200" height="900" loading="lazy" alt="Dzieci wpatrzone w telefon i tablet, mama patrzy z boku"></div>
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{ kw_img }}/problem.jpg" width="1200" height="900" loading="lazy" alt="[OPIS ZDJĘCIA]"></div>
   </div>
 </section>
 
 <!-- USES -->
 <section class="kw-section" id="zastosowania">
   <div class="kw-container">
-    <span class="kw-eyebrow">Jeden kalendarz, wiele okazji</span>
-    <h2 class="kw-h2">Komu sprawisz <span class="kw-accent">największą radość?</span></h2>
-    <p class="kw-lead">Kwiatora łączy to, czego brakuje w grudniu: wspólny czas, chwilę spokoju i prezent, który ma sens.</p>
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Gdzie się przydaje]</span>
+    <h2 class="kw-h2">[NAGŁÓWEK ZASTOSOWAŃ] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+    <p class="kw-lead">[PODTYTUŁ ZASTOSOWAŃ]</p>
     <div class="kw-uses">
-      <article class="kw-card kw-use"><img src="{{ kw_img }}/05-razem.jpg" width="1200" height="1200" loading="lazy" alt="Mama i córka składają kwiat z klocków"><div><h3>Dla dziecka i całej rodziny</h3><p>Zamiast cukru: 24 poranki pełne ciekawości. Dziecko ćwiczy cierpliwość i skupienie, a Wy macie wspólny rytuał.</p></div></article>
-      <article class="kw-card kw-use"><img src="{{ kw_img }}/11b-dla-niej.jpg" width="1200" height="900" loading="lazy" alt="Mężczyzna składa różę z klocków w kuchni"><div><h3>Dla niej, dla niego, dla siebie</h3><p>Kwadrans uważności po pracy. Składanie kwiatów wycisza głowę lepiej niż przewijanie telefonu.</p></div></article>
-      <article class="kw-card kw-use"><img src="{{ kw_img }}/03b-bukiet-szeroki.jpg" width="1200" height="675" loading="lazy" alt="Bukiet z klocków na stole przy choince"><div><h3>Jako ozdoba na cały rok</h3><p>Bukiet, który nie więdnie i nie wymaga wody. Pięknie wygląda na stole wigilijnym i na biurku w lipcu.</p></div></article>
+      <article class="kw-card kw-use"><img src="{{ kw_img }}/foto-6.jpg" width="1200" height="1200" loading="lazy" alt="[ZASTOSOWANIE 1]"><div><h3>[ZASTOSOWANIE 1]</h3><p>[OPIS – 1 zdanie]</p></div></article>
+      <article class="kw-card kw-use"><img src="{{ kw_img }}/zastosowanie-2.jpg" width="1200" height="900" loading="lazy" alt="[ZASTOSOWANIE 2]"><div><h3>[ZASTOSOWANIE 2]</h3><p>[OPIS – 1 zdanie]</p></div></article>
+      <article class="kw-card kw-use"><img src="{{ kw_img }}/zastosowanie-3.jpg" width="1200" height="675" loading="lazy" alt="[ZASTOSOWANIE 3]"><div><h3>[ZASTOSOWANIE 3]</h3><p>[OPIS – 1 zdanie]</p></div></article>
     </div>
   </div>
 </section>
@@ -551,18 +553,18 @@ img[width][height]{height:auto}
 <!-- SOLUTION -->
 <section class="kw-section kw-alt">
   <div class="kw-container kw-two">
-    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{ kw_img }}/07-rozwiazanie.jpg" width="1200" height="900" loading="lazy" alt="Rodzina razem składa kwiaty z klocków przy stole"></div>
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{ kw_img }}/rozwiazanie.jpg" width="1200" height="900" loading="lazy" alt="[OPIS ZDJĘCIA]"></div>
     <div>
-      <span class="kw-eyebrow left">Odzyskaj wspólny czas</span>
-      <h2 class="kw-h2 left">Telefony lądują na stole <span class="kw-accent">ekranem w dół</span></h2>
-      <p class="kw-lead left">Kwiatora zamienia każdy grudniowy dzień w małe wydarzenie. Nie trzeba niczego planować, wystarczy otworzyć kolejne okienko.</p>
+      <span class="kw-eyebrow left">[NADTYTUŁ – np. Dlatego powstał produkt]</span>
+      <h2 class="kw-h2 left">[NAGŁÓWEK ROZWIĄZANIA – jak produkt rozwiązuje problem] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+      <p class="kw-lead left">[ZDANIE O ROZWIĄZANIU]</p>
       <ul class="kw-list">
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Codzienna niespodzianka</b>, która wyciąga dzieci z łóżka szybciej niż budzik</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Wspólny cel</b>: każdy kwiat to kolejny krok do świątecznego bukietu</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Rozmowy przy stole</b>, śmiech i duma z tego, co zrobiliście razem</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Rozwija wyobraźnię</b>, motorykę małą i cierpliwość bez nudnych ćwiczeń</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Instrukcja obrazkowa</b>: poradzi sobie 6-latek i dziadek bez okularów</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Pamiątka z tych Świąt</b>, która co roku wraca na stół</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 1]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 2]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 3]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 4]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 5]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 6]</b> [dopowiedzenie]</span></li>
       </ul>
     </div>
   </div>
@@ -571,40 +573,40 @@ img[width][height]{height:auto}
 <!-- HOW IT WORKS -->
 <section class="kw-section" id="jak-dziala">
   <div class="kw-container">
-    <span class="kw-eyebrow">24 dni małych niespodzianek</span>
-    <h2 class="kw-h2">Twój bukiet w <span class="kw-accent">3 prostych krokach</span></h2>
-    <p class="kw-lead">Codziennie ten sam miły rytuał. Żadnego kleju, nożyczek ani bałaganu.</p>
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Proste jak 1-2-3]</span>
+    <h2 class="kw-h2">[EFEKT] <span class="kw-accent">w 3 krokach</span></h2>
+    <p class="kw-lead">[PODTYTUŁ – co jest proste]</p>
     <ol class="kw-steps" style="list-style:none;padding:0;margin:0">
-      <li class="kw-card kw-step"><span class="num">01</span><img src="{{ kw_img }}/08-krok1.jpg" width="1200" height="900" loading="lazy" alt="Dziecko otwiera okienko numer 12"><div class="t"><h3>Otwórz okienko dnia</h3><p>W środku czekają klocki na jeden kwiat i obrazkowa instrukcja. Każdy dzień to inna niespodzianka.</p></div></li>
-      <li class="kw-card kw-step"><span class="num">02</span><img src="{{ kw_img }}/09-krok2.jpg" width="1200" height="900" loading="lazy" alt="Dłonie składają lilię z klocków"><div class="t"><h3>Złóż swój kwiat</h3><p>15–20 minut skupienia, krok po kroku. Proste dla dziecka, satysfakcjonujące dla dorosłego.</p></div></li>
-      <li class="kw-card kw-step"><span class="num">03</span><img src="{{ kw_img }}/10-krok3.jpg" width="1200" height="900" loading="lazy" alt="Dokładanie tulipana do wazonu z bukietem"><div class="t"><h3>Dodaj go do bukietu</h3><p>Wstaw kwiat do wazonu i patrz, jak bukiet rośnie z dnia na dzień aż do Wigilii.</p></div></li>
+      <li class="kw-card kw-step"><span class="num">01</span><img src="{{ kw_img }}/krok-1.jpg" width="1200" height="900" loading="lazy" alt="[KROK 1]"><div class="t"><h3>[KROK 1]</h3><p>[OPIS KROKU 1]</p></div></li>
+      <li class="kw-card kw-step"><span class="num">02</span><img src="{{ kw_img }}/krok-2.jpg" width="1200" height="900" loading="lazy" alt="[KROK 2]"><div class="t"><h3>[KROK 2]</h3><p>[OPIS KROKU 2]</p></div></li>
+      <li class="kw-card kw-step"><span class="num">03</span><img src="{{ kw_img }}/krok-3.jpg" width="1200" height="900" loading="lazy" alt="[KROK 3]"><div class="t"><h3>[KROK 3]</h3><p>[OPIS KROKU 3]</p></div></li>
     </ol>
-    <p class="kw-steps-foot">24 dni otwierania, składania i czekania. W Wigilię na stole stoi bukiet, który <b>zrobiliście sami</b>.</p>
+    <p class="kw-steps-foot">[ZDANIE PODSUMOWANIA KROKÓW]</p>
   </div>
 </section>
 
 <!-- WHAT YOU GET -->
 <section class="kw-section kw-alt" id="zestaw">
   <div class="kw-container">
-    <span class="kw-eyebrow">Wszystko w jednym pudełku</span>
+    <span class="kw-eyebrow">[NADTYTUŁ – np. W paczce]</span>
     <h2 class="kw-h2">Co dokładnie <span class="kw-accent">dostajesz</span></h2>
-    <p class="kw-lead">Otwierasz paczkę i możesz zaczynać. Nie trzeba niczego dokupować.</p>
+    <p class="kw-lead">[PODTYTUŁ ZESTAWU]</p>
     <div class="kw-tabs-list" role="tablist">
-      <button class="on" onclick="kwTab(0)">W pudełku</button>
-      <button onclick="kwTab(1)">Kwiaty</button>
-      <button onclick="kwTab(2)">Wymiary</button>
+      <button class="on" onclick="kwTab(0)">[ZAKŁADKA 1]</button>
+      <button onclick="kwTab(1)">[ZAKŁADKA 2]</button>
+      <button onclick="kwTab(2)">[ZAKŁADKA 3]</button>
     </div>
     <div class="kw-card kw-tab on">
-      <div><h3>Kalendarz adwentowy Kwiatora</h3><p>Świąteczne pudełko w czerwono-zielone okienka ze złotymi numerami. Pięknie wygląda na komodzie, a z kokardą jest gotowym prezentem.</p></div>
-      <div class="kw-tab-panel"><small>W zestawie</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>24 numerowane okienka z klockami</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Ponad 2 600 elementów</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>24 obrazkowe instrukcje</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Świąteczne pudełko prezentowe</li></ul></div>
+      <div><h3>[NAZWA PRODUKTU / ZAKŁADKA 1]</h3><p>[OPIS ZESTAWU – 1–2 zdania]</p></div>
+      <div class="kw-tab-panel"><small>[ZAWARTOŚĆ]</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 1]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 2]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 3]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 4]</li></ul></div>
     </div>
     <div class="kw-card kw-tab">
-      <div><h3>24 różne kwiaty, 1 kolorowy bukiet</h3><p>Każdy dzień to inny gatunek. Razem tworzą bogaty, kolorowy bukiet pełen faktur i odcieni.</p></div>
-      <div class="kw-tab-panel"><small>Między innymi</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Słonecznik, stokrotka i róża</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Lilia, tulipan i narcyz</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Lawenda i hortensja</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Goździk, gipsówka i zielone liście</li></ul></div>
+      <div><h3>[NAZWA PRODUKTU / ZAKŁADKA 2]</h3><p>[OPIS ZESTAWU – 1–2 zdania]</p></div>
+      <div class="kw-tab-panel"><small>[ZAWARTOŚĆ]</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 1]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 2]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 3]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 4]</li></ul></div>
     </div>
     <div class="kw-card kw-tab">
-      <div><h3>Wymiary i bezpieczeństwo</h3><p>Klocki z gładkiego, trwałego tworzywa ABS, bez ostrych krawędzi i bez zapachu. Zalecany wiek: od 6 lat.</p></div>
-      <div class="kw-tab-panel"><small>Specyfikacja</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Wysokość kwiatu: ok. 25–30 cm</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Materiał: tworzywo ABS</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Kompatybilne z popularnymi klockami</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Wiek: 6+ (drobne elementy)</li></ul></div>
+      <div><h3>[NAZWA PRODUKTU / ZAKŁADKA 3]</h3><p>[OPIS ZESTAWU – 1–2 zdania]</p></div>
+      <div class="kw-tab-panel"><small>[ZAWARTOŚĆ]</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 1]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 2]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 3]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 4]</li></ul></div>
     </div>
   </div>
 </section>
@@ -612,19 +614,19 @@ img[width][height]{height:auto}
 <!-- COMPARE -->
 <section class="kw-section" id="porownanie">
   <div class="kw-container">
-    <span class="kw-eyebrow">Zobacz różnicę</span>
-    <h2 class="kw-h2">Dlaczego <span class="kw-accent">Kwiatora</span>, a nie zwykły kalendarz?</h2>
-    <p class="kw-lead">Porównaj, co realnie zostaje po 24 dniach.</p>
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Porównanie]</span>
+    <h2 class="kw-h2">Dlaczego <span class="kw-accent">[TWÓJ PRODUKT]</span>, a nie [ALTERNATYWA]?</h2>
+    <p class="kw-lead">[PODTYTUŁ PORÓWNANIA]</p>
     <div class="kw-table-wrap">
       <table class="kw-table">
-        <thead><tr><th>Kryterium</th><th class="us">Kwiatora</th><th>Kalendarz ze słodyczami</th><th>Zwykłe klocki</th><th>Żywe kwiaty</th></tr></thead>
+        <thead><tr><th>Cecha</th><th class="us">[TWÓJ PRODUKT]</th><th>[ALTERNATYWA 1]</th><th>[ALTERNATYWA 2]</th><th>[ALTERNATYWA 3]</th></tr></thead>
         <tbody>
-          <tr><td>Codzienna niespodzianka przez 24 dni</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td></tr>
-          <tr><td>Wspólny czas bez ekranu</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
-          <tr><td>Zero cukru</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td></tr>
-          <tr><td>Zostaje coś na lata</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
-          <tr><td>Ozdoba domu na Święta i cały rok</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td></tr>
-          <tr><td>Dla dzieci i dorosłych</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td></tr>
+          <tr><td>[CECHA 1]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>[CECHA 2]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>[CECHA 3]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td></tr>
+          <tr><td>[CECHA 4]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>[CECHA 5]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td></tr>
+          <tr><td>[CECHA 6]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -634,11 +636,11 @@ img[width][height]{height:auto}
 <!-- REVIEWS -->
 <section class="kw-section kw-alt" id="opinie">
   <div class="kw-container">
-    <span class="kw-eyebrow">Opinie klientów</span>
-    <h2 class="kw-h2">Zobacz, co mówią <span class="kw-accent">rodziny z całej Polski</span></h2>
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Opinie klientów]</span>
+    <h2 class="kw-h2">Zobacz, co mówią <span class="kw-accent">[KLIENCI]</span></h2>
     <div class="kw-rev-head">
-      <div class="kw-rev-score"><b>4,9</b><span class="kw-stars" style="font-size:20px">★★★★★</span></div>
-      <div style="font-size:13.5px;color:var(--kw-muted)">Na podstawie 1 248 zweryfikowanych zakupów</div>
+      <div class="kw-rev-score"><b>[OCENA]</b><span class="kw-stars" style="font-size:20px">★★★★★</span></div>
+      <div style="font-size:13.5px;color:var(--kw-muted)">Na podstawie [LICZBA] zweryfikowanych zakupów</div>
     </div>
   </div>
   <div class="kw-rev-track"><div class="kw-rev-row" id="kwRev1"></div></div>
@@ -647,16 +649,16 @@ img[width][height]{height:auto}
 <!-- ADULT -->
 <section class="kw-section kw-adult">
   <div class="kw-container kw-two">
-    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{ kw_img }}/11-dla-doroslych.jpg" width="1200" height="900" loading="lazy" alt="Kobieta relaksuje się, składając kwiat z klocków"></div>
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{ kw_img }}/sekcja-4.jpg" width="1200" height="900" loading="lazy" alt="[OPIS ZDJĘCIA]"></div>
     <div>
-      <span class="kw-eyebrow left">Nie tylko dla dzieci</span>
-      <h2 class="kw-h2 left">Kto powiedział, że klocki są <span class="kw-accent">tylko dla dzieci?</span></h2>
-      <p class="kw-lead left">Coraz więcej dorosłych odkrywa, że składanie kwiatów działa jak medytacja: telefon odłożony, głowa wolna, ręce zajęte czymś przyjemnym.</p>
+      <span class="kw-eyebrow left">[NADTYTUŁ – np. Nie tylko dla…]</span>
+      <h2 class="kw-h2 left">[NAGŁÓWEK – obalenie obiekcji] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+      <p class="kw-lead left">[ZDANIE ROZWIJAJĄCE]</p>
       <ul class="kw-list">
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>15 minut tylko dla siebie</b> każdego grudniowego wieczoru</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Idealny prezent dla partnerki</b>, mamy lub przyjaciółki</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Kwiaty, które nie więdną</b>, więc cieszą długo po Świętach</span></li>
-        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Pomysł na randkę</b> bez seriali i telefonów</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 1]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 2]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 3]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 4]</b> [dopowiedzenie]</span></li>
       </ul>
       
     </div>
@@ -670,18 +672,18 @@ img[width][height]{height:auto}
     <div class="kw-deal">
       <div class="kw-deal-img">
         <span class="kw-spark s1"></span><span class="kw-spark s2"></span>
-        <img class="kw-float" src="{{ kw_img }}/02-szufladka.jpg" width="1200" height="1200" loading="lazy" alt="Kalendarz adwentowy Kwiatora">
+        <img class="kw-float" src="{{ kw_img }}/foto-2.jpg" width="1200" height="1200" loading="lazy" alt="[NAZWA PRODUKTU]">
       </div>
       <div class="kw-deal-body">
-        <h2 class="kw-shine">Kalendarz Kwiatora</h2>
+        <h2 class="kw-shine">[NAZWA PRODUKTU]</h2>
         <div class="kw-deal-badge"><svg class="kw-ring" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2M5 4 2.5 6.5M19 4l2.5 2.5"/></svg><b class="kw-pulse">48h!</b></div>
-        <p class="kw-nudge">Nie przegap – cena promocyjna tylko przez 48 godzin!<br><span class="kw-limit">⚠️ Liczba sztuk ograniczona</span> <span class="kw-gold kw-beat">♡</span></p>
+        <p class="kw-nudge">Nie przegap – [CENA PROMOCYJNA tylko przez 48 godzin]!<br><span class="kw-limit">⚠️ [PILNOŚĆ – np. Liczba sztuk ograniczona]</span> <span class="kw-gold kw-beat">♡</span></p>
         <div class="kw-deal-timer">
           <div><b id="kwDH">48</b><small>godzin</small></div><i>:</i>
           <div><b id="kwDM">00</b><small>minut</small></div><i>:</i>
           <div><b id="kwDS">00</b><small>sekund</small></div>
         </div>
-        <button class="kw-btn full" onclick="kwScrollBuy()">Kup teraz i skorzystaj z rabatu! →</button>
+        <button class="kw-btn full" onclick="kwScrollBuy()">[CTA – np. Kup teraz i skorzystaj z rabatu!] →</button>
       </div>
     </div>
   </div>
@@ -707,11 +709,11 @@ img[width][height]{height:auto}
   <div class="kw-container">
     <div class="kw-footer-grid">
       <div>
-        <span class="kw-logo"><img src="{{ kw_img }}/logo-ikona.png" width="26" height="46" alt=""><div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div></span>
-        <p style="color:var(--kw-muted);font-size:14px;max-width:360px">Kalendarze adwentowe z kwiatami z klocków. Tworzymy prezenty, które łączą rodziny i zostają na dłużej niż jeden sezon.</p>
+        <span class="kw-logo"><img src="{{ kw_img }}/logo.png" width="26" height="46" alt=""><div><span>[NAZWA]</span><small>[PODPIS POD LOGO]</small></div></span>
+        <p style="color:var(--kw-muted);font-size:14px;max-width:360px">[OPIS SKLEPU – 1–2 zdania]</p>
         <div class="kw-foot-contact">
           <div><span class="ic">✉️</span><a href="mailto:kontakt@mivro.pl">kontakt@mivro.pl</a></div>
-          <div><span class="ic">🕘</span>Odpowiadamy pon.–pt. w 24 h</div>
+          <div><span class="ic">🕘</span>[GODZINY ODPOWIEDZI]</div>
         </div>
       </div>
       <div>
@@ -725,7 +727,7 @@ img[width][height]{height:auto}
         </ul>
       </div>
     </div>
-    <div class="kw-foot-bottom"><span>Kwiatora © 2026</span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
+    <div class="kw-foot-bottom"><span>[NAZWA SKLEPU] © [ROK]</span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
   </div>
 </footer>
 
@@ -733,7 +735,7 @@ img[width][height]{height:auto}
 <div class="kw-overlay" id="kwOverlay" onclick="kwCart(false)"></div>
 <aside class="kw-drawer" id="kwDrawer" aria-label="Koszyk">
   <div class="kw-dr-head"><h3>Koszyk · <span id="kwDrCount">0</span></h3><button class="kw-close" aria-label="Zamknij koszyk" onclick="kwCart(false)">✕</button></div>
-  <div class="kw-dr-bar">🚚 Darmowa dostawa InPost · ↩️ 14 dni na zwrot</div>
+  <div class="kw-dr-bar">🚚 [DOSTAWA] · ↩️ [ZWROTY]</div>
   <div class="kw-dr-progress" id="kwProgress"></div>
   <div class="kw-dr-items" id="kwItems"></div>
   <div class="kw-dr-foot">
@@ -765,7 +767,7 @@ img[width][height]{height:auto}
 </div>
 
 <div class="kw-sticky" id="kwSticky">
-  <div><div class="n">Kalendarz Kwiatora</div><div class="p" id="kwStickyPrice">149,99 zł <s style="color:var(--kw-muted);font-weight:400">249,99 zł</s></div></div>
+  <div><div class="n">[NAZWA PRODUKTU]</div><div class="p" id="kwStickyPrice">149,99 zł <s style="color:var(--kw-muted);font-weight:400">249,99 zł</s></div></div>
   <button class="kw-btn small" onclick="kwAddBundle()">Do koszyka</button>
 </div>
 <div class="kw-toast" id="kwToast">Dodano do koszyka ✓</div>
@@ -778,12 +780,12 @@ var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="kontakt@mivro.pl";
 
 var gallery=[
- ["00-hero-stol.jpg","🌸 Każdego dnia nowy kwiat"],
- ["02-szufladka.jpg","✨ Codziennie nowe okienko i nowy kwiat"],
- ["00-hero-dorosli.jpg","😊 Prezent, który rozpakowuje się 24 razy"],
- ["04-prezent.jpg","🎄 Pięknie zapakowany, gotowy pod choinkę"],
- ["03-bukiet.jpg","🌻 W Wigilię: bukiet z 24 kwiatów"],
- ["05-razem.jpg","💛 15 minut razem, bez ekranów"]
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
 ];
 var gi=0,main=document.getElementById("kwMain"),cap=document.getElementById("kwCaption"),dots=document.getElementById("kwDots"),th=document.getElementById("kwThumbs");
 gallery.forEach(function(g,i){
@@ -800,9 +802,9 @@ window.kwGal=function(s){setG(gi+s)};setG(0);
 
 /* BUNDLES */
 var BUNDLES=[
- {q:1,name:"1 kalendarz",desc:"Pakiet startowy",price:149.99,old:249.99},
- {q:2,name:"2 kalendarze",desc:"Dla Ciebie i na prezent · 134,99 zł/szt.",price:269.98,old:499.98,tag:"Najczęściej wybierany"},
- {q:3,name:"3 kalendarze",desc:"Zestaw rodzinny · 124,99 zł/szt.",price:374.97,old:749.97,tag:"Najlepsza cena",gold:true}
+ {q:1,name:"[Kup 1]",desc:"[Pakiet startowy]",price:99.99,old:149.99},
+ {q:2,name:"[Kup 2]",desc:"[Oszczędzasz X zł · cena za szt.]",price:179.98,old:299.98,tag:"[NAJCZĘŚCIEJ WYBIERANY]"},
+ {q:3,name:"[Kup 3]",desc:"[Najlepsza cena za szt.]",price:239.97,old:449.97,tag:"[NAJLEPSZA CENA]",gold:true}
 ];
 var sel=0;
 function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
@@ -828,10 +830,10 @@ render();
 var cart=[];
 function save(){try{localStorage.setItem("kwCart2",JSON.stringify(cart))}catch(e){}}
 try{cart=JSON.parse(localStorage.getItem("kwCart2")||"[]")}catch(e){cart=[]}
-function unitFor(q){return q>=3?124.99:q===2?134.99:149.99}
+function unitFor(q){return q>=3?BUNDLES[2].price/3:q===2?BUNDLES[1].price/2:BUNDLES[0].price}
 function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
 function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
-window.kwAddBundle=function(){addItem({key:"kal",name:"Kalendarz adwentowy Kwiatora",variant:"24 kwiaty z klocków",img:"04-prezent.jpg",qty:BUNDLES[sel].q,old:249.99});kwCart(true)};
+window.kwAddBundle=function(){addItem({key:"kal",name:"[NAZWA PRODUKTU]",variant:"[KRÓTKI OPIS]",img:"foto-1.jpg",qty:BUNDLES[sel].q,old:BUNDLES[0].old});kwCart(true)};
 function drawCart(){
   var n=calCount(),u=unitFor(n),items=document.getElementById("kwItems"),tot=0,old=0,cnt=0;
   items.innerHTML="";
@@ -847,7 +849,7 @@ function drawCart(){
     items.appendChild(d);
   });
   var pr=document.getElementById("kwProgress");
-  if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>'+(n===1?"1 kalendarz":"1 kalendarz")+'</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>124,99 zł</b> za kalendarz<div class="bar"><i style="width:100%"></i></div>';
+  if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>1 szt.</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za sztukę<div class="bar"><i style="width:100%"></i></div>';
   document.getElementById("kwTotal").textContent=zl(tot);document.getElementById("kwDisc").textContent="−"+zl(old-tot);
   document.getElementById("kwDrCount").textContent=cnt;var c=document.getElementById("kwCount");c.textContent=cnt;c.hidden=!cnt;
   document.getElementById("kwCheckout").disabled=!cnt;document.getElementById("kwCheckout").style.opacity=cnt?1:.5;
@@ -881,18 +883,18 @@ window.addEventListener("scroll",function(){document.getElementById("kwSticky").
 
 /* REVIEWS */
 var R=[
- ["Amelia","Kraków","13-opinia-slonecznik.jpg","Słoneczny Bukiet","Córka codziennie rano biegnie do kalendarza przed śniadaniem. Słonecznik złożyła sama i nie odstępuje go na krok. Najlepszy kalendarz, jaki u nas był."],
- ["Piotr","Wrocław","07-rozwiazanie.jpg","Słoneczny Bukiet","Wieczorami siadamy całą rodziną i każdy pomaga przy kwiatku. Telefony leżą odłożone, a dzieci same pytają, kiedy składamy. Polecam każdemu."],
- ["Julia","Gdańsk","14-opinia-kuchnia.jpg","Różany Bukiet","Paczka przyszła szybko i była świetnie zapakowana. Pudełko wygląda na żywo jeszcze ładniej niż na zdjęciach. Stoi u nas w kuchni jako ozdoba."],
- ["Aleksander","Poznań","09-krok2.jpg","Lawendowy Bukiet","Kupiłem dla żony, a sam też się wciągnąłem. Instrukcje są czytelne, klocki dobrze do siebie pasują. Każdy kwiat wygląda bardzo realistycznie."],
- ["Natalia","Łódź","15-opinia-biurko.jpg","Słoneczny Bukiet","Bukiet stoi teraz na moim biurku w pracy i każdy o niego pyta. Nie trzeba go podlewać, a wygląda pięknie. Kupię znowu na kolejne Święta."],
- ["Zofia","Lublin","02-szufladka.jpg","Różany Bukiet","Składamy z córką codziennie po szkole. To nasz kwadrans tylko dla siebie i obie na niego czekamy. Klocki są solidne i nie mają zapachu."],
- ["Kacper","Katowice","16-opinia-roza.jpg","Różany Bukiet","Róża wyszła tak ładnie, że dałem ją mamie od razu. Składanie jest proste, ale daje dużo satysfakcji. Bardzo udany prezent na Mikołajki."],
- ["Maja","Szczecin","03-bukiet.jpg","Słoneczny Bukiet","Gotowy bukiet stoi na parapecie i wygląda jak prawdziwe kwiaty. Goście nie wierzą, że jest z klocków. Na pewno zostaje z nami na cały rok."],
- ["Oliwia","Bydgoszcz","01-hero.jpg","Lawendowy Bukiet","Kupiłam dla siebie, żeby wieczorem odpocząć od telefonu. Składanie bardzo mnie uspokaja. Kwadrans dziennie i głowa od razu lżejsza."],
- ["Szymon","Rzeszów","08-krok1.jpg","Słoneczny Bukiet","Syn sam pilnuje, który numer dziś otwieramy. Każde okienko to dla niego wielka niespodzianka. Zero cukru, a radość większa niż z czekoladek."],
- ["Hanna","Toruń","10-krok3.jpg","Lawendowy Bukiet","Codziennie dokładamy nowy kwiat do wazonu i bukiet rośnie w oczach. Dzieci są dumne, że zrobiły go same. Piękna świąteczna tradycja."],
- ["Mateusz","Białystok","04-prezent.jpg","Różany Bukiet","Dałem dziewczynie z kokardą pod choinkę i trafiłem idealnie. Pudełko wygląda bardzo elegancko. Cena jest uczciwa za taką jakość."]
+ ["Amelia","Kraków","opinia-1.jpg","","[TREŚĆ OPINII 1 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Piotr","Wrocław","opinia-2.jpg","","[TREŚĆ OPINII 2 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Julia","Gdańsk","opinia-3.jpg","","[TREŚĆ OPINII 3 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Aleksander","Poznań","opinia-4.jpg","","[TREŚĆ OPINII 4 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Natalia","Łódź","opinia-5.jpg","","[TREŚĆ OPINII 5 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Zofia","Lublin","opinia-6.jpg","","[TREŚĆ OPINII 6 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Kacper","Katowice","opinia-1.jpg","","[TREŚĆ OPINII 7 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Maja","Szczecin","opinia-2.jpg","","[TREŚĆ OPINII 8 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Oliwia","Bydgoszcz","opinia-3.jpg","","[TREŚĆ OPINII 9 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Szymon","Rzeszów","opinia-4.jpg","","[TREŚĆ OPINII 10 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Hanna","Toruń","opinia-5.jpg","","[TREŚĆ OPINII 11 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Mateusz","Białystok","opinia-6.jpg","","[TREŚĆ OPINII 12 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"]
 ];
 function card(r){return '<article class="kw-card kw-rev"><img src="'+kwSrc(r[2])+'" width="400" height="300" alt="Zdjęcie od klienta"><div class="b"><span class="kw-stars">★★★★★</span><p>'+r[4]+'</p><div class="who"><img class="pfp" src="'+kwSrc('av'+(R.indexOf(r)%12+1)+'.jpg')+'" alt=""><div><b>'+r[0]+', '+r[1]+'</b><small>✓ Zweryfikowany zakup</small></div></div></div></article>'}
 document.getElementById("kwRev1").innerHTML=(R.concat(R)).map(card).join("");
@@ -901,23 +903,23 @@ document.getElementById("kwRev1").innerHTML=(R.concat(R)).map(card).join("");
 
 /* FAQ */
 var F=[
- ["Od jakiego wieku jest kalendarz?","Zalecamy od 6 lat. Młodsze dzieci świetnie bawią się z pomocą rodzica. Wielu naszych klientów to dorośli, którzy kupują Kwiatorę dla siebie."],
- ["Czy złożenie kwiatu jest trudne?","Nie. Każde okienko ma obrazkową instrukcję krok po kroku. Jeden kwiat zajmuje zwykle 15–20 minut."],
- ["Co jest w każdym okienku?","Klocki potrzebne do złożenia jednego kwiatu i instrukcja. Codziennie jest to inny kwiat, a razem tworzą bukiet z 24 kwiatów."],
- ["Czy kwiaty pasują do innych klocków?","Tak, elementy są kompatybilne z najpopularniejszymi klockami konstrukcyjnymi dostępnymi w Polsce."],
- ["Ile trwa dostawa?","Wysyłamy w ciągu 24 godzin, a dostawa do paczkomatu InPost lub kurierem trwa zwykle 2–4 dni robocze. Wysyłka jest darmowa."],
- ["Czy mogę zwrócić produkt?","Tak. Masz 14 dni od otrzymania paczki na zwrot bez podawania przyczyny. Wystarczy napisać na "+EMAIL+"."],
- ["Czy mogę zacząć później niż 1 grudnia?","Oczywiście. Możesz otworzyć kilka okienek naraz albo potraktować kalendarz jako 24 wieczory budowania w dowolnym momencie."],
- ["Czy to dobry prezent dla dorosłego?","Zdecydowanie. Składanie kwiatów relaksuje, a gotowy bukiet to elegancka ozdoba, która nie więdnie."]
+ ["[PYTANIE 1]","[ODPOWIEDŹ 1]"],
+ ["[PYTANIE 2]","[ODPOWIEDŹ 2]"],
+ ["[PYTANIE 3]","[ODPOWIEDŹ 3]"],
+ ["[PYTANIE 4]","[ODPOWIEDŹ 4]"],
+ ["[PYTANIE 5]","[ODPOWIEDŹ 5]"],
+ ["[PYTANIE 6]","[ODPOWIEDŹ 6]"],
+ ["[PYTANIE 7]","[ODPOWIEDŹ 7]"],
+ ["[PYTANIE 8]","[ODPOWIEDŹ 8]"]
 ];
 document.getElementById("kwFaq").innerHTML=F.map(function(f,i){return '<div class="kw-acc"><button><span class="q"><span class="n">'+String(i+1).padStart(2,'0')+'</span>'+f[0]+'</span></button><div class="a">'+f[1]+'</div></div>'}).join("");
 document.querySelectorAll("#kwFaq .kw-acc button").forEach(function(b){b.onclick=function(){var p=b.parentNode,o=p.classList.contains("open");document.querySelectorAll("#kwFaq .kw-acc").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")}});
 
 /* POLICY PAGES */
-var SELLER="Kwiatora";
+var SELLER="[NAZWA SKLEPU]";
 var P={
  regulamin:["Regulamin",[
-  ["1. Informacje ogólne","Sklep internetowy <b>Kwiatora</b> prowadzi sprzedaż na odległość za pośrednictwem tej strony. Kontakt ze sprzedawcą: <b>"+EMAIL+"</b>."],
+  ["1. Informacje ogólne","Sklep internetowy <b>[NAZWA SKLEPU]</b> prowadzi sprzedaż na odległość za pośrednictwem tej strony. Kontakt ze sprzedawcą: <b>"+EMAIL+"</b>."],
   ["2. Składanie zamówień","Zamówienie składasz przez stronę sklepu. Umowa zostaje zawarta w chwili otrzymania e-maila z potwierdzeniem zamówienia. Ceny są podane w złotych i zawierają podatki."],
   ["3. Płatności","Dostępne metody płatności (m.in. <b>BLIK, karta płatnicza, Apple Pay, Google Pay, Przelewy24</b>) wyświetlają się w kasie. Zamówienie realizujemy po zaksięgowaniu płatności."],
   ["4. Dostawa","Dostawa jest <b>bezpłatna</b> (Paczkomat InPost lub Kurier InPost), a czas realizacji wynosi zwykle <b>2–4 dni robocze</b> od wysyłki. Szczegóły w <a href='#' onclick=\"kwShow('wysylka');return false\" style='color:var(--kw-primary)'>Polityce wysyłki</a>."],
@@ -926,7 +928,7 @@ var P={
   ["7. Spory","Możesz skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów albo Inspekcji Handlowej."],
   ["8. Postanowienia końcowe","W sprawach nieuregulowanych stosuje się prawo polskie, w szczególności Kodeks cywilny i ustawę o prawach konsumenta. Zasady przetwarzania danych opisuje <a href='#' onclick=\"kwShow('prywatnosc');return false\" style='color:var(--kw-primary)'>Polityka prywatności</a>."]]],
  prywatnosc:["Polityka prywatności",[
-  ["1. Administrator danych","Administratorem Twoich danych osobowych jest sklep <b>Kwiatora</b>, e-mail: <b>"+EMAIL+"</b>."],
+  ["1. Administrator danych","Administratorem Twoich danych osobowych jest sklep <b>[NAZWA SKLEPU]</b>, e-mail: <b>"+EMAIL+"</b>."],
   ["2. Jakie dane zbieramy","Imię i nazwisko, adres dostawy, e-mail i numer telefonu podane przy zamówieniu lub w formularzu kontaktowym."],
   ["3. Cel przetwarzania","Realizacja zamówienia, obsługa zwrotów i reklamacji, odpowiedź na wiadomość oraz wypełnienie obowiązków prawnych (np. księgowych)."],
   ["4. Komu przekazujemy dane","Firmie kurierskiej InPost, operatorom płatności oraz dostawcy platformy sklepu, wyłącznie w zakresie potrzebnym do realizacji zamówienia."],
@@ -943,7 +945,7 @@ var P={
   ["2. Jak zwrócić produkt","Napisz na <b>"+EMAIL+"</b>, podając numer zamówienia. W odpowiedzi podamy adres do odesłania produktu."],
   ["3. Zwrot pieniędzy","Zwrócimy pieniądze w ciągu <b>14 dni</b> od otrzymania Twojego oświadczenia, tą samą metodą płatności."],
   ["4. Reklamacje","Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na <b>"+EMAIL+"</b> i dołącz zdjęcie. Odpowiemy w ciągu <b>14 dni</b>."],
-  ["5. Brakujące elementy","Brakuje klocka? Napisz, którego okienka dotyczy, a doślemy brakujące elementy bezpłatnie."]]],
+  ["5. Brakujące elementy","Brakuje elementu? Napisz do nas, a doślemy go bezpłatnie."]]],
  kontakt:["Kontakt",[
   ["Napisz do nas","Masz pytanie o zamówienie, wysyłkę albo zwrot? Napisz na <b>"+EMAIL+"</b> albo skorzystaj z formularza poniżej.</p><p>Odpowiadamy zwykle w ciągu <b>24 godzin</b>, od poniedziałku do piątku."]]]
 };
@@ -955,7 +957,7 @@ Object.keys(P).forEach(function(k){
   pages.appendChild(d);
 });
 window.kwSend=function(f){var b="Imię: "+f.imie.value+"%0D%0AE-mail: "+f.email.value+"%0D%0ATelefon: "+f.tel.value+"%0D%0A%0D%0A"+encodeURIComponent(f.msg.value);
-  window.location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Wiadomość ze sklepu Kwiatora")+"&body="+b;f.querySelector(".kw-form-ok").style.display="block";return false};
+  window.location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Wiadomość ze sklepu [NAZWA SKLEPU]")+"&body="+b;f.querySelector(".kw-form-ok").style.display="block";return false};
 window.kwShow=function(k){var home=k==="home";document.getElementById("kwHome").classList.toggle("on",home);
   document.querySelectorAll("#kwPages .kw-page").forEach(function(p){p.classList.toggle("on",p.id==="kwp-"+k)});
   if(!home){window.scrollTo(0,0);document.getElementById("kwSticky").classList.remove("on")}};

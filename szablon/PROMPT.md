@@ -2,7 +2,8 @@
 
 ```
 Zbuduj mi sklep na MOIM szablonie. Repo: Petenzo/Petenzo.
-Wzór 1:1: kwiatora/src.html (struktura, wygląd, animacje, koszyk, polityki).
+Szablon: szablon/szablon.html (ogólny, z [PLACEHOLDERAMI]) – wypełnij go treścią i zdjęciami.
+Przykład gotowego sklepu: kwiatora/src.html.
 Generator Shopify: szablon/zbuduj_motyw.py (jeden zip) i szablon/zbuduj.py (3 pliki), build podglądu: kwiatora/build.py.
 
 DANE NOWEGO SKLEPU:

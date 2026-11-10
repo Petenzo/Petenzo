@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kw-bg:#FFFFFF;
+  --kw-surface:#FFF8F3;
+  --kw-surface-2:#FCEDE4;
+  --kw-fg:#1F2547;
+  --kw-muted:#646A85;
+  --kw-border:#F1E4DB;
+  --kw-primary:#E9693F;
+  --kw-primary-dark:#1F2547;
+  --kw-primary-soft:#FDEDE5;
+  --kw-gold:#E9693F;
+  --kw-gold-soft:#FDEDE5;
+  --kw-sale:#B8323A;
+  --kw-sale-soft:#FBE9EA;
+  --kw-ok:#2E8B57;
+  --kw-gradient:linear-gradient(135deg,#F28A5C 0%,#E2572C 100%);
+  --kw-gradient-gold:linear-gradient(135deg,#2B3266 0%,#1F2547 100%);
+  --kw-shadow-card:0 6px 28px -10px rgba(233,105,63,.18);
+  --kw-shadow-cta:0 12px 30px -10px rgba(233,105,63,.45);
+  --kw-radius:20px;
+  --kw-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --kw-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--kw-font);color:var(--kw-fg);background:var(--kw-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.kw-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.kw-section{padding:56px 0}
+@media(min-width:768px){.kw-section{padding:84px 0}}
+.kw-alt{background:var(--kw-surface)}
+.kw-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--kw-gold);margin-bottom:10px}
+.kw-eyebrow.left{text-align:left}
+.kw-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.kw-h2{font-size:38px}}
+.kw-h2.left{text-align:left}
+.kw-lead{color:var(--kw-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.kw-lead.left{text-align:left;margin-left:0}
+.kw-accent{color:var(--kw-primary);background:var(--kw-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.kw-gold{color:var(--kw-gold)}
+.kw-card{background:#fff;border:1px solid var(--kw-border);border-radius:var(--kw-radius);box-shadow:var(--kw-shadow-card)}
+.kw-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--kw-gradient);box-shadow:var(--kw-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.kw-btn:hover{transform:scale(1.02)}
+.kw-btn.full{width:100%}
+.kw-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.kw-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--kw-primary-soft);color:var(--kw-primary)}
+.kw-pill.gold{background:var(--kw-gold-soft);color:#8A6015}
+.kw-pill.sale{background:var(--kw-sale);color:#fff}
+.kw-stars{color:#F2B33D;letter-spacing:1px}
+.kw-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--kw-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.kw-check svg{width:12px;height:12px}
+.kw-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--kw-sale-soft);color:var(--kw-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.kw-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.kw-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.kw-list b{font-weight:700}
+.kw-photo{border-radius:var(--kw-radius);overflow:hidden;box-shadow:var(--kw-shadow-card)}
+.kw-photo img{width:100%;height:100%;object-fit:cover}
+
+/* top bar marquee */
+.kw-topbar{background:var(--kw-primary-dark);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:9px 0}
+.kw-marquee{display:inline-flex;gap:42px;animation:kw-scroll 40s linear infinite;padding-left:42px}
+.kw-marquee span{display:inline-flex;align-items:center;gap:42px}
+.kw-marquee span::after{content:"✦";color:var(--kw-gold)}
+@keyframes kw-scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+/* nav */
+.kw-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--kw-border)}
+.kw-nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.kw-logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--kw-logo);font-size:24px;color:var(--kw-primary-dark);letter-spacing:.01em}
+.kw-logo img{height:46px!important;width:auto!important;max-width:none}
+.kw-logo span{font-family:var(--kw-logo);font-size:26px;line-height:1;color:var(--kw-primary-dark)}
+.kw-logo small{display:block;font-family:var(--kw-font);font-size:9px;font-weight:700;letter-spacing:.24em;color:var(--kw-gold);margin-top:3px}
+.kw-salebar{background:var(--kw-sale);color:#fff;text-align:center;padding:8px 12px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.kw-salebar .kw-timer span{background:#fff;color:var(--kw-sale);border-radius:7px;padding:3px 7px;font-weight:800;font-variant-numeric:tabular-nums;min-width:30px;display:inline-block}
+.kw-salebar .kw-timer i{font-style:normal;font-size:10px;font-weight:600;opacity:.85;margin:0 4px 0 2px}
+.kw-pay span{display:inline-flex;align-items:center;gap:4px;height:28px;border-radius:7px;padding:0 10px;font-size:12px;font-weight:800;color:#fff;border:0;letter-spacing:.01em}
+.pay-blik{background:#111}.pay-visa{background:#1A1F71;font-style:italic;letter-spacing:.04em!important}.pay-mc{background:#2B2B33}.pay-apple{background:#000}.pay-google{background:#3C4043}.pay-p24{background:#D13239}
+.kw-rev .pfp{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:0 0 38px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.kw-menu{display:none;gap:22px;font-size:13.5px;font-weight:500}
+.kw-menu a{text-decoration:none;color:var(--kw-muted)}
+.kw-menu a:hover{color:var(--kw-primary)}
+@media(min-width:960px){.kw-menu{display:flex}}
+.kw-icon-btn{width:42px;height:42px;border-radius:12px;border:1px solid var(--kw-border);background:#fff;display:grid;place-items:center;position:relative}
+.kw-cart-count[hidden]{display:none}
+.kw-cart-count{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;border-radius:10px;background:var(--kw-sale);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px}
+.kw-burger{display:grid}
+@media(min-width:960px){.kw-burger{display:none}}
+.kw-mobile-menu{position:fixed;inset:0;z-index:100;background:#fff;display:none;flex-direction:column}
+.kw-mobile-menu.open{display:flex}
+.kw-mobile-menu .kw-mm-top{display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 16px;border-bottom:1px solid var(--kw-border)}
+.kw-mobile-menu nav{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.kw-mobile-menu nav a{font-size:24px;font-weight:700;text-decoration:none}
+.kw-mobile-menu .kw-mm-close{margin:0 auto 40px;background:none;border:0;text-decoration:underline;color:var(--kw-muted);font-size:15px}
+
+/* hero */
+.kw-hero{padding:28px 0 56px}
+.kw-hero-grid{display:grid;gap:28px}
+@media(min-width:960px){.kw-hero-grid{grid-template-columns:1.05fr 1fr;gap:44px;align-items:start}}
+.kw-gallery-main{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:1/1;background:var(--kw-surface);box-shadow:var(--kw-shadow-card)}
+.kw-gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.kw-gallery-caption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;display:flex;gap:6px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.kw-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.kw-gallery-arrow.prev{left:12px}.kw-gallery-arrow.next{right:12px}
+.kw-dots{display:flex;justify-content:center;gap:6px;margin:12px 0}
+.kw-dots button{width:8px;height:8px;border-radius:4px;border:0;background:#D8D0C2;padding:0;transition:width .2s}
+.kw-dots button.on{width:24px;background:var(--kw-primary)}
+.kw-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.kw-thumbs button{border:2px solid transparent;border-radius:12px;overflow:hidden;padding:0;aspect-ratio:1/1;background:none}
+.kw-thumbs button.on{border-color:var(--kw-primary)}
+.kw-thumbs img{width:100%;height:100%;object-fit:cover}
+.kw-trust-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.kw-trust-tile{display:flex;gap:10px;align-items:center;border:1px solid var(--kw-border);border-radius:14px;padding:12px;background:#fff}
+.kw-trust-tile .ic{width:36px;height:36px;border-radius:10px;background:var(--kw-primary-soft);display:grid;place-items:center;flex:0 0 36px}
+.kw-trust-tile b{display:block;font-size:13px}
+.kw-trust-tile small{color:var(--kw-muted);font-size:11.5px;line-height:1.35;display:block}
+
+.kw-buy h1{font-size:28px;line-height:1.18;font-weight:800;margin:12px 0 10px;letter-spacing:-.015em}
+@media(min-width:768px){.kw-buy h1{font-size:36px}}
+.kw-sub{color:var(--kw-muted);font-size:15px;margin:0 0 14px}
+.kw-rating{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--kw-muted);margin-bottom:16px;flex-wrap:wrap}
+.kw-rating b{color:var(--kw-fg)}
+.kw-price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.kw-price{font-size:34px;font-weight:800;color:var(--kw-primary)}
+.kw-old{font-size:18px;color:var(--kw-muted);text-decoration:line-through}
+.kw-save{background:var(--kw-sale);color:#fff;border-radius:8px;padding:3px 9px;font-size:12.5px;font-weight:700}
+.kw-klarna{display:flex;align-items:center;gap:10px;border:1px solid rgba(30,91,61,.25);background:rgba(30,91,61,.05);border-radius:12px;padding:10px 12px;font-size:13px;margin:12px 0 18px}
+.kw-countdown{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--kw-sale-soft);border:1px dashed rgba(184,50,58,.4);border-radius:14px;padding:10px 14px;margin:18px 0;font-size:13px;font-weight:600;color:var(--kw-sale)}
+.kw-timer{display:flex;gap:6px}
+.kw-timer span{background:#fff;border-radius:8px;padding:4px 7px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--kw-fg);min-width:34px;text-align:center}
+.kw-bundles{display:grid;gap:12px;margin:18px 0}
+.kw-bundles-title{text-align:center;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--kw-muted);display:flex;align-items:center;gap:12px}
+.kw-bundles-title::before,.kw-bundles-title::after{content:"";flex:1;height:1px;background:var(--kw-border)}
+.kw-bundle{position:relative;border:2px solid var(--kw-border);border-radius:18px;padding:14px 16px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
+.kw-bundle.on{border-color:var(--kw-primary);background:var(--kw-primary-soft)}
+.kw-bundle-head{display:flex;align-items:center;gap:12px}
+.kw-radio{width:20px;height:20px;border-radius:50%;border:2px solid #C9C0B0;flex:0 0 20px;display:grid;place-items:center}
+.kw-bundle.on .kw-radio{border-color:var(--kw-primary)}
+.kw-bundle.on .kw-radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--kw-primary)}
+.kw-bundle-name{font-weight:700;font-size:15px}
+.kw-bundle-desc{font-size:12.5px;color:var(--kw-muted)}
+.kw-bundle-price{margin-left:auto;text-align:right}
+.kw-bundle-price b{display:block;font-size:17px;color:var(--kw-primary)}
+.kw-bundle-price s{font-size:12.5px;color:var(--kw-muted)}
+.kw-bundle-tag{position:absolute;top:-11px;right:14px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;color:#fff;background:var(--kw-gradient)}
+.kw-bundle-tag.gold{background:var(--kw-gradient-gold)}
+.kw-variants{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(30,91,61,.25)}
+.kw-bundle.on .kw-variants{display:grid;gap:10px}
+.kw-var-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px}
+.kw-var-row .lbl{color:var(--kw-muted);min-width:118px}
+.kw-var-row .lbl b{color:var(--kw-primary)}
+.kw-swatch{width:38px;height:38px;border-radius:50%;border:2px solid #fff;outline:2px solid var(--kw-border);padding:0;overflow:hidden;background:#fff}
+.kw-swatch.on{outline-color:var(--kw-primary)}
+.kw-swatch img{width:100%;height:100%;object-fit:cover}
+.kw-ship-box{display:flex;gap:10px;align-items:flex-start;background:var(--kw-surface);border-radius:14px;padding:12px 14px;font-size:13px;margin:14px 0}
+.kw-pay{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
+.kw-micro{text-align:center;font-size:12.5px;color:var(--kw-muted);margin-top:10px}
+
+/* benefit strip */
+.kw-strip{background:var(--kw-primary-dark);color:#fff}
+.kw-strip-in{display:grid;grid-template-columns:1fr 1fr;gap:10px 48px;padding:10px 0;max-width:1120px}
+@media(min-width:768px){.kw-strip-in{grid-template-columns:repeat(4,1fr)}}
+.kw-strip-item{display:flex;gap:10px;align-items:center;justify-content:flex-start;font-size:13px;justify-self:center;width:100%;max-width:300px}
+.kw-strip-item b{display:block;font-size:14px}
+.kw-strip-item small{opacity:.75}
+
+/* two col */
+.kw-two{display:grid;gap:32px;align-items:center}
+@media(min-width:900px){.kw-two{grid-template-columns:1fr 1fr;gap:56px}}
+.kw-pain{display:grid;gap:10px}
+.kw-pain li{background:#fff;border:1px solid var(--kw-border);border-radius:14px;padding:12px 14px}
+.kw-bridge{margin-top:18px;border-radius:16px;background:var(--kw-primary-soft);padding:16px 18px;font-size:15px;font-weight:600;color:var(--kw-primary-dark)}
+
+/* use cards */
+.kw-uses{display:grid;gap:18px}
+@media(min-width:768px){.kw-uses{grid-template-columns:repeat(3,1fr)}}
+.kw-use{overflow:hidden}
+.kw-use img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.kw-use div{padding:18px 20px 22px}
+.kw-use h3{margin:0 0 6px;font-size:17px}
+.kw-use p{margin:0;color:var(--kw-muted);font-size:14px}
+
+/* steps */
+.kw-steps{display:grid;gap:18px}
+@media(min-width:768px){.kw-steps{grid-template-columns:repeat(3,1fr)}}
+.kw-step{overflow:hidden;position:relative}
+.kw-step img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.kw-step .num{position:absolute;top:14px;left:14px;width:44px;height:44px;border-radius:14px;background:var(--kw-gradient);color:#fff;font-weight:800;display:grid;place-items:center;box-shadow:var(--kw-shadow-cta)}
+.kw-step div.t{padding:18px 20px 22px}
+.kw-step h3{margin:0 0 6px;font-size:17px}
+.kw-step p{margin:0;color:var(--kw-muted);font-size:14px}
+.kw-steps-foot{text-align:center;margin-top:26px;color:var(--kw-muted);font-size:14.5px}
+
+/* tabs */
+.kw-tabs-list{display:flex;justify-content:center;gap:6px;background:var(--kw-surface);border-radius:999px;padding:6px;width:max-content;max-width:100%;margin:0 auto 22px;overflow-x:auto}
+.kw-tabs-list button{border:0;background:none;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;color:var(--kw-muted);white-space:nowrap}
+.kw-tabs-list button.on{background:#fff;color:var(--kw-primary);box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.kw-tab{display:none;padding:24px;gap:24px}
+.kw-tab.on{display:grid}
+@media(min-width:768px){.kw-tab{grid-template-columns:1fr 1fr;padding:32px}}
+.kw-tab h3{margin:0 0 8px;font-size:20px}
+.kw-tab p{margin:0;color:var(--kw-muted);font-size:14.5px}
+.kw-tab-panel{background:var(--kw-surface);border-radius:16px;padding:18px 20px}
+.kw-tab-panel small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--kw-gold);margin-bottom:10px}
+
+/* compare */
+.kw-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.kw-table{width:100%;min-width:680px;border-collapse:separate;border-spacing:0;font-size:14px;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--kw-border)}
+.kw-table th,.kw-table td{padding:15px 14px;text-align:center;border-bottom:1px solid var(--kw-border)}
+.kw-table tr:last-child td{border-bottom:0}
+.kw-table th{font-size:12.5px;font-weight:700;color:var(--kw-muted);background:var(--kw-surface)}
+.kw-table td:first-child,.kw-table th:first-child{text-align:left;font-weight:600;color:var(--kw-fg)}
+.kw-table .us{background:var(--kw-primary-soft)}
+.kw-table th.us{background:var(--kw-primary);color:#fff}
+.kw-yes{color:var(--kw-primary);font-weight:800;font-size:17px}
+.kw-no{color:#C3BBAF;font-weight:700;font-size:17px}
+.kw-mid{color:#C3BBAF;font-weight:800}
+
+/* reviews marquee */
+.kw-rev-head{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px}
+.kw-rev-score{display:flex;align-items:center;gap:10px;font-size:15px}
+.kw-rev-score b{font-size:28px}
+.kw-rev-track{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.kw-rev-row{display:flex;gap:16px;width:max-content;animation:kw-scroll 90s linear infinite;padding:6px 0}
+.kw-rev-row{animation-play-state:paused;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
+.kw-rev-row.run{animation-play-state:running}
+@media(hover:hover){.kw-rev-track:hover .kw-rev-row.run{animation-play-state:paused}}
+.kw-rev{contain:layout paint}
+.kw-rev{width:290px;flex:0 0 290px;overflow:hidden;display:flex;flex-direction:column}
+.kw-rev img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.kw-rev .b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.kw-rev p{margin:0;font-size:13.5px;color:#36433B;min-height:84px}
+.kw-rev .who{display:flex;align-items:center;gap:10px;margin-top:auto}
+.kw-avatar{width:34px;height:34px;border-radius:50%;background:var(--kw-gradient);color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.kw-rev .who b{font-size:13.5px;display:block}
+.kw-rev .who small{font-size:11.5px;color:var(--kw-ok);font-weight:600}
+.kw-rev .var{font-size:11.5px;color:var(--kw-muted)}
+
+/* adult */
+.kw-adult{background:var(--kw-gold-soft)}
+
+/* upsell / bundle */
+.kw-upsell{display:grid;gap:0;overflow:hidden}
+@media(min-width:768px){.kw-upsell{grid-template-columns:1fr 1fr}}
+.kw-upsell img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+.kw-upsell .b{padding:28px}
+
+/* final cta */
+.kw-final{text-align:center;max-width:680px;margin:0 auto;padding:36px 24px}
+.kw-final .ic{width:56px;height:56px;border-radius:16px;background:var(--kw-gradient);display:grid;place-items:center;margin:0 auto 16px}
+
+/* faq */
+.kw-faq-grid{display:grid;gap:28px}
+@media(min-width:900px){.kw-faq-grid{grid-template-columns:minmax(0,1fr) 1.4fr;gap:48px}}
+.kw-faq-list{max-width:760px;margin:0 auto}
+.kw-acc .q{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+.kw-acc .n{flex:0 0 34px;height:34px;border-radius:10px;background:var(--kw-primary-soft);color:var(--kw-primary);font-size:13px;font-weight:800;display:grid;place-items:center}
+.kw-acc.open .n{background:var(--kw-gradient);color:#fff}
+.kw-acc{border-bottom:1px solid var(--kw-border);background:none}
+.kw-acc button{width:100%;background:none;border:0;text-align:left;padding:28px 4px;font-weight:700;font-size:16px;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--kw-fg)}
+.kw-acc button::after{content:"+";font-size:22px;font-weight:400;color:var(--kw-primary);transition:transform .2s}
+.kw-acc.open button::after{transform:rotate(45deg)}
+.kw-acc .a{display:none;padding:0 4px 24px;color:var(--kw-muted);font-size:14.5px}
+.kw-acc.open .a{display:block}
+
+/* footer */
+.kw-footer{background:var(--kw-surface);padding:52px 0 26px;border-top:1px solid var(--kw-border)}
+.kw-footer-grid{display:grid;gap:30px}
+@media(min-width:768px){.kw-footer-grid{grid-template-columns:1.3fr 1fr}}
+.kw-footer h4{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--kw-muted);margin:0 0 14px}
+.kw-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:14px}
+.kw-footer ul a{text-decoration:none}
+.kw-footer ul a:hover{color:var(--kw-primary)}
+.kw-foot-contact{display:grid;gap:10px;margin-top:16px;font-size:13.5px}
+.kw-foot-contact div{display:flex;gap:10px;align-items:center}
+.kw-foot-contact .ic{width:32px;height:32px;border-radius:9px;border:1px solid rgba(30,91,61,.3);display:grid;place-items:center}
+.kw-foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--kw-border);margin-top:34px;padding-top:18px;font-size:12px;color:var(--kw-muted)}
+
+/* policy pages */
+.kw-page{display:none}
+.kw-page.on{display:block}
+.kw-policy{max-width:720px;margin:0 auto;padding:48px 16px 24px}
+.kw-policy h1{text-align:center;font-size:34px;margin:0 0 28px}
+.kw-policy h2{font-size:18px;margin:28px 0 8px}
+.kw-policy p,.kw-policy li{color:#3B4740;font-size:14.5px}
+.kw-back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:var(--kw-primary);text-decoration:none;font-weight:600;margin-bottom:12px}
+.kw-form{max-width:560px;margin:48px auto 64px;padding:0 16px}
+.kw-form h2{text-align:center;font-size:26px;margin:0 0 20px}
+.kw-form input,.kw-form textarea{width:100%;border:1px solid var(--kw-border);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14.5px;margin-bottom:12px;background:#fff}
+.kw-form input:focus,.kw-form textarea:focus{outline:2px solid var(--kw-primary-soft);border-color:var(--kw-primary)}
+.kw-form textarea{min-height:120px;resize:vertical}
+.kw-form-ok{display:none;text-align:center;background:var(--kw-primary-soft);color:var(--kw-primary-dark);border-radius:14px;padding:14px;font-weight:600;margin-top:12px}
+
+/* drawer */
+.kw-overlay{position:fixed;inset:0;background:rgba(15,25,20,.55);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
+.kw-overlay.on{opacity:1;pointer-events:auto}
+.kw-drawer{position:fixed;top:0;right:0;height:100%;width:100%;max-width:440px;background:#fff;z-index:95;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column}
+.kw-drawer.on{transform:none}
+.kw-dr-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px}
+.kw-dr-head h3{margin:0;font-size:22px}
+.kw-dr-bar{background:var(--kw-primary-dark);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:10px}
+.kw-dr-progress{padding:14px 20px 0;font-size:12.5px;color:var(--kw-muted)}
+.kw-dr-progress .bar{height:7px;border-radius:4px;background:var(--kw-surface-2);margin-top:6px;overflow:hidden}
+.kw-dr-progress .bar i{display:block;height:100%;background:var(--kw-gradient);transition:width .3s}
+.kw-dr-items{flex:1;overflow:auto;padding:16px 20px;display:grid;gap:14px;align-content:start}
+.kw-item{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start}
+.kw-item img{width:72px;height:72px;border-radius:12px;object-fit:cover}
+.kw-item-top{display:flex;justify-content:space-between;gap:8px}
+.kw-item-top b{font-size:14px}
+.kw-item small{color:var(--kw-muted);font-size:12px;display:block}
+.kw-item-bot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.kw-qty{display:inline-flex;border:1px solid var(--kw-border);border-radius:10px;overflow:hidden}
+.kw-qty button{width:30px;height:30px;border:0;background:#fff;font-size:16px}
+.kw-qty span{width:30px;display:grid;place-items:center;font-size:13px;font-weight:600}
+.kw-item-price{text-align:right;font-size:14px;font-weight:700;color:var(--kw-primary)}
+.kw-item-price s{font-weight:400;color:var(--kw-muted);font-size:12px;margin-right:4px}
+.kw-trash{border:0;background:none;color:var(--kw-muted);padding:2px}
+.kw-upsell-mini{border:2px dashed rgba(30,91,61,.3);border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;font-size:13px}
+.kw-upsell-mini img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.kw-dr-foot{border-top:1px solid var(--kw-border);padding:16px 20px 20px;display:grid;gap:8px;background:var(--kw-surface)}
+.kw-dr-line{display:flex;justify-content:space-between;font-size:14px}
+.kw-dr-line.disc{color:var(--kw-ok);font-weight:700}
+.kw-dr-line.total{font-size:19px;font-weight:800}
+.kw-empty{text-align:center;color:var(--kw-muted);padding:40px 0}
+
+/* modal */
+.kw-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(15,25,20,.55)}
+.kw-modal.on{display:flex}
+.kw-modal-box{background:#fff;border-radius:22px;width:100%;max-width:440px;padding:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.35)}
+.kw-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.kw-modal-head h3{margin:0;font-size:22px}
+.kw-close{width:36px;height:36px;border-radius:50%;border:0;background:var(--kw-surface);font-size:18px}
+.kw-ship-opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;border:2px solid var(--kw-border);border-radius:16px;padding:16px 18px;background:#fff;margin-bottom:10px;font-size:15px;font-weight:700;text-align:left;color:var(--kw-fg)}
+.kw-ship-opt small{display:block;font-weight:500;color:var(--kw-muted);font-size:12px}
+.kw-ship-opt .p{color:var(--kw-ok);font-size:14px;white-space:nowrap}
+.kw-ship-opt.on{background:var(--kw-primary-dark);color:#fff;border-color:var(--kw-primary-dark)}
+.kw-ship-opt.on small{color:rgba(255,255,255,.75)}
+.kw-ship-opt.on .p{color:#9FE0B8}
+
+/* sticky mobile */
+.kw-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--kw-border);padding:10px 16px;display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .25s;box-shadow:0 -8px 24px rgba(0,0,0,.08)}
+.kw-sticky.on{transform:none}
+.kw-sticky .n{font-size:13px;font-weight:700;line-height:1.2}
+.kw-sticky .p{font-size:13px;color:var(--kw-primary);font-weight:700}
+.kw-sticky .kw-btn{margin-left:auto}
+@media(min-width:960px){.kw-sticky{display:none}}
+.kw-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--kw-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.kw-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.kw-hero-grid>div:first-child{position:sticky;top:84px}}
+.kw-use img,.kw-step img{aspect-ratio:16/10!important;height:auto}
+.kw-photo img{aspect-ratio:4/3;height:auto}
+.kw-gallery-main img{height:100%!important;width:100%}
+.kw-thumbs img{height:100%!important}
+.kw-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--kw-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.kw-deal{grid-template-columns:.85fr 1.15fr}}
+.kw-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.kw-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.kw-float{animation:kw-float 3.2s ease-in-out infinite}
+@keyframes kw-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.kw-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--kw-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--kw-gold) 2px,transparent 3px);opacity:.8;animation:kw-tw 2.4s ease-in-out infinite}
+.kw-spark.s1{top:28px;right:34px}.kw-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes kw-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.kw-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.kw-deal-body{padding:36px 40px}}
+.kw-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--kw-primary)}
+.kw-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--kw-sale);margin:6px 0 4px}
+.kw-deal-badge b{font-size:34px;font-weight:800}
+.kw-deal-body p{color:var(--kw-muted);font-size:14.5px;margin:0 0 20px}
+.kw-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.kw-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--kw-border);box-shadow:var(--kw-shadow-card)}
+.kw-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--kw-primary);font-variant-numeric:tabular-nums}
+.kw-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--kw-muted)}
+.kw-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--kw-gold)}
+@media(max-width:420px){.kw-deal-timer div{width:78px}.kw-deal-timer b{font-size:32px}}
+.kw-rev-row{padding-left:32px}
+@media(max-width:767px){.kw-strip-in{gap:16px 10px}.kw-strip-item{font-size:12px;max-width:210px}}
+.kw-ring{transform-origin:50% 20%;animation:kw-ring 2.4s ease-in-out infinite}
+@keyframes kw-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.kw-pulse{display:inline-block;animation:kw-pulse 1.6s ease-in-out infinite}
+@keyframes kw-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.kw-deal-timer div b.tick{animation:kw-tick .35s ease}
+@keyframes kw-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.kw-deal .kw-btn{animation:kw-glow 2.2s ease-in-out infinite}
+@keyframes kw-glow{0%,100%{box-shadow:var(--kw-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.kw-shine{background:linear-gradient(100deg,var(--kw-primary) 0%,var(--kw-primary) 40%,#E2B866 50%,var(--kw-primary) 60%,var(--kw-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:kw-shine 1.5s linear infinite,kw-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes kw-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes kw-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.kw-nudge{animation:kw-nudge 2s ease-in-out infinite}
+@keyframes kw-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.kw-beat{display:inline-block;animation:kw-pulse 1s ease-in-out infinite}
+.kw-strip-item b{font-size:13px}.kw-strip-item small{font-size:11.5px}.kw-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.kw-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.kw-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.kw-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--kw-sale);}
+.kw-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.kw-pills .kw-pill{font-size:10.5px;padding:5px 9px}}
+.kw-gallery-main{touch-action:pan-y}
+.kw-hero-grid>*{min-width:0}
+.kw-pills{flex-wrap:wrap!important;white-space:normal!important}
+</style>
+</head>
+<body>
+
+<div class="kw-topbar" aria-label="Promocje">
+  <div class="kw-marquee">
+    <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
+    <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
+    <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
+  </div>
+</div>
+
+<header class="kw-nav">
+  <div class="kw-container kw-nav-in">
+    <button class="kw-icon-btn kw-burger" aria-label="Otwórz menu" onclick="kwMenu(true)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a href="#" class="kw-logo" onclick="kwShow('home');return false">
+      <img src="{{IMG}}/logo.png" width="26" height="46" alt=""><div><span>[NAZWA]</span><small>[PODPIS POD LOGO]</small></div>
+    </a>
+    <nav class="kw-menu">
+      <a href="#zastosowania" onclick="kwShow('home')">[MENU 1 – zastosowania]</a>
+      <a href="#jak-dziala" onclick="kwShow('home')">[MENU 2 – jak działa]</a>
+      <a href="#zestaw" onclick="kwShow('home')">[MENU 3 – zestaw]</a>
+      <a href="#porownanie" onclick="kwShow('home')">[MENU 4 – porównanie]</a>
+      <a href="#opinie" onclick="kwShow('home')">[MENU 5 – opinie]</a>
+      <a href="#faq" onclick="kwShow('home')">[MENU 6 – FAQ]</a>
+    </nav>
+    <button class="kw-icon-btn" aria-label="Koszyk" onclick="kwCart(true)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span class="kw-cart-count" id="kwCount" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<div class="kw-mobile-menu" id="kwMobile">
+  <div class="kw-mm-top">
+    <span class="kw-logo"><img src="{{IMG}}/logo.png" width="26" height="46" alt=""><div><span>[NAZWA]</span><small>[PODPIS POD LOGO]</small></div></span>
+    <button class="kw-icon-btn" aria-label="Zamknij menu" onclick="kwMenu(false)">✕</button>
+  </div>
+  <nav>
+    <a href="#hero" onclick="kwMenu(false);kwShow('home')">[NAZWA PRODUKTU]</a>
+    <a href="#jak-dziala" onclick="kwMenu(false);kwShow('home')">Jak to działa</a>
+    <a href="#opinie" onclick="kwMenu(false);kwShow('home')">Opinie</a>
+    <a href="#faq" onclick="kwMenu(false);kwShow('home')">FAQ</a>
+    <a href="#" onclick="kwMenu(false);kwShow('kontakt');return false">Kontakt</a>
+  </nav>
+  <button class="kw-mm-close" onclick="kwMenu(false)">Zamknij menu.</button>
+</div>
+
+<main id="kwHome" class="kw-page on">
+
+<!-- HERO -->
+<section class="kw-hero" id="hero">
+  <div class="kw-container kw-hero-grid">
+    <div>
+      <div class="kw-gallery-main">
+        <img id="kwMain" src="{{IMG}}/foto-1.jpg" width="1200" height="1200" alt="[OPIS ZDJĘCIA 1]">
+        <button class="kw-gallery-arrow prev" aria-label="Poprzednie zdjęcie" onclick="kwGal(-1)">‹</button>
+        <button class="kw-gallery-arrow next" aria-label="Następne zdjęcie" onclick="kwGal(1)">›</button>
+        <div class="kw-gallery-caption" id="kwCaption">⭐ [PODPIS ZDJĘCIA 1 – korzyść]</div>
+      </div>
+      <div class="kw-dots" id="kwDots"></div>
+      <div class="kw-thumbs" id="kwThumbs"></div>
+    </div>
+
+    <div class="kw-buy">
+      <div class="kw-pills"><span class="kw-pill gold">★ [PLAKIETKA – np. Bestseller 2026]</span><span class="kw-pill sale">⚠️ [PILNOŚĆ – np. Liczba sztuk ograniczona]</span></div>
+      <h1>[NAGŁÓWEK GŁÓWNY – problem klienta + obietnica] <span class="kw-accent">[EFEKT KOŃCOWY]</span></h1>
+      <p class="kw-sub">[PODTYTUŁ – jak produkt zmienia dzień klienta, 1–2 zdania]</p>
+      <div class="kw-rating"><span class="kw-stars">★★★★★</span><b>[OCENA]</b> · [LICZBA] opinii · <span style="color:var(--kw-ok);font-weight:600">● [LICZBA] osób ogląda teraz</span></div>
+      <div class="kw-price-row">
+        <span class="kw-price" id="kwPrice">149,99 zł</span>
+        <span class="kw-old" id="kwOld">249,99 zł</span>
+        <span class="kw-save" id="kwSave">−40%</span>
+      </div>
+      <ul class="kw-list">
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 1]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 2]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 3]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 4]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 5]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 6]</b> [dopowiedzenie]</span></li>
+      </ul>
+
+      <div class="kw-bundles" id="kwBundles">
+        <div class="kw-bundles-title">[WYBIERZ ZESTAW]</div>
+      </div>
+
+      <button class="kw-btn full" onclick="kwAddBundle()">Dodaj do koszyka · <span id="kwCtaPrice">149,99 zł</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="kw-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
+      <p class="kw-micro">🔒 [MIKROZAUFANIE – płatność · zwroty · kontakt]</p>
+    </div>
+  </div>
+</section>
+
+<div class="kw-strip">
+  <div class="kw-container kw-strip-in">
+    <div class="kw-strip-item"><span style="font-size:22px">🚚</span><div><b>[DOSTAWA]</b><small>[sposób dostawy]</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">↩️</span><div><b>[ZWROTY]</b><small>[krótki dopisek]</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">🔒</span><div><b>[PŁATNOŚCI]</b><small>[metody płatności]</small></div></div>
+    <div class="kw-strip-item"><span style="font-size:22px">⭐</span><div><b>[OCENA]</b><small>[liczba zadowolonych]</small></div></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="kw-section kw-alt" id="problem">
+  <div class="kw-container kw-two">
+    <div>
+      <span class="kw-eyebrow left">[NADTYTUŁ – np. Brzmi znajomo?]</span>
+      <h2 class="kw-h2 left">[NAGŁÓWEK PROBLEMU – frustracja klienta] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+      <p class="kw-lead left">[ZDANIE WYJAŚNIAJĄCE PROBLEM]</p>
+      <ul class="kw-list kw-pain">
+        <li><span class="kw-x">✕</span><span>[PROBLEM 1]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 2]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 3]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 4]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 5]</span></li>
+        <li><span class="kw-x">✕</span><span>[PROBLEM 6]</span></li>
+      </ul>
+      <div class="kw-bridge">[PODSUMOWANIE – skutek problemów w 1 zdaniu, pytanie „a gdyby…”]</div>
+    </div>
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{IMG}}/problem.jpg" width="1200" height="900" loading="lazy" alt="[OPIS ZDJĘCIA]"></div>
+  </div>
+</section>
+
+<!-- USES -->
+<section class="kw-section" id="zastosowania">
+  <div class="kw-container">
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Gdzie się przydaje]</span>
+    <h2 class="kw-h2">[NAGŁÓWEK ZASTOSOWAŃ] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+    <p class="kw-lead">[PODTYTUŁ ZASTOSOWAŃ]</p>
+    <div class="kw-uses">
+      <article class="kw-card kw-use"><img src="{{IMG}}/foto-6.jpg" width="1200" height="1200" loading="lazy" alt="[ZASTOSOWANIE 1]"><div><h3>[ZASTOSOWANIE 1]</h3><p>[OPIS – 1 zdanie]</p></div></article>
+      <article class="kw-card kw-use"><img src="{{IMG}}/zastosowanie-2.jpg" width="1200" height="900" loading="lazy" alt="[ZASTOSOWANIE 2]"><div><h3>[ZASTOSOWANIE 2]</h3><p>[OPIS – 1 zdanie]</p></div></article>
+      <article class="kw-card kw-use"><img src="{{IMG}}/zastosowanie-3.jpg" width="1200" height="675" loading="lazy" alt="[ZASTOSOWANIE 3]"><div><h3>[ZASTOSOWANIE 3]</h3><p>[OPIS – 1 zdanie]</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="kw-section kw-alt">
+  <div class="kw-container kw-two">
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{IMG}}/rozwiazanie.jpg" width="1200" height="900" loading="lazy" alt="[OPIS ZDJĘCIA]"></div>
+    <div>
+      <span class="kw-eyebrow left">[NADTYTUŁ – np. Dlatego powstał produkt]</span>
+      <h2 class="kw-h2 left">[NAGŁÓWEK ROZWIĄZANIA – jak produkt rozwiązuje problem] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+      <p class="kw-lead left">[ZDANIE O ROZWIĄZANIU]</p>
+      <ul class="kw-list">
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 1]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 2]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 3]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 4]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 5]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[ULGA 6]</b> [dopowiedzenie]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="kw-section" id="jak-dziala">
+  <div class="kw-container">
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Proste jak 1-2-3]</span>
+    <h2 class="kw-h2">[EFEKT] <span class="kw-accent">w 3 krokach</span></h2>
+    <p class="kw-lead">[PODTYTUŁ – co jest proste]</p>
+    <ol class="kw-steps" style="list-style:none;padding:0;margin:0">
+      <li class="kw-card kw-step"><span class="num">01</span><img src="{{IMG}}/krok-1.jpg" width="1200" height="900" loading="lazy" alt="[KROK 1]"><div class="t"><h3>[KROK 1]</h3><p>[OPIS KROKU 1]</p></div></li>
+      <li class="kw-card kw-step"><span class="num">02</span><img src="{{IMG}}/krok-2.jpg" width="1200" height="900" loading="lazy" alt="[KROK 2]"><div class="t"><h3>[KROK 2]</h3><p>[OPIS KROKU 2]</p></div></li>
+      <li class="kw-card kw-step"><span class="num">03</span><img src="{{IMG}}/krok-3.jpg" width="1200" height="900" loading="lazy" alt="[KROK 3]"><div class="t"><h3>[KROK 3]</h3><p>[OPIS KROKU 3]</p></div></li>
+    </ol>
+    <p class="kw-steps-foot">[ZDANIE PODSUMOWANIA KROKÓW]</p>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="kw-section kw-alt" id="zestaw">
+  <div class="kw-container">
+    <span class="kw-eyebrow">[NADTYTUŁ – np. W paczce]</span>
+    <h2 class="kw-h2">Co dokładnie <span class="kw-accent">dostajesz</span></h2>
+    <p class="kw-lead">[PODTYTUŁ ZESTAWU]</p>
+    <div class="kw-tabs-list" role="tablist">
+      <button class="on" onclick="kwTab(0)">[ZAKŁADKA 1]</button>
+      <button onclick="kwTab(1)">[ZAKŁADKA 2]</button>
+      <button onclick="kwTab(2)">[ZAKŁADKA 3]</button>
+    </div>
+    <div class="kw-card kw-tab on">
+      <div><h3>[NAZWA PRODUKTU / ZAKŁADKA 1]</h3><p>[OPIS ZESTAWU – 1–2 zdania]</p></div>
+      <div class="kw-tab-panel"><small>[ZAWARTOŚĆ]</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 1]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 2]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 3]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 4]</li></ul></div>
+    </div>
+    <div class="kw-card kw-tab">
+      <div><h3>[NAZWA PRODUKTU / ZAKŁADKA 2]</h3><p>[OPIS ZESTAWU – 1–2 zdania]</p></div>
+      <div class="kw-tab-panel"><small>[ZAWARTOŚĆ]</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 1]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 2]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 3]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 4]</li></ul></div>
+    </div>
+    <div class="kw-card kw-tab">
+      <div><h3>[NAZWA PRODUKTU / ZAKŁADKA 3]</h3><p>[OPIS ZESTAWU – 1–2 zdania]</p></div>
+      <div class="kw-tab-panel"><small>[ZAWARTOŚĆ]</small><ul class="kw-list"><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 1]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 2]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 3]</li><li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>[ELEMENT 4]</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="kw-section" id="porownanie">
+  <div class="kw-container">
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Porównanie]</span>
+    <h2 class="kw-h2">Dlaczego <span class="kw-accent">[TWÓJ PRODUKT]</span>, a nie [ALTERNATYWA]?</h2>
+    <p class="kw-lead">[PODTYTUŁ PORÓWNANIA]</p>
+    <div class="kw-table-wrap">
+      <table class="kw-table">
+        <thead><tr><th>Cecha</th><th class="us">[TWÓJ PRODUKT]</th><th>[ALTERNATYWA 1]</th><th>[ALTERNATYWA 2]</th><th>[ALTERNATYWA 3]</th></tr></thead>
+        <tbody>
+          <tr><td>[CECHA 1]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>[CECHA 2]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>[CECHA 3]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td><td><span class="kw-yes" style="color:#9DB3A6">✓</span></td></tr>
+          <tr><td>[CECHA 4]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-no">✕</span></td></tr>
+          <tr><td>[CECHA 5]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td></tr>
+          <tr><td>[CECHA 6]</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td><td><span class="kw-mid">–</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="kw-section kw-alt" id="opinie">
+  <div class="kw-container">
+    <span class="kw-eyebrow">[NADTYTUŁ – np. Opinie klientów]</span>
+    <h2 class="kw-h2">Zobacz, co mówią <span class="kw-accent">[KLIENCI]</span></h2>
+    <div class="kw-rev-head">
+      <div class="kw-rev-score"><b>[OCENA]</b><span class="kw-stars" style="font-size:20px">★★★★★</span></div>
+      <div style="font-size:13.5px;color:var(--kw-muted)">Na podstawie [LICZBA] zweryfikowanych zakupów</div>
+    </div>
+  </div>
+  <div class="kw-rev-track"><div class="kw-rev-row" id="kwRev1"></div></div>
+</section>
+
+<!-- ADULT -->
+<section class="kw-section kw-adult">
+  <div class="kw-container kw-two">
+    <div class="kw-photo" style="aspect-ratio:4/3"><img src="{{IMG}}/sekcja-4.jpg" width="1200" height="900" loading="lazy" alt="[OPIS ZDJĘCIA]"></div>
+    <div>
+      <span class="kw-eyebrow left">[NADTYTUŁ – np. Nie tylko dla…]</span>
+      <h2 class="kw-h2 left">[NAGŁÓWEK – obalenie obiekcji] <span class="kw-accent">[SŁOWO KLUCZ]</span></h2>
+      <p class="kw-lead left">[ZDANIE ROZWIJAJĄCE]</p>
+      <ul class="kw-list">
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 1]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 2]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 3]</b> [dopowiedzenie]</span></li>
+        <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[PUNKT 4]</b> [dopowiedzenie]</span></li>
+      </ul>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL CTA: 48h -->
+<section class="kw-section kw-alt">
+  <div class="kw-container">
+    <div class="kw-deal">
+      <div class="kw-deal-img">
+        <span class="kw-spark s1"></span><span class="kw-spark s2"></span>
+        <img class="kw-float" src="{{IMG}}/foto-2.jpg" width="1200" height="1200" loading="lazy" alt="[NAZWA PRODUKTU]">
+      </div>
+      <div class="kw-deal-body">
+        <h2 class="kw-shine">[NAZWA PRODUKTU]</h2>
+        <div class="kw-deal-badge"><svg class="kw-ring" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2M5 4 2.5 6.5M19 4l2.5 2.5"/></svg><b class="kw-pulse">48h!</b></div>
+        <p class="kw-nudge">Nie przegap – [CENA PROMOCYJNA tylko przez 48 godzin]!<br><span class="kw-limit">⚠️ [PILNOŚĆ – np. Liczba sztuk ograniczona]</span> <span class="kw-gold kw-beat">♡</span></p>
+        <div class="kw-deal-timer">
+          <div><b id="kwDH">48</b><small>godzin</small></div><i>:</i>
+          <div><b id="kwDM">00</b><small>minut</small></div><i>:</i>
+          <div><b id="kwDS">00</b><small>sekund</small></div>
+        </div>
+        <button class="kw-btn full" onclick="kwScrollBuy()">[CTA – np. Kup teraz i skorzystaj z rabatu!] →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="kw-section" id="faq">
+  <div class="kw-container">
+    <span class="kw-eyebrow">FAQ</span>
+    <h2 class="kw-h2">Najczęściej zadawane <span class="kw-accent">pytania</span></h2>
+    <p class="kw-lead" style="margin-bottom:8px">Nie ma tu Twojego pytania? Napisz:</p>
+    <p style="text-align:center;margin:0 0 36px"><a href="mailto:kontakt@mivro.pl" style="font-weight:700;text-decoration:none">kontakt@mivro.pl</a></p>
+    <div id="kwFaq" class="kw-faq-list"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- POLICY PAGES -->
+<main id="kwPages"></main>
+
+<footer class="kw-footer">
+  <div class="kw-container">
+    <div class="kw-footer-grid">
+      <div>
+        <span class="kw-logo"><img src="{{IMG}}/logo.png" width="26" height="46" alt=""><div><span>[NAZWA]</span><small>[PODPIS POD LOGO]</small></div></span>
+        <p style="color:var(--kw-muted);font-size:14px;max-width:360px">[OPIS SKLEPU – 1–2 zdania]</p>
+        <div class="kw-foot-contact">
+          <div><span class="ic">✉️</span><a href="mailto:kontakt@mivro.pl">kontakt@mivro.pl</a></div>
+          <div><span class="ic">🕘</span>[GODZINY ODPOWIEDZI]</div>
+        </div>
+      </div>
+      <div>
+        <h4>Informacje</h4>
+        <ul>
+          <li><a href="#" onclick="kwShow('regulamin');return false">Regulamin</a></li>
+          <li><a href="#" onclick="kwShow('prywatnosc');return false">Polityka prywatności</a></li>
+          <li><a href="#" onclick="kwShow('wysylka');return false">Polityka wysyłki</a></li>
+          <li><a href="#" onclick="kwShow('zwroty');return false">Zwroty i reklamacje</a></li>
+          <li><a href="#" onclick="kwShow('kontakt');return false">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="kw-foot-bottom"><span>[NAZWA SKLEPU] © [ROK]</span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="kw-overlay" id="kwOverlay" onclick="kwCart(false)"></div>
+<aside class="kw-drawer" id="kwDrawer" aria-label="Koszyk">
+  <div class="kw-dr-head"><h3>Koszyk · <span id="kwDrCount">0</span></h3><button class="kw-close" aria-label="Zamknij koszyk" onclick="kwCart(false)">✕</button></div>
+  <div class="kw-dr-bar">🚚 [DOSTAWA] · ↩️ [ZWROTY]</div>
+  <div class="kw-dr-progress" id="kwProgress"></div>
+  <div class="kw-dr-items" id="kwItems"></div>
+  <div class="kw-dr-foot">
+    <div class="kw-dr-line disc"><span>Łączny rabat</span><span id="kwDisc">−0,00 zł</span></div>
+    <div class="kw-dr-line total"><span>Łączna kwota</span><span id="kwTotal">0,00 zł</span></div>
+    <div class="kw-dr-line" style="color:var(--kw-muted)"><span>Dostawa</span><span id="kwShipLine">Wybierzesz w następnym kroku</span></div>
+    <button class="kw-btn full" id="kwCheckout" onclick="kwShipModal(true)">Realizuj zakup</button>
+    <div class="kw-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
+  </div>
+</aside>
+
+<!-- SHIPPING MODAL -->
+<div class="kw-modal" id="kwShip" onclick="if(event.target===this)kwShipModal(false)">
+  <div class="kw-modal-box">
+    <div class="kw-modal-head"><h3>Wybierz dostawę</h3><button class="kw-close" onclick="kwShipModal(false)">✕</button></div>
+    <button class="kw-ship-opt on" data-ship="paczkomat" onclick="kwPickShip(this)"><span>📦 Paczkomat InPost</span><span class="p">GRATIS</span></button>
+    <button class="kw-ship-opt" data-ship="kurier" onclick="kwPickShip(this)"><span>🚚 Kurier pod adres</span><span class="p">GRATIS</span></button>
+    <button class="kw-btn full" style="margin-top:6px" onclick="kwGoCheckout()">Przejdź do płatności</button>
+    <p class="kw-micro">Adres i punkt odbioru wskażesz w kasie na następnym ekranie.</p>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="kw-modal" id="kwContact" onclick="if(event.target===this)this.classList.remove('on')">
+  <div class="kw-modal-box" style="text-align:center">
+    <div class="kw-modal-head"><h3>Kontakt</h3><button class="kw-close" onclick="document.getElementById('kwContact').classList.remove('on')">✕</button></div>
+    <p>Skontaktuj się tutaj z nami: <a href="mailto:kontakt@mivro.pl" style="color:var(--kw-primary);font-weight:700">kontakt@mivro.pl</a></p>
+  </div>
+</div>
+
+<div class="kw-sticky" id="kwSticky">
+  <div><div class="n">[NAZWA PRODUKTU]</div><div class="p" id="kwStickyPrice">149,99 zł <s style="color:var(--kw-muted);font-weight:400">249,99 zł</s></div></div>
+  <button class="kw-btn small" onclick="kwAddBundle()">Do koszyka</button>
+</div>
+<div class="kw-toast" id="kwToast">Dodano do koszyka ✓</div>
+
+<script>
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.KW_IMG||{};function kwSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="kontakt@mivro.pl";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("kwMain"),cap=document.getElementById("kwCaption"),dots=document.getElementById("kwDots"),th=document.getElementById("kwThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+kwSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=kwSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.kwGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".kw-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
+/* BUNDLES */
+var BUNDLES=[
+ {q:1,name:"[Kup 1]",desc:"[Pakiet startowy]",price:99.99,old:149.99},
+ {q:2,name:"[Kup 2]",desc:"[Oszczędzasz X zł · cena za szt.]",price:179.98,old:299.98,tag:"[NAJCZĘŚCIEJ WYBIERANY]"},
+ {q:3,name:"[Kup 3]",desc:"[Najlepsza cena za szt.]",price:239.97,old:449.97,tag:"[NAJLEPSZA CENA]",gold:true}
+];
+var sel=0;
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
+var bw=document.getElementById("kwBundles");
+BUNDLES.forEach(function(b,i){
+  var el=document.createElement("div");el.className="kw-bundle";el.onclick=function(){pick(i)};
+  el.innerHTML=(b.tag?'<span class="kw-bundle-tag'+(b.gold?' gold':'')+'">'+b.tag+'</span>':'')+
+   '<div class="kw-bundle-head"><span class="kw-radio"></span><div><div class="kw-bundle-name">'+b.name+'</div><div class="kw-bundle-desc">'+b.desc+'</div></div><div class="kw-bundle-price"><b>'+zl(b.price)+'</b><s>'+zl(b.old)+'</s></div></div>';
+  bw.appendChild(el);
+});
+function pick(i){sel=i;render()}
+function render(){
+  [].forEach.call(bw.querySelectorAll(".kw-bundle"),function(el,i){el.classList.toggle("on",i===sel);});
+  var b=BUNDLES[sel];
+  document.getElementById("kwPrice").textContent=zl(b.price);document.getElementById("kwOld").textContent=zl(b.old);
+  document.getElementById("kwSave").textContent="−"+Math.round((1-b.price/b.old)*100)+"%";
+  document.getElementById("kwCtaPrice").textContent=zl(b.price);
+  document.getElementById("kwStickyPrice").innerHTML=zl(b.price)+' <s style="color:var(--kw-muted);font-weight:400">'+zl(b.old)+'</s>';
+}
+render();
+
+/* CART */
+var cart=[];
+function save(){try{localStorage.setItem("kwCart2",JSON.stringify(cart))}catch(e){}}
+try{cart=JSON.parse(localStorage.getItem("kwCart2")||"[]")}catch(e){cart=[]}
+function unitFor(q){return q>=3?BUNDLES[2].price/3:q===2?BUNDLES[1].price/2:BUNDLES[0].price}
+function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
+function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
+window.kwAddBundle=function(){addItem({key:"kal",name:"[NAZWA PRODUKTU]",variant:"[KRÓTKI OPIS]",img:"foto-1.jpg",qty:BUNDLES[sel].q,old:BUNDLES[0].old});kwCart(true)};
+function drawCart(){
+  var n=calCount(),u=unitFor(n),items=document.getElementById("kwItems"),tot=0,old=0,cnt=0;
+  items.innerHTML="";
+  if(!cart.length){items.innerHTML='<div class="kw-empty">Twój koszyk jest pusty 🌷<br><br><button class="kw-btn small" onclick="kwCart(false);kwScrollBuy()">Wybierz zestaw</button></div>'}
+  cart.forEach(function(it,idx){
+    var p=u;tot+=p*it.qty;old+=it.old*it.qty;cnt+=it.qty;
+    var d=document.createElement("div");d.className="kw-item";
+    d.innerHTML='<img src="'+kwSrc(it.img)+'" alt=""><div><div class="kw-item-top"><div><b>'+it.name+'</b><small>'+it.variant+'</small></div><button class="kw-trash" aria-label="Usuń">🗑</button></div><div class="kw-item-bot"><div class="kw-qty"><button aria-label="Mniej">−</button><span>'+it.qty+'</span><button aria-label="Więcej">+</button></div><div class="kw-item-price"><s>'+zl(it.old*it.qty)+'</s>'+zl(p*it.qty)+'<small style="color:var(--kw-ok)">Oszczędzasz '+zl((it.old-p)*it.qty)+'</small></div></div></div>';
+    var bs=d.querySelectorAll("button");
+    bs[0].onclick=function(){cart.splice(idx,1);save();drawCart()};
+    bs[1].onclick=function(){it.qty--;if(it.qty<1)cart.splice(idx,1);save();drawCart()};
+    bs[2].onclick=function(){it.qty++;save();drawCart()};
+    items.appendChild(d);
+  });
+  var pr=document.getElementById("kwProgress");
+  if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>1 szt.</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za sztukę<div class="bar"><i style="width:100%"></i></div>';
+  document.getElementById("kwTotal").textContent=zl(tot);document.getElementById("kwDisc").textContent="−"+zl(old-tot);
+  document.getElementById("kwDrCount").textContent=cnt;var c=document.getElementById("kwCount");c.textContent=cnt;c.hidden=!cnt;
+  document.getElementById("kwCheckout").disabled=!cnt;document.getElementById("kwCheckout").style.opacity=cnt?1:.5;
+}
+drawCart();
+function toast(){var t=document.getElementById("kwToast");t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1600)}
+window.kwCart=function(o){document.getElementById("kwDrawer").classList.toggle("on",o);document.getElementById("kwOverlay").classList.toggle("on",o);document.body.style.overflow=o?"hidden":""};
+window.kwShipModal=function(o){document.getElementById("kwShip").classList.toggle("on",o)};
+window.kwPickShip=function(b){document.querySelectorAll(".kw-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("kwShipLine").textContent=b.dataset.ship==="kurier"?"Kurier pod adres · GRATIS":"Paczkomat InPost · GRATIS"};
+window.kwGoCheckout=function(){window.location.href=CHECKOUT_URL};
+window.kwMenu=function(o){document.getElementById("kwMobile").classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
+window.kwScrollBuy=function(){kwShow("home");document.getElementById("kwBundles").scrollIntoView({behavior:"smooth",block:"center"})};
+
+/* TABS */
+window.kwTab=function(i){document.querySelectorAll(".kw-tabs-list button").forEach(function(b,k){b.classList.toggle("on",k===i)});document.querySelectorAll(".kw-tab").forEach(function(t,k){t.classList.toggle("on",k===i)})};
+
+
+/* 48h licznik w sekcji promocji */
+var kwDEnd=Date.now()+48*3600*1000;
+function dtick(){var s=Math.max(0,Math.ceil((kwDEnd-Date.now())/1000));
+  document.getElementById("kwDH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwDM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");var ds=document.getElementById("kwDS");ds.textContent=String(s%60).padStart(2,"0");ds.classList.remove("tick");void ds.offsetWidth;ds.classList.add("tick")}
+dtick();setInterval(dtick,1000);
+/* STICKY */
+window.addEventListener("scroll",function(){document.getElementById("kwSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("kwHome").classList.contains("on"))},{passive:true});
+
+/* REVIEWS */
+var R=[
+ ["Amelia","Kraków","opinia-1.jpg","","[TREŚĆ OPINII 1 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Piotr","Wrocław","opinia-2.jpg","","[TREŚĆ OPINII 2 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Julia","Gdańsk","opinia-3.jpg","","[TREŚĆ OPINII 3 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Aleksander","Poznań","opinia-4.jpg","","[TREŚĆ OPINII 4 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Natalia","Łódź","opinia-5.jpg","","[TREŚĆ OPINII 5 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Zofia","Lublin","opinia-6.jpg","","[TREŚĆ OPINII 6 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Kacper","Katowice","opinia-1.jpg","","[TREŚĆ OPINII 7 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Maja","Szczecin","opinia-2.jpg","","[TREŚĆ OPINII 8 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Oliwia","Bydgoszcz","opinia-3.jpg","","[TREŚĆ OPINII 9 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Szymon","Rzeszów","opinia-4.jpg","","[TREŚĆ OPINII 10 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Hanna","Toruń","opinia-5.jpg","","[TREŚĆ OPINII 11 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
+ ["Mateusz","Białystok","opinia-6.jpg","","[TREŚĆ OPINII 12 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"]
+];
+function card(r){return '<article class="kw-card kw-rev"><img src="'+kwSrc(r[2])+'" width="400" height="300" alt="Zdjęcie od klienta"><div class="b"><span class="kw-stars">★★★★★</span><p>'+r[4]+'</p><div class="who"><img class="pfp" src="'+kwSrc('av'+(R.indexOf(r)%12+1)+'.jpg')+'" alt=""><div><b>'+r[0]+', '+r[1]+'</b><small>✓ Zweryfikowany zakup</small></div></div></div></article>'}
+document.getElementById("kwRev1").innerHTML=(R.concat(R)).map(card).join("");
+(function(){var row=document.getElementById("kwRev1");row.querySelectorAll("img").forEach(function(i){i.decoding="async"});
+ if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){row.classList.add("run");io.disconnect()}},{threshold:.05});io.observe(row)}else{row.classList.add("run")}})();
+
+/* FAQ */
+var F=[
+ ["[PYTANIE 1]","[ODPOWIEDŹ 1]"],
+ ["[PYTANIE 2]","[ODPOWIEDŹ 2]"],
+ ["[PYTANIE 3]","[ODPOWIEDŹ 3]"],
+ ["[PYTANIE 4]","[ODPOWIEDŹ 4]"],
+ ["[PYTANIE 5]","[ODPOWIEDŹ 5]"],
+ ["[PYTANIE 6]","[ODPOWIEDŹ 6]"],
+ ["[PYTANIE 7]","[ODPOWIEDŹ 7]"],
+ ["[PYTANIE 8]","[ODPOWIEDŹ 8]"]
+];
+document.getElementById("kwFaq").innerHTML=F.map(function(f,i){return '<div class="kw-acc"><button><span class="q"><span class="n">'+String(i+1).padStart(2,'0')+'</span>'+f[0]+'</span></button><div class="a">'+f[1]+'</div></div>'}).join("");
+document.querySelectorAll("#kwFaq .kw-acc button").forEach(function(b){b.onclick=function(){var p=b.parentNode,o=p.classList.contains("open");document.querySelectorAll("#kwFaq .kw-acc").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")}});
+
+/* POLICY PAGES */
+var SELLER="[NAZWA SKLEPU]";
+var P={
+ regulamin:["Regulamin",[
+  ["1. Informacje ogólne","Sklep internetowy <b>[NAZWA SKLEPU]</b> prowadzi sprzedaż na odległość za pośrednictwem tej strony. Kontakt ze sprzedawcą: <b>"+EMAIL+"</b>."],
+  ["2. Składanie zamówień","Zamówienie składasz przez stronę sklepu. Umowa zostaje zawarta w chwili otrzymania e-maila z potwierdzeniem zamówienia. Ceny są podane w złotych i zawierają podatki."],
+  ["3. Płatności","Dostępne metody płatności (m.in. <b>BLIK, karta płatnicza, Apple Pay, Google Pay, Przelewy24</b>) wyświetlają się w kasie. Zamówienie realizujemy po zaksięgowaniu płatności."],
+  ["4. Dostawa","Dostawa jest <b>bezpłatna</b> (Paczkomat InPost lub Kurier InPost), a czas realizacji wynosi zwykle <b>2–4 dni robocze</b> od wysyłki. Szczegóły w <a href='#' onclick=\"kwShow('wysylka');return false\" style='color:var(--kw-primary)'>Polityce wysyłki</a>."],
+  ["5. Zwroty","Masz <b>14 dni od otrzymania produktu</b> na odstąpienie od umowy bez podawania przyczyny. Szczegóły w <a href='#' onclick=\"kwShow('zwroty');return false\" style='color:var(--kw-primary)'>Zwrotach i reklamacjach</a>."],
+  ["6. Reklamacje","Odpowiadamy za zgodność produktu z umową. Reklamację zgłoś na <b>"+EMAIL+"</b>, odpowiemy w ciągu <b>14 dni</b>."],
+  ["7. Spory","Możesz skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów albo Inspekcji Handlowej."],
+  ["8. Postanowienia końcowe","W sprawach nieuregulowanych stosuje się prawo polskie, w szczególności Kodeks cywilny i ustawę o prawach konsumenta. Zasady przetwarzania danych opisuje <a href='#' onclick=\"kwShow('prywatnosc');return false\" style='color:var(--kw-primary)'>Polityka prywatności</a>."]]],
+ prywatnosc:["Polityka prywatności",[
+  ["1. Administrator danych","Administratorem Twoich danych osobowych jest sklep <b>[NAZWA SKLEPU]</b>, e-mail: <b>"+EMAIL+"</b>."],
+  ["2. Jakie dane zbieramy","Imię i nazwisko, adres dostawy, e-mail i numer telefonu podane przy zamówieniu lub w formularzu kontaktowym."],
+  ["3. Cel przetwarzania","Realizacja zamówienia, obsługa zwrotów i reklamacji, odpowiedź na wiadomość oraz wypełnienie obowiązków prawnych (np. księgowych)."],
+  ["4. Komu przekazujemy dane","Firmie kurierskiej InPost, operatorom płatności oraz dostawcy platformy sklepu, wyłącznie w zakresie potrzebnym do realizacji zamówienia."],
+  ["5. Twoje prawa","Masz prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz wniesienia skargi do Prezesa UODO."],
+  ["6. Pliki cookies","Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Możesz je wyłączyć w ustawieniach przeglądarki."]]],
+ wysylka:["Polityka wysyłki",[
+  ["1. Koszt dostawy","Dostawa na terenie Polski jest <b>bezpłatna</b> dla każdego zamówienia."],
+  ["2. Metody dostawy","<b>Paczkomat InPost</b> (odbiór 24/7) lub <b>Kurier InPost</b> pod wskazany adres."],
+  ["3. Czas realizacji","Zamówienia wysyłamy w ciągu <b>24 godzin</b> w dni robocze. Dostawa trwa zwykle <b>2–4 dni robocze</b>."],
+  ["4. Śledzenie przesyłki","Po nadaniu paczki otrzymasz e-mail z numerem przesyłki i linkiem do śledzenia."],
+  ["5. Uszkodzona paczka","Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na <b>"+EMAIL+"</b>. Wyślemy nowy produkt."]]],
+ zwroty:["Zwroty i reklamacje",[
+  ["1. 14 dni na zwrot","Masz <b>14 dni od otrzymania paczki</b>, żeby zwrócić produkt bez podania przyczyny."],
+  ["2. Jak zwrócić produkt","Napisz na <b>"+EMAIL+"</b>, podając numer zamówienia. W odpowiedzi podamy adres do odesłania produktu."],
+  ["3. Zwrot pieniędzy","Zwrócimy pieniądze w ciągu <b>14 dni</b> od otrzymania Twojego oświadczenia, tą samą metodą płatności."],
+  ["4. Reklamacje","Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na <b>"+EMAIL+"</b> i dołącz zdjęcie. Odpowiemy w ciągu <b>14 dni</b>."],
+  ["5. Brakujące elementy","Brakuje elementu? Napisz do nas, a doślemy go bezpłatnie."]]],
+ kontakt:["Kontakt",[
+  ["Napisz do nas","Masz pytanie o zamówienie, wysyłkę albo zwrot? Napisz na <b>"+EMAIL+"</b> albo skorzystaj z formularza poniżej.</p><p>Odpowiadamy zwykle w ciągu <b>24 godzin</b>, od poniedziałku do piątku."]]]
+};
+var pages=document.getElementById("kwPages");
+Object.keys(P).forEach(function(k){
+  var d=document.createElement("section");d.className="kw-page";d.id="kwp-"+k;
+  d.innerHTML='<div class="kw-policy"><a href="#" class="kw-back" onclick="kwShow(\'home\');return false">← Wróć do sklepu</a><h1>'+P[k][0]+'</h1>'+P[k][1].map(function(s){return '<h2>'+s[0]+'</h2><p>'+s[1]+'</p>'}).join("")+'</div>'+
+  '<form class="kw-form" onsubmit="return kwSend(this)"><h2>Skontaktuj się <span class="kw-accent">z nami</span></h2><input name="imie" placeholder="Imię" required><input name="email" type="email" placeholder="E-mail" required><input name="tel" placeholder="Numer telefonu"><textarea name="msg" placeholder="Wiadomość" required></textarea><button class="kw-btn full" type="submit">Wyślij</button><div class="kw-form-ok">Dziękujemy! Otworzyliśmy Twoją pocztę z gotową wiadomością.</div></form>';
+  pages.appendChild(d);
+});
+window.kwSend=function(f){var b="Imię: "+f.imie.value+"%0D%0AE-mail: "+f.email.value+"%0D%0ATelefon: "+f.tel.value+"%0D%0A%0D%0A"+encodeURIComponent(f.msg.value);
+  window.location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Wiadomość ze sklepu [NAZWA SKLEPU]")+"&body="+b;f.querySelector(".kw-form-ok").style.display="block";return false};
+window.kwShow=function(k){var home=k==="home";document.getElementById("kwHome").classList.toggle("on",home);
+  document.querySelectorAll("#kwPages .kw-page").forEach(function(p){p.classList.toggle("on",p.id==="kwp-"+k)});
+  if(!home){window.scrollTo(0,0);document.getElementById("kwSticky").classList.remove("on")}};
+})();
+</script>
+</body>
+</html>
