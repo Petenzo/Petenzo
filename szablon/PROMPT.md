@@ -3,7 +3,7 @@
 ```
 Zbuduj mi sklep na MOIM szablonie. Repo: Petenzo/Petenzo.
 Wzór 1:1: kwiatora/src.html (struktura, wygląd, animacje, koszyk, polityki).
-Generator Shopify: szablon/zbuduj.py, build podglądu: kwiatora/build.py.
+Generator Shopify: szablon/zbuduj_motyw.py (jeden zip) i szablon/zbuduj.py (3 pliki), build podglądu: kwiatora/build.py.
 
 DANE NOWEGO SKLEPU:
 - Nazwa sklepu / marki: [NAZWA]
@@ -32,7 +32,7 @@ ZASADY (trzymaj się ich bez pytania):
    BEZ imienia, nazwiska i adresu.
 6. Dostawa w oknie: „Paczkomat InPost – GRATIS”, „Kurier pod adres – GRATIS”.
    Nie podawaj czasu wysyłki (np. „w 24 h”).
-7. Na koniec: podgląd jako artifact (zdjęcia wbudowane), pliki Shopify przez
-   szablon/zbuduj.py, produkt w Shopify jako szkic, commit + push.
+7. Na koniec: podgląd jako artifact (zdjęcia wbudowane), gotowy motyw .zip przez
+   szablon/zbuduj_motyw.py, produkt w Shopify jako szkic, commit + push.
 8. Pisz krótko, rób szybko, nie zużywaj kredytów bez potrzeby.
 ```

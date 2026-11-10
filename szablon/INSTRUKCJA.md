@@ -1,4 +1,20 @@
-# Twój szablon sklepu w Shopify: instrukcja wklejania
+# Twój szablon sklepu w Shopify
+
+## NAJPROŚCIEJ: jeden plik `Kwiatora_motyw.zip`
+W środku jest wszystko: strona, zdjęcia, koszyk, polityki.
+1. Shopify → **Sklep online → Motywy → Dodaj motyw → Prześlij plik zip** → wybierz `Kwiatora_motyw.zip`.
+2. Przy nowym motywie kliknij **Podgląd**, sprawdź, potem **Opublikuj**.
+3. Rabat za 2 i 3 sztuki ustaw w Shopify (Rabaty → automatyczny).
+
+Uwaga: opublikowanie motywu zmienia wygląd CAŁEGO sklepu (strona główna = ten produkt).
+Jeśli w tym sklepie masz też inny produkt (np. Lulavi), użyj sposobu ręcznego poniżej.
+
+Nowy produkt = jedna komenda:
+`python3 szablon/zbuduj_motyw.py <src.html> <folder-zdjęć> <Nazwa> <uchwyt-produktu>` → nowy zip.
+
+---
+
+## Sposób ręczny (gdy w sklepie jest kilka produktów)
 
 Robisz to raz na sklep (na nowy produkt wymieniasz tylko plik sekcji i zdjęcia).
 
