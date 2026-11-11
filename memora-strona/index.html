@@ -10,10 +10,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Libre+Caslon+Text:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#2f6eb5;
-  --blue-dark:#215596;
-  --blue-light:#b5cfee;
-  --blue-pale:#ebf3fc;
+  --blue:#1f6fe0;
+  --blue-dark:#1554b8;
+  --blue-light:#bcd6fb;
+  --blue-pale:#eef5ff;
   --ink:#1b1b1f;
   --muted:#6b7280;
   --line:#e5e7eb;
@@ -160,7 +160,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .v-ph{position:absolute;inset:0}
 .v-ph svg{width:100%;height:100%}
 .v-caption{position:absolute;left:8%;right:8%;top:16%;text-align:center;color:#fff;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:20px;line-height:1.25;letter-spacing:-.01em;text-shadow:0 0 2px #000,0 0 3px #000,0 0 4px #000,0 1px 3px rgba(0,0,0,.9);pointer-events:none;z-index:2}
-.v-play{display:none!important;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(47,110,181,.92);display:grid;place-items:center;z-index:3;transition:opacity .25s,transform .2s}
+.v-play{display:none!important;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(31,111,224,.92);display:grid;place-items:center;z-index:3;transition:opacity .25s,transform .2s}
 .v-play svg{width:30px;height:30px;fill:#fff;margin-left:5px}
 .v-card video{position:absolute;inset:0}
 .v-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:opacity .25s}
@@ -240,7 +240,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .g-arr.l{left:28px}.g-arr.r{right:28px}
 @media (min-width:900px){.g-arr.l{left:14px}.g-arr.r{right:14px}.g-cap{font-size:16px;padding:12px 22px}}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 18px 0}
-.tile{display:flex;gap:10px;align-items:flex-start;border:1px solid #e3ebf6;background:#fafcff;border-radius:12px;padding:12px}
+.tile{display:flex;gap:10px;align-items:flex-start;border:1px solid #d8e7fd;background:var(--blue-pale);border-radius:12px;padding:12px}
 .tile>span{font-size:20px}
 .tile b{display:block;font-size:13px}.tile small{font-size:11px;color:var(--muted);line-height:1.35;display:block;margin-top:2px}
 .hero-h1{font-size:30px;line-height:1.15;font-weight:800;margin-top:12px;text-wrap:balance}
@@ -259,10 +259,10 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .sw{width:30px;height:30px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px #c8cfda;outline:2px solid transparent;outline-offset:2px;transition:.15s}
 .sw.on{outline-color:var(--blue)}
 .b-opts{padding:0 16px 14px 56px}
-.b-gifts{font-size:12px;font-weight:600;color:#9a7232;background:#fbf3e4;border-radius:8px;padding:8px 10px;margin-top:8px}
+.b-gifts{font-size:12px;font-weight:600;color:var(--blue-dark);background:var(--blue-pale);border-radius:8px;padding:8px 10px;margin-top:8px}
 .guarantee{display:flex;gap:12px;align-items:flex-start;background:var(--blue-pale);border-radius:12px;padding:14px;margin-top:4px}
 .guarantee>span{font-size:22px}.guarantee b{display:block;font-size:14px}.guarantee small{font-size:12px;color:#555}
-.cta-big{margin-top:14px;font-size:17px;padding:18px;text-transform:none;letter-spacing:.02em;border-radius:12px;box-shadow:0 10px 24px rgba(47,110,181,.3)}
+.cta-big{margin-top:14px;font-size:17px;padding:18px;text-transform:none;letter-spacing:.02em;border-radius:12px;box-shadow:0 10px 24px rgba(31,111,224,.3)}
 .cta-trust{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
 /* ===== Menu ===== */
 .main-nav{display:none}
@@ -300,6 +300,24 @@ header{position:sticky}
   .tiles{margin:16px 0 0}
   .hero-h1{font-size:40px}
 }
+.lg-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.lg-txt>span{font-family:'Poppins',sans-serif;font-weight:800;font-size:28px;letter-spacing:-.02em;color:var(--blue-dark)}
+.lg-txt small{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:.32em;color:var(--blue);margin-top:5px}
+.foot2-brand,.promo-brand{font-family:'Poppins',sans-serif!important;font-weight:800!important;letter-spacing:-.02em}
+.rev-score{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+.rev-score b{font-size:34px;font-weight:800;color:var(--blue-dark)}
+.rev2{margin-top:30px}
+.rev2::before{background:linear-gradient(90deg,var(--blue-pale),transparent)!important}.rev2::after{background:linear-gradient(270deg,var(--blue-pale),transparent)!important}
+.rcard{flex:none;width:310px;margin-right:20px;background:#fff;border:1px solid #d8e7fd;border-radius:18px;padding:20px;box-shadow:0 10px 26px rgba(31,111,224,.08);display:flex;flex-direction:column;gap:12px}
+.rcard p{font-size:14px;line-height:1.55;color:#333;flex:1}
+.rwho{display:flex;align-items:center;gap:10px;border-top:1px solid #eef3fb;padding-top:12px;font-size:14px}
+.rav{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none}.rav svg{width:100%;height:100%}
+.sec-glow{background:radial-gradient(60% 70% at 20% 50%,#dcebff 0%,transparent 70%),#fff}
+.sec-glow .split-img img{animation:orbGlow 3.5s ease-in-out infinite}
+@keyframes orbGlow{0%,100%{box-shadow:0 20px 50px rgba(31,111,224,.18)}50%{box-shadow:0 20px 70px rgba(31,111,224,.45)}}
+.sec-glow .clist li{transition:transform .2s,box-shadow .2s}.sec-glow .clist li:hover{transform:translateX(6px);box-shadow:0 8px 20px rgba(31,111,224,.12)}
+.use{transition:transform .25s,box-shadow .25s}.use:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(31,111,224,.18)}
+.use img{transition:transform .5s}.use:hover img{transform:scale(1.04)}
 /* ===== Sekcje landing ===== */
 .sec{padding:64px 0}
 .sec-tint{background:var(--blue-pale)}
@@ -320,7 +338,7 @@ header{position:sticky}
 .callout{margin-top:18px;background:#fff;border-left:4px solid var(--blue);border-radius:10px;padding:14px 16px;font-size:14px}
 .uses{display:grid;gap:20px;margin-top:30px}
 @media (min-width:800px){.uses{grid-template-columns:repeat(3,1fr)}}
-.use{background:#fff;border:1px solid #e3ebf6;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(47,110,181,.08)}
+.use{background:#fff;border:1px solid #e3ebf6;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(31,111,224,.08)}
 .use img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .use h3{font-size:18px;padding:16px 18px 4px}
 .use p{font-size:14px;color:#555;padding:0 18px 18px;line-height:1.55}
@@ -328,7 +346,7 @@ header{position:sticky}
 .steps-wrap .split-img img{height:100%;aspect-ratio:auto;min-height:320px}
 .steps-wrap .steps{align-content:center}
 .steps{list-style:none;display:grid;gap:14px}
-.steps li{display:flex;gap:16px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(47,110,181,.08)}
+.steps li{display:flex;gap:16px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(31,111,224,.08)}
 .steps li>span{flex:none;width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px}
 .steps b{font-size:16px}.steps p{font-size:14px;color:#555;margin-top:4px;line-height:1.5}
 .narrow{max-width:860px}
@@ -351,47 +369,47 @@ header{position:sticky}
 .yes{color:#16834a;font-weight:800;font-size:18px}.no{color:#c4cad4;font-weight:800;font-size:16px}
 .hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .hb{font-size:12px;font-weight:700;padding:6px 12px;border-radius:99px}
-.hb-gold{background:#fbf3e4;color:#9a7232}.hb-red{background:#fdecec;color:var(--red)}
+.hb-gold,.hb-red{background:var(--blue-pale);color:var(--blue-dark)}
 .p-lead{font-size:15px;color:#444;margin-top:8px;line-height:1.5}
 @media (min-width:900px){.h2{font-size:38px}.sec{padding:90px 0}}
 /* ===== Promocja z odliczaniem ===== */
-.promo-wrap{margin-top:60px}
-.promo{display:grid;border-radius:24px;overflow:hidden;background:#fff;border:1px solid #e3ebf6;box-shadow:0 20px 50px rgba(47,110,181,.12)}
+.promo-wrap{margin-top:70px;margin-bottom:10px}
+.promo{display:grid;border-radius:24px;overflow:hidden;background:#fff;border:1px solid #e3ebf6;box-shadow:0 20px 50px rgba(31,111,224,.12)}
 @media (min-width:800px){.promo{grid-template-columns:1fr 1.2fr}}
-.promo-img{background:linear-gradient(135deg,#eaf3fd,#d6e6f8);display:grid;place-items:center;padding:34px}
+.promo-img{background:linear-gradient(135deg,#eef5ff,#d6e7ff);display:grid;place-items:center;padding:34px}
 .promo-img img{width:100%;max-width:340px;aspect-ratio:1;object-fit:cover;border-radius:20px;box-shadow:0 18px 40px rgba(20,50,90,.25);transform:rotate(-2deg)}
 .promo-body{padding:34px 26px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
-.promo-brand{display:flex;align-items:center;gap:10px;font-family:'Libre Caslon Text',serif;font-weight:700;font-size:40px;color:var(--blue-dark)}
-.promo-48{font-size:52px;font-weight:800;color:var(--red);line-height:1;display:flex;align-items:center;gap:10px}
+.promo-brand{display:flex;align-items:center;gap:10px;font-family:'Libre Caslon Text',serif;font-weight:700;font-size:40px;color:var(--blue-dark);font-size:42px}
+.promo-48{font-size:56px;font-weight:800;color:var(--blue);line-height:1;display:flex;align-items:center;gap:10px}
 .promo-48 .clock{display:inline-block;font-size:40px;animation:ring 2s ease-in-out infinite}
 .promo-brand .logo-mark{width:40px;height:48px;margin-top:-6px}
 .promo-body h2{font-size:30px;color:var(--blue-dark);line-height:1.15}
 .promo-body p{font-size:15px;color:#555;max-width:420px}
 .timer{display:flex;align-items:center;gap:8px;margin:8px 0 6px}
-.timer div{width:78px;padding:12px 4px;border:1px solid #dfe8f4;border-radius:14px;background:#fff;box-shadow:0 4px 12px rgba(47,110,181,.08)}
+.timer div{width:78px;padding:12px 4px;border:1px solid #dfe8f4;border-radius:14px;background:#fff;box-shadow:0 4px 12px rgba(31,111,224,.08)}
 .timer b{display:block;font-size:34px;font-weight:800;color:var(--blue);line-height:1;font-variant-numeric:tabular-nums}
 .timer span{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
 .timer i{font-style:normal;font-size:24px;font-weight:800;color:#c9a46a}
 @media (max-width:420px){.timer div{width:62px}.timer b{font-size:26px}}
-.promo-btn{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;padding:16px 22px;font-size:16px;letter-spacing:.02em;border-radius:12px;max-width:440px;box-shadow:0 10px 24px rgba(47,110,181,.3);transition:transform .15s}
+.promo-btn{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;padding:16px 22px;font-size:16px;letter-spacing:.02em;border-radius:12px;max-width:440px;box-shadow:0 10px 24px rgba(31,111,224,.3);transition:transform .15s}
 .promo-btn:hover{transform:translateY(-2px)}
 /* ożywienie promocji */
 .promo-img{position:relative;overflow:hidden}
 .promo-img img{animation:floaty 4s ease-in-out infinite}
 @keyframes floaty{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(1deg) translateY(-12px)}}
-.spark{position:absolute;width:8px;height:8px;border-radius:50%;background:#c9a46a;opacity:.8;animation:twinkle 2.4s ease-in-out infinite}
-.spark.s1{left:12%;top:18%}.spark.s2{right:10%;top:30%;animation-delay:.6s;background:#7fb2ea}.spark.s3{left:8%;bottom:16%;animation-delay:1.2s}.spark.s4{right:14%;bottom:10%;animation-delay:1.8s;background:#7fb2ea}
-@keyframes twinkle{0%,100%{transform:scale(.4);opacity:.2}50%{transform:scale(1.3);opacity:1}}
+.spark{position:absolute;width:10px;height:10px;box-shadow:0 0 12px #f5c96a;border-radius:50%;background:#c9a46a;opacity:.8;animation:twinkle 2.4s ease-in-out infinite}
+.spark.s1{left:12%;top:18%}.spark.s2{right:10%;top:30%;animation-delay:.6s}.spark.s3{left:8%;bottom:16%;animation-delay:1.2s}.spark.s4{right:14%;bottom:10%;animation-delay:1.8s}
+@keyframes twinkle{0%,100%{transform:scale(.4) translateY(0);opacity:.2}50%{transform:scale(1.3) translateY(-14px);opacity:1}}
 .promo-title{background:linear-gradient(90deg,var(--blue-dark),var(--blue),#7fb2ea,var(--blue),var(--blue-dark));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
 .promo-title .clock{-webkit-text-fill-color:initial;display:inline-block;animation:ring 2s ease-in-out infinite}
 @keyframes shine{to{background-position:200% center}}
 @keyframes ring{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-14deg)}90%{transform:rotate(14deg)}95%{transform:rotate(-8deg)}}
-.limited{font-size:14px;color:var(--red)}.limited .heart{display:inline-block;animation:beat 1.2s ease-in-out infinite}
+.limited{font-size:15px;color:var(--blue-dark)}.limited .heart{display:inline-block;animation:beat 1.2s ease-in-out infinite}
 @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
 .timer b{transition:transform .2s}.timer b.tick{animation:tick .4s ease}
 @keyframes tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
 .promo-btn{animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 10px 24px rgba(47,110,181,.3)}50%{box-shadow:0 10px 34px rgba(47,110,181,.6);transform:scale(1.02)}}
+@keyframes pulse{0%,100%{box-shadow:0 10px 24px rgba(31,111,224,.3)}50%{box-shadow:0 10px 34px rgba(31,111,224,.6);transform:scale(1.02)}}
 
 /* ===== FAQ ===== */
 .faq{margin-top:46px}
@@ -581,8 +599,8 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <header>
   <div class="head">
     <button class="icon-btn" aria-label="Menu" id="menuBtn"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
-    <a href="#" class="logo"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrb" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlow" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlow)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrb)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></a>
-    <nav class="main-nav" id="mainNav"><a href="#" data-go="sec-uses">Zastosowania</a><a href="#" data-go="sec-how">Jak działa</a><a href="#" data-go="sec-set">Zestaw</a><a href="#" data-go="sec-cmp">Porównanie</a><a href="#" data-go="sec-rev">Opinie</a><a href="#" data-go="sec-faq">FAQ</a></nav>
+    <a href="#" class="logo lg"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrb" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f6fe0"/></radialGradient><radialGradient id="lgGlow" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlow)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrb)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span class="lg-txt"><span data-brand>Lumorka</span><small>KULE WSPOMNIEŃ</small></span></a>
+    <nav class="main-nav" id="mainNav"><a href="#" data-go="sec-uses">Zastosowania</a><a href="#" data-go="sec-how">Jak działa</a><a href="#" data-go="sec-cmp">Porównanie</a><a href="#" data-go="sec-rev">Opinie</a><a href="#" data-go="sec-faq">FAQ</a></nav>
     <div class="cart-wrap"><button class="icon-btn" aria-label="Koszyk" id="cartBtn"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button><span class="cart-count" id="cartCount">0</span></div>
   </div>
 </header>
@@ -640,15 +658,15 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== ZASTOSOWANIA ===================== -->
-<section class="sec" id="sec-uses">
+<section class="sec sec-tint" id="sec-uses">
   <div class="wrap">
     <div class="kicker center">Na każdą okazję</div>
     <h2 class="h2 center">Prezent, który <em>wzruszy każdego</em></h2>
     <p class="sub center">Jedna kula, setki pięknych chwil – wybierz, komu sprawisz radość.</p>
     <div class="uses">
-      <article class="use reveal"><img src="zdjecia/lumorka-sek-choinka-web.jpg" alt="" loading="lazy"><h3>Na choinkę</h3><p>Powieś ją wśród bombek i oglądajcie razem wspomnienia z całego roku.</p></article>
-      <article class="use reveal"><img src="zdjecia/lumorka-sek-mama-web.jpg" alt="" loading="lazy"><h3>Dla mamy i taty</h3><p>Zdjęcia z dzieciństwa, uśmiechy i głosy bliskich zawsze pod ręką – bez telefonu.</p></article>
-      <article class="use reveal"><img src="zdjecia/lumorka-sek-rocznica-web.jpg" alt="" loading="lazy"><h3>Na rocznicę</h3><p>Wasze wspólne zdjęcia i filmy w jednej świecącej pamiątce dla ukochanej osoby.</p></article>
+      <article class="use reveal"><img src="zdjecia/lumorka-uz-choinka-web.jpg" alt="" loading="lazy"><h3>Na choinkę</h3><p>Powieś ją wśród bombek i oglądajcie razem wspomnienia z całego roku.</p></article>
+      <article class="use reveal"><img src="zdjecia/lumorka-uz-rodzice-web.jpg" alt="" loading="lazy"><h3>Dla rodziców i dziadków</h3><p>Uśmiechy i głosy wnuków zawsze pod ręką – bez przewijania telefonu.</p></article>
+      <article class="use reveal"><img src="zdjecia/lumorka-uz-para-web.jpg" alt="" loading="lazy"><h3>Na rocznicę</h3><p>Wasze wspólne zdjęcia i filmy w jednej świecącej pamiątce dla ukochanej osoby.</p></article>
     </div>
   </div>
 </section>
@@ -665,7 +683,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== ROZWIĄZANIE ===================== -->
-<section class="sec" id="sec-how">
+<section class="sec sec-glow" id="sec-how">
   <div class="wrap split rev">
     <div class="split-img reveal"><img src="zdjecia/lumorka-sek-ozywia-web.jpg" alt="Wspomnienia w kuli Lumorka" loading="lazy"></div>
     <div class="reveal">
@@ -682,48 +700,6 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
   </div>
 </section>
 
-<!-- ===================== 3 KROKI ===================== -->
-<section class="sec sec-tint">
-  <div class="wrap">
-    <div class="kicker center">Proste jak nigdy</div>
-    <h2 class="h2 center">Twoje wspomnienia w kuli <em>w 3 krokach</em></h2>
-    <div class="split steps-wrap">
-      <div class="split-img reveal"><img src="zdjecia/lumorka-sek-kroki-web.jpg" alt="" loading="lazy"></div>
-      <ol class="steps">
-        <li class="reveal"><span>1</span><div><b>Wybierz zdjęcia i filmy</b><p>Wybierz ulubione chwile z galerii w telefonie.</p></div></li>
-        <li class="reveal"><span>2</span><div><b>Wgraj je do kuli</b><p>Podłącz kulę kablem z zestawu – bez aplikacji i zakładania konta.</p></div></li>
-        <li class="reveal"><span>3</span><div><b>Naciśnij i patrz</b><p>Jeden przycisk i wspomnienia ożywają – z obrazem i dźwiękiem.</p></div></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CO DOSTAJESZ ===================== -->
-<section class="sec" id="sec-set">
-  <div class="wrap narrow">
-    <div class="kicker center">Zestaw</div>
-    <h2 class="h2 center">Co dokładnie <em>dostajesz</em></h2>
-    <div class="tabs" role="tablist">
-      <button class="tab on" data-tab="0" role="tab">W zestawie</button><button class="tab" data-tab="1" role="tab">Jak działa</button><button class="tab" data-tab="2" role="tab">Dostawa</button>
-    </div>
-    <div class="tab-box">
-      <div class="tab-pane" data-pane="0"><div class="box-card"><img src="zdjecia/lumorka-sek-zestaw-web.jpg" alt=""><div><b><span data-brand>Lumorka</span></b><small>Wszystko, czego potrzebujesz</small></div></div>
-        <ul class="clist sm"><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Kula z ekranem i wbudowanym głośnikiem</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Zawieszka na choinkę</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Kabel USB do wgrywania i ładowania</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Eleganckie pudełko prezentowe</span></li></ul></div>
-      <div class="tab-pane" data-pane="1" hidden><ul class="clist sm"><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Wgrywasz zdjęcia i filmy przez kabel USB</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Odtwarzanie włączasz jednym przyciskiem</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Dźwięk z filmów leci z wbudowanego głośnika</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Wspomnienia zmienisz, kiedy tylko chcesz</span></li></ul></div>
-      <div class="tab-pane" data-pane="2" hidden><ul class="clist sm"><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Darmowa dostawa: Paczkomat InPost lub kurier</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Dostawa zwykle w 6–10 dni roboczych</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Numer śledzenia paczki wysyłamy e-mailem</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>30 dni na zwrot bez podania przyczyny</span></li></ul></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PRZEWIJANE OPINIE ===================== -->
-<section class="wave-sec" id="sec-rev">
-  <div class="wave top" data-wave></div>
-  <div class="t-sec">
-    <div class="t-marquee"><div class="t-track" id="tTrack"></div></div>
-  </div>
-  <div class="wave bottom" data-wave></div>
-</section>
-
 <!-- ===================== PORÓWNANIE ===================== -->
 <section class="sec" id="sec-cmp">
   <div class="wrap narrow">
@@ -736,12 +712,22 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
   </div>
 </section>
 
+<!-- ===================== OPINIE ===================== -->
+<section class="sec sec-tint" id="sec-rev">
+  <div class="wrap">
+    <div class="kicker center">Opinie</div>
+    <h2 class="h2 center">Zobacz, co mówią <em>nasi klienci</em></h2>
+    <div class="rev-score"><b>4,8</b><span class="stars" data-stars="5" data-size="20"></span></div>
+  </div>
+  <div class="t-marquee rev2"><div class="t-track" id="tTrack"></div></div>
+</section>
+
 <!-- ===================== PROMOCJA Z ODLICZANIEM ===================== -->
 <section class="wrap promo-wrap">
   <div class="promo reveal">
     <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><img src="zdjecia/lumorka-sek-promo-web.jpg" alt="Kula Lumorka na choince"></div>
     <div class="promo-body">
-      <div class="promo-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbP" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlowP" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowP)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbP)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
+      <div class="promo-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbP" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f6fe0"/></radialGradient><radialGradient id="lgGlowP" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowP)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbP)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
       <h2 class="promo-48"><span class="clock">⏰</span> 48h!</h2>
       <p>Nie przegap – cena promocyjna tylko przez 48 godzin, do <b id="promoDate"></b>!</p>
       <div class="limited">⚠️ <b>Liczba sztuk ograniczona</b> <span class="heart">♡</span></div>
@@ -760,7 +746,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
   <div class="wrap narrow">
     <div class="kicker center">FAQ</div>
     <h2 class="h2 center">Najczęściej zadawane <em>pytania</em></h2>
-    <p class="sub center">Nie ma tu Twojego pytania? Napisz:<br><b>wojciechmotyka604@gmail.com</b></p>
+    <p class="sub center">Nie ma tu Twojego pytania? Napisz:<br><b>kontakt@lumorka.com</b></p>
     <div id="faq" class="faq2"></div>
   </div>
 </section>
@@ -790,7 +776,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <section class="view" id="view-regulamin" hidden><div class="page">
   <h1>Regulamin</h1>
   <h2>1. Informacje ogólne</h2>
-  <p>Sklep internetowy <b data-brand>Lumorka</b> prowadzi Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: wojciechmotyka604@gmail.com (dalej: Sprzedawca). Regulamin określa zasady składania zamówień, dostawy, płatności, odstąpienia od umowy i reklamacji. Do korzystania ze sklepu potrzebne jest urządzenie z dostępem do internetu, aktualna przeglądarka i aktywny adres e-mail.</p>
+  <p>Sklep internetowy <b data-brand>Lumorka</b> prowadzi Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: kontakt@lumorka.com (dalej: Sprzedawca). Regulamin określa zasady składania zamówień, dostawy, płatności, odstąpienia od umowy i reklamacji. Do korzystania ze sklepu potrzebne jest urządzenie z dostępem do internetu, aktualna przeglądarka i aktywny adres e-mail.</p>
   <h2>2. Składanie zamówień</h2>
   <p>Klient wybiera produkt, dodaje go do koszyka i wypełnia formularz zamówienia. Umowa sprzedaży zostaje zawarta z chwilą otrzymania przez Klienta e-maila z potwierdzeniem przyjęcia zamówienia. Ceny podane w sklepie są cenami końcowymi w złotych polskich.</p>
   <h2>3. Płatności</h2>
@@ -798,9 +784,9 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
   <h2>4. Dostawa</h2>
   <p>Dostarczamy na terenie Polski. Dostawa jest bezpłatna (Paczkomat InPost lub kurier). Zamówienie przygotowujemy w 3–5 dni roboczych, a transport trwa 3–5 dni roboczych, łącznie zwykle 6–10 dni roboczych. Szczegóły w <a href="#polityka-wysylki">Polityce wysyłki</a>.</p>
   <h2>5. Zwroty</h2>
-  <p>Konsument może odstąpić od umowy bez podania przyczyny w terminie 30 dni od otrzymania produktu (ustawowy termin to 14 dni, Sprzedawca wydłuża go do 30 dni). Wystarczy wysłać oświadczenie na adres wojciechmotyka604@gmail.com. Sprzedawca zwraca płatność w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności. Koszt odesłania produktu ponosi Klient.</p>
+  <p>Konsument może odstąpić od umowy bez podania przyczyny w terminie 30 dni od otrzymania produktu (ustawowy termin to 14 dni, Sprzedawca wydłuża go do 30 dni). Wystarczy wysłać oświadczenie na adres kontakt@lumorka.com. Sprzedawca zwraca płatność w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności. Koszt odesłania produktu ponosi Klient.</p>
   <h2>6. Reklamacje</h2>
-  <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach ustawy o prawach konsumenta. Reklamację można złożyć e-mailem na adres wojciechmotyka604@gmail.com, najlepiej z opisem problemu i zdjęciem. Odpowiadamy w ciągu 14 dni.</p>
+  <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach ustawy o prawach konsumenta. Reklamację można złożyć e-mailem na adres kontakt@lumorka.com, najlepiej z opisem problemu i zdjęciem. Odpowiadamy w ciągu 14 dni.</p>
   <h2>7. Spory</h2>
   <p>Konsument może skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów oraz z pozasądowych sposobów rozpatrywania sporów.</p>
   <h2>8. Postanowienia końcowe</h2>
@@ -812,7 +798,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <section class="view" id="view-polityka-prywatnosci" hidden><div class="page">
   <h1>Polityka prywatności</h1>
   <h2>1. Administrator danych</h2>
-  <p>Administratorem danych osobowych jest Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: wojciechmotyka604@gmail.com.</p>
+  <p>Administratorem danych osobowych jest Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: kontakt@lumorka.com.</p>
   <h2>2. Jakie dane zbieramy?</h2>
   <ul><li>imię i nazwisko,</li><li>adres e-mail,</li><li>adres dostawy,</li><li>numer telefonu (jeśli go podasz),</li><li>dane potrzebne do płatności i realizacji zamówienia.</li></ul>
   <h2>3. Po co je zbieramy?</h2>
@@ -840,9 +826,9 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
   <h2>4. Śledzenie paczki</h2>
   <p>Po nadaniu paczki wyślemy Ci e-mailem numer i link do śledzenia przesyłki.</p>
   <h2>5. Uszkodzona paczka</h2>
-  <p>Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na wojciechmotyka604@gmail.com. Wyślemy nową kulę albo zwrócimy pieniądze.</p>
+  <p>Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na kontakt@lumorka.com. Wyślemy nową kulę albo zwrócimy pieniądze.</p>
   <h2>6. Kontakt</h2>
-  <p>Pytania o dostawę: wojciechmotyka604@gmail.com.</p>
+  <p>Pytania o dostawę: kontakt@lumorka.com.</p>
   <div data-form></div>
 </div></section>
 
@@ -852,13 +838,13 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
   <h2>1. 30 dni na zwrot</h2>
   <p>Masz 30 dni od otrzymania paczki, żeby zwrócić produkt bez podania przyczyny.</p>
   <h2>2. Jak zwrócić?</h2>
-  <ol><li>Napisz na wojciechmotyka604@gmail.com i podaj numer zamówienia.</li><li>W odpowiedzi podamy adres do odesłania produktu.</li><li>Odeślij produkt. Koszt odesłania ponosi Klient.</li></ol>
+  <ol><li>Napisz na kontakt@lumorka.com i podaj numer zamówienia.</li><li>W odpowiedzi podamy adres do odesłania produktu.</li><li>Odeślij produkt. Koszt odesłania ponosi Klient.</li></ol>
   <h2>3. Zwrot pieniędzy</h2>
   <p>Zwracamy pieniądze w ciągu 14 dni od otrzymania Twojej wiadomości, tą samą metodą płatności.</p>
   <h2>4. Gwarancja satysfakcji</h2>
   <p>Jeśli w ciągu 30 dni kula Ci się nie spodoba, napisz do nas. Zwrócimy pieniądze za zamówienie. Gwarancja nie ogranicza Twoich ustawowych praw.</p>
   <h2>5. Reklamacje</h2>
-  <p>Jeśli produkt jest uszkodzony albo niezgodny z opisem, napisz na wojciechmotyka604@gmail.com i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.</p>
+  <p>Jeśli produkt jest uszkodzony albo niezgodny z opisem, napisz na kontakt@lumorka.com i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.</p>
   <div data-form></div>
 </div></section>
 
@@ -866,7 +852,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <section class="view" id="view-kontakt" hidden><div class="page">
   <h1>Kontakt</h1>
   <h2>Napisz do nas</h2>
-  <p>Masz pytanie o zamówienie, dostawę albo samą kulę? Napisz na <b>wojciechmotyka604@gmail.com</b> albo skorzystaj z formularza poniżej.</p>
+  <p>Masz pytanie o zamówienie, dostawę albo samą kulę? Napisz na <b>kontakt@lumorka.com</b> albo skorzystaj z formularza poniżej.</p>
   <p>Odpowiadamy w dni robocze, zwykle w ciągu 24 godzin.</p>
   <p>Sprzedawca: Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło.</p>
   <div data-form></div>
@@ -877,9 +863,9 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <footer class="foot2">
   <div class="foot2-in">
     <div>
-      <div class="foot2-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbFt" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlowFt" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowFt)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbFt)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
+      <div class="foot2-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbFt" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f6fe0"/></radialGradient><radialGradient id="lgGlowFt" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowFt)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbFt)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
       <p class="foot2-desc">Kule wspomnień, w których Twoje zdjęcia i filmy świecą i grają. Prezent, który wzrusza.</p>
-      <div class="foot2-c"><span class="ic">✉️</span>wojciechmotyka604@gmail.com</div>
+      <div class="foot2-c"><span class="ic">✉️</span>kontakt@lumorka.com</div>
       <div class="foot2-c"><span class="ic">🕑</span>Pn–Pt · odpowiadamy w ciągu 24 h</div>
     </div>
     <div>
@@ -982,7 +968,7 @@ const CONFIG = {
     { q: "Czy mogę zmienić zdjęcia później?", a: "Tak, w każdej chwili możesz usunąć stare pliki i wgrać nowe." },
     { q: "Czy kula nadaje się na prezent?", a: "Tak. Przychodzi w eleganckim pudełku, gotowa do wręczenia – idealna dla mamy, babci, partnera czy przyjaciółki." },
     { q: "Jak wygląda dostawa?", a: "Wysyłamy za darmo do Paczkomatu InPost albo kurierem. Paczka dociera zwykle w 6–10 dni roboczych, a numer śledzenia dostaniesz e-mailem." },
-    { q: "Jak zwrócić produkt?", a: "Masz 30 dni na zwrot bez podawania przyczyny. Napisz na wojciechmotyka604@gmail.com z numerem zamówienia, a podamy adres do odesłania." }
+    { q: "Jak zwrócić produkt?", a: "Masz 30 dni na zwrot bez podawania przyczyny. Napisz na kontakt@lumorka.com z numerem zamówienia, a podamy adres do odesłania." }
   ],
 
 };
@@ -1209,7 +1195,7 @@ document.querySelectorAll('[data-wave]').forEach(w=>{
   const h=60;
   w.innerHTML = `
     <div class="layer back"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h,14,1.2,4)}" fill="#b5cfee"/></svg></div>
-    <div class="layer"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h+8,10,0,2)}" fill="#2f6eb5" transform="translate(0,6)"/></svg></div>`;
+    <div class="layer"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h+8,10,0,2)}" fill="#1f6fe0" transform="translate(0,6)"/></svg></div>`;
 });
 
 /* ---------- Statystyki ---------- */
@@ -1217,8 +1203,10 @@ $('#stats').innerHTML = CONFIG.statystyki.map(s=>`
   <div class="stat"><div class="ring" data-p="${s.proc}"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42"/></svg><b>0%</b></div><p>${s.html}</p></div>`).join('');
 
 /* ---------- Opinie na fali (przewijane w bok) ---------- */
-const tItems = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
-const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*322)))).fill(tItems).join('');
+const LAND=['<svg viewBox="0 0 40 40"><defs><linearGradient id="la1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb36b"/><stop offset="1" stop-color="#ff7a8a"/></linearGradient></defs><rect width="40" height="40" fill="url(#la1)"/><circle cx="26" cy="16" r="6" fill="#ffe7a6"/><path d="M0 30 L12 20 L22 28 L30 22 L40 30 V40 H0Z" fill="#5b4b8a"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd3ff"/><stop offset="1" stop-color="#dff4ff"/></linearGradient></defs><rect width="40" height="40" fill="url(#la2)"/><path d="M0 26 L10 14 L18 22 L26 10 L40 26 V40 H0Z" fill="#3d7f6a"/><path d="M0 32 H40 V40 H0Z" fill="#2b5e9c"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2b5a"/><stop offset="1" stop-color="#4a63a8"/></linearGradient></defs><rect width="40" height="40" fill="url(#la3)"/><circle cx="12" cy="10" r="1" fill="#fff"/><circle cx="28" cy="8" r="1.2" fill="#fff"/><circle cx="20" cy="14" r=".8" fill="#fff"/><path d="M0 28 L14 18 L24 26 L40 16 V40 H0Z" fill="#e8f0ff"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd6e0"/><stop offset="1" stop-color="#fff3d6"/></linearGradient></defs><rect width="40" height="40" fill="url(#la4)"/><circle cx="20" cy="20" r="7" fill="#ffbf69"/><path d="M0 30 Q10 24 20 30 T40 30 V40 H0Z" fill="#3fa7a0"/></svg>'];
+const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><b>${o.imie}</b></div></div>`).join('');
+const _old = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
+const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*340)))).fill(tItems).join('');
 $('#tTrack').innerHTML = tSet + tSet;
 $('#tTrack').style.setProperty('--dur', (CONFIG.opinieFala.length*Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*322)))*7)+'s');
 $('#tTrack').querySelectorAll('[data-stars]').forEach(renderStars);
