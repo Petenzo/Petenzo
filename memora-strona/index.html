@@ -52,6 +52,12 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .g-slide{flex:0 0 calc(100% - 22px);scroll-snap-align:start;aspect-ratio:1/1.08;border-radius:14px;overflow:hidden;background:#111}
 .g-slide img,.g-slide svg{width:100%;height:100%;object-fit:cover}
 .g-nav{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:12px;font-size:12px;color:var(--muted)}
+.g-thumbs{display:flex;gap:10px;justify-content:center;margin:14px 18px 0;overflow-x:auto;scrollbar-width:none}
+.g-thumbs::-webkit-scrollbar{display:none}
+.g-thumbs button{flex:none;width:64px;height:64px;border-radius:10px;overflow:hidden;border:2px solid transparent;opacity:.75;transition:.2s}
+.g-thumbs button.on{border-color:var(--blue);opacity:1}
+.g-thumbs img{width:100%;height:100%;object-fit:cover}
+.g-extra{display:none}
 .g-nav button svg{width:20px;height:20px;stroke:#333;fill:none;stroke-width:1.8}
 
 /* ===== Produkt ===== */
@@ -155,7 +161,12 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .v-caption{position:absolute;left:8%;right:8%;top:16%;text-align:center;color:#fff;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:20px;line-height:1.25;letter-spacing:-.01em;text-shadow:0 0 2px #000,0 0 3px #000,0 0 4px #000,0 1px 3px rgba(0,0,0,.9);pointer-events:none;z-index:2}
 .v-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(81,111,153,.92);display:grid;place-items:center;z-index:3;transition:opacity .25s,transform .2s}
 .v-play svg{width:30px;height:30px;fill:#fff;margin-left:5px}
-.v-card.playing .v-play,.v-card:not([data-user-paused]) .v-play{opacity:0;pointer-events:none}
+.v-card video{position:absolute;inset:0}
+.v-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:opacity .25s}
+.v-card.playing .v-poster{opacity:0}
+.v-card.playing .v-play{opacity:0;pointer-events:none}
+.v-card.loading .v-play svg{animation:spin 1s linear infinite;transform-origin:45% 50%}
+@keyframes spin{to{transform:rotate(360deg)}}
 .v-arrow{position:absolute;top:58%;z-index:5;width:44px;height:44px;border-radius:50%;background:rgba(60,60,60,.75);display:grid;place-items:center}
 .v-arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4}
 .v-arrow.prev{left:10px}.v-arrow.next{right:10px}
@@ -273,7 +284,17 @@ footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
   .head{height:76px;grid-template-columns:44px 1fr 44px 44px}
   .logo{font-size:36px}
   .product{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;max-width:1180px;margin:28px auto 0;padding:0 24px;align-items:start}
-  .gallery{position:sticky;top:96px;margin-top:0}
+  .gallery{position:sticky;top:92px;margin-top:0}
+  .g-thumbs{margin:14px 0 0;justify-content:flex-start}
+  .g-thumbs button{width:76px;height:76px}
+  .g-nav{display:none}
+  .g-extra{display:block;margin-top:22px;background:var(--blue-pale);border-radius:14px;padding:20px 22px}
+  .g-extra h3{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:10px}
+  .g-extra ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+  .g-extra li{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.4}
+  .g-extra li svg{flex:none;width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:2}
+  .g-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .g-badges span{background:#fff;border-radius:99px;padding:6px 12px;font-size:12px;font-weight:600}
   .g-track{padding:0;scroll-padding:0}
   .g-slide{flex:0 0 100%;aspect-ratio:1/1}
   .info{padding:0;max-width:none;margin:0}
@@ -331,6 +352,17 @@ footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
     <button id="gPrev" aria-label="Poprzednie zdjęcie"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <span id="gCount">1/8</span>
     <button id="gNext" aria-label="Następne zdjęcie"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="g-thumbs" id="gThumbs"></div>
+  <div class="g-extra">
+    <h3>W zestawie</h3>
+    <ul>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Kula z ekranem i wbudowanym głośnikiem</li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Zawieszka na choinkę</li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Kabel USB do wgrywania i ładowania</li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Eleganckie pudełko prezentowe</li>
+    </ul>
+    <div class="g-badges"><span>🚚 Darmowa dostawa</span><span>↩️ 30 dni na zwrot</span><span>🔒 Bezpieczna płatność</span></div>
   </div>
 </section>
 
@@ -622,9 +654,11 @@ const gItems = CONFIG.zdjecia.length ? CONFIG.zdjecia.map(src=>`<img src="${src}
 gTrack.innerHTML = gItems.map(h=>`<div class="g-slide">${h}</div>`).join('');
 const gTotal = gItems.length;
 let gIdx = 0;
-function gGo(i){ gIdx=(i+gTotal)%gTotal; gTrack.children[gIdx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'}); }
-gTrack.addEventListener('scroll',()=>{ const w=gTrack.children[0].offsetWidth+10; gIdx=Math.round(gTrack.scrollLeft/w); $('#gCount').textContent=`${gIdx+1}/${gTotal}`; },{passive:true});
+function gGo(i){ gIdx=(i+gTotal)%gTotal; gTrack.scrollTo({left:gTrack.children[gIdx].offsetLeft-gTrack.children[0].offsetLeft,behavior:'smooth'}); }
+gTrack.addEventListener('scroll',()=>{ const w=gTrack.children[0].offsetWidth+10; gIdx=Math.round(gTrack.scrollLeft/w); $('#gCount').textContent=`${gIdx+1}/${gTotal}`; [...$('#gThumbs').children].forEach((t,k)=>t.classList.toggle('on',k===gIdx)); },{passive:true});
 $('#gCount').textContent = `1/${gTotal}`;
+$('#gThumbs').innerHTML = CONFIG.zdjecia.map((src,k)=>`<button class="${k?'':'on'}" aria-label="Zdjęcie ${k+1}"><img src="${src}" alt=""></button>`).join('');
+[...$('#gThumbs').children].forEach((t,k)=>t.onclick=()=>gGo(k));
 $('#gPrev').onclick=()=>gGo(gIdx-1); $('#gNext').onclick=()=>gGo(gIdx+1);
 $('#sbThumb').innerHTML = CONFIG.zdjecia[0] ? `<img src="${CONFIG.zdjecia[0]}" alt="">` : sceneSvg(99,{R:110});
 
@@ -687,32 +721,47 @@ const vTrack=$('#vTrack'), vDots=$('#vDots');
 const vScenes=[{bg:['#2b2a2e','#4a4650'],strap:false,R:80},{bg:['#14100c','#2a1f16'],R:70},{bg:['#1d1a14','#3d3426'],strap:false,R:80},{bg:['#2a2520','#4a4035'],R:80},{bg:['#0d0b18','#251b3a'],colorful:true,R:70}];
 vTrack.innerHTML = CONFIG.filmy.map((f,i)=>`
   <div class="v-card" data-i="${i}">
-    <div class="v-ph">${sceneSvg(50+i,{...vScenes[i%vScenes.length],tall:true,cy:420})}</div>
-    <video src="${f.plik}" ${f.poster?`poster="${f.poster}"`:""} playsinline muted loop autoplay preload="auto"></video>
+    ${f.poster?`<img class="v-poster" src="${f.poster}" alt="">`:`<div class="v-ph">${sceneSvg(50+i,{...vScenes[i%vScenes.length],tall:true,cy:420})}</div>`}
+    <video playsinline muted loop preload="none"></video>
     <div class="v-caption" style="top:${f.gora||18}%"></div>
-    <button class="v-play" aria-label="Odtwórz"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></button>
+    <button class="v-play" aria-label="Odtwórz film"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></button>
   </div>`).join('');
 vDots.innerHTML = CONFIG.filmy.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
 const cards=[...vTrack.children];
 function capAt(f,t){ let txt=''; (f.napisy||[]).forEach(n=>{ if(t>=n.od) txt=n.tekst; }); return txt; }
-function playCard(card){
-  delete card.dataset.userPaused; const v=card.querySelector('video'); card.classList.add('playing'); v.play().catch(()=>{});
+// Film ładowany w całości jako blob – działa też w Safari i na hostingach bez obsługi "Range".
+const srcCache={};
+function loadSrc(i){
+  if(srcCache[i]) return srcCache[i];
+  const f=CONFIG.filmy[i];
+  srcCache[i]=fetch(f.plik).then(r=>{ if(!r.ok) throw 0; return r.blob(); })
+    .then(b=>URL.createObjectURL(b.type?b:new Blob([b],{type:'video/mp4'}))).catch(()=>f.plik);
+  return srcCache[i];
+}
+function playCard(card, auto){
+  const i=+card.dataset.i, v=card.querySelector('video');
+  if(!auto) cards.forEach(c=>{ if(c!==card){ c.querySelector('video').pause(); c.classList.remove('playing'); }});
+  card.classList.add('loading');
+  loadSrc(i).then(src=>{
+    if(v.dataset.src!==src){ v.src=src; v.dataset.src=src; }
+    return v.play();
+  }).then(()=>{ card.classList.add('playing'); card.classList.remove('loading'); })
+    .catch(()=>{ card.classList.remove('loading','playing'); });
 }
 cards.forEach((card,i)=>{
-  const f=CONFIG.filmy[i], v=card.querySelector('video'), ph=card.querySelector('.v-ph'), cap=card.querySelector('.v-caption');
+  const f=CONFIG.filmy[i], v=card.querySelector('video'), cap=card.querySelector('.v-caption');
   cap.textContent=capAt(f,0); cap.style.display=cap.textContent?'block':'none';
-  if(f.poster){ ph.style.display='none'; } else { v.style.display='none'; }
-  v.addEventListener('loadeddata',()=>{ v.style.display='block'; ph.style.display='none'; });
-  v.addEventListener('error',()=>{ v.removeAttribute('src'); });
   const upd=()=>{ const t=capAt(f,v.currentTime); if(cap.textContent!==t){cap.textContent=t;} cap.style.display=t?'block':'none'; if(!v.paused) requestAnimationFrame(upd); };
-  v.addEventListener('play',()=>requestAnimationFrame(upd)); v.addEventListener('seeked',upd);
+  v.addEventListener('play',()=>requestAnimationFrame(upd));
+  v.addEventListener('pause',()=>card.classList.remove('playing'));
   card.querySelector('.v-play').onclick=()=>playCard(card);
-  v.onclick=()=>{ if(v.paused) playCard(card); else {v.pause();card.dataset.userPaused='1';card.classList.remove('playing');} };
+  v.onclick=()=>{ if(v.paused) playCard(card); else { v.pause(); card.dataset.userPaused='1'; } };
 });
-// każdy film widoczny na ekranie gra od razu (wyciszony, w pętli)
+// pierwszy film rusza sam, gdy dojedziesz do sekcji; pozostałe mają przycisk "play"
+loadSrc(0);
 const vio=new IntersectionObserver(es=>es.forEach(en=>{ const c=en.target, v=c.querySelector('video');
-  if(en.isIntersecting){ if(!c.dataset.userPaused){ v.play().then(()=>c.classList.add('playing')).catch(()=>{}); } }
-  else { v.pause(); c.classList.remove('playing'); } }),{threshold:.5});
+  if(en.isIntersecting){ if(c.dataset.i==='0' && !c.dataset.userPaused) playCard(c,true); }
+  else if(!v.paused){ v.pause(); } }),{threshold:.5});
 cards.forEach(c=>vio.observe(c));
 let actionVisible=false;
 let vIdx=0;
