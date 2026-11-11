@@ -656,6 +656,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 .rwho{border-top:0!important;padding-top:4px!important}
 .rwho b{font-size:15px;color:#1b1b1f;display:block}
 .rver{display:block;font-size:12px;color:#8a909b;margin-top:2px}
+.rav img{width:100%;height:100%;object-fit:cover}
 .rav{width:52px!important;height:52px!important;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .rev-score b{color:var(--blue-dark)!important}
 .rev2::before{background:linear-gradient(90deg,var(--cream),transparent)!important}.rev2::after{background:linear-gradient(270deg,var(--cream),transparent)!important}
@@ -1057,7 +1058,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
       <a href="#regulamin">Regulamin</a><a href="#polityka-prywatnosci">Polityka prywatności</a><a href="#polityka-wysylki">Polityka wysyłki</a><a href="#zwroty">Zwroty i reklamacje</a><a href="#kontakt">Kontakt</a>
     </div>
   </div>
-  <div class="foot2-bottom"><span><span data-brand>Lumorka</span> © <span id="year"></span></span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
+  <div class="foot2-bottom"><span><span data-brand>Lumorka</span> © <span id="year"></span> · Zdjęcia krajobrazów: Unsplash</span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
 </footer>
 
 <!-- ===================== PRZYKLEJONY PASEK ===================== -->
@@ -1392,7 +1393,7 @@ $('#stats').innerHTML = CONFIG.statystyki.map(s=>`
   <div class="stat"><div class="ring" data-p="${s.proc}"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42"/></svg><b>0%</b></div><p>${s.html}</p></div>`).join('');
 
 /* ---------- Opinie na fali (przewijane w bok) ---------- */
-const LAND=['<svg viewBox="0 0 40 40"><defs><linearGradient id="la1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb36b"/><stop offset="1" stop-color="#ff7a8a"/></linearGradient></defs><rect width="40" height="40" fill="url(#la1)"/><circle cx="26" cy="16" r="6" fill="#ffe7a6"/><path d="M0 30 L12 20 L22 28 L30 22 L40 30 V40 H0Z" fill="#5b4b8a"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd3ff"/><stop offset="1" stop-color="#dff4ff"/></linearGradient></defs><rect width="40" height="40" fill="url(#la2)"/><path d="M0 26 L10 14 L18 22 L26 10 L40 26 V40 H0Z" fill="#3d7f6a"/><path d="M0 32 H40 V40 H0Z" fill="#2b5e9c"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2b5a"/><stop offset="1" stop-color="#4a63a8"/></linearGradient></defs><rect width="40" height="40" fill="url(#la3)"/><circle cx="12" cy="10" r="1" fill="#fff"/><circle cx="28" cy="8" r="1.2" fill="#fff"/><circle cx="20" cy="14" r=".8" fill="#fff"/><path d="M0 28 L14 18 L24 26 L40 16 V40 H0Z" fill="#e8f0ff"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd6e0"/><stop offset="1" stop-color="#fff3d6"/></linearGradient></defs><rect width="40" height="40" fill="url(#la4)"/><circle cx="20" cy="20" r="7" fill="#ffbf69"/><path d="M0 30 Q10 24 20 30 T40 30 V40 H0Z" fill="#3fa7a0"/></svg>'];
+const LAND=["zdjecia/krajobrazy/k1.jpg","zdjecia/krajobrazy/k2.jpg","zdjecia/krajobrazy/k3.jpg","zdjecia/krajobrazy/k4.jpg","zdjecia/krajobrazy/k5.jpg"].map(k=>`<img src="${k}" alt="">`);
 const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><span><b>${o.imie}</b><small class="rver">${o.miasto?o.miasto+' · ':''}Opinia z szablonu</small></span></div></div>`).join('');
 const _old = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
 const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*340)))).fill(tItems).join('');
