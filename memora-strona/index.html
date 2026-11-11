@@ -371,6 +371,23 @@ header{position:sticky}
 @media (max-width:420px){.timer div{width:62px}.timer b{font-size:26px}}
 .promo-btn{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;padding:16px 22px;font-size:16px;letter-spacing:.02em;border-radius:12px;max-width:440px;box-shadow:0 10px 24px rgba(47,110,181,.3);transition:transform .15s}
 .promo-btn:hover{transform:translateY(-2px)}
+/* ożywienie promocji */
+.promo-img{position:relative;overflow:hidden}
+.promo-img img{animation:floaty 4s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(1deg) translateY(-12px)}}
+.spark{position:absolute;width:8px;height:8px;border-radius:50%;background:#c9a46a;opacity:.8;animation:twinkle 2.4s ease-in-out infinite}
+.spark.s1{left:12%;top:18%}.spark.s2{right:10%;top:30%;animation-delay:.6s;background:#7fb2ea}.spark.s3{left:8%;bottom:16%;animation-delay:1.2s}.spark.s4{right:14%;bottom:10%;animation-delay:1.8s;background:#7fb2ea}
+@keyframes twinkle{0%,100%{transform:scale(.4);opacity:.2}50%{transform:scale(1.3);opacity:1}}
+.promo-title{background:linear-gradient(90deg,var(--blue-dark),var(--blue),#7fb2ea,var(--blue),var(--blue-dark));background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+.promo-title .clock{-webkit-text-fill-color:initial;display:inline-block;animation:ring 2s ease-in-out infinite}
+@keyframes shine{to{background-position:200% center}}
+@keyframes ring{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-14deg)}90%{transform:rotate(14deg)}95%{transform:rotate(-8deg)}}
+.limited{font-size:14px;color:var(--red)}.limited .heart{display:inline-block;animation:beat 1.2s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.timer b{transition:transform .2s}.timer b.tick{animation:tick .4s ease}
+@keyframes tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.promo-btn{animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 10px 24px rgba(47,110,181,.3)}50%{box-shadow:0 10px 34px rgba(47,110,181,.6);transform:scale(1.02)}}
 
 /* ===== FAQ ===== */
 .faq{margin-top:46px}
@@ -625,9 +642,9 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
     <h2 class="h2 center">Prezent, który <em>wzruszy każdego</em></h2>
     <p class="sub center">Jedna kula, setki pięknych chwil – wybierz, komu sprawisz radość.</p>
     <div class="uses">
-      <article class="use reveal"><img src="zdjecia/lumorka-choinka-web.jpg" alt="" loading="lazy"><h3>Na choinkę</h3><p>Powieś ją wśród bombek i oglądajcie razem wspomnienia z całego roku.</p></article>
-      <article class="use reveal"><img src="zdjecia/lumorka-babcia-web.jpg" alt="" loading="lazy"><h3>Dla mamy i babci</h3><p>Pierwsze kroki, uśmiechy i głosy wnuków zawsze pod ręką – bez telefonu.</p></article>
-      <article class="use reveal"><img src="zdjecia/lumorka-rocznica-web.jpg" alt="" loading="lazy"><h3>Na rocznicę</h3><p>Wasze wspólne zdjęcia i filmy w jednej świecącej pamiątce dla ukochanej osoby.</p></article>
+      <article class="use reveal"><img src="zdjecia/lumorka-sek-choinka-web.jpg" alt="" loading="lazy"><h3>Na choinkę</h3><p>Powieś ją wśród bombek i oglądajcie razem wspomnienia z całego roku.</p></article>
+      <article class="use reveal"><img src="zdjecia/lumorka-sek-mama-web.jpg" alt="" loading="lazy"><h3>Dla mamy i taty</h3><p>Zdjęcia z dzieciństwa, uśmiechy i głosy bliskich zawsze pod ręką – bez telefonu.</p></article>
+      <article class="use reveal"><img src="zdjecia/lumorka-sek-rocznica-web.jpg" alt="" loading="lazy"><h3>Na rocznicę</h3><p>Wasze wspólne zdjęcia i filmy w jednej świecącej pamiątce dla ukochanej osoby.</p></article>
     </div>
   </div>
 </section>
@@ -646,7 +663,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <!-- ===================== ROZWIĄZANIE ===================== -->
 <section class="sec" id="sec-how">
   <div class="wrap split rev">
-    <div class="split-img reveal"><img src="zdjecia/lumorka-w-dloni-web.jpg" alt="Wspomnienia w kuli Lumorka" loading="lazy"></div>
+    <div class="split-img reveal"><img src="zdjecia/lumorka-sek-ozywia-web.jpg" alt="Wspomnienia w kuli Lumorka" loading="lazy"></div>
     <div class="reveal">
       <div class="kicker">Rozwiązanie</div>
       <h2 class="h2">Jak <span data-brand>Lumorka</span> <em>ożywia wspomnienia</em></h2>
@@ -667,7 +684,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
     <div class="kicker center">Proste jak nigdy</div>
     <h2 class="h2 center">Twoje wspomnienia w kuli <em>w 3 krokach</em></h2>
     <div class="split steps-wrap">
-      <div class="split-img reveal"><img src="zdjecia/lumorka-polka-web.jpg" alt="" loading="lazy"></div>
+      <div class="split-img reveal"><img src="zdjecia/lumorka-sek-kroki-web.jpg" alt="" loading="lazy"></div>
       <ol class="steps">
         <li class="reveal"><span>1</span><div><b>Wybierz zdjęcia i filmy</b><p>Wybierz ulubione chwile z galerii w telefonie.</p></div></li>
         <li class="reveal"><span>2</span><div><b>Wgraj je do kuli</b><p>Podłącz kulę kablem z zestawu – bez aplikacji i zakładania konta.</p></div></li>
@@ -686,7 +703,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
       <button class="tab on" data-tab="0" role="tab">W zestawie</button><button class="tab" data-tab="1" role="tab">Jak działa</button><button class="tab" data-tab="2" role="tab">Dostawa</button>
     </div>
     <div class="tab-box">
-      <div class="tab-pane" data-pane="0"><div class="box-card"><img src="zdjecia/lumorka-pudelko-web.jpg" alt=""><div><b><span data-brand>Lumorka</span>™ Kula Wspomnień</b><small>Wszystko, czego potrzebujesz</small></div></div>
+      <div class="tab-pane" data-pane="0"><div class="box-card"><img src="zdjecia/lumorka-sek-zestaw-web.jpg" alt=""><div><b><span data-brand>Lumorka</span>™ Kula Wspomnień</b><small>Wszystko, czego potrzebujesz</small></div></div>
         <ul class="clist sm"><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Kula z ekranem i wbudowanym głośnikiem</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Zawieszka na choinkę</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Kabel USB do wgrywania i ładowania</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Eleganckie pudełko prezentowe</span></li></ul></div>
       <div class="tab-pane" data-pane="1" hidden><ul class="clist sm"><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Wgrywasz zdjęcia i filmy przez kabel USB</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Odtwarzanie włączasz jednym przyciskiem</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Dźwięk z filmów leci z wbudowanego głośnika</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Wspomnienia zmienisz, kiedy tylko chcesz</span></li></ul></div>
       <div class="tab-pane" data-pane="2" hidden><ul class="clist sm"><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Darmowa dostawa: Paczkomat InPost lub kurier</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Dostawa zwykle w 6–10 dni roboczych</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>Numer śledzenia paczki wysyłamy e-mailem</span></li><li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span>30 dni na zwrot bez podania przyczyny</span></li></ul></div>
@@ -718,11 +735,12 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <!-- ===================== PROMOCJA Z ODLICZANIEM ===================== -->
 <section class="wrap promo-wrap">
   <div class="promo reveal">
-    <div class="promo-img"><img src="zdjecia/lumorka-pudelko-web.jpg" alt="Kula Lumorka na choince"></div>
+    <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><img src="zdjecia/lumorka-sek-promo-web.jpg" alt="Kula Lumorka na choince"></div>
     <div class="promo-body">
       <div class="promo-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbP" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlowP" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowP)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbP)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span><span data-brand>Lumorka</span>™ Kula Wspomnień</span></div>
-      <h2>⏰ Wyprzedaż Black Friday</h2>
+      <h2 class="promo-title"><span class="clock">⏰</span> Wyprzedaż Black Friday</h2>
       <p>Cena promocyjna obowiązuje tylko do <b id="promoDate">30 listopada</b>. Potem wraca cena regularna.</p>
+      <div class="limited">⚠️ <b>Liczba sztuk ograniczona</b> <span class="heart">♡</span></div>
       <div class="timer" id="timer">
         <div><b id="tD">00</b><span>dni</span></div><i>:</i>
         <div><b id="tH">00</b><span>godzin</span></div><i>:</i>
@@ -1242,7 +1260,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{ document.querySelec
 (function(){ const end=new Date(CONFIG.promoKoniec).getTime(), pad=n=>String(n).padStart(2,'0');
   $('#promoDate').textContent=new Date(end).toLocaleDateString('pl-PL',{day:'numeric',month:'long'});
   const tick=()=>{ let d=Math.max(0,end-Date.now())/1000; $('#tD').textContent=pad(Math.floor(d/86400)); d%=86400;
-    $('#tH').textContent=pad(Math.floor(d/3600)); d%=3600; $('#tM').textContent=pad(Math.floor(d/60)); $('#tS').textContent=pad(Math.floor(d%60)); };
+    $('#tH').textContent=pad(Math.floor(d/3600)); d%=3600; $('#tM').textContent=pad(Math.floor(d/60)); const ts=$('#tS'), v=pad(Math.floor(d%60)); if(ts.textContent!==v){ ts.textContent=v; ts.classList.remove('tick'); void ts.offsetWidth; ts.classList.add('tick'); } };
   tick(); setInterval(tick,1000);
   $('#promoBtn').onclick=()=>$('#bundles').scrollIntoView({behavior:'smooth',block:'center'}); })();
 /* ---------- Formularz kontaktowy na podstronach ---------- */
