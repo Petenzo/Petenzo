@@ -234,7 +234,11 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 
 /* ===== Hero wg szablonu ===== */
 .g-main{position:relative}
-.g-cap{position:absolute;left:30px;bottom:16px;background:#fff;border-radius:99px;padding:9px 16px;font-size:13px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.g-slide{position:relative}
+.g-cap{position:absolute;left:14px;bottom:14px;max-width:calc(100% - 28px);background:#fff;border-radius:99px;padding:10px 18px;font-size:14px;font-weight:700;color:#1b2a44;box-shadow:0 6px 18px rgba(0,0,0,.15);display:flex;gap:8px;align-items:center;white-space:nowrap}
+.g-arr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:#1b2a44;font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.18);z-index:3}
+.g-arr.l{left:28px}.g-arr.r{right:28px}
+@media (min-width:900px){.g-arr.l{left:14px}.g-arr.r{right:14px}.g-cap{font-size:16px;padding:12px 22px}}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 18px 0}
 .tile{display:flex;gap:10px;align-items:flex-start;border:1px solid #e3ebf6;background:#fafcff;border-radius:12px;padding:12px}
 .tile>span{font-size:20px}
@@ -566,7 +570,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <!-- ===================== GALERIA ===================== -->
 <div class="product">
 <section class="gallery">
-  <div class="g-main"><div class="g-track" id="gTrack"></div><div class="g-cap">⭐ Każde wspomnienie świeci</div></div>
+  <div class="g-main"><div class="g-track" id="gTrack"></div><button class="g-arr l" id="gArrL" aria-label="Poprzednie zdjęcie">‹</button><button class="g-arr r" id="gArrR" aria-label="Następne zdjęcie">›</button></div>
   <div class="g-nav">
     <button id="gPrev" aria-label="Poprzednie zdjęcie"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <span id="gCount">1/8</span>
@@ -623,7 +627,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
     <div class="uses">
       <article class="use reveal"><img src="zdjecia/lumorka-choinka-web.jpg" alt="" loading="lazy"><h3>Na choinkę</h3><p>Powieś ją wśród bombek i oglądajcie razem wspomnienia z całego roku.</p></article>
       <article class="use reveal"><img src="zdjecia/lumorka-babcia-web.jpg" alt="" loading="lazy"><h3>Dla mamy i babci</h3><p>Pierwsze kroki, uśmiechy i głosy wnuków zawsze pod ręką – bez telefonu.</p></article>
-      <article class="use reveal"><img src="zdjecia/foto4.jpg" alt="" loading="lazy"><h3>Na rocznicę</h3><p>Wasze wspólne zdjęcia i filmy w jednej świecącej pamiątce dla ukochanej osoby.</p></article>
+      <article class="use reveal"><img src="zdjecia/lumorka-rocznica-web.jpg" alt="" loading="lazy"><h3>Na rocznicę</h3><p>Wasze wspólne zdjęcia i filmy w jednej świecącej pamiątce dla ukochanej osoby.</p></article>
     </div>
   </div>
 </section>
@@ -663,7 +667,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
     <div class="kicker center">Proste jak nigdy</div>
     <h2 class="h2 center">Twoje wspomnienia w kuli <em>w 3 krokach</em></h2>
     <div class="split steps-wrap">
-      <div class="split-img reveal"><img src="zdjecia/foto5.jpg" alt="" loading="lazy"></div>
+      <div class="split-img reveal"><img src="zdjecia/lumorka-polka-web.jpg" alt="" loading="lazy"></div>
       <ol class="steps">
         <li class="reveal"><span>1</span><div><b>Wybierz zdjęcia i filmy</b><p>Wybierz ulubione chwile z galerii w telefonie.</p></div></li>
         <li class="reveal"><span>2</span><div><b>Wgraj je do kuli</b><p>Podłącz kulę kablem z zestawu – bez aplikacji i zakładania konta.</p></div></li>
@@ -900,7 +904,9 @@ const CONFIG = {
 
   // Zdjęcia produktu do galerii. Wrzuć pliki do folderu "zdjecia" i wpisz ścieżki,
   // np. "zdjecia/1.jpg". Puste = rysowane podglądy.
-  zdjecia: ["zdjecia/lumorka-choinka-web.jpg","zdjecia/lumorka-w-dloni-web.jpg","zdjecia/lumorka-babcia-web.jpg","zdjecia/lumorka-pudelko-web.jpg","zdjecia/foto2.jpg","zdjecia/foto3.jpg"],
+  // Podpisy na zdjęciach w galerii (po kolei, tyle samo co zdjęć)
+  podpisy: ["🎄 Świeci na choince","🤲 Mieści się w dłoni","👵 Wzruszy babcię i mamę","🎁 Gotowa do wręczenia","💑 Idealna na rocznicę","🕯️ Pięknie wygląda na półce"],
+  zdjecia: ["zdjecia/lumorka-choinka-web.jpg","zdjecia/lumorka-w-dloni-web.jpg","zdjecia/lumorka-babcia-web.jpg","zdjecia/lumorka-pudelko-web.jpg","zdjecia/lumorka-rocznica-web.jpg","zdjecia/lumorka-polka-web.jpg"],
 
   pakiety: [
     { nazwa: "Jedna Kula Lumorka™", opis: "Idealny prezent na święta", cena: 249.00, stara: null, badge: null, prezenty: [] },
@@ -1034,12 +1040,13 @@ const scenes = [
 const gTrack = $('#gTrack');
 const gItems = CONFIG.zdjecia.length ? CONFIG.zdjecia.map(src=>`<img src="${src}" alt="Kula Wspomnień" loading="lazy">`)
                                      : scenes.map((s,i)=>sceneSvg(i+1,s));
-gTrack.innerHTML = gItems.map(h=>`<div class="g-slide">${h}</div>`).join('');
+gTrack.innerHTML = gItems.map((h,i)=>`<div class="g-slide">${h}${(CONFIG.podpisy||[])[i]?`<div class="g-cap">${CONFIG.podpisy[i]}</div>`:''}</div>`).join('');
 const gTotal = gItems.length;
 let gIdx = 0;
 function gGo(i){ gIdx=(i+gTotal)%gTotal; gTrack.scrollTo({left:gTrack.children[gIdx].offsetLeft-gTrack.children[0].offsetLeft,behavior:'smooth'}); }
 gTrack.addEventListener('scroll',()=>{ const w=gTrack.children[0].offsetWidth+10; gIdx=Math.round(gTrack.scrollLeft/w); $('#gCount').textContent=`${gIdx+1}/${gTotal}`; [...$('#gThumbs').children].forEach((t,k)=>t.classList.toggle('on',k===gIdx)); },{passive:true});
 $('#gCount').textContent = `1/${gTotal}`;
+$('#gArrL').onclick=()=>gGo(gIdx-1); $('#gArrR').onclick=()=>gGo(gIdx+1);
 $('#gThumbs').innerHTML = CONFIG.zdjecia.map((src,k)=>`<button class="${k?'':'on'}" aria-label="Zdjęcie ${k+1}"><img src="${src}" alt=""></button>`).join('');
 [...$('#gThumbs').children].forEach((t,k)=>t.onclick=()=>gGo(k));
 $('#gPrev').onclick=()=>gGo(gIdx-1); $('#gNext').onclick=()=>gGo(gIdx+1);
