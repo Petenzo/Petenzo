@@ -32,8 +32,8 @@ a{color:inherit}
 
 /* ===== Pasek ogłoszeń ===== */
 .announce{background:var(--blue);color:#fff;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;overflow:hidden;white-space:nowrap;height:34px;display:flex;align-items:center}
-.announce-track{display:inline-flex;gap:48px;animation:marquee 22s linear infinite;padding-left:48px}
-.announce-track span{flex:none}
+.announce-track{display:flex;flex:none;width:max-content;animation:marquee var(--adur,30s) linear infinite;will-change:transform}
+.announce-track span{flex:none;padding-right:56px}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ===== Nagłówek ===== */
@@ -601,7 +601,9 @@ document.querySelectorAll('[data-stars]').forEach(renderStars);
 
 /* ---------- Pasek ogłoszeń ---------- */
 const ann = CONFIG.pasekOgloszen.map(t=>`<span>${t}</span>`).join('');
-$('#announceTrack').innerHTML = ann + ann + ann + ann;
+const aT=$('#announceTrack'); aT.innerHTML=ann;
+const aW=aT.scrollWidth||800, aN=Math.max(1,Math.ceil(Math.max(window.innerWidth,screen.width||0,1920)/aW));
+const aSet=ann.repeat(aN); aT.innerHTML=aSet+aSet; aT.style.setProperty('--adur',(aN*aW/45)+'s');
 
 /* ---------- Rysowane podglądy (zastępują zdjęcia/filmy, dopóki ich nie wgrasz) ---------- */
 function sceneSvg(seed, opts={}){
