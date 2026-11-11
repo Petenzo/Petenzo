@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Memora™ Kula Wspomnień</title>
+<meta name="description" content="Memora™ Kula Wspomnień – Twoje zdjęcia i filmy wyświetlane w szklanej kuli z wbudowanym głośnikiem. Idealny prezent na święta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Libre+Caslon+Text:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#516f99;
+  --blue-dark:#3f5a80;
+  --blue-light:#b7c4d7;
+  --blue-pale:#eef2f8;
+  --ink:#1b1b1f;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --gold:#f5b50a;
+  --red:#d33b3b;
+  --bg:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:.01em}
+img,svg,video{display:block;max-width:100%}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+a{color:inherit}
+.wrap{max-width:560px;margin:0 auto;padding:0 18px}
+.serif{font-family:'Libre Caslon Text',Georgia,serif}
+
+/* ===== Pasek ogłoszeń ===== */
+.announce{background:var(--blue);color:#fff;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;overflow:hidden;white-space:nowrap;height:34px;display:flex;align-items:center}
+.announce-track{display:inline-flex;gap:48px;animation:marquee 22s linear infinite;padding-left:48px}
+.announce-track span{flex:none}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== Nagłówek ===== */
+header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #f1f1f1}
+.head{display:grid;grid-template-columns:44px 1fr 44px 44px;align-items:center;height:62px;max-width:560px;margin:0 auto;padding:0 10px}
+.logo{text-align:center;font-family:'Libre Caslon Text',serif;font-size:30px;color:var(--blue);letter-spacing:-.01em;text-decoration:none}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center}
+.icon-btn svg{width:24px;height:24px;stroke:#222;fill:none;stroke-width:1.6}
+.cart-count{position:absolute;top:6px;right:4px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;border-radius:99px;min-width:17px;height:17px;display:none;place-items:center;padding:0 4px}
+.cart-wrap{position:relative}
+
+/* ===== Galeria ===== */
+.gallery{position:relative;margin-top:14px}
+.g-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;scrollbar-width:none;padding:0 18px;scroll-padding:0 18px}
+.g-track::-webkit-scrollbar{display:none}
+.g-slide{flex:0 0 calc(100% - 22px);scroll-snap-align:start;aspect-ratio:1/1.08;border-radius:14px;overflow:hidden;background:#111}
+.g-slide img,.g-slide svg{width:100%;height:100%;object-fit:cover}
+.g-nav{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:12px;font-size:12px;color:var(--muted)}
+.g-nav button svg{width:20px;height:20px;stroke:#333;fill:none;stroke-width:1.8}
+
+/* ===== Produkt ===== */
+.p-title{font-size:32px;line-height:1.15;font-weight:700;margin-top:18px;letter-spacing:-.01em}
+.stars{display:inline-flex;gap:2px}
+.stars svg{width:16px;height:16px}
+.write-review{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;color:#333}
+.rating-line{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:#555}
+.rating-line b{font-weight:700;color:#222}
+.bullets{list-style:none;margin-top:14px;display:grid;gap:10px}
+.bullets li{display:flex;gap:10px;font-size:14px;line-height:1.45;color:#333}
+.bullets li svg{flex:none;width:18px;height:18px;margin-top:2px}
+
+.color-label{margin-top:22px;font-size:13px;font-weight:600}
+.swatches{display:flex;gap:12px;margin-top:10px}
+.swatch{width:46px;height:46px;border-radius:50%;border:2px solid transparent;padding:3px;transition:.2s}
+.swatch span{display:block;width:100%;height:100%;border-radius:50%}
+.swatch.active{border-color:#222}
+.swatch[data-c="Biały"] span{background:#fff;box-shadow:inset 0 0 0 1px #ccc}
+.swatch[data-c="Czarny"] span{background:#111}
+
+.divider{display:flex;align-items:center;gap:12px;margin:26px 0 14px;font-weight:700;font-size:14px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:#d6dbe3}
+
+.bundle{position:relative;border:1.5px solid var(--line);border-radius:12px;margin-bottom:16px;cursor:pointer;transition:border-color .2s,box-shadow .2s;background:#fff}
+.bundle.active{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue) inset}
+.b-main{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;padding:18px 16px}
+.radio{width:22px;height:22px;border-radius:50%;border:2px solid #b9bfca;display:grid;place-items:center}
+.bundle.active .radio{border-color:var(--blue)}
+.bundle.active .radio::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--blue)}
+.b-name{font-weight:600;font-size:16px}
+.b-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.b-price{text-align:right;font-weight:700;font-size:16px}
+.b-old{display:block;color:var(--red);text-decoration:line-through;font-weight:500;font-size:13px}
+.badge{position:absolute;top:-11px;right:14px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:4px 4px 4px 0;text-transform:uppercase}
+.b-opts{display:none;padding:0 16px 16px 56px}
+.bundle.active .b-opts{display:block}
+.b-opts label{font-size:12px;color:var(--muted)}
+.b-opts .sel-row{display:flex;gap:10px;align-items:center;margin-top:6px}
+.b-opts .thumb{width:40px;height:40px;border-radius:6px;background:linear-gradient(135deg,#9bb5dc,#5b7fb6);display:grid;place-items:center}
+.b-opts select{font:inherit;font-size:14px;padding:8px 30px 8px 12px;border:1px solid var(--line);border-radius:6px;background:#fff;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23333'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.gifts{border-top:1px solid var(--line);background:#f6f7fa;border-radius:0 0 11px 11px}
+.gift{display:flex;align-items:center;gap:12px;padding:10px 16px;font-size:13px;font-weight:700;border-bottom:1px solid #e9ecf1}
+.gift:last-child{border-bottom:0}
+.gift .gi{width:34px;height:34px;border-radius:6px;background:#fff;display:grid;place-items:center;flex:none}
+.gift .gi svg{width:24px;height:24px}
+
+.btn{display:block;width:100%;text-align:center;border-radius:8px;font-weight:700;letter-spacing:.06em}
+.btn-primary{background:var(--blue);color:#fff;padding:17px;font-size:17px;text-transform:uppercase;transition:background .2s,transform .1s;margin-top:6px}
+.btn-primary:hover{background:var(--blue-dark)}
+.btn-primary:active{transform:scale(.99)}
+.btn-pay{background:#000;color:#fff;padding:14px;font-size:17px;font-weight:500;margin-top:12px;letter-spacing:0;display:flex;align-items:center;justify-content:center;gap:4px}
+.more-pay{display:block;text-align:center;font-size:13px;margin-top:12px;color:#333}
+
+.upsell{display:flex;gap:14px;align-items:center;background:var(--blue-pale);border-radius:12px;padding:16px;margin-top:22px}
+.upsell .gift-ico{font-size:30px;flex:none}
+.upsell h4{color:var(--blue);font-size:14px;font-weight:700}
+.upsell p{font-size:13px;line-height:1.45;margin-top:4px}
+.upsell small{display:block;color:var(--blue);font-weight:700;font-size:12px;margin-top:6px}
+
+.stock{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:13px}
+.dot-pulse{width:9px;height:9px;border-radius:50%;background:var(--red);position:relative;flex:none}
+.dot-pulse::after{content:"";position:absolute;inset:-5px;border-radius:50%;background:var(--red);opacity:.35;animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{from{transform:scale(.4);opacity:.5}to{transform:scale(1.4);opacity:0}}
+.stock b{font-weight:700}
+.stock span{color:var(--muted)}
+
+.trust{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:8px;margin-top:26px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.trust svg{width:34px;height:34px;margin:0 auto 8px;stroke:var(--blue);fill:none;stroke-width:1.6}
+.trust div{font-size:12px;font-weight:600;line-height:1.3}
+
+.acc{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;display:flex;align-items:center;gap:10px;padding:16px 2px;font-weight:600;font-size:14px;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary svg.i{width:18px;height:18px;stroke:#222;fill:none;stroke-width:1.6}
+.acc summary .chev{margin-left:auto;width:14px;height:14px;stroke:#444;fill:none;stroke-width:2;transition:transform .25s}
+.acc[open] summary .chev{transform:rotate(180deg)}
+.acc .acc-body{padding:0 2px 16px 30px;font-size:13px;line-height:1.65;color:#444}
+.acc .acc-body ol{padding-left:18px}
+
+.mini-rev{margin-top:20px;overflow:hidden}
+.mini-track{display:flex;transition:transform .5s ease}
+.mini-item{flex:0 0 100%;display:flex;gap:14px;align-items:flex-start}
+.avatar{width:58px;height:58px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;color:#fff;font-size:20px;background-size:cover;background-position:center}
+.mini-item p{font-size:14px;line-height:1.5}
+.mini-item .who{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-top:6px}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#cfd3da;transition:.25s;cursor:pointer}
+.dots i.on{background:#222}
+
+/* ===== Zobacz to w akcji ===== */
+.section-title{font-size:30px;font-weight:700;text-align:center;letter-spacing:-.01em}
+.section-title em{font-style:normal;color:var(--blue)}
+.action{margin-top:48px;position:relative}
+.v-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;padding:0 calc(50% - 160px);margin-top:26px}
+.v-track::-webkit-scrollbar{display:none}
+.v-card{flex:0 0 320px;scroll-snap-align:center;aspect-ratio:9/16;border-radius:6px;overflow:hidden;position:relative;background:#0e1420}
+.v-card video{width:100%;height:100%;object-fit:cover}
+.v-ph{position:absolute;inset:0}
+.v-ph svg{width:100%;height:100%}
+.v-caption{position:absolute;left:8%;right:8%;top:16%;text-align:center;color:#fff;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:19px;line-height:1.25;text-shadow:0 0 2px #000,0 0 3px #000,0 1px 2px rgba(0,0,0,.9);pointer-events:none;z-index:2}
+.v-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(81,111,153,.92);display:grid;place-items:center;z-index:3;transition:opacity .25s,transform .2s}
+.v-play svg{width:30px;height:30px;fill:#fff;margin-left:5px}
+.v-card.playing .v-play{opacity:0;pointer-events:none}
+.v-hint{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:rgba(255,255,255,.55);font-size:11px;z-index:2}
+.v-arrow{position:absolute;top:58%;z-index:5;width:44px;height:44px;border-radius:50%;background:rgba(60,60,60,.75);display:grid;place-items:center}
+.v-arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4}
+.v-arrow.prev{left:10px}.v-arrow.next{right:10px}
+
+/* ===== Fale ===== */
+.wave-sec{position:relative;background:var(--blue);color:#fff;margin:70px 0}
+.wave{position:absolute;left:0;width:100%;height:60px;overflow:hidden;line-height:0;pointer-events:none}
+.wave.top{bottom:100%}
+.wave.bottom{top:100%;transform:scaleY(-1)}
+.wave .layer{position:absolute;bottom:0;left:0;width:200%;height:100%;animation:waveMove 14s linear infinite}
+.wave .layer.back{animation-duration:20s;animation-direction:reverse;opacity:1}
+.wave .layer svg{width:100%;height:100%}
+@keyframes waveMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== Statystyki ===== */
+.stats{padding-top:30px;padding-bottom:44px}
+.stats h2{font-size:30px;line-height:1.2;text-align:center;font-weight:700;margin-bottom:22px}
+.stat{display:grid;grid-template-columns:96px 1fr;gap:22px;align-items:center;padding:22px 0;border-top:1px solid rgba(255,255,255,.14)}
+.stat:last-of-type{border-bottom:1px solid rgba(255,255,255,.14)}
+.ring{position:relative;width:92px;height:92px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:8}
+.ring .bg{stroke:rgba(255,255,255,.12)}
+.ring .fg{stroke:#fff;stroke-linecap:butt;stroke-dasharray:264;stroke-dashoffset:264;transition:stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;font-weight:700}
+.stat p{font-size:16px;line-height:1.75;letter-spacing:.06em;font-weight:400}
+.stat p strong{font-weight:700}
+.stats .note{font-size:13px;letter-spacing:.06em;margin-top:22px;opacity:.95}
+
+/* ===== Cechy ===== */
+.features{display:grid;gap:26px;margin-top:-10px}
+.feat h3{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.feat h3 svg{width:20px;height:20px;flex:none}
+.feat p{font-size:14px;line-height:1.65;color:#333;margin-top:8px;letter-spacing:.02em}
+
+/* ===== Przewijane opinie ===== */
+.t-sec{padding:26px 0}
+.t-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.t-track{display:flex;width:max-content;animation:marquee 46s linear infinite}
+.t-marquee:hover .t-track{animation-play-state:paused}
+.t-item{flex:none;width:300px;display:flex;gap:14px;padding:0 22px 0 0}
+.t-item .avatar{width:50px;height:50px;font-size:17px;border:2px solid rgba(255,255,255,.25)}
+.t-item p{font-size:13px;line-height:1.45;letter-spacing:.04em}
+.t-item .who{display:flex;align-items:center;gap:6px;font-size:12px;margin-top:8px;opacity:.8;padding-top:8px;border-top:1px solid rgba(255,255,255,.18)}
+
+/* ===== Porównanie ===== */
+.compare{margin-top:30px}
+.cmp-head{display:grid;grid-template-columns:1fr auto;align-items:end;margin-top:26px;padding:0 2px 8px}
+.cmp-head .serif{color:var(--blue);font-size:16px}
+.cmp-head b{font-size:14px}
+.cmp-row{display:grid;grid-template-columns:40px 1fr 40px;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #f0f0f0;opacity:0;transform:translateY(12px);transition:.5s}
+.cmp-row.in{opacity:1;transform:none}
+.cmp-row span{text-align:center;font-weight:600;font-size:14px;letter-spacing:.03em}
+.ck,.cx{width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.ck{background:var(--blue)}
+.ck svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:3}
+.cx{background:#ebebeb}
+.cx svg{width:14px;height:14px;stroke:#222;fill:none;stroke-width:2.6}
+
+/* ===== FAQ ===== */
+.faq{margin-top:46px}
+.faq .acc summary{font-size:14px}
+
+/* ===== Opinie ===== */
+.reviews{margin-top:50px;text-align:center}
+.score{font-size:64px;font-weight:800;color:var(--gold);line-height:1;margin-top:18px}
+.score sup{font-size:20px;color:#222;font-weight:700;vertical-align:super}
+.big-stars{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.big-stars svg{width:26px;height:26px}
+.bars{display:grid;gap:10px;max-width:360px;margin:24px auto 0}
+.bar{display:grid;grid-template-columns:30px 1fr 52px;gap:10px;align-items:center;font-size:13px;font-weight:600}
+.bar .track{height:12px;border-radius:99px;background:#e2e4e8;overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--gold);width:0}
+.bar .n{border:1px solid var(--line);border-radius:99px;padding:3px 0;font-weight:500}
+.btn-dark{display:inline-block;background:#2f2f33;color:#fff;border-radius:8px;padding:12px 60px;font-size:13px;font-weight:500;margin-top:24px}
+.first{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:500;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.rev-form{display:none;text-align:left;max-width:420px;margin:20px auto 0;gap:10px}
+.rev-form.open{display:grid}
+.rev-form input,.rev-form textarea{font:inherit;font-size:14px;padding:12px;border:1px solid #d5d9e0;border-radius:8px;width:100%}
+.rev-form textarea{min-height:100px;resize:vertical}
+.pick-stars{display:flex;gap:6px}
+.pick-stars button svg{width:28px;height:28px}
+
+/* ===== Stopka ===== */
+footer{position:relative;background:var(--blue);color:#fff;margin-top:110px;padding:30px 0 120px;text-align:center}
+footer .logo{color:rgba(255,255,255,.35);font-size:40px;display:block}
+footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin-top:22px;font-size:13px}
+footer nav a{text-decoration:none;opacity:.9}
+footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
+
+/* ===== Przyklejony pasek zakupu ===== */
+.sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.06);transform:translateY(110%);transition:transform .35s ease;padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
+.sticky-buy.show{transform:none}
+.sb-in{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;max-width:560px;margin:0 auto;padding:0 16px}
+.sb-thumb{width:52px;height:52px;overflow:hidden;border-radius:4px}
+.sb-thumb svg{width:100%;height:100%}
+.sb-name{font-weight:700;font-size:13px;line-height:1.2}
+.sb-price{color:var(--blue);font-weight:700;font-size:20px;line-height:1.1}
+.sb-btn{background:var(--blue);color:#fff;font-weight:600;font-size:14px;letter-spacing:.04em;padding:14px 16px;border-radius:7px;white-space:nowrap}
+.to-top{position:fixed;right:16px;bottom:96px;z-index:49;width:52px;height:52px;border-radius:50%;background:var(--blue);box-shadow:0 4px 14px rgba(0,0,0,.2);display:grid;place-items:center;opacity:0;pointer-events:none;transition:.3s}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2.6}
+
+/* ===== Koszyk (szuflada) ===== */
+.toast{position:fixed;left:50%;top:76px;transform:translate(-50%,-20px);background:#1f2937;color:#fff;font-size:14px;padding:12px 18px;border-radius:10px;z-index:80;opacity:0;pointer-events:none;transition:.3s;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (min-width:700px){
+  .g-slide{flex-basis:520px}
+  .gallery .g-track{justify-content:flex-start;max-width:560px;margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== PASEK OGŁOSZEŃ ===================== -->
+<div class="announce" aria-label="Ogłoszenia">
+  <div class="announce-track" id="announceTrack"></div>
+</div>
+
+<!-- ===================== NAGŁÓWEK ===================== -->
+<header>
+  <div class="head">
+    <button class="icon-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <a href="#" class="logo" data-brand>Memora</a>
+    <button class="icon-btn" aria-label="Szukaj"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+    <div class="cart-wrap"><button class="icon-btn" aria-label="Koszyk" id="cartBtn"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button><span class="cart-count" id="cartCount">0</span></div>
+  </div>
+</header>
+
+<main>
+<!-- ===================== GALERIA ===================== -->
+<section class="gallery">
+  <div class="g-track" id="gTrack"></div>
+  <div class="g-nav">
+    <button id="gPrev" aria-label="Poprzednie zdjęcie"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span id="gCount">1/8</span>
+    <button id="gNext" aria-label="Następne zdjęcie"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</section>
+
+<section class="wrap">
+  <h1 class="p-title"><span data-brand>Memora</span>™ Kula Wspomnień</h1>
+
+  <a href="#opinie" class="write-review" style="text-decoration:none"><span class="stars" data-stars="0" data-size="20"></span> Napisz opinię</a>
+  <div class="rating-line"><span class="stars" data-stars="5" data-size="13"></span> <b id="ratingVal">4.8 / 5</b> | <span id="ratingCount">5 800+ zaufanych opinii</span></div>
+
+  <ul class="bullets">
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#516f99"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none"/></svg>Zamień wyjątkowe chwile w elegancką ozdobę</li>
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#516f99"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none"/></svg>Wgraj własne zdjęcia i filmy prosto z telefonu</li>
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#516f99"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none"/></svg>Słuchaj ukochanych chwil dzięki wbudowanemu głośnikowi</li>
+  </ul>
+
+  <div class="color-label">Kolor – <span id="colorName">Biały</span></div>
+  <div class="swatches">
+    <button class="swatch active" data-c="Biały" aria-label="Biały"><span></span></button>
+    <button class="swatch" data-c="Czarny" aria-label="Czarny"><span></span></button>
+  </div>
+
+  <div class="divider">Wczesna wyprzedaż Black Friday</div>
+
+  <div id="bundles"></div>
+
+  <button class="btn btn-primary" id="addToCart">Dodaj do koszyka</button>
+  <button class="btn btn-pay" id="applePay">Kup z <svg width="17" height="20" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1-2.8-4.1zM11.5 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</button>
+  <a href="#" class="more-pay">Więcej opcji płatności</a>
+
+  <div class="upsell">
+    <div class="gift-ico">🎁</div>
+    <div>
+      <h4>Dopełnij swój świąteczny prezent!</h4>
+      <p>Dodaj <span data-brand>Memora</span> Mini za jedyne <b>119,00 zł</b> przy zakupie Kuli Wspomnień.</p>
+      <small>Oszczędzasz dodatkowe 40 zł — oferta dostępna w koszyku!</small>
+    </div>
+  </div>
+
+  <div class="stock"><i class="dot-pulse"></i><div><b>Ograniczony zapas</b> <span>Ostatnia szansa, żeby go zdobyć, nie przegap!</span></div></div>
+
+  <div class="trust">
+    <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9C1.2 8.8 3 5 6.6 5c2 0 3.4 1.2 4.4 2.6C12 6.2 13.4 5 15.4 5 19 5 20.8 8.8 19.3 12 17 16.6 12 21 12 21z"/></svg>30-dniowa<br>gwarancja</div>
+    <div><svg viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>Łatwe<br>zwroty</div>
+    <div><svg viewBox="0 0 24 24"><path d="M1 5h13v11H1zM14 9h4l3 3v4h-7z"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg>Darmowa<br>wysyłka</div>
+  </div>
+
+  <details class="acc">
+    <summary><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"/></svg>Jak to działa<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+    <div class="acc-body"><ol>
+      <li>Wybierz ulubione zdjęcia i filmy w telefonie.</li>
+      <li>Wgraj je do kuli przez dołączony kabel – bez aplikacji i bez zakładania konta.</li>
+      <li>Naciśnij jeden przycisk, a wspomnienia ożyją w szklanej kuli razem z dźwiękiem.</li>
+      <li>Powieś ją na choince albo postaw na podstawce na biurku, półce lub szafce nocnej.</li>
+    </ol></div>
+  </details>
+  <details class="acc">
+    <summary><svg class="i" viewBox="0 0 24 24"><path d="M1 5h13v11H1zM14 9h4l3 3v4h-7z"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg>Wysyłka i zwroty<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+    <div class="acc-body">Darmowa wysyłka na terenie całej Polski. Zamówienia realizujemy w ciągu 1–2 dni roboczych, a dostawa trwa zwykle 6–10 dni roboczych. Każdą przesyłkę możesz śledzić – numer przesyłki wyślemy e-mailem. Masz 30 dni na zwrot bez podawania przyczyny.</div>
+  </details>
+  <details class="acc">
+    <summary><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Gwarancja zwrotu pieniędzy<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+    <div class="acc-body">Jeśli w ciągu 30 dni od otrzymania paczki uznasz, że kula nie jest dla Ciebie, napisz do nas. Zwrócimy pełną kwotę za zamówienie – bez zbędnych pytań.</div>
+  </details>
+
+  <div class="mini-rev">
+    <div class="mini-track" id="miniTrack"></div>
+    <div class="dots" id="miniDots"></div>
+  </div>
+</section>
+
+<!-- ===================== ZOBACZ TO W AKCJI ===================== -->
+<section class="action">
+  <h2 class="section-title reveal">Zobacz to w <em>akcji</em></h2>
+  <div class="v-track" id="vTrack"></div>
+  <button class="v-arrow prev" id="vPrev" aria-label="Poprzedni film"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="v-arrow next" id="vNext" aria-label="Następny film"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <div class="dots" id="vDots"></div>
+</section>
+
+<!-- ===================== DLACZEGO KLIENCI KOCHAJĄ ===================== -->
+<section class="wave-sec">
+  <div class="wave top" data-wave></div>
+  <div class="wrap stats">
+    <h2 class="reveal">Dlaczego klienci kochają <span data-brand>Memora</span>™</h2>
+    <div id="stats"></div>
+    <p class="note">Na podstawie ankiety wśród naszych zaufanych klientów.</p>
+  </div>
+  <div class="wave bottom" data-wave></div>
+</section>
+
+<!-- ===================== CECHY ===================== -->
+<section class="wrap features">
+  <div class="feat reveal">
+    <h3><svg viewBox="0 0 24 24" fill="#516f99"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg>Wciągająca projekcja wspomnień</h3>
+    <p>Twoje zdjęcia i filmy ożywają wewnątrz kuli, tworząc zachwycający obraz, który porusza o wiele bardziej niż oglądanie wspomnień na telefonie.</p>
+  </div>
+  <div class="feat reveal">
+    <h3><svg viewBox="0 0 24 24" fill="none" stroke="#516f99" stroke-width="2"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/></svg>Wbudowany dźwięk i prosta obsługa</h3>
+    <p>Oglądaj i słuchaj swoich wspomnień dzięki prostym przyciskom na jedno dotknięcie — bez aplikacji i bez skomplikowanej konfiguracji.</p>
+  </div>
+  <div class="feat reveal">
+    <h3><svg viewBox="0 0 24 24" fill="none" stroke="#516f99" stroke-width="1.8"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M3 13h18M12 9v12M12 9c-1.5-3-5-4-5-1.5S10 9 12 9zm0 0c1.5-3 5-4 5-1.5S14 9 12 9z"/></svg>Opakowanie gotowe na prezent</h3>
+    <p>Przychodzi pięknie zapakowana i gotowa do wręczenia. Idealna na biurko, szafkę nocną, półkę albo jako wzruszająca pamiątka dla bliskich.</p>
+  </div>
+</section>
+
+<!-- ===================== PRZEWIJANE OPINIE ===================== -->
+<section class="wave-sec">
+  <div class="wave top" data-wave></div>
+  <div class="t-sec">
+    <div class="t-marquee"><div class="t-track" id="tTrack"></div></div>
+  </div>
+  <div class="wave bottom" data-wave></div>
+</section>
+
+<!-- ===================== CO NAS WYRÓŻNIA ===================== -->
+<section class="wrap compare">
+  <h2 class="section-title reveal" style="font-size:28px">Co nas wyróżnia</h2>
+  <div class="cmp-head"><span class="serif" data-brand>Memora</span><b>Inni</b></div>
+  <div id="cmpRows"></div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="wrap faq">
+  <h2 class="section-title reveal" style="font-size:28px;margin-bottom:12px">Najczęstsze pytania</h2>
+  <div id="faq"></div>
+</section>
+
+<!-- ===================== OPINIE ===================== -->
+<section class="wrap reviews" id="opinie">
+  <h2 class="section-title" style="font-size:26px">Opinie klientów</h2>
+  <div class="score"><span id="avgScore">0.0</span><sup>/5</sup></div>
+  <div class="big-stars stars" id="avgStars" data-stars="0" data-size="26"></div>
+  <div class="bars" id="bars"></div>
+  <button class="btn-dark" id="writeBtn">Napisz opinię</button>
+  <form class="rev-form" id="revForm">
+    <div class="pick-stars" id="pickStars"></div>
+    <input name="name" placeholder="Imię" required>
+    <textarea name="text" placeholder="Twoja opinia" required></textarea>
+    <button class="btn btn-primary" type="submit" style="font-size:14px;padding:13px">Wyślij opinię</button>
+  </form>
+  <div class="first" id="firstMsg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg>Bądź pierwszą osobą, która oceni ten produkt</div>
+</section>
+</main>
+
+<!-- ===================== STOPKA ===================== -->
+<footer>
+  <div class="wave top" data-wave></div>
+  <span class="logo" data-brand>Memora</span>
+  <nav>
+    <a href="#">Polityka zwrotów</a><a href="#">Regulamin</a><a href="#">Polityka prywatności</a><a href="#">Wysyłka</a><a href="#">Kontakt</a>
+  </nav>
+  <small>© <span id="year"></span> <span data-brand>Memora</span>. Wszelkie prawa zastrzeżone.</small>
+</footer>
+
+<!-- ===================== PRZYKLEJONY PASEK ===================== -->
+<div class="sticky-buy" id="stickyBuy">
+  <div class="sb-in">
+    <div class="sb-thumb" id="sbThumb"></div>
+    <div><div class="sb-name"><span data-brand>Memora</span>™<br>Kula Wspomnień</div><div class="sb-price" id="sbPrice">249,00 zł</div></div>
+    <button class="sb-btn" id="sbBtn">Chcę moją Kulę</button>
+  </div>
+</div>
+<button class="to-top" id="toTop" aria-label="Do góry"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg></button>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   USTAWIENIA – tu zmieniasz teksty, ceny, filmy i opinie.
+   ===================================================================== */
+const CONFIG = {
+  marka: "Memora",
+
+  pasekOgloszen: ["Spraw, by te święta były niezapomniane", "Darmowa wysyłka w całej Polsce", "Wczesna wyprzedaż Black Friday", "30 dni na zwrot"],
+
+  // Zdjęcia produktu do galerii. Wrzuć pliki do folderu "zdjecia" i wpisz ścieżki,
+  // np. "zdjecia/1.jpg". Puste = rysowane podglądy.
+  zdjecia: [],
+
+  pakiety: [
+    { nazwa: "Jedna Kula Memora™", opis: "Idealny prezent na święta", cena: 249.00, stara: null, badge: null, prezenty: [] },
+    { nazwa: "Dwie Kule Memora™", opis: null, cena: 481.68, stara: 498.00, badge: "Najpopularniejszy",
+      prezenty: ["+ GRATIS podstawka Memora", "+ GRATIS zawieszka Memora", "+ GRATIS ściereczka Memora"] },
+    { nazwa: "Trzy Kule Memora™", opis: null, cena: 714.51, stara: 747.00, badge: "Najlepsza wartość",
+      prezenty: ["+ GRATIS podstawka Memora", "+ GRATIS zawieszka Memora", "+ GRATIS ściereczka Memora"] }
+  ],
+
+  // Filmy do sekcji "Zobacz to w akcji". Wrzuć nagrania (pionowe 9:16, najlepiej BEZ napisów)
+  // do folderu "filmy" pod tymi nazwami. Polskie napisy nakładają się same z pola "napis".
+  // Jeśli w filmie są już napisy, ustaw napis: "".
+  filmy: [
+    { plik: "filmy/film1.mp4", napis: "12 miesięcy ❤️" },
+    { plik: "filmy/film2.mp4", napis: "Teraz możesz powiesić wszystkie swoje najpiękniejsze wspomnienia na choince 🥹🫶" },
+    { plik: "filmy/film3.mp4", napis: "To kula wspomnień, zupełnie jak z filmu… 😭" },
+    { plik: "filmy/film4.mp4", napis: "🥹❤️" },
+    { plik: "filmy/film5.mp4", napis: "Świąteczne mamy, musicie to zobaczyć… 🥹🎄" }
+  ],
+
+  // Krótkie opinie pod akordeonem (przewijane kropkami)
+  krotkieOpinie: [
+    { imie: "Sylwia M.", tekst: "Moi rodzice nie mogli przestać się uśmiechać, kiedy ją włączyli. 😊", kolor: "#c49a7a" },
+    { imie: "Katarzyna W.", tekst: "Mama się popłakała, gdy zobaczyła nagranie z wesela w kuli. Najlepszy prezent.", kolor: "#8aa1c4" },
+    { imie: "Magda P.", tekst: "Wisi na choince na honorowym miejscu. Wszyscy goście pytają, skąd ją mam!", kolor: "#b08fb5" }
+  ],
+
+  statystyki: [
+    { proc: 93, html: "Powiedziało, że oglądanie zdjęć i filmów w kuli sprawiło, że ich wspomnienia stały się <strong>bardziej wzruszające i żywe</strong>." },
+    { proc: 89, html: "Pokochało to, jak <strong>łatwo wgrać i odtworzyć wspomnienia</strong> — bez skomplikowanej konfiguracji." },
+    { proc: 97, html: "Powiedziało, że Kula Wspomnień™ okazała się <strong>wyjątkowym, niezapomnianym prezentem</strong> dla bliskich." }
+  ],
+
+  // Opinie przewijane w bok na niebieskiej fali
+  opinieFala: [
+    { imie: "Agnieszka C.", tekst: "„Dużo lepsze niż przewijanie zdjęć w telefonie. Wygląda przepięknie na mojej szafce nocnej i przywołuje tyle wspomnień.”", kolor: "#b9826a" },
+    { imie: "Renata T.", tekst: "„Podarowałam ją rodzicom i byli zachwyceni. Bardzo prosta w obsłudze i niesamowicie wzruszająca.”", kolor: "#9c8f84" },
+    { imie: "Ewa M.", tekst: "„Cudowny sposób, żeby na nowo przeżywać nasze ulubione chwile. Filmy odtwarzane w kuli wyglądają magicznie.”", kolor: "#c7a86b" },
+    { imie: "Joanna K.", tekst: "„Wgrałam filmik z pierwszych kroków synka. Babcia ogląda go codziennie, z dźwiękiem!”", kolor: "#7d93b8" },
+    { imie: "Monika L.", tekst: "„Paczka przyszła pięknie zapakowana, od razu gotowa pod choinkę. Polecam z całego serca.”", kolor: "#a3889c" }
+  ],
+
+  porownanie: ["Wciągająca projekcja w kuli", "Łatwa obsługa jednym dotknięciem", "Wbudowany głośnik", "Ozdoba godna eksponowania", "30-dniowa gwarancja zwrotu pieniędzy"],
+
+  faq: [
+    { q: "Czy wysyłacie do mojego kraju?", a: "Wysyłamy na terenie całej Polski za darmo. Dostawa trwa zwykle 6–10 dni roboczych." },
+    { q: "Ile pamięci ma kula?", a: "Kula mieści dziesiątki zdjęć i kilka minut nagrań wideo – wystarczy na najważniejsze chwile całego roku." },
+    { q: "Czy potrzebuję aplikacji?", a: "Nie. Pliki wgrywasz przez dołączony kabel, a odtwarzanie włączasz jednym przyciskiem." },
+    { q: "Jak długo działa na baterii?", a: "Kula ma wbudowany akumulator ładowany przez USB. Możesz też korzystać z niej podłączonej do zasilania na podstawce." },
+    { q: "Czy mogę zmienić zdjęcia później?", a: "Tak, w każdej chwili możesz usunąć stare pliki i wgrać nowe." }
+  ],
+
+  // Prawdziwe opinie klientów (sekcja na dole). Na start puste = "Bądź pierwszą osobą…".
+  opinieKlientow: []
+};
+
+/* ===================================================================== */
+const $ = s => document.querySelector(s);
+const zl = v => v.toFixed(2).replace('.', ',') + ' zł';
+document.querySelectorAll('[data-brand]').forEach(e => e.textContent = CONFIG.marka);
+$('#year').textContent = new Date().getFullYear();
+
+function starSvg(fill, size){
+  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}"><path d="M12 2.5l2.8 6.4 6.9.6-5.2 4.6 1.6 6.8L12 17.3l-6.1 3.6 1.6-6.8-5.2-4.6 6.9-.6z" fill="${fill?'#f5b50a':'none'}" stroke="#f5b50a" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+}
+function renderStars(el){
+  const n = +el.dataset.stars, s = +(el.dataset.size||16);
+  el.innerHTML = Array.from({length:5},(_,i)=>starSvg(i<Math.round(n),s)).join('');
+}
+document.querySelectorAll('[data-stars]').forEach(renderStars);
+
+/* ---------- Pasek ogłoszeń ---------- */
+const ann = CONFIG.pasekOgloszen.map(t=>`<span>${t}</span>`).join('');
+$('#announceTrack').innerHTML = ann + ann + ann + ann;
+
+/* ---------- Rysowane podglądy (zastępują zdjęcia/filmy, dopóki ich nie wgrasz) ---------- */
+function sceneSvg(seed, opts={}){
+  let r = seed*9301+49297; const rnd=()=>((r=(r*9301+49297)%233280)/233280);
+  const w=400,h=opts.tall?711:432, cx=w/2, cy=opts.cy||h*0.52, R=opts.R||88;
+  const bg = opts.bg || ['#1a1410','#2b2017'];
+  let lights='';
+  for(let i=0;i<70;i++){const x=rnd()*w,y=rnd()*h,s=2+rnd()*9,o=.25+rnd()*.7;
+    const col = opts.colorful? ['#ffd27a','#ff6b9a','#7cf2c4','#8fb4ff','#e59bff'][i%5] : '#ffd98a';
+    lights+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${s.toFixed(1)}" fill="${col}" opacity="${o.toFixed(2)}" filter="url(#b${seed})"/>`;}
+  let needles='';
+  for(let i=0;i<40;i++){const x=rnd()*w,y=rnd()*h,l=30+rnd()*60,a=rnd()*360;
+    needles+=`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${l.toFixed(0)}" ry="${(l/5).toFixed(0)}" transform="rotate(${a.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="#e8e2d6" opacity=".09"/>`;}
+  const ph = opts.photo || ['#f1c7a8','#7a4b3a','#c98f70'];
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg${seed}" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="${bg[1]}"/><stop offset="1" stop-color="${bg[0]}"/></radialGradient>
+    <filter id="b${seed}" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+    <radialGradient id="glass${seed}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#9fc2ff" stop-opacity=".25"/></radialGradient>
+    <linearGradient id="ph${seed}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${ph[0]}"/><stop offset=".55" stop-color="${ph[2]}"/><stop offset="1" stop-color="${ph[1]}"/></linearGradient>
+    <clipPath id="c${seed}"><circle cx="${cx}" cy="${cy}" r="${R-6}"/></clipPath>
+  </defs>
+  <rect width="${w}" height="${h}" fill="url(#bg${seed})"/>
+  ${needles}${lights}
+  ${opts.strap!==false?`<path d="M${cx-6} 0 L${cx-4} ${cy-R-14} M${cx+6} 0 L${cx+4} ${cy-R-14}" stroke="#c98a6a" stroke-width="5"/><rect x="${cx-8}" y="${cy-R-22}" width="16" height="20" rx="3" fill="#111"/>`:''}
+  <circle cx="${cx}" cy="${cy}" r="${R+10}" fill="#9fc2ff" opacity=".18" filter="url(#b${seed})"/>
+  <g clip-path="url(#c${seed})">
+    <rect x="${cx-R}" y="${cy-R}" width="${R*2}" height="${R*2}" fill="url(#ph${seed})"/>
+    <circle cx="${cx-R*.28}" cy="${cy-R*.12}" r="${R*.26}" fill="#f3d3bb"/>
+    <path d="M${cx-R*.58} ${cy-R*.18} q${R*.3} -${R*.55} ${R*.6} 0 v${R*.25} h-${R*.6}z" fill="#3b2418"/>
+    <circle cx="${cx+R*.3}" cy="${cy+R*.06}" r="${R*.21}" fill="#f6dccb"/>
+    <path d="M${cx+R*.08} ${cy-R*.02} q${R*.22} -${R*.4} ${R*.44} 0z" fill="#6b4532"/>
+    <rect x="${cx-R*.75}" y="${cy+R*.2}" width="${R*.95}" height="${R*.8}" rx="${R*.3}" fill="#2f3e5c"/>
+    <rect x="${cx+R*.05}" y="${cy+R*.3}" width="${R*.55}" height="${R*.7}" rx="${R*.25}" fill="#8db0d8"/>
+  </g>
+  <circle cx="${cx}" cy="${cy}" r="${R}" fill="url(#glass${seed})" stroke="#e9f1ff" stroke-opacity=".7" stroke-width="3"/>
+  <ellipse cx="${cx-R*.38}" cy="${cy-R*.5}" rx="${R*.3}" ry="${R*.12}" transform="rotate(-30 ${cx-R*.38} ${cy-R*.5})" fill="#fff" opacity=".45"/>
+  </svg>`;
+}
+const scenes = [
+  {bg:['#14100c','#2a1f16']},
+  {bg:['#0d1220','#1f2b45'], colorful:true, photo:['#ffd9e4','#a46a86','#e6a9c0']},
+  {bg:['#1b120c','#3a2a1e'], photo:['#cfe3ff','#3c5b8a','#89a9d6']},
+  {bg:['#111','#2a2a2a'], strap:false, photo:['#f7e3c4','#8a5a3a','#d6a87f']},
+  {bg:['#0f1612','#22342a'], photo:['#e9f3ff','#4f6d96','#a7c0e0']},
+  {bg:['#160f17','#33213a'], colorful:true},
+  {bg:['#1a1410','#3b2c20'], photo:['#ffe6d1','#a86f4b','#e3ae8a']},
+  {bg:['#0c0f17','#1d2436'], photo:['#d6e8ff','#2e4670','#7f9ccc']}
+];
+
+/* ---------- Galeria ---------- */
+const gTrack = $('#gTrack');
+const gItems = CONFIG.zdjecia.length ? CONFIG.zdjecia.map(src=>`<img src="${src}" alt="Kula Wspomnień" loading="lazy">`)
+                                     : scenes.map((s,i)=>sceneSvg(i+1,s));
+gTrack.innerHTML = gItems.map(h=>`<div class="g-slide">${h}</div>`).join('');
+const gTotal = gItems.length;
+let gIdx = 0;
+function gGo(i){ gIdx=(i+gTotal)%gTotal; gTrack.children[gIdx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'}); }
+gTrack.addEventListener('scroll',()=>{ const w=gTrack.children[0].offsetWidth+10; gIdx=Math.round(gTrack.scrollLeft/w); $('#gCount').textContent=`${gIdx+1}/${gTotal}`; },{passive:true});
+$('#gCount').textContent = `1/${gTotal}`;
+$('#gPrev').onclick=()=>gGo(gIdx-1); $('#gNext').onclick=()=>gGo(gIdx+1);
+$('#sbThumb').innerHTML = CONFIG.zdjecia[0] ? `<img src="${CONFIG.zdjecia[0]}" alt="">` : sceneSvg(99,{R:110});
+
+/* ---------- Kolor ---------- */
+let color = 'Biały';
+document.querySelectorAll('.swatch').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); color=b.dataset.c; $('#colorName').textContent=color;
+  document.querySelectorAll('.b-opts select').forEach(s=>s.value=color);
+});
+
+/* ---------- Pakiety ---------- */
+const giftIcons = [
+  `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="9" ry="4" fill="#111"/><ellipse cx="12" cy="11" rx="9" ry="4" fill="#2a2a2a"/></svg>`,
+  `<svg viewBox="0 0 24 24" fill="none" stroke="#b07a5a" stroke-width="1.6"><path d="M10 2v12M14 2v12"/><rect x="9" y="14" width="6" height="5" rx="1" fill="#222" stroke="#222"/></svg>`,
+  `<svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.4"><rect x="3" y="7" width="18" height="10" rx="1" fill="#f3f3f3"/><path d="M3 10h18"/></svg>`
+];
+let chosen = 0;
+$('#bundles').innerHTML = CONFIG.pakiety.map((p,i)=>{
+  const save = p.stara ? `Oszczędzasz ${zl(p.stara-p.cena)} od razu` : '';
+  return `<div class="bundle${i===0?' active':''}" data-i="${i}">
+    ${p.badge?`<span class="badge">${p.badge}</span>`:''}
+    <div class="b-main"><span class="radio"></span>
+      <div><div class="b-name">${p.nazwa.replace('Memora',CONFIG.marka)}</div><div class="b-sub">${p.opis||save}</div></div>
+      <div class="b-price">${zl(p.cena)}${p.stara?`<s class="b-old">${zl(p.stara)}</s>`:''}</div></div>
+    <div class="b-opts">${Array.from({length:i+1},(_,k)=>`<label>${i?`Kula ${k+1} – kolor`:'Kolor'}</label><div class="sel-row" style="margin-bottom:8px"><div class="thumb">${giftIcons[0].replace('#111','#fff').replace('#2a2a2a','#dfe7f3')}</div><select><option>Biały</option><option>Czarny</option></select></div>`).join('')}</div>
+    ${p.prezenty.length?`<div class="gifts">${p.prezenty.map((g,k)=>`<div class="gift"><span class="gi">${giftIcons[k%3]}</span>${g.replace('Memora',CONFIG.marka)}</div>`).join('')}</div>`:''}
+  </div>`;}).join('');
+document.querySelectorAll('.bundle').forEach(b=>b.addEventListener('click',e=>{
+  if(e.target.tagName==='SELECT'||e.target.tagName==='OPTION') return;
+  document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); chosen=+b.dataset.i;
+  $('#sbPrice').textContent = zl(CONFIG.pakiety[chosen].cena);
+}));
+
+/* ---------- Koszyk (demo) ---------- */
+let cart = 0;
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2400); }
+function addToCart(){
+  const p = CONFIG.pakiety[chosen]; cart += chosen+1;
+  const c=$('#cartCount'); c.textContent=cart; c.style.display='grid';
+  toast(`Dodano do koszyka: ${p.nazwa.replace('Memora',CONFIG.marka)} – ${zl(p.cena)}`);
+}
+$('#addToCart').onclick=addToCart;
+$('#applePay').onclick=()=>toast('Tu podepniesz płatność w swoim sklepie (np. Shopify).');
+$('#sbBtn').onclick=()=>{ $('#bundles').scrollIntoView({behavior:'smooth',block:'center'}); };
+
+/* ---------- Mini opinie ---------- */
+const mt=$('#miniTrack'), md=$('#miniDots');
+const initials = n => n.split(' ').map(x=>x[0]).join('').slice(0,2);
+mt.innerHTML = CONFIG.krotkieOpinie.map(o=>`<div class="mini-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who">${o.imie} <span class="stars" data-stars="5" data-size="13"></span></div></div></div>`).join('');
+md.innerHTML = CONFIG.krotkieOpinie.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
+mt.querySelectorAll('[data-stars]').forEach(renderStars);
+let mi=0; const mGo=i=>{mi=i%CONFIG.krotkieOpinie.length; mt.style.transform=`translateX(-${mi*100}%)`; [...md.children].forEach((d,k)=>d.classList.toggle('on',k===mi));};
+[...md.children].forEach((d,k)=>d.onclick=()=>mGo(k));
+setInterval(()=>mGo(mi+1),4500);
+
+/* ---------- Filmy: Zobacz to w akcji ---------- */
+const vTrack=$('#vTrack'), vDots=$('#vDots');
+const vScenes=[{bg:['#2b2a2e','#4a4650'],strap:false,R:80},{bg:['#14100c','#2a1f16'],R:70},{bg:['#1d1a14','#3d3426'],strap:false,R:80},{bg:['#2a2520','#4a4035'],R:80},{bg:['#0d0b18','#251b3a'],colorful:true,R:70}];
+vTrack.innerHTML = CONFIG.filmy.map((f,i)=>`
+  <div class="v-card" data-i="${i}">
+    <div class="v-ph">${sceneSvg(50+i,{...vScenes[i%vScenes.length],tall:true,cy:420})}</div>
+    <video src="${f.plik}" playsinline muted loop preload="metadata"></video>
+    ${f.napis?`<div class="v-caption">${f.napis}</div>`:''}
+    <button class="v-play" aria-label="Odtwórz"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></button>
+    <div class="v-hint">podgląd – wgraj ${f.plik}</div>
+  </div>`).join('');
+vDots.innerHTML = CONFIG.filmy.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
+const cards=[...vTrack.children];
+cards.forEach(card=>{
+  const v=card.querySelector('video'), ph=card.querySelector('.v-ph'), hint=card.querySelector('.v-hint');
+  v.style.display='none';
+  v.addEventListener('loadeddata',()=>{ v.style.display='block'; ph.style.display='none'; hint.style.display='none'; });
+  v.addEventListener('error',()=>{ v.removeAttribute('src'); });
+  card.querySelector('.v-play').onclick=()=>{
+    cards.forEach(c=>{ if(c!==card){ c.classList.remove('playing'); c.querySelector('video').pause(); }});
+    card.classList.add('playing'); v.muted=false;
+    if(v.readyState>0) v.play().catch(()=>{});
+  };
+  v.onclick=()=>{ if(v.paused){v.play();card.classList.add('playing');} else {v.pause();card.classList.remove('playing');} };
+});
+let vIdx=0;
+function vCenter(i){ vIdx=Math.max(0,Math.min(cards.length-1,i)); const c=cards[vIdx]; vTrack.scrollTo({left:c.offsetLeft-(vTrack.clientWidth-c.offsetWidth)/2,behavior:'smooth'}); }
+vTrack.addEventListener('scroll',()=>{
+  const mid=vTrack.scrollLeft+vTrack.clientWidth/2; let best=0,bd=1e9;
+  cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid); if(d<bd){bd=d;best=i;}});
+  if(best!==vIdx){ cards[vIdx].querySelector('video').pause(); cards[vIdx].classList.remove('playing'); }
+  vIdx=best; [...vDots.children].forEach((d,k)=>d.classList.toggle('on',k===vIdx));
+},{passive:true});
+$('#vPrev').onclick=()=>vCenter(vIdx-1); $('#vNext').onclick=()=>vCenter(vIdx+1);
+[...vDots.children].forEach((d,k)=>d.onclick=()=>vCenter(k));
+
+/* ---------- Fale (animowane) ---------- */
+function wavePath(h, amp, phase, waves){
+  let d=`M0 ${h}`; const W=1440*2, steps=120;
+  for(let i=0;i<=steps;i++){const x=W*i/steps; const y=h*0.55 - amp*Math.sin((i/steps)*Math.PI*2*waves+phase); d+=` L${x.toFixed(1)} ${y.toFixed(1)}`;}
+  return d+` L${W} ${h} Z`;
+}
+document.querySelectorAll('[data-wave]').forEach(w=>{
+  const h=60;
+  w.innerHTML = `
+    <div class="layer back"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h,14,1.2,4)}" fill="#b7c4d7"/></svg></div>
+    <div class="layer"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h+8,10,0,2)}" fill="#516f99" transform="translate(0,6)"/></svg></div>`;
+});
+
+/* ---------- Statystyki ---------- */
+$('#stats').innerHTML = CONFIG.statystyki.map(s=>`
+  <div class="stat"><div class="ring" data-p="${s.proc}"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42"/></svg><b>0%</b></div><p>${s.html}</p></div>`).join('');
+
+/* ---------- Opinie na fali (przewijane w bok) ---------- */
+const tItems = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
+$('#tTrack').innerHTML = tItems + tItems;
+$('#tTrack').querySelectorAll('[data-stars]').forEach(renderStars);
+
+/* ---------- Porównanie ---------- */
+$('#cmpRows').innerHTML = CONFIG.porownanie.map(t=>`<div class="cmp-row"><div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span>${t}</span><div class="cx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div></div>`).join('');
+
+/* ---------- FAQ ---------- */
+$('#faq').innerHTML = CONFIG.faq.map(f=>`<details class="acc"><summary><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"/></svg>${f.q}<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><div class="acc-body">${f.a}</div></details>`).join('');
+
+/* ---------- Opinie klientów ---------- */
+function renderReviews(){
+  const list = CONFIG.opinieKlientow, n=list.length;
+  const avg = n ? list.reduce((a,r)=>a+r.ocena,0)/n : 0;
+  $('#avgScore').textContent = avg.toFixed(1);
+  $('#avgStars').dataset.stars = avg; renderStars($('#avgStars'));
+  $('#bars').innerHTML = [5,4,3,2,1].map(s=>{const c=list.filter(r=>r.ocena===s).length;
+    return `<div class="bar"><span>${s} ★</span><span class="track"><i style="width:${n?c/n*100:0}%"></i></span><span class="n">${c}</span></div>`;}).join('');
+  $('#firstMsg').style.display = n ? 'none' : 'flex';
+}
+renderReviews();
+let pick=5;
+const ps=$('#pickStars');
+function drawPick(){ ps.innerHTML=[1,2,3,4,5].map(i=>`<button type="button" data-v="${i}" aria-label="${i} gwiazdek">${starSvg(i<=pick,28)}</button>`).join(''); ps.querySelectorAll('button').forEach(b=>b.onclick=()=>{pick=+b.dataset.v;drawPick();}); }
+drawPick();
+$('#writeBtn').onclick=()=>$('#revForm').classList.toggle('open');
+$('#revForm').onsubmit=e=>{ e.preventDefault(); e.target.reset(); e.target.classList.remove('open'); toast('Dziękujemy! Opinia trafi na stronę po weryfikacji zakupu.'); };
+
+/* ---------- Animacje przy przewijaniu ---------- */
+const io = new IntersectionObserver(es=>es.forEach(en=>{
+  if(!en.isIntersecting) return;
+  const el=en.target; el.classList.add('in');
+  if(el.classList.contains('ring')){
+    const p=+el.dataset.p; el.querySelector('.fg').style.strokeDashoffset = 264*(1-p/100);
+    const b=el.querySelector('b'); let t0=null;
+    const step=ts=>{t0??=ts; const k=Math.min(1,(ts-t0)/1800); b.textContent=Math.round(p*(1-Math.pow(1-k,3)))+'%'; if(k<1) requestAnimationFrame(step);};
+    requestAnimationFrame(step);
+  }
+  io.unobserve(el);
+}),{threshold:.35});
+document.querySelectorAll('.reveal,.ring,.cmp-row').forEach((el,i)=>{ if(el.classList.contains('cmp-row')) el.style.transitionDelay=(i%6)*90+'ms'; io.observe(el); });
+
+/* ---------- Przyklejony pasek + do góry ---------- */
+const atc=$('#addToCart');
+window.addEventListener('scroll',()=>{
+  const past = atc.getBoundingClientRect().bottom < 0;
+  $('#stickyBuy').classList.toggle('show', past);
+  $('#toTop').classList.toggle('show', window.scrollY > 900);
+},{passive:true});
+$('#toTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+</script>
+</body>
+</html>
