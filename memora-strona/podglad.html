@@ -22,8 +22,8 @@
   --bg:#ffffff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:.01em}
+html{overflow-x:clip;height:auto}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:clip;overflow-y:visible;height:auto;min-height:0;letter-spacing:.01em}
 img,svg,video{display:block;max-width:100%}
 button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 a{color:inherit}
