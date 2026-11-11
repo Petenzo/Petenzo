@@ -20,9 +20,10 @@ def img(m):
     p = os.path.join(d, m.group(1))
     if not os.path.exists(p):
         return m.group(0)
-    return '"data:image/jpeg;base64,' + base64.b64encode(open(p, 'rb').read()).decode() + '"'
+    mime = 'image/png' if p.endswith('.png') else 'image/jpeg'
+    return '"data:' + mime + ';base64,' + base64.b64encode(open(p, 'rb').read()).decode() + '"'
 
 
-s = re.sub(r'"(zdjecia/[^"]+\.jpg)"', img, s)
+s = re.sub(r'"(zdjecia/[^"]+\.(?:jpg|png))"', img, s)
 open(os.path.join(d, 'podglad.html'), 'w', encoding='utf-8').write(s)
 print(round(len(s) / 1e6, 2), 'MB')
