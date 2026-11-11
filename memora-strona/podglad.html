@@ -167,7 +167,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .v-card.playing .v-play{opacity:0;pointer-events:none}
 .v-card.loading .v-play svg{animation:spin 1s linear infinite;transform-origin:45% 50%}
 @keyframes spin{to{transform:rotate(360deg)}}
-.v-arrow{position:absolute;top:58%;z-index:5;width:44px;height:44px;border-radius:50%;background:rgba(60,60,60,.75);display:grid;place-items:center}
+.v-arrow{display:none!important;position:absolute;top:58%;z-index:5;width:44px;height:44px;border-radius:50%;background:rgba(60,60,60,.75);display:grid;place-items:center}
 .v-arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4}
 .v-arrow.prev{left:10px}.v-arrow.next{right:10px}
 
@@ -828,7 +828,11 @@ const io = new IntersectionObserver(es=>es.forEach(en=>{
   }
   io.unobserve(el);
 }),{threshold:.35});
-document.querySelectorAll('.reveal,.ring,.cmp-row').forEach((el,i)=>{ if(el.classList.contains('cmp-row')) el.style.transitionDelay=(i%6)*90+'ms'; io.observe(el); });
+document.querySelectorAll('.reveal,.ring').forEach(el=>io.observe(el));
+// "Co nas wyróżnia": wiersze pojawiają się po kolei, od pierwszego do ostatniego
+const cmpIo=new IntersectionObserver(es=>es.forEach(en=>{ if(!en.isIntersecting) return;
+  [...en.target.children].forEach((r,k)=>setTimeout(()=>r.classList.add('in'),k*220)); cmpIo.unobserve(en.target); }),{threshold:.2});
+cmpIo.observe($('#cmpRows'));
 
 /* ---------- Przyklejony pasek + do góry ---------- */
 const atc=$('#addToCart');
