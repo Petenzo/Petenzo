@@ -38,7 +38,7 @@ a{color:inherit}
 
 /* ===== Nagłówek ===== */
 header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #f1f1f1}
-.head{display:grid;grid-template-columns:44px 1fr 44px 44px;align-items:center;height:62px;max-width:1180px;margin:0 auto;padding:0 10px}
+.head{position:relative;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;height:62px;max-width:1180px;margin:0 auto;padding:0 10px}
 .logo{display:inline-flex;align-items:center;justify-content:center;gap:8px;justify-self:center;font-family:'Libre Caslon Text',serif;font-weight:700;font-size:30px;color:var(--blue);letter-spacing:.01em;text-decoration:none;line-height:1}
 .logo-mark{width:34px;height:40px;flex:none;margin-top:-6px}
 .icon-btn{width:44px;height:44px;display:grid;place-items:center}
@@ -231,6 +231,71 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .cx svg{width:14px;height:14px;stroke:#222;fill:none;stroke-width:2.6}
 
 
+
+/* ===== Hero wg szablonu ===== */
+.g-main{position:relative}
+.g-cap{position:absolute;left:30px;bottom:16px;background:#fff;border-radius:99px;padding:9px 16px;font-size:13px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 18px 0}
+.tile{display:flex;gap:10px;align-items:flex-start;border:1px solid #e3ebf6;background:#fafcff;border-radius:12px;padding:12px}
+.tile>span{font-size:20px}
+.tile b{display:block;font-size:13px}.tile small{font-size:11px;color:var(--muted);line-height:1.35;display:block;margin-top:2px}
+.hero-h1{font-size:30px;line-height:1.15;font-weight:800;margin-top:12px;text-wrap:balance}
+.hero-h1 em{font-style:normal;color:var(--blue)}
+.mini-trust{font-size:13px;color:#555;margin-top:10px}
+.price-row{display:flex;align-items:center;gap:12px;margin-top:16px}
+.price{font-size:32px;font-weight:800}
+.price-old{color:var(--muted);font-size:17px}
+.price-off{background:#e3f6ea;color:#16834a;font-weight:700;font-size:13px;padding:4px 10px;border-radius:99px}
+.ben{list-style:none;display:grid;gap:8px;margin-top:16px}
+.ben li{position:relative;padding-left:28px;font-size:14px;line-height:1.45}
+.ben li::before{content:"✓";position:absolute;left:0;top:0;width:19px;height:19px;border-radius:50%;background:var(--blue-pale);color:var(--blue);font-weight:800;font-size:12px;display:grid;place-items:center}
+.unit{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0}
+.unit-l{font-size:13px}.unit-l b{color:var(--blue)}
+.sw-row{display:flex;gap:8px}
+.sw{width:30px;height:30px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px #c8cfda;outline:2px solid transparent;outline-offset:2px;transition:.15s}
+.sw.on{outline-color:var(--blue)}
+.b-opts{padding:0 16px 14px 56px}
+.b-gifts{font-size:12px;font-weight:600;color:#9a7232;background:#fbf3e4;border-radius:8px;padding:8px 10px;margin-top:8px}
+.guarantee{display:flex;gap:12px;align-items:flex-start;background:var(--blue-pale);border-radius:12px;padding:14px;margin-top:4px}
+.guarantee>span{font-size:22px}.guarantee b{display:block;font-size:14px}.guarantee small{font-size:12px;color:#555}
+.cta-big{margin-top:14px;font-size:17px;padding:18px;text-transform:none;letter-spacing:.02em;border-radius:12px;box-shadow:0 10px 24px rgba(47,110,181,.3)}
+.cta-trust{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
+/* ===== Menu ===== */
+.main-nav{display:none}
+.main-nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 18px;box-shadow:0 10px 20px rgba(0,0,0,.06);z-index:41}
+.main-nav a{text-decoration:none;font-size:14px;font-weight:500;color:#333;padding:10px 0}
+header{position:sticky}
+/* ===== FAQ wg szablonu ===== */
+.faq2{margin-top:26px}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;font-weight:700;font-size:15px;cursor:pointer}
+.qa summary::-webkit-details-marker{display:none}
+.qa .plus{color:var(--blue);font-size:24px;font-weight:400;transition:transform .25s}
+.qa[open] .plus{transform:rotate(45deg)}
+.qa-a{padding:0 2px 20px;font-size:14px;line-height:1.7;color:#444}
+/* ===== Stopka wg szablonu ===== */
+.foot2{color:#333;text-align:left;background:#f4f8fd;border-top:1px solid #e3ebf6;padding:46px 0 24px;margin-top:60px;padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+.foot2-in{max-width:1080px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left,0px));display:grid;gap:30px}
+@media (min-width:760px){.foot2-in{grid-template-columns:1.4fr 1fr}}
+.foot2-brand{display:flex;align-items:center;gap:8px;font-family:'Libre Caslon Text',serif;font-weight:700;font-size:28px;color:var(--blue)}
+.foot2-brand .logo-mark{width:30px;height:36px;margin-top:-4px}
+.foot2-desc{font-size:14px;color:#666;margin:10px 0 16px;max-width:380px;line-height:1.6}
+.foot2-c{display:flex;align-items:center;gap:12px;font-size:14px;margin-bottom:10px}
+.foot2-c .ic{width:36px;height:36px;border:1px solid #bcd3ef;border-radius:10px;display:grid;place-items:center;font-size:15px;background:#fff}
+.foot2 h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#778;margin-bottom:12px}
+.foot2 a{display:block;text-decoration:none;color:#333;font-size:14px;margin-bottom:10px}
+.foot2 a:hover{color:var(--blue)}
+.foot2-bottom{max-width:1080px;margin:26px auto 0;padding:18px max(18px,env(safe-area-inset-left,0px)) 0;border-top:1px solid #e3ebf6;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:#778}
+@media (min-width:900px){
+  .head{grid-template-columns:auto 1fr 44px;gap:24px}
+  #menuBtn{display:none}
+  .head .logo{justify-self:start}
+  .main-nav{display:flex;justify-content:center;gap:26px}
+  .main-nav a{padding:0}
+  .main-nav a:hover{color:var(--blue)}
+  .tiles{margin:16px 0 0}
+  .hero-h1{font-size:40px}
+}
 /* ===== Sekcje landing ===== */
 .sec{padding:64px 0}
 .sec-tint{background:var(--blue-pale)}
@@ -432,7 +497,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 .reveal.in{opacity:1;transform:none}
 
 @media (min-width:900px){
-  .head{height:76px;grid-template-columns:44px 1fr 44px 44px}
+  .head{height:76px;grid-template-columns:auto 1fr 44px;gap:24px}
   .logo{font-size:36px}
   .product{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;max-width:1180px;margin:28px auto 0;padding:0 24px;align-items:start}
   .gallery{position:sticky;top:92px;margin-top:0}
@@ -490,9 +555,9 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <!-- ===================== NAGŁÓWEK ===================== -->
 <header>
   <div class="head">
-    <button class="icon-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <button class="icon-btn" aria-label="Menu" id="menuBtn"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <a href="#" class="logo"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrb" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlow" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlow)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrb)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></a>
-    <button class="icon-btn" aria-label="Szukaj"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+    <nav class="main-nav" id="mainNav"><a href="#" data-go="sec-uses">Zastosowania</a><a href="#" data-go="sec-how">Jak działa</a><a href="#" data-go="sec-set">Zestaw</a><a href="#" data-go="sec-cmp">Porównanie</a><a href="#" data-go="sec-rev">Opinie</a><a href="#" data-go="sec-faq">FAQ</a></nav>
     <div class="cart-wrap"><button class="icon-btn" aria-label="Koszyk" id="cartBtn"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button><span class="cart-count" id="cartCount">0</span></div>
   </div>
 </header>
@@ -501,113 +566,42 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <!-- ===================== GALERIA ===================== -->
 <div class="product">
 <section class="gallery">
-  <div class="g-track" id="gTrack"></div>
+  <div class="g-main"><div class="g-track" id="gTrack"></div><div class="g-cap">⭐ Każde wspomnienie świeci</div></div>
   <div class="g-nav">
     <button id="gPrev" aria-label="Poprzednie zdjęcie"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
     <span id="gCount">1/8</span>
     <button id="gNext" aria-label="Następne zdjęcie"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
   <div class="g-thumbs" id="gThumbs"></div>
-  <div class="g-extra">
-    <h3>W zestawie</h3>
-    <ul>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Kula z ekranem i wbudowanym głośnikiem</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Zawieszka na choinkę</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Kabel USB do wgrywania i ładowania</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Eleganckie pudełko prezentowe</li>
-    </ul>
-    <div class="g-badges"><span>🚚 Darmowa dostawa</span><span>↩️ 30 dni na zwrot</span><span>🔒 Bezpieczna płatność</span></div>
+  <div class="tiles">
+    <div class="tile"><span>🚚</span><div><b>Darmowa dostawa</b><small>Paczkomat lub kurier · 6–10 dni</small></div></div>
+    <div class="tile"><span>↩️</span><div><b>30 dni na zwrot</b><small>Bez podawania przyczyny</small></div></div>
+    <div class="tile"><span>🔒</span><div><b>Bezpieczne płatności</b><small>BLIK, karta, Apple Pay</small></div></div>
+    <div class="tile"><span>⭐</span><div><b>Obraz i dźwięk</b><small>Wbudowany głośnik</small></div></div>
   </div>
 </section>
 
 <section class="wrap info">
-  <div class="hero-badges"><span class="hb hb-gold">★ Hit Świąt 2026</span><span class="hb hb-red">Wczesna wyprzedaż Black Friday</span></div>
-  <h1 class="p-title"><span data-brand>Lumorka</span>™ Kula Wspomnień</h1>
-  <p class="p-lead">Zamień zdjęcia i filmy z telefonu w <b>świecącą ozdobę</b>, która gra Wasze wspomnienia</p>
-
+  <div class="hero-badges"><span class="hb hb-gold">⭐ Prezent dla bliskich · Hit Świąt 2026</span></div>
+  <h1 class="hero-h1">Zdjęcia i filmy zamknięte w telefonie? Zamień je w <em>świecącą pamiątkę</em></h1>
+  <p class="p-lead"><b><span data-brand>Lumorka</span>™ Kula Wspomnień</b> wyświetla Twoje zdjęcia i filmy z dźwiękiem. Powieś ją na choince albo postaw na półce i wracaj do najpiękniejszych chwil.</p>
+  <div class="mini-trust">🚚 Darmowa dostawa · ↩️ 30 dni na zwrot · ⭐ 2 kolory</div>
   <div class="rating-line"><span class="stars" data-stars="5" data-size="13"></span> <b id="ratingVal">4.8 / 5</b> | <span id="ratingCount">5 800+ zaufanych opinii</span></div>
-
-  <ul class="bullets">
-    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2f6eb5"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none"/></svg>Zamień wyjątkowe chwile w elegancką ozdobę</li>
-    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2f6eb5"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none"/></svg>Wgraj własne zdjęcia i filmy prosto z telefonu</li>
-    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2f6eb5"/><path d="M7.5 12.5l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none"/></svg>Słuchaj ukochanych chwil dzięki wbudowanemu głośnikowi</li>
+  <div class="price-row"><span class="price" id="heroPrice">249,00 zł</span><s class="price-old" id="heroOld"></s><span class="price-off" id="heroOff"></span></div>
+  <ul class="ben">
+    <li>Twoje zdjęcia i filmy ożywają w szklanej kuli</li>
+    <li>Wbudowany głośnik – słychać głosy bliskich</li>
+    <li>Wgrywanie z telefonu, bez aplikacji i konta</li>
+    <li>Zawieszka na choinkę i podstawka w zestawie</li>
+    <li>Gotowa na prezent – w eleganckim pudełku</li>
   </ul>
-
-  <div class="color-label">Kolor – <span id="colorName">Biały</span></div>
-  <div class="swatches">
-    <button class="swatch active" data-c="Biały" aria-label="Biały"><span></span></button>
-    <button class="swatch" data-c="Czarny" aria-label="Czarny"><span></span></button>
-  </div>
-
-  <div class="divider">Wczesna wyprzedaż Black Friday</div>
-
+  <div class="divider">Kup więcej, zapłać mniej</div>
   <div id="bundles"></div>
-
-  <button class="btn btn-primary" id="addToCart">Dodaj do koszyka</button>
-  <button class="btn btn-pay" id="applePay">Kup z <svg width="17" height="20" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1-2.8-4.1zM11.5 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</button>
-  <a href="#" class="more-pay">Więcej opcji płatności</a>
-
-  <div class="upsell">
-    <div class="gift-ico">🎁</div>
-    <div>
-      <h4>Dopełnij swój świąteczny prezent!</h4>
-      <p>Dodaj <span data-brand>Lumorka</span> Mini za jedyne <b>119,00 zł</b> przy zakupie Kuli Wspomnień.</p>
-      <small>Oszczędzasz dodatkowe 40 zł — oferta dostępna w koszyku!</small>
-    </div>
-  </div>
-
-  <div class="stock"><i class="dot-pulse"></i><div><b>Ograniczony zapas</b> <span>Ostatnia szansa, żeby go zdobyć, nie przegap!</span></div></div>
-
-  <div class="trust">
-    <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9C1.2 8.8 3 5 6.6 5c2 0 3.4 1.2 4.4 2.6C12 6.2 13.4 5 15.4 5 19 5 20.8 8.8 19.3 12 17 16.6 12 21 12 21z"/></svg>30-dniowa<br>gwarancja</div>
-    <div><svg viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>Łatwe<br>zwroty</div>
-    <div><svg viewBox="0 0 24 24"><path d="M1 5h13v11H1zM14 9h4l3 3v4h-7z"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg>Darmowa<br>wysyłka</div>
-  </div>
-
-  <details class="acc">
-    <summary><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"/></svg>Jak to działa<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-    <div class="acc-body"><ol>
-      <li>Wybierz ulubione zdjęcia i filmy w telefonie.</li>
-      <li>Wgraj je do kuli przez dołączony kabel – bez aplikacji i bez zakładania konta.</li>
-      <li>Naciśnij jeden przycisk, a wspomnienia ożyją w szklanej kuli razem z dźwiękiem.</li>
-      <li>Powieś ją na choince albo postaw na podstawce na biurku, półce lub szafce nocnej.</li>
-    </ol></div>
-  </details>
-  <details class="acc">
-    <summary><svg class="i" viewBox="0 0 24 24"><path d="M1 5h13v11H1zM14 9h4l3 3v4h-7z"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg>Wysyłka i zwroty<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-    <div class="acc-body">Darmowa wysyłka na terenie całej Polski. Zamówienia realizujemy w ciągu 1–2 dni roboczych, a dostawa trwa zwykle 6–10 dni roboczych. Każdą przesyłkę możesz śledzić – numer przesyłki wyślemy e-mailem. Masz 30 dni na zwrot bez podawania przyczyny.</div>
-  </details>
-  <details class="acc">
-    <summary><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Gwarancja zwrotu pieniędzy<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
-    <div class="acc-body">Jeśli w ciągu 30 dni od otrzymania paczki uznasz, że kula nie jest dla Ciebie, napisz do nas. Zwrócimy pełną kwotę za zamówienie – bez zbędnych pytań.</div>
-  </details>
-
-  <div class="mini-rev">
-    <div class="mini-track" id="miniTrack"></div>
-    <div class="dots" id="miniDots"></div>
-  </div>
+  <div class="guarantee"><span>🛡️</span><div><b>30 dni na zwrot</b><small>Jeśli kula Ci się nie spodoba, odeślij ją – oddamy pieniądze.</small></div></div>
+  <button class="btn btn-primary cta-big" id="addToCart">Dodaj do koszyka: <span id="ctaPrice">249,00 zł</span></button>
+  <div class="cta-trust">🚚 Darmowa dostawa · ↩️ 30 dni na zwrot · 🔒 BLIK, karta, Apple Pay</div>
 </section>
 </div>
-
-<!-- ===================== PROBLEM ===================== -->
-<section class="sec sec-tint">
-  <div class="wrap split">
-    <div class="reveal">
-      <div class="kicker">Znasz to?</div>
-      <h2 class="h2">Najpiękniejsze wspomnienia <em>giną w telefonie</em></h2>
-      <p class="sub">Robimy tysiące zdjęć i filmów, a potem nikt ich już nie ogląda.</p>
-      <ul class="xlist">
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M8 8l8 8M16 8l-8 8"/></svg>Tysiące zdjęć leżą zapomniane w galerii</li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M8 8l8 8M16 8l-8 8"/></svg>Filmy z ważnych chwil oglądasz raz i nigdy więcej</li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M8 8l8 8M16 8l-8 8"/></svg>Babcia i dziadek nie umieją przewijać zdjęć w telefonie</li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M8 8l8 8M16 8l-8 8"/></svg>Co roku szukasz prezentu, który naprawdę wzruszy</li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M8 8l8 8M16 8l-8 8"/></svg>Zwykłe bombki i ramki nic nie mówią o Waszej historii</li>
-      </ul>
-      <div class="callout">Rozwiązanie? <b>Wspomnienia, które świecą i grają</b> – na choince, biurku albo szafce nocnej.</div>
-    </div>
-    <div class="split-img reveal"><img src="zdjecia/foto3.jpg" alt="Kula Lumorka w dłoni" loading="lazy"></div>
-  </div>
-</section>
 
 <!-- ===================== ZOBACZ TO W AKCJI ===================== -->
 <section class="action">
@@ -621,7 +615,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== ZASTOSOWANIA ===================== -->
-<section class="sec">
+<section class="sec" id="sec-uses">
   <div class="wrap">
     <div class="kicker center">Na każdą okazję</div>
     <h2 class="h2 center">Prezent, który <em>wzruszy każdego</em></h2>
@@ -646,7 +640,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== ROZWIĄZANIE ===================== -->
-<section class="sec">
+<section class="sec" id="sec-how">
   <div class="wrap split rev">
     <div class="split-img reveal"><img src="zdjecia/foto1.jpg" alt="Wspomnienia w kuli Lumorka" loading="lazy"></div>
     <div class="reveal">
@@ -680,7 +674,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== CO DOSTAJESZ ===================== -->
-<section class="sec">
+<section class="sec" id="sec-set">
   <div class="wrap narrow">
     <div class="kicker center">Zestaw</div>
     <h2 class="h2 center">Co dokładnie <em>dostajesz</em></h2>
@@ -697,7 +691,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== PRZEWIJANE OPINIE ===================== -->
-<section class="wave-sec">
+<section class="wave-sec" id="sec-rev">
   <div class="wave top" data-wave></div>
   <div class="t-sec">
     <div class="t-marquee"><div class="t-track" id="tTrack"></div></div>
@@ -706,7 +700,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== PORÓWNANIE ===================== -->
-<section class="sec">
+<section class="sec" id="sec-cmp">
   <div class="wrap narrow">
     <div class="kicker center">Porównanie</div>
     <h2 class="h2 center">Dlaczego <span data-brand>Lumorka</span>, <em>a nie zwykła ozdoba?</em></h2>
@@ -737,9 +731,13 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section class="wrap faq">
-  <h2 class="section-title reveal" style="font-size:28px;margin-bottom:12px">Najczęstsze pytania</h2>
-  <div id="faq"></div>
+<section class="sec" id="sec-faq">
+  <div class="wrap narrow">
+    <div class="kicker center">FAQ</div>
+    <h2 class="h2 center">Najczęściej zadawane <em>pytania</em></h2>
+    <p class="sub center">Nie ma tu Twojego pytania? Napisz:<br><b>wojciechmotyka604@gmail.com</b></p>
+    <div id="faq" class="faq2"></div>
+  </div>
 </section>
 
 </main>
@@ -851,16 +849,20 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 
 
 <!-- ===================== STOPKA ===================== -->
-<footer>
-  <div class="wave top" data-wave></div>
-  <span class="logo"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbF" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlowF" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowF)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbF)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></span>
-  <div class="foot-grid">
-    <div><h4>Kontakt</h4><p>📧 wojciechmotyka604@gmail.com<br>🕑 Pn–Pt, odpowiadamy w ciągu 24 h</p></div>
-    <div><h4>Informacje</h4>
+<footer class="foot2">
+  <div class="foot2-in">
+    <div>
+      <div class="foot2-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbFt" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlowFt" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowFt)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbFt)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
+      <p class="foot2-desc">Kule wspomnień, w których Twoje zdjęcia i filmy świecą i grają. Prezent, który wzrusza.</p>
+      <div class="foot2-c"><span class="ic">✉️</span>wojciechmotyka604@gmail.com</div>
+      <div class="foot2-c"><span class="ic">🕑</span>Pn–Pt · odpowiadamy w ciągu 24 h</div>
+    </div>
+    <div>
+      <h4>Informacje</h4>
       <a href="#regulamin">Regulamin</a><a href="#polityka-prywatnosci">Polityka prywatności</a><a href="#polityka-wysylki">Polityka wysyłki</a><a href="#zwroty">Zwroty i reklamacje</a><a href="#kontakt">Kontakt</a>
     </div>
   </div>
-  <small>© <span id="year"></span> <span data-brand>Lumorka</span>. Wszelkie prawa zastrzeżone.</small>
+  <div class="foot2-bottom"><span><span data-brand>Lumorka</span> © <span id="year"></span></span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
 </footer>
 
 <!-- ===================== PRZYKLEJONY PASEK ===================== -->
@@ -950,7 +952,10 @@ const CONFIG = {
     { q: "Ile pamięci ma kula?", a: "Kula mieści dziesiątki zdjęć i kilka minut nagrań wideo – wystarczy na najważniejsze chwile całego roku." },
     { q: "Czy potrzebuję aplikacji?", a: "Nie. Pliki wgrywasz przez dołączony kabel, a odtwarzanie włączasz jednym przyciskiem." },
     { q: "Jak długo działa na baterii?", a: "Kula ma wbudowany akumulator ładowany przez USB. Możesz też korzystać z niej podłączonej do zasilania na podstawce." },
-    { q: "Czy mogę zmienić zdjęcia później?", a: "Tak, w każdej chwili możesz usunąć stare pliki i wgrać nowe." }
+    { q: "Czy mogę zmienić zdjęcia później?", a: "Tak, w każdej chwili możesz usunąć stare pliki i wgrać nowe." },
+    { q: "Czy kula nadaje się na prezent?", a: "Tak. Przychodzi w eleganckim pudełku, gotowa do wręczenia – idealna dla mamy, babci, partnera czy przyjaciółki." },
+    { q: "Jak wygląda dostawa?", a: "Wysyłamy za darmo do Paczkomatu InPost albo kurierem. Paczka dociera zwykle w 6–10 dni roboczych, a numer śledzenia dostaniesz e-mailem." },
+    { q: "Jak zwrócić produkt?", a: "Masz 30 dni na zwrot bez podawania przyczyny. Napisz na wojciechmotyka604@gmail.com z numerem zamówienia, a podamy adres do odesłania." }
   ],
 
 };
@@ -1040,37 +1045,30 @@ $('#gThumbs').innerHTML = CONFIG.zdjecia.map((src,k)=>`<button class="${k?'':'on
 $('#gPrev').onclick=()=>gGo(gIdx-1); $('#gNext').onclick=()=>gGo(gIdx+1);
 $('#sbThumb').innerHTML = CONFIG.zdjecia[0] ? `<img src="${CONFIG.zdjecia[0]}" alt="">` : sceneSvg(99,{R:110});
 
-/* ---------- Kolor ---------- */
-let color = 'Biały';
-document.querySelectorAll('.swatch').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active'); color=b.dataset.c; $('#colorName').textContent=color;
-  document.querySelectorAll('.b-opts select').forEach(s=>s.value=color);
+/* ---------- Pakiety (z wyborem koloru dla każdej sztuki) ---------- */
+let color='Biały', chosen=1;
+const unitColors=CONFIG.pakiety.map((_,i)=>Array(i+1).fill('Biały'));
+const COLORS=[['Biały','#ffffff'],['Czarny','#1b1b1f']];
+function renderBundles(){
+  $('#bundles').innerHTML = CONFIG.pakiety.map((p,i)=>{
+    const save = p.stara ? `Oszczędzasz ${zl(p.stara-p.cena)} · darmowa dostawa` : 'Darmowa dostawa';
+    return `<div class="bundle${i===chosen?' active':''}" data-i="${i}">
+      ${p.badge?`<span class="badge">${p.badge}</span>`:''}
+      <div class="b-main"><span class="radio"></span>
+        <div><div class="b-name">Kup ${i+1} ${i?'kule':'kulę'}</div><div class="b-sub">${save}</div></div>
+        <div class="b-price">${zl(p.cena)}${p.stara?`<s class="b-old">${zl(p.stara)}</s>`:''}</div></div>
+      <div class="b-opts">${unitColors[i].map((c,k)=>`<div class="unit"><span class="unit-l">Sztuka ${k+1}: <b>${c}</b></span><span class="sw-row">${COLORS.map(([n,h])=>`<button class="sw${n===c?' on':''}" data-u="${i}-${k}" data-c="${n}" style="--c:${h}" aria-label="${n}"></button>`).join('')}</span></div>`).join('')}
+        ${p.prezenty.length?`<div class="b-gifts">🎁 Gratis: podstawka, zawieszka i ściereczka</div>`:''}</div>
+    </div>`;}).join('');
+  const p=CONFIG.pakiety[chosen];
+  $('#heroPrice').textContent=zl(p.cena); $('#heroOld').textContent=p.stara?zl(p.stara):''; $('#heroOff').textContent=p.stara?`−${Math.round((1-p.cena/p.stara)*100)}%`:''; $('#heroOff').style.display=p.stara?'':'none';
+  $('#ctaPrice').textContent=zl(p.cena); $('#sbPrice').textContent=zl(p.cena);
+}
+$('#bundles').addEventListener('click',e=>{
+  const sw=e.target.closest('.sw'); if(sw){ const [i,k]=sw.dataset.u.split('-').map(Number); unitColors[i][k]=sw.dataset.c; chosen=i; renderBundles(); return; }
+  const b=e.target.closest('.bundle'); if(b){ chosen=+b.dataset.i; renderBundles(); }
 });
-
-/* ---------- Pakiety ---------- */
-const giftIcons = [
-  `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="9" ry="4" fill="#111"/><ellipse cx="12" cy="11" rx="9" ry="4" fill="#2a2a2a"/></svg>`,
-  `<svg viewBox="0 0 24 24" fill="none" stroke="#b07a5a" stroke-width="1.6"><path d="M10 2v12M14 2v12"/><rect x="9" y="14" width="6" height="5" rx="1" fill="#222" stroke="#222"/></svg>`,
-  `<svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.4"><rect x="3" y="7" width="18" height="10" rx="1" fill="#f3f3f3"/><path d="M3 10h18"/></svg>`
-];
-let chosen = 0;
-$('#bundles').innerHTML = CONFIG.pakiety.map((p,i)=>{
-  const save = p.stara ? `Oszczędzasz ${zl(p.stara-p.cena)} od razu` : '';
-  return `<div class="bundle${i===0?' active':''}" data-i="${i}">
-    ${p.badge?`<span class="badge">${p.badge}</span>`:''}
-    <div class="b-main"><span class="radio"></span>
-      <div><div class="b-name">${p.nazwa.replace('Lumorka',CONFIG.marka)}</div><div class="b-sub">${p.opis||save}</div></div>
-      <div class="b-price">${zl(p.cena)}${p.stara?`<s class="b-old">${zl(p.stara)}</s>`:''}</div></div>
-    <div class="b-opts">${Array.from({length:i+1},(_,k)=>`<label>${i?`Kula ${k+1} – kolor`:'Kolor'}</label><div class="sel-row" style="margin-bottom:8px"><div class="thumb">${giftIcons[0].replace('#111','#fff').replace('#2a2a2a','#dfe7f3')}</div><select><option>Biały</option><option>Czarny</option></select></div>`).join('')}</div>
-    ${p.prezenty.length?`<div class="gifts">${p.prezenty.map((g,k)=>`<div class="gift"><span class="gi">${giftIcons[k%3]}</span>${g.replace('Lumorka',CONFIG.marka)}</div>`).join('')}</div>`:''}
-  </div>`;}).join('');
-document.querySelectorAll('.bundle').forEach(b=>b.addEventListener('click',e=>{
-  if(e.target.tagName==='SELECT'||e.target.tagName==='OPTION') return;
-  document.querySelectorAll('.bundle').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active'); chosen=+b.dataset.i;
-  $('#sbPrice').textContent = zl(CONFIG.pakiety[chosen].cena);
-}));
+renderBundles();
 
 /* ---------- Koszyk (demo) ---------- */
 let cart = 0;
@@ -1100,24 +1098,14 @@ function closeShip(){ $('#shipModal').classList.remove('open'); if(!$('#drawer')
 $('#cartBtn').onclick=openCart; $('#drClose').onclick=closeCart; $('#overlay').onclick=()=>{closeCart();closeShip();}; $('#shipClose').onclick=closeShip;
 document.querySelectorAll('.ship-opt').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.ship-opt').forEach(x=>x.classList.remove('on')); b.classList.add('on'); shipMethod=b.dataset.ship; closeShip(); closeCart(); location.hash='koszyk'; renderCart(); });
 function addToCart(){
-  const sel=document.querySelector('.bundle.active select'); const col=sel?sel.value:color;
+  const col=unitColors[chosen].join(', ');
   const ex=cartItems.find(i=>i.p===chosen&&i.color===col); if(ex) ex.qty++; else cartItems.push({p:chosen,color:col,qty:1});
   openCart();
 }
 $('#addToCart').onclick=addToCart;
-$('#applePay').onclick=()=>toast('Tu podepniesz płatność w swoim sklepie (np. Shopify).');
 $('#sbBtn').onclick=()=>{ $('#bundles').scrollIntoView({behavior:'smooth',block:'center'}); };
 
-/* ---------- Mini opinie ---------- */
-const mt=$('#miniTrack'), md=$('#miniDots');
 const initials = n => `<svg viewBox="0 0 40 40" width="100%" height="100%"><circle cx="20" cy="15" r="7.5" fill="rgba(255,255,255,.92)"/><path d="M6 38c1.5-8.5 7.2-13 14-13s12.5 4.5 14 13z" fill="rgba(255,255,255,.92)"/></svg>`;
-mt.innerHTML = CONFIG.krotkieOpinie.map(o=>`<div class="mini-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who">${o.imie} <span class="stars" data-stars="5" data-size="13"></span></div></div></div>`).join('');
-md.innerHTML = CONFIG.krotkieOpinie.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
-mt.querySelectorAll('[data-stars]').forEach(renderStars);
-let mi=0; const mGo=i=>{mi=i%CONFIG.krotkieOpinie.length; mt.style.transform=`translateX(-${mi*100}%)`; [...md.children].forEach((d,k)=>d.classList.toggle('on',k===mi));};
-[...md.children].forEach((d,k)=>d.onclick=()=>mGo(k));
-if(CONFIG.krotkieOpinie.length>1) setInterval(()=>mGo(mi+1),4500); else md.style.display='none';
-
 /* ---------- Filmy: Zobacz to w akcji ---------- */
 const vTrack=$('#vTrack'), vDots=$('#vDots');
 const vScenes=[{bg:['#2b2a2e','#4a4650'],strap:false,R:80},{bg:['#14100c','#2a1f16'],R:70},{bg:['#1d1a14','#3d3426'],strap:false,R:80},{bg:['#2a2520','#4a4035'],R:80},{bg:['#0d0b18','#251b3a'],colorful:true,R:70}];
@@ -1210,7 +1198,7 @@ $('#tTrack').querySelectorAll('[data-stars]').forEach(renderStars);
 /* ---------- Porównanie ---------- */
 
 /* ---------- FAQ ---------- */
-$('#faq').innerHTML = CONFIG.faq.map(f=>`<details class="acc"><summary><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"/></svg>${f.q}<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><div class="acc-body">${f.a}</div></details>`).join('');
+$('#faq').innerHTML = CONFIG.faq.map(f=>`<details class="qa"><summary>${f.q}<span class="plus">+</span></summary><div class="qa-a">${f.a}</div></details>`).join('');
 
 /* ---------- Animacje przy przewijaniu ---------- */
 const io = new IntersectionObserver(es=>es.forEach(en=>{
@@ -1238,6 +1226,9 @@ window.addEventListener('scroll',()=>{
   $('#toTop').classList.toggle('show', window.scrollY > 900);
 },{passive:true});
 $('#toTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+/* ---------- Menu ---------- */
+document.querySelectorAll('[data-go]').forEach(a=>a.onclick=e=>{ e.preventDefault(); $('#mainNav').classList.remove('open'); if(location.hash){ location.hash=''; } setTimeout(()=>document.getElementById(a.dataset.go).scrollIntoView({behavior:'smooth'}),50); });
+$('#menuBtn').onclick=()=>$('#mainNav').classList.toggle('open');
 /* ---------- Zakładki "Co dostajesz" ---------- */
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t)); document.querySelectorAll('.tab-pane').forEach(p=>p.hidden=p.dataset.pane!==t.dataset.tab); });
 /* ---------- Licznik promocji ---------- */
