@@ -152,11 +152,10 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .v-card video{width:100%;height:100%;object-fit:cover}
 .v-ph{position:absolute;inset:0}
 .v-ph svg{width:100%;height:100%}
-.v-caption{position:absolute;left:8%;right:8%;top:16%;text-align:center;color:#fff;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:19px;line-height:1.25;text-shadow:0 0 2px #000,0 0 3px #000,0 1px 2px rgba(0,0,0,.9);pointer-events:none;z-index:2}
+.v-caption{position:absolute;left:8%;right:8%;top:16%;text-align:center;color:#fff;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:20px;line-height:1.25;letter-spacing:-.01em;text-shadow:0 0 2px #000,0 0 3px #000,0 0 4px #000,0 1px 3px rgba(0,0,0,.9);pointer-events:none;z-index:2}
 .v-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(81,111,153,.92);display:grid;place-items:center;z-index:3;transition:opacity .25s,transform .2s}
 .v-play svg{width:30px;height:30px;fill:#fff;margin-left:5px}
 .v-card.playing .v-play{opacity:0;pointer-events:none}
-.v-hint{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:rgba(255,255,255,.55);font-size:11px;z-index:2}
 .v-arrow{position:absolute;top:58%;z-index:5;width:44px;height:44px;border-radius:50%;background:rgba(60,60,60,.75);display:grid;place-items:center}
 .v-arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4}
 .v-arrow.prev{left:10px}.v-arrow.next{right:10px}
@@ -488,15 +487,18 @@ const CONFIG = {
       prezenty: ["+ GRATIS podstawka Memora", "+ GRATIS zawieszka Memora", "+ GRATIS ściereczka Memora"] }
   ],
 
-  // Filmy do sekcji "Zobacz to w akcji". Wrzuć nagrania (pionowe 9:16, najlepiej BEZ napisów)
-  // do folderu "filmy" pod tymi nazwami. Polskie napisy nakładają się same z pola "napis".
-  // Jeśli w filmie są już napisy, ustaw napis: "".
+  // Filmy do sekcji "Zobacz to w akcji" (folder "filmy", pionowe 9:16).
+  // "gora" = wysokość napisu od góry filmu w %, "napisy" = polskie napisy od danej sekundy.
   filmy: [
-    { plik: "filmy/film1.mp4", napis: "12 miesięcy ❤️" },
-    { plik: "filmy/film2.mp4", napis: "Teraz możesz powiesić wszystkie swoje najpiękniejsze wspomnienia na choince 🥹🫶" },
-    { plik: "filmy/film3.mp4", napis: "To kula wspomnień, zupełnie jak z filmu… 😭" },
-    { plik: "filmy/film4.mp4", napis: "🥹❤️" },
-    { plik: "filmy/film5.mp4", napis: "Świąteczne mamy, musicie to zobaczyć… 🥹🎄" }
+    { plik: "filmy/film1.mp4", gora: 21, napisy: [{ od: 0, tekst: "12 miesięcy ❤️" }] },
+    { plik: "filmy/film2.mp4", gora: 18, napisy: [
+        { od: 0,   tekst: "Nie pokazuj świątecznej mamie tych kul wspomnień 🥹🎄" },
+        { od: 0.9, tekst: "Teraz możesz powiesić wszystkie swoje najpiękniejsze wspomnienia na choince 🥹🫶" } ] },
+    { plik: "filmy/film3.mp4", gora: 14, napisy: [
+        { od: 0,    tekst: "Moja ulubiona scena z mamą z „W głowie się nie mieści”… 🥹" },
+        { od: 1.35, tekst: "To kula wspomnień, zupełnie jak z filmu… 😭" } ] },
+    { plik: "filmy/film4.mp4", gora: 20, napisy: [] },
+    { plik: "filmy/film5.mp4", gora: 24, napisy: [{ od: 0, tekst: "Świąteczne mamy, musicie to zobaczyć… 🥹🎄" }] }
   ],
 
   // Krótkie opinie pod akordeonem (przewijane kropkami)
@@ -676,31 +678,37 @@ const vScenes=[{bg:['#2b2a2e','#4a4650'],strap:false,R:80},{bg:['#14100c','#2a1f
 vTrack.innerHTML = CONFIG.filmy.map((f,i)=>`
   <div class="v-card" data-i="${i}">
     <div class="v-ph">${sceneSvg(50+i,{...vScenes[i%vScenes.length],tall:true,cy:420})}</div>
-    <video src="${f.plik}" playsinline muted loop preload="metadata"></video>
-    ${f.napis?`<div class="v-caption">${f.napis}</div>`:''}
+    <video src="${f.plik}" playsinline muted loop preload="auto"></video>
+    <div class="v-caption" style="top:${f.gora||18}%"></div>
     <button class="v-play" aria-label="Odtwórz"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></button>
-    <div class="v-hint">podgląd – wgraj ${f.plik}</div>
   </div>`).join('');
 vDots.innerHTML = CONFIG.filmy.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
 const cards=[...vTrack.children];
-cards.forEach(card=>{
-  const v=card.querySelector('video'), ph=card.querySelector('.v-ph'), hint=card.querySelector('.v-hint');
+function capAt(f,t){ let txt=''; (f.napisy||[]).forEach(n=>{ if(t>=n.od) txt=n.tekst; }); return txt; }
+function playCard(card){
+  cards.forEach(c=>{ if(c!==card){ c.classList.remove('playing'); c.querySelector('video').pause(); }});
+  const v=card.querySelector('video'); card.classList.add('playing'); v.play().catch(()=>{});
+}
+cards.forEach((card,i)=>{
+  const f=CONFIG.filmy[i], v=card.querySelector('video'), ph=card.querySelector('.v-ph'), cap=card.querySelector('.v-caption');
+  cap.textContent=capAt(f,0); cap.style.display=cap.textContent?'block':'none';
   v.style.display='none';
-  v.addEventListener('loadeddata',()=>{ v.style.display='block'; ph.style.display='none'; hint.style.display='none'; });
+  v.addEventListener('loadeddata',()=>{ v.style.display='block'; ph.style.display='none'; });
   v.addEventListener('error',()=>{ v.removeAttribute('src'); });
-  card.querySelector('.v-play').onclick=()=>{
-    cards.forEach(c=>{ if(c!==card){ c.classList.remove('playing'); c.querySelector('video').pause(); }});
-    card.classList.add('playing'); v.muted=false;
-    if(v.readyState>0) v.play().catch(()=>{});
-  };
-  v.onclick=()=>{ if(v.paused){v.play();card.classList.add('playing');} else {v.pause();card.classList.remove('playing');} };
+  const upd=()=>{ const t=capAt(f,v.currentTime); if(cap.textContent!==t){cap.textContent=t;} cap.style.display=t?'block':'none'; if(!v.paused) requestAnimationFrame(upd); };
+  v.addEventListener('play',()=>requestAnimationFrame(upd)); v.addEventListener('seeked',upd);
+  card.querySelector('.v-play').onclick=()=>playCard(card);
+  v.onclick=()=>{ if(v.paused) playCard(card); else {v.pause();card.classList.remove('playing');} };
 });
+// autoodtwarzanie filmu na środku, gdy sekcja jest widoczna
+let actionVisible=false;
+new IntersectionObserver(es=>{ actionVisible=es[0].isIntersecting; const c=cards[vIdx]; if(actionVisible) playCard(c); else c.querySelector('video').pause(); },{threshold:.4}).observe(vTrack);
 let vIdx=0;
 function vCenter(i){ vIdx=Math.max(0,Math.min(cards.length-1,i)); const c=cards[vIdx]; vTrack.scrollTo({left:c.offsetLeft-(vTrack.clientWidth-c.offsetWidth)/2,behavior:'smooth'}); }
 vTrack.addEventListener('scroll',()=>{
   const mid=vTrack.scrollLeft+vTrack.clientWidth/2; let best=0,bd=1e9;
   cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid); if(d<bd){bd=d;best=i;}});
-  if(best!==vIdx){ cards[vIdx].querySelector('video').pause(); cards[vIdx].classList.remove('playing'); }
+  if(best!==vIdx){ cards[vIdx].querySelector('video').pause(); cards[vIdx].classList.remove('playing'); vIdx=best; if(actionVisible) playCard(cards[vIdx]); }
   vIdx=best; [...vDots.children].forEach((d,k)=>d.classList.toggle('on',k===vIdx));
 },{passive:true});
 $('#vPrev').onclick=()=>vCenter(vIdx-1); $('#vNext').onclick=()=>vCenter(vIdx+1);
