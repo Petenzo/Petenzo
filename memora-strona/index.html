@@ -262,6 +262,81 @@ footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;marg
 footer nav a{text-decoration:none;opacity:.9}
 footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
 
+
+/* ===== Koszyk (szuflada) ===== */
+.overlay{position:fixed;inset:0;background:rgba(15,25,45,.45);z-index:90;opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:#fff;z-index:91;transform:translateX(105%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+.drawer.open{transform:none}
+.dr-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);font-weight:700;font-size:18px}
+.dr-close{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:22px}
+.dr-close:hover{background:#f2f4f8}
+.ship-bar{padding:14px 20px;background:var(--blue-pale);font-size:13px;font-weight:600;color:var(--blue-dark)}
+.ship-bar .track{height:6px;border-radius:99px;background:#d7e3f3;margin-top:8px;overflow:hidden}
+.ship-bar .track i{display:block;height:100%;width:100%;background:var(--blue)}
+.dr-items{flex:1;overflow-y:auto;padding:8px 20px}
+.ci{display:grid;grid-template-columns:70px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.ci img{width:70px;height:70px;border-radius:10px;object-fit:cover}
+.ci-name{font-weight:600;font-size:14px;line-height:1.3}
+.ci-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.ci-price{font-weight:700;font-size:14px;text-align:right}
+.ci-price s{display:block;color:var(--red);font-weight:500;font-size:12px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;margin-top:10px}
+.qty button{width:32px;height:32px;font-size:18px}
+.qty span{min-width:26px;text-align:center;font-weight:600;font-size:14px}
+.ci-del{font-size:12px;color:var(--muted);text-decoration:underline;margin-left:12px}
+.dr-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.dr-empty .btn{margin-top:18px;max-width:260px;margin-inline:auto}
+.dr-foot{border-top:1px solid var(--line);padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px))}
+.sum-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px}
+.sum-row.save{color:#16834a;font-weight:600}
+.sum-row.total{font-size:18px;font-weight:800;margin-top:6px}
+.pay-icons{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+.pay-icons span{border:1px solid var(--line);border-radius:5px;padding:3px 8px;font-size:11px;font-weight:700;color:#444}
+/* ===== Wybór dostawy ===== */
+.modal{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-box{background:#fff;border-radius:16px;width:min(420px,100%);padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.25);transform:translateY(12px);transition:transform .25s}
+.modal.open .modal-box{transform:none}
+.modal-box h3{font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.ship-opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px;transition:.2s}
+.ship-opt:hover,.ship-opt.on{border-color:var(--blue);background:var(--blue-pale)}
+.ship-opt .ico{font-size:24px}
+.ship-opt b{display:block;font-size:14px}
+.ship-opt small{color:var(--muted);font-size:12px}
+.ship-opt .free{margin-left:auto;color:#16834a;font-weight:700;font-size:13px}
+.modal-note{font-size:11px;color:var(--muted);text-align:center;margin-top:6px}
+/* ===== Podstrony ===== */
+.view[hidden]{display:none!important}
+.page{max-width:820px;margin:0 auto;padding:40px max(18px,env(safe-area-inset-left,0px)) 20px}
+.page h1{font-size:34px;text-align:center;margin-bottom:28px}
+.page h2{font-size:17px;margin:24px 0 8px}
+.page p,.page li{font-size:14px;line-height:1.7;color:#333}
+.page ul,.page ol{padding-left:20px}
+.back{display:inline-flex;gap:6px;font-size:13px;color:var(--blue);font-weight:600;text-decoration:none;margin-bottom:10px}
+.contact-form{max-width:640px;margin:46px auto 0;display:grid;gap:12px}
+.contact-form h2{font-size:26px;text-align:center;margin-bottom:8px}
+.contact-form h2 em{font-style:normal;color:var(--blue)}
+.contact-form input,.contact-form textarea{font:inherit;font-size:14px;padding:13px 14px;border:1px solid #d6dbe3;border-radius:10px;width:100%;background:#fff}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--blue);border-color:transparent}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.contact-form .row2{grid-template-columns:1fr}}
+.cart-page{max-width:1080px;margin:0 auto;padding:36px max(18px,env(safe-area-inset-left,0px)) 20px;display:grid;gap:28px}
+@media (min-width:900px){.cart-page{grid-template-columns:1fr 380px;align-items:start}}
+.cart-page h1{font-size:30px;display:flex;align-items:baseline;gap:12px}
+.cart-page h1 small{font-size:13px;color:#16834a;font-weight:600}
+.summary{border:1px solid var(--line);border-radius:14px;padding:20px;position:sticky;top:96px}
+.summary h3{font-size:16px;margin-bottom:14px}
+.secure{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+/* ===== Stopka ===== */
+.foot-grid{display:grid;gap:28px;max-width:1080px;margin:26px auto 0;padding:0 max(18px,env(safe-area-inset-left,0px));text-align:left}
+@media (min-width:700px){.foot-grid{grid-template-columns:1.3fr 1fr}}
+.foot-grid h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:12px}
+.foot-grid a{display:block;color:#fff;text-decoration:none;font-size:14px;margin-bottom:8px;opacity:.92}
+.foot-grid a:hover{opacity:1;text-decoration:underline}
+.foot-grid p{font-size:14px;line-height:1.7;opacity:.92}
+
 /* ===== Przyklejony pasek zakupu ===== */
 .sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.06);transform:translateY(110%);transition:transform .35s ease;padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
 .sticky-buy.show{transform:none}
@@ -273,6 +348,7 @@ footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
 .sb-btn{background:var(--blue);color:#fff;font-weight:600;font-size:14px;letter-spacing:.04em;padding:14px 16px;border-radius:7px;white-space:nowrap}
 .to-top{position:fixed;right:16px;bottom:96px;z-index:49;width:52px;height:52px;border-radius:50%;background:var(--blue);box-shadow:0 4px 14px rgba(0,0,0,.2);display:grid;place-items:center;opacity:0;pointer-events:none;transition:.3s}
 .to-top.show{opacity:1;pointer-events:auto}
+body.subpage .sticky-buy,body.subpage .to-top{display:none}
 .to-top svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2.6}
 
 /* ===== Koszyk (szuflada) ===== */
@@ -348,7 +424,7 @@ footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
   </div>
 </header>
 
-<main>
+<main class="view" id="view-home">
 <!-- ===================== GALERIA ===================== -->
 <div class="product">
 <section class="gallery">
@@ -500,13 +576,122 @@ footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
 
 </main>
 
+<!-- ===================== KOSZYK (STRONA) ===================== -->
+<section class="view" id="view-koszyk" hidden>
+  <div class="cart-page">
+    <div>
+      <a href="#" class="back">← Kontynuuj zakupy</a>
+      <h1>Twój koszyk <small id="cpFree">✓ Darmowa dostawa</small></h1>
+      <div id="cpItems"></div>
+    </div>
+    <aside class="summary">
+      <h3>Podsumowanie</h3>
+      <div id="cpSum"></div>
+      <div class="sum-row" style="margin-top:10px;font-size:13px"><span>Dostawa: <b id="cpShipName">InPost Paczkomat</b></span><button style="color:var(--blue);font-weight:600;font-size:13px" id="cpShipChange">Zmień</button></div>
+      <button class="btn btn-primary" id="cpOrder" style="margin-top:14px">Złóż zamówienie</button>
+      <div class="secure">🔒 Bezpieczne płatności · 30 dni na zwrot</div>
+      <div class="pay-icons"><span>BLIK</span><span>VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span><span>Przelewy24</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===================== REGULAMIN ===================== -->
+<section class="view" id="view-regulamin" hidden><div class="page">
+  <h1>Regulamin</h1>
+  <h2>1. Informacje ogólne</h2>
+  <p>Sklep internetowy <b data-brand>Lumorka</b> prowadzi Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: wojciechmotyka604@gmail.com (dalej: Sprzedawca). Regulamin określa zasady składania zamówień, dostawy, płatności, odstąpienia od umowy i reklamacji. Do korzystania ze sklepu potrzebne jest urządzenie z dostępem do internetu, aktualna przeglądarka i aktywny adres e-mail.</p>
+  <h2>2. Składanie zamówień</h2>
+  <p>Klient wybiera produkt, dodaje go do koszyka i wypełnia formularz zamówienia. Umowa sprzedaży zostaje zawarta z chwilą otrzymania przez Klienta e-maila z potwierdzeniem przyjęcia zamówienia. Ceny podane w sklepie są cenami końcowymi w złotych polskich.</p>
+  <h2>3. Płatności</h2>
+  <p>Dostępne metody płatności (m.in. BLIK, karta, Apple Pay, Google Pay, szybki przelew) są widoczne podczas składania zamówienia. Zamówienie realizujemy po zaksięgowaniu płatności.</p>
+  <h2>4. Dostawa</h2>
+  <p>Dostarczamy na terenie Polski. Dostawa jest bezpłatna (Paczkomat InPost lub kurier). Zamówienie przygotowujemy w 3–5 dni roboczych, a transport trwa 3–5 dni roboczych, łącznie zwykle 6–10 dni roboczych. Szczegóły w <a href="#polityka-wysylki">Polityce wysyłki</a>.</p>
+  <h2>5. Zwroty</h2>
+  <p>Konsument może odstąpić od umowy bez podania przyczyny w terminie 30 dni od otrzymania produktu (ustawowy termin to 14 dni, Sprzedawca wydłuża go do 30 dni). Wystarczy wysłać oświadczenie na adres wojciechmotyka604@gmail.com. Sprzedawca zwraca płatność w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności. Koszt odesłania produktu ponosi Klient.</p>
+  <h2>6. Reklamacje</h2>
+  <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach ustawy o prawach konsumenta. Reklamację można złożyć e-mailem na adres wojciechmotyka604@gmail.com, najlepiej z opisem problemu i zdjęciem. Odpowiadamy w ciągu 14 dni.</p>
+  <h2>7. Spory</h2>
+  <p>Konsument może skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów oraz z pozasądowych sposobów rozpatrywania sporów.</p>
+  <h2>8. Postanowienia końcowe</h2>
+  <p>W sprawach nieuregulowanych regulaminem stosuje się przepisy prawa polskiego, w szczególności Kodeksu cywilnego i ustawy o prawach konsumenta. Zasady przetwarzania danych opisuje <a href="#polityka-prywatnosci">Polityka prywatności</a>.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== POLITYKA PRYWATNOŚCI ===================== -->
+<section class="view" id="view-polityka-prywatnosci" hidden><div class="page">
+  <h1>Polityka prywatności</h1>
+  <h2>1. Administrator danych</h2>
+  <p>Administratorem danych osobowych jest Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: wojciechmotyka604@gmail.com.</p>
+  <h2>2. Jakie dane zbieramy?</h2>
+  <ul><li>imię i nazwisko,</li><li>adres e-mail,</li><li>adres dostawy,</li><li>numer telefonu (jeśli go podasz),</li><li>dane potrzebne do płatności i realizacji zamówienia.</li></ul>
+  <h2>3. Po co je zbieramy?</h2>
+  <ul><li>realizacja zamówień i dostaw,</li><li>kontakt z Klientem i obsługa zapytań,</li><li>obsługa zwrotów i reklamacji,</li><li>wypełnienie obowiązków prawnych, np. księgowych.</li></ul>
+  <h2>4. Komu je przekazujemy?</h2>
+  <p>Tylko firmom, które pomagają nam zrealizować zamówienie: operatorowi sklepu i płatności (np. Shopify, operator płatności), firmom kurierskim (np. InPost) oraz biuru rachunkowemu.</p>
+  <h2>5. Jak długo je przechowujemy?</h2>
+  <p>Przez czas realizacji zamówienia, a potem tak długo, jak wymagają tego przepisy (np. podatkowe) lub do przedawnienia roszczeń.</p>
+  <h2>6. Twoje prawa</h2>
+  <ul><li>dostęp do danych i ich poprawienie,</li><li>usunięcie lub ograniczenie przetwarzania,</li><li>przeniesienie danych i sprzeciw,</li><li>skarga do Prezesa UODO.</li></ul>
+  <h2>7. Pliki cookies</h2>
+  <p>Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Ustawienia cookies możesz zmienić w swojej przeglądarce.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== POLITYKA WYSYŁKI ===================== -->
+<section class="view" id="view-polityka-wysylki" hidden><div class="page">
+  <h1>Polityka wysyłki</h1>
+  <h2>1. Obszar dostaw</h2>
+  <p>Wysyłamy na terenie całej Polski: do Paczkomatu InPost albo kurierem pod wskazany adres.</p>
+  <h2>2. Koszt dostawy</h2>
+  <p>Dostawa jest <b>darmowa</b> dla każdego zamówienia, niezależnie od wybranej metody.</p>
+  <h2>3. Czas dostawy</h2>
+  <p>Zamówienie przygotowujemy w 3–5 dni roboczych, a transport trwa 3–5 dni roboczych. Łącznie paczka dociera zwykle w 6–10 dni roboczych.</p>
+  <h2>4. Śledzenie paczki</h2>
+  <p>Po nadaniu paczki wyślemy Ci e-mailem numer i link do śledzenia przesyłki.</p>
+  <h2>5. Uszkodzona paczka</h2>
+  <p>Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na wojciechmotyka604@gmail.com. Wyślemy nową kulę albo zwrócimy pieniądze.</p>
+  <h2>6. Kontakt</h2>
+  <p>Pytania o dostawę: wojciechmotyka604@gmail.com.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== ZWROTY ===================== -->
+<section class="view" id="view-zwroty" hidden><div class="page">
+  <h1>Zwroty i reklamacje</h1>
+  <h2>1. 30 dni na zwrot</h2>
+  <p>Masz 30 dni od otrzymania paczki, żeby zwrócić produkt bez podania przyczyny.</p>
+  <h2>2. Jak zwrócić?</h2>
+  <ol><li>Napisz na wojciechmotyka604@gmail.com i podaj numer zamówienia.</li><li>W odpowiedzi podamy adres do odesłania produktu.</li><li>Odeślij produkt. Koszt odesłania ponosi Klient.</li></ol>
+  <h2>3. Zwrot pieniędzy</h2>
+  <p>Zwracamy pieniądze w ciągu 14 dni od otrzymania Twojej wiadomości, tą samą metodą płatności.</p>
+  <h2>4. Gwarancja satysfakcji</h2>
+  <p>Jeśli w ciągu 30 dni kula Ci się nie spodoba, napisz do nas. Zwrócimy pieniądze za zamówienie. Gwarancja nie ogranicza Twoich ustawowych praw.</p>
+  <h2>5. Reklamacje</h2>
+  <p>Jeśli produkt jest uszkodzony albo niezgodny z opisem, napisz na wojciechmotyka604@gmail.com i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== KONTAKT ===================== -->
+<section class="view" id="view-kontakt" hidden><div class="page">
+  <h1>Kontakt</h1>
+  <h2>Napisz do nas</h2>
+  <p>Masz pytanie o zamówienie, dostawę albo samą kulę? Napisz na <b>wojciechmotyka604@gmail.com</b> albo skorzystaj z formularza poniżej.</p>
+  <p>Odpowiadamy w dni robocze, zwykle w ciągu 24 godzin.</p>
+  <p>Sprzedawca: Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło.</p>
+  <div data-form></div>
+</div></section>
+
+
 <!-- ===================== STOPKA ===================== -->
 <footer>
   <div class="wave top" data-wave></div>
   <span class="logo"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbF" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#2f6eb5"/></radialGradient><radialGradient id="lgGlowF" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowF)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbF)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></span>
-  <nav>
-    <a href="#">Polityka zwrotów</a><a href="#">Regulamin</a><a href="#">Polityka prywatności</a><a href="#">Wysyłka</a><a href="#">Kontakt</a>
-  </nav>
+  <div class="foot-grid">
+    <div><h4>Kontakt</h4><p>📧 wojciechmotyka604@gmail.com<br>🕑 Pn–Pt, odpowiadamy w ciągu 24 h</p></div>
+    <div><h4>Informacje</h4>
+      <a href="#regulamin">Regulamin</a><a href="#polityka-prywatnosci">Polityka prywatności</a><a href="#polityka-wysylki">Polityka wysyłki</a><a href="#zwroty">Zwroty i reklamacje</a><a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
   <small>© <span id="year"></span> <span data-brand>Lumorka</span>. Wszelkie prawa zastrzeżone.</small>
 </footer>
 
@@ -519,6 +704,19 @@ footer small{display:block;margin-top:22px;font-size:12px;opacity:.7}
   </div>
 </div>
 <button class="to-top" id="toTop" aria-label="Do góry"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg></button>
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Koszyk">
+  <div class="dr-head"><span>Koszyk · <span id="drCount">0</span></span><button class="dr-close" id="drClose" aria-label="Zamknij">×</button></div>
+  <div class="ship-bar">🎉 Masz <b>darmową dostawę</b>!<div class="track"><i></i></div></div>
+  <div class="dr-items" id="drItems"></div>
+  <div class="dr-foot" id="drFoot"></div>
+</aside>
+<div class="modal" id="shipModal"><div class="modal-box">
+  <h3>Wybierz dostawę <button class="dr-close" id="shipClose" aria-label="Zamknij">×</button></h3>
+  <button class="ship-opt on" data-ship="InPost Paczkomat"><span class="ico">📦</span><span><b>InPost Paczkomat</b><small>Odbiór w wybranym Paczkomacie 24/7</small></span><span class="free">0,00 zł</span></button>
+  <button class="ship-opt" data-ship="Kurier InPost"><span class="ico">🚚</span><span><b>Kurier</b><small>Dostawa pod Twoje drzwi</small></span><span class="free">0,00 zł</span></button>
+  <div class="modal-note">Paczka dociera zwykle w 6–10 dni roboczych</div>
+</div></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -706,10 +904,34 @@ document.querySelectorAll('.bundle').forEach(b=>b.addEventListener('click',e=>{
 /* ---------- Koszyk (demo) ---------- */
 let cart = 0;
 function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2400); }
+let cartItems=[], shipMethod='InPost Paczkomat';
+const brandName=n=>n.replace('Lumorka',CONFIG.marka);
+function cartQty(){ return cartItems.reduce((a,i)=>a+i.qty,0); }
+function cartTotals(){ let sum=0, old=0; cartItems.forEach(i=>{const p=CONFIG.pakiety[i.p]; sum+=p.cena*i.qty; old+=(p.stara||p.cena)*i.qty;}); return {sum, save:old-sum, old}; }
+function itemHtml(i,k){ const p=CONFIG.pakiety[i.p];
+  return `<div class="ci"><img src="${CONFIG.zdjecia[0]||''}" alt=""><div><div class="ci-name">${brandName(p.nazwa)}</div><div class="ci-sub">Kolor: ${i.color}${p.prezenty.length?' · + gratisy':''}</div>
+  <div><span class="qty"><button data-k="${k}" data-d="-1" aria-label="Mniej">−</button><span>${i.qty}</span><button data-k="${k}" data-d="1" aria-label="Więcej">+</button></span><button class="ci-del" data-del="${k}">usuń</button></div></div>
+  <div class="ci-price">${zl(p.cena*i.qty)}${p.stara?`<s>${zl(p.stara*i.qty)}</s>`:''}</div></div>`; }
+function sumHtml(){ const t=cartTotals();
+  return `<div class="sum-row"><span>Produkty (${cartQty()})</span><span>${zl(t.old)}</span></div>${t.save>0?`<div class="sum-row save"><span>Rabat za zestaw</span><span>−${zl(t.save)}</span></div>`:''}<div class="sum-row save"><span>Dostawa</span><span>Darmowa</span></div><div class="sum-row total"><span>Razem</span><span>${zl(t.sum)}</span></div>`; }
+function renderCart(){
+  const n=cartQty(), c=$('#cartCount'); c.textContent=n; c.style.display=n?'grid':'none'; $('#drCount').textContent=n;
+  if(!cartItems.length){ $('#drItems').innerHTML='<div class="dr-empty">Twój koszyk jest pusty<br><button class="btn btn-primary" id="drShop">Wróć do sklepu</button></div>'; $('#drFoot').innerHTML=''; const b=$('#drShop'); if(b) b.onclick=closeCart; }
+  else { $('#drItems').innerHTML=cartItems.map(itemHtml).join(''); $('#drFoot').innerHTML=sumHtml()+'<button class="btn btn-primary" id="drCheckout">Przejdź do kasy</button><div class="pay-icons"><span>BLIK</span><span>VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span></div>'; $('#drCheckout').onclick=()=>openShip(); }
+  if($('#cpItems')){ $('#cpItems').innerHTML=cartItems.length?cartItems.map(itemHtml).join(''):'<div class="dr-empty">Koszyk jest pusty. <a href="#" style="color:var(--blue)">Wróć do sklepu</a></div>'; $('#cpSum').innerHTML=sumHtml(); $('#cpShipName').textContent=shipMethod; }
+}
+document.addEventListener('click',e=>{ const q=e.target.closest('[data-d]'); if(q){ const i=cartItems[+q.dataset.k]; i.qty=Math.max(1,i.qty+ +q.dataset.d); renderCart(); }
+  const d=e.target.closest('[data-del]'); if(d){ cartItems.splice(+d.dataset.del,1); renderCart(); } });
+function openCart(){ renderCart(); $('#drawer').classList.add('open'); $('#overlay').classList.add('open'); }
+function closeCart(){ $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open'); }
+function openShip(){ $('#shipModal').classList.add('open'); $('#overlay').classList.add('open'); }
+function closeShip(){ $('#shipModal').classList.remove('open'); if(!$('#drawer').classList.contains('open')) $('#overlay').classList.remove('open'); }
+$('#cartBtn').onclick=openCart; $('#drClose').onclick=closeCart; $('#overlay').onclick=()=>{closeCart();closeShip();}; $('#shipClose').onclick=closeShip;
+document.querySelectorAll('.ship-opt').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.ship-opt').forEach(x=>x.classList.remove('on')); b.classList.add('on'); shipMethod=b.dataset.ship; closeShip(); closeCart(); location.hash='koszyk'; renderCart(); });
 function addToCart(){
-  const p = CONFIG.pakiety[chosen]; cart += chosen+1;
-  const c=$('#cartCount'); c.textContent=cart; c.style.display='grid';
-  toast(`Dodano do koszyka: ${p.nazwa.replace('Lumorka',CONFIG.marka)} – ${zl(p.cena)}`);
+  const sel=document.querySelector('.bundle.active select'); const col=sel?sel.value:color;
+  const ex=cartItems.find(i=>i.p===chosen&&i.color===col); if(ex) ex.qty++; else cartItems.push({p:chosen,color:col,qty:1});
+  openCart();
 }
 $('#addToCart').onclick=addToCart;
 $('#applePay').onclick=()=>toast('Tu podepniesz płatność w swoim sklepie (np. Shopify).');
@@ -846,6 +1068,17 @@ window.addEventListener('scroll',()=>{
   $('#toTop').classList.toggle('show', window.scrollY > 900);
 },{passive:true});
 $('#toTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+/* ---------- Formularz kontaktowy na podstronach ---------- */
+document.querySelectorAll('[data-form]').forEach((d,k)=>{ d.outerHTML=`<form class="contact-form"><h2>Skontaktuj się <em>z nami</em></h2><div class="row2"><input id="cf-name-${k}" placeholder="Imię" required><input id="cf-mail-${k}" type="email" placeholder="E-mail" required></div><input id="cf-tel-${k}" placeholder="Numer telefonu"><textarea id="cf-msg-${k}" placeholder="Wiadomość" required></textarea><button class="btn btn-primary" type="submit">Wyślij</button></form>`; });
+document.querySelectorAll('.contact-form').forEach(f=>f.onsubmit=e=>{ e.preventDefault(); f.reset(); toast('Podgląd: w sklepie ten formularz wyśle wiadomość na Twój e-mail.'); });
+$('#cpOrder').onclick=()=>toast('Podgląd: tu klient przejdzie do kasy Shopify i zapłaci.');
+$('#cpShipChange').onclick=openShip;
+/* ---------- Podstrony (#regulamin, #kontakt itd.) ---------- */
+function route(){ const h=location.hash.slice(1); const v=document.getElementById('view-'+h) && h? h : 'home';
+  document.querySelectorAll('.view').forEach(x=>x.hidden = x.id!=='view-'+v);
+  document.body.classList.toggle('subpage', v!=='home'); if(v==='koszyk') renderCart();
+  if(v!=='home' || !h) window.scrollTo(0,0); }
+window.addEventListener('hashchange',route); route(); renderCart();
 </script>
 </body>
 </html>
