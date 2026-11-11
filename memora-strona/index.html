@@ -10,10 +10,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Libre+Caslon+Text:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#1f6fe0;
-  --blue-dark:#1554b8;
-  --blue-light:#bcd6fb;
-  --blue-pale:#eef5ff;
+  --blue:#1f5fbf;
+  --blue-dark:#14325f;
+  --blue-light:#c7d8f0;
+  --blue-pale:#f1f5fb;
+  --cream:#fbf6ec;
+  --gold2:#c9a24e;
   --ink:#1b1b1f;
   --muted:#6b7280;
   --line:#e5e7eb;
@@ -160,7 +162,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .v-ph{position:absolute;inset:0}
 .v-ph svg{width:100%;height:100%}
 .v-caption{position:absolute;left:8%;right:8%;top:16%;text-align:center;color:#fff;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:20px;line-height:1.25;letter-spacing:-.01em;text-shadow:0 0 2px #000,0 0 3px #000,0 0 4px #000,0 1px 3px rgba(0,0,0,.9);pointer-events:none;z-index:2}
-.v-play{display:none!important;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(31,111,224,.92);display:grid;place-items:center;z-index:3;transition:opacity .25s,transform .2s}
+.v-play{display:none!important;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(20,50,95,.92);display:grid;place-items:center;z-index:3;transition:opacity .25s,transform .2s}
 .v-play svg{width:30px;height:30px;fill:#fff;margin-left:5px}
 .v-card video{position:absolute;inset:0}
 .v-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:opacity .25s}
@@ -262,7 +264,7 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .b-gifts{font-size:12px;font-weight:600;color:var(--blue-dark);background:var(--blue-pale);border-radius:8px;padding:8px 10px;margin-top:8px}
 .guarantee{display:flex;gap:12px;align-items:flex-start;background:var(--blue-pale);border-radius:12px;padding:14px;margin-top:4px}
 .guarantee>span{font-size:22px}.guarantee b{display:block;font-size:14px}.guarantee small{font-size:12px;color:#555}
-.cta-big{margin-top:14px;font-size:17px;padding:18px;text-transform:none;letter-spacing:.02em;border-radius:12px;box-shadow:0 10px 24px rgba(31,111,224,.3)}
+.cta-big{margin-top:14px;font-size:17px;padding:18px;text-transform:none;letter-spacing:.02em;border-radius:12px;box-shadow:0 10px 24px rgba(20,50,95,.3)}
 .cta-trust{text-align:center;font-size:12px;color:var(--muted);margin-top:10px}
 /* ===== Menu ===== */
 .main-nav{display:none}
@@ -308,15 +310,15 @@ header{position:sticky}
 .rev-score b{font-size:34px;font-weight:800;color:var(--blue-dark)}
 .rev2{margin-top:30px}
 .rev2::before{background:linear-gradient(90deg,var(--blue-pale),transparent)!important}.rev2::after{background:linear-gradient(270deg,var(--blue-pale),transparent)!important}
-.rcard{flex:none;width:310px;margin-right:20px;background:#fff;border:1px solid #d8e7fd;border-radius:18px;padding:20px;box-shadow:0 10px 26px rgba(31,111,224,.08);display:flex;flex-direction:column;gap:12px}
+.rcard{flex:none;width:310px;margin-right:20px;background:#fff;border:1px solid #d8e7fd;border-radius:18px;padding:20px;box-shadow:0 10px 26px rgba(20,50,95,.08);display:flex;flex-direction:column;gap:12px}
 .rcard p{font-size:14px;line-height:1.55;color:#333;flex:1}
 .rwho{display:flex;align-items:center;gap:10px;border-top:1px solid #eef3fb;padding-top:12px;font-size:14px}
 .rav{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none}.rav svg{width:100%;height:100%}
 .sec-glow{background:radial-gradient(60% 70% at 20% 50%,#dcebff 0%,transparent 70%),#fff}
 .sec-glow .split-img img{animation:orbGlow 3.5s ease-in-out infinite}
-@keyframes orbGlow{0%,100%{box-shadow:0 20px 50px rgba(31,111,224,.18)}50%{box-shadow:0 20px 70px rgba(31,111,224,.45)}}
-.sec-glow .clist li{transition:transform .2s,box-shadow .2s}.sec-glow .clist li:hover{transform:translateX(6px);box-shadow:0 8px 20px rgba(31,111,224,.12)}
-.use{transition:transform .25s,box-shadow .25s}.use:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(31,111,224,.18)}
+@keyframes orbGlow{0%,100%{box-shadow:0 20px 50px rgba(20,50,95,.18)}50%{box-shadow:0 20px 70px rgba(20,50,95,.45)}}
+.sec-glow .clist li{transition:transform .2s,box-shadow .2s}.sec-glow .clist li:hover{transform:translateX(6px);box-shadow:0 8px 20px rgba(20,50,95,.12)}
+.use{transition:transform .25s,box-shadow .25s}.use:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,50,95,.18)}
 .use img{transition:transform .5s}.use:hover img{transform:scale(1.04)}
 /* ===== Sekcje landing ===== */
 .sec{padding:64px 0}
@@ -338,7 +340,7 @@ header{position:sticky}
 .callout{margin-top:18px;background:#fff;border-left:4px solid var(--blue);border-radius:10px;padding:14px 16px;font-size:14px}
 .uses{display:grid;gap:20px;margin-top:30px}
 @media (min-width:800px){.uses{grid-template-columns:repeat(3,1fr)}}
-.use{background:#fff;border:1px solid #e3ebf6;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(31,111,224,.08)}
+.use{background:#fff;border:1px solid #e3ebf6;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(20,50,95,.08)}
 .use img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .use h3{font-size:18px;padding:16px 18px 4px}
 .use p{font-size:14px;color:#555;padding:0 18px 18px;line-height:1.55}
@@ -346,7 +348,7 @@ header{position:sticky}
 .steps-wrap .split-img img{height:100%;aspect-ratio:auto;min-height:320px}
 .steps-wrap .steps{align-content:center}
 .steps{list-style:none;display:grid;gap:14px}
-.steps li{display:flex;gap:16px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(31,111,224,.08)}
+.steps li{display:flex;gap:16px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(20,50,95,.08)}
 .steps li>span{flex:none;width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px}
 .steps b{font-size:16px}.steps p{font-size:14px;color:#555;margin-top:4px;line-height:1.5}
 .narrow{max-width:860px}
@@ -374,7 +376,7 @@ header{position:sticky}
 @media (min-width:900px){.h2{font-size:38px}.sec{padding:90px 0}}
 /* ===== Promocja z odliczaniem ===== */
 .promo-wrap{margin-top:70px;margin-bottom:10px}
-.promo{display:grid;border-radius:24px;overflow:hidden;background:#fff;border:1px solid #e3ebf6;box-shadow:0 20px 50px rgba(31,111,224,.12)}
+.promo{display:grid;border-radius:24px;overflow:hidden;background:#fff;border:1px solid #e3ebf6;box-shadow:0 20px 50px rgba(20,50,95,.12)}
 @media (min-width:800px){.promo{grid-template-columns:1fr 1.2fr}}
 .promo-img{background:linear-gradient(135deg,#eef5ff,#d6e7ff);display:grid;place-items:center;padding:34px}
 .promo-img img{width:100%;max-width:340px;aspect-ratio:1;object-fit:cover;border-radius:20px;box-shadow:0 18px 40px rgba(20,50,90,.25);transform:rotate(-2deg)}
@@ -386,12 +388,12 @@ header{position:sticky}
 .promo-body h2{font-size:30px;color:var(--blue-dark);line-height:1.15}
 .promo-body p{font-size:15px;color:#555;max-width:420px}
 .timer{display:flex;align-items:center;gap:8px;margin:8px 0 6px}
-.timer div{width:78px;padding:12px 4px;border:1px solid #dfe8f4;border-radius:14px;background:#fff;box-shadow:0 4px 12px rgba(31,111,224,.08)}
+.timer div{width:78px;padding:12px 4px;border:1px solid #dfe8f4;border-radius:14px;background:#fff;box-shadow:0 4px 12px rgba(20,50,95,.08)}
 .timer b{display:block;font-size:34px;font-weight:800;color:var(--blue);line-height:1;font-variant-numeric:tabular-nums}
 .timer span{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
 .timer i{font-style:normal;font-size:24px;font-weight:800;color:#c9a46a}
 @media (max-width:420px){.timer div{width:62px}.timer b{font-size:26px}}
-.promo-btn{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;padding:16px 22px;font-size:16px;letter-spacing:.02em;border-radius:12px;max-width:440px;box-shadow:0 10px 24px rgba(31,111,224,.3);transition:transform .15s}
+.promo-btn{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;padding:16px 22px;font-size:16px;letter-spacing:.02em;border-radius:12px;max-width:440px;box-shadow:0 10px 24px rgba(20,50,95,.3);transition:transform .15s}
 .promo-btn:hover{transform:translateY(-2px)}
 /* ożywienie promocji */
 .promo-img{position:relative;overflow:hidden}
@@ -409,7 +411,7 @@ header{position:sticky}
 .timer b{transition:transform .2s}.timer b.tick{animation:tick .4s ease}
 @keyframes tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
 .promo-btn{animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 10px 24px rgba(31,111,224,.3)}50%{box-shadow:0 10px 34px rgba(31,111,224,.6);transform:scale(1.02)}}
+@keyframes pulse{0%,100%{box-shadow:0 10px 24px rgba(20,50,95,.3)}50%{box-shadow:0 10px 34px rgba(20,50,95,.6);transform:scale(1.02)}}
 
 /* ===== FAQ ===== */
 .faq{margin-top:46px}
@@ -586,6 +588,104 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 @media (prefers-reduced-motion:reduce){
   .reveal,.cmp-row{opacity:1;transform:none;transition:none}
 }
+
+/* ===================== MOTYW LUMORKA (navy + złoto + krem) ===================== */
+body{background:#fff}
+.announce{background:var(--blue-dark);color:#f3ead6;height:38px}
+.announce .star{font-style:normal;color:var(--gold2);margin-right:14px}
+header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #efe8da}
+.lg-txt>span{color:var(--blue-dark)!important;font-size:30px!important}
+.lg-txt small{color:var(--gold2)!important;letter-spacing:.34em!important}
+.main-nav a{color:#4a5568!important;font-weight:500}
+.main-nav a:hover{color:var(--blue-dark)!important}
+#cartBtn{border:1px solid #e8e1d2;border-radius:12px;width:46px;height:46px}
+.hb{font-size:13px!important;padding:8px 14px!important}
+.hb-gold{background:#f8efdb!important;color:#8a6a24!important}
+.hb-red{background:#c8323c!important;color:#fff!important}
+.hero-h1 em{color:var(--blue)!important}
+.price{color:var(--blue-dark);font-size:38px!important}
+.price-off{background:#c8323c!important;color:#fff!important;border-radius:8px!important}
+.ben li{font-size:15px!important;padding-left:32px!important}
+.ben li::before{background:var(--blue-dark)!important;color:#fff!important;width:22px!important;height:22px!important}
+.ben li b{color:var(--blue-dark)}
+.tile{background:var(--cream)!important;border-color:#efe4cc!important}
+.divider{color:var(--blue-dark)}
+.divider::before,.divider::after{background:#e6dcc6!important}
+.bundle{border:1.5px solid #e7e1d4!important;border-radius:16px!important;background:#fff;transition:all .25s}
+.bundle:hover{border-color:#c9b98f!important}
+.bundle.active{border:2px solid var(--blue-dark)!important;background:linear-gradient(180deg,#f4f8ff,#fff)!important;box-shadow:0 12px 30px rgba(20,50,95,.12)!important}
+.b-main{grid-template-columns:24px 56px 1fr auto!important;padding:16px!important}
+.b-thumb{width:56px;height:56px;border-radius:12px;object-fit:cover;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.b-name{font-size:17px!important;font-weight:700!important;color:var(--blue-dark)}
+.b-sub{font-size:12px!important;color:#7a7f8a!important}
+.b-save{margin-top:6px;font-size:12px;color:#55606e}
+.save-pill{display:inline-block;background:#e6f5ec;color:#1e7a45;font-weight:700;border-radius:99px;padding:2px 9px;margin-right:4px}
+.b-price{font-size:19px!important;color:var(--blue-dark)}
+.b-old{color:#9aa1ab!important;font-size:13px!important}
+.radio{border-color:#c9cfd8!important}
+.bundle.active .radio{border-color:var(--blue-dark)!important}
+.bundle.active .radio::after{background:var(--blue-dark)!important}
+.badge{background:var(--gold2)!important;color:#fff!important;border-radius:99px!important;padding:5px 12px!important;top:-12px!important;box-shadow:0 4px 10px rgba(201,162,78,.4)}
+.bundle:nth-child(3) .badge{background:var(--blue-dark)!important;box-shadow:none}
+.b-opts{padding:0 16px 16px 120px!important}
+@media (max-width:520px){.b-opts{padding:0 14px 14px 14px!important}.b-main{grid-template-columns:22px 48px 1fr auto!important;gap:10px!important}.b-thumb{width:48px;height:48px}}
+.sw.on{outline-color:var(--blue-dark)!important}
+.unit-l b{color:var(--blue-dark)!important}
+.b-gifts{background:#f8efdb!important;color:#8a6a24!important}
+.guarantee{background:var(--cream)!important;border:1px solid #efe4cc}
+.cta-big,.btn-primary{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%)!important;text-transform:none!important;border-radius:14px!important;box-shadow:0 12px 28px rgba(20,50,95,.28)!important}
+.cta-big:hover{filter:brightness(1.08)}
+.sec-tint{background:var(--cream)!important}
+.kicker{color:var(--gold2)!important;letter-spacing:.2em!important}
+.h2 em{color:var(--blue)!important}
+.use{border-color:#efe4cc!important;box-shadow:0 10px 28px rgba(20,50,95,.08)!important}
+.wave-sec{background:linear-gradient(180deg,#1b3a6b,#16305a)!important}
+.ring .bg{stroke:rgba(255,255,255,.12)}
+.ring .fg{stroke:#e5c06b!important}
+.stats h2{color:#fff}
+.stat p{font-size:15px!important;color:#e7ecf5}
+.stat p strong{color:#f3d58f}
+.sec-glow{background:radial-gradient(55% 70% at 18% 50%,#e8f0fb 0%,transparent 70%),#fff!important}
+.clist svg circle{fill:var(--blue-dark)!important}
+.cmp-table th.hl{background:var(--blue-dark)!important}
+.cmp-table .hl{background:#f1f5fb!important}
+.yes{color:#1e7a45!important}
+/* opinie jak na wzorze */
+.rcard{border:1px solid #efe4cc!important;border-radius:22px!important;padding:22px!important;box-shadow:0 14px 30px rgba(20,50,95,.07)!important}
+.rcard .stars svg path{fill:#e2b33c;stroke:#e2b33c}
+.rwho{border-top:0!important;padding-top:4px!important}
+.rwho b{font-size:15px;color:#1b1b1f;display:block}
+.rver{display:block;font-size:12px;color:#8a909b;margin-top:2px}
+.rav{width:52px!important;height:52px!important;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.rev-score b{color:var(--blue-dark)!important}
+.rev2::before{background:linear-gradient(90deg,var(--cream),transparent)!important}.rev2::after{background:linear-gradient(270deg,var(--cream),transparent)!important}
+/* licznik 1:1 jak wzór */
+.promo{border:1px solid #efe4cc!important;border-radius:28px!important;box-shadow:0 24px 60px rgba(20,50,95,.12)!important}
+.promo-img{background:linear-gradient(135deg,#eef3fb 0%,#fbf3e2 100%)!important}
+.promo-img img{border-radius:24px!important;box-shadow:0 22px 44px rgba(20,50,95,.28)!important}
+.spark{background:var(--gold2)!important;box-shadow:0 0 10px rgba(201,162,78,.8)!important;width:9px!important;height:9px!important}
+.spark.s5{left:46%;top:8%;animation-delay:.9s}.spark.s6{left:30%;bottom:6%;animation-delay:1.5s}
+.promo-brand{font-size:46px!important;color:var(--blue-dark)!important;background:linear-gradient(100deg,var(--blue-dark) 0%,var(--blue-dark) 40%,#e9c46a 50%,var(--blue-dark) 60%,var(--blue-dark) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:goldSweep 3.2s linear infinite}
+.promo-brand .logo-mark{display:none}
+@keyframes goldSweep{0%{background-position:120% 0}100%{background-position:-120% 0}}
+.promo-48{color:#c8323c!important;font-size:60px!important}
+.promo-48 .clock{animation:shake 1.4s ease-in-out infinite!important;color:#c8323c}
+@keyframes shake{0%,55%,100%{transform:rotate(0)}60%{transform:rotate(-16deg)}65%{transform:rotate(16deg)}70%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}80%{transform:rotate(-6deg)}85%{transform:rotate(6deg)}}
+.promo-body p{font-size:17px!important;color:#5b6270!important}
+.limited{color:#c8323c!important;font-size:17px!important}
+.limited b{font-weight:800}
+.timer div{width:96px!important;padding:16px 4px!important;border:1px solid #ece4d3!important;border-radius:18px!important;box-shadow:0 8px 20px rgba(20,50,95,.07)!important}
+.timer b{color:var(--blue-dark)!important;font-size:42px!important}
+.timer i{color:var(--gold2)!important;font-size:28px!important}
+.promo-btn{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%)!important;border-radius:16px!important;padding:20px!important;font-size:18px!important;width:100%;max-width:520px!important}
+.promo-end{font-size:12px;color:#8a909b}
+@media (max-width:420px){.promo-brand{font-size:36px!important}.promo-48{font-size:48px!important}.timer div{width:80px!important}.timer b{font-size:32px!important}}
+.foot2{background:var(--cream)!important;border-top:1px solid #efe4cc!important}
+.foot2-brand{color:var(--blue-dark)!important}
+.foot2-c .ic{border-color:#e3d3ac!important}
+.sticky-buy .sb-btn{background:linear-gradient(135deg,var(--blue),var(--blue-dark))}
+.sb-price{color:var(--blue-dark)!important}
+.to-top{background:var(--blue-dark)!important}
 </style>
 </head>
 <body>
@@ -599,7 +699,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <header>
   <div class="head">
     <button class="icon-btn" aria-label="Menu" id="menuBtn"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
-    <a href="#" class="logo lg"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrb" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f6fe0"/></radialGradient><radialGradient id="lgGlow" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlow)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrb)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span class="lg-txt"><span data-brand>Lumorka</span><small>KULE WSPOMNIEŃ</small></span></a>
+    <a href="#" class="logo lg"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrb" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f5fbf"/></radialGradient><radialGradient id="lgGlow" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlow)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrb)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span class="lg-txt"><span data-brand>Lumorka</span><small>KULE WSPOMNIEŃ</small></span></a>
     <nav class="main-nav" id="mainNav"><a href="#" data-go="sec-uses">Zastosowania</a><a href="#" data-go="sec-how">Jak działa</a><a href="#" data-go="sec-cmp">Porównanie</a><a href="#" data-go="sec-rev">Opinie</a><a href="#" data-go="sec-faq">FAQ</a></nav>
     <div class="cart-wrap"><button class="icon-btn" aria-label="Koszyk" id="cartBtn"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button><span class="cart-count" id="cartCount">0</span></div>
   </div>
@@ -625,18 +725,18 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 </section>
 
 <section class="wrap info">
-  <div class="hero-badges"><span class="hb hb-gold">⭐ Prezent dla bliskich · Hit Świąt 2026</span></div>
+  <div class="hero-badges"><span class="hb hb-gold">★ Hit Świąt 2026</span><span class="hb hb-red">⚠️ Liczba sztuk ograniczona</span></div>
   <h1 class="hero-h1">Zdjęcia i filmy zamknięte w telefonie? Zamień je w <em>świecącą pamiątkę</em></h1>
   <p class="p-lead"><b><span data-brand>Lumorka</span></b> wyświetla Twoje zdjęcia i filmy z dźwiękiem. Powieś ją na choince albo postaw na półce i wracaj do najpiękniejszych chwil.</p>
   <div class="mini-trust">🚚 Darmowa dostawa · ↩️ 30 dni na zwrot · ⭐ 2 kolory</div>
   <div class="rating-line"><span class="stars" data-stars="5" data-size="13"></span> <b id="ratingVal">4.8 / 5</b> | <span id="ratingCount">5 800+ zaufanych opinii</span></div>
   <div class="price-row"><span class="price" id="heroPrice">249,00 zł</span><s class="price-old" id="heroOld"></s><span class="price-off" id="heroOff"></span></div>
   <ul class="ben">
-    <li>Twoje zdjęcia i filmy ożywają w szklanej kuli</li>
-    <li>Wbudowany głośnik – słychać głosy bliskich</li>
-    <li>Wgrywanie z telefonu, bez aplikacji i konta</li>
-    <li>Zawieszka na choinkę i podstawka w zestawie</li>
-    <li>Gotowa na prezent – w eleganckim pudełku</li>
+    <li><b>Twoje zdjęcia i filmy</b> ożywają w szklanej kuli</li>
+    <li><b>Wbudowany głośnik</b> – słychać głosy bliskich</li>
+    <li><b>Wgrywanie z telefonu</b> – bez aplikacji i konta</li>
+    <li><b>Zawieszka i podstawka</b> – na choinkę i na półkę</li>
+    <li><b>Gotowa na prezent</b> – w eleganckim pudełku</li>
   </ul>
   <div class="divider">Kup więcej, zapłać mniej</div>
   <div id="bundles"></div>
@@ -725,18 +825,19 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <!-- ===================== PROMOCJA Z ODLICZANIEM ===================== -->
 <section class="wrap promo-wrap">
   <div class="promo reveal">
-    <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><img src="zdjecia/lumorka-sek-promo-web.jpg" alt="Kula Lumorka na choince"></div>
+    <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i><img src="zdjecia/lumorka-sek-promo-web.jpg" alt="Kula Lumorka na choince"></div>
     <div class="promo-body">
-      <div class="promo-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbP" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f6fe0"/></radialGradient><radialGradient id="lgGlowP" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowP)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbP)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
+      <div class="promo-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbP" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f5fbf"/></radialGradient><radialGradient id="lgGlowP" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowP)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbP)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
       <h2 class="promo-48"><span class="clock">⏰</span> 48h!</h2>
-      <p>Nie przegap – cena promocyjna tylko przez 48 godzin, do <b id="promoDate"></b>!</p>
+      <p>Nie przegap – cena promocyjna tylko przez 48 godzin!</p>
       <div class="limited">⚠️ <b>Liczba sztuk ograniczona</b> <span class="heart">♡</span></div>
       <div class="timer" id="timer">
         <div><b id="tH">00</b><span>godzin</span></div><i>:</i>
         <div><b id="tM">00</b><span>minut</span></div><i>:</i>
         <div><b id="tS">00</b><span>sekund</span></div>
       </div>
-      <button class="btn promo-btn" id="promoBtn">Kup teraz i skorzystaj z rabatu →</button>
+      <button class="btn promo-btn" id="promoBtn">Kup teraz i skorzystaj z rabatu! →</button>
+      <small class="promo-end">Promocja trwa do <span id="promoDate"></span></small>
     </div>
   </div>
 </section>
@@ -863,7 +964,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 <footer class="foot2">
   <div class="foot2-in">
     <div>
-      <div class="foot2-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbFt" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f6fe0"/></radialGradient><radialGradient id="lgGlowFt" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowFt)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbFt)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
+      <div class="foot2-brand"><svg class="logo-mark" viewBox="0 0 44 52" aria-hidden="true"><defs><radialGradient id="lgOrbFt" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#e9f3ff"/><stop offset=".45" stop-color="#7fb2ea"/><stop offset="1" stop-color="#1f5fbf"/></radialGradient><radialGradient id="lgGlowFt" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#7fb2ea" stop-opacity=".45"/><stop offset="1" stop-color="#7fb2ea" stop-opacity="0"/></radialGradient></defs><circle cx="22" cy="31" r="21" fill="url(#lgGlowFt)"/><circle cx="22" cy="5.5" r="3.2" fill="none" stroke="#c9a46a" stroke-width="1.6"/><rect x="18" y="8.6" width="8" height="5.6" rx="1.4" fill="#c9a46a"/><circle cx="22" cy="30" r="16" fill="url(#lgOrbFt)"/><circle cx="22" cy="30" r="16" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/><ellipse cx="16" cy="22.5" rx="5" ry="2.6" transform="rotate(-35 16 22.5)" fill="#fff" fill-opacity=".85"/><path d="M26 27.5l1.3 3.2 3.2 1.3-3.2 1.3-1.3 3.2-1.3-3.2-3.2-1.3 3.2-1.3z" fill="#fff"/><path d="M19 34.5c-1.6-1.5-3.6-2.9-3.6-4.8 0-1.2.9-2.1 2-2.1.7 0 1.3.4 1.6.9.3-.5.9-.9 1.6-.9 1.1 0 2 .9 2 2.1 0 1.9-2 3.3-3.6 4.8z" fill="#fff" fill-opacity=".9"/></svg><span data-brand>Lumorka</span></div>
       <p class="foot2-desc">Kule wspomnień, w których Twoje zdjęcia i filmy świecą i grają. Prezent, który wzrusza.</p>
       <div class="foot2-c"><span class="ic">✉️</span>kontakt@lumorka.pl</div>
       <div class="foot2-c"><span class="ic">🕑</span>Pn–Pt · odpowiadamy w ciągu 24 h</div>
@@ -907,7 +1008,7 @@ body.subpage .sticky-buy,body.subpage .to-top{display:none}
 const CONFIG = {
   marka: "Lumorka",
 
-  pasekOgloszen: ["Spraw, by te święta były niezapomniane", "Darmowa wysyłka w całej Polsce", "Wczesna wyprzedaż Black Friday", "30 dni na zwrot"],
+  pasekOgloszen: ["Bezpieczna płatność BLIK i kartą", "Darmowa wysyłka", "30 dni na zwrot bez podania przyczyny", "Promocja przedświąteczna"],
 
   // Zdjęcia produktu do galerii. Wrzuć pliki do folderu "zdjecia" i wpisz ścieżki,
   // np. "zdjecia/1.jpg". Puste = rysowane podglądy.
@@ -989,7 +1090,7 @@ function renderStars(el){
 document.querySelectorAll('[data-stars]').forEach(renderStars);
 
 /* ---------- Pasek ogłoszeń ---------- */
-const ann = CONFIG.pasekOgloszen.map(t=>`<span>${t}</span>`).join('');
+const ann = CONFIG.pasekOgloszen.map(t=>`<span><em class="star">✦</em>${t}</span>`).join('');
 const aT=$('#announceTrack'); aT.innerHTML=ann;
 const aW=aT.scrollWidth||800, aN=Math.max(1,Math.ceil(Math.max(window.innerWidth,screen.width||0,1920)/aW));
 const aSet=ann.repeat(aN); aT.innerHTML=aSet+aSet; aT.style.setProperty('--adur',(aN*aW/45)+'s');
@@ -1065,11 +1166,12 @@ const unitColors=CONFIG.pakiety.map((_,i)=>Array(i+1).fill('Biały'));
 const COLORS=[['Biały','#ffffff'],['Czarny','#1b1b1f']];
 function renderBundles(){
   $('#bundles').innerHTML = CONFIG.pakiety.map((p,i)=>{
-    const save = p.stara ? `Oszczędzasz ${zl(p.stara-p.cena)} · darmowa dostawa` : 'Darmowa dostawa';
+    const save = p.stara ? `<span class="save-pill">Oszczędzasz ${zl(p.stara-p.cena)}</span> + darmowa dostawa` : '<span class="save-pill">Darmowa dostawa</span>';
+    const names=['1 Lumorka','Zestaw 2 Lumorek','Zestaw 3 Lumorek'], subs=['Idealna na prezent','Dla Ciebie i bliskiej osoby','Dla całej rodziny'];
     return `<div class="bundle${i===chosen?' active':''}" data-i="${i}">
       ${p.badge?`<span class="badge">${p.badge}</span>`:''}
-      <div class="b-main"><span class="radio"></span>
-        <div><div class="b-name">Kup ${i+1} ${i?'kule':'kulę'}</div><div class="b-sub">${save}</div></div>
+      <div class="b-main"><span class="radio"></span><img class="b-thumb" src="${CONFIG.zdjecia[i]||CONFIG.zdjecia[0]}" alt="">
+        <div><div class="b-name">${names[i]||(i+1)+' szt.'}</div><div class="b-sub">${subs[i]||''}</div><div class="b-save">${save}</div></div>
         <div class="b-price">${zl(p.cena)}${p.stara?`<s class="b-old">${zl(p.stara)}</s>`:''}</div></div>
       <div class="b-opts">${unitColors[i].map((c,k)=>`<div class="unit"><span class="unit-l">Sztuka ${k+1}: <b>${c}</b></span><span class="sw-row">${COLORS.map(([n,h])=>`<button class="sw${n===c?' on':''}" data-u="${i}-${k}" data-c="${n}" style="--c:${h}" aria-label="${n}"></button>`).join('')}</span></div>`).join('')}
         ${p.prezenty.length?`<div class="b-gifts">🎁 Gratis: podstawka, zawieszka i ściereczka</div>`:''}</div>
@@ -1194,8 +1296,8 @@ function wavePath(h, amp, phase, waves){
 document.querySelectorAll('[data-wave]').forEach(w=>{
   const h=60;
   w.innerHTML = `
-    <div class="layer back"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h,14,1.2,4)}" fill="#b5cfee"/></svg></div>
-    <div class="layer"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h+8,10,0,2)}" fill="#1f6fe0" transform="translate(0,6)"/></svg></div>`;
+    <div class="layer back"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h,14,1.2,4)}" fill="#e7d6ae"/></svg></div>
+    <div class="layer"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h+8,10,0,2)}" fill="#1b3a6b" transform="translate(0,6)"/></svg></div>`;
 });
 
 /* ---------- Statystyki ---------- */
@@ -1204,7 +1306,7 @@ $('#stats').innerHTML = CONFIG.statystyki.map(s=>`
 
 /* ---------- Opinie na fali (przewijane w bok) ---------- */
 const LAND=['<svg viewBox="0 0 40 40"><defs><linearGradient id="la1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb36b"/><stop offset="1" stop-color="#ff7a8a"/></linearGradient></defs><rect width="40" height="40" fill="url(#la1)"/><circle cx="26" cy="16" r="6" fill="#ffe7a6"/><path d="M0 30 L12 20 L22 28 L30 22 L40 30 V40 H0Z" fill="#5b4b8a"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd3ff"/><stop offset="1" stop-color="#dff4ff"/></linearGradient></defs><rect width="40" height="40" fill="url(#la2)"/><path d="M0 26 L10 14 L18 22 L26 10 L40 26 V40 H0Z" fill="#3d7f6a"/><path d="M0 32 H40 V40 H0Z" fill="#2b5e9c"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2b5a"/><stop offset="1" stop-color="#4a63a8"/></linearGradient></defs><rect width="40" height="40" fill="url(#la3)"/><circle cx="12" cy="10" r="1" fill="#fff"/><circle cx="28" cy="8" r="1.2" fill="#fff"/><circle cx="20" cy="14" r=".8" fill="#fff"/><path d="M0 28 L14 18 L24 26 L40 16 V40 H0Z" fill="#e8f0ff"/></svg>', '<svg viewBox="0 0 40 40"><defs><linearGradient id="la4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd6e0"/><stop offset="1" stop-color="#fff3d6"/></linearGradient></defs><rect width="40" height="40" fill="url(#la4)"/><circle cx="20" cy="20" r="7" fill="#ffbf69"/><path d="M0 30 Q10 24 20 30 T40 30 V40 H0Z" fill="#3fa7a0"/></svg>'];
-const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><b>${o.imie}</b></div></div>`).join('');
+const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><span><b>${o.imie}</b><small class="rver">${o.miasto?o.miasto+' · ':''}Opinia z szablonu</small></span></div></div>`).join('');
 const _old = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
 const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*340)))).fill(tItems).join('');
 $('#tTrack').innerHTML = tSet + tSet;
