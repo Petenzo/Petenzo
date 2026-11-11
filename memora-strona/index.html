@@ -686,6 +686,54 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 .sticky-buy .sb-btn{background:linear-gradient(135deg,var(--blue),var(--blue-dark))}
 .sb-price{color:var(--blue-dark)!important}
 .to-top{background:var(--blue-dark)!important}
+
+/* ===================== BOGATY WYGLĄD (wg szablonu) ===================== */
+.pay-row{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:12px}
+.pi{font-size:11px;font-weight:800;padding:6px 10px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;letter-spacing:.02em}
+.pi.blik{background:#000;color:#fff;border-color:#000}.pi.visa{color:#1a1f71}.pi.mc{color:#eb001b}.pi.ap{background:#000;color:#fff;border-color:#000}.pi.gp{color:#4285f4}.pi.p24{color:#d13239}
+.howbuy{margin-top:14px;background:var(--blue-dark);color:#fff;border-radius:16px;padding:16px 18px}
+.howbuy b{display:block;font-size:15px;margin-bottom:10px;color:#f3d58f}
+.howbuy ol{list-style:none;display:grid;gap:8px;padding:0}
+.howbuy li{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600}
+.howbuy li span{width:28px;height:28px;border-radius:50%;background:var(--gold2);color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
+.trustband{background:var(--blue-dark);color:#fff;margin-top:40px}
+.tb-in{max-width:1180px;margin:0 auto;padding:22px max(18px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (min-width:900px){.tb-in{grid-template-columns:repeat(4,1fr)}}
+.tb-in>div{display:flex;align-items:center;gap:12px}
+.tb-in span{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(233,196,106,.5);display:grid;place-items:center;font-size:20px;flex:none}
+.tb-in b{display:block;font-size:14px}.tb-in small{font-size:12px;color:#c9d4e6}
+.action-bg{background:linear-gradient(180deg,#fff 0%,#eef4fb 100%);padding:60px 0 50px;margin-top:0!important}
+.sec-blue{background:#eef4fb!important}
+.sec-tint{background:#fbf6ec!important}
+#sec-uses{background:linear-gradient(180deg,#fbf6ec,#f6eedc)!important}
+.use{background:#fff}
+.use h3{color:var(--blue-dark)}
+.kicker{display:inline-block;background:#f6ebd2;color:#8a6a24!important;padding:5px 14px;border-radius:99px;font-size:11px!important}
+.kicker.center{display:table;margin:0 auto 10px}
+.h2{color:#14223d}
+.cmp-table{background:#fff}
+.bundle.active{background:linear-gradient(180deg,#e9f1fc,#f6f9ff)!important}
+.bundle.active .b-main{border-bottom:1px dashed #c7d8f0}
+.cta-big{font-size:19px!important;padding:20px!important}
+.cta-big{animation:ctaPulse 2.2s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02);box-shadow:0 16px 36px rgba(20,50,95,.38)}}
+/* opinie: większa sekcja, szersze prostokąty */
+#sec-rev{padding:80px 0!important}
+.rcard{width:420px!important;min-height:230px;padding:26px 28px!important;margin-right:24px!important}
+.rcard p{font-size:15.5px!important;line-height:1.6!important}
+@media (max-width:520px){.rcard{width:300px!important}}
+/* licznik – animacje */
+.promo-band{background:linear-gradient(135deg,#eef4fb 0%,#fbf6ec 100%);padding:60px 0;margin-top:0}
+.promo-wrap{margin:0 auto!important}
+.promo-48{animation:blink48 1.5s ease-in-out infinite}
+@keyframes blink48{0%,100%{transform:scale(1);text-shadow:none}50%{transform:scale(1.1);text-shadow:0 0 22px rgba(200,50,60,.45)}}
+.last-pill{background:#c8323c;color:#fff;font-weight:800;font-size:13px;padding:7px 16px;border-radius:99px;animation:pillBlink 1.5s steps(1) infinite}
+@keyframes pillBlink{0%,100%{opacity:1}50%{opacity:.55}}
+.promo-img img{animation:floaty 3.5s ease-in-out infinite,imgGlow 3s ease-in-out infinite!important}
+@keyframes imgGlow{0%,100%{box-shadow:0 22px 44px rgba(20,50,95,.28)}50%{box-shadow:0 22px 60px rgba(201,162,78,.55)}}
+.timer div{animation:boxPulse 1.5s ease-in-out infinite}
+.timer div:nth-of-type(2){animation-delay:.5s}.timer div:nth-of-type(3){animation-delay:1s}
+@keyframes boxPulse{0%,100%{border-color:#ece4d3}50%{border-color:var(--gold2);box-shadow:0 8px 24px rgba(201,162,78,.3)}}
 </style>
 </head>
 <body>
@@ -742,12 +790,25 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
   <div id="bundles"></div>
   <div class="guarantee"><span>🛡️</span><div><b>30 dni na zwrot</b><small>Jeśli kula Ci się nie spodoba, odeślij ją – oddamy pieniądze.</small></div></div>
   <button class="btn btn-primary cta-big" id="addToCart">Dodaj do koszyka: <span id="ctaPrice">249,00 zł</span></button>
-  <div class="cta-trust">🚚 Darmowa dostawa · ↩️ 30 dni na zwrot · 🔒 BLIK, karta, Apple Pay</div>
+  <div class="pay-row"><span class="pi blik">BLIK</span><span class="pi visa">VISA</span><span class="pi mc">Mastercard</span><span class="pi ap"> Pay</span><span class="pi gp">G Pay</span><span class="pi p24">Przelewy24</span></div>
+  <div class="cta-trust">🔒 Bezpieczna płatność · 🚚 Wysyłka w 24 h · ↩️ 30 dni na zwrot</div>
+  <div class="howbuy">
+    <b>Jak kupić? To proste:</b>
+    <ol><li><span>1</span>Wybierz zestaw</li><li><span>2</span>Kliknij „Dodaj do koszyka”</li><li><span>3</span>Zapłać BLIK-iem lub kartą</li></ol>
+  </div>
 </section>
 </div>
 
+<!-- ===================== PASEK ZAUFANIA ===================== -->
+<section class="trustband"><div class="tb-in">
+  <div><span>🚚</span><p><b>Darmowa wysyłka</b><small>Paczkomat lub kurier</small></p></div>
+  <div><span>↩️</span><p><b>30 dni na zwrot</b><small>Bez podania przyczyny</small></p></div>
+  <div><span>🔒</span><p><b>Bezpieczne płatności</b><small>BLIK, karta, Apple Pay</small></p></div>
+  <div><span>⭐</span><p><b>4,8 / 5</b><small>Średnia ocena</small></p></div>
+</div></section>
+
 <!-- ===================== ZOBACZ TO W AKCJI ===================== -->
-<section class="action">
+<section class="action action-bg">
   <h2 class="section-title reveal">Zobacz to w <em>akcji</em></h2>
   <div class="v-wrap">
   <div class="v-track" id="vTrack"></div>
@@ -801,7 +862,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 </section>
 
 <!-- ===================== PORÓWNANIE ===================== -->
-<section class="sec" id="sec-cmp">
+<section class="sec sec-blue" id="sec-cmp">
   <div class="wrap narrow">
     <div class="kicker center">Porównanie</div>
     <h2 class="h2 center">Dlaczego <span data-brand>Lumorka</span>, <em>a nie zwykła ozdoba?</em></h2>
@@ -823,7 +884,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 </section>
 
 <!-- ===================== PROMOCJA Z ODLICZANIEM ===================== -->
-<section class="wrap promo-wrap">
+<section class="promo-band"><div class="wrap promo-wrap">
   <div class="promo reveal">
     <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i><img src="zdjecia/lumorka-sek-promo-web.jpg" alt="Kula Lumorka na choince"></div>
     <div class="promo-body">
@@ -831,6 +892,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
       <h2 class="promo-48"><span class="clock">⏰</span> 48h!</h2>
       <p>Nie przegap – cena promocyjna tylko przez 48 godzin!</p>
       <div class="limited">⚠️ <b>Liczba sztuk ograniczona</b> <span class="heart">♡</span></div>
+      <div class="last-pill">🔥 Ostatnie sztuki w tej cenie</div>
       <div class="timer" id="timer">
         <div><b id="tH">00</b><span>godzin</span></div><i>:</i>
         <div><b id="tM">00</b><span>minut</span></div><i>:</i>
@@ -840,7 +902,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
       <small class="promo-end">Promocja trwa do <span id="promoDate"></span></small>
     </div>
   </div>
-</section>
+</div></section>
 
 <!-- ===================== FAQ ===================== -->
 <section class="sec" id="sec-faq">
