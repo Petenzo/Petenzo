@@ -1,8 +1,8 @@
 ============================================================
 ZWROTY (Polityka zwrotów)
 ============================================================
-1. 30 dni na zwrot
-Masz 30 dni od otrzymania paczki, żeby zwrócić produkt bez podania przyczyny.
+1. 14 dni na zwrot
+Masz 14 dni od otrzymania paczki, żeby zwrócić produkt bez podania przyczyny.
 2. Jak zwrócić?
 • Napisz na kontakt@lumorka.pl i podaj numer zamówienia.
 • W odpowiedzi podamy adres do odesłania produktu.
@@ -10,7 +10,7 @@ Masz 30 dni od otrzymania paczki, żeby zwrócić produkt bez podania przyczyny.
 3. Zwrot pieniędzy
 Zwracamy pieniądze w ciągu 14 dni od otrzymania Twojej wiadomości, tą samą metodą płatności.
 4. Gwarancja satysfakcji
-Jeśli w ciągu 30 dni kula Ci się nie spodoba, napisz do nas. Zwrócimy pieniądze za zamówienie. Gwarancja nie ogranicza Twoich ustawowych praw.
+Jeśli w ciągu 14 dni kula Ci się nie spodoba, napisz do nas. Zwrócimy pieniądze za zamówienie. Gwarancja nie ogranicza Twoich ustawowych praw.
 5. Reklamacje
 Jeśli produkt jest uszkodzony albo niezgodny z opisem, napisz na kontakt@lumorka.pl i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.
 
@@ -43,7 +43,7 @@ Przez czas realizacji zamówienia, a potem tak długo, jak wymagają tego przepi
 Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Ustawienia cookies możesz zmienić w swojej przeglądarce.
 
 ============================================================
-REGULAMIN (Warunki korzystania z usługi)
+REGULAMIN (Warunki świadczenia usług)
 ============================================================
 1. Informacje ogólne
 Sklep internetowy Lumorka prowadzi Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: kontakt@lumorka.pl (dalej: Sprzedawca). Regulamin określa zasady składania zamówień, dostawy, płatności, odstąpienia od umowy i reklamacji. Do korzystania ze sklepu potrzebne jest urządzenie z dostępem do internetu, aktualna przeglądarka i aktywny adres e-mail.
@@ -54,7 +54,7 @@ Dostępne metody płatności (m.in. BLIK, karta, Apple Pay, Google Pay, szybki p
 4. Dostawa
 Dostarczamy na terenie Polski. Dostawa jest bezpłatna (Paczkomat InPost lub kurier). Zamówienie przygotowujemy w 3–5 dni roboczych, a transport trwa 3–5 dni roboczych, łącznie zwykle 6–10 dni roboczych. Szczegóły w Polityce wysyłki.
 5. Zwroty
-Konsument może odstąpić od umowy bez podania przyczyny w terminie 30 dni od otrzymania produktu (ustawowy termin to 14 dni, Sprzedawca wydłuża go do 30 dni). Wystarczy wysłać oświadczenie na adres kontakt@lumorka.pl. Sprzedawca zwraca płatność w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności. Koszt odesłania produktu ponosi Klient.
+Konsument może odstąpić od umowy bez podania przyczyny w terminie 14 dni od otrzymania produktu. Wystarczy wysłać oświadczenie na adres kontakt@lumorka.pl. Sprzedawca zwraca płatność w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności. Koszt odesłania produktu ponosi Klient.
 6. Reklamacje
 Sprzedawca odpowiada za zgodność towaru z umową na zasadach ustawy o prawach konsumenta. Reklamację można złożyć e-mailem na adres kontakt@lumorka.pl, najlepiej z opisem problemu i zdjęciem. Odpowiadamy w ciągu 14 dni.
 7. Spory
@@ -79,9 +79,16 @@ Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na kontakt@lumorka.pl. 
 Pytania o dostawę: kontakt@lumorka.pl.
 
 ============================================================
-KONTAKT (Informacje kontaktowe)
+KONTAKT (Dane kontaktowe)
 ============================================================
 Napisz do nas
 Masz pytanie o zamówienie, dostawę albo samą kulę? Napisz na kontakt@lumorka.pl.
 Odpowiadamy w dni robocze, zwykle w ciągu 24 godzin.
 Sprzedawca: Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło.
+
+============================================================
+NOTA PRAWNA
+============================================================
+Sprzedawca: Wojciech Motyka
+Adres: ul. Sikorskiego 17, 38-200 Jasło, Polska
+E-mail: kontakt@lumorka.pl
