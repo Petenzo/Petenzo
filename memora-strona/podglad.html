@@ -170,8 +170,8 @@ header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid 
 .v-card.playing .v-play{opacity:0;pointer-events:none}
 .v-card.loading .v-play svg{animation:spin 1s linear infinite;transform-origin:45% 50%}
 @keyframes spin{to{transform:rotate(360deg)}}
-.v-arrow{display:none!important;position:absolute;top:58%;z-index:5;width:44px;height:44px;border-radius:50%;background:rgba(60,60,60,.75);display:grid;place-items:center}
-.v-arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4}
+.v-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:0 6px 18px rgba(20,50,95,.25);display:grid;place-items:center}
+.v-arrow svg{width:20px;height:20px;stroke:#14325f;fill:none;stroke-width:2.4}
 .v-arrow.prev{left:10px}.v-arrow.next{right:10px}
 
 /* ===== Fale ===== */
@@ -1390,7 +1390,8 @@ vTrack.addEventListener('scroll',()=>{
   cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid); if(d<bd){bd=d;best=i;}});
   vIdx=best; [...vDots.children].forEach((d,k)=>d.classList.toggle('on',k===Math.min(vDots.children.length-1,Math.max(0,vIdx-vOff))));
 },{passive:true});
-$('#vPrev').onclick=()=>vCenter(vIdx-1); $('#vNext').onclick=()=>vCenter(vIdx+1);
+const vStepW=()=>cards.length>1?cards[1].offsetLeft-cards[0].offsetLeft:cards[0].offsetWidth;
+$('#vPrev').onclick=()=>vTrack.scrollBy({left:-vStepW(),behavior:'smooth'}); $('#vNext').onclick=()=>vTrack.scrollBy({left:vStepW(),behavior:'smooth'});
 [...vDots.children].forEach((d,k)=>d.onclick=()=>vCenter(k+vOff));
 
 /* ---------- Fale (animowane) ---------- */
