@@ -1,94 +1,66 @@
 ============================================================
-ZWROTY (Polityka zwrotów)
+ZWROTY  →  wklej w: Polityka zwrotów
 ============================================================
 1. 14 dni na zwrot
 Masz 14 dni od otrzymania paczki, żeby zwrócić produkt bez podania przyczyny.
-2. Jak zwrócić?
-• Napisz na kontakt@lumorka.pl i podaj numer zamówienia.
-• W odpowiedzi podamy adres do odesłania produktu.
-• Odeślij produkt. Koszt odesłania ponosi Klient.
+2. Jak zwrócić produkt
+Napisz na kontakt@lumorka.pl, podając numer zamówienia. W odpowiedzi podamy adres do odesłania produktu.
 3. Zwrot pieniędzy
-Zwracamy pieniądze w ciągu 14 dni od otrzymania Twojej wiadomości, tą samą metodą płatności.
-4. Gwarancja satysfakcji
-Jeśli w ciągu 14 dni kula Ci się nie spodoba, napisz do nas. Zwrócimy pieniądze za zamówienie. Gwarancja nie ogranicza Twoich ustawowych praw.
-5. Reklamacje
-Jeśli produkt jest uszkodzony albo niezgodny z opisem, napisz na kontakt@lumorka.pl i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.
+Zwrócimy pieniądze w ciągu 14 dni od otrzymania Twojego oświadczenia, tą samą metodą płatności.
+4. Reklamacje
+Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na kontakt@lumorka.pl i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.
 
 ============================================================
-PRYWATNOŚĆ (Polityka prywatności)
+PRYWATNOŚĆ  →  wklej w: Polityka prywatności
 ============================================================
 1. Administrator danych
-Administratorem danych osobowych jest Joanna Juszczyk, ul. Sikorskiego 17, 38-200 Jasło, e-mail: kontakt@lumorka.pl.
-2. Jakie dane zbieramy?
-• imię i nazwisko,
-• adres e-mail,
-• adres dostawy,
-• numer telefonu (jeśli go podasz),
-• dane potrzebne do płatności i realizacji zamówienia.
-3. Po co je zbieramy?
-• realizacja zamówień i dostaw,
-• kontakt z Klientem i obsługa zapytań,
-• obsługa zwrotów i reklamacji,
-• wypełnienie obowiązków prawnych, np. księgowych.
-4. Komu je przekazujemy?
-Tylko firmom, które pomagają nam zrealizować zamówienie: operatorowi sklepu i płatności (np. Shopify, operator płatności), firmom kurierskim (np. InPost) oraz biuru rachunkowemu.
-5. Jak długo je przechowujemy?
-Przez czas realizacji zamówienia, a potem tak długo, jak wymagają tego przepisy (np. podatkowe) lub do przedawnienia roszczeń.
-6. Twoje prawa
-• dostęp do danych i ich poprawienie,
-• usunięcie lub ograniczenie przetwarzania,
-• przeniesienie danych i sprzeciw,
-• skarga do Prezesa UODO.
-7. Pliki cookies
-Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Ustawienia cookies możesz zmienić w swojej przeglądarce.
+Administratorem Twoich danych osobowych jest sklep Lumorka, e-mail: kontakt@lumorka.pl.
+2. Jakie dane zbieramy
+Imię i nazwisko, adres dostawy, e-mail i numer telefonu podane przy zamówieniu lub w formularzu kontaktowym.
+3. Cel przetwarzania
+Realizacja zamówienia, obsługa zwrotów i reklamacji, odpowiedź na wiadomość oraz wypełnienie obowiązków prawnych (np. księgowych).
+4. Komu przekazujemy dane
+Firmie kurierskiej InPost, operatorom płatności oraz dostawcy platformy sklepu, wyłącznie w zakresie potrzebnym do realizacji zamówienia.
+5. Twoje prawa
+Masz prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz wniesienia skargi do Prezesa UODO.
+6. Pliki cookies
+Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Możesz je wyłączyć w ustawieniach przeglądarki.
 
 ============================================================
-REGULAMIN (Warunki świadczenia usług)
+REGULAMIN  →  wklej w: Warunki świadczenia usług
 ============================================================
-1. Informacje ogólne
-Sklep internetowy Lumorka prowadzi Joanna Juszczyk, ul. Sikorskiego 17, 38-200 Jasło, e-mail: kontakt@lumorka.pl (dalej: Sprzedawca). Regulamin określa zasady składania zamówień, dostawy, płatności, odstąpienia od umowy i reklamacji. Do korzystania ze sklepu potrzebne jest urządzenie z dostępem do internetu, aktualna przeglądarka i aktywny adres e-mail.
-2. Składanie zamówień
-Klient wybiera produkt, dodaje go do koszyka i wypełnia formularz zamówienia. Umowa sprzedaży zostaje zawarta z chwilą otrzymania przez Klienta e-maila z potwierdzeniem przyjęcia zamówienia. Ceny podane w sklepie są cenami końcowymi w złotych polskich.
+1. Sprzedawca
+Sklep internetowy Lumorka działa pod adresem lumorka.pl. Kontakt: kontakt@lumorka.pl.
+2. Zamówienia
+Wybierz produkt, dodaj go do koszyka i wypełnij formularz zamówienia. Umowa zostaje zawarta, gdy dostaniesz e-mail z potwierdzeniem. Ceny są cenami końcowymi w złotych.
 3. Płatności
-Dostępne metody płatności (m.in. BLIK, karta, Apple Pay, Google Pay, szybki przelew) są widoczne podczas składania zamówienia. Zamówienie realizujemy po zaksięgowaniu płatności.
+Płacisz BLIK-iem, kartą, Apple Pay lub Google Pay. Zamówienie realizujemy po zaksięgowaniu płatności.
 4. Dostawa
-Dostarczamy na terenie Polski. Dostawa jest bezpłatna (Paczkomat InPost lub kurier). Dostawa trwa zwykle 6–10 dni roboczych. Szczegóły w Polityce wysyłki.
+Dostawa na terenie Polski jest bezpłatna (Paczkomat InPost lub kurier) i trwa zwykle 6–10 dni roboczych.
 5. Zwroty
-Konsument może odstąpić od umowy bez podania przyczyny w terminie 14 dni od otrzymania produktu. Wystarczy wysłać oświadczenie na adres kontakt@lumorka.pl. Sprzedawca zwraca płatność w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności. Koszt odesłania produktu ponosi Klient.
+Masz 14 dni od otrzymania paczki, żeby odstąpić od umowy bez podania przyczyny. Napisz na kontakt@lumorka.pl. Pieniądze zwracamy w ciągu 14 dni tą samą metodą płatności.
 6. Reklamacje
-Sprzedawca odpowiada za zgodność towaru z umową na zasadach ustawy o prawach konsumenta. Reklamację można złożyć e-mailem na adres kontakt@lumorka.pl, najlepiej z opisem problemu i zdjęciem. Odpowiadamy w ciągu 14 dni.
-7. Spory
-Konsument może skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów oraz z pozasądowych sposobów rozpatrywania sporów.
-8. Postanowienia końcowe
-W sprawach nieuregulowanych regulaminem stosuje się przepisy prawa polskiego, w szczególności Kodeksu cywilnego i ustawy o prawach konsumenta. Zasady przetwarzania danych opisuje Polityka prywatności.
+Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na kontakt@lumorka.pl i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.
+7. Postanowienia końcowe
+W sprawach nieuregulowanych stosuje się przepisy prawa polskiego, w tym ustawy o prawach konsumenta.
 
 ============================================================
-WYSYŁKA (Polityka wysyłki)
+WYSYŁKA  →  wklej w: Polityka wysyłki
 ============================================================
-1. Obszar dostaw
-Wysyłamy na terenie całej Polski: do Paczkomatu InPost albo kurierem pod wskazany adres.
-2. Koszt dostawy
-Dostawa jest darmowa dla każdego zamówienia, niezależnie od wybranej metody.
+1. Koszt dostawy
+Dostawa na terenie Polski jest bezpłatna dla każdego zamówienia.
+2. Metody dostawy
+Paczkomat InPost (odbiór 24/7) lub Kurier pod wskazany adres.
 3. Czas dostawy
-Paczka dociera zwykle w 6–10 dni roboczych.
-4. Śledzenie paczki
-Po nadaniu paczki wyślemy Ci e-mailem numer i link do śledzenia przesyłki.
+Dostawa trwa zwykle 6–10 dni roboczych.
+4. Śledzenie przesyłki
+Po nadaniu paczki otrzymasz e-mail z numerem przesyłki i linkiem do śledzenia.
 5. Uszkodzona paczka
-Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na kontakt@lumorka.pl. Wyślemy nową kulę albo zwrócimy pieniądze.
-6. Kontakt
-Pytania o dostawę: kontakt@lumorka.pl.
+Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na kontakt@lumorka.pl. Wyślemy nowy produkt.
 
 ============================================================
-KONTAKT (Dane kontaktowe)
+KONTAKT  →  wklej w: Dane kontaktowe
 ============================================================
 Napisz do nas
-Masz pytanie o zamówienie, dostawę albo samą kulę? Napisz na kontakt@lumorka.pl.
-Odpowiadamy w dni robocze, zwykle w ciągu 24 godzin.
-Sprzedawca: Joanna Juszczyk, ul. Sikorskiego 17, 38-200 Jasło.
-
-============================================================
-NOTA PRAWNA
-============================================================
-Sprzedawca: Joanna Juszczyk
-Adres: ul. Sikorskiego 17, 38-200 Jasło, Polska
-E-mail: kontakt@lumorka.pl
+Masz pytanie o zamówienie, wysyłkę albo zwrot? Napisz na kontakt@lumorka.pl.
+Odpowiadamy zwykle w ciągu 24 godzin, od poniedziałku do piątku.
