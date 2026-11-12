@@ -917,35 +917,43 @@ document.querySelectorAll("#kwFaq .kw-acc button").forEach(function(b){b.onclick
 
 /* POLICY PAGES */
 var SELLER="Kwiatora";
+var L=function(k,t){return "<a href='#' onclick=\"kwShow('"+k+"');return false\" style='color:var(--kw-primary)'>"+t+"</a>"};
 var P={
  regulamin:["Regulamin",[
-  ["1. Informacje ogólne","Sklep internetowy <b>Kwiatora</b> prowadzi sprzedaż na odległość za pośrednictwem tej strony. Kontakt ze sprzedawcą: <b>"+EMAIL+"</b>."],
-  ["2. Składanie zamówień","Zamówienie składasz przez stronę sklepu. Umowa zostaje zawarta w chwili otrzymania e-maila z potwierdzeniem zamówienia. Ceny są podane w złotych i zawierają podatki."],
-  ["3. Płatności","Dostępne metody płatności (m.in. <b>BLIK, karta płatnicza, Apple Pay, Google Pay, Przelewy24</b>) wyświetlają się w kasie. Zamówienie realizujemy po zaksięgowaniu płatności."],
-  ["4. Dostawa","Dostawa jest <b>bezpłatna</b> (Paczkomat InPost lub Kurier InPost), a czas realizacji wynosi zwykle <b>6–10 dni roboczych</b>. Szczegóły w <a href='#' onclick=\"kwShow('wysylka');return false\" style='color:var(--kw-primary)'>Polityce wysyłki</a>."],
-  ["5. Zwroty","Masz <b>14 dni od otrzymania produktu</b> na odstąpienie od umowy bez podawania przyczyny. Szczegóły w <a href='#' onclick=\"kwShow('zwroty');return false\" style='color:var(--kw-primary)'>Zwrotach i reklamacjach</a>."],
-  ["6. Reklamacje","Odpowiadamy za zgodność produktu z umową. Reklamację zgłoś na <b>"+EMAIL+"</b>, odpowiemy w ciągu <b>14 dni</b>."],
-  ["7. Spory","Możesz skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów albo Inspekcji Handlowej."],
-  ["8. Postanowienia końcowe","W sprawach nieuregulowanych stosuje się prawo polskie, w szczególności Kodeks cywilny i ustawę o prawach konsumenta. Zasady przetwarzania danych opisuje <a href='#' onclick=\"kwShow('prywatnosc');return false\" style='color:var(--kw-primary)'>Polityka prywatności</a>."]]],
+  ["1. Postanowienia ogólne","Niniejszy regulamin określa zasady korzystania ze sklepu internetowego <b>Kwiatora</b>, składania zamówień, dostawy, płatności, odstąpienia od umowy oraz składania reklamacji. Sklep prowadzi sprzedaż na odległość za pośrednictwem tej strony. Kontakt ze sklepem: <b>"+EMAIL+"</b>."],
+  ["2. Wymagania techniczne","Do korzystania ze sklepu potrzebne jest urządzenie z dostępem do internetu, aktualna przeglądarka internetowa oraz aktywny adres e-mail. Zabronione jest dostarczanie przez Klienta treści o charakterze bezprawnym."],
+  ["3. Produkty i ceny","Informacje o produktach zamieszczone w sklepie stanowią zaproszenie do zawarcia umowy. Ceny podane są w złotych polskich i zawierają podatki. Zdjęcia produktów mają charakter poglądowy – drobne różnice w odcieniach kolorów mogą wynikać z ustawień ekranu. Sklep zastrzega sobie prawo do zmiany cen oraz prowadzenia promocji; zmiany nie dotyczą zamówień złożonych przed ich wprowadzeniem."],
+  ["4. Składanie zamówień","Zamówienie można złożyć przez stronę sklepu 24 godziny na dobę. Po złożeniu zamówienia Klient otrzymuje e-mail z jego potwierdzeniem – z tą chwilą zostaje zawarta umowa sprzedaży. Klient odpowiada za podanie prawidłowych danych do wysyłki i kontaktu."],
+  ["5. Płatności","Dostępne metody płatności są wyświetlane w kasie podczas składania zamówienia. Płatności obsługują zewnętrzni operatorzy płatności. Realizacja zamówienia rozpoczyna się po zaksięgowaniu płatności."],
+  ["6. Dostawa","Dostawa odbywa się na terenie Polski i jest bezpłatna. Czas dostawy wynosi zwykle <b>6–10 dni roboczych</b> od zaksięgowania płatności. W wyjątkowych sytuacjach, np. w okresach wzmożonych zamówień lub z przyczyn leżących po stronie przewoźnika, czas ten może się wydłużyć. Szczegóły w "+L('wysylka','Polityce wysyłki')+"."],
+  ["7. Prawo odstąpienia od umowy","Konsument może odstąpić od umowy bez podawania przyczyny w terminie <b>14 dni</b> od dnia otrzymania produktu. Zasady i sposób zwrotu opisuje strona "+L('zwroty','Zwroty i reklamacje')+"."],
+  ["8. Reklamacje","Sklep odpowiada wobec Klienta za zgodność produktu z umową na zasadach określonych w przepisach prawa. Reklamację można złożyć, pisząc na <b>"+EMAIL+"</b>. Odpowiadamy na reklamacje w ciągu <b>14 dni</b> od ich otrzymania."],
+  ["9. Pozasądowe rozwiązywanie sporów","Konsument może skorzystać z pozasądowych sposobów rozpatrywania reklamacji i dochodzenia roszczeń, m.in. z pomocy miejskiego lub powiatowego rzecznika konsumentów, Wojewódzkiego Inspektoratu Inspekcji Handlowej lub organizacji konsumenckich."],
+  ["10. Postanowienia końcowe","W sprawach nieuregulowanych regulaminem stosuje się przepisy prawa polskiego, w szczególności Kodeksu cywilnego oraz ustawy o prawach konsumenta. Regulamin nie wyłącza ani nie ogranicza praw przysługujących konsumentom na mocy przepisów prawa. Zasady przetwarzania danych osobowych opisuje "+L('prywatnosc','Polityka prywatności')+"."]]],
  prywatnosc:["Polityka prywatności",[
-  ["1. Administrator danych","Administratorem Twoich danych osobowych jest sklep <b>Kwiatora</b>, e-mail: <b>"+EMAIL+"</b>."],
-  ["2. Jakie dane zbieramy","Imię i nazwisko, adres dostawy, e-mail i numer telefonu podane przy zamówieniu lub w formularzu kontaktowym."],
-  ["3. Cel przetwarzania","Realizacja zamówienia, obsługa zwrotów i reklamacji, odpowiedź na wiadomość oraz wypełnienie obowiązków prawnych (np. księgowych)."],
-  ["4. Komu przekazujemy dane","Firmie kurierskiej InPost, operatorom płatności oraz dostawcy platformy sklepu, wyłącznie w zakresie potrzebnym do realizacji zamówienia."],
-  ["5. Twoje prawa","Masz prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz wniesienia skargi do Prezesa UODO."],
-  ["6. Pliki cookies","Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Możesz je wyłączyć w ustawieniach przeglądarki."]]],
+  ["1. Administrator danych","Administratorem danych osobowych Klientów jest sklep <b>Kwiatora</b>. W sprawach dotyczących danych osobowych można kontaktować się pod adresem <b>"+EMAIL+"</b>."],
+  ["2. Jakie dane przetwarzamy","Przetwarzamy dane podane podczas składania zamówienia lub kontaktu z nami, w szczególności: imię i nazwisko, adres dostawy, adres e-mail, numer telefonu oraz informacje niezbędne do realizacji płatności i zamówienia."],
+  ["3. Cele i podstawy przetwarzania","Dane przetwarzamy w celu: realizacji zamówień i umowy sprzedaży, obsługi zwrotów i reklamacji, kontaktu z Klientem, wypełnienia obowiązków wynikających z przepisów prawa (np. podatkowych i rachunkowych), a za zgodą Klienta – w celach statystycznych i marketingowych."],
+  ["4. Odbiorcy danych","Dane mogą być przekazywane wyłącznie podmiotom, które pomagają nam w realizacji zamówień, takim jak firmy kurierskie, operatorzy płatności, dostawcy towaru, dostawca platformy sklepu oraz podmioty świadczące usługi IT i księgowe – w zakresie niezbędnym do realizacji ich zadań."],
+  ["5. Okres przechowywania","Dane przechowujemy przez czas niezbędny do realizacji zamówienia oraz przez okres wymagany przepisami prawa lub potrzebny do dochodzenia ewentualnych roszczeń. Dane przetwarzane na podstawie zgody przechowujemy do czasu jej wycofania."],
+  ["6. Prawa Klienta","Klient ma prawo do dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, wniesienia sprzeciwu oraz wycofania zgody w dowolnym momencie. Klient ma również prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych."],
+  ["7. Pliki cookies","Sklep korzysta z plików cookies, aby zapewnić prawidłowe działanie strony (np. koszyka), a także w celach statystycznych i reklamowych. Ustawienia cookies można w każdej chwili zmienić w przeglądarce internetowej."],
+  ["8. Zmiany polityki","Polityka prywatności może być aktualizowana. Aktualna wersja jest zawsze dostępna na tej stronie."]]],
  wysylka:["Polityka wysyłki",[
-  ["1. Koszt dostawy","Dostawa na terenie Polski jest <b>bezpłatna</b> dla każdego zamówienia."],
-  ["2. Metody dostawy","<b>Paczkomat InPost</b> (odbiór 24/7) lub <b>Kurier InPost</b> pod wskazany adres."],
-  ["3. Czas realizacji","Dostawa trwa zwykle <b>6–10 dni roboczych</b> od złożenia zamówienia."],
-  ["4. Śledzenie przesyłki","Po nadaniu paczki otrzymasz e-mail z numerem przesyłki i linkiem do śledzenia."],
-  ["5. Uszkodzona paczka","Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na <b>"+EMAIL+"</b>. Wyślemy nowy produkt."]]],
+  ["1. Obszar dostawy","Realizujemy dostawy na terenie Polski: do paczkomatów InPost oraz kurierem pod wskazany adres."],
+  ["2. Koszt dostawy","Dostawa jest <b>bezpłatna</b> przy każdym zamówieniu."],
+  ["3. Czas dostawy","Czas dostawy wynosi zwykle <b>6–10 dni roboczych</b> od zaksięgowania płatności. W okresach wzmożonych zamówień (np. przed Świętami) lub w przypadku opóźnień po stronie przewoźnika czas dostawy może się wydłużyć – w takiej sytuacji poinformujemy o tym Klienta."],
+  ["4. Śledzenie przesyłki","Po nadaniu przesyłki Klient otrzymuje wiadomość e-mail z informacją o wysyłce oraz – jeśli jest dostępny – numerem do śledzenia paczki."],
+  ["5. Odbiór przesyłki","Prosimy o sprawdzenie stanu przesyłki przy odbiorze. Jeśli opakowanie jest uszkodzone, warto sporządzić z przewoźnikiem protokół szkody lub zrobić zdjęcia i skontaktować się z nami pod adresem <b>"+EMAIL+"</b>. Każde zgłoszenie rozpatrzymy indywidualnie."],
+  ["6. Kontakt","W sprawach dotyczących dostawy prosimy o kontakt: <b>"+EMAIL+"</b>."]]],
  zwroty:["Zwroty i reklamacje",[
-  ["1. 14 dni na zwrot","Masz <b>14 dni od otrzymania paczki</b>, żeby zwrócić produkt bez podania przyczyny."],
-  ["2. Jak zwrócić produkt","Napisz na <b>"+EMAIL+"</b>, podając numer zamówienia. W odpowiedzi podamy adres do odesłania produktu."],
-  ["3. Zwrot pieniędzy","Zwrócimy pieniądze w ciągu <b>14 dni</b> od otrzymania Twojego oświadczenia, tą samą metodą płatności."],
-  ["4. Reklamacje","Jeśli produkt jest uszkodzony lub niezgodny z opisem, napisz na <b>"+EMAIL+"</b> i dołącz zdjęcie. Odpowiemy w ciągu <b>14 dni</b>."],
-  ["5. Brakujące elementy","Brakuje klocka? Napisz, którego okienka dotyczy, a doślemy brakujące elementy bezpłatnie."]]],
+  ["1. Prawo do zwrotu","Konsument ma prawo odstąpić od umowy bez podawania przyczyny w terminie <b>14 dni</b> od dnia otrzymania produktu. Do zachowania terminu wystarczy wysłanie oświadczenia przed jego upływem."],
+  ["2. Jak zgłosić zwrot","Aby odstąpić od umowy, wyślij wiadomość na <b>"+EMAIL+"</b>, podając numer zamówienia oraz informację, że chcesz zwrócić produkt. W odpowiedzi otrzymasz dalsze instrukcje, w tym adres do odesłania."],
+  ["3. Odesłanie produktu","Produkt należy odesłać nie później niż w terminie 14 dni od dnia odstąpienia od umowy. Bezpośredni koszt odesłania produktu ponosi Klient. Prosimy o odpowiednie zabezpieczenie przesyłki na czas transportu."],
+  ["4. Zwrot pieniędzy","Zwrot płatności następuje niezwłocznie, nie później niż w terminie <b>14 dni</b> od otrzymania oświadczenia o odstąpieniu od umowy, przy użyciu tej samej metody płatności, chyba że Klient zgodzi się na inną. Sklep może wstrzymać się ze zwrotem do chwili otrzymania produktu lub dowodu jego odesłania."],
+  ["5. Stan zwracanego produktu","Klient odpowiada za zmniejszenie wartości produktu wynikające z korzystania z niego w sposób wykraczający poza konieczny do stwierdzenia jego charakteru, cech i funkcjonowania."],
+  ["6. Reklamacje","Jeśli produkt jest niezgodny z umową lub uszkodzony, napisz na <b>"+EMAIL+"</b>, podając numer zamówienia, opis problemu i – jeśli to możliwe – zdjęcia. Reklamację rozpatrujemy w ciągu <b>14 dni</b> od jej otrzymania. Klientowi przysługują uprawnienia wynikające z przepisów prawa, w tym prawo żądania naprawy lub wymiany produktu, a w określonych przypadkach obniżenia ceny lub odstąpienia od umowy."],
+  ["7. Anulowanie zamówienia","Zamówienie można anulować do momentu jego wysłania – w tym celu prosimy o jak najszybszy kontakt z numerem zamówienia."]]],
  kontakt:["Kontakt",[
   ["Napisz do nas","Masz pytanie o zamówienie, wysyłkę albo zwrot? Napisz na <b>"+EMAIL+"</b> albo skorzystaj z formularza poniżej.</p><p>Odpowiadamy zwykle w ciągu <b>24 godzin</b>, od poniedziałku do piątku."]]]
 };
