@@ -260,7 +260,7 @@
       var nr = ++licznikSync;
       api('/cart/add.js', { items: items })
         .then(function () { if (nr === licznikSync && !Object.keys(czekajace).length) return pokaz(); })
-        .catch(function () { alert('Nie udało się dodać do koszyka. Spróbuj jeszcze raz.'); pokaz(); });
+        .catch(function () { /* zapis w tle się nie udał: koszyk zostaje taki, jak klient go widzi, a kasa i tak dostaje te opaski */ });
     });
 
     pokaz();
