@@ -787,7 +787,6 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 .ship2 .ship-opt.on em{color:#8ff0b5}
 .sh-go{margin-top:6px;color:#fff!important;width:100%;animation:none!important}
 .ship2 .modal-note{font-size:13px;color:#7a8190;margin-top:12px;line-height:1.5}
-#vDots{display:none!important}
 </style>
 </head>
 <body>
@@ -1338,7 +1337,8 @@ vTrack.innerHTML = CONFIG.filmy.map((f,i)=>`
     <div class="v-caption" style="top:${f.gora||18}%"></div>
     <button class="v-play" aria-label="Odtwórz film"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></button>
   </div>`).join('');
-vDots.innerHTML = CONFIG.filmy.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
+const vDesk=matchMedia('(min-width:900px)').matches, vOff=vDesk?1:0;
+vDots.innerHTML = (vDesk?[0,1,2]:CONFIG.filmy).map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
 const cards=[...vTrack.children];
 function capAt(f,t){ let txt=''; (f.napisy||[]).forEach(n=>{ if(t>=n.od) txt=n.tekst; }); return txt; }
 // Film ładowany w całości jako blob – działa też w Safari i na hostingach bez obsługi "Range".
@@ -1388,10 +1388,10 @@ function vCenter(i){ vIdx=Math.max(0,Math.min(cards.length-1,i)); const c=cards[
 vTrack.addEventListener('scroll',()=>{
   const mid=vTrack.scrollLeft+vTrack.clientWidth/2; let best=0,bd=1e9;
   cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid); if(d<bd){bd=d;best=i;}});
-  vIdx=best; [...vDots.children].forEach((d,k)=>d.classList.toggle('on',k===vIdx));
+  vIdx=best; [...vDots.children].forEach((d,k)=>d.classList.toggle('on',k===Math.min(vDots.children.length-1,Math.max(0,vIdx-vOff))));
 },{passive:true});
 $('#vPrev').onclick=()=>vCenter(vIdx-1); $('#vNext').onclick=()=>vCenter(vIdx+1);
-[...vDots.children].forEach((d,k)=>d.onclick=()=>vCenter(k));
+[...vDots.children].forEach((d,k)=>d.onclick=()=>vCenter(k+vOff));
 
 /* ---------- Fale (animowane) ---------- */
 function wavePath(h, amp, phase, waves){
