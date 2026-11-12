@@ -152,7 +152,7 @@ RX(r'var F=\[.*?\n\];', 'var F=[\n' + ',\n'.join(' ["[PYTANIE %d]","[ODPOWIEDŹ 
 
 # ---------- POLITYKI ----------
 s = s.replace('<b>Kwiatora</b>', '<b>[NAZWA SKLEPU]</b>').replace('"Wiadomość ze sklepu Kwiatora"', '"Wiadomość ze sklepu [NAZWA SKLEPU]"')
-s = s.replace('Kwiatora', '[NAZWA SKLEPU]')
+s = s.replace('Kwiatora', '[NAZWA SKLEPU]').replace('kontakt@kwiatora.pl', '[E-MAIL KONTAKTOWY]')
 s = re.sub(r'alt="(?!\[|Zdjęcie od klienta)[^"]+"', 'alt="[OPIS ZDJĘCIA]"', s)
 s = s.replace('</style>', '.kw-hero-grid>*{min-width:0}\n.kw-pills{flex-wrap:wrap!important;white-space:normal!important}\n</style>', 1)
 leftover = re.findall(r'[^\n]*(?:klock|kwiat|Kalendarz|bukiet|Wigili)[^\n]*', s, re.I)
