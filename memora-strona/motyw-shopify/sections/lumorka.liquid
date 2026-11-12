@@ -1,0 +1,689 @@
+{% raw %}
+
+<!-- ===================== PASEK OGŁOSZEŃ ===================== -->
+<div class="announce" aria-label="Ogłoszenia">
+  <div class="announce-track" id="announceTrack"></div>
+</div>
+
+<!-- ===================== NAGŁÓWEK ===================== -->
+<header>
+  <div class="head">
+    <button class="icon-btn" aria-label="Menu" id="menuBtn"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <a href="#" class="logo lg"><span class="lg-txt"><span data-brand>Lumorka</span><small>KULE WSPOMNIEŃ</small></span></a>
+    <nav class="main-nav" id="mainNav"><a href="#" data-go="sec-uses">Zastosowania</a><a href="#" data-go="sec-how">Jak działa</a><a href="#" data-go="sec-cmp">Porównanie</a><a href="#" data-go="sec-rev">Opinie</a><a href="#" data-go="sec-faq">FAQ</a></nav>
+    <div class="cart-wrap"><button class="icon-btn" aria-label="Koszyk" id="cartBtn"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button><span class="cart-count" id="cartCount">0</span></div>
+  </div>
+</header>
+
+<main class="view" id="view-home">
+<!-- ===================== GALERIA ===================== -->
+<div class="product">
+<section class="gallery">
+  <div class="g-main"><div class="g-track" id="gTrack"></div></div>
+  <div class="g-thumbs" id="gThumbs"></div>
+</section>
+
+<section class="wrap info">
+  <div class="hero-badges"><span class="hb hb-gold">★ Hit Świąt 2026</span><span class="hb hb-red">⚠️ Liczba sztuk ograniczona</span></div>
+  <h1 class="hero-h1">Zdjęcia i filmy zamknięte w telefonie? Zamień je w <em>świecącą pamiątkę</em></h1>
+  <p class="p-lead"><b><span data-brand>Lumorka</span></b> wyświetla Twoje zdjęcia i filmy z dźwiękiem. Powieś ją na choince albo postaw na półce i wracaj do najpiękniejszych chwil.</p>
+  <div class="mini-trust">🚚 Darmowa dostawa · ↩️ 30 dni na zwrot · ⭐ 2 kolory</div>
+  <div class="rating-line"><span class="stars" data-stars="5" data-size="13"></span> <b id="ratingVal">4.8 / 5</b> | <span id="ratingCount">5 800+ zaufanych opinii</span></div>
+  <div class="price-row"><span class="price" id="heroPrice">249,00 zł</span><s class="price-old" id="heroOld"></s><span class="price-off" id="heroOff"></span></div>
+  <ul class="ben">
+    <li><b>Twoje zdjęcia i filmy</b> ożywają w szklanej kuli</li>
+    <li><b>Wbudowany głośnik</b> – słychać głosy bliskich</li>
+    <li><b>Wgrywanie z telefonu</b> – bez aplikacji i konta</li>
+    <li><b>Zawieszka i podstawka</b> – na choinkę i na półkę</li>
+    <li><b>Gotowa na prezent</b> – w eleganckim pudełku</li>
+  </ul>
+  <div class="divider">Kup więcej, zapłać mniej</div>
+  <div id="bundles"></div>
+  <div class="guarantee"><span>🛡️</span><div><b>30 dni na zwrot</b><small>Jeśli kula Ci się nie spodoba, odeślij ją – oddamy pieniądze.</small></div></div>
+  <button class="btn btn-primary cta-big" id="addToCart">Dodaj do koszyka: <span id="ctaPrice">249,00 zł</span></button>
+  <div class="pay-row"><span class="pi blik">blik</span><span class="pi visa">VISA</span><span class="pi mc"><i></i><i></i>mastercard</span><span class="pi ap"> Pay</span><span class="pi gp"><b>G</b> Pay</span><span class="pi p24">P24</span></div>
+  <div class="cta-trust">🔒 Bezpieczna płatność · 🚚 Wysyłka w 24 h · ↩️ 30 dni na zwrot</div>
+</section>
+</div>
+
+<!-- ===================== PASEK ZAUFANIA ===================== -->
+<section class="trustband"><div class="tb-in">
+  <div><span>🚚</span><p><b>Darmowa wysyłka</b><small>Paczkomat lub kurier</small></p></div>
+  <div><span>↩️</span><p><b>30 dni na zwrot</b><small>Bez podania przyczyny</small></p></div>
+  <div><span>🔒</span><p><b>Bezpieczne płatności</b><small>BLIK, karta, Apple Pay</small></p></div>
+  <div><span>⭐</span><p><b>4,8 / 5</b><small>Średnia ocena</small></p></div>
+</div></section>
+
+<!-- ===================== ZOBACZ TO W AKCJI ===================== -->
+<section class="action action-bg">
+  <h2 class="section-title reveal">Zobacz to w <em>akcji</em></h2>
+  <div class="v-wrap">
+  <div class="v-track" id="vTrack"></div>
+  <button class="v-arrow prev" id="vPrev" aria-label="Poprzedni film"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="v-arrow next" id="vNext" aria-label="Następny film"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="dots" id="vDots"></div>
+</section>
+
+<!-- ===================== ZASTOSOWANIA ===================== -->
+<section class="sec sec-tint" id="sec-uses">
+  <div class="wrap">
+    <div class="kicker center">Na każdą okazję</div>
+    <h2 class="h2 center">Prezent, który <em>wzruszy każdego</em></h2>
+    <p class="sub center">Jedna kula, setki pięknych chwil – wybierz, komu sprawisz radość.</p>
+    <div class="uses">
+      <article class="use reveal"><img src="{% endraw %}{{ 'lumorka-uz-choinka-web.jpg' | asset_url }}{% raw %}" alt="" loading="lazy"><h3>Na choinkę</h3><p>Powieś ją wśród bombek i oglądajcie razem wspomnienia z całego roku.</p></article>
+      <article class="use reveal"><img src="{% endraw %}{{ 'lumorka-uz-rodzice-web.jpg' | asset_url }}{% raw %}" alt="" loading="lazy"><h3>Dla rodziców i dziadków</h3><p>Uśmiechy i głosy wnuków zawsze pod ręką – bez przewijania telefonu.</p></article>
+      <article class="use reveal"><img src="{% endraw %}{{ 'lumorka-uz-para-web.jpg' | asset_url }}{% raw %}" alt="" loading="lazy"><h3>Na rocznicę</h3><p>Wasze wspólne zdjęcia i filmy w jednej świecącej pamiątce dla ukochanej osoby.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DLACZEGO KLIENCI KOCHAJĄ ===================== -->
+<section class="wave-sec">
+  <div class="wave top" data-wave></div>
+  <div class="wrap stats">
+    <h2 class="reveal">Dlaczego klienci kochają <span data-brand>Lumorkę</span></h2>
+    <div id="stats"></div>
+    <p class="note">Na podstawie ankiety wśród naszych zaufanych klientów.</p>
+  </div>
+  <div class="wave bottom" data-wave></div>
+</section>
+
+<!-- ===================== ROZWIĄZANIE ===================== -->
+<section class="sec sec-glow" id="sec-how">
+  <div class="wrap split rev">
+    <div class="split-img reveal"><img src="{% endraw %}{{ 'lumorka-sek-ozywia-web.jpg' | asset_url }}{% raw %}" alt="Wspomnienia w kuli Lumorka" loading="lazy"></div>
+    <div class="reveal">
+      <div class="kicker">Rozwiązanie</div>
+      <h2 class="h2">Jak <span data-brand>Lumorka</span> <em>ożywia wspomnienia</em></h2>
+      <ul class="clist">
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span><b>Wciągająca projekcja</b> – zdjęcia i filmy ożywają w szklanej kuli</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span><b>Wbudowany głośnik</b> – słyszysz głosy i śmiech bliskich</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span><b>Obsługa jednym przyciskiem</b> – bez aplikacji i bez konfiguracji</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span><b>Na choinkę i na co dzień</b> – zawieszka i podstawka w zestawie</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3 3 7-7"/></svg><span><b>Gotowa na prezent</b> – przychodzi w eleganckim pudełku</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PORÓWNANIE ===================== -->
+<section class="sec sec-blue" id="sec-cmp">
+  <div class="wrap narrow">
+    <div class="kicker center">Porównanie</div>
+    <h2 class="h2 center">Dlaczego <span data-brand>Lumorka</span>, <em>a nie zwykła ozdoba?</em></h2>
+    <div class="cmp-scroll"><table class="cmp-table">
+      <thead><tr><th>Cecha</th><th class="hl"><span data-brand>Lumorka</span></th><th>Zwykła bombka</th><th>Ramka cyfrowa</th></tr></thead>
+      <tbody><tr><td>Twoje własne zdjęcia i filmy</td><td class="hl"><span class="yes">✓</span></td><td class=""><span class="no">✕</span></td><td class=""><span class="yes">✓</span></td></tr><tr><td>Dźwięk – słychać głosy bliskich</td><td class="hl"><span class="yes">✓</span></td><td class=""><span class="no">✕</span></td><td class=""><span class="no">✕</span></td></tr><tr><td>Wisi na choince jak ozdoba</td><td class="hl"><span class="yes">✓</span></td><td class=""><span class="yes">✓</span></td><td class=""><span class="no">✕</span></td></tr><tr><td>Obsługa jednym przyciskiem</td><td class="hl"><span class="yes">✓</span></td><td class=""><span class="yes">✓</span></td><td class=""><span class="no">✕</span></td></tr><tr><td>Gotowa do wręczenia w pudełku</td><td class="hl"><span class="yes">✓</span></td><td class=""><span class="no">✕</span></td><td class=""><span class="no">✕</span></td></tr><tr><td>30 dni na zwrot</td><td class="hl"><span class="yes">✓</span></td><td class=""><span class="no">✕</span></td><td class=""><span class="no">✕</span></td></tr></tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- ===================== OPINIE ===================== -->
+<section class="sec sec-tint" id="sec-rev">
+  <div class="wrap">
+    <div class="kicker center">Opinie</div>
+    <h2 class="h2 center">Zobacz, co mówią <em>nasi klienci</em></h2>
+    <div class="rev-score"><b>4,8</b><span class="stars" data-stars="5" data-size="20"></span></div>
+  </div>
+  <div class="t-marquee rev2"><div class="t-track" id="tTrack"></div></div>
+</section>
+
+<!-- ===================== PROMOCJA Z ODLICZANIEM ===================== -->
+<section class="promo-band"><div class="wrap promo-wrap">
+  <div class="promo reveal">
+    <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i><img src="{% endraw %}{{ 'lumorka-sek-zestaw-web.jpg' | asset_url }}{% raw %}" alt="Kula Lumorka na choince"></div>
+    <div class="promo-body">
+      <div class="promo-brand"><span data-brand>Lumorka</span></div>
+      <h2 class="promo-48"><span class="clock">⏰</span> 48h!</h2>
+      <p class="sway">Nie przegap – cena promocyjna tylko przez 48 godzin!</p>
+      <div class="limited sway">⚠️ <b>Liczba sztuk ograniczona</b> <span class="heart">♡</span></div>
+      <div class="timer" id="timer">
+        <div><b id="tH">00</b><span>godzin</span></div><i>:</i>
+        <div><b id="tM">00</b><span>minut</span></div><i>:</i>
+        <div><b id="tS">00</b><span>sekund</span></div>
+      </div>
+      <button class="btn promo-btn" id="promoBtn">Kup teraz i skorzystaj z rabatu! →</button>
+      <small class="promo-end">Promocja trwa do <span id="promoDate"></span></small>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="sec" id="sec-faq">
+  <div class="wrap narrow">
+    <div class="kicker center">FAQ</div>
+    <h2 class="h2 center">Najczęściej zadawane <em>pytania</em></h2>
+    <p class="sub center">Nie ma tu Twojego pytania? Napisz:<br><b>kontakt@lumorka.pl</b></p>
+    <div id="faq" class="faq2"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== KOSZYK (STRONA) ===================== -->
+<section class="view" id="view-koszyk" hidden>
+  <div class="cart-page">
+    <div>
+      <a href="#" class="back">← Kontynuuj zakupy</a>
+      <h1>Twój koszyk <small id="cpFree">✓ Darmowa dostawa</small></h1>
+      <div id="cpItems"></div>
+    </div>
+    <aside class="summary">
+      <h3>Podsumowanie</h3>
+      <div id="cpSum"></div>
+      <div class="sum-row" style="margin-top:10px;font-size:13px"><span>Dostawa: <b id="cpShipName">InPost Paczkomat</b></span><button style="color:var(--blue);font-weight:600;font-size:13px" id="cpShipChange">Zmień</button></div>
+      <button class="btn btn-primary" id="cpOrder" style="margin-top:14px">Złóż zamówienie</button>
+      <div class="secure">🔒 Bezpieczne płatności · 30 dni na zwrot</div>
+      <div class="pay-icons"><span>BLIK</span><span>VISA</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span><span>Przelewy24</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ===================== REGULAMIN ===================== -->
+<section class="view" id="view-regulamin" hidden><div class="page">
+  <h1>Regulamin</h1>
+  <h2>1. Informacje ogólne</h2>
+  <p>Sklep internetowy <b data-brand>Lumorka</b> prowadzi Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: kontakt@lumorka.pl (dalej: Sprzedawca). Regulamin określa zasady składania zamówień, dostawy, płatności, odstąpienia od umowy i reklamacji. Do korzystania ze sklepu potrzebne jest urządzenie z dostępem do internetu, aktualna przeglądarka i aktywny adres e-mail.</p>
+  <h2>2. Składanie zamówień</h2>
+  <p>Klient wybiera produkt, dodaje go do koszyka i wypełnia formularz zamówienia. Umowa sprzedaży zostaje zawarta z chwilą otrzymania przez Klienta e-maila z potwierdzeniem przyjęcia zamówienia. Ceny podane w sklepie są cenami końcowymi w złotych polskich.</p>
+  <h2>3. Płatności</h2>
+  <p>Dostępne metody płatności (m.in. BLIK, karta, Apple Pay, Google Pay, szybki przelew) są widoczne podczas składania zamówienia. Zamówienie realizujemy po zaksięgowaniu płatności.</p>
+  <h2>4. Dostawa</h2>
+  <p>Dostarczamy na terenie Polski. Dostawa jest bezpłatna (Paczkomat InPost lub kurier). Zamówienie przygotowujemy w 3–5 dni roboczych, a transport trwa 3–5 dni roboczych, łącznie zwykle 6–10 dni roboczych. Szczegóły w <a href="#polityka-wysylki">Polityce wysyłki</a>.</p>
+  <h2>5. Zwroty</h2>
+  <p>Konsument może odstąpić od umowy bez podania przyczyny w terminie 30 dni od otrzymania produktu (ustawowy termin to 14 dni, Sprzedawca wydłuża go do 30 dni). Wystarczy wysłać oświadczenie na adres kontakt@lumorka.pl. Sprzedawca zwraca płatność w ciągu 14 dni od otrzymania oświadczenia, tą samą metodą płatności. Koszt odesłania produktu ponosi Klient.</p>
+  <h2>6. Reklamacje</h2>
+  <p>Sprzedawca odpowiada za zgodność towaru z umową na zasadach ustawy o prawach konsumenta. Reklamację można złożyć e-mailem na adres kontakt@lumorka.pl, najlepiej z opisem problemu i zdjęciem. Odpowiadamy w ciągu 14 dni.</p>
+  <h2>7. Spory</h2>
+  <p>Konsument może skorzystać z pomocy miejskiego lub powiatowego rzecznika konsumentów oraz z pozasądowych sposobów rozpatrywania sporów.</p>
+  <h2>8. Postanowienia końcowe</h2>
+  <p>W sprawach nieuregulowanych regulaminem stosuje się przepisy prawa polskiego, w szczególności Kodeksu cywilnego i ustawy o prawach konsumenta. Zasady przetwarzania danych opisuje <a href="#polityka-prywatnosci">Polityka prywatności</a>.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== POLITYKA PRYWATNOŚCI ===================== -->
+<section class="view" id="view-polityka-prywatnosci" hidden><div class="page">
+  <h1>Polityka prywatności</h1>
+  <h2>1. Administrator danych</h2>
+  <p>Administratorem danych osobowych jest Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło, e-mail: kontakt@lumorka.pl.</p>
+  <h2>2. Jakie dane zbieramy?</h2>
+  <ul><li>imię i nazwisko,</li><li>adres e-mail,</li><li>adres dostawy,</li><li>numer telefonu (jeśli go podasz),</li><li>dane potrzebne do płatności i realizacji zamówienia.</li></ul>
+  <h2>3. Po co je zbieramy?</h2>
+  <ul><li>realizacja zamówień i dostaw,</li><li>kontakt z Klientem i obsługa zapytań,</li><li>obsługa zwrotów i reklamacji,</li><li>wypełnienie obowiązków prawnych, np. księgowych.</li></ul>
+  <h2>4. Komu je przekazujemy?</h2>
+  <p>Tylko firmom, które pomagają nam zrealizować zamówienie: operatorowi sklepu i płatności (np. Shopify, operator płatności), firmom kurierskim (np. InPost) oraz biuru rachunkowemu.</p>
+  <h2>5. Jak długo je przechowujemy?</h2>
+  <p>Przez czas realizacji zamówienia, a potem tak długo, jak wymagają tego przepisy (np. podatkowe) lub do przedawnienia roszczeń.</p>
+  <h2>6. Twoje prawa</h2>
+  <ul><li>dostęp do danych i ich poprawienie,</li><li>usunięcie lub ograniczenie przetwarzania,</li><li>przeniesienie danych i sprzeciw,</li><li>skarga do Prezesa UODO.</li></ul>
+  <h2>7. Pliki cookies</h2>
+  <p>Sklep używa plików cookies, aby działał koszyk i aby mierzyć ruch na stronie. Ustawienia cookies możesz zmienić w swojej przeglądarce.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== POLITYKA WYSYŁKI ===================== -->
+<section class="view" id="view-polityka-wysylki" hidden><div class="page">
+  <h1>Polityka wysyłki</h1>
+  <h2>1. Obszar dostaw</h2>
+  <p>Wysyłamy na terenie całej Polski: do Paczkomatu InPost albo kurierem pod wskazany adres.</p>
+  <h2>2. Koszt dostawy</h2>
+  <p>Dostawa jest <b>darmowa</b> dla każdego zamówienia, niezależnie od wybranej metody.</p>
+  <h2>3. Czas dostawy</h2>
+  <p>Zamówienie przygotowujemy w 3–5 dni roboczych, a transport trwa 3–5 dni roboczych. Łącznie paczka dociera zwykle w 6–10 dni roboczych.</p>
+  <h2>4. Śledzenie paczki</h2>
+  <p>Po nadaniu paczki wyślemy Ci e-mailem numer i link do śledzenia przesyłki.</p>
+  <h2>5. Uszkodzona paczka</h2>
+  <p>Jeśli paczka dotrze uszkodzona, zrób zdjęcie i napisz na kontakt@lumorka.pl. Wyślemy nową kulę albo zwrócimy pieniądze.</p>
+  <h2>6. Kontakt</h2>
+  <p>Pytania o dostawę: kontakt@lumorka.pl.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== ZWROTY ===================== -->
+<section class="view" id="view-zwroty" hidden><div class="page">
+  <h1>Zwroty i reklamacje</h1>
+  <h2>1. 30 dni na zwrot</h2>
+  <p>Masz 30 dni od otrzymania paczki, żeby zwrócić produkt bez podania przyczyny.</p>
+  <h2>2. Jak zwrócić?</h2>
+  <ol><li>Napisz na kontakt@lumorka.pl i podaj numer zamówienia.</li><li>W odpowiedzi podamy adres do odesłania produktu.</li><li>Odeślij produkt. Koszt odesłania ponosi Klient.</li></ol>
+  <h2>3. Zwrot pieniędzy</h2>
+  <p>Zwracamy pieniądze w ciągu 14 dni od otrzymania Twojej wiadomości, tą samą metodą płatności.</p>
+  <h2>4. Gwarancja satysfakcji</h2>
+  <p>Jeśli w ciągu 30 dni kula Ci się nie spodoba, napisz do nas. Zwrócimy pieniądze za zamówienie. Gwarancja nie ogranicza Twoich ustawowych praw.</p>
+  <h2>5. Reklamacje</h2>
+  <p>Jeśli produkt jest uszkodzony albo niezgodny z opisem, napisz na kontakt@lumorka.pl i dołącz zdjęcie. Odpowiemy w ciągu 14 dni.</p>
+  <div data-form></div>
+</div></section>
+
+<!-- ===================== KONTAKT ===================== -->
+<section class="view" id="view-kontakt" hidden><div class="page">
+  <h1>Kontakt</h1>
+  <h2>Napisz do nas</h2>
+  <p>Masz pytanie o zamówienie, dostawę albo samą kulę? Napisz na <b>kontakt@lumorka.pl</b> albo skorzystaj z formularza poniżej.</p>
+  <p>Odpowiadamy w dni robocze, zwykle w ciągu 24 godzin.</p>
+  <p>Sprzedawca: Wojciech Motyka, ul. Sikorskiego 17, 38-200 Jasło.</p>
+  <div data-form></div>
+</div></section>
+
+
+<!-- ===================== STOPKA ===================== -->
+<footer class="foot2">
+  <div class="foot2-in">
+    <div>
+      <div class="foot2-brand"><span data-brand>Lumorka</span></div>
+      <p class="foot2-desc">Kule wspomnień, w których Twoje zdjęcia i filmy świecą i grają. Prezent, który wzrusza.</p>
+      <div class="foot2-c"><span class="ic">✉️</span>kontakt@lumorka.pl</div>
+      <div class="foot2-c"><span class="ic">🕑</span>Pn–Pt · odpowiadamy w ciągu 24 h</div>
+    </div>
+    <div>
+      <h4>Informacje</h4>
+      <a href="#regulamin">Regulamin</a><a href="#polityka-prywatnosci">Polityka prywatności</a><a href="#polityka-wysylki">Polityka wysyłki</a><a href="#zwroty">Zwroty i reklamacje</a><a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+  <div class="foot2-bottom"><span><span data-brand>Lumorka</span> © <span id="year"></span> · Zdjęcia krajobrazów: Unsplash</span><span>🔒 Bezpieczne płatności SSL · Dane chronione RODO</span></div>
+</footer>
+
+<!-- ===================== PRZYKLEJONY PASEK ===================== -->
+<div class="sticky-buy" id="stickyBuy">
+  <div class="sb-in">
+    <div class="sb-thumb" id="sbThumb"></div>
+    <div><div class="sb-name"><span data-brand>Lumorka</span></div><div class="sb-price" id="sbPrice">249,00 zł</div></div>
+    <button class="sb-btn" id="sbBtn">Chcę moją Kulę</button>
+  </div>
+</div>
+<button class="to-top" id="toTop" aria-label="Do góry"><svg viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg></button>
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Koszyk">
+  <div class="dr-head"><span>Koszyk · <span id="drCount">0</span></span><button class="dr-close" id="drClose" aria-label="Zamknij">×</button></div>
+  <div class="ship-band">🚚 Darmowa dostawa InPost · ↩️ 30 dni na zwrot</div><div class="upsell-bar" id="upsellBar"></div>
+  <div class="dr-items" id="drItems"></div>
+  <div class="dr-foot" id="drFoot"></div>
+</aside>
+<div class="modal" id="shipModal"><div class="modal-box ship2">
+  <div class="sh-head"><h3>Wybierz dostawę</h3><button class="sh-x" id="shipClose" aria-label="Zamknij">×</button></div>
+  <button class="ship-opt on" data-ship="Paczkomat InPost"><span>📦 Paczkomat InPost</span><em>GRATIS</em></button>
+  <button class="ship-opt" data-ship="Kurier pod adres"><span>🚚 Kurier pod adres</span><em>GRATIS</em></button>
+  <button class="btn cta-big sh-go" id="shipGo">Przejdź do płatności</button>
+  <div class="modal-note">W kasie zaznacz wybraną dostawę. Paczkomat wybierzesz z listy lub mapy zaraz po zapłacie.</div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   USTAWIENIA – tu zmieniasz teksty, ceny, filmy i opinie.
+   ===================================================================== */
+const CONFIG = {
+  marka: "Lumorka",
+
+  pasekOgloszen: ["Darmowa wysyłka w całej Polsce", "Bezpieczna płatność BLIK i kartą", "Idealny prezent na Święta", "Promocja przedświąteczna"],
+
+  // Zdjęcia produktu do galerii. Wrzuć pliki do folderu "zdjecia" i wpisz ścieżki,
+  // np. "zdjecia/1.jpg". Puste = rysowane podglądy.
+  // Podpisy na zdjęciach w galerii (po kolei, tyle samo co zdjęć)
+  podpisy: ["🎄 Świeci na choince","🤲 Mieści się w dłoni","👵 Wzruszy babcię i mamę","🕯️ Pięknie wygląda na półce","🎁 Prezent, który wzrusza"],
+  zdjecia: ["{% endraw %}{{ 'lumorka-choinka2-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-w-dloni-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-babcia-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-polka-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-przyjaciolki-web.jpg' | asset_url }}{% raw %}"],
+
+  pakiety: [
+    { nazwa: "Jedna Lumorka", opis: "Idealny prezent na święta", cena: 249.00, stara: null, badge: null, prezenty: [] },
+    { nazwa: "Dwie Lumorki", opis: null, cena: 481.68, stara: 498.00, badge: "Najpopularniejszy",
+      prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] },
+    { nazwa: "Trzy Lumorki", opis: null, cena: 714.51, stara: 747.00, badge: "Najlepsza wartość",
+      prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] }
+  ],
+
+  // Filmy do sekcji "Zobacz to w akcji" (folder "filmy", pionowe 9:16).
+  // "gora" = wysokość napisu od góry filmu w %, "napisy" = polskie napisy od danej sekundy.
+  filmy: [
+    { plik: "{% endraw %}{{ 'film1.mp4' | asset_url }}{% raw %}", poster: "{% endraw %}{{ 'poster1.jpg' | asset_url }}{% raw %}", gora: 21, napisy: [{ od: 0, tekst: "12 miesięcy ❤️" }] },
+    { plik: "{% endraw %}{{ 'film2.mp4' | asset_url }}{% raw %}", poster: "{% endraw %}{{ 'poster2.jpg' | asset_url }}{% raw %}", gora: 18, napisy: [
+        { od: 0,   tekst: "Nie pokazuj świątecznej mamie tych kul wspomnień 🥹🎄" },
+        { od: 0.8, tekst: "Teraz możesz powiesić wszystkie swoje najpiękniejsze wspomnienia na choince 🥹🫶" } ] },
+    { plik: "{% endraw %}{{ 'film3.mp4' | asset_url }}{% raw %}", poster: "{% endraw %}{{ 'poster3.jpg' | asset_url }}{% raw %}", gora: 14, napisy: [
+        { od: 0,    tekst: "Moja ulubiona scena z mamą z „W głowie się nie mieści”… 🥹" },
+        { od: 1.22, tekst: "To kula wspomnień, zupełnie jak z filmu… 😭" } ] },
+    { plik: "{% endraw %}{{ 'film4.mp4' | asset_url }}{% raw %}", poster: "{% endraw %}{{ 'poster4.jpg' | asset_url }}{% raw %}", gora: 20, napisy: [] },
+    { plik: "{% endraw %}{{ 'film5.mp4' | asset_url }}{% raw %}", poster: "{% endraw %}{{ 'poster5.jpg' | asset_url }}{% raw %}", gora: 24, napisy: [{ od: 0, tekst: "Świąteczne mamy, musicie to zobaczyć… 🥹🎄" }] }
+  ],
+
+  // Krótkie opinie pod akordeonem (przewijane kropkami)
+  krotkieOpinie: [
+    { imie: "Sylwia", tekst: "Moi rodzice nie mogli przestać się uśmiechać, kiedy ją włączyli. 😊", kolor: "#c49a7a" },
+  ],
+
+  statystyki: [
+    { proc: 93, html: "Powiedziało, że oglądanie zdjęć i filmów w kuli sprawiło, że ich wspomnienia stały się <strong>bardziej wzruszające i żywe</strong>." },
+    { proc: 89, html: "Pokochało to, jak <strong>łatwo wgrać i odtworzyć wspomnienia</strong> — bez skomplikowanej konfiguracji." },
+    { proc: 97, html: "Powiedziało, że Lumorka okazała się <strong>wyjątkowym, niezapomnianym prezentem</strong> dla bliskich." }
+  ],
+
+  // Opinie przewijane w bok na niebieskiej fali
+  opinieFala: [
+    { imie: "Agnieszka", tekst: "Dużo lepsze niż przewijanie zdjęć w telefonie. Wygląda przepięknie na mojej szafce nocnej i przywołuje tyle wspomnień.", kolor: "#b9826a" },
+    { imie: "Renata", tekst: "Podarowałam ją rodzicom i byli zachwyceni. Bardzo prosta w obsłudze i niesamowicie wzruszająca.", kolor: "#9c8f84" },
+    { imie: "Ewa", tekst: "Cudowny sposób, żeby na nowo przeżywać nasze ulubione chwile. Filmy odtwarzane w kuli wyglądają magicznie.", kolor: "#c7a86b" },
+  ],
+
+  // Koniec promocji (prawdziwa data – licznik odlicza do niej)
+  promoKoniec: "2026-11-13T19:00:00+01:00",
+
+  porownanie: ["Wciągająca projekcja w kuli", "Łatwa obsługa jednym dotknięciem", "Wbudowany głośnik", "Ozdoba godna eksponowania", "30-dniowa gwarancja zwrotu pieniędzy"],
+
+  faq: [
+    { q: "Czy wysyłacie do mojego kraju?", a: "Wysyłamy na terenie całej Polski za darmo. Dostawa trwa zwykle 6–10 dni roboczych." },
+    { q: "Ile pamięci ma kula?", a: "Kula mieści dziesiątki zdjęć i kilka minut nagrań wideo – wystarczy na najważniejsze chwile całego roku." },
+    { q: "Czy potrzebuję aplikacji?", a: "Nie. Pliki wgrywasz przez dołączony kabel, a odtwarzanie włączasz jednym przyciskiem." },
+    { q: "Jak długo działa na baterii?", a: "Kula ma wbudowany akumulator ładowany przez USB. Możesz też korzystać z niej podłączonej do zasilania na podstawce." },
+    { q: "Czy mogę zmienić zdjęcia później?", a: "Tak, w każdej chwili możesz usunąć stare pliki i wgrać nowe." },
+    { q: "Czy kula nadaje się na prezent?", a: "Tak. Przychodzi w eleganckim pudełku, gotowa do wręczenia – idealna dla mamy, babci, partnera czy przyjaciółki." },
+    { q: "Jak wygląda dostawa?", a: "Wysyłamy za darmo do Paczkomatu InPost albo kurierem. Paczka dociera zwykle w 6–10 dni roboczych, a numer śledzenia dostaniesz e-mailem." },
+    { q: "Jak zwrócić produkt?", a: "Masz 30 dni na zwrot bez podawania przyczyny. Napisz na kontakt@lumorka.pl z numerem zamówienia, a podamy adres do odesłania." }
+  ],
+
+};
+
+/* ===================================================================== */
+const $ = s => document.querySelector(s);
+const zl = v => v.toFixed(2).replace('.', ',') + ' zł';
+document.querySelectorAll('[data-brand]').forEach(e => e.textContent = CONFIG.marka);
+$('#year').textContent = new Date().getFullYear();
+
+function starSvg(fill, size){
+  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}"><path d="M12 2.5l2.8 6.4 6.9.6-5.2 4.6 1.6 6.8L12 17.3l-6.1 3.6 1.6-6.8-5.2-4.6 6.9-.6z" fill="${fill?'#f5b50a':'none'}" stroke="#f5b50a" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+}
+function renderStars(el){
+  const n = +el.dataset.stars, s = +(el.dataset.size||16);
+  el.innerHTML = Array.from({length:5},(_,i)=>starSvg(i<Math.round(n),s)).join('');
+}
+document.querySelectorAll('[data-stars]').forEach(renderStars);
+
+/* ---------- Pasek ogłoszeń ---------- */
+const ann = CONFIG.pasekOgloszen.map(t=>`<span><em class="star">✦</em>${t}</span>`).join('');
+const aT=$('#announceTrack'); aT.innerHTML=ann;
+const aW=aT.scrollWidth||800, aN=Math.max(1,Math.ceil(Math.max(window.innerWidth,screen.width||0,1920)/aW));
+const aSet=ann.repeat(aN); aT.innerHTML=aSet+aSet; aT.style.setProperty('--adur',(aN*aW/45)+'s');
+
+/* ---------- Rysowane podglądy (zastępują zdjęcia/filmy, dopóki ich nie wgrasz) ---------- */
+function sceneSvg(seed, opts={}){
+  let r = seed*9301+49297; const rnd=()=>((r=(r*9301+49297)%233280)/233280);
+  const w=400,h=opts.tall?711:432, cx=w/2, cy=opts.cy||h*0.52, R=opts.R||88;
+  const bg = opts.bg || ['#1a1410','#2b2017'];
+  let lights='';
+  for(let i=0;i<70;i++){const x=rnd()*w,y=rnd()*h,s=2+rnd()*9,o=.25+rnd()*.7;
+    const col = opts.colorful? ['#ffd27a','#ff6b9a','#7cf2c4','#8fb4ff','#e59bff'][i%5] : '#ffd98a';
+    lights+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${s.toFixed(1)}" fill="${col}" opacity="${o.toFixed(2)}" filter="url(#b${seed})"/>`;}
+  let needles='';
+  for(let i=0;i<40;i++){const x=rnd()*w,y=rnd()*h,l=30+rnd()*60,a=rnd()*360;
+    needles+=`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${l.toFixed(0)}" ry="${(l/5).toFixed(0)}" transform="rotate(${a.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="#e8e2d6" opacity=".09"/>`;}
+  const ph = opts.photo || ['#f1c7a8','#7a4b3a','#c98f70'];
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg${seed}" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="${bg[1]}"/><stop offset="1" stop-color="${bg[0]}"/></radialGradient>
+    <filter id="b${seed}" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+    <radialGradient id="glass${seed}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#9fc2ff" stop-opacity=".25"/></radialGradient>
+    <linearGradient id="ph${seed}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${ph[0]}"/><stop offset=".55" stop-color="${ph[2]}"/><stop offset="1" stop-color="${ph[1]}"/></linearGradient>
+    <clipPath id="c${seed}"><circle cx="${cx}" cy="${cy}" r="${R-6}"/></clipPath>
+  </defs>
+  <rect width="${w}" height="${h}" fill="url(#bg${seed})"/>
+  ${needles}${lights}
+  ${opts.strap!==false?`<path d="M${cx-6} 0 L${cx-4} ${cy-R-14} M${cx+6} 0 L${cx+4} ${cy-R-14}" stroke="#c98a6a" stroke-width="5"/><rect x="${cx-8}" y="${cy-R-22}" width="16" height="20" rx="3" fill="#111"/>`:''}
+  <circle cx="${cx}" cy="${cy}" r="${R+10}" fill="#9fc2ff" opacity=".18" filter="url(#b${seed})"/>
+  <g clip-path="url(#c${seed})">
+    <rect x="${cx-R}" y="${cy-R}" width="${R*2}" height="${R*2}" fill="url(#ph${seed})"/>
+    <circle cx="${cx-R*.28}" cy="${cy-R*.12}" r="${R*.26}" fill="#f3d3bb"/>
+    <path d="M${cx-R*.58} ${cy-R*.18} q${R*.3} -${R*.55} ${R*.6} 0 v${R*.25} h-${R*.6}z" fill="#3b2418"/>
+    <circle cx="${cx+R*.3}" cy="${cy+R*.06}" r="${R*.21}" fill="#f6dccb"/>
+    <path d="M${cx+R*.08} ${cy-R*.02} q${R*.22} -${R*.4} ${R*.44} 0z" fill="#6b4532"/>
+    <rect x="${cx-R*.75}" y="${cy+R*.2}" width="${R*.95}" height="${R*.8}" rx="${R*.3}" fill="#2f3e5c"/>
+    <rect x="${cx+R*.05}" y="${cy+R*.3}" width="${R*.55}" height="${R*.7}" rx="${R*.25}" fill="#8db0d8"/>
+  </g>
+  <circle cx="${cx}" cy="${cy}" r="${R}" fill="url(#glass${seed})" stroke="#e9f1ff" stroke-opacity=".7" stroke-width="3"/>
+  <ellipse cx="${cx-R*.38}" cy="${cy-R*.5}" rx="${R*.3}" ry="${R*.12}" transform="rotate(-30 ${cx-R*.38} ${cy-R*.5})" fill="#fff" opacity=".45"/>
+  </svg>`;
+}
+const scenes = [
+  {bg:['#14100c','#2a1f16']},
+  {bg:['#0d1220','#1f2b45'], colorful:true, photo:['#ffd9e4','#a46a86','#e6a9c0']},
+  {bg:['#1b120c','#3a2a1e'], photo:['#cfe3ff','#3c5b8a','#89a9d6']},
+  {bg:['#111','#2a2a2a'], strap:false, photo:['#f7e3c4','#8a5a3a','#d6a87f']},
+  {bg:['#0f1612','#22342a'], photo:['#e9f3ff','#4f6d96','#a7c0e0']},
+  {bg:['#160f17','#33213a'], colorful:true},
+  {bg:['#1a1410','#3b2c20'], photo:['#ffe6d1','#a86f4b','#e3ae8a']},
+  {bg:['#0c0f17','#1d2436'], photo:['#d6e8ff','#2e4670','#7f9ccc']}
+];
+
+/* ---------- Galeria ---------- */
+const gTrack = $('#gTrack');
+const gItems = CONFIG.zdjecia.length ? CONFIG.zdjecia.map(src=>`<img src="${src}" alt="Lumorka" loading="lazy">`)
+                                     : scenes.map((s,i)=>sceneSvg(i+1,s));
+gTrack.innerHTML = gItems.map((h,i)=>`<div class="g-slide">${h}${(CONFIG.podpisy||[])[i]?`<div class="g-cap">${CONFIG.podpisy[i]}</div>`:''}</div>`).join('');
+const gTotal = gItems.length;
+let gIdx = 0;
+function gGo(i){ gIdx=(i+gTotal)%gTotal; gTrack.scrollTo({left:gTrack.children[gIdx].offsetLeft-gTrack.children[0].offsetLeft,behavior:'smooth'}); }
+gTrack.addEventListener('scroll',()=>{ const w=gTrack.children[0].offsetWidth+10; gIdx=Math.round(gTrack.scrollLeft/w);  [...$('#gThumbs').children].forEach((t,k)=>t.classList.toggle('on',k===gIdx)); },{passive:true});
+
+
+$('#gThumbs').innerHTML = CONFIG.zdjecia.map((src,k)=>`<button class="${k?'':'on'}" aria-label="Zdjęcie ${k+1}"><img src="${src}" alt=""></button>`).join('');
+[...$('#gThumbs').children].forEach((t,k)=>t.onclick=()=>gGo(k));
+
+$('#sbThumb').innerHTML = CONFIG.zdjecia[0] ? `<img src="${CONFIG.zdjecia[0]}" alt="">` : sceneSvg(99,{R:110});
+
+/* ---------- Pakiety (z wyborem koloru dla każdej sztuki) ---------- */
+let color='Biały', chosen=1;
+const unitColors=CONFIG.pakiety.map((_,i)=>Array(i+1).fill('Biały'));
+const COLORS=[['Biały','#ffffff'],['Czarny','#1b1b1f']];
+function renderBundles(){
+  $('#bundles').innerHTML = CONFIG.pakiety.map((p,i)=>{
+    const save = p.stara ? `<span class="save-pill">Oszczędzasz ${zl(p.stara-p.cena)}</span> + darmowa dostawa` : '<span class="save-pill">Darmowa dostawa</span>';
+    const names=['1 Lumorka','Zestaw 2 Lumorek','Zestaw 3 Lumorek'], subs=['Idealna na prezent','Dla Ciebie i bliskiej osoby','Dla całej rodziny'];
+    return `<div class="bundle${i===chosen?' active':''}" data-i="${i}">
+      ${p.badge?`<span class="badge">${p.badge}</span>`:''}
+      <div class="b-main"><span class="radio"></span><img class="b-thumb" src="${CONFIG.zdjecia[i]||CONFIG.zdjecia[0]}" alt="">
+        <div><div class="b-name">${names[i]||(i+1)+' szt.'}</div><div class="b-sub">${subs[i]||''}</div><div class="b-save">${save}</div></div>
+        <div class="b-price">${zl(p.cena)}${p.stara?`<s class="b-old">${zl(p.stara)}</s>`:''}</div></div>
+      <div class="b-opts">${unitColors[i].map((c,k)=>`<div class="unit"><span class="unit-l">Sztuka ${k+1}: <b>${c}</b></span><span class="sw-row">${COLORS.map(([n,h])=>`<button class="sw${n===c?' on':''}" data-u="${i}-${k}" data-c="${n}" style="--c:${h}" aria-label="${n}"></button>`).join('')}</span></div>`).join('')}
+        ${p.prezenty.length?`<div class="b-gifts">🎁 Gratis: podstawka, zawieszka i ściereczka</div>`:''}</div>
+    </div>`;}).join('');
+  const p=CONFIG.pakiety[chosen];
+  $('#heroPrice').textContent=zl(p.cena); $('#heroOld').textContent=p.stara?zl(p.stara):''; $('#heroOff').textContent=p.stara?`−${Math.round((1-p.cena/p.stara)*100)}%`:''; $('#heroOff').style.display=p.stara?'':'none';
+  $('#ctaPrice').textContent=zl(p.cena); $('#sbPrice').textContent=zl(p.cena);
+}
+$('#bundles').addEventListener('click',e=>{
+  const sw=e.target.closest('.sw'); if(sw){ const [i,k]=sw.dataset.u.split('-').map(Number); unitColors[i][k]=sw.dataset.c; chosen=i; renderBundles(); return; }
+  const b=e.target.closest('.bundle'); if(b){ chosen=+b.dataset.i; renderBundles(); }
+});
+renderBundles();
+
+/* ---------- Koszyk (demo) ---------- */
+let cart = 0;
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2400); }
+let cartItems=[], shipMethod='InPost Paczkomat';
+const brandName=n=>n.replace('Lumorka',CONFIG.marka);
+function cartQty(){ return cartItems.reduce((a,i)=>a+i.qty,0); }
+function cartTotals(){ let sum=0, old=0; cartItems.forEach(i=>{const p=CONFIG.pakiety[i.p]; sum+=p.cena*i.qty; old+=(p.stara||p.cena)*i.qty;}); return {sum, save:old-sum, old}; }
+function unitsInCart(){ return cartItems.reduce((a,i)=>a+(i.p+1)*i.qty,0); }
+function itemHtml(i,k){ const p=CONFIG.pakiety[i.p], old=(p.stara||p.cena)*i.qty, now=p.cena*i.qty;
+  return `<div class="ci2"><img src="${CONFIG.zdjecia[i.p]||CONFIG.zdjecia[0]}" alt=""><div class="ci2-main"><div class="ci2-top"><div><div class="ci-name">${brandName(p.nazwa)}</div><div class="ci-sub">Kolor: ${i.color}</div></div><button class="ci2-del" data-del="${k}" aria-label="Usuń">🗑️</button></div>
+  <div class="ci2-bot"><span class="qty"><button data-k="${k}" data-d="-1" aria-label="Mniej">−</button><span>${i.qty}</span><button data-k="${k}" data-d="1" aria-label="Więcej">+</button></span>
+  <div class="ci2-price">${p.stara?`<s>${zl(old)}</s> `:''}<b>${zl(now)}</b>${p.stara?`<em>Oszczędzasz ${zl(old-now)}</em>`:''}</div></div></div></div>`; }
+function sumHtml(){ const t=cartTotals();
+  return `${t.save>0?`<div class="sum2 save"><span>Łączny rabat</span><span>−${zl(t.save)}</span></div>`:''}<div class="sum2 total"><span>Łączna kwota</span><span>${zl(t.sum)}</span></div><div class="sum2 ship"><span>Dostawa</span><span>Wybierzesz w następnym kroku</span></div>`; }
+const PAYROW='<div class="pay-row"><span class="pi blik">blik</span><span class="pi visa">VISA</span><span class="pi mc"><i></i><i></i>mastercard</span><span class="pi ap"> Pay</span><span class="pi gp"><b>G</b> Pay</span><span class="pi p24">P24</span></div>';
+function renderCart(){
+  const n=cartQty(), c=$('#cartCount'); c.textContent=n; c.style.display=n?'grid':'none'; $('#drCount').textContent=n;
+  const u=unitsInCart(), ub=$('#upsellBar');
+  if(u>0 && u<3){ const next=CONFIG.pakiety[u]; ub.innerHTML=`Dodaj jeszcze <b>1 kulę</b> i zapłać tylko <b>${zl(next.cena/(u+1))}</b> za sztukę<div class="ub-track"><i style="width:${u/3*100}%"></i></div>`; ub.style.display='block'; } else ub.style.display='none';
+  if(!cartItems.length){ $('#drItems').innerHTML='<div class="dr-empty">Twój koszyk jest pusty<br><button class="btn btn-primary" id="drShop">Wróć do sklepu</button></div>'; $('#drFoot').innerHTML=''; const b=$('#drShop'); if(b) b.onclick=closeCart; }
+  else { $('#drItems').innerHTML=cartItems.map(itemHtml).join(''); $('#drFoot').innerHTML=sumHtml()+'<button class="btn cta-big" id="drCheckout">Realizuj zakup</button>'+PAYROW; $('#drCheckout').onclick=()=>openShip(); }
+  if($('#cpItems')){ $('#cpItems').innerHTML=cartItems.length?cartItems.map(itemHtml).join(''):'<div class="dr-empty">Koszyk jest pusty.</div>'; $('#cpSum').innerHTML=sumHtml(); }
+}
+document.addEventListener('click',e=>{ const q=e.target.closest('[data-d]'); if(q){ const i=cartItems[+q.dataset.k]; i.qty=Math.max(1,i.qty+ +q.dataset.d); renderCart(); }
+  const d=e.target.closest('[data-del]'); if(d){ cartItems.splice(+d.dataset.del,1); renderCart(); } });
+function openCart(){ renderCart(); $('#drawer').classList.add('open'); $('#overlay').classList.add('open'); }
+function closeCart(){ $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open'); }
+function openShip(){ $('#shipModal').classList.add('open'); $('#overlay').classList.add('open'); }
+function closeShip(){ $('#shipModal').classList.remove('open'); if(!$('#drawer').classList.contains('open')) $('#overlay').classList.remove('open'); }
+$('#cartBtn').onclick=openCart; $('#drClose').onclick=closeCart; $('#overlay').onclick=()=>{closeCart();closeShip();}; $('#shipClose').onclick=closeShip;
+document.querySelectorAll('.ship-opt').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.ship-opt').forEach(x=>x.classList.toggle('on',x===b)); shipMethod=b.dataset.ship; });
+async function goCheckout(){ const V={"Biały": 55770552336725, "Czarny": 55770552369493}, m={}; cartItems.forEach(i=>i.color.split(', ').forEach(c=>{const v=V[c]||V['Biały']; m[v]=(m[v]||0)+i.qty;})); try{ await fetch('/cart/clear.js',{method:'POST'}); const r=await fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:Object.entries(m).map(([id,quantity])=>({id:+id,quantity}))})}); if(!r.ok) throw 0; location.href='/checkout'; }catch(e){ toast('Coś poszło nie tak, spróbuj ponownie.'); } }
+$('#shipGo').onclick=()=>{ $('#shipGo').textContent='Przechodzę do kasy…'; goCheckout(); };
+function addToCart(){
+  const col=unitColors[chosen].join(', ');
+  const ex=cartItems.find(i=>i.p===chosen&&i.color===col); if(ex) ex.qty++; else cartItems.push({p:chosen,color:col,qty:1});
+  openCart();
+}
+$('#addToCart').onclick=addToCart;
+$('#sbBtn').onclick=()=>{ $('#bundles').scrollIntoView({behavior:'smooth',block:'center'}); };
+
+const initials = n => `<svg viewBox="0 0 40 40" width="100%" height="100%"><circle cx="20" cy="15" r="7.5" fill="rgba(255,255,255,.92)"/><path d="M6 38c1.5-8.5 7.2-13 14-13s12.5 4.5 14 13z" fill="rgba(255,255,255,.92)"/></svg>`;
+/* ---------- Filmy: Zobacz to w akcji ---------- */
+const vTrack=$('#vTrack'), vDots=$('#vDots');
+const vScenes=[{bg:['#2b2a2e','#4a4650'],strap:false,R:80},{bg:['#14100c','#2a1f16'],R:70},{bg:['#1d1a14','#3d3426'],strap:false,R:80},{bg:['#2a2520','#4a4035'],R:80},{bg:['#0d0b18','#251b3a'],colorful:true,R:70}];
+vTrack.innerHTML = CONFIG.filmy.map((f,i)=>`
+  <div class="v-card" data-i="${i}">
+    ${f.poster?`<img class="v-poster" src="${f.poster}" alt="">`:`<div class="v-ph">${sceneSvg(50+i,{...vScenes[i%vScenes.length],tall:true,cy:420})}</div>`}
+    <video playsinline muted loop preload="none"></video>
+    <div class="v-caption" style="top:${f.gora||18}%"></div>
+    <button class="v-play" aria-label="Odtwórz film"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></button>
+  </div>`).join('');
+const vDesk=matchMedia('(min-width:900px)').matches, vOff=vDesk?1:0;
+vDots.innerHTML = (vDesk?[0,1,2]:CONFIG.filmy).map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
+const cards=[...vTrack.children];
+function capAt(f,t){ let txt=''; (f.napisy||[]).forEach(n=>{ if(t>=n.od) txt=n.tekst; }); return txt; }
+// Film ładowany w całości jako blob – działa też w Safari i na hostingach bez obsługi "Range".
+const srcCache={};
+function loadSrc(i){
+  if(srcCache[i]) return srcCache[i];
+  const f=CONFIG.filmy[i];
+  if(f.plik.startsWith('data:')){
+    srcCache[i]=new Promise(res=>{ const bin=atob(f.plik.split(',')[1]), u=new Uint8Array(bin.length);
+      for(let k=0;k<bin.length;k++) u[k]=bin.charCodeAt(k);
+      res(URL.createObjectURL(new Blob([u],{type:'video/mp4'}))); });
+  } else {
+    srcCache[i]=fetch(f.plik).then(r=>{ if(!r.ok) throw 0; return r.blob(); })
+      .then(b=>URL.createObjectURL(new Blob([b],{type:'video/mp4'}))).catch(()=>f.plik);
+  }
+  return srcCache[i];
+}
+function playCard(card, auto){
+  const i=+card.dataset.i, v=card.querySelector('video');
+  if(!auto) cards.forEach(c=>{ if(c!==card){ c.querySelector('video').pause(); c.classList.remove('playing'); }});
+  card.classList.add('loading');
+  loadSrc(i).then(src=>{
+    if(v.dataset.src!==src){ v.src=src; v.dataset.src=src; }
+    return v.play();
+  }).then(()=>{ card.classList.add('started'); })
+    .catch(()=>{ card.classList.remove('loading','playing','started'); });
+}
+cards.forEach((card,i)=>{
+  const f=CONFIG.filmy[i], v=card.querySelector('video'), cap=card.querySelector('.v-caption');
+  cap.textContent=capAt(f,0); cap.style.display=cap.textContent?'block':'none';
+  const upd=()=>{ const t=capAt(f,v.currentTime); if(cap.textContent!==t){cap.textContent=t;} cap.style.display=t?'block':'none'; if(!v.paused) requestAnimationFrame(upd); };
+  v.addEventListener('play',()=>requestAnimationFrame(upd));
+  v.addEventListener('pause',()=>card.classList.remove('playing','started'));
+  v.addEventListener('timeupdate',()=>{ if(v.currentTime>0.05 && card.classList.contains('started')){ card.classList.add('playing'); card.classList.remove('loading'); } });
+  card.querySelector('.v-play').onclick=()=>playCard(card);
+  v.onclick=()=>{ if(v.paused) playCard(card); else { v.pause(); card.dataset.userPaused='1'; } };
+});
+// każdy film rusza sam, gdy jest widoczny na ekranie
+loadSrc(0);
+const vio=new IntersectionObserver(es=>es.forEach(en=>{ const c=en.target, v=c.querySelector('video');
+  if(en.isIntersecting){ if(!c.dataset.userPaused) playCard(c,true); }
+  else if(!v.paused){ v.pause(); } }),{threshold:.5});
+cards.forEach(c=>vio.observe(c));
+let actionVisible=false;
+let vIdx=0;
+function vCenter(i){ vIdx=Math.max(0,Math.min(cards.length-1,i)); const c=cards[vIdx]; vTrack.scrollTo({left:c.offsetLeft-(vTrack.clientWidth-c.offsetWidth)/2,behavior:'smooth'}); }
+vTrack.addEventListener('scroll',()=>{
+  const mid=vTrack.scrollLeft+vTrack.clientWidth/2; let best=0,bd=1e9;
+  cards.forEach((c,i)=>{const d=Math.abs(c.offsetLeft+c.offsetWidth/2-mid); if(d<bd){bd=d;best=i;}});
+  vIdx=best; [...vDots.children].forEach((d,k)=>d.classList.toggle('on',k===Math.min(vDots.children.length-1,Math.max(0,vIdx-vOff))));
+},{passive:true});
+const vStepW=()=>cards.length>1?cards[1].offsetLeft-cards[0].offsetLeft:cards[0].offsetWidth;
+$('#vPrev').onclick=()=>vTrack.scrollBy({left:-vStepW(),behavior:'smooth'}); $('#vNext').onclick=()=>vTrack.scrollBy({left:vStepW(),behavior:'smooth'});
+[...vDots.children].forEach((d,k)=>d.onclick=()=>vCenter(k+vOff));
+
+/* ---------- Fale (animowane) ---------- */
+function wavePath(h, amp, phase, waves){
+  let d=`M0 ${h}`; const W=1440*2, steps=120;
+  for(let i=0;i<=steps;i++){const x=W*i/steps; const y=h*0.55 - amp*Math.sin((i/steps)*Math.PI*2*waves+phase); d+=` L${x.toFixed(1)} ${y.toFixed(1)}`;}
+  return d+` L${W} ${h} Z`;
+}
+document.querySelectorAll('[data-wave]').forEach(w=>{
+  const h=60;
+  w.innerHTML = `
+    <div class="layer back"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h,14,1.2,4)}" fill="#e7d6ae"/></svg></div>
+    <div class="layer"><svg viewBox="0 0 2880 ${h}" preserveAspectRatio="none"><path d="${wavePath(h+8,10,0,2)}" fill="#1b3a6b" transform="translate(0,6)"/></svg></div>`;
+});
+
+/* ---------- Statystyki ---------- */
+$('#stats').innerHTML = CONFIG.statystyki.map(s=>`
+  <div class="stat"><div class="ring" data-p="${s.proc}"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42"/></svg><b>0%</b></div><p>${s.html}</p></div>`).join('');
+
+/* ---------- Opinie na fali (przewijane w bok) ---------- */
+const LAND=["{% endraw %}{{ 'k1.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k2.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k3.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k4.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k5.jpg' | asset_url }}{% raw %}"].map(k=>`<img src="${k}" alt="">`);
+const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><span><b>${o.imie}</b><small class="rver rprod">✓ Opinia o tym produkcie</small></span></div></div>`).join('');
+const _old = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
+const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*340)))).fill(tItems).join('');
+$('#tTrack').innerHTML = tSet + tSet;
+$('#tTrack').style.setProperty('--dur', (CONFIG.opinieFala.length*Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*322)))*7)+'s');
+$('#tTrack').querySelectorAll('[data-stars]').forEach(renderStars);
+
+/* ---------- Porównanie ---------- */
+
+/* ---------- FAQ ---------- */
+$('#faq').innerHTML = CONFIG.faq.map(f=>`<details class="qa"><summary>${f.q}<span class="plus">+</span></summary><div class="qa-a">${f.a}</div></details>`).join('');
+
+/* ---------- Animacje przy przewijaniu ---------- */
+const io = new IntersectionObserver(es=>es.forEach(en=>{
+  if(!en.isIntersecting) return;
+  const el=en.target; el.classList.add('in');
+  if(el.classList.contains('ring')){
+    const p=+el.dataset.p; el.querySelector('.fg').style.strokeDashoffset = 264*(1-p/100);
+    const b=el.querySelector('b'); let t0=null;
+    const step=ts=>{t0??=ts; const k=Math.min(1,(ts-t0)/1800); b.textContent=Math.round(p*(1-Math.pow(1-k,3)))+'%'; if(k<1) requestAnimationFrame(step);};
+    requestAnimationFrame(step);
+  }
+  io.unobserve(el);
+}),{threshold:.35});
+document.querySelectorAll('.reveal,.ring').forEach(el=>io.observe(el));
+// "Co nas wyróżnia": wiersze pojawiają się po kolei, od pierwszego do ostatniego
+const cmpIo=new IntersectionObserver(es=>es.forEach(en=>{ if(!en.isIntersecting) return;
+  [...en.target.children].forEach((r,k)=>setTimeout(()=>r.classList.add('in'),k*220)); cmpIo.unobserve(en.target); }),{threshold:.2});
+cmpIo.observe(document.querySelector('.cmp-table tbody'));
+
+/* ---------- Przyklejony pasek + do góry ---------- */
+const atc=$('#addToCart');
+window.addEventListener('scroll',()=>{
+  const past = atc.getBoundingClientRect().bottom < 0;
+  $('#stickyBuy').classList.toggle('show', past);
+  $('#toTop').classList.toggle('show', window.scrollY > 900);
+},{passive:true});
+$('#toTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+/* ---------- Menu ---------- */
+document.querySelectorAll('[data-go]').forEach(a=>a.onclick=e=>{ e.preventDefault(); $('#mainNav').classList.remove('open'); if(location.hash){ location.hash=''; } setTimeout(()=>document.getElementById(a.dataset.go).scrollIntoView({behavior:'smooth'}),50); });
+$('#menuBtn').onclick=()=>$('#mainNav').classList.toggle('open');
+/* ---------- Zakładki "Co dostajesz" ---------- */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t)); document.querySelectorAll('.tab-pane').forEach(p=>p.hidden=p.dataset.pane!==t.dataset.tab); });
+/* ---------- Licznik promocji ---------- */
+(function(){ const end=new Date(CONFIG.promoKoniec).getTime(), pad=n=>String(n).padStart(2,'0');
+  $('#promoDate').textContent=new Date(end).toLocaleString('pl-PL',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+  const tick=()=>{ let d=Math.max(0,end-Date.now())/1000; 
+    $('#tH').textContent=pad(Math.floor(d/3600)); d%=3600; $('#tM').textContent=pad(Math.floor(d/60)); const ts=$('#tS'), v=pad(Math.floor(d%60)); if(ts.textContent!==v){ ts.textContent=v; ts.classList.remove('tick'); void ts.offsetWidth; ts.classList.add('tick'); } };
+  tick(); setInterval(tick,1000);
+  $('#promoBtn').onclick=()=>$('#bundles').scrollIntoView({behavior:'smooth',block:'center'}); })();
+/* ---------- Formularz kontaktowy na podstronach ---------- */
+document.querySelectorAll('[data-form]').forEach((d,k)=>{ d.outerHTML=`<form class="contact-form"><h2>Skontaktuj się <em>z nami</em></h2><div class="row2"><input id="cf-name-${k}" placeholder="Imię" required><input id="cf-mail-${k}" type="email" placeholder="E-mail" required></div><input id="cf-tel-${k}" placeholder="Numer telefonu"><textarea id="cf-msg-${k}" placeholder="Wiadomość" required></textarea><button class="btn btn-primary" type="submit">Wyślij</button></form>`; });
+document.querySelectorAll('.contact-form').forEach(f=>f.onsubmit=e=>{ e.preventDefault(); f.reset(); toast('Podgląd: w sklepie ten formularz wyśle wiadomość na Twój e-mail.'); });
+$('#cpOrder').onclick=goCheckout;
+$('#cpShipChange').onclick=openShip;
+/* ---------- Podstrony (#regulamin, #kontakt itd.) ---------- */
+function route(){ const h=location.hash.slice(1); const v=document.getElementById('view-'+h) && h? h : 'home';
+  document.querySelectorAll('.view').forEach(x=>x.hidden = x.id!=='view-'+v);
+  document.body.classList.toggle('subpage', v!=='home'); if(v==='koszyk') renderCart();
+  if(v!=='home' || !h) window.scrollTo(0,0); }
+window.addEventListener('hashchange',route); route(); renderCart();
+</script>
+{% endraw %}
+{% schema %}{"name":"Strona Lumorka","settings":[]}{% endschema %}
