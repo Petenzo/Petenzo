@@ -772,6 +772,21 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 @keyframes goldFull{0%{background-position:100% 0}75%,100%{background-position:0% 0}}
 .sway{animation:sway 2s ease-in-out infinite}
 @keyframes sway{0%,55%,100%{transform:translateX(0)}65%{transform:translateX(-10px)}75%{transform:translateX(10px)}85%{transform:translateX(-6px)}93%{transform:translateX(4px)}}
+
+/* ===== Wybór dostawy (v2) ===== */
+.modal{z-index:120}
+.modal.open{background:rgba(15,25,45,.5)}
+@media (max-width:480px){.sh-head h3{font-size:26px}}
+.ship2{border-radius:26px!important;padding:26px!important;width:min(460px,100%)!important}
+.sh-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.sh-head h3{font-size:30px;font-weight:800;color:var(--blue-dark);margin:0}
+.sh-x{width:48px;height:48px;border-radius:50%;background:#eef3fb;font-size:24px;color:var(--blue-dark)}
+.ship2 .ship-opt{display:flex!important;justify-content:space-between;align-items:center;width:100%;padding:24px 22px!important;margin-bottom:14px;border:2px solid #e8e2d4!important;border-radius:18px!important;background:#fff!important;font-size:19px;font-weight:700;color:var(--blue-dark);transition:all .2s}
+.ship2 .ship-opt em{font-style:normal;font-weight:800;font-size:15px;color:#1e7a45}
+.ship2 .ship-opt.on{background:var(--blue-dark)!important;border-color:var(--blue-dark)!important;color:#fff;box-shadow:0 0 0 4px #fff,0 0 0 6px #e8e2d4}
+.ship2 .ship-opt.on em{color:#8ff0b5}
+.sh-go{margin-top:6px;color:#fff!important;width:100%;animation:none!important}
+.ship2 .modal-note{font-size:13px;color:#7a8190;margin-top:12px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -1077,11 +1092,12 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
   <div class="dr-items" id="drItems"></div>
   <div class="dr-foot" id="drFoot"></div>
 </aside>
-<div class="modal" id="shipModal"><div class="modal-box">
-  <h3>Wybierz dostawę <button class="dr-close" id="shipClose" aria-label="Zamknij">×</button></h3>
-  <button class="ship-opt on" data-ship="InPost Paczkomat"><span class="ico">📦</span><span><b>InPost Paczkomat</b><small>Odbiór w wybranym Paczkomacie 24/7</small></span><span class="free">0,00 zł</span></button>
-  <button class="ship-opt" data-ship="Kurier InPost"><span class="ico">🚚</span><span><b>Kurier</b><small>Dostawa pod Twoje drzwi</small></span><span class="free">0,00 zł</span></button>
-  <div class="modal-note">Paczka dociera zwykle w 6–10 dni roboczych</div>
+<div class="modal" id="shipModal"><div class="modal-box ship2">
+  <div class="sh-head"><h3>Wybierz dostawę</h3><button class="sh-x" id="shipClose" aria-label="Zamknij">×</button></div>
+  <button class="ship-opt on" data-ship="Paczkomat InPost"><span>📦 Paczkomat InPost</span><em>GRATIS</em></button>
+  <button class="ship-opt" data-ship="Kurier pod adres"><span>🚚 Kurier pod adres</span><em>GRATIS</em></button>
+  <button class="btn cta-big sh-go" id="shipGo">Przejdź do płatności</button>
+  <div class="modal-note">W kasie zaznacz wybraną dostawę. Paczkomat wybierzesz z listy lub mapy zaraz po zapłacie.</div>
 </div></div>
 <div class="toast" id="toast"></div>
 
@@ -1290,7 +1306,7 @@ function renderCart(){
   const u=unitsInCart(), ub=$('#upsellBar');
   if(u>0 && u<3){ const next=CONFIG.pakiety[u]; ub.innerHTML=`Dodaj jeszcze <b>1 kulę</b> i zapłać tylko <b>${zl(next.cena/(u+1))}</b> za sztukę<div class="ub-track"><i style="width:${u/3*100}%"></i></div>`; ub.style.display='block'; } else ub.style.display='none';
   if(!cartItems.length){ $('#drItems').innerHTML='<div class="dr-empty">Twój koszyk jest pusty<br><button class="btn btn-primary" id="drShop">Wróć do sklepu</button></div>'; $('#drFoot').innerHTML=''; const b=$('#drShop'); if(b) b.onclick=closeCart; }
-  else { $('#drItems').innerHTML=cartItems.map(itemHtml).join(''); $('#drFoot').innerHTML=sumHtml()+'<button class="btn cta-big" id="drCheckout">Realizuj zakup</button>'+PAYROW; $('#drCheckout').onclick=()=>toast('Podgląd: tu klient przejdzie do kasy Shopify i wybierze dostawę.'); }
+  else { $('#drItems').innerHTML=cartItems.map(itemHtml).join(''); $('#drFoot').innerHTML=sumHtml()+'<button class="btn cta-big" id="drCheckout">Realizuj zakup</button>'+PAYROW; $('#drCheckout').onclick=()=>openShip(); }
   if($('#cpItems')){ $('#cpItems').innerHTML=cartItems.length?cartItems.map(itemHtml).join(''):'<div class="dr-empty">Koszyk jest pusty.</div>'; $('#cpSum').innerHTML=sumHtml(); }
 }
 document.addEventListener('click',e=>{ const q=e.target.closest('[data-d]'); if(q){ const i=cartItems[+q.dataset.k]; i.qty=Math.max(1,i.qty+ +q.dataset.d); renderCart(); }
@@ -1300,7 +1316,8 @@ function closeCart(){ $('#drawer').classList.remove('open'); $('#overlay').class
 function openShip(){ $('#shipModal').classList.add('open'); $('#overlay').classList.add('open'); }
 function closeShip(){ $('#shipModal').classList.remove('open'); if(!$('#drawer').classList.contains('open')) $('#overlay').classList.remove('open'); }
 $('#cartBtn').onclick=openCart; $('#drClose').onclick=closeCart; $('#overlay').onclick=()=>{closeCart();closeShip();}; $('#shipClose').onclick=closeShip;
-document.querySelectorAll('.ship-opt').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.ship-opt').forEach(x=>x.classList.remove('on')); b.classList.add('on'); shipMethod=b.dataset.ship; closeShip(); closeCart(); location.hash='koszyk'; renderCart(); });
+document.querySelectorAll('.ship-opt').forEach(b=>b.onclick=()=>{ document.querySelectorAll('.ship-opt').forEach(x=>x.classList.toggle('on',x===b)); shipMethod=b.dataset.ship; });
+$('#shipGo').onclick=()=>{ closeShip(); closeCart(); toast('Podgląd: tu klient przejdzie do kasy Shopify (' + shipMethod + ').'); };
 function addToCart(){
   const col=unitColors[chosen].join(', ');
   const ex=cartItems.find(i=>i.p===chosen&&i.color===col); if(ex) ex.qty++; else cartItems.push({p:chosen,color:col,qty:1});
