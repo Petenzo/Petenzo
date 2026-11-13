@@ -10,7 +10,7 @@
   <div class="head">
     <button class="icon-btn" aria-label="Menu" id="menuBtn"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <a href="#" class="logo lg"><span class="lg-txt"><span data-brand>Lumorka</span><small>KULE WSPOMNIEŃ</small></span></a>
-    <nav class="main-nav" id="mainNav"><a href="#" data-go="sec-uses">Zastosowania</a><a href="#" data-go="sec-how">Jak działa</a><a href="#" data-go="sec-cmp">Porównanie</a><a href="#" data-go="sec-faq">FAQ</a></nav>
+    <nav class="main-nav" id="mainNav"><a href="#" data-go="sec-uses">Zastosowania</a><a href="#" data-go="sec-how">Jak działa</a><a href="#" data-go="sec-cmp">Porównanie</a><a href="#" data-go="sec-rev">Opinie</a><a href="#" data-go="sec-faq">FAQ</a></nav>
     <div class="cart-wrap"><button class="icon-btn" aria-label="Koszyk" id="cartBtn"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></button><span class="cart-count" id="cartCount">0</span></div>
   </div>
 </header>
@@ -124,8 +124,7 @@
 <section class="sec sec-tint" id="sec-rev">
   <div class="wrap">
     <div class="kicker center">Opinie</div>
-    <h2 class="h2 center">Zobacz, co mówią <em>nasi klienci</em></h2>
-    <div class="rev-score"><b>4,8</b><span class="stars" data-stars="5" data-size="20"></span></div>
+    <h2 class="h2 center">Co mówią o <em>kuli wspomnień</em></h2>
   </div>
   <div class="t-marquee rev2"><div class="t-track" id="tTrack"></div></div>
 </section>
@@ -632,7 +631,8 @@ $('#stats').innerHTML = CONFIG.statystyki.map(s=>`
 
 /* ---------- Opinie na fali (przewijane w bok) ---------- */
 const LAND=["{% endraw %}{{ 'k1.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k2.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k3.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k4.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'k5.jpg' | asset_url }}{% raw %}"].map(k=>`<img src="${k}" alt="">`);
-const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><span><b>${o.imie}</b><small class="rver rprod">✓ Opinia o tym produkcie</small></span></div></div>`).join('');
+const RIMG=["{% endraw %}{{ 'lumorka-uz-rodzice-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-w-dloni-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-uz-choinka-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-polka-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-uz-para-web.jpg' | asset_url }}{% raw %}"];
+const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><img class="rimg" src="${RIMG[k%RIMG.length]}" alt="" loading="lazy"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><span><b>${o.imie}</b><small class="rver rprod">✓ Opinia o tym produkcie</small></span></div></div>`).join('');
 const _old = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
 const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*340)))).fill(tItems).join('');
 $('#tTrack').innerHTML = tSet + tSet;
