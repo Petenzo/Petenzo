@@ -338,6 +338,6 @@
 {{ content_for_header }}
 </head>
 <body>
-{{ content_for_layout }}
+{%- if template.name == 'page' or template.name == '404' or template.name == 'cart' -%}{%- capture zbedne -%}{{ content_for_layout }}{%- endcapture -%}{%- section 'lulavi-podstrona' -%}{%- elsif template.name == 'product' or template.name == 'index' -%}{%- capture zbedne -%}{{ content_for_layout }}{%- endcapture -%}{%- section 'lulavi-strona' -%}{%- else -%}{{ content_for_layout }}{%- endif -%}
 </body>
 </html>

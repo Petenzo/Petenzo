@@ -5,7 +5,7 @@ head=src[:src.index('</head>')]
 head=head.replace('<title>Lulavi</title>','<title>{{ page_title }}</title>\n<link rel="canonical" href="{{ canonical_url }}">\n<meta name="google-site-verification" content="E9s8FqFXQeFQdFco-fwGXVXTbGTXxlWEIoX38WEWwCQ">\n<meta name="google-site-verification" content="FRsTgHyJqZ9ys7oGa75t6w0XuMFcXuZ640u5CHN8zjE">')
 head=re.sub(r'logo/(kot-ikona-\d+\.png)',lambda m:CDN+m.group(1),head)
 head=head.replace('<link rel="preconnect" href="https://fonts.googleapis.com">','<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>\n<link rel="preconnect" href="https://fonts.googleapis.com">',1)
-layout=head+'{{ content_for_header }}\n</head>\n<body>\n{{ content_for_layout }}\n</body>\n</html>\n'
+layout=head+'{{ content_for_header }}\n</head>\n<body>\n{%- if template.name == \'page\' or template.name == \'404\' or template.name == \'cart\' -%}{%- capture zbedne -%}{{ content_for_layout }}{%- endcapture -%}{%- section \'lulavi-podstrona\' -%}{%- elsif template.name == \'product\' or template.name == \'index\' -%}{%- capture zbedne -%}{{ content_for_layout }}{%- endcapture -%}{%- section \'lulavi-strona\' -%}{%- else -%}{{ content_for_layout }}{%- endif -%}\n</body>\n</html>\n'
 body=src[src.index('<body>')+6:src.index('</body>')]
 body=re.sub(r'(?:src|href)="zdjecia/(?:lulavi|opinie)/([\w-]+)\.jpg"',lambda m:m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=1200"' if 'opinie' not in m.group(0) else m.group(0).split('=')[0]+'="'+CDN+m.group(1)+'.jpg?width=120"',body)
 body=body.replace(' decoding="sync"','')
