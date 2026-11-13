@@ -75,7 +75,7 @@ chk = re.search(r'<span class="kw-check">.*?</span>', s).group(0)
 RX(r'(<div class="kw-price-row">.*?</div>\s*<ul class="kw-list">).*?(</ul>)', r'\1\n' + ''.join(
     '        <li>%s<span><b>[KORZYŚĆ %d]</b> [dopowiedzenie]</span></li>\n' % (chk.replace('\\', '\\\\'), i) for i in range(1, 7)) + r'      \2')
 R('<div class="kw-bundles-title">Wybierz zestaw</div>', '<div class="kw-bundles-title">[WYBIERZ ZESTAW]</div>')
-R('<p class="kw-micro">🔒 Bezpieczna płatność · 14 dni na zwrot · Odpowiadamy w 24 h</p>', '<p class="kw-micro">🔒 [MIKROZAUFANIE – płatność · zwroty · kontakt]</p>')
+R('<p class="kw-micro">🔒 Bezpieczna płatność · 14 dni na zwrot · Szybki kontakt mailowy</p>', '<p class="kw-micro">🔒 [MIKROZAUFANIE – płatność · zwroty · kontakt]</p>')
 RX(r'(<div class="kw-container kw-strip-in">).*?(\n  </div>\n</div>)', r'''\1
     <div class="kw-strip-item"><span style="font-size:22px">🚚</span><div><b>[DOSTAWA]</b><small>[sposób dostawy]</small></div></div>
     <div class="kw-strip-item"><span style="font-size:22px">↩️</span><div><b>[ZWROTY]</b><small>[krótki dopisek]</small></div></div>
@@ -132,7 +132,7 @@ RX(r'(<p style="color:var\(--kw-muted\);font-size:14px;max-width:360px">)[^<]*',
 R('<span>Kwiatora © 2026</span>', '<span>[NAZWA SKLEPU] © [ROK]</span>')
 R('🚚 Darmowa dostawa InPost · ↩️ 14 dni na zwrot', '🚚 [DOSTAWA] · ↩️ [ZWROTY]')
 R('<div class="n">Kalendarz Kwiatora</div>', '<div class="n">[NAZWA PRODUKTU]</div>')
-R('Odpowiadamy pon.–pt. w 24 h', '[GODZINY ODPOWIEDZI]')
+R('Odpowiadamy najszybciej, jak to możliwe', '[GODZINY ODPOWIEDZI]')
 
 # ---------- JS: galeria, zestawy, opinie, FAQ ----------
 RX(r'var gallery=\[.*?\n\];', 'var gallery=[\n' + ',\n'.join(' ["foto-%d.jpg","⭐ [PODPIS ZDJĘCIA %d – korzyść]"]' % (i, i) for i in range(1, 7)) + '\n];')

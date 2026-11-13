@@ -11,7 +11,7 @@ DANE NOWEGO SKLEPU:
 - Produkt: [CO TO JEST, 2–3 zdania]
 - Kolor przewodni: [KOLOR, np. butelkowa zieleń + złoto]
 - Cena: [CENA] zł, przekreślona [STARA CENA] zł; zestawy 2 i 3 szt.: [CENY]
-- E-mail: kontakt@mivro.pl
+- E-mail: [E-MAIL, np. kontakt@twojadomena.pl]
 - Zdjęcia produktu: w załączniku
 
 ZASADY (trzymaj się ich bez pytania):
@@ -29,7 +29,7 @@ ZASADY (trzymaj się ich bez pytania):
    Ludzie w podobnym wieku, różni na każdym zdjęciu, przy stole, ładne otoczenie,
    zdjęcie główne = ludzie używający produktu. Bez dzieci na zdjęciu głównym.
 5. Polityki (Regulamin, Prywatność, Wysyłka, Zwroty, Kontakt) jak w Lulavi, każda
-   z formularzem „Skontaktuj się z nami”. Prowadzi: [NAZWA], kontakt@mivro.pl,
+   z formularzem „Skontaktuj się z nami”. Prowadzi: [NAZWA], [E-MAIL, np. kontakt@twojadomena.pl],
    BEZ imienia, nazwiska i adresu.
 6. Dostawa w oknie: „Paczkomat InPost – GRATIS”, „Kurier pod adres – GRATIS”.
    Nie podawaj czasu wysyłki (np. „w 24 h”).

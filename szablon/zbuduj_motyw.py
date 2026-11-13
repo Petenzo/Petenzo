@@ -65,7 +65,7 @@ F['templates/product.json'] = json.dumps(landing, indent=2)
 for t in ['cart', 'page', 'collection', 'list-collections', 'search', 'blog', 'article', '404', 'password']:
     F['templates/%s.json' % t] = json.dumps(simple, indent=2)
 F['config/settings_schema.json'] = json.dumps([{"name": "theme_info", "theme_name": name, "theme_version": "1.0.0",
-    "theme_author": "Mivro", "theme_documentation_url": "https://mivro.pl", "theme_support_url": "https://mivro.pl"}], indent=2)
+    "theme_author": "Kwiatora", "theme_documentation_url": "https://kwiatora.pl", "theme_support_url": "https://kwiatora.pl"}], indent=2)
 F['config/settings_data.json'] = json.dumps({"current": "Default", "presets": {"Default": {}}}, indent=2)
 F['locales/pl.default.json'] = '{}'
 
