@@ -1445,10 +1445,10 @@ $('#stats').innerHTML = CONFIG.statystyki.map(s=>`
 
 /* ---------- Opinie na fali (przewijane w bok) ---------- */
 const LAND=["zdjecia/krajobrazy/k1.jpg","zdjecia/krajobrazy/k2.jpg","zdjecia/krajobrazy/k3.jpg","zdjecia/krajobrazy/k4.jpg","zdjecia/krajobrazy/k5.jpg"].map(k=>`<img src="${k}" alt="">`);
-const RIMG=["zdjecia/lumorka-sek-mama-web.jpg","zdjecia/lumorka-rocznica-web.jpg","zdjecia/lumorka-choinka-web.jpg","zdjecia/lumorka-pudelko-web.jpg","zdjecia/lumorka-sek-rocznica-web.jpg","zdjecia/lumorka-sek-choinka-web.jpg","zdjecia/lumorka-sek-kroki-web.jpg","zdjecia/lumorka-sek-promo-web.jpg"];
-const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><img class="rimg" src="${RIMG[k%RIMG.length]}" alt="" loading="lazy"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><span><b>${o.imie}</b><small class="rver rprod">✓ Opinia o tym produkcie</small></span></div></div>`).join('');
+const RIMG=[["zdjecia/lumorka-sek-rocznica-web.jpg","zdjecia/lumorka-rocznica-web.jpg"],["zdjecia/lumorka-sek-mama-web.jpg","zdjecia/lumorka-pudelko-web.jpg"],["zdjecia/lumorka-sek-kroki-web.jpg","zdjecia/lumorka-choinka-web.jpg"]];
+const tItems = CONFIG.opinieFala.map((o,k)=>`<div class="rcard"><img class="rimg" src="__R${k}__" alt="" loading="lazy"><span class="stars" data-stars="5" data-size="15"></span><p>${o.tekst}</p><div class="rwho"><span class="rav">${LAND[k%LAND.length]}</span><span><b>${o.imie}</b><small class="rver rprod">✓ Opinia o tym produkcie</small></span></div></div>`).join('');
 const _old = CONFIG.opinieFala.map(o=>`<div class="t-item"><div class="avatar" style="background:${o.kolor}">${initials(o.imie)}</div><div><p>${o.tekst}</p><div class="who"><svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#f5b50a"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.6" fill="none"/></svg>${o.imie} <span class="stars" data-stars="5" data-size="12"></span></div></div></div>`).join('');
-const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*450)))).fill(tItems).join('').replace(/class="rimg" src="[^"]*"/g,(()=>{let n=0;return()=>`class="rimg" src="${RIMG[n++%RIMG.length]}"`})());
+const tSet = Array(Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*450)))).fill(0).map((_,r)=>tItems.replace(/__R(\d+)__/g,(m,k)=>{const a=RIMG[k%RIMG.length];return a[r%a.length];})).join('');
 $('#tTrack').innerHTML = tSet + tSet;
 $('#tTrack').style.setProperty('--dur', (CONFIG.opinieFala.length*Math.max(2, Math.ceil(2400 / (CONFIG.opinieFala.length*322)))*7)+'s');
 $('#tTrack').querySelectorAll('[data-stars]').forEach(renderStars);
