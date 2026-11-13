@@ -334,9 +334,9 @@ const CONFIG = {
 
   pakiety: [
     { nazwa: "Jedna Lumorka", opis: "Idealny prezent na święta", cena: 249.99, stara: null, badge: null, prezenty: [] },
-    { nazwa: "Dwie Lumorki", opis: null, cena: 449.99, stara: 499.98, badge: "Najpopularniejszy",
+    { nazwa: "Dwie Lumorki", opis: null, cena: 449.99, stara: 499.98, badge: "Najczęściej wybierane",
       prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] },
-    { nazwa: "Trzy Lumorki", opis: null, cena: 599.99, stara: 749.97, badge: "Najlepsza wartość",
+    { nazwa: "Trzy Lumorki", opis: null, cena: 599.99, stara: 749.97, badge: "Najlepsza cena",
       prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] }
   ],
 
@@ -482,8 +482,8 @@ const unitColors=CONFIG.pakiety.map((_,i)=>Array(i+1).fill('Biały'));
 const COLORS=[['Biały','#ffffff'],['Czarny','#1b1b1f']];
 function renderBundles(){
   $('#bundles').innerHTML = CONFIG.pakiety.map((p,i)=>{
-    const save = p.stara ? `<span class="save-pill">Oszczędzasz ${zl(p.stara-p.cena)}</span> + darmowa dostawa` : '<span class="save-pill">Darmowa dostawa</span>';
-    const names=['1 Lumorka','Zestaw 2 Lumorek','Zestaw 3 Lumorek'], subs=['Idealna na prezent','Dla Ciebie i bliskiej osoby','Dla całej rodziny'];
+    const save = p.stara ? `<span class="save-txt">Oszczędzasz ${zl(p.stara-p.cena)} · darmowa wysyłka</span>` : '<span class="save-txt">Darmowa wysyłka</span>';
+    const names=['Kup 1','Kup 2','Kup 3'], subs=['Idealna na prezent','Dla Ciebie i bliskiej osoby','Dla całej rodziny'];
     return `<div class="bundle${i===chosen?' active':''}" data-i="${i}">
       ${p.badge?`<span class="badge">${p.badge}</span>`:''}
       <div class="b-main"><span class="radio"></span><img class="b-thumb" src="${CONFIG.zdjecia[i]||CONFIG.zdjecia[0]}" alt="">
