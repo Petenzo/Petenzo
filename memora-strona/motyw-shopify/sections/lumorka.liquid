@@ -333,10 +333,10 @@ const CONFIG = {
   zdjecia: ["{% endraw %}{{ 'lumorka-choinka2-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-galeria-produkt-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-w-dloni-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-babcia-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-polka-web.jpg' | asset_url }}{% raw %}","{% endraw %}{{ 'lumorka-przyjaciolki-web.jpg' | asset_url }}{% raw %}"],
 
   pakiety: [
-    { nazwa: "Jedna Lumorka", opis: "Idealny prezent na święta", cena: 249.99, stara: null, badge: null, prezenty: [] },
-    { nazwa: "Dwie Lumorki", opis: null, cena: 449.99, stara: 499.98, badge: "Najczęściej wybierane",
+    { nazwa: "Jedna Lumorka", opis: "Idealny prezent na święta", cena: 249.99, stara: 349.99, badge: null, prezenty: [] },
+    { nazwa: "Dwie Lumorki", opis: null, cena: 449.99, stara: 699.99, badge: "Najczęściej wybierane",
       prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] },
-    { nazwa: "Trzy Lumorki", opis: null, cena: 599.99, stara: 749.97, badge: "Najlepsza cena",
+    { nazwa: "Trzy Lumorki", opis: null, cena: 649.99, stara: 1049.99, badge: "Najlepsza cena",
       prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] }
   ],
 
@@ -392,7 +392,7 @@ const CONFIG = {
 
 /* ===================================================================== */
 const $ = s => document.querySelector(s);
-const zl = v => v.toFixed(2).replace('.', ',') + ' zł';
+const zl = v => v.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+,)/g,' ') + ' zł';
 document.querySelectorAll('[data-brand]').forEach(e => e.textContent = CONFIG.marka);
 $('#year').textContent = new Date().getFullYear();
 
@@ -520,7 +520,7 @@ const PAYROW='<div class="pay-row"><span class="pi blik">blik</span><span class=
 function renderCart(){
   const n=cartQty(), c=$('#cartCount'); c.textContent=n; c.style.display=n?'grid':'none'; $('#drCount').textContent=n;
   const u=unitsInCart(), ub=$('#upsellBar');
-  if(u>0 && u<3){ const next=CONFIG.pakiety[u]; ub.innerHTML=`Dodaj jeszcze <b>1 kulę</b> i zapłać tylko <b>${zl(next.cena/(u+1))}</b> za sztukę<div class="ub-track"><i style="width:${u/3*100}%"></i></div>`; ub.style.display='block'; } else ub.style.display='none';
+  if(u>0 && u<3){ const next=CONFIG.pakiety[u]; ub.innerHTML=`Dodaj jeszcze <b>1 kulę</b> i zapłać tylko <b>${zl(Math.floor(next.cena/(u+1)*100)/100)}</b> za sztukę<div class="ub-track"><i style="width:${u/3*100}%"></i></div>`; ub.style.display='block'; } else ub.style.display='none';
   if(!cartItems.length){ $('#drItems').innerHTML='<div class="dr-empty">Twój koszyk jest pusty<br><button class="btn btn-primary" id="drShop">Wróć do sklepu</button></div>'; $('#drFoot').innerHTML=''; const b=$('#drShop'); if(b) b.onclick=closeCart; }
   else { $('#drItems').innerHTML=cartItems.map(itemHtml).join(''); $('#drFoot').innerHTML=sumHtml()+'<button class="btn cta-big" id="drCheckout">Realizuj zakup</button>'+PAYROW; $('#drCheckout').onclick=()=>openShip(); }
   if($('#cpItems')){ $('#cpItems').innerHTML=cartItems.length?cartItems.map(itemHtml).join(''):'<div class="dr-empty">Koszyk jest pusty.</div>'; $('#cpSum').innerHTML=sumHtml(); }
