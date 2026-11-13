@@ -811,6 +811,31 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 #sec-rev .rcard p{margin:14px 26px 0;font-size:16px!important;min-height:calc(1.65em*3);text-wrap:balance}
 #sec-rev .rwho{margin:18px 26px 24px!important}
 @media (max-width:520px){#sec-rev .rcard{width:310px!important}#sec-rev .rcard p{font-size:15px!important;min-height:calc(1.65em*4)}#sec-rev .rimg{height:220px}}
+
+/* ===== Jeden granat na całej stronie ===== */
+:root{--blue:#23498c!important;--blue-light:#dcd3c0!important;--blue-pale:#f7f3eb!important}
+.h2 em,h1 em,.hero h1 em{color:#23498c!important}
+.action-bg{background:linear-gradient(180deg,#fff 0%,#f7f3eb 100%)!important}
+.promo-band{background:linear-gradient(135deg,#f7f3eb 0%,#fbf6ec 100%)!important}
+.promo-img{background:linear-gradient(135deg,#efe7d8 0%,#fbf6ec 100%)!important}
+.promo-48{display:flex;align-items:center;justify-content:center;gap:14px}
+.promo-48 .clock{display:inline-flex}
+/* ===== Ładniejsze zestawy ===== */
+.bundle{border:1.5px solid #e6dfd1!important;border-radius:18px!important;background:#fff!important;box-shadow:0 4px 14px rgba(20,40,80,.05)}
+.bundle:hover{border-color:#c9b98f!important}
+.bundle.active{border:2px solid #14325f!important;background:#fffdf8!important;box-shadow:0 14px 32px rgba(20,50,95,.13)!important}
+.bundle.active .b-main{border-bottom:1px solid #eee6d6!important}
+.bundle .badge{background:linear-gradient(90deg,#c9a24e,#e3c47a)!important;color:#14325f!important;font-weight:800;border-radius:999px!important}
+.b-opts{display:none;padding:12px 16px 16px 16px!important}
+.bundle.active .b-opts{display:flex!important;flex-wrap:wrap;gap:10px;align-items:center}
+.unit{display:inline-flex!important;align-items:center;gap:10px;padding:7px 8px 7px 14px!important;border:1px solid #e6dfd1;border-radius:999px;background:#fff}
+.unit-l{font-size:13px;color:#4a4f58}
+.unit-l b{color:#14325f}
+.sw-row{display:inline-flex;gap:6px}
+.sw{width:24px!important;height:24px!important;outline-offset:2px}
+.sw.on{outline:2px solid #14325f!important}
+.b-gifts{flex-basis:100%;background:#f7f0df!important;color:#14325f!important;border-radius:12px!important;font-weight:600}
+#bundles .bundle .badge{background:linear-gradient(90deg,#c9a24e,#e3c47a)!important;color:#14325f!important}
 </style>
 </head>
 <body>
@@ -843,8 +868,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
   <h1 class="hero-h1">Zdjęcia i filmy zamknięte w telefonie? Zamień je w <em>świecącą pamiątkę</em></h1>
   <p class="p-lead"><b><span data-brand>Lumorka</span></b> wyświetla Twoje zdjęcia i filmy z dźwiękiem. Powieś ją na choince albo postaw na półce i wracaj do najpiękniejszych chwil.</p>
   <div class="mini-trust">🚚 Darmowa dostawa · ↩️ 14 dni na zwrot · ⭐ 2 kolory</div>
-  <div class="rating-line"><span class="stars" data-stars="5" data-size="13"></span> <b id="ratingVal">4.8 / 5</b> | <span id="ratingCount">5 800+ zaufanych opinii</span></div>
-  <div class="price-row"><span class="price" id="heroPrice">249,00 zł</span><s class="price-old" id="heroOld"></s><span class="price-off" id="heroOff"></span></div>
+  <div class="price-row"><span class="price" id="heroPrice">249,99 zł</span><s class="price-old" id="heroOld"></s><span class="price-off" id="heroOff"></span></div>
   <ul class="ben">
     <li><b>Twoje zdjęcia i filmy</b> ożywają w szklanej kuli</li>
     <li><b>Wbudowany głośnik</b> – słychać głosy bliskich</li>
@@ -855,7 +879,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
   <div class="divider">Kup więcej, zapłać mniej</div>
   <div id="bundles"></div>
   <div class="guarantee"><span>🛡️</span><div><b>14 dni na zwrot</b><small>Jeśli kula Ci się nie spodoba, odeślij ją – oddamy pieniądze.</small></div></div>
-  <button class="btn btn-primary cta-big" id="addToCart">Dodaj do koszyka: <span id="ctaPrice">249,00 zł</span></button>
+  <button class="btn btn-primary cta-big" id="addToCart">Dodaj do koszyka: <span id="ctaPrice">249,99 zł</span></button>
   <div class="pay-row"><span class="pi blik">blik</span><span class="pi visa">VISA</span><span class="pi mc"><i></i><i></i>mastercard</span><span class="pi ap"><svg viewBox="0 0 384 512" width="13" height="16" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Pay</span><span class="pi gp"><svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>Pay</span><span class="pi p24">P24</span></div>
   <div class="cta-trust">🔒 Bezpieczna płatność · 🚚 Dostawa 6–10 dni roboczych · ↩️ 14 dni na zwrot</div>
 </section>
@@ -947,10 +971,10 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 <!-- ===================== PROMOCJA Z ODLICZANIEM ===================== -->
 <section class="promo-band"><div class="wrap promo-wrap">
   <div class="promo reveal">
-    <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i><img src="zdjecia/lumorka-sek-zestaw-web.jpg" alt="Kula Lumorka na choince"></div>
+    <div class="promo-img"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i><img src="zdjecia/lumorka-promo-nowe-web.jpg" alt="Lumorka w prezentowym pudełku"></div>
     <div class="promo-body">
       <div class="promo-brand"><span data-brand>Lumorka</span></div>
-      <h2 class="promo-48"><span class="clock">⏰</span> 48h!</h2>
+      <h2 class="promo-48"><span class="clock"><svg viewBox="0 0 24 24" width="54" height="54" fill="none" stroke="#c8323c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="7.5"/><path d="M12 9.5V13l2.5 2"/><path d="M4 5.5 6.5 3M20 5.5 17.5 3"/></svg></span> 48h!</h2>
       <p class="sway">Nie przegap – cena promocyjna tylko przez 48 godzin!</p>
       <div class="limited sway">⚠️ <b>Liczba sztuk ograniczona</b> <span class="heart">♡</span></div>
       <div class="timer" id="timer">
@@ -1112,7 +1136,7 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 <div class="sticky-buy" id="stickyBuy">
   <div class="sb-in">
     <div class="sb-thumb" id="sbThumb"></div>
-    <div><div class="sb-name"><span data-brand>Lumorka</span></div><div class="sb-price" id="sbPrice">249,00 zł</div></div>
+    <div><div class="sb-name"><span data-brand>Lumorka</span></div><div class="sb-price" id="sbPrice">249,99 zł</div></div>
     <button class="sb-btn" id="sbBtn">Chcę moją Kulę</button>
   </div>
 </div>
@@ -1145,14 +1169,14 @@ const CONFIG = {
   // Zdjęcia produktu do galerii. Wrzuć pliki do folderu "zdjecia" i wpisz ścieżki,
   // np. "zdjecia/1.jpg". Puste = rysowane podglądy.
   // Podpisy na zdjęciach w galerii (po kolei, tyle samo co zdjęć)
-  podpisy: ["🎄 Świeci na choince","🤲 Mieści się w dłoni","👵 Wzruszy babcię i mamę","🕯️ Pięknie wygląda na półce","🎁 Prezent, który wzrusza"],
-  zdjecia: ["zdjecia/lumorka-choinka2-web.jpg","zdjecia/lumorka-w-dloni-web.jpg","zdjecia/lumorka-babcia-web.jpg","zdjecia/lumorka-polka-web.jpg","zdjecia/lumorka-przyjaciolki-web.jpg"],
+  podpisy: ["🎄 Świeci na choince","✨ Na choinkę i na półkę","🤲 Mieści się w dłoni","👵 Wzruszy babcię i mamę","🕯️ Pięknie wygląda na półce","🎁 Prezent, który wzrusza"],
+  zdjecia: ["zdjecia/lumorka-choinka2-web.jpg","zdjecia/lumorka-galeria-produkt-web.jpg","zdjecia/lumorka-w-dloni-web.jpg","zdjecia/lumorka-babcia-web.jpg","zdjecia/lumorka-polka-web.jpg","zdjecia/lumorka-przyjaciolki-web.jpg"],
 
   pakiety: [
-    { nazwa: "Jedna Lumorka", opis: "Idealny prezent na święta", cena: 249.00, stara: null, badge: null, prezenty: [] },
-    { nazwa: "Dwie Lumorki", opis: null, cena: 481.68, stara: 498.00, badge: "Najpopularniejszy",
+    { nazwa: "Jedna Lumorka", opis: "Idealny prezent na święta", cena: 249.99, stara: null, badge: null, prezenty: [] },
+    { nazwa: "Dwie Lumorki", opis: null, cena: 483.66, stara: 499.98, badge: "Najpopularniejszy",
       prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] },
-    { nazwa: "Trzy Lumorki", opis: null, cena: 714.51, stara: 747.00, badge: "Najlepsza wartość",
+    { nazwa: "Trzy Lumorki", opis: null, cena: 717.48, stara: 749.97, badge: "Najlepsza wartość",
       prezenty: ["+ GRATIS podstawka Lumorka", "+ GRATIS zawieszka Lumorka", "+ GRATIS ściereczka Lumorka"] }
   ],
 
@@ -1189,7 +1213,7 @@ const CONFIG = {
   ],
 
   // Koniec promocji (prawdziwa data – licznik odlicza do niej)
-  promoKoniec: "2026-11-13T19:00:00+01:00",
+  promoKoniec: "2026-11-15T19:00:00+01:00",
 
   porownanie: ["Wciągająca projekcja w kuli", "Łatwa obsługa jednym dotknięciem", "Wbudowany głośnik", "Ozdoba godna eksponowania", "14-dniowa gwarancja zwrotu pieniędzy"],
 

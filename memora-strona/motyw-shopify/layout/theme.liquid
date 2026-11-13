@@ -812,6 +812,31 @@ header{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:
 #sec-rev .rcard p{margin:14px 26px 0;font-size:16px!important;min-height:calc(1.65em*3);text-wrap:balance}
 #sec-rev .rwho{margin:18px 26px 24px!important}
 @media (max-width:520px){#sec-rev .rcard{width:310px!important}#sec-rev .rcard p{font-size:15px!important;min-height:calc(1.65em*4)}#sec-rev .rimg{height:220px}}
+
+/* ===== Jeden granat na całej stronie ===== */
+:root{--blue:#23498c!important;--blue-light:#dcd3c0!important;--blue-pale:#f7f3eb!important}
+.h2 em,h1 em,.hero h1 em{color:#23498c!important}
+.action-bg{background:linear-gradient(180deg,#fff 0%,#f7f3eb 100%)!important}
+.promo-band{background:linear-gradient(135deg,#f7f3eb 0%,#fbf6ec 100%)!important}
+.promo-img{background:linear-gradient(135deg,#efe7d8 0%,#fbf6ec 100%)!important}
+.promo-48{display:flex;align-items:center;justify-content:center;gap:14px}
+.promo-48 .clock{display:inline-flex}
+/* ===== Ładniejsze zestawy ===== */
+.bundle{border:1.5px solid #e6dfd1!important;border-radius:18px!important;background:#fff!important;box-shadow:0 4px 14px rgba(20,40,80,.05)}
+.bundle:hover{border-color:#c9b98f!important}
+.bundle.active{border:2px solid #14325f!important;background:#fffdf8!important;box-shadow:0 14px 32px rgba(20,50,95,.13)!important}
+.bundle.active .b-main{border-bottom:1px solid #eee6d6!important}
+.bundle .badge{background:linear-gradient(90deg,#c9a24e,#e3c47a)!important;color:#14325f!important;font-weight:800;border-radius:999px!important}
+.b-opts{display:none;padding:12px 16px 16px 16px!important}
+.bundle.active .b-opts{display:flex!important;flex-wrap:wrap;gap:10px;align-items:center}
+.unit{display:inline-flex!important;align-items:center;gap:10px;padding:7px 8px 7px 14px!important;border:1px solid #e6dfd1;border-radius:999px;background:#fff}
+.unit-l{font-size:13px;color:#4a4f58}
+.unit-l b{color:#14325f}
+.sw-row{display:inline-flex;gap:6px}
+.sw{width:24px!important;height:24px!important;outline-offset:2px}
+.sw.on{outline:2px solid #14325f!important}
+.b-gifts{flex-basis:100%;background:#f7f0df!important;color:#14325f!important;border-radius:12px!important;font-weight:600}
+#bundles .bundle .badge{background:linear-gradient(90deg,#c9a24e,#e3c47a)!important;color:#14325f!important}
 </style>
 {% endraw %}
 <title>{% if template contains "product" %}{{ product.title }}{% else %}Lumorka – świecąca kula wspomnień{% endif %}</title>
