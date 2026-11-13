@@ -20,9 +20,9 @@ Po każdej zmianie w `index.html`: `python3 zbuduj-podglad.py && python3 zbuduj-
 - Ikony płatności: blik, VISA, mastercard, Apple Pay (logo jabłka), Google Pay (kolorowe G), P24.
 
 ## Ceny i rabaty
-- 1 szt. **249,99 zł** (przekreślona 349,99 zł) · 2 szt. **449,99 zł** (przekreślona 699,99 zł, „Najczęściej wybierane”) · 3 szt. **649,99 zł** (przekreślona 1 049,99 zł, „Najlepsza cena”). Warianty: Biały, Czarny.
+- 1 szt. **249,99 zł** (przekreślona 349,99 zł) · 2 szt. **489,99 zł** (przekreślona 699,99 zł, „Najczęściej wybierane”) · 3 szt. **719,99 zł** (przekreślona 1 049,99 zł, „Najlepsza cena”). Warianty: Biały, Czarny.
 - Zasada właściciela: wszystkie ceny (też przekreślone) kończą się na **,99**.
-- W Shopify: cena wariantu 249,99, „cena przed obniżką” (compareAtPrice) 349,99. Automatyczne rabaty kwotowe na zamówienie: „Zestaw 2 Lumorek – rabat” −49,99 zł od 2 szt., „Zestaw 3 Lumorek – rabat” −99,98 zł od 3 szt. (nie łączą się – Shopify bierze lepszy).
+- W Shopify: cena wariantu 249,99, „cena przed obniżką” (compareAtPrice) 349,99. Automatyczne rabaty kwotowe na zamówienie: „Zestaw 2 Lumorek – rabat” −9,99 zł od 2 szt., „Zestaw 3 Lumorek – rabat” −29,98 zł od 3 szt. (nie łączą się – Shopify bierze lepszy).
 - Gratisy od 2 szt. (podstawka, zawieszka, ściereczka) – agent KungfuBuy ma je dorzucać.
 
 ## Stan Shopify (sklep lumorka.pl, fr5iiy-nv.myshopify.com)
@@ -46,7 +46,7 @@ Po każdej zmianie w `index.html`: `python3 zbuduj-podglad.py && python3 zbuduj-
 3. Płatności: Shopify Payments (BLIK, karty, Apple Pay, Google Pay) + PayPal, Shop Pay wyłączony.
 4. Kasa: telefon wymagany; logo `LUMORKA-NAPIS-granat-przezroczysty.png`, kolor `#14325f`.
 5. Aplikacja InPost z mapą paczkomatów; KungfuBuy – podpięcie produktu.
-6. Plan Shopify, zdjęcie hasła, zamówienia testowe (2 szt. = 449,99 zł, 3 szt. = 649,99 zł).
+6. Plan Shopify, zdjęcie hasła, zamówienia testowe (2 szt. = 489,99 zł, 3 szt. = 719,99 zł).
 7. Po zdjęciu hasła: Search Console → `sitemap.xml` + prośba o zindeksowanie.
 8. Social media (IG/FB z logo i bio, ManyChat), Judge.me, potem reklamy.
 
