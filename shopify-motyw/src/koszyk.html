@@ -97,7 +97,7 @@
     if (ikona) ikona.appendChild(licznik);
 
     function zl(gr) { return (gr / 100).toFixed(2).replace('.', ',') + ' zł'; }
-    function rabatZestawu(szt) { return szt >= 3 ? 11998 : szt === 2 ? 4999 : 0; }
+    function rabatZestawu(szt) { return szt >= 3 ? 1998 : szt === 2 ? 999 : 0; }
     var KOSZ = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/></svg>';
 
     function otworz() { document.body.classList.add('kosz-otwarty'); kosz.setAttribute('aria-hidden', 'false'); }
@@ -134,7 +134,7 @@
 
     function upsell(szt) {
       if (szt < 1 || szt >= 3) return '';
-      var ile = szt === 1 ? 'Dobierz drugą opaskę za <span>90 zł</span> (zamiast 139,99 zł)' : 'Dobierz trzecią opaskę za <span>70 zł</span> (zamiast 139,99 zł)';
+      var ile = szt === 1 ? 'Dobierz drugą opaskę za <span>90 zł</span> (zamiast 99,99 zł)' : 'Dobierz trzecią opaskę za <span>90 zł</span> (zamiast 99,99 zł)';
       return '<div class="upsell"><p>➕ ' + ile + ', np. dla rodzeństwa:</p><div class="swatches">' +
         WZORY.map(function (w) {
           return '<button class="swatch" type="button" data-dobierz="' + w.vid + '" title="' + w.nazwa + '" aria-label="Dodaj ' + w.nazwa + '"><img src="' + w.img + '" alt=""></button>';
