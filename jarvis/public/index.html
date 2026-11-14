@@ -288,7 +288,7 @@ events.onmessage = (e) => {
 };
 const prettyModel = (m) => (m ? String(m).replace(/^claude-/, '').replace(/\[.*\]$/, '').toUpperCase() : '—');
 fetch('/api/config').then((r) => r.json()).then((c) => {
-  voiceMode = c.voice;
+  voiceMode = c.voice; title = c.title || title;
   $('voiceName').textContent = c.voice === 'elevenlabs' ? 'ELEVENLABS' : 'SYSTEMOWY';
   $('modelName').textContent = prettyModel(c.model);
 }).catch(() => {});
@@ -330,7 +330,12 @@ function speak(text) {
 }
 async function playNext() {
   const text = queue.shift();
-  if (!text) { playing = false; speaking = false; quietUntil = Date.now() + 600; caption($('caption').textContent, false, 2500); refresh(); return; }
+  if (!text) {
+    playing = false; speaking = false; quietUntil = Date.now() + 600; caption($('caption').textContent, false, 2500);
+    // Po powitaniu („Jestem, do usług”) od razu słuchamy polecenia.
+    if (armAfterSpeech) { armAfterSpeech = false; quietUntil = Date.now() + 250; armedUntil = Date.now() + 9000; }
+    refresh(); return;
+  }
   playing = true; speaking = true; refresh();
   const gen = speechGen;
   caption(text.length > 150 ? text.slice(0, 147) + '…' : text);
@@ -372,7 +377,7 @@ function playSystem(text) {
   });
 }
 function stopSpeaking() {
-  speechGen++; queue.length = 0;
+  speechGen++; queue.length = 0; armAfterSpeech = false;
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   if (player && !player.paused) player.pause();
   playing = false; speaking = false; quietUntil = Date.now() + 300;
@@ -393,6 +398,14 @@ function chime() {
   o.connect(g).connect(ctx.destination); o.start(); o.stop(ctx.currentTime + .24);
 }
 function arm(ms = 9000) { armedUntil = Date.now() + ms; chime(); refresh(); }
+// Wywołanie klaśnięciem albo samym „Jarvis”: odpowiada głosem, a potem słucha polecenia.
+let armAfterSpeech = false, title = 'szefie';
+function greet() {
+  if (speaking || busy || permission) return;
+  const lines = [`Jestem, ${title}. Do usług.`, `Do usług, ${title}.`, `Słucham, ${title}.`];
+  chime(); armAfterSpeech = true;
+  speak(lines[Math.floor(Math.random() * lines.length)]);
+}
 
 function onUtterance(text) {
   text = text.trim();
@@ -406,7 +419,7 @@ function onUtterance(text) {
   const hit = text.match(WAKE);
   if (Date.now() < armedUntil) return send(hit && hit[1].trim() ? hit[1] : text);
   if (!hit) return;
-  if (hit[1].trim().length > 2) send(hit[1]); else arm();
+  if (hit[1].trim().length > 2) send(hit[1]); else greet();
 }
 
 function startRec() {
@@ -457,7 +470,7 @@ function readClaps() {
   const now = performance.now(), sharp = peak > Math.max(0.4, ambient * 8);
   ambient += (peak - ambient) * 0.02;
   if (!sharp || !wakeOn || speaking || busy || now - lastClap < 130) return;
-  if (now - lastClap < 800) { lastClap = 0; if (Date.now() > armedUntil) arm(); } else lastClap = now;
+  if (now - lastClap < 800) { lastClap = 0; if (Date.now() > armedUntil) greet(); } else lastClap = now;
 }
 
 // ---------- widmo: 64 pasma 0..1 z aktywnego źródła ----------

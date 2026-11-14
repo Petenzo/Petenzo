@@ -36,7 +36,7 @@ Po zmianie pliku uruchom Jarvisa ponownie.
 ## Sterowanie
 
 - **MÓW** – jedno polecenie głosem.
-- **NASŁUCH** – ciągłe czuwanie: powiedz „Jarvis, …" albo klaśnij dwa razy i mów.
+- **NASŁUCH** – ciągłe czuwanie: powiedz „Jarvis, …" od razu z poleceniem, albo klaśnij dwa razy (lub powiedz samo „Jarvis") – odpowie „Jestem, do usług" i czeka na polecenie.
 - Pole tekstowe – polecenie z klawiatury.
 - „Stop" albo przycisk STOP – przerywa pracę. Kliknięcie w kulę ucisza głos.
 - Gdy Jarvis chce zrobić coś poza swoim katalogiem roboczym (polecenie systemowe, mail, publikacja),

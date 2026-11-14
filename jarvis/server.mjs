@@ -247,7 +247,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (url.pathname === '/api/config') {
-    return send(200, { voice: process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : 'browser', model });
+    return send(200, { voice: process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : 'browser', model, title: USER_TITLE });
   }
 
   if (url.pathname === '/events') {
