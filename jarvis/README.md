@@ -20,6 +20,19 @@ Potem otwórz http://localhost:7777 i zezwól na mikrofon.
 Jarvis korzysta z Twojego logowania do Claude Code (`npm i -g @anthropic-ai/claude-code`, potem `claude` i zaloguj się)
 albo z klucza API w zmiennej `ANTHROPIC_API_KEY`.
 
+## Głos ElevenLabs (opcjonalnie)
+
+W folderze `jarvis` utwórz plik `.env` i wpisz w nim:
+
+```
+ELEVENLABS_API_KEY=tu_wklej_swój_klucz
+ELEVENLABS_VOICE_ID=id_głosu_z_ElevenLabs
+```
+
+Klucz weźmiesz na elevenlabs.io w ustawieniach konta (API Keys), a ID głosu w bibliotece głosów.
+Drugą linię możesz pominąć — wtedy Jarvis użyje domyślnego męskiego głosu. Bez pliku `.env` mówi głosem systemowym.
+Po zmianie pliku uruchom Jarvisa ponownie.
+
 ## Sterowanie
 
 - **MÓW** – jedno polecenie głosem.

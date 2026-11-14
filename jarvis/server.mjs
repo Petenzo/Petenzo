@@ -5,9 +5,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { Readable } from 'node:stream';
 import { query } from '@anthropic-ai/claude-agent-sdk';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
+// Klucze (np. ELEVENLABS_API_KEY) można trzymać w pliku jarvis/.env — po jednym NAZWA=wartość na linię.
+try {
+  for (const line of fs.readFileSync(path.join(ROOT, '.env'), 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+    if (m && !(m[1] in process.env)) process.env[m[1]] = m[2].replace(/^(['"])(.*)\1$/, '$2');
+  }
+} catch {}
+
 const PUBLIC = path.join(ROOT, 'public');
 const WORKSPACE = path.join(ROOT, 'workspace');
 const MEMORY = path.join(WORKSPACE, 'memory.md');
@@ -32,6 +41,7 @@ const saveState = () => fs.writeFileSync(STATE, JSON.stringify(state));
 
 const clients = new Set();
 const pending = new Map(); // id -> resolve(boolean)
+let model = process.env.JARVIS_MODEL || null;
 let running = null; // { abort: AbortController }
 
 function broadcast(event) {
@@ -123,6 +133,8 @@ async function ask(text) {
       if (msg.type === 'system' && msg.subtype === 'init') {
         state.sessionId = msg.session_id;
         saveState();
+        model = msg.model || model;
+        broadcast({ type: 'model', model });
       } else if (msg.type === 'assistant' && !msg.parent_tool_use_id) {
         for (const block of msg.message.content) {
           if (block.type === 'text' && block.text.trim()) broadcast({ type: 'say', text: block.text });
@@ -195,6 +207,27 @@ const server = http.createServer(async (req, res) => {
       ask(text);
       return send(200, { ok: true });
     }
+    if (url.pathname === '/api/tts') {
+      const key = process.env.ELEVENLABS_API_KEY;
+      const text = String(body.text || '').slice(0, 2500);
+      if (!key || !text) return send(404, { error: 'tts off' });
+      const voice = process.env.ELEVENLABS_VOICE_ID || 'JBFqnCBsd6RMkjVDRZzb';
+      const ttsModel = process.env.ELEVENLABS_MODEL || 'eleven_flash_v2_5';
+      const payload = { text, model_id: ttsModel };
+      if (ttsModel.includes('v2_5')) payload.language_code = 'pl';
+      const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}/stream?output_format=mp3_44100_128`, {
+        method: 'POST',
+        headers: { 'xi-api-key': key, 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).catch(() => null);
+      if (!r || !r.ok) {
+        console.error('ElevenLabs:', r ? `${r.status} ${(await r.text()).slice(0, 300)}` : 'brak połączenia');
+        return send(502, { error: 'tts failed' });
+      }
+      res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
+      Readable.fromWeb(r.body).pipe(res);
+      return;
+    }
     if (url.pathname === '/api/permission') {
       const finish = pending.get(body.id);
       if (finish) finish(Boolean(body.allow));
@@ -211,6 +244,10 @@ const server = http.createServer(async (req, res) => {
       return send(200, { ok: true });
     }
     return send(404, { error: 'not found' });
+  }
+
+  if (url.pathname === '/api/config') {
+    return send(200, { voice: process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : 'browser', model });
   }
 
   if (url.pathname === '/events') {
