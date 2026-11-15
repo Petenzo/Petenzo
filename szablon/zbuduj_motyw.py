@@ -17,11 +17,11 @@ old = 'window.kwGoCheckout=function(){window.location.href=CHECKOUT_URL};'
 assert old in body, 'brak kwGoCheckout'
 body = body.replace(old, '''window.kwGoCheckout=function(){
   var q=cart.reduce(function(s,i){return s+i.qty},0);
-  if(!window.KW_VARIANT||!q){window.location.href="/cart";return}
-  fetch("/cart/clear.js",{method:"POST"})
-   .then(function(){return fetch("/cart/add.js",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:[{id:window.KW_VARIANT,quantity:q}]})})})
-   .then(function(){try{localStorage.removeItem("kwCart2")}catch(e){};window.location.href="/checkout"})
-   .catch(function(){window.location.href="/cart"})};''')
+  var V=window.KW_VARIANTS||{},m={};cart.forEach(function(i){var id=V[i.f]||window.KW_VARIANT;if(id)m[id]=(m[id]||0)+i.qty});
+  var ps=Object.keys(m).map(function(k){return k+":"+m[k]});
+  if(!ps.length){window.location.href="/cart";return}
+  try{localStorage.removeItem("kwCart2")}catch(e){}
+  window.location.href="/cart/"+ps.join(",")};''')
 
 F = {}
 F['layout/theme.liquid'] = ('<!doctype html>\n<html lang="pl">\n<head>\n<meta charset="utf-8">\n'
@@ -34,7 +34,7 @@ F['sections/landing.liquid'] = (
   "{%- assign kw_img = 'logo-ikona.png' | asset_url | split: 'logo-ikona.png' | first | remove_last: '/' -%}\n"
   "{%- liquid\n  assign kw_p = product\n  if kw_p == blank\n    assign kw_p = all_products[section.settings.handle]\n  endif\n"
   "  assign kw_variant = kw_p.selected_or_first_available_variant.id\n-%}\n"
-  "<style>" + style + "</style>\n<script>window.KW_VARIANT={{ kw_variant | json }};</script>\n" + body +
+  "<style>" + style + "</style>\n<script>window.KW_VARIANT={{ kw_variant | json }};window.KW_VARIANTS={ {%- for v in kw_p.variants -%}{{ v.title | json }}:{{ v.id }}{% unless forloop.last %},{% endunless %}{%- endfor -%} };</script>\n" + body +
   "\n{% schema %}\n" + json.dumps({"name": "Landing produktu", "settings": [
     {"type": "text", "id": "handle", "label": "Uchwyt produktu (na stronie głównej)", "default": handle}],
     "presets": [{"name": "Landing produktu"}]}, ensure_ascii=False, indent=2) + "\n{% endschema %}\n")

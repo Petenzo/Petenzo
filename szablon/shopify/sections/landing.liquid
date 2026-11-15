@@ -141,6 +141,7 @@ button{font-family:inherit;cursor:pointer}
 .kw-bundles{display:grid;gap:12px;margin:18px 0}
 .kw-bundles-title{text-align:center;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--kw-muted);display:flex;align-items:center;gap:12px}
 .kw-bundles-title::before,.kw-bundles-title::after{content:"";flex:1;height:1px;background:var(--kw-border)}
+.kw-flowers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 4px}.kw-flower{display:flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--kw-border);border-radius:14px;padding:12px 8px;background:#fff;font:inherit;font-weight:700;font-size:15px;color:var(--kw-fg);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}.kw-flower span{font-size:24px;line-height:1}.kw-flower.on{border-color:var(--kw-primary);background:var(--kw-primary-soft);transform:translateY(-1px)}
 .kw-bundle{position:relative;border:2px solid var(--kw-border);border-radius:18px;padding:14px 16px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
 .kw-bundle.on{border-color:var(--kw-primary);background:var(--kw-primary-soft)}
 .kw-bundle-head{display:flex;align-items:center;gap:12px}
@@ -409,7 +410,7 @@ img[width][height]{height:auto}
 .kw-gallery-main{touch-action:pan-y}
 .kw-gallery-arrow{display:none!important}
 </style>
-<script>window.KW_VARIANT={{ kw_variant | json }};</script>
+<script>window.KW_VARIANT={{ kw_variant | json }};window.KW_VARIANTS={ {%- for v in product.variants -%}{{ v.title | json }}:{{ v.id }}{% unless forloop.last %},{% endunless %}{%- endfor -%} };</script>
 
 
 <div class="kw-topbar" aria-label="Promocje">
@@ -493,6 +494,11 @@ img[width][height]{height:auto}
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>Od 6 do 99 lat</b>: dla dzieci, par i dorosłych, którzy chcą zwolnić</span></li>
       </ul>
 
+      <div class="kw-bundles-title" style="margin-top:18px">Wybierz bukiet</div>
+      <div class="kw-flowers" id="kwFlowers">
+        <button type="button" class="kw-flower on" data-f="Słonecznik" onclick="kwFlower(this)"><span>🌻</span>Słonecznik</button>
+        <button type="button" class="kw-flower" data-f="Stokrotka" onclick="kwFlower(this)"><span>🌼</span>Stokrotka</button>
+      </div>
       <div class="kw-bundles" id="kwBundles">
         <div class="kw-bundles-title">Wybierz zestaw</div>
       </div>
@@ -832,7 +838,8 @@ try{cart=JSON.parse(localStorage.getItem("kwCart2")||"[]")}catch(e){cart=[]}
 function unitFor(q){return q>=3?569.99/3:q===2?385.99/2:199.99}
 function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
 function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
-window.kwAddBundle=function(){addItem({key:"kal",name:"Kalendarz adwentowy Kwiatora",variant:"24 kwiaty z klocków",img:"04-prezent.jpg",qty:BUNDLES[sel].q,old:299.99});kwCart(true)};
+var FLOWER="Słonecznik";window.kwFlower=function(b){FLOWER=b.getAttribute("data-f");document.querySelectorAll(".kw-flower").forEach(function(x){x.classList.toggle("on",x===b)})};
+window.kwAddBundle=function(){addItem({key:"kal-"+FLOWER,f:FLOWER,name:"Kalendarz adwentowy Kwiatora",variant:"Bukiet: "+FLOWER+(FLOWER==="Stokrotka"?" 🌼":" 🌻"),img:"04-prezent.jpg",qty:BUNDLES[sel].q,old:299.99});kwCart(true)};
 function drawCart(){
   var n=calCount(),u=unitFor(n),items=document.getElementById("kwItems"),tot=0,old=0,cnt=0;
   items.innerHTML="";
@@ -860,11 +867,11 @@ window.kwShipModal=function(o){document.getElementById("kwShip").classList.toggl
 window.kwPickShip=function(b){document.querySelectorAll(".kw-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("kwShipLine").textContent=b.dataset.ship==="kurier"?"Kurier pod adres · GRATIS":"Paczkomat InPost · GRATIS"};
 window.kwGoCheckout=function(){
   var q=cart.reduce(function(s,i){return s+i.qty},0);
-  if(!window.KW_VARIANT||!q){window.location.href="/cart";return}
-  fetch("/cart/clear.js",{method:"POST"})
-   .then(function(){return fetch("/cart/add.js",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:[{id:window.KW_VARIANT,quantity:q}]})})})
-   .then(function(){try{localStorage.removeItem("kwCart2")}catch(e){};window.location.href="/checkout"})
-   .catch(function(){window.location.href="/cart"})};
+  var V=window.KW_VARIANTS||{},m={};cart.forEach(function(i){var id=V[i.f]||window.KW_VARIANT;if(id)m[id]=(m[id]||0)+i.qty});
+  var ps=Object.keys(m).map(function(k){return k+":"+m[k]});
+  if(!ps.length){window.location.href="/cart";return}
+  try{localStorage.removeItem("kwCart2")}catch(e){}
+  window.location.href="/cart/"+ps.join(",")};
 window.kwMenu=function(o){document.getElementById("kwMobile").classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
 window.kwScrollBuy=function(){kwShow("home");document.getElementById("kwBundles").scrollIntoView({behavior:"smooth",block:"center"})};
 

@@ -25,11 +25,11 @@ if old not in body:
     sys.exit('Błąd: nie znalazłem funkcji kwGoCheckout w HTML.')
 body = body.replace(old, '''window.kwGoCheckout=function(){
   var q=cart.reduce(function(s,i){return s+i.qty},0);
-  if(!window.KW_VARIANT||!q){window.location.href="/cart";return}
-  fetch("/cart/clear.js",{method:"POST"})
-   .then(function(){return fetch("/cart/add.js",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:[{id:window.KW_VARIANT,quantity:q}]})})})
-   .then(function(){try{localStorage.removeItem("kwCart2")}catch(e){};window.location.href="/checkout"})
-   .catch(function(){window.location.href="/cart"})};''')
+  var V=window.KW_VARIANTS||{},m={};cart.forEach(function(i){var id=V[i.f]||window.KW_VARIANT;if(id)m[id]=(m[id]||0)+i.qty});
+  var ps=Object.keys(m).map(function(k){return k+":"+m[k]});
+  if(!ps.length){window.location.href="/cart";return}
+  try{localStorage.removeItem("kwCart2")}catch(e){}
+  window.location.href="/cart/"+ps.join(",")};''')
 
 section = (
     "{%- comment -%} Sekcja landing page – wygenerowana przez szablon/zbuduj.py {%- endcomment -%}\n"
@@ -41,7 +41,7 @@ section = (
     "  endif\n"
     "-%}\n"
     "<style>" + style + "</style>\n"
-    "<script>window.KW_VARIANT={{ kw_variant | json }};</script>\n"
+    "<script>window.KW_VARIANT={{ kw_variant | json }};window.KW_VARIANTS={ {%- for v in product.variants -%}{{ v.title | json }}:{{ v.id }}{% unless forloop.last %},{% endunless %}{%- endfor -%} };</script>\n"
     + body +
     "\n{% schema %}\n" + json.dumps({
         "name": "Landing produktu",
