@@ -36,7 +36,7 @@ const prevDir = path.join(root, 'site', 'img');
   console.log('PDF ->', pdfOut);
 
   // Preview images of selected pages for the landing page.
-  const pick = { cover: 1, briefing: 3, phone: 9, cheats: 16 };
+  const pick = { cover: 1, map: 4, heat: 8 };
   const scale = process.argv.includes('--all') ? null : pick;
   const hi = await browser.newPage({ viewport: { width: 816, height: 1056 }, deviceScaleFactor: 1.5 });
   await hi.goto(src, { waitUntil: 'networkidle' });

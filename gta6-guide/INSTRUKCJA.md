@@ -25,7 +25,7 @@ Klient płaci → **automatycznie dostaje maila z linkiem do PDF**. Nie musisz n
 2. **Settings → Payments**: podepnij wypłaty (PayPal albo konto bankowe).
 3. **Products → New product → Digital product**
    - Name: `Leonida: Day One — The Unofficial GTA VI Field Guide`
-   - Price: **$12.99** (ok. 45–50 zł, czyli tyle, ile chciałeś)
+   - Price: **$14.99** (ok. 55 zł)
    - Upload: wgraj `Leonida-Day-One-GTA-VI-Guide.pdf`
    - Cover: wgraj `site/img/cover.jpg`
    - Description: wklej tekst z sekcji „Opis produktu” poniżej
@@ -42,7 +42,7 @@ Otwórz `site/index.html`, na samym dole znajdź:
 ```js
 const CONFIG = {
   checkoutUrl: "#buy",               // ← TU wklej link z Gumroada
-  price: "$12.99",                   // ← cena (zmienia się wszędzie na stronie)
+  price: "$14.99",                   // ← cena (zmienia się wszędzie na stronie)
   supportEmail: "support@example.com" // ← Twój mail do kontaktu
 };
 ```
