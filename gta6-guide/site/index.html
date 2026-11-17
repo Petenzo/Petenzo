@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida: Day One — The Unofficial GTA VI Field Guide</title>
+<meta name="description" content="A fact-checked, no-filler PDF guide for GTA VI launch day: confirmed features, veteran tactics from GTA IV & V, and a cheat vault. Instant email delivery.">
+<meta property="og:title" content="Leonida: Day One — The Unofficial GTA VI Field Guide">
+<meta property="og:description" content="Walk into Leonida knowing everything. Fact-checked PDF guide, delivered instantly.">
+<meta property="og:image" content="img/cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0b0f1f;--night2:#121936;--line:#2a3566;--ink:#eef1ff;--soft:#c5cbea;--muted:#8e97c2;
+  --coral:#ff5d73;--amber:#ffb547;--teal:#2fd3c5;--violet:#a78bfa;--red:#ff7a7a;
+  --sunset:linear-gradient(120deg,#ff5d73 0%,#ff8a5c 45%,#ffb547 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.g{background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.display{font-family:Anton,Impact,sans-serif;text-transform:uppercase;line-height:.95;letter-spacing:.005em;font-weight:400}
+.kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--amber)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(11,15,31,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(42,53,102,.6)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:Anton;font-size:20px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--sunset);color:#1a0d1a;font-weight:800;text-decoration:none;border-radius:999px;padding:16px 30px;font-size:17px;box-shadow:0 10px 30px -10px rgba(255,93,115,.7);transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(255,93,115,.85)}
+.btn.sm{padding:10px 18px;font-size:14px;box-shadow:none}
+.btn .price{opacity:.85;font-weight:700}
+
+/* hero */
+.hero{position:relative;padding:64px 0 72px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 520px at 85% 10%,rgba(255,93,115,.22),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(47,211,197,.12),transparent 60%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(46px,7vw,88px);margin:14px 0 18px}
+.hero p.sub{font-size:19px;color:var(--soft);max-width:540px;margin-bottom:28px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;font-size:14px;color:var(--muted)}
+.trust span::before{content:"✓";color:var(--teal);font-weight:800;margin-right:6px}
+.cover-wrap{position:relative;perspective:1200px}
+.cover-wrap img{border-radius:10px;transform:rotateY(-12deg) rotateX(4deg);box-shadow:30px 40px 80px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06);transition:transform .4s ease}
+.cover-wrap:hover img{transform:rotateY(-4deg) rotateX(2deg)}
+.cover-wrap .sticker{position:absolute;top:-14px;left:-14px;background:var(--teal);color:#05211f;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;border-radius:999px;transform:rotate(-6deg)}
+
+/* countdown */
+.count{display:flex;gap:10px;margin-bottom:26px}
+.count div{background:var(--night2);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:72px;text-align:center}
+.count b{display:block;font-family:Anton;font-size:30px;line-height:1}
+.count small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+section{padding:76px 0}
+section h2{font-size:clamp(38px,5vw,60px);margin:10px 0 14px}
+section .lead{font-size:18px;color:var(--soft);max-width:640px}
+.alt{background:linear-gradient(180deg,#0e1328,#0b0f1f)}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.card{background:linear-gradient(180deg,var(--night2),rgba(18,25,54,.6));border:1px solid var(--line);border-radius:16px;padding:22px}
+.card .n{font-family:Anton;font-size:30px;line-height:1;margin-bottom:10px}
+.card h3{font-size:17px;font-weight:800;margin-bottom:6px}
+.card p{color:var(--soft);font-size:15px}
+
+.previews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.previews figure{background:var(--night2);border:1px solid var(--line);border-radius:14px;padding:12px}
+.previews img{border-radius:8px}
+.previews figcaption{font-size:14px;color:var(--muted);margin-top:10px;text-align:center}
+
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid;margin-bottom:10px}
+.b-conf{color:var(--teal);border-color:rgba(47,211,197,.5);background:rgba(47,211,197,.08)}
+.b-prev{color:var(--amber);border-color:rgba(255,181,71,.5);background:rgba(255,181,71,.08)}
+.b-vet{color:var(--violet);border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.08)}
+.b-unc{color:var(--red);border-color:rgba(255,122,122,.5);background:rgba(255,122,122,.08)}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;counter-reset:s}
+.steps .card{position:relative;padding-top:56px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:18px;left:22px;width:28px;height:28px;border-radius:50%;background:var(--sunset);color:#1a0d1a;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+
+.buy{text-align:center;position:relative;overflow:hidden}
+.buy::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 360px at 50% 120%,rgba(255,93,115,.3),transparent 70%);pointer-events:none}
+.buy .box{position:relative;max-width:620px;margin:0 auto;background:var(--night2);border:1px solid rgba(255,93,115,.45);border-radius:22px;padding:40px 28px}
+.buy .big{font-family:Anton;font-size:64px;line-height:1;margin:14px 0 4px}
+.buy ul{list-style:none;text-align:left;max-width:360px;margin:20px auto 28px}
+.buy li{padding:6px 0;color:var(--soft);border-bottom:1px dashed rgba(42,53,102,.9)}
+.buy li::before{content:"✓";color:var(--teal);font-weight:800;margin-right:10px}
+
+.faq{max-width:780px;margin-top:30px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--amber);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--soft);margin-top:10px}
+
+footer{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-direction:column;gap:10px}
+
+.mobile-buy{display:none}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .cover-wrap{max-width:340px;margin:0 auto}
+  .grid,.badges{grid-template-columns:1fr 1fr}
+  .previews,.steps{grid-template-columns:1fr}
+  .previews figure{max-width:420px;margin:0 auto;width:100%}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .hero{padding:40px 0 56px}
+  .grid,.badges{grid-template-columns:1fr}
+  .count div{min-width:0;flex:1;padding:10px 6px}
+  .count b{font-size:26px}
+  .btn{width:100%}
+  nav .btn{width:auto}
+  section{padding:56px 0}
+  .buy .big{font-size:52px}
+  .mobile-buy{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:30;transform:translateY(140%);transition:transform .25s ease}
+  .mobile-buy.show{transform:none}
+  .mobile-buy .btn{box-shadow:0 10px 30px rgba(0,0,0,.6)}
+  footer{padding-bottom:96px}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="logo" href="#">Leonida<span class="g"> Day One</span></a>
+  <a class="btn sm buy-link" href="#">Get the guide</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="kicker">The unofficial GTA VI field guide</div>
+    <h1 class="display">Walk into Leonida <span class="g">knowing everything.</span></h1>
+    <p class="sub">GTA VI launches November 19. This fact-checked PDF gives you every confirmed feature, the veteran tactics that carried GTA IV &amp; V players, and a verified cheat vault, with zero filler and zero fake leaks.</p>
+    <div class="count" id="count" aria-label="Countdown to GTA VI launch">
+      <div><b id="cd-d">--</b><small>Days</small></div>
+      <div><b id="cd-h">--</b><small>Hours</small></div>
+      <div><b id="cd-m">--</b><small>Min</small></div>
+      <div><b id="cd-s">--</b><small>Sec</small></div>
+    </div>
+    <a class="btn buy-link" href="#">Get instant access <span class="price">· <span class="price-val">$12.99</span></span></a>
+    <div class="trust"><span>Instant PDF to your email</span><span>19 pages</span><span>Every claim sourced</span></div>
+  </div>
+  <div class="cover-wrap">
+    <span class="sticker">Fact-checked</span>
+    <img src="img/cover.jpg" alt="Cover of Leonida: Day One, the unofficial GTA VI field guide" width="1224" height="1584">
+  </div>
+</div></header>
+
+<section class="alt"><div class="wrap">
+  <div class="kicker">What's inside</div>
+  <h2 class="display">13 chapters. <span class="g">No fluff.</span></h2>
+  <p class="lead">Everything a new player needs on launch night, in a format you can read in one sitting and keep open on your phone while you play.</p>
+  <div class="grid">
+    <div class="card"><div class="n g">01</div><h3>Launch briefing</h3><p>Dates, platforms and what's actually confirmed, on one page.</p></div>
+    <div class="card"><div class="n g">02</div><h3>Map &amp; crew</h3><p>Leonida's six regions and the cast you need to know, without spoilers.</p></div>
+    <div class="card"><div class="n g">03</div><h3>Lose the heat</h3><p>How GTA VI's police see you, and the outfit trick that helps you slip away.</p></div>
+    <div class="card"><div class="n g">04</div><h3>Phone as a weapon</h3><p>The car scanner and every app shown so far. Scan before you steal.</p></div>
+    <div class="card"><div class="n g">05</div><h3>Body &amp; style</h3><p>Gym 2-for-1, the food health buff and grooming at safehouses.</p></div>
+    <div class="card"><div class="n g">06</div><h3>First 10 hours</h3><p>A tick-box launch plan so you don't waste your first night.</p></div>
+    <div class="card"><div class="n g">07</div><h3>Veteran playbook</h3><p>Money, heists, chases and stealth: tactics refined over 15+ years of GTA.</p></div>
+    <div class="card"><div class="n g">08</div><h3>Cheat vault</h3><p>Every verified GTA V &amp; IV cheat, plus the truth about GTA VI cheats.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="kicker">Look inside</div>
+  <h2 class="display">Designed to be <span class="g">read, not skimmed.</span></h2>
+  <div class="previews">
+    <figure><img src="img/briefing.jpg" alt="Launch briefing page preview" loading="lazy" width="1224" height="1584"><figcaption>Launch briefing</figcaption></figure>
+    <figure><img src="img/phone.jpg" alt="Phone and vehicle scanner page preview" loading="lazy" width="1224" height="1584"><figcaption>Your phone is a tool</figcaption></figure>
+    <figure><img src="img/cheats.jpg" alt="Cheat vault page preview" loading="lazy" width="1224" height="1584"><figcaption>The cheat vault</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="kicker">Why trust it</div>
+  <h2 class="display">Every tip tells you <span class="g">how sure we are.</span></h2>
+  <p class="lead">The internet is full of fake GTA VI "leaks." Every claim in this guide carries one of four labels, so you know exactly what's real.</p>
+  <div class="badges">
+    <div class="card"><span class="badge b-conf">Confirmed</span><p>Shown or stated by Rockstar in official trailers or on the official site.</p></div>
+    <div class="card"><span class="badge b-prev">Preview</span><p>Described by Rockstar developers in hands-on press previews.</p></div>
+    <div class="card"><span class="badge b-vet">Veteran</span><p>Proven in GTA IV &amp; V, and clearly labeled as series experience.</p></div>
+    <div class="card"><span class="badge b-unc">Unconfirmed</span><p>Popular rumors we debunk or flag, so you don't chase them.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="kicker">How it works</div>
+  <h2 class="display">In your inbox <span class="g">in 60 seconds.</span></h2>
+  <div class="steps">
+    <div class="card"><h3>Check out securely</h3><p>Pay with card, Apple Pay or PayPal on our secure checkout.</p></div>
+    <div class="card"><h3>Get the PDF instantly</h3><p>Your download link is emailed to you automatically, right after purchase.</p></div>
+    <div class="card"><h3>Read anywhere</h3><p>Phone, tablet, laptop or printed next to the TV. It's yours to keep.</p></div>
+  </div>
+</div></section>
+
+<section class="buy" id="buy"><div class="wrap">
+  <div class="box">
+    <div class="kicker">Launch-week price</div>
+    <div class="big g price-val">$12.99</div>
+    <p style="color:var(--muted)">One-time payment · Instant PDF download</p>
+    <ul>
+      <li>19-page fact-checked PDF guide</li>
+      <li>13 chapters + printable quick-reference card</li>
+      <li>Verified GTA V &amp; GTA IV cheat vault</li>
+      <li>Full source list for every claim</li>
+    </ul>
+    <a class="btn buy-link" href="#">Get Leonida: Day One</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="kicker">FAQ</div>
+  <h2 class="display">Questions</h2>
+  <div class="faq">
+    <details><summary>Is this an official Rockstar guide?</summary><p>No. Leonida: Day One is an independent, unofficial fan guide. It isn't affiliated with or endorsed by Rockstar Games or Take-Two Interactive.</p></details>
+    <details><summary>Does it contain leaks or spoilers?</summary><p>No leaks, ever. Everything comes from official Rockstar material, press previews with Rockstar developers, or proven series experience, and each claim is labeled. Story spoilers are kept to a minimum.</p></details>
+    <details><summary>The game isn't out yet. What's actually in it?</summary><p>This is the pre-launch edition: everything confirmed about GTA VI so far, a step-by-step plan for your first 10 hours, veteran tactics from GTA IV &amp; V, and a verified cheat vault. Features that aren't confirmed are clearly marked.</p></details>
+    <details><summary>How do I get the guide after I pay?</summary><p>It's delivered automatically. After checkout you'll get an email with your download link within a minute or so. Check your spam folder if you don't see it.</p></details>
+    <details><summary>What format is it?</summary><p>A high-quality PDF that works on any phone, tablet or computer, and prints on standard US Letter paper.</p></details>
+    <details><summary>Which platforms does it cover?</summary><p>GTA VI launches on PlayStation 5 and Xbox Series X|S. The GTA V cheat phone numbers in the vault work on every platform.</p></details>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><strong style="color:var(--ink)">Leonida: Day One</strong> · Questions? <a href="mailto:support@example.com" id="support-mail">support@example.com</a></div>
+  <div>Leonida: Day One is an unofficial fan-made guide and is not affiliated with, endorsed, sponsored or approved by Rockstar Games, Inc. or Take-Two Interactive Software, Inc. Grand Theft Auto, GTA and related names are trademarks of their respective owners and are used only to identify the game this guide covers. All artwork is original.</div>
+  <div>© 2026 Leonida: Day One</div>
+</div></footer>
+
+<div class="mobile-buy"><a class="btn buy-link" href="#">Get the guide · <span class="price-val">$12.99</span></a></div>
+
+<script>
+/* ===== CONFIG: edit these three values ===== */
+const CONFIG = {
+  checkoutUrl: "#buy",               // paste your Gumroad / Lemon Squeezy product link here
+  price: "$12.99",                   // shown everywhere on the page
+  supportEmail: "support@example.com"
+};
+/* =========================================== */
+document.querySelectorAll('.buy-link').forEach(a => a.href = CONFIG.checkoutUrl);
+document.querySelectorAll('.price-val').forEach(e => e.textContent = CONFIG.price);
+const m = document.getElementById('support-mail'); m.href = 'mailto:' + CONFIG.supportEmail; m.textContent = CONFIG.supportEmail;
+
+// Countdown to launch: Nov 19, 2026, midnight US Eastern (05:00 UTC)
+const launch = Date.UTC(2026, 10, 19, 5, 0, 0);
+const box = document.getElementById('count');
+function tick(){
+  const d = launch - Date.now();
+  if (d <= 0){ box.innerHTML = '<div style="flex:1"><b class="g">OUT NOW</b><small>GTA VI is here</small></div>'; return; }
+  const pad = n => String(n).padStart(2,'0');
+  document.getElementById('cd-d').textContent = Math.floor(d/864e5);
+  document.getElementById('cd-h').textContent = pad(Math.floor(d/36e5)%24);
+  document.getElementById('cd-m').textContent = pad(Math.floor(d/6e4)%60);
+  document.getElementById('cd-s').textContent = pad(Math.floor(d/1e3)%60);
+  setTimeout(tick, 1000);
+}
+tick();
+
+// Show the sticky mobile buy bar only once the hero button has scrolled away
+const heroBtn = document.querySelector('.hero .btn'), bar = document.querySelector('.mobile-buy'), buyBox = document.getElementById('buy');
+let heroVisible = true, buyVisible = false;
+const upd = () => bar.classList.toggle('show', !heroVisible && !buyVisible);
+new IntersectionObserver(e => { heroVisible = e[0].isIntersecting; upd(); }).observe(heroBtn);
+new IntersectionObserver(e => { buyVisible = e[0].isIntersecting; upd(); }).observe(buyBox);
+</script>
+</body>
+</html>

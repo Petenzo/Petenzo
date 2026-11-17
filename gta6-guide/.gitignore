@@ -1,0 +1,5 @@
+# Paid product — never commit (public repo)
+dist/
+guide/
+*.pdf
+tools/node_modules/
