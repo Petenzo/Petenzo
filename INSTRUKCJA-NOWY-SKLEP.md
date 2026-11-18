@@ -1,23 +1,3 @@
-# PROMPT: Postaw nowy sklep Shopify krok po kroku (home.pl + ImprovMX + Google Search Console)
-
-> Skopiuj całość do nowego czatu z Claude. Na początku napisz: **„Prowadź mnie krok po kroku według tej instrukcji. Po każdym kroku czekaj, aż napiszę »dalej«. Odpowiadaj po polsku, krótko, konkretnie co kliknąć.”**
->
-> Wszędzie, gdzie jest **TWOJADOMENA.pl**, wpisz swoją domenę, a zamiast **NAZWA** nazwę sklepu.
-
----
-
-## KROK 0: Zanim zaczniesz
-
-- Przygotuj: **nazwę sklepu**, **domenę .pl**, **Gmaila**, na który ma przychodzić poczta, oraz dane do płatności (konto bankowe, dowód).
-- Jeśli Claude ma podłączony konektor **Shopify**, sprawdź, **do którego sklepu** jest podłączony. Na claude.ai: **Ustawienia → Konektory → Shopify → Rozłącz → Połącz → wybierz NOWY sklep**. Łatwo się pomylić i pracować na starym sklepie.
-- Pracujesz w **Safari na MacBooku** i wyskakuje „Okno wyskakujące zablokowane”? Masz dwie opcje:
-  - **Szybko:** kliknij ikonkę okienka w pasku adresu, obok ikony głośnika.
-  - **Na stałe:** **Safari → Ustawienia dla witryny admin.shopify.com → Okna wyskakujące: Zezwalaj**. Ewentualnie **Safari → Ustawienia (⌘ + ,) → Witryny → Okna wyskakujące → admin.shopify.com → Zezwalaj**.
-  - Potem odśwież stronę: **⌘ + R**.
-  - Dalej nie działa? Otwórz Shopify w **Chrome**.
-
----
-
 ## KROK 1: Sklep w Shopify
 
 1. Wejdź na **shopify.com/pl** i kliknij **„Rozpocznij bezpłatny okres próbny”**.
