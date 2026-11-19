@@ -9,7 +9,7 @@ Klient płaci → **automatycznie dostaje maila z PDF-em**. Nic nie wysyłasz r�
 
 | Plik | Co to jest |
 |---|---|
-| `Leonida-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 21 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
+| `Leonida-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 25 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
 | `site/index.html` + `site/img/` | Strona sprzedażowa |
 | `guide/guide.html` | Źródło PDF (nie w repo) |
 | `tools/build.js` | Skrypt, który robi PDF ze źródła |
@@ -77,8 +77,10 @@ const CONFIG = {
 > - The best hiding spots in the city and outside it
 > - Partner tricks, hidden mechanics, cheats and the first big secrets
 > - Phone numbers for GTA VI, plus every GTA V phone cheat
+> - A chapter-by-chapter roadmap, 12 mistakes to avoid and a controls cheat sheet
+> - Free updates as new tricks are found
 >
-> 21 pages · PDF · Instant download right after checkout
+> 25 pages · PDF · Instant download right after checkout
 >
 > *Unofficial fan guide. Not affiliated with Rockstar Games or Take-Two Interactive.*
 
