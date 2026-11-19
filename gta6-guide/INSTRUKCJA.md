@@ -9,7 +9,7 @@ Klient płaci → **automatycznie dostaje maila z PDF-em**. Nic nie wysyłasz r�
 
 | Plik | Co to jest |
 |---|---|
-| `Leonida-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 14 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
+| `Leonida-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 16 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
 | `site/index.html` + `site/img/` | Strona sprzedażowa |
 | `guide/guide.html` | Źródło PDF (nie w repo) |
 | `tools/build.js` | Skrypt, który robi PDF ze źródła |
@@ -73,12 +73,14 @@ const CONFIG = {
 > - Six ways to make money, from untracked cars to bank vaults
 > - How to scan, steal, store and cheaply repair cars
 > - How the six-star police system finds you, and six ways to lose the cops
+> - The best places to hide from the police
+> - Hidden tricks the game never tells you
 > - Focus Mode and two-character robbery tactics
 > - The first big secrets players have found
 > - How GTA VI cheats unlock and how to enter them
 > - A one-page quick reference
 >
-> 14 pages · PDF · Instant download
+> 16 pages · PDF · Instant download
 >
 > *Unofficial fan guide. Not affiliated with Rockstar Games or Take-Two Interactive.*
 
