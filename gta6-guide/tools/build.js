@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const root = path.resolve(__dirname, '..');
 const src = 'file://' + path.join(root, 'guide', 'guide.html');
-const pdfOut = path.join(root, 'dist', 'Leonida-Day-One-GTA-VI-Guide.pdf');
+const pdfOut = path.join(root, 'dist', 'Vice-City-Playbook-GTA-VI-Guide.pdf');
 const prevDir = path.join(root, 'site', 'img');
 
 (async () => {
@@ -36,7 +36,7 @@ const prevDir = path.join(root, 'site', 'img');
   console.log('PDF ->', pdfOut);
 
   // Preview images of selected pages for the landing page.
-  const pick = { cover: 1, map: 4, heat: 8 };
+  const pick = { cover: 1, money: 5, heat: 8 };
   const scale = process.argv.includes('--all') ? null : pick;
   const hi = await browser.newPage({ viewport: { width: 816, height: 1056 }, deviceScaleFactor: 1.5 });
   await hi.goto(src, { waitUntil: 'networkidle' });

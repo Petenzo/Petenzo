@@ -1,7 +1,7 @@
-# Leonida: Day One — instrukcja uruchomienia sprzedaży
+# Vice City Playbook — instrukcja uruchomienia sprzedaży
 
 Produkt: PDF-poradnik do GTA VI (po angielsku, rynek USA) + strona sprzedażowa.
-Klient płaci → **automatycznie dostaje maila z linkiem do PDF**. Nie musisz nic robić ręcznie.
+Klient płaci → **automatycznie dostaje maila z PDF-em**. Nic nie wysyłasz ręcznie.
 
 ---
 
@@ -9,80 +9,76 @@ Klient płaci → **automatycznie dostaje maila z linkiem do PDF**. Nie musisz n
 
 | Plik | Co to jest |
 |---|---|
-| `Leonida-Day-One-GTA-VI-Guide.pdf` | Gotowy poradnik, 19 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
-| `site/index.html` + `site/img/` | Strona sprzedażowa (landing page) |
-| `guide/guide.html` | Źródło PDF (też wysłane jako plik, **nie w repo**) |
+| `Vice-City-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 14 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
+| `site/index.html` + `site/img/` | Strona sprzedażowa |
+| `guide/guide.html` | Źródło PDF (nie w repo) |
 | `tools/build.js` | Skrypt, który robi PDF ze źródła |
 
-> ⚠️ Repo `Petenzo/Petenzo` jest **publiczne**. Nigdy nie wrzucaj tam PDF-a ani `guide.html`, bo każdy pobierze go za darmo.
-> PDF **nie może** też leżeć w folderze `site/` (strona jest publiczna).
+> ⚠️ Repo `Petenzo/Petenzo` jest **publiczne**. Nigdy nie wrzucaj tam PDF-a ani `guide.html`.
+> PDF **nie może** też leżeć w folderze `site/`, bo strona jest publiczna.
 
 ---
 
-## Krok 1: Gumroad (płatności i automatyczna wysyłka PDF), ok. 10 minut
+## Krok 1: Shopify (płatności i automatyczna wysyłka PDF)
 
-1. Załóż konto na **gumroad.com**.
-2. **Settings → Payments**: podepnij wypłaty (PayPal albo konto bankowe).
-3. **Products → New product → Digital product**
-   - Name: `Leonida: Day One — The Unofficial GTA VI Field Guide`
-   - Price: **$14.99** (ok. 55 zł)
-   - Upload: wgraj `Leonida-Day-One-GTA-VI-Guide.pdf`
-   - Cover: wgraj `site/img/cover.jpg`
-   - Description: wklej tekst z sekcji „Opis produktu” poniżej
-4. **Publish**, potem skopiuj link do produktu (np. `https://twojanazwa.gumroad.com/l/leonida`).
+1. Na swoim koncie Shopify załóż **nowy sklep** tylko pod poradnik (nie w Petenzo). Plan **Basic**.
+2. **Apps** → wyszukaj **Digital Downloads** → wybierz tę od **Shopify**, cena **Free** → Install.
+3. **Products → Add product**
+   - Title: `Vice City Playbook — The Unofficial GTA VI Survival Guide`
+   - Price: **$14.99**
+   - Odznacz „This is a physical product” (bez wysyłki)
+   - Zdjęcie: `site/img/cover.jpg`
+   - Opis: wklej tekst z sekcji „Opis produktu” poniżej
+4. W aplikacji Digital Downloads przypisz plik `Vice-City-Playbook-GTA-VI-Guide.pdf` do produktu.
+5. **Settings → Store details**: wpisz osobnego Gmaila do kontaktu z klientami.
+6. Zrób **testowy zakup** z kodem rabatowym 100% i sprawdź, czy PDF przychodzi na maila.
 
-Gumroad sam wysyła klientowi maila z PDF-em zaraz po zapłacie.
-Prowizja Gumroada to ok. 10% + 0,50 $ od sprzedaży (sprawdź aktualny cennik na ich stronie).
-Alternatywa: **Lemon Squeezy** działa tak samo.
+Możesz też podłączyć nowy sklep do mnie, a dodam produkt i wysyłkę za Ciebie.
 
-## Krok 2: Podepnij link na stronie, 1 minuta
+## Krok 2: Podepnij link na stronie
 
-Otwórz `site/index.html`, na samym dole znajdź:
+W `site/index.html`, na samym dole:
 
 ```js
 const CONFIG = {
-  checkoutUrl: "#buy",               // ← TU wklej link z Gumroada
-  price: "$14.99",                   // ← cena (zmienia się wszędzie na stronie)
-  supportEmail: "support@example.com" // ← Twój mail do kontaktu
+  checkoutUrl: "#buy",               // ← link do produktu albo koszyka w Shopify
+  price: "$14.99",
+  supportEmail: "support@example.com" // ← Twój Gmail do kontaktu
 };
 ```
 
-## Krok 3: Wrzuć stronę do internetu, 2 minuty, za darmo
+## Krok 3: Wrzuć stronę do internetu (za darmo)
 
-- Wejdź na **app.netlify.com/drop** i przeciągnij folder `site`. Dostajesz link od razu.
-- Możesz też poprosić mnie, a zrobię to przez Netlify.
-- Własna domena (np. `leonidadayone.com`) kosztuje ok. 10–15 $ rocznie i podpinasz ją w Netlify.
-
----
-
-## Ważne: przeczytaj
-
-1. **Premiera GTA VI to 19 listopada 2026, czyli za 2 dni.** Najwięcej sprzedasz w tym tygodniu, więc odpal to dziś.
-2. **Prawo/marki:** poradnik i strona mają dopisek „unofficial, not affiliated with Rockstar”. W reklamach **nie używaj** logo GTA VI, screenów z gry ani grafik Rockstara. Używaj tylko naszych grafik (okładka i podglądy stron).
-3. **Fakty:** wszystko w poradniku jest sprawdzone i oznaczone (CONFIRMED / PREVIEW / VETERAN / UNCONFIRMED). Gra jeszcze nie wyszła, więc to **wydanie przedpremierowe**. Po premierze warto zrobić v2 z prawdziwymi trikami z gry. Gumroad pozwala podmienić plik i kupujący dostaną nową wersję.
-4. **Podatki w Polsce:** przychód ze sprzedaży trzeba rozliczyć (np. działalność nierejestrowana albo firma). Zapytaj księgowego.
+- **app.netlify.com/drop** → przeciągnij folder `site`. Dostajesz link do bio.
+- Albo poproś mnie, a wrzucę ją za Ciebie.
+- Domena nie jest potrzebna. Możesz ją dokupić później.
 
 ---
 
-## Opis produktu (wklej do Gumroada)
+## Ważne
 
-> **GTA VI launches November 19. Walk into Leonida knowing everything.**
+1. **Marki:** poradnik i strona mają dopisek „unofficial, not affiliated with Rockstar”. W reklamach **nie używaj** logo GTA VI ani screenów z gry. Używaj naszych grafik.
+2. **Aktualizacje:** gracze ciągle odkrywają nowe kody i sekrety. Co kilka dni możemy dorzucać nowe rzeczy i podmieniać PDF w Digital Downloads.
+3. **Podatki w Polsce:** przychód trzeba rozliczyć. Zapytaj księgowego.
+
+---
+
+## Opis produktu (wklej do Shopify)
+
+> **GTA VI is huge and doesn't explain much. Run Leonida like a pro.**
 >
-> Leonida: Day One is a fact-checked, no-filler PDF guide for launch night:
+> Vice City Playbook is a fact-checked, no-filler PDF guide:
 >
-> - Every confirmed GTA VI feature, with sources
-> - Leonida's six regions and the main cast (spoiler-light)
-> - How the new police system sees you, and the outfit trick to lose the heat
-> - The phone car scanner, ride-share fast travel and every app shown so far
-> - Gym, food and grooming systems explained
-> - A tick-box plan for your first 10 hours
-> - The Veteran Playbook: money, heists, chases and stealth from GTA IV & V
-> - A verified cheat vault for GTA V & GTA IV
-> - A printable quick-reference card
+> - A first-hours checklist that skips the mistakes new players make
+> - Six ways to make money, from untracked cars to bank vaults
+> - How to scan, steal, store and cheaply repair cars
+> - How the six-star police system finds you, and six ways to lose the cops
+> - Focus Mode and two-character robbery tactics
+> - The first big secrets players have found
+> - How GTA VI cheats unlock and how to enter them
+> - A one-page quick reference
 >
-> Every claim is labeled Confirmed, Preview, Veteran or Unconfirmed, so you never fall for fake leaks.
->
-> 19 pages · PDF · Instant download
+> 14 pages · PDF · Instant download
 >
 > *Unofficial fan guide. Not affiliated with Rockstar Games or Take-Two Interactive.*
 
@@ -94,4 +90,4 @@ const CONFIG = {
 cd gta6-guide/tools && npm install && cd .. && node tools/build.js
 ```
 
-PDF pojawi się w `dist/`, a podglądy dla strony w `site/img/`.
+PDF pojawi się w `dist/`, podglądy dla strony w `site/img/`.
