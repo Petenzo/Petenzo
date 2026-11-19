@@ -9,6 +9,23 @@ const src = 'file://' + path.join(root, 'guide', 'guide.html');
 const pdfOut = path.join(root, 'dist', 'Leonida-Playbook-GTA-VI-Guide.pdf');
 const prevDir = path.join(root, 'site', 'img');
 
+
+// Spread leftover space evenly between blocks so every page looks full.
+const fillPages = () => {
+  document.querySelectorAll('.page:not(.cover2)').forEach(pg => {
+    const kids = [...pg.querySelectorAll(':scope > *')].filter(e => !e.matches('.foot,.run,svg,.meta'));
+    if (kids.length < 3) return;
+    const R = pg.getBoundingClientRect();
+    const bottom = Math.max(...kids.map(e => e.getBoundingClientRect().bottom));
+    const gap = R.bottom - 0.62 * 96 - 12 - bottom;
+    if (gap <= 4) return;
+    const movable = kids.slice(3); // keep kicker, title, rule tight
+    if (!movable.length) return;
+    const each = Math.min(gap / movable.length, 40);
+    movable.forEach(e => { const cs = getComputedStyle(e); e.style.marginTop = (parseFloat(cs.marginTop) + each) + 'px'; });
+  });
+};
+
 (async () => {
   fs.mkdirSync(path.dirname(pdfOut), { recursive: true });
   fs.mkdirSync(prevDir, { recursive: true });
@@ -16,6 +33,7 @@ const prevDir = path.join(root, 'site', 'img');
   const page = await browser.newPage({ viewport: { width: 816, height: 1056 } });
   await page.goto(src, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(fillPages);
 
   // Overflow check: any element whose bottom extends past its page's content area.
   const problems = await page.evaluate(() => {
@@ -41,6 +59,7 @@ const prevDir = path.join(root, 'site', 'img');
   const hi = await browser.newPage({ viewport: { width: 816, height: 1056 }, deviceScaleFactor: 1.5 });
   await hi.goto(src, { waitUntil: 'networkidle' });
   await hi.evaluate(() => document.fonts.ready);
+  await hi.evaluate(fillPages);
   const pages = await hi.$$('.page');
   const targets = scale ? Object.entries(pick) : pages.map((_, i) => ['p' + String(i + 1).padStart(2, '0'), i + 1]);
   for (const [name, n] of targets) {
