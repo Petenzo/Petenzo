@@ -54,7 +54,7 @@ const fillPages = () => {
   console.log('PDF ->', pdfOut);
 
   // Preview images of selected pages for the landing page.
-  const pick = { cover: 1, whatsnew: 3, rob: 6 };
+  const pick = { cover: 1, money: 6, cops: 14 };
   const scale = process.argv.includes('--all') ? null : pick;
   const hi = await browser.newPage({ viewport: { width: 816, height: 1056 }, deviceScaleFactor: 1.5 });
   await hi.goto(src, { waitUntil: 'networkidle' });
