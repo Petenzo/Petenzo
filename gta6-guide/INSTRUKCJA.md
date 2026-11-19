@@ -9,7 +9,7 @@ Klient płaci → **automatycznie dostaje maila z PDF-em**. Nic nie wysyłasz r�
 
 | Plik | Co to jest |
 |---|---|
-| `Leonida-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 16 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
+| `Leonida-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 20 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
 | `site/index.html` + `site/img/` | Strona sprzedażowa |
 | `guide/guide.html` | Źródło PDF (nie w repo) |
 | `tools/build.js` | Skrypt, który robi PDF ze źródła |
@@ -67,20 +67,17 @@ const CONFIG = {
 
 > **GTA VI is huge and doesn't explain much. Run Leonida like a pro.**
 >
-> Leonida Playbook is a fact-checked, no-filler PDF guide:
+> Leonida Playbook packs 70+ fact-checked tricks into one clean PDF:
 >
-> - A first-hours checklist that skips the mistakes new players make
-> - Six ways to make money, from untracked cars to bank vaults
-> - How to scan, steal, store and cheaply repair cars
-> - How the six-star police system finds you, and six ways to lose the cops
-> - The best places to hide from the police
-> - Hidden tricks the game never tells you
-> - Focus Mode and two-character robbery tactics
-> - The first big secrets players have found
-> - How GTA VI cheats unlock and how to enter them
-> - A one-page quick reference
+> - Six ways to make money from your first hour, and who to sell to
+> - The exact order for a clean robbery, and how to find any safe code
+> - How to scan, register, refuel and recover your cars
+> - The best early weapons, body armor, and how to never lose your guns
+> - How the six-star police system finds you, and the checkmate getaway
+> - The best hiding spots in the city and outside it
+> - Partner tricks, hidden mechanics, cheats and the first big secrets
 >
-> 16 pages · PDF · Instant download
+> 20 pages · PDF · Instant download right after checkout
 >
 > *Unofficial fan guide. Not affiliated with Rockstar Games or Take-Two Interactive.*
 
