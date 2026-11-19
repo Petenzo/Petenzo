@@ -1,4 +1,4 @@
-# Vice City Playbook — instrukcja uruchomienia sprzedaży
+# Leonida Playbook — instrukcja uruchomienia sprzedaży
 
 Produkt: PDF-poradnik do GTA VI (po angielsku, rynek USA) + strona sprzedażowa.
 Klient płaci → **automatycznie dostaje maila z PDF-em**. Nic nie wysyłasz ręcznie.
@@ -9,7 +9,7 @@ Klient płaci → **automatycznie dostaje maila z PDF-em**. Nic nie wysyłasz r�
 
 | Plik | Co to jest |
 |---|---|
-| `Vice-City-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 14 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
+| `Leonida-Playbook-GTA-VI-Guide.pdf` | Gotowy poradnik, 14 stron (wysłany Ci jako plik, **NIE ma go w repo**) |
 | `site/index.html` + `site/img/` | Strona sprzedażowa |
 | `guide/guide.html` | Źródło PDF (nie w repo) |
 | `tools/build.js` | Skrypt, który robi PDF ze źródła |
@@ -24,12 +24,12 @@ Klient płaci → **automatycznie dostaje maila z PDF-em**. Nic nie wysyłasz r�
 1. Na swoim koncie Shopify załóż **nowy sklep** tylko pod poradnik (nie w Petenzo). Plan **Basic**.
 2. **Apps** → wyszukaj **Digital Downloads** → wybierz tę od **Shopify**, cena **Free** → Install.
 3. **Products → Add product**
-   - Title: `Vice City Playbook — The Unofficial GTA VI Survival Guide`
+   - Title: `Leonida Playbook — The Unofficial GTA VI Survival Guide`
    - Price: **$14.99**
    - Odznacz „This is a physical product” (bez wysyłki)
    - Zdjęcie: `site/img/cover.jpg`
    - Opis: wklej tekst z sekcji „Opis produktu” poniżej
-4. W aplikacji Digital Downloads przypisz plik `Vice-City-Playbook-GTA-VI-Guide.pdf` do produktu.
+4. W aplikacji Digital Downloads przypisz plik `Leonida-Playbook-GTA-VI-Guide.pdf` do produktu.
 5. **Settings → Store details**: wpisz osobnego Gmaila do kontaktu z klientami.
 6. Zrób **testowy zakup** z kodem rabatowym 100% i sprawdź, czy PDF przychodzi na maila.
 
@@ -67,7 +67,7 @@ const CONFIG = {
 
 > **GTA VI is huge and doesn't explain much. Run Leonida like a pro.**
 >
-> Vice City Playbook is a fact-checked, no-filler PDF guide:
+> Leonida Playbook is a fact-checked, no-filler PDF guide:
 >
 > - A first-hours checklist that skips the mistakes new players make
 > - Six ways to make money, from untracked cars to bank vaults

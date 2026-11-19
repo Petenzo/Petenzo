@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const root = path.resolve(__dirname, '..');
 const src = 'file://' + path.join(root, 'guide', 'guide.html');
-const pdfOut = path.join(root, 'dist', 'Vice-City-Playbook-GTA-VI-Guide.pdf');
+const pdfOut = path.join(root, 'dist', 'Leonida-Playbook-GTA-VI-Guide.pdf');
 const prevDir = path.join(root, 'site', 'img');
 
 (async () => {
