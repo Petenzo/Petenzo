@@ -409,6 +409,7 @@ img[width][height]{height:auto}
 @media(max-width:400px){.kw-pills .kw-pill{font-size:10.5px;padding:5px 9px}}
 .kw-gallery-main{touch-action:pan-y}
 .kw-gallery-arrow{display:none!important}
+html.kw-exp #kwDealSec,html.kw-exp #kwOld,html.kw-exp #kwSave,html.kw-exp .kw-bundle-price s,html.kw-exp #kwStickyPrice s,html.kw-exp .kw-dr-line.disc,html.kw-exp .kw-item s{display:none!important}
 </style>
 <script>window.KW_VARIANT={{ kw_variant | json }};window.KW_VARIANTS={ {%- for v in product.variants -%}{{ v.title | json }}:{{ v.id }}{% unless forloop.last %},{% endunless %}{%- endfor -%} };</script>
 
@@ -667,7 +668,7 @@ img[width][height]{height:auto}
 
 
 <!-- FINAL CTA: 48h -->
-<section class="kw-section kw-alt">
+<section class="kw-section kw-alt" id="kwDealSec">
   <div class="kw-container">
     <div class="kw-deal">
       <div class="kw-deal-img">
@@ -801,12 +802,17 @@ window.kwGal=function(s){setG(gi+s)};setG(0);
   if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
 
 /* BUNDLES */
+/* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
+var KW_END;try{KW_END=+localStorage.getItem("kwDealEnd")}catch(e){}
+if(!KW_END){KW_END=Date.now()+48*3600*1000;try{localStorage.setItem("kwDealEnd",KW_END)}catch(e){}}
+var KW_EXP=Date.now()>=KW_END;if(KW_EXP)document.documentElement.classList.add("kw-exp");
 var BUNDLES=[
  {q:1,name:"1 kalendarz",desc:"Pakiet startowy",price:199.99,old:299.99},
  {q:2,name:"2 kalendarze",desc:"Dla Ciebie i na prezent",price:385.99,old:599.98,tag:"Najczęściej wybierany"},
  {q:3,name:"3 kalendarze",desc:"Zestaw rodzinny",price:569.99,old:899.97,tag:"Najlepsza cena",gold:true}
 ];
 var sel=0;
+if(KW_EXP)BUNDLES.forEach(function(b){b.price=+(b.old).toFixed(2)});
 function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 var bw=document.getElementById("kwBundles");
 var CH=BUNDLES.map(function(b){var a=[];for(var k=0;k<b.q;k++)a.push("Słonecznik");return a});
@@ -833,7 +839,7 @@ render();
 var cart=[];
 function save(){try{localStorage.setItem("kwCart2",JSON.stringify(cart))}catch(e){}}
 try{cart=JSON.parse(localStorage.getItem("kwCart2")||"[]")}catch(e){cart=[]}
-function unitFor(q){return q>=3?569.99/3:q===2?385.99/2:199.99}
+function unitFor(q){return KW_EXP?299.99:q>=3?569.99/3:q===2?385.99/2:199.99}
 function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
 function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
 window.kwAddBundle=function(){var c={};CH[sel].forEach(function(f){c[f]=(c[f]||0)+1});Object.keys(c).forEach(function(f){addItem({key:"kal-"+f,f:f,name:"Kalendarz adwentowy Kwiatora",variant:"Bukiet: "+f+(f==="Stokrotka"?" 🌼":" 🌻"),img:"04-prezent.jpg",qty:c[f],old:299.99})});kwCart(true)};
@@ -877,10 +883,10 @@ window.kwTab=function(i){document.querySelectorAll(".kw-tabs-list button").forEa
 
 
 /* 48h licznik w sekcji promocji */
-var kwDEnd=Date.now()+48*3600*1000;
+var kwDEnd=KW_END;
 function dtick(){var s=Math.max(0,Math.ceil((kwDEnd-Date.now())/1000));
   document.getElementById("kwDH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwDM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");var ds=document.getElementById("kwDS");ds.textContent=String(s%60).padStart(2,"0");ds.classList.remove("tick");void ds.offsetWidth;ds.classList.add("tick")}
-dtick();setInterval(dtick,1000);
+dtick();var kwDT=setInterval(function(){dtick();if(!KW_EXP&&Date.now()>=KW_END){clearInterval(kwDT);location.reload()}},1000);
 /* STICKY */
 window.addEventListener("scroll",function(){document.getElementById("kwSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("kwHome").classList.contains("on"))},{passive:true});
 
