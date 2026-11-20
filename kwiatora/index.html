@@ -416,7 +416,7 @@ img[width][height]{height:auto}
 @media(max-width:400px){.kw-pills .kw-pill{font-size:10.5px;padding:5px 9px}}
 .kw-gallery-main{touch-action:pan-y}
 .kw-gallery-arrow{display:none!important}
-html.kw-exp #kwDealSec,html.kw-exp #kwOld,html.kw-exp #kwSave,html.kw-exp .kw-bundle-price s,html.kw-exp #kwStickyPrice s,html.kw-exp .kw-dr-line.disc,html.kw-exp .kw-item s{display:none!important}
+html.kw-exp #kwDealSec{display:none!important}
 </style>
 </head>
 <body>
@@ -820,7 +820,6 @@ var BUNDLES=[
  {q:3,name:"3 kalendarze",desc:"Zestaw rodzinny",price:569.99,old:899.97,tag:"Najlepsza cena",gold:true}
 ];
 var sel=0;
-if(KW_EXP)BUNDLES.forEach(function(b){b.price=+(b.old).toFixed(2)});
 function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 var bw=document.getElementById("kwBundles");
 var CH=BUNDLES.map(function(b){var a=[];for(var k=0;k<b.q;k++)a.push("Słonecznik");return a});
@@ -847,7 +846,7 @@ render();
 var cart=[];
 function save(){try{localStorage.setItem("kwCart2",JSON.stringify(cart))}catch(e){}}
 try{cart=JSON.parse(localStorage.getItem("kwCart2")||"[]")}catch(e){cart=[]}
-function unitFor(q){return KW_EXP?299.99:q>=3?569.99/3:q===2?385.99/2:199.99}
+function unitFor(q){return q>=3?569.99/3:q===2?385.99/2:199.99}
 function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
 function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
 window.kwAddBundle=function(){var c={};CH[sel].forEach(function(f){c[f]=(c[f]||0)+1});Object.keys(c).forEach(function(f){addItem({key:"kal-"+f,f:f,name:"Kalendarz adwentowy Kwiatora",variant:"Bukiet: "+f+(f==="Stokrotka"?" 🌼":" 🌻"),img:"04-prezent.jpg",qty:c[f],old:299.99})});kwCart(true)};
