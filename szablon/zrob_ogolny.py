@@ -141,7 +141,10 @@ RX(r'var BUNDLES=\[.*?\n\];', '''var BUNDLES=[
  {q:2,name:"[Kup 2]",desc:"[Oszczędzasz X zł · cena za szt.]",price:179.98,old:299.98,tag:"[NAJCZĘŚCIEJ WYBIERANY]"},
  {q:3,name:"[Kup 3]",desc:"[Najlepsza cena za szt.]",price:239.97,old:449.97,tag:"[NAJLEPSZA CENA]",gold:true}
 ];''')
-R('name:"Kalendarz adwentowy Kwiatora",variant:"24 kwiaty z klocków",img:"foto-4.jpg"', 'name:"[NAZWA PRODUKTU]",variant:"[KRÓTKI OPIS]",img:"foto-1.jpg"')
+s = s.replace('name:"Kalendarz adwentowy Kwiatora",variant:"Bukiet: "+f+(f==="Stokrotka"?" 🌼":" 🌻")', 'name:"[NAZWA PRODUKTU]",variant:"Wariant: "+f')
+s = s.replace('qty:c[f],old:299.99})', 'qty:c[f],old:BUNDLES[0].old})')
+s = s.replace('"Słonecznik"', '"[WARIANT A]"').replace('"Stokrotka"', '"[WARIANT B]"').replace('<span>🌻</span>Słonecznik', '<span>🅰️</span>[WARIANT A]').replace('<span>🌼</span>Stokrotka', '<span>🅱️</span>[WARIANT B]')
+s = s.replace("'Wybierz bukiet:'", "'Wybierz wariant:'").replace("'Kalendarz '+(k+1)+':'", "'Sztuka '+(k+1)+':'")
 RX(r'function unitFor\(q\)\{[^}]*\}', 'function unitFor(q){return q>=3?BUNDLES[2].price/3:q===2?BUNDLES[1].price/2:BUNDLES[0].price}')
 s = s.replace('old:249.99});kwCart(true)', 'old:BUNDLES[0].old});kwCart(true)')
 RX(r"if\(n===0\)pr\.innerHTML=\"\";.*?\n", '''if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>1 szt.</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za sztukę<div class="bar"><i style="width:100%"></i></div>';\n''')

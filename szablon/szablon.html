@@ -148,6 +148,7 @@ button{font-family:inherit;cursor:pointer}
 .kw-bundles{display:grid;gap:12px;margin:18px 0}
 .kw-bundles-title{text-align:center;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--kw-muted);display:flex;align-items:center;gap:12px}
 .kw-bundles-title::before,.kw-bundles-title::after{content:"";flex:1;height:1px;background:var(--kw-border)}
+.kw-flower{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:2px solid var(--kw-border);border-radius:12px;padding:8px 6px;background:#fff;font:inherit;font-weight:600;font-size:14px;color:var(--kw-fg);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}.kw-flower span{font-size:18px;line-height:1}.kw-flower.on{border-color:var(--kw-primary);background:var(--kw-primary-soft);transform:translateY(-1px)}
 .kw-bundle{position:relative;border:2px solid var(--kw-border);border-radius:18px;padding:14px 16px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
 .kw-bundle.on{border-color:var(--kw-primary);background:var(--kw-primary-soft)}
 .kw-bundle-head{display:flex;align-items:center;gap:12px}
@@ -164,7 +165,7 @@ button{font-family:inherit;cursor:pointer}
 .kw-variants{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(30,91,61,.25)}
 .kw-bundle.on .kw-variants{display:grid;gap:10px}
 .kw-var-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px}
-.kw-var-row .lbl{color:var(--kw-muted);min-width:118px}
+.kw-var-row .lbl{color:var(--kw-muted);min-width:92px;font-weight:600}.kw-var-row{flex-wrap:nowrap!important}.kw-bundle-price b{white-space:nowrap}.kw-var-row .kw-flower{padding:6px 4px;font-size:13px}
 .kw-var-row .lbl b{color:var(--kw-primary)}
 .kw-swatch{width:38px;height:38px;border-radius:50%;border:2px solid #fff;outline:2px solid var(--kw-border);padding:0;overflow:hidden;background:#fff}
 .kw-swatch.on{outline-color:var(--kw-primary)}
@@ -415,6 +416,7 @@ img[width][height]{height:auto}
 @media(max-width:400px){.kw-pills .kw-pill{font-size:10.5px;padding:5px 9px}}
 .kw-gallery-main{touch-action:pan-y}
 .kw-gallery-arrow{display:none!important}
+html.kw-exp #kwDealSec{display:none!important}
 .kw-hero-grid>*{min-width:0}
 .kw-pills{flex-wrap:wrap!important;white-space:normal!important}
 </style>
@@ -489,9 +491,9 @@ img[width][height]{height:auto}
       <p class="kw-sub">[PODTYTUŁ – jak produkt zmienia dzień klienta, 1–2 zdania]</p>
       <div class="kw-rating"><span class="kw-stars">★★★★★</span><b>[OCENA]</b> · [LICZBA] opinii · <span style="color:var(--kw-ok);font-weight:600">● [LICZBA] osób ogląda teraz</span></div>
       <div class="kw-price-row">
-        <span class="kw-price" id="kwPrice">149,99 zł</span>
-        <span class="kw-old" id="kwOld">249,99 zł</span>
-        <span class="kw-save" id="kwSave">−40%</span>
+        <span class="kw-price" id="kwPrice">199,99 zł</span>
+        <span class="kw-old" id="kwOld">299,99 zł</span>
+        <span class="kw-save" id="kwSave">−33%</span>
       </div>
       <ul class="kw-list">
         <li><span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 1]</b> [dopowiedzenie]</span></li>
@@ -506,7 +508,7 @@ img[width][height]{height:auto}
         <div class="kw-bundles-title">[WYBIERZ ZESTAW]</div>
       </div>
 
-      <button class="kw-btn full" onclick="kwAddBundle()">Dodaj do koszyka · <span id="kwCtaPrice">149,99 zł</span>
+      <button class="kw-btn full" onclick="kwAddBundle()">Dodaj do koszyka · <span id="kwCtaPrice">199,99 zł</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
       <div class="kw-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
       <p class="kw-micro">🔒 [MIKROZAUFANIE – płatność · zwroty · kontakt]</p>
@@ -675,7 +677,7 @@ img[width][height]{height:auto}
 
 
 <!-- FINAL CTA: 48h -->
-<section class="kw-section kw-alt">
+<section class="kw-section kw-alt" id="kwDealSec">
   <div class="kw-container">
     <div class="kw-deal">
       <div class="kw-deal-img">
@@ -775,7 +777,7 @@ img[width][height]{height:auto}
 </div>
 
 <div class="kw-sticky" id="kwSticky">
-  <div><div class="n">[NAZWA PRODUKTU]</div><div class="p" id="kwStickyPrice">149,99 zł <s style="color:var(--kw-muted);font-weight:400">249,99 zł</s></div></div>
+  <div><div class="n">[NAZWA PRODUKTU]</div><div class="p" id="kwStickyPrice">199,99 zł <s style="color:var(--kw-muted);font-weight:400">299,99 zł</s></div></div>
   <button class="kw-btn small" onclick="kwAddBundle()">Do koszyka</button>
 </div>
 <div class="kw-toast" id="kwToast">Dodano do koszyka ✓</div>
@@ -809,6 +811,10 @@ window.kwGal=function(s){setG(gi+s)};setG(0);
   if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
 
 /* BUNDLES */
+/* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
+var KW_END;try{KW_END=+localStorage.getItem("kwDealEnd")}catch(e){}
+if(!KW_END){KW_END=Date.now()+48*3600*1000;try{localStorage.setItem("kwDealEnd",KW_END)}catch(e){}}
+var KW_EXP=Date.now()>=KW_END;if(KW_EXP)document.documentElement.classList.add("kw-exp");
 var BUNDLES=[
  {q:1,name:"[Kup 1]",desc:"[Pakiet startowy]",price:99.99,old:149.99},
  {q:2,name:"[Kup 2]",desc:"[Oszczędzasz X zł · cena za szt.]",price:179.98,old:299.98,tag:"[NAJCZĘŚCIEJ WYBIERANY]"},
@@ -817,10 +823,13 @@ var BUNDLES=[
 var sel=0;
 function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 var bw=document.getElementById("kwBundles");
+var CH=BUNDLES.map(function(b){var a=[];for(var k=0;k<b.q;k++)a.push("[WARIANT A]");return a});
 BUNDLES.forEach(function(b,i){
   var el=document.createElement("div");el.className="kw-bundle";el.onclick=function(){pick(i)};
   el.innerHTML=(b.tag?'<span class="kw-bundle-tag'+(b.gold?' gold':'')+'">'+b.tag+'</span>':'')+
-   '<div class="kw-bundle-head"><span class="kw-radio"></span><div><div class="kw-bundle-name">'+b.name+'</div><div class="kw-bundle-desc">'+b.desc+'</div></div><div class="kw-bundle-price"><b>'+zl(b.price)+'</b><s>'+zl(b.old)+'</s></div></div>';
+   '<div class="kw-bundle-head"><span class="kw-radio"></span><div><div class="kw-bundle-name">'+b.name+'</div><div class="kw-bundle-desc">'+b.desc+'</div></div><div class="kw-bundle-price"><b>'+zl(b.price)+'</b><s>'+zl(b.old)+'</s></div></div>'+
+   '<div class="kw-variants">'+CH[i].map(function(f,k){return '<div class="kw-var-row"><span class="lbl">'+(b.q>1?'Sztuka '+(k+1)+':':'Wybierz wariant:')+'</span><button type="button" class="kw-flower'+(f==="[WARIANT A]"?' on':'')+'" data-i="'+i+'" data-k="'+k+'" data-f="[WARIANT A]"><span>🅰️</span>[WARIANT A]</button><button type="button" class="kw-flower'+(f==="[WARIANT B]"?' on':'')+'" data-i="'+i+'" data-k="'+k+'" data-f="[WARIANT B]"><span>🅱️</span>[WARIANT B]</button></div>'}).join('')+'</div>';
+  el.querySelectorAll('.kw-flower').forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var ii=+btn.dataset.i,kk=+btn.dataset.k;CH[ii][kk]=btn.dataset.f;btn.parentNode.querySelectorAll('.kw-flower').forEach(function(x){x.classList.toggle('on',x===btn)});pick(ii)}});
   bw.appendChild(el);
 });
 function pick(i){sel=i;render()}
@@ -841,7 +850,7 @@ try{cart=JSON.parse(localStorage.getItem("kwCart2")||"[]")}catch(e){cart=[]}
 function unitFor(q){return q>=3?BUNDLES[2].price/3:q===2?BUNDLES[1].price/2:BUNDLES[0].price}
 function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
 function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
-window.kwAddBundle=function(){addItem({key:"kal",name:"[NAZWA PRODUKTU]",variant:"[KRÓTKI OPIS]",img:"foto-1.jpg",qty:BUNDLES[sel].q,old:BUNDLES[0].old});kwCart(true)};
+window.kwAddBundle=function(){var c={};CH[sel].forEach(function(f){c[f]=(c[f]||0)+1});Object.keys(c).forEach(function(f){addItem({key:"kal-"+f,f:f,name:"[NAZWA PRODUKTU]",variant:"Wariant: "+f,img:"foto-4.jpg",qty:c[f],old:BUNDLES[0].old})});kwCart(true)};
 function drawCart(){
   var n=calCount(),u=unitFor(n),items=document.getElementById("kwItems"),tot=0,old=0,cnt=0;
   items.innerHTML="";
@@ -876,10 +885,10 @@ window.kwTab=function(i){document.querySelectorAll(".kw-tabs-list button").forEa
 
 
 /* 48h licznik w sekcji promocji */
-var kwDEnd=Date.now()+48*3600*1000;
+var kwDEnd=KW_END;
 function dtick(){var s=Math.max(0,Math.ceil((kwDEnd-Date.now())/1000));
   document.getElementById("kwDH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("kwDM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");var ds=document.getElementById("kwDS");ds.textContent=String(s%60).padStart(2,"0");ds.classList.remove("tick");void ds.offsetWidth;ds.classList.add("tick")}
-dtick();setInterval(dtick,1000);
+dtick();var kwDT=setInterval(function(){dtick();if(!KW_EXP&&Date.now()>=KW_END){clearInterval(kwDT);location.reload()}},1000);
 /* STICKY */
 window.addEventListener("scroll",function(){document.getElementById("kwSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("kwHome").classList.contains("on"))},{passive:true});
 
