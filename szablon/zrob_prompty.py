@@ -56,76 +56,71 @@ add('0. FUNDAMENT (wklej jako pierwszy)',
  'Strona ma dwa „widoki”: #skHome (strona produktu) i #skPages (podstrony polityk) przełączane funkcją skShow(). '
  'Poniżej: <head>, bazowy CSS (tokeny, reset, przyciski, kontenery, animacje, wersja mobilna) i początek skryptu (zdjęcia, galeria). Kolejne prompty dokładają po jednej sekcji – wstawiaj je w tej kolejności.',
  head, css('base') + '\n\n/* animacje i telefon */\n' + tailCSS, INTRO_JS)
-add('1. PASEK PROMOCJI + MENU Z LOGO',
- 'Na samej górze cienki pasek w kolorze marki z napisami przesuwającymi się płynnie od prawej do lewej w nieskończoność (np. darmowa dostawa, zwroty, promocja, hasło marki – teksty powielone 3×, żeby nie było przerwy). '
- 'Pod nim biały, przyklejony nagłówek: po lewej logo (mała ikona produktu ok. 46 px + nazwa sklepu i mały podpis wersalikami), na środku menu z kotwicami do sekcji, po prawej ikona koszyka z licznikiem. Na telefonie menu chowa się pod „hamburgerem” i wysuwa na pełny ekran.',
- rng(ln('<body>') + 1, ln('<main id="skHome"')), css('top bar marquee', 'nav'))
-add('2. HERO: GALERIA, CENA, ZESTAWY + PASEK KORZYŚCI',
- 'Pierwszy ekran sprzedażowy w dwóch kolumnach. Lewa: galeria (duże zdjęcie z podpisem na dole + miniatury), na komputerze przyklejona (sticky) podczas przewijania, na telefonie przesuwana palcem (swipe), bez strzałek. Pierwsze zdjęcie = ludzie używający produktu. '
- 'Prawa: plakietki („Hit…” + „Liczba sztuk ograniczona”), nazwa, gwiazdki z liczbą opinii i „X osób ogląda teraz”, cena + cena przekreślona + procent rabatu, lista 6 korzyści z ikonami „✓”, wybór zestawu 1/2/3 sztuki jako karty z radiem (plakietki „Najczęściej wybierany”, „Najlepsza cena”) – po kliknięciu zestawu pod nim pojawia się wybór wariantu dla każdej sztuki (dwa małe przyciski A/B na każdą sztukę), duży przycisk „Dodaj do koszyka · cena”, linijka zaufania i kolorowe logotypy płatności. '
- 'Cena w nagłówku, przycisku i pasku na dole zmienia się po wyborze zestawu. Pod hero pełnoszeroki pasek w kolorze marki z 4 kafelkami (dostawa, zwroty, płatności, ocena) – na telefonie 2×2.',
- H_('<!-- HERO -->', '<!-- PROBLEM -->'), css('hero', 'benefit strip', 'upsell / bundle') + '\n' + tl('.sk-flower','.sk-var','.sk-pill','.sk-gallery'), GALLERY_JS + '\n\n' + jsr('/* BUNDLES */', '/* CART */'))
-add('3. PROBLEM',
- 'Sekcja „ból klienta”: dwie kolumny – zdjęcie (na telefonie nad tekstem) i tekst: mały nadtytuł wersalikami, mocny nagłówek nazywający problem, 2 krótkie akapity budujące emocję i lista 3–4 punktów z czerwonym „✕”. Tło jasne, zdjęcie z zaokrągleniem i cieniem.',
+SHOW_JS = jsr('window.skShow=function', None) if False else '\n'.join(l for l in JS[next(i for i,l in enumerate(JS) if l.startswith('window.skShow=function')):] if not l.startswith('})();'))
+CART_JS = jsr('/* CART */', '/* TABS */') + '\n\n' + jsr('/* STICKY */', '/* REVIEWS */')
+TOP_HTML = rng(ln('<body>') + 1, ln('<main id="skHome"')) + '\n\n<main id="skHome" class="sk-page on">\n\n' + H_('<!-- HERO -->', '<!-- PROBLEM -->') + '\n\n<!-- ...tu kolejne sekcje... -->\n</main>\n<main id="skPages"></main>\n\n' + rng(ln('<!-- CART DRAWER -->'), ln('<!-- CONTACT MODAL -->')) + '\n\n' + rng(ln('<div class="sk-sticky"'), ln('<script>'))
+add('1. GÓRA STRONY: PASEK Z NAPISAMI, MENU, KOSZYK, GALERIA, CENA, ZESTAWY, PŁATNOŚCI, PASEK 4 KORZYŚCI',
+ 'Pierwsza sekcja = wszystko od samej góry do paska 4 korzyści włącznie. '
+ 'a) Na samej górze cienki pasek w kolorze marki z napisami płynnie przesuwającymi się od prawej do lewej w pętli (np. darmowa dostawa, 14 dni na zwrot, promocja, hasło marki). '
+ 'b) Pod nim biały, przyklejony nagłówek: po lewej przycisk „trzy kreski” (menu), na środku logo (ikona produktu + nazwa sklepu + mały podpis wersalikami), po prawej ikona koszyka z licznikiem. Kliknięcie „trzech kresek” wysuwa menu na cały ekran z linkami: Jak to działa, Opinie, FAQ, Kontakt z nami itd. + przycisk zamknij. Kliknięcie koszyka otwiera koszyk wysuwany z prawej. '
+ 'c) Galeria: duże zdjęcie z podpisem + miniatury; na komputerze przyklejona po lewej podczas przewijania, na telefonie przesuwana palcem, bez strzałek. Pierwsze zdjęcie = ludzie używający produktu. '
+ 'd) Obok/pod galerią: plakietki („Hit…” + „Liczba sztuk ograniczona”), nazwa, gwiazdki + liczba opinii + „X osób ogląda teraz”, cena + przekreślona + % rabatu, 6 korzyści z „✓”, wybór zestawu 1/2/3 szt. jako karty (plakietki „Najczęściej wybierany”, „Najlepsza cena”); po wybraniu zestawu pod nim pojawia się wybór wariantu dla każdej sztuki (dwa małe przyciski). Duży przycisk „Dodaj do koszyka · cena”. '
+ 'e) Pod przyciskiem logotypy płatności w ich PRAWDZIWYCH kolorach: BLIK czarny z białym napisem, VISA granatowo-niebieski z białym napisem, Mastercard ciemny z czerwono-żółtymi kółkami, Apple Pay czarny, Google Pay ciemny z kolorowym „G”, P24 czerwony z białym napisem; pod nimi linijka „🔒 Bezpieczna płatność · 14 dni na zwrot · …”. '
+ 'f) Na końcu pełnoszeroki ciemny pasek w kolorze marki z 4 kafelkami: Darmowa wysyłka, 14 dni na zwrot, Bezpieczne płatności, Ocena 4,9/5 – na telefonie 2×2. Tu ta sekcja się kończy. '
+ 'g) Do tej sekcji należy też: koszyk wysuwany z prawej (pozycje, –/+, kosz, pasek „dodaj jeszcze 1 i zapłać mniej”, podsumowanie z rabatem, „Realizuj zakup”), okno wyboru dostawy („📦 Paczkomat – GRATIS”, „🚚 Kurier – GRATIS”, „Przejdź do płatności” od razu do kasy), przyklejony dolny pasek na telefonie (nazwa, cena, „Do koszyka”) i komunikat „Dodano do koszyka ✓”.',
+ TOP_HTML, css('top bar marquee', 'nav', 'hero', 'benefit strip', 'upsell / bundle', 'drawer', 'modal') + '\n' + stickyCSS + '\n' + tl('.sk-flower','.sk-var','.sk-pill','.sk-gallery','.pay-'),
+ GALLERY_JS + '\n\n' + jsr('/* BUNDLES */', '/* CART */') + '\n\n' + CART_JS + '\n\n' + SHOW_JS)
+add('2. PROBLEM („Brzmi znajomo?”)',
+ 'Sekcja „ból klienta” na jasnym tle: mały nadtytuł wersalikami w kolorze akcentu (np. „BRZMI ZNAJOMO?”), duży nagłówek nazywający problem (końcówka nagłówka w kolorze marki), 1–2 zdania budujące emocję, a pod spodem 4 białe karty jedna pod drugą, każda z czerwonym „✕” w kółku i jednym zdaniem problemu. Na komputerze obok tekstu zdjęcie.',
  H_('<!-- PROBLEM -->', '<!-- USES -->'), css('two col'))
-add('4. KOMU SPRAWISZ RADOŚĆ (3 KARTY)',
- 'Wyśrodkowany nagłówek + podtytuł, pod spodem 3 karty obok siebie (na telefonie jedna pod drugą): zdjęcie u góry, krótki tytuł i 1–2 zdania. Karty lekko unoszą się po najechaniu.',
+add('3. KOMU SPRAWISZ RADOŚĆ (KARTY ZE ZDJĘCIAMI)',
+ 'Wyśrodkowany nadtytuł wersalikami, nagłówek „Komu sprawisz największą radość?” (druga część w kolorze marki), krótki podtytuł. Pod spodem 3 karty: duże zdjęcie u góry, pogrubiony tytuł („Dla dziecka i całej rodziny” itd.) i 1–2 zdania. Na telefonie karty jedna pod drugą, na komputerze obok siebie.',
  H_('<!-- USES -->', '<!-- SOLUTION -->'), css('use cards'))
-add('5. ROZWIĄZANIE',
- 'Lustrzane odbicie sekcji „Problem”: tekst po lewej, zdjęcie po prawej. Nadtytuł, nagłówek przedstawiający produkt jako rozwiązanie, akapit i lista korzyści z zielonym „✓”, na końcu przycisk CTA przewijający do wyboru zestawu.',
+add('4. ROZWIĄZANIE (ZDJĘCIE + TEKST + LISTA ✓)',
+ 'Duże zdjęcie z zaokrągleniem i cieniem (ludzie razem korzystający z produktu), pod nim (na komputerze obok) nadtytuł wersalikami, nagłówek z końcówką w kolorze marki, akapit i lista korzyści z zielonymi „✓” w kółkach – każda z pogrubionym początkiem. Na końcu przycisk CTA przewijający do wyboru zestawu.',
  H_('<!-- SOLUTION -->', '<!-- HOW IT WORKS -->'), css('two col'))
-add('6. W 3 KROKACH',
- 'Nagłówek „Jak to działa” + 3 kroki w rzędzie (na telefonie w kolumnie): duży numer w kółku w kolorze marki, zdjęcie, tytuł kroku i jedno zdanie. Między krokami subtelna linia/strzałka.',
+add('5. W 3 KROKACH',
+ 'Wyśrodkowany nadtytuł, nagłówek „… w 3 prostych krokach” (część w kolorze marki), krótki podtytuł. Pod spodem 3 karty: zdjęcie u góry z numerem (01, 02, 03) w zaokrąglonym kwadracie w kolorze marki w lewym górnym rogu, pod zdjęciem pogrubiony tytuł kroku i 1–2 zdania.',
  H_('<!-- HOW IT WORKS -->', '<!-- WHAT YOU GET -->'), css('steps'))
-add('7. CO DOSTAJESZ (ZAKŁADKI)',
- 'Sekcja z 3 zakładkami (np. „W zestawie”, „Specyfikacja”, „Dla kogo”): przyciski-pigułki u góry, aktywna wypełniona kolorem marki; treść zakładki to lista lub krótki tekst obok zdjęcia. Przełączanie bez przeładowania.',
+add('6. CO DOKŁADNIE DOSTAJESZ (ZAKŁADKI)',
+ 'Wyśrodkowany nadtytuł („WSZYSTKO W JEDNYM PUDEŁKU”), nagłówek „Co dokładnie dostajesz”, podtytuł. Pod spodem 3 zakładki-pigułki (aktywna biała z cieniem), a pod nimi biała karta z tytułem, opisem i wewnętrznym jasnym polem „W ZESTAWIE” z listą „✓”. Kliknięcie zakładki zmienia treść bez przeładowania.',
  H_('<!-- WHAT YOU GET -->', '<!-- COMPARE -->'), css('tabs'), jsr('/* TABS */', '/* 48h'))
-add('8. TABELA PORÓWNAWCZA (MY vs INNI)',
- 'Tabela 3 kolumny: cecha | nasz produkt (kolumna wyróżniona kolorem marki, z logo) | „zwykłe rozwiązanie”. Wiersze z „✓” i „✕”/„–”, pod tabelą krótka legenda co znaczy „–”. Na telefonie tabela mieści się bez przewijania w bok.',
+add('7. TABELA PORÓWNAWCZA',
+ 'Wyśrodkowany nadtytuł („ZOBACZ RÓŻNICĘ”), nagłówek „Dlaczego [marka], a nie zwykły …?”, podtytuł. Tabela: kolumna „Kryterium”, wyróżniona kolumna marki (nagłówek ciemny w kolorze marki, komórki w jasnym odcieniu, zielone „✓”) i kolumna „zwykły produkt” z „✕”/„–”. Zaokrąglone rogi, cienkie linie między wierszami; na telefonie mieści się bez przewijania w bok.',
  H_('<!-- COMPARE -->', '<!-- REVIEWS -->'), css('compare'))
-add('9. OPINIE (JEDEN PASEK PRZEWIJANY W LEWO)',
- 'Nagłówek z oceną (np. 4,9/5 i liczba opinii). Pod spodem JEDEN rząd kart opinii, który sam płynnie przesuwa się w lewo w pętli (animacja startuje, gdy sekcja pojawi się na ekranie, translate3d, bez zacięć; pauza po najechaniu tylko na komputerze). '
- 'Karta: awatar w kółku (zdjęcie krajobrazu, nie twarz), imię + miasto, 5 gwiazdek, „Zweryfikowany zakup”, tekst opinii – wszystkie opinie podobnej długości, bez dat. 12 opinii z polskimi imionami.',
+add('8. OPINIE KLIENTÓW (PASEK PRZEWIJANY W LEWO)',
+ 'Wyśrodkowany nadtytuł („OPINIE KLIENTÓW”), nagłówek z końcówką w kolorze marki, duża ocena „4,9 ★★★★★” i „Na podstawie X zweryfikowanych zakupów”. Pod spodem JEDEN rząd kart, który sam płynnie przesuwa się w lewo w pętli (start po pokazaniu się sekcji, bez zacięć). Karta: duże zdjęcie od klienta u góry, gwiazdki, tekst opinii (podobnej długości), na dole awatar w kółku (krajobraz) + imię i miasto + „Zweryfikowany zakup”. 12 opinii, polskie imiona, bez dat.',
  H_('<!-- REVIEWS -->', '<!-- ADULT -->'), css('reviews marquee'), jsr('/* REVIEWS */', '/* FAQ */'))
-add('10. SEKCJA Z 4 PUNKTAMI (DLA KOGO / DLACZEGO)',
- 'Dwie kolumny: duże zdjęcie i blok tekstu z nagłówkiem oraz 4 punktami z ikonami w kółkach (każdy punkt w jednej linijce: pogrubiony początek + dopowiedzenie). Na końcu przycisk CTA.',
+add('9. SEKCJA „NIE TYLKO DLA …” (ZDJĘCIE + 4 PUNKTY)',
+ 'Ciepłe, jasne tło. Duże zdjęcie z zaokrągleniem (osoba dorosła z produktem w przytulnym wnętrzu), pod nim (na komputerze obok) nadtytuł wersalikami („NIE TYLKO DLA DZIECI”), nagłówek-pytanie z końcówką w kolorze marki, akapit i 4 punkty z ikonami w kółkach (każdy w jednej linijce: pogrubiony początek + dopowiedzenie).',
  H_('<!-- ADULT -->', '<!-- FINAL CTA: 48h -->'), css('adult'))
-add('11. KARTA PROMOCJI 48 H Z ANIMACJAMI',
- 'Duża karta w kolorze marki: po lewej zdjęcie produktu, które delikatnie unosi się w górę i w dół (float) z iskierkami; po prawej nazwa z przelatującym połyskiem co 1,5 s, plakietka z dzwoniącym zegarem, tekst „cena promocyjna tylko przez 48 godzin” + „Liczba sztuk ograniczona”, licznik GG:MM:SS (sekundy „tykają”) i przycisk CTA z lekkim drganiem co 2 s. '
- 'Licznik liczony od PIERWSZEJ wizyty na danym urządzeniu (koniec zapisany w localStorage) – przy kolejnej wizycie czas leci dalej. Po upływie 48 h cała ta sekcja znika (ceny zostają bez zmian).',
- H_('<!-- FINAL CTA: 48h -->', '<!-- FAQ -->'), css('final cta') + '\n' + tl('.sk-deal','.sk-float','.sk-shine','.sk-spark','.sk-ring','.sk-nudge','.sk-limit','.sk-beat','@keyframes'), jsr('/* PROMO 48h', 'var BUNDLES=[') + '\n\n' + jsr('/* 48h licznik', '/* STICKY */'))
-add('12. FAQ (NAJCZĘŚCIEJ ZADAWANE PYTANIA)',
- 'Wyśrodkowany nagłówek + mail kontaktowy pod spodem. Lista 8 pytań jako akordeon, wyśrodkowana, wąska kolumna: każde pytanie w jednej linijce z numerem (01, 02…) po lewej i plusem po prawej, który obraca się w „×”; odpowiedź rozwija się płynnie. Otwarte jest jedno pytanie naraz.',
- H_('<!-- FAQ -->', '</main>'), css('faq'), jsr('/* FAQ */', '/* POLICY PAGES */'))
-add('13. STOPKA + WSZYSTKIE POLITYKI (REGULAMIN, PRYWATNOŚĆ, WYSYŁKA, ZWROTY, KONTAKT)',
- 'Stopka od logo do samego dołu: po lewej logo + nazwa, krótki opis sklepu, mail i informacja o kontakcie; po prawej kolumna „Informacje” z linkami: Regulamin, Polityka prywatności, Polityka wysyłki, Zwroty i reklamacje, Kontakt. Na dole pasek z „© rok” i skrótem zaufania. '
- 'Kliknięcie linku NIE przeładowuje strony – pokazuje podstronę (widok #skPages) w tym samym stylu: nagłówek, punkty numerowane z tytułem i akapitem, przycisk „← Wróć do sklepu”, a pod treścią każdej polityki formularz „Skontaktuj się z nami” (imię, e-mail, wiadomość → otwiera mail do sklepu). '
- 'Teksty polityk ogólne, trochę dłuższe, bez ryzykownych obietnic (bez „wysyłamy w 24 h”, bez konkretnych godzin odpowiedzi; terminy reklamacji/zwrotu pieniędzy „w terminie przewidzianym przepisami prawa”, 14 dni na odstąpienie). Sklep prowadzi [NAZWA SKLEPU], kontakt tylko przez [E-MAIL], BEZ imienia, nazwiska i adresu.',
+add('10. KARTA PROMOCJI 48 H + FAQ',
+ 'Duża karta: u góry na jasnym tle zdjęcie produktu w zaokrąglonej ramce, które delikatnie unosi się i opada, z drobnymi iskierkami; pod spodem na białym tle nazwa produktu w kolorze marki z połyskiem przelatującym co 1,5 s, czerwony dzwoniący budzik + „48h!”, tekst „Nie przegap – cena promocyjna tylko przez 48 godzin!”, czerwone „⚠️ Liczba sztuk ograniczona ♡”, licznik GG:MM:SS w 3 kafelkach (sekundy tykają) i przycisk CTA z lekkim drganiem co 2 s. '
+ 'Licznik liczony od PIERWSZEJ wizyty na urządzeniu (koniec w localStorage) – przy kolejnej wizycie leci dalej; po 48 h karta znika (ceny bez zmian). '
+ 'Zaraz pod kartą sekcja FAQ: wyśrodkowany nagłówek, mail kontaktowy, 8 pytań jako akordeon (numer 01, 02… po lewej, plus obracający się w „×” po prawej, jedno otwarte naraz).',
+ H_('<!-- FINAL CTA: 48h -->', '</main>'), css('final cta', 'faq') + '\n' + tl('.sk-deal','.sk-float','.sk-shine','.sk-spark','.sk-ring','.sk-nudge','.sk-limit','.sk-beat','@keyframes'),
+ jsr('/* PROMO 48h', 'var BUNDLES=[') + '\n\n' + jsr('/* 48h licznik', '/* STICKY */') + '\n\n' + jsr('/* FAQ */', '/* POLICY PAGES */'))
+add('11. STOPKA + REGULAMIN, PRYWATNOŚĆ, WYSYŁKA, ZWROTY, KONTAKT',
+ 'Stopka na jasnym tle, od logo do samego dołu: logo (ikona + nazwa + podpis), 2 zdania o sklepie, mail w ramce z ikoną ✉️, „Odpowiadamy najszybciej, jak to możliwe” z ikoną 🕘; nagłówek „INFORMACJE” i linki: Regulamin, Polityka prywatności, Polityka wysyłki, Zwroty i reklamacje, Kontakt; cienka linia, „[Marka] © rok” i „🔒 Bezpieczne płatności SSL · Dane chronione RODO”. '
+ 'Kliknięcie linku NIE przeładowuje strony – pokazuje podstronę w tym samym stylu: tytuł, numerowane punkty z tytułem i akapitem, „← Wróć do sklepu”, a pod treścią każdej podstrony formularz „Skontaktuj się z nami” (imię, e-mail, wiadomość → otwiera mail do sklepu). '
+ 'Teksty ogólne i trochę dłuższe, bez ryzykownych obietnic (bez „wysyłamy w 24 h”, bez godzin odpowiedzi; zwrot pieniędzy i reklamacje „w terminie przewidzianym przepisami prawa”; 14 dni na odstąpienie). Sklep prowadzi [MARKA], kontakt tylko [E-MAIL] – BEZ imienia, nazwiska i adresu.',
  rng(ln('<!-- POLICY PAGES -->'), ln('<!-- CART DRAWER -->')) + '\n\n' + rng(ln('<!-- CONTACT MODAL -->'), ln('<div class="sk-sticky"')), css('footer', 'policy pages', 'modal'), re.sub(r'\}\)\(\);\s*$', '', jsr('/* POLICY PAGES */')).rstrip())
-add('14. KOSZYK, OKNO DOSTAWY, PASEK NA DOLE TELEFONU',
- 'Koszyk jako panel wysuwany z prawej (z przyciemnieniem tła): pozycje ze zdjęciem, nazwą, wybranym wariantem, licznikiem –/+ i koszem; pasek postępu „Dodaj jeszcze 1 szt. i zapłać mniej”; podsumowanie (cena regularna, łączny rabat, razem); przycisk „Realizuj zakup” i logotypy płatności. Koszyk zapisuje się w localStorage. '
- '„Realizuj zakup” otwiera małe okno wyboru dostawy (np. „📦 Paczkomat – GRATIS”, „🚚 Kurier pod adres – GRATIS”, dopisek, że adres poda się w kasie) i przycisk „Przejdź do płatności”, który od razu przenosi do kasy (w Shopify: link /cart/IDwariantu:ilość,… – bez czekania). '
- 'Na telefonie przy przewijaniu pojawia się przyklejony dolny pasek z nazwą, ceną i przyciskiem „Do koszyka”; po dodaniu wyskakuje mały komunikat „Dodano do koszyka ✓”.',
- rng(ln('<!-- CART DRAWER -->'), ln('<!-- CONTACT MODAL -->')) + '\n\n' + rng(ln('<div class="sk-sticky"'), ln('<script>')), css('drawer', 'modal') + '\n' + stickyCSS, jsr('/* CART */', '/* TABS */') + '\n\n' + jsr('/* STICKY */', '/* REVIEWS */'))
 
 out = ['# Prompty do każdej sekcji sklepu (ogólne)', '',
- 'Kolejność: od PROMPTU 0 do PROMPTU 14, po kolei. Każdy prompt to JEDNO pole do skopiowania (opis + kod razem). '
+ 'Kolejność: od PROMPTU 0 do PROMPTU 11, po kolei. Każdy prompt to JEDNO pole do skopiowania (opis + kod razem). '
  'Na początku dopisz swoje dane, np.: „Marka: …, produkt: …, kolor przewodni: …, ceny: …, e-mail: …” – Claude podmieni kolor w tokenach :root i teksty w [NAWIASACH]. '
  'Kod w każdym prompcie to WZÓR wyglądu i działania – Claude ma go odtworzyć 1:1 w strukturze i zachowaniu, a treści, zdjęcia i kolor dopasować do mojego produktu.', '',
  'Dopisek do każdego promptu (już jest wliczony): *teksty sprzedażowe po polsku, psychologiczne, bez nawiasów [ ] w wersji końcowej; zdjęcia moje albo wygenerowane; wszystko ma działać na telefonie.*', '']
 for n, (t, p, h, c, j) in enumerate(sec):
     body = [p, '', 'Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.']
     if n > 0:
-        body += ['', 'WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).',
+        body += ['', 'WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: 1 góra strony, 2 problem, 3 komu, 4 rozwiązanie, 5 trzy kroki, 6 co dostajesz, 7 tabela, 8 opinie, 9 nie tylko dla…, 10 48h + FAQ, 11 stopka + polityki).',
                  '', '=== HEAD (fundament) ===', sec[0][2], '', '=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===', sec[0][3]]
-    if n == 14: h, c = '<!-- PRODUKT I ZESTAWY (koszyk ich potrzebuje) -->\n' + sec[2][2] + '\n\n' + h, sec[2][3] + '\n' + c
-    if n == 2: h, c = h + '\n\n<!-- KOSZYK (potrzebny, bo przycisk dodaje do koszyka) -->\n' + sec[14][2], c + '\n' + sec[14][3]
     if h: body += ['', '=== HTML SEKCJI ===', h]
     if c: body += ['', '=== CSS SEKCJI ===', c]
-    if j or n == 2:
+    if j:
         jj = (sec[0][4] + '\n\n') if n > 0 else ''
-        js_all = jj + (j or '') + (('\n\n' + sec[14][4]) if n == 2 else '')
-        if n == 14: js_all = jj + sec[2][4] + '\n\n' + (j or '')
+        js_all = jj + (j or '')
         body += ['', '=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===', js_all]
     out += ['---', '', '## PROMPT ' + t, '', 'Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.', '', '````text', 'PROMPT ' + t, ''] + body + ['````', '']
 open(os.path.join(H, 'PROMPTY-SEKCJE.md'), 'w', encoding='utf-8').write('\n'.join(out))
