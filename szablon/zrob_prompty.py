@@ -110,9 +110,15 @@ out = ['# Prompty do każdej sekcji sklepu (ogólne)', '',
  'Dopisek do każdego promptu (już jest wliczony): *teksty sprzedażowe po polsku, psychologiczne, bez nawiasów [ ] w wersji końcowej; zdjęcia moje albo wygenerowane; wszystko ma działać na telefonie.*', '']
 for n, (t, p, h, c, j) in enumerate(sec):
     body = [p, '', 'Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.']
-    if h: body += ['', '=== HTML ===', h]
-    if c: body += ['', '=== CSS ===', c]
-    if j: body += ['', '=== JS ===', j]
+    if n > 0:
+        body += ['', 'WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).',
+                 '', '=== HEAD (fundament) ===', sec[0][2], '', '=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===', sec[0][3]]
+    if h: body += ['', '=== HTML SEKCJI ===', h]
+    if c: body += ['', '=== CSS SEKCJI ===', c]
+    if j or n == 2:
+        jj = (sec[0][4] + '\n\n') if n > 0 else ''
+        if n == 2: jj += sec[14][4] + '\n\n'
+        body += ['', '=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===', jj + (j or '')]
     out += ['---', '', '## PROMPT ' + t, '', 'Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.', '', '````text', 'PROMPT ' + t, ''] + body + ['````', '']
 open(os.path.join(H, 'PROMPTY-SEKCJE.md'), 'w', encoding='utf-8').write('\n'.join(out))
 print('OK', len(sec), 'promptów,', sum(len(x) for x in out) // 1024, 'KB')

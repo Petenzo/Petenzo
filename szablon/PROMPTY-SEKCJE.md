@@ -17,7 +17,7 @@ Zbuduj jednostronicowy sklep z jednym produktem jako JEDEN plik index.html (HTML
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+=== HTML SEKCJI ===
 <!doctype html>
 <html lang="pl">
 <head>
@@ -34,7 +34,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
 
-=== CSS ===
+=== CSS SEKCJI ===
 :root{
   --sk-bg:#FFFFFF;
   --sk-surface:#F6F8FC;
@@ -155,7 +155,7 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-hero-grid>*{min-width:0}
 .sk-pills{flex-wrap:wrap!important;white-space:normal!important}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
 (function(){
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
@@ -197,7 +197,147 @@ Na samej górze cienki pasek w kolorze marki z napisami przesuwającymi się pł
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <div class="sk-topbar" aria-label="Promocje">
   <div class="sk-marquee">
     <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
@@ -244,7 +384,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   <button class="sk-mm-close" onclick="skMenu(false)">Zamknij menu.</button>
 </div>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-topbar{background:var(--sk-primary-dark);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:9px 0}
 .sk-marquee{display:inline-flex;gap:42px;animation:sk-scroll 40s linear infinite;padding-left:42px}
 .sk-marquee span{display:inline-flex;align-items:center;gap:42px}
@@ -292,7 +432,147 @@ Pierwszy ekran sprzedażowy w dwóch kolumnach. Lewa: galeria (duże zdjęcie z 
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- HERO -->
 <section class="sk-hero" id="hero">
   <div class="sk-container sk-hero-grid">
@@ -347,7 +627,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </div>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-hero{padding:28px 0 56px}
 .sk-hero-grid{display:grid;gap:28px}
 @media(min-width:960px){.sk-hero-grid{grid-template-columns:1.05fr 1fr;gap:44px;align-items:start}}
@@ -442,7 +722,74 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 .sk-gallery-arrow{display:none!important}
 .sk-pills{flex-wrap:wrap!important;white-space:normal!important}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="[E-MAIL KONTAKTOWY]";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.skGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
+/* CART */
+var cart=[];
+function save(){try{localStorage.setItem("skCart2",JSON.stringify(cart))}catch(e){}}
+try{cart=JSON.parse(localStorage.getItem("skCart2")||"[]")}catch(e){cart=[]}
+function unitFor(q){return q>=3?BUNDLES[2].price/3:q===2?BUNDLES[1].price/2:BUNDLES[0].price}
+function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
+function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
+window.skAddBundle=function(){var c={};CH[sel].forEach(function(f){c[f]=(c[f]||0)+1});Object.keys(c).forEach(function(f){addItem({key:"kal-"+f,f:f,name:"[NAZWA PRODUKTU]",variant:"Wariant: "+f,img:"foto-4.jpg",qty:c[f],old:BUNDLES[0].old})});skCart(true)};
+function drawCart(){
+  var n=calCount(),u=unitFor(n),items=document.getElementById("skItems"),tot=0,old=0,cnt=0;
+  items.innerHTML="";
+  if(!cart.length){items.innerHTML='<div class="sk-empty">Twój koszyk jest pusty 🌷<br><br><button class="sk-btn small" onclick="skCart(false);skScrollBuy()">Wybierz zestaw</button></div>'}
+  cart.forEach(function(it,idx){
+    var p=u;tot+=p*it.qty;old+=it.old*it.qty;cnt+=it.qty;
+    var d=document.createElement("div");d.className="sk-item";
+    d.innerHTML='<img src="'+skSrc(it.img)+'" alt=""><div><div class="sk-item-top"><div><b>'+it.name+'</b><small>'+it.variant+'</small></div><button class="sk-trash" aria-label="Usuń">🗑</button></div><div class="sk-item-bot"><div class="sk-qty"><button aria-label="Mniej">−</button><span>'+it.qty+'</span><button aria-label="Więcej">+</button></div><div class="sk-item-price"><s>'+zl(it.old*it.qty)+'</s>'+zl(p*it.qty)+'<small style="color:var(--sk-ok)">Oszczędzasz '+zl((it.old-p)*it.qty)+'</small></div></div></div>';
+    var bs=d.querySelectorAll("button");
+    bs[0].onclick=function(){cart.splice(idx,1);save();drawCart()};
+    bs[1].onclick=function(){it.qty--;if(it.qty<1)cart.splice(idx,1);save();drawCart()};
+    bs[2].onclick=function(){it.qty++;save();drawCart()};
+    items.appendChild(d);
+  });
+  var pr=document.getElementById("skProgress");
+  if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>1 szt.</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za sztukę<div class="bar"><i style="width:100%"></i></div>';
+  document.getElementById("skTotal").textContent=zl(tot);document.getElementById("skDisc").textContent="−"+zl(old-tot);
+  document.getElementById("skDrCount").textContent=cnt;var c=document.getElementById("skCount");c.textContent=cnt;c.hidden=!cnt;
+  document.getElementById("skCheckout").disabled=!cnt;document.getElementById("skCheckout").style.opacity=cnt?1:.5;
+}
+drawCart();
+function toast(){var t=document.getElementById("skToast");t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1600)}
+window.skCart=function(o){document.getElementById("skDrawer").classList.toggle("on",o);document.getElementById("skOverlay").classList.toggle("on",o);document.body.style.overflow=o?"hidden":""};
+window.skShipModal=function(o){document.getElementById("skShip").classList.toggle("on",o)};
+window.skPickShip=function(b){document.querySelectorAll(".sk-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("skShipLine").textContent=b.dataset.ship==="kurier"?"Kurier pod adres · GRATIS":"Paczkomat InPost · GRATIS"};
+window.skGoCheckout=function(){window.location.href=CHECKOUT_URL};
+window.skMenu=function(o){document.getElementById("skMobile").classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
+window.skScrollBuy=function(){skShow("home");document.getElementById("skBundles").scrollIntoView({behavior:"smooth",block:"center"})};
+
+/* STICKY */
+window.addEventListener("scroll",function(){document.getElementById("skSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("skHome").classList.contains("on"))},{passive:true});
+
 /* BUNDLES */
 /* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
 var SK_END;try{SK_END=+localStorage.getItem("skDealEnd")}catch(e){}
@@ -490,7 +837,147 @@ Sekcja „ból klienta”: dwie kolumny – zdjęcie (na telefonie nad tekstem) 
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- PROBLEM -->
 <section class="sk-section sk-alt" id="problem">
   <div class="sk-container sk-two">
@@ -512,7 +999,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-two{display:grid;gap:32px;align-items:center}
 @media(min-width:900px){.sk-two{grid-template-columns:1fr 1fr;gap:56px}}
 .sk-pain{display:grid;gap:10px}
@@ -533,7 +1020,147 @@ Wyśrodkowany nagłówek + podtytuł, pod spodem 3 karty obok siebie (na telefon
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- USES -->
 <section class="sk-section" id="zastosowania">
   <div class="sk-container">
@@ -548,7 +1175,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-uses{display:grid;gap:18px}
 @media(min-width:768px){.sk-uses{grid-template-columns:repeat(3,1fr)}}
 .sk-use{overflow:hidden}
@@ -571,7 +1198,147 @@ Lustrzane odbicie sekcji „Problem”: tekst po lewej, zdjęcie po prawej. Nadt
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- SOLUTION -->
 <section class="sk-section sk-alt">
   <div class="sk-container sk-two">
@@ -592,7 +1359,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-two{display:grid;gap:32px;align-items:center}
 @media(min-width:900px){.sk-two{grid-template-columns:1fr 1fr;gap:56px}}
 .sk-pain{display:grid;gap:10px}
@@ -613,7 +1380,147 @@ Nagłówek „Jak to działa” + 3 kroki w rzędzie (na telefonie w kolumnie): 
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- HOW IT WORKS -->
 <section class="sk-section" id="jak-dziala">
   <div class="sk-container">
@@ -629,7 +1536,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-steps{display:grid;gap:18px}
 @media(min-width:768px){.sk-steps{grid-template-columns:repeat(3,1fr)}}
 .sk-step{overflow:hidden;position:relative}
@@ -654,7 +1561,147 @@ Sekcja z 3 zakładkami (np. „W zestawie”, „Specyfikacja”, „Dla kogo”
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- WHAT YOU GET -->
 <section class="sk-section sk-alt" id="zestaw">
   <div class="sk-container">
@@ -681,7 +1728,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-tabs-list{display:flex;justify-content:center;gap:6px;background:var(--sk-surface);border-radius:999px;padding:6px;width:max-content;max-width:100%;margin:0 auto 22px;overflow-x:auto}
 .sk-tabs-list button{border:0;background:none;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;color:var(--sk-muted);white-space:nowrap}
 .sk-tabs-list button.on{background:#fff;color:var(--sk-primary);box-shadow:0 2px 10px rgba(0,0,0,.08)}
@@ -693,7 +1740,34 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 .sk-tab-panel{background:var(--sk-surface);border-radius:16px;padding:18px 20px}
 .sk-tab-panel small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="[E-MAIL KONTAKTOWY]";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.skGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
 /* TABS */
 window.skTab=function(i){document.querySelectorAll(".sk-tabs-list button").forEach(function(b,k){b.classList.toggle("on",k===i)});document.querySelectorAll(".sk-tab").forEach(function(t,k){t.classList.toggle("on",k===i)})};
 ````
@@ -711,7 +1785,147 @@ Tabela 3 kolumny: cecha | nasz produkt (kolumna wyróżniona kolorem marki, z lo
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- COMPARE -->
 <section class="sk-section" id="porownanie">
   <div class="sk-container">
@@ -734,7 +1948,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .sk-table{width:100%;min-width:680px;border-collapse:separate;border-spacing:0;font-size:14px;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--sk-border)}
 .sk-table th,.sk-table td{padding:15px 14px;text-align:center;border-bottom:1px solid var(--sk-border)}
@@ -761,7 +1975,147 @@ Nagłówek z oceną (np. 4,9/5 i liczba opinii). Pod spodem JEDEN rząd kart opi
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- REVIEWS -->
 <section class="sk-section sk-alt" id="opinie">
   <div class="sk-container">
@@ -775,7 +2129,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   <div class="sk-rev-track"><div class="sk-rev-row" id="skRev1"></div></div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-rev-head{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px}
 .sk-rev-score{display:flex;align-items:center;gap:10px;font-size:15px}
 .sk-rev-score b{font-size:28px}
@@ -795,7 +2149,34 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 .sk-rev .who small{font-size:11.5px;color:var(--sk-ok);font-weight:600}
 .sk-rev .var{font-size:11.5px;color:var(--sk-muted)}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="[E-MAIL KONTAKTOWY]";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.skGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
 /* REVIEWS */
 var R=[
  ["Amelia","Kraków","opinia-1.jpg","","[TREŚĆ OPINII 1 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
@@ -830,7 +2211,147 @@ Dwie kolumny: duże zdjęcie i blok tekstu z nagłówkiem oraz 4 punktami z ikon
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- ADULT -->
 <section class="sk-section sk-adult">
   <div class="sk-container sk-two">
@@ -850,7 +2371,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-adult{background:var(--sk-gold-soft)}
 ````
 
@@ -867,7 +2388,147 @@ Duża karta w kolorze marki: po lewej zdjęcie produktu, które delikatnie unosi
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- FINAL CTA: 48h -->
 <section class="sk-section sk-alt" id="skDealSec">
   <div class="sk-container">
@@ -891,7 +2552,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-final{text-align:center;max-width:680px;margin:0 auto;padding:36px 24px}
 .sk-final .ic{width:56px;height:56px;border-radius:16px;background:var(--sk-gradient);display:grid;place-items:center;margin:0 auto 16px}
 @keyframes sk-scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
@@ -931,7 +2592,34 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 .sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
 .sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="[E-MAIL KONTAKTOWY]";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.skGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
 /* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
 var SK_END;try{SK_END=+localStorage.getItem("skDealEnd")}catch(e){}
 if(!SK_END){SK_END=Date.now()+48*3600*1000;try{localStorage.setItem("skDealEnd",SK_END)}catch(e){}}
@@ -957,7 +2645,147 @@ Wyśrodkowany nagłówek + mail kontaktowy pod spodem. Lista 8 pytań jako akord
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- FAQ -->
 <section class="sk-section" id="faq">
   <div class="sk-container">
@@ -969,7 +2797,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </section>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-faq-grid{display:grid;gap:28px}
 @media(min-width:900px){.sk-faq-grid{grid-template-columns:minmax(0,1fr) 1.4fr;gap:48px}}
 .sk-faq-list{max-width:760px;margin:0 auto}
@@ -983,7 +2811,34 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 .sk-acc .a{display:none;padding:0 4px 24px;color:var(--sk-muted);font-size:14.5px}
 .sk-acc.open .a{display:block}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="[E-MAIL KONTAKTOWY]";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.skGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
 /* FAQ */
 var F=[
  ["[PYTANIE 1]","[ODPOWIEDŹ 1]"],
@@ -1012,7 +2867,147 @@ Stopka od logo do samego dołu: po lewej logo + nazwa, krótki opis sklepu, mail
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- POLICY PAGES -->
 <main id="skPages"></main>
 
@@ -1050,7 +3045,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
   </div>
 </div>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-footer{background:var(--sk-surface);padding:52px 0 26px;border-top:1px solid var(--sk-border)}
 .sk-footer-grid{display:grid;gap:30px}
 @media(min-width:768px){.sk-footer-grid{grid-template-columns:1.3fr 1fr}}
@@ -1088,7 +3083,34 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 .sk-ship-opt.on small{color:rgba(255,255,255,.75)}
 .sk-ship-opt.on .p{color:#9FE0B8}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="[E-MAIL KONTAKTOWY]";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.skGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
 /* POLICY PAGES */
 var SELLER="[NAZWA SKLEPU]";
 var L=function(k,t){return "<a href='#' onclick=\"skShow('"+k+"');return false\" style='color:var(--sk-primary)'>"+t+"</a>"};
@@ -1159,7 +3181,147 @@ Koszyk jako panel wysuwany z prawej (z przyciemnieniem tła): pozycje ze zdjęci
 
 Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-=== HTML ===
+WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).
+
+=== HEAD (fundament) ===
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[NAZWA SKLEPU] – [NAZWA PRODUKTU]</title>
+<meta name="description" content="[OPIS SEO – 1–2 zdania z korzyścią]">
+<meta property="og:title" content="[NAZWA SKLEPU] – [OBIETNICA]">
+<meta property="og:description" content="[OPIS DO UDOSTĘPNIEŃ]">
+<meta property="og:type" content="product">
+<meta property="og:image" content="{{IMG}}/foto-4.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+
+=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===
+:root{
+  --sk-bg:#FFFFFF;
+  --sk-surface:#F6F8FC;
+  --sk-surface-2:#EAF0FB;
+  --sk-fg:#1B2333;
+  --sk-muted:#5E6878;
+  --sk-border:#E2E8F2;
+  --sk-primary:#2F5BD8;
+  --sk-primary-dark:#1D3A8A;
+  --sk-primary-soft:#E8EEFC;
+  --sk-gold:#2F5BD8;
+  --sk-gold-soft:#E8EEFC;
+  --sk-sale:#B8323A;
+  --sk-sale-soft:#FBE9EA;
+  --sk-ok:#2E8B57;
+  --sk-gradient:linear-gradient(135deg,#4A74EC 0%,#2448B8 100%);
+  --sk-gradient-gold:linear-gradient(135deg,#2448B8 0%,#1D3A8A 100%);
+  --sk-shadow-card:0 6px 28px -10px rgba(47,91,216,.18);
+  --sk-shadow-cta:0 12px 30px -10px rgba(47,91,216,.45);
+  --sk-radius:20px;
+  --sk-font:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --sk-logo:'Russo One','Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sk-font);color:var(--sk-fg);background:var(--sk-bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+.sk-container{width:100%;max-width:1120px;margin:0 auto;padding:0 16px}
+.sk-section{padding:56px 0}
+@media(min-width:768px){.sk-section{padding:84px 0}}
+.sk-alt{background:var(--sk-surface)}
+.sk-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
+.sk-eyebrow.left{text-align:left}
+.sk-h2{font-size:28px;line-height:1.2;font-weight:800;margin:0 0 12px;text-align:center;letter-spacing:-.01em}
+@media(min-width:768px){.sk-h2{font-size:38px}}
+.sk-h2.left{text-align:left}
+.sk-lead{color:var(--sk-muted);text-align:center;max-width:640px;margin:0 auto 36px;font-size:15.5px}
+.sk-lead.left{text-align:left;margin-left:0}
+.sk-accent{color:var(--sk-primary);background:var(--sk-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sk-gold{color:var(--sk-gold)}
+.sk-card{background:#fff;border:1px solid var(--sk-border);border-radius:var(--sk-radius);box-shadow:var(--sk-shadow-card)}
+.sk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:17px 26px;font-size:15.5px;font-weight:700;color:#fff;background:var(--sk-gradient);box-shadow:var(--sk-shadow-cta);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.sk-btn:hover{transform:scale(1.02)}
+.sk-btn.full{width:100%}
+.sk-btn.small{padding:11px 16px;font-size:13.5px;border-radius:12px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-stars{color:#F2B33D;letter-spacing:1px}
+.sk-check{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-gradient);display:inline-flex;align-items:center;justify-content:center;margin-top:1px}
+.sk-check svg{width:12px;height:12px}
+.sk-x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--sk-sale-soft);color:var(--sk-sale);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px}
+.sk-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.sk-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.sk-list b{font-weight:700}
+.sk-photo{border-radius:var(--sk-radius);overflow:hidden;box-shadow:var(--sk-shadow-card)}
+.sk-photo img{width:100%;height:100%;object-fit:cover}
+
+/* animacje i telefon */
+@media(min-width:960px){.sk-sticky{display:none}}
+.sk-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--sk-primary-dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;z-index:130;pointer-events:none}
+.sk-toast.on{opacity:1;transform:translateX(-50%)}
+img[width][height]{height:auto}
+@media(min-width:960px){.sk-hero-grid>div:first-child{position:sticky;top:84px}}
+.sk-use img,.sk-step img{aspect-ratio:16/10!important;height:auto}
+.sk-photo img{aspect-ratio:4/3;height:auto}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-thumbs img{height:100%!important}
+.sk-deal{display:grid;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--sk-border);border-radius:28px;overflow:hidden;box-shadow:0 20px 60px -24px rgba(18,56,38,.35)}
+@media(min-width:768px){.sk-deal{grid-template-columns:.85fr 1.15fr}}
+.sk-deal-img{position:relative;background:linear-gradient(135deg,#E8F1EA 0%,#FBF1DC 100%);display:grid;place-items:center;padding:36px;min-height:260px}
+.sk-deal-img img{width:72%;max-width:280px;aspect-ratio:1;object-fit:cover;border-radius:22px;box-shadow:0 22px 40px -16px rgba(18,56,38,.45);height:auto}
+.sk-float{animation:sk-float 3.2s ease-in-out infinite}
+@keyframes sk-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.sk-spark{position:absolute;width:26px;height:26px;background:radial-gradient(circle,var(--sk-gold) 2px,transparent 3px) 50% 0/4px 10px no-repeat,radial-gradient(circle,var(--sk-gold) 2px,transparent 3px);opacity:.8;animation:sk-tw 2.4s ease-in-out infinite}
+.sk-spark.s1{top:28px;right:34px}.sk-spark.s2{bottom:30px;left:30px;animation-delay:1.2s}
+@keyframes sk-tw{0%,100%{transform:scale(.6);opacity:.3}50%{transform:scale(1.1);opacity:1}}
+.sk-deal-body{padding:30px 24px;text-align:center}
+@media(min-width:768px){.sk-deal-body{padding:36px 40px}}
+.sk-deal-body h2{margin:0;font-size:32px;font-weight:800;color:var(--sk-primary)}
+.sk-deal-badge{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--sk-sale);margin:6px 0 4px}
+.sk-deal-badge b{font-size:34px;font-weight:800}
+.sk-deal-body p{color:var(--sk-muted);font-size:14.5px;margin:0 0 20px}
+.sk-deal-timer{display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:22px}
+.sk-deal-timer div{width:96px;padding:14px 0 10px;border-radius:18px;background:#fff;border:1px solid var(--sk-border);box-shadow:var(--sk-shadow-card)}
+.sk-deal-timer b{display:block;font-size:40px;line-height:1;font-weight:800;color:var(--sk-primary);font-variant-numeric:tabular-nums}
+.sk-deal-timer small{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sk-muted)}
+.sk-deal-timer i{font-style:normal;font-size:30px;font-weight:800;color:var(--sk-gold)}
+@media(max-width:420px){.sk-deal-timer div{width:78px}.sk-deal-timer b{font-size:32px}}
+.sk-rev-row{padding-left:32px}
+@media(max-width:767px){.sk-strip-in{gap:16px 10px}.sk-strip-item{font-size:12px;max-width:210px}}
+.sk-ring{transform-origin:50% 20%;animation:sk-ring 2.4s ease-in-out infinite}
+@keyframes sk-ring{0%,60%,100%{transform:rotate(0)}5%{transform:rotate(18deg)}10%{transform:rotate(-16deg)}15%{transform:rotate(14deg)}20%{transform:rotate(-12deg)}25%{transform:rotate(8deg)}30%{transform:rotate(-6deg)}35%{transform:rotate(0)}}
+.sk-pulse{display:inline-block;animation:sk-pulse 1.6s ease-in-out infinite}
+@keyframes sk-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.sk-deal-timer div b.tick{animation:sk-tick .35s ease}
+@keyframes sk-tick{0%{transform:translateY(-6px);opacity:.3}100%{transform:none;opacity:1}}
+.sk-deal .sk-btn{animation:sk-glow 2.2s ease-in-out infinite}
+@keyframes sk-glow{0%,100%{box-shadow:var(--sk-shadow-cta)}50%{box-shadow:0 12px 34px -6px rgba(201,150,58,.75)}}
+.sk-shine{background:linear-gradient(100deg,var(--sk-primary) 0%,var(--sk-primary) 40%,#E2B866 50%,var(--sk-primary) 60%,var(--sk-primary) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sk-shine 1.5s linear infinite,sk-bob 3.2s ease-in-out infinite;display:inline-block}
+@keyframes sk-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+@keyframes sk-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.sk-nudge{animation:sk-nudge 2s ease-in-out infinite}
+@keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
+.sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
+.sk-strip-item b{font-size:13px}.sk-strip-item small{font-size:11.5px}.sk-strip-item>span{font-size:18px!important}
+@media(max-width:767px){.sk-strip-in{max-width:none;padding:10px 16px;column-gap:48px;row-gap:10px}}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+@media(max-width:959px){body{padding-bottom:84px}}
+.sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+html.sk-exp #skDealSec{display:none!important}
+.sk-hero-grid>*{min-width:0}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+
+=== HTML SEKCJI ===
 <!-- CART DRAWER -->
 <div class="sk-overlay" id="skOverlay" onclick="skCart(false)"></div>
 <aside class="sk-drawer" id="skDrawer" aria-label="Koszyk">
@@ -1193,7 +3355,7 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 </div>
 <div class="sk-toast" id="skToast">Dodano do koszyka ✓</div>
 
-=== CSS ===
+=== CSS SEKCJI ===
 .sk-overlay{position:fixed;inset:0;background:rgba(15,25,20,.55);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
 .sk-overlay.on{opacity:1;pointer-events:auto}
 .sk-drawer{position:fixed;top:0;right:0;height:100%;width:100%;max-width:440px;background:#fff;z-index:95;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column}
@@ -1242,7 +3404,34 @@ Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i to
 .sk-sticky .p{font-size:13px;color:var(--sk-primary);font-weight:700}
 .sk-sticky .sk-btn{margin-left:auto}
 
-=== JS ===
+=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
+(function(){
+var IMG="{{IMG}}";
+var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
+var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
+var EMAIL="[E-MAIL KONTAKTOWY]";
+
+var gallery=[
+ ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
+ ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
+ ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
+ ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
+ ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
+ ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
+];
+var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
+gallery.forEach(function(g,i){
+  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
+  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
+});
+function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
+  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
+window.skGal=function(s){setG(gi+s)};setG(0);
+(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
+ g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+ g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
 /* CART */
 var cart=[];
 function save(){try{localStorage.setItem("skCart2",JSON.stringify(cart))}catch(e){}}
