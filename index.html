@@ -206,6 +206,20 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-strip-item b{display:block}
 .sk-strip-item small{opacity:.75}
 
+/* ===== FILMIKI KLIENTÓW (pętla) ===== */
+.sk-ugc{padding:48px 0 40px;overflow:hidden}
+@media(min-width:768px){.sk-ugc{padding:72px 0 56px}}
+.sk-ugc .sk-h2{margin-bottom:24px}
+.sk-ugc-wrap{overflow:hidden;width:100%}
+.sk-ugc-track{display:flex;gap:10px;padding-right:10px;width:max-content;animation:sk-ugc var(--sk-ugc-time,30s) linear infinite}
+.sk-ugc-wrap:hover .sk-ugc-track,.sk-ugc-wrap.hold .sk-ugc-track{animation-play-state:paused}
+@keyframes sk-ugc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.sk-ugc-card{flex:0 0 auto;width:31vw;max-width:240px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(160deg,#E8EEFC 0%,#C9D6F7 100%);box-shadow:var(--sk-shadow-card)}
+@media(min-width:768px){.sk-ugc-card{width:220px;border-radius:20px}}
+.sk-ugc-card::before{content:"▶";position:absolute;inset:0;display:grid;place-items:center;font-size:28px;color:rgba(47,91,216,.45)}
+.sk-ugc-card video{position:relative;width:100%;height:100%;object-fit:cover;display:block}
+@media(prefers-reduced-motion:reduce){.sk-ugc-track{animation:none}.sk-ugc-wrap{overflow-x:auto}}
+
 /* koszyk */
 .sk-overlay{position:fixed;inset:0;background:rgba(15,20,35,.55);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
 .sk-overlay.on{opacity:1;pointer-events:auto}
@@ -309,6 +323,12 @@ html.sk-exp #skDealSec{display:none!important}
     <div class="sk-strip-item"><span style="font-size:22px">⭐</span><div><b>4,8/5</b><small>1 270 zadowolonych graczy</small></div></div>
   </div>
 </div>
+
+<!-- FILMIKI KLIENTÓW -->
+<section class="sk-ugc" id="ugc">
+  <div class="sk-container"><h2 class="sk-h2">Ponad <span class="sk-accent">50 000</span><br>zadowolonych graczy</h2></div>
+  <div class="sk-ugc-wrap" id="skUgcWrap"><div class="sk-ugc-track" id="skUgc"></div></div>
+</section>
 
 </main>
 
@@ -460,6 +480,20 @@ window.skPickShip=function(b){document.querySelectorAll(".sk-ship-opt").forEach(
 window.skGoCheckout=function(){window.location.href=CHECKOUT_URL};
 window.skMenu=function(o){var m=document.getElementById("skMobile");if(!m)return;m.classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
 window.skScrollBuy=function(){skShow("home");document.getElementById("skBundles").scrollIntoView({behavior:"smooth",block:"center"})};
+
+/* ===== FILMIKI KLIENTÓW – pętla bez końca ===== */
+/* wrzuć filmiki do img/ jako ugc-1.mp4 … ugc-6.mp4 (pionowe 9:16, krótkie, bez dźwięku) */
+(function(){
+  var UGC=["ugc-1.mp4","ugc-2.mp4","ugc-3.mp4","ugc-4.mp4","ugc-5.mp4","ugc-6.mp4"];
+  var tr=document.getElementById("skUgc"),wr=document.getElementById("skUgcWrap");
+  function card(f){return '<div class="sk-ugc-card"><video src="'+skSrc(f)+'" muted loop playsinline autoplay preload="metadata"></video></div>'}
+  /* lista ×2: przesuwamy o połowę, więc koniec styka się z początkiem i pętla jest płynna */
+  var one=UGC.map(card).join("");tr.innerHTML=one+one;
+  tr.style.setProperty("--sk-ugc-time",(UGC.length*5)+"s");
+  tr.querySelectorAll("video").forEach(function(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){})});
+  wr.addEventListener("touchstart",function(){wr.classList.add("hold")},{passive:true});
+  wr.addEventListener("touchend",function(){wr.classList.remove("hold")},{passive:true});
+})();
 
 /* ===== STICKY ===== */
 window.addEventListener("scroll",function(){document.getElementById("skSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("skHome").classList.contains("on"))},{passive:true});
