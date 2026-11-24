@@ -3,6 +3,7 @@ import re, os
 H = os.path.dirname(os.path.abspath(__file__))
 s = open(os.path.join(H, 'szablon.html'), encoding='utf-8').read()
 # neutralne nazwy i jeden ogólny kolor
+s = s.replace('var c=document.getElementById("kwCount");c.textContent=cnt;c.hidden=!cnt;', 'var c=document.getElementById("kwCount");if(c){c.textContent=cnt;c.hidden=!cnt;}')
 s = re.sub(r'\bkw(?=[-A-Z_])', 'sk', s); s = s.replace('KW_', 'SK_').replace('kwCart2', 'skCart2')
 pal = {'--sk-surface:#FFF8F3':'--sk-surface:#F6F8FC','--sk-surface-2:#FCEDE4':'--sk-surface-2:#EAF0FB','--sk-fg:#1F2547':'--sk-fg:#1B2333',
  '--sk-muted:#646A85':'--sk-muted:#5E6878','--sk-border:#F1E4DB':'--sk-border:#E2E8F2','--sk-primary:#E9693F':'--sk-primary:#2F5BD8',
@@ -43,7 +44,11 @@ sec = []
 def add(title, prompt, html='', c='', js=''):
     sec.append((title, prompt, html, c, js))
 
-INTRO_JS = jsr('(function(){', '/* BUNDLES */')
+INTRO_ALL = jsr('(function(){', '/* BUNDLES */')
+INTRO_JS = INTRO_ALL[:INTRO_ALL.index('var gallery=[')].strip().replace('(function(){', '').strip()
+ZL = next(l for l in JS if l.startswith('function zl('))
+INTRO_JS += '\n' + ZL
+GALLERY_JS = INTRO_ALL[INTRO_ALL.index('var gallery=['):]
 add('0. FUNDAMENT (wklej jako pierwszy)',
  'Zbuduj jednostronicowy sklep z jednym produktem jako JEDEN plik index.html (HTML + CSS + czysty JS, bez frameworków). '
  'Wszystkie kolory, cienie i zaokrąglenia trzymaj w tokenach CSS w :root (prefiks --sk-), żeby zmiana koloru marki była w jednym miejscu – kolor podam osobno, na razie użyj tego niebieskiego. '
@@ -59,7 +64,7 @@ add('2. HERO: GALERIA, CENA, ZESTAWY + PASEK KORZYŚCI',
  'Pierwszy ekran sprzedażowy w dwóch kolumnach. Lewa: galeria (duże zdjęcie z podpisem na dole + miniatury), na komputerze przyklejona (sticky) podczas przewijania, na telefonie przesuwana palcem (swipe), bez strzałek. Pierwsze zdjęcie = ludzie używający produktu. '
  'Prawa: plakietki („Hit…” + „Liczba sztuk ograniczona”), nazwa, gwiazdki z liczbą opinii i „X osób ogląda teraz”, cena + cena przekreślona + procent rabatu, lista 6 korzyści z ikonami „✓”, wybór zestawu 1/2/3 sztuki jako karty z radiem (plakietki „Najczęściej wybierany”, „Najlepsza cena”) – po kliknięciu zestawu pod nim pojawia się wybór wariantu dla każdej sztuki (dwa małe przyciski A/B na każdą sztukę), duży przycisk „Dodaj do koszyka · cena”, linijka zaufania i kolorowe logotypy płatności. '
  'Cena w nagłówku, przycisku i pasku na dole zmienia się po wyborze zestawu. Pod hero pełnoszeroki pasek w kolorze marki z 4 kafelkami (dostawa, zwroty, płatności, ocena) – na telefonie 2×2.',
- H_('<!-- HERO -->', '<!-- PROBLEM -->'), css('hero', 'benefit strip', 'upsell / bundle') + '\n' + tl('.sk-flower','.sk-var','.sk-pill','.sk-gallery'), jsr('/* BUNDLES */', '/* CART */').split('/* CART */')[0])
+ H_('<!-- HERO -->', '<!-- PROBLEM -->'), css('hero', 'benefit strip', 'upsell / bundle') + '\n' + tl('.sk-flower','.sk-var','.sk-pill','.sk-gallery'), GALLERY_JS + '\n\n' + jsr('/* BUNDLES */', '/* CART */'))
 add('3. PROBLEM',
  'Sekcja „ból klienta”: dwie kolumny – zdjęcie (na telefonie nad tekstem) i tekst: mały nadtytuł wersalikami, mocny nagłówek nazywający problem, 2 krótkie akapity budujące emocję i lista 3–4 punktów z czerwonym „✕”. Tło jasne, zdjęcie z zaokrągleniem i cieniem.',
  H_('<!-- PROBLEM -->', '<!-- USES -->'), css('two col'))
@@ -96,7 +101,7 @@ add('13. STOPKA + WSZYSTKIE POLITYKI (REGULAMIN, PRYWATNOŚĆ, WYSYŁKA, ZWROTY,
  'Stopka od logo do samego dołu: po lewej logo + nazwa, krótki opis sklepu, mail i informacja o kontakcie; po prawej kolumna „Informacje” z linkami: Regulamin, Polityka prywatności, Polityka wysyłki, Zwroty i reklamacje, Kontakt. Na dole pasek z „© rok” i skrótem zaufania. '
  'Kliknięcie linku NIE przeładowuje strony – pokazuje podstronę (widok #skPages) w tym samym stylu: nagłówek, punkty numerowane z tytułem i akapitem, przycisk „← Wróć do sklepu”, a pod treścią każdej polityki formularz „Skontaktuj się z nami” (imię, e-mail, wiadomość → otwiera mail do sklepu). '
  'Teksty polityk ogólne, trochę dłuższe, bez ryzykownych obietnic (bez „wysyłamy w 24 h”, bez konkretnych godzin odpowiedzi; terminy reklamacji/zwrotu pieniędzy „w terminie przewidzianym przepisami prawa”, 14 dni na odstąpienie). Sklep prowadzi [NAZWA SKLEPU], kontakt tylko przez [E-MAIL], BEZ imienia, nazwiska i adresu.',
- rng(ln('<!-- POLICY PAGES -->'), ln('<!-- CART DRAWER -->')) + '\n\n' + rng(ln('<!-- CONTACT MODAL -->'), ln('<div class="sk-sticky"')), css('footer', 'policy pages', 'modal'), jsr('/* POLICY PAGES */'))
+ rng(ln('<!-- POLICY PAGES -->'), ln('<!-- CART DRAWER -->')) + '\n\n' + rng(ln('<!-- CONTACT MODAL -->'), ln('<div class="sk-sticky"')), css('footer', 'policy pages', 'modal'), re.sub(r'\}\)\(\);\s*$', '', jsr('/* POLICY PAGES */')).rstrip())
 add('14. KOSZYK, OKNO DOSTAWY, PASEK NA DOLE TELEFONU',
  'Koszyk jako panel wysuwany z prawej (z przyciemnieniem tła): pozycje ze zdjęciem, nazwą, wybranym wariantem, licznikiem –/+ i koszem; pasek postępu „Dodaj jeszcze 1 szt. i zapłać mniej”; podsumowanie (cena regularna, łączny rabat, razem); przycisk „Realizuj zakup” i logotypy płatności. Koszyk zapisuje się w localStorage. '
  '„Realizuj zakup” otwiera małe okno wyboru dostawy (np. „📦 Paczkomat – GRATIS”, „🚚 Kurier pod adres – GRATIS”, dopisek, że adres poda się w kasie) i przycisk „Przejdź do płatności”, który od razu przenosi do kasy (w Shopify: link /cart/IDwariantu:ilość,… – bez czekania). '
@@ -113,12 +118,15 @@ for n, (t, p, h, c, j) in enumerate(sec):
     if n > 0:
         body += ['', 'WAŻNE: ten prompt jest kompletny. Jeśli plik index.html jeszcze nie istnieje – utwórz go z poniższym <head> i CSS „FUNDAMENT”. Jeśli już istnieje – nie dubluj fundamentu, tylko dopisz sekcję we właściwym miejscu (kolejność sekcji: pasek+menu, hero, problem, komu, rozwiązanie, 3 kroki, zakładki, tabela, opinie, 4 punkty, 48h, FAQ, stopka+polityki, koszyk).',
                  '', '=== HEAD (fundament) ===', sec[0][2], '', '=== CSS FUNDAMENT (tokeny, przyciski, animacje, telefon) ===', sec[0][3]]
+    if n == 14: h, c = '<!-- PRODUKT I ZESTAWY (koszyk ich potrzebuje) -->\n' + sec[2][2] + '\n\n' + h, sec[2][3] + '\n' + c
+    if n == 2: h, c = h + '\n\n<!-- KOSZYK (potrzebny, bo przycisk dodaje do koszyka) -->\n' + sec[14][2], c + '\n' + sec[14][3]
     if h: body += ['', '=== HTML SEKCJI ===', h]
     if c: body += ['', '=== CSS SEKCJI ===', c]
     if j or n == 2:
         jj = (sec[0][4] + '\n\n') if n > 0 else ''
-        if n == 2: jj += sec[14][4] + '\n\n'
-        body += ['', '=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===', jj + (j or '')]
+        js_all = jj + (j or '') + (('\n\n' + sec[14][4]) if n == 2 else '')
+        if n == 14: js_all = jj + sec[2][4] + '\n\n' + (j or '')
+        body += ['', '=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===', js_all]
     out += ['---', '', '## PROMPT ' + t, '', 'Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.', '', '````text', 'PROMPT ' + t, ''] + body + ['````', '']
 open(os.path.join(H, 'PROMPTY-SEKCJE.md'), 'w', encoding='utf-8').write('\n'.join(out))
 print('OK', len(sec), 'promptów,', sum(len(x) for x in out) // 1024, 'KB')

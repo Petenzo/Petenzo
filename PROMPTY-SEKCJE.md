@@ -155,33 +155,12 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-hero-grid>*{min-width:0}
 .sk-pills{flex-wrap:wrap!important;white-space:normal!important}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
-
-var gallery=[
- ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
- ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
- ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
- ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
- ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
- ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
-];
-var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
-gallery.forEach(function(g,i){
-  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
-  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
-});
-function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
-  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
-window.skGal=function(s){setG(gi+s)};setG(0);
-(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
- g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
- g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
-  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 ````
 
 ---
@@ -627,6 +606,40 @@ html.sk-exp #skDealSec{display:none!important}
   </div>
 </div>
 
+<!-- KOSZYK (potrzebny, bo przycisk dodaje do koszyka) -->
+<!-- CART DRAWER -->
+<div class="sk-overlay" id="skOverlay" onclick="skCart(false)"></div>
+<aside class="sk-drawer" id="skDrawer" aria-label="Koszyk">
+  <div class="sk-dr-head"><h3>Koszyk · <span id="skDrCount">0</span></h3><button class="sk-close" aria-label="Zamknij koszyk" onclick="skCart(false)">✕</button></div>
+  <div class="sk-dr-bar">🚚 [DOSTAWA] · ↩️ [ZWROTY]</div>
+  <div class="sk-dr-progress" id="skProgress"></div>
+  <div class="sk-dr-items" id="skItems"></div>
+  <div class="sk-dr-foot">
+    <div class="sk-dr-line disc"><span>Łączny rabat</span><span id="skDisc">−0,00 zł</span></div>
+    <div class="sk-dr-line total"><span>Łączna kwota</span><span id="skTotal">0,00 zł</span></div>
+    <div class="sk-dr-line" style="color:var(--sk-muted)"><span>Dostawa</span><span id="skShipLine">Wybierzesz w następnym kroku</span></div>
+    <button class="sk-btn full" id="skCheckout" onclick="skShipModal(true)">Realizuj zakup</button>
+    <div class="sk-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
+  </div>
+</aside>
+
+<!-- SHIPPING MODAL -->
+<div class="sk-modal" id="skShip" onclick="if(event.target===this)skShipModal(false)">
+  <div class="sk-modal-box">
+    <div class="sk-modal-head"><h3>Wybierz dostawę</h3><button class="sk-close" onclick="skShipModal(false)">✕</button></div>
+    <button class="sk-ship-opt on" data-ship="paczkomat" onclick="skPickShip(this)"><span>📦 Paczkomat InPost</span><span class="p">GRATIS</span></button>
+    <button class="sk-ship-opt" data-ship="kurier" onclick="skPickShip(this)"><span>🚚 Kurier pod adres</span><span class="p">GRATIS</span></button>
+    <button class="sk-btn full" style="margin-top:6px" onclick="skGoCheckout()">Przejdź do płatności</button>
+    <p class="sk-micro">Adres i punkt odbioru wskażesz w kasie na następnym ekranie.</p>
+  </div>
+</div>
+
+<div class="sk-sticky" id="skSticky">
+  <div><div class="n">[NAZWA PRODUKTU]</div><div class="p" id="skStickyPrice">199,99 zł <s style="color:var(--sk-muted);font-weight:400">299,99 zł</s></div></div>
+  <button class="sk-btn small" onclick="skAddBundle()">Do koszyka</button>
+</div>
+<div class="sk-toast" id="skToast">Dodano do koszyka ✓</div>
+
 === CSS SEKCJI ===
 .sk-hero{padding:28px 0 56px}
 .sk-hero-grid{display:grid;gap:28px}
@@ -721,13 +734,60 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-gallery-main{touch-action:pan-y}
 .sk-gallery-arrow{display:none!important}
 .sk-pills{flex-wrap:wrap!important;white-space:normal!important}
+.sk-overlay{position:fixed;inset:0;background:rgba(15,25,20,.55);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
+.sk-overlay.on{opacity:1;pointer-events:auto}
+.sk-drawer{position:fixed;top:0;right:0;height:100%;width:100%;max-width:440px;background:#fff;z-index:95;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column}
+.sk-drawer.on{transform:none}
+.sk-dr-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px}
+.sk-dr-head h3{margin:0;font-size:22px}
+.sk-dr-bar{background:var(--sk-primary-dark);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:10px}
+.sk-dr-progress{padding:14px 20px 0;font-size:12.5px;color:var(--sk-muted)}
+.sk-dr-progress .bar{height:7px;border-radius:4px;background:var(--sk-surface-2);margin-top:6px;overflow:hidden}
+.sk-dr-progress .bar i{display:block;height:100%;background:var(--sk-gradient);transition:width .3s}
+.sk-dr-items{flex:1;overflow:auto;padding:16px 20px;display:grid;gap:14px;align-content:start}
+.sk-item{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start}
+.sk-item img{width:72px;height:72px;border-radius:12px;object-fit:cover}
+.sk-item-top{display:flex;justify-content:space-between;gap:8px}
+.sk-item-top b{font-size:14px}
+.sk-item small{color:var(--sk-muted);font-size:12px;display:block}
+.sk-item-bot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.sk-qty{display:inline-flex;border:1px solid var(--sk-border);border-radius:10px;overflow:hidden}
+.sk-qty button{width:30px;height:30px;border:0;background:#fff;font-size:16px}
+.sk-qty span{width:30px;display:grid;place-items:center;font-size:13px;font-weight:600}
+.sk-item-price{text-align:right;font-size:14px;font-weight:700;color:var(--sk-primary)}
+.sk-item-price s{font-weight:400;color:var(--sk-muted);font-size:12px;margin-right:4px}
+.sk-trash{border:0;background:none;color:var(--sk-muted);padding:2px}
+.sk-upsell-mini{border:2px dashed rgba(30,91,61,.3);border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;font-size:13px}
+.sk-upsell-mini img{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.sk-dr-foot{border-top:1px solid var(--sk-border);padding:16px 20px 20px;display:grid;gap:8px;background:var(--sk-surface)}
+.sk-dr-line{display:flex;justify-content:space-between;font-size:14px}
+.sk-dr-line.disc{color:var(--sk-ok);font-weight:700}
+.sk-dr-line.total{font-size:19px;font-weight:800}
+.sk-empty{text-align:center;color:var(--sk-muted);padding:40px 0}
+.sk-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(15,25,20,.55)}
+.sk-modal.on{display:flex}
+.sk-modal-box{background:#fff;border-radius:22px;width:100%;max-width:440px;padding:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.35)}
+.sk-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.sk-modal-head h3{margin:0;font-size:22px}
+.sk-close{width:36px;height:36px;border-radius:50%;border:0;background:var(--sk-surface);font-size:18px}
+.sk-ship-opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;border:2px solid var(--sk-border);border-radius:16px;padding:16px 18px;background:#fff;margin-bottom:10px;font-size:15px;font-weight:700;text-align:left;color:var(--sk-fg)}
+.sk-ship-opt small{display:block;font-weight:500;color:var(--sk-muted);font-size:12px}
+.sk-ship-opt .p{color:var(--sk-ok);font-size:14px;white-space:nowrap}
+.sk-ship-opt.on{background:var(--sk-primary-dark);color:#fff;border-color:var(--sk-primary-dark)}
+.sk-ship-opt.on small{color:rgba(255,255,255,.75)}
+.sk-ship-opt.on .p{color:#9FE0B8}
+.sk-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--sk-border);padding:10px 16px;display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .25s;box-shadow:0 -8px 24px rgba(0,0,0,.08)}
+.sk-sticky.on{transform:none}
+.sk-sticky .n{font-size:13px;font-weight:700;line-height:1.2}
+.sk-sticky .p{font-size:13px;color:var(--sk-primary);font-weight:700}
+.sk-sticky .sk-btn{margin-left:auto}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 
 var gallery=[
  ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
@@ -749,46 +809,6 @@ window.skGal=function(s){setG(gi+s)};setG(0);
  g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
  g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
   if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
-
-/* CART */
-var cart=[];
-function save(){try{localStorage.setItem("skCart2",JSON.stringify(cart))}catch(e){}}
-try{cart=JSON.parse(localStorage.getItem("skCart2")||"[]")}catch(e){cart=[]}
-function unitFor(q){return q>=3?BUNDLES[2].price/3:q===2?BUNDLES[1].price/2:BUNDLES[0].price}
-function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
-function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
-window.skAddBundle=function(){var c={};CH[sel].forEach(function(f){c[f]=(c[f]||0)+1});Object.keys(c).forEach(function(f){addItem({key:"kal-"+f,f:f,name:"[NAZWA PRODUKTU]",variant:"Wariant: "+f,img:"foto-4.jpg",qty:c[f],old:BUNDLES[0].old})});skCart(true)};
-function drawCart(){
-  var n=calCount(),u=unitFor(n),items=document.getElementById("skItems"),tot=0,old=0,cnt=0;
-  items.innerHTML="";
-  if(!cart.length){items.innerHTML='<div class="sk-empty">Twój koszyk jest pusty 🌷<br><br><button class="sk-btn small" onclick="skCart(false);skScrollBuy()">Wybierz zestaw</button></div>'}
-  cart.forEach(function(it,idx){
-    var p=u;tot+=p*it.qty;old+=it.old*it.qty;cnt+=it.qty;
-    var d=document.createElement("div");d.className="sk-item";
-    d.innerHTML='<img src="'+skSrc(it.img)+'" alt=""><div><div class="sk-item-top"><div><b>'+it.name+'</b><small>'+it.variant+'</small></div><button class="sk-trash" aria-label="Usuń">🗑</button></div><div class="sk-item-bot"><div class="sk-qty"><button aria-label="Mniej">−</button><span>'+it.qty+'</span><button aria-label="Więcej">+</button></div><div class="sk-item-price"><s>'+zl(it.old*it.qty)+'</s>'+zl(p*it.qty)+'<small style="color:var(--sk-ok)">Oszczędzasz '+zl((it.old-p)*it.qty)+'</small></div></div></div>';
-    var bs=d.querySelectorAll("button");
-    bs[0].onclick=function(){cart.splice(idx,1);save();drawCart()};
-    bs[1].onclick=function(){it.qty--;if(it.qty<1)cart.splice(idx,1);save();drawCart()};
-    bs[2].onclick=function(){it.qty++;save();drawCart()};
-    items.appendChild(d);
-  });
-  var pr=document.getElementById("skProgress");
-  if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>1 szt.</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za sztukę<div class="bar"><i style="width:100%"></i></div>';
-  document.getElementById("skTotal").textContent=zl(tot);document.getElementById("skDisc").textContent="−"+zl(old-tot);
-  document.getElementById("skDrCount").textContent=cnt;var c=document.getElementById("skCount");c.textContent=cnt;c.hidden=!cnt;
-  document.getElementById("skCheckout").disabled=!cnt;document.getElementById("skCheckout").style.opacity=cnt?1:.5;
-}
-drawCart();
-function toast(){var t=document.getElementById("skToast");t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1600)}
-window.skCart=function(o){document.getElementById("skDrawer").classList.toggle("on",o);document.getElementById("skOverlay").classList.toggle("on",o);document.body.style.overflow=o?"hidden":""};
-window.skShipModal=function(o){document.getElementById("skShip").classList.toggle("on",o)};
-window.skPickShip=function(b){document.querySelectorAll(".sk-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("skShipLine").textContent=b.dataset.ship==="kurier"?"Kurier pod adres · GRATIS":"Paczkomat InPost · GRATIS"};
-window.skGoCheckout=function(){window.location.href=CHECKOUT_URL};
-window.skMenu=function(o){document.getElementById("skMobile").classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
-window.skScrollBuy=function(){skShow("home");document.getElementById("skBundles").scrollIntoView({behavior:"smooth",block:"center"})};
-
-/* STICKY */
-window.addEventListener("scroll",function(){document.getElementById("skSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("skHome").classList.contains("on"))},{passive:true});
 
 /* BUNDLES */
 /* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
@@ -822,6 +842,46 @@ function render(){
   document.getElementById("skStickyPrice").innerHTML=zl(b.price)+' <s style="color:var(--sk-muted);font-weight:400">'+zl(b.old)+'</s>';
 }
 render();
+
+/* CART */
+var cart=[];
+function save(){try{localStorage.setItem("skCart2",JSON.stringify(cart))}catch(e){}}
+try{cart=JSON.parse(localStorage.getItem("skCart2")||"[]")}catch(e){cart=[]}
+function unitFor(q){return q>=3?BUNDLES[2].price/3:q===2?BUNDLES[1].price/2:BUNDLES[0].price}
+function calCount(){return cart.reduce(function(s,i){return s+i.qty},0)}
+function addItem(it){var f=cart.find(function(c){return c.key===it.key});if(f)f.qty+=it.qty;else cart.push(it);save();drawCart();toast()}
+window.skAddBundle=function(){var c={};CH[sel].forEach(function(f){c[f]=(c[f]||0)+1});Object.keys(c).forEach(function(f){addItem({key:"kal-"+f,f:f,name:"[NAZWA PRODUKTU]",variant:"Wariant: "+f,img:"foto-4.jpg",qty:c[f],old:BUNDLES[0].old})});skCart(true)};
+function drawCart(){
+  var n=calCount(),u=unitFor(n),items=document.getElementById("skItems"),tot=0,old=0,cnt=0;
+  items.innerHTML="";
+  if(!cart.length){items.innerHTML='<div class="sk-empty">Twój koszyk jest pusty 🌷<br><br><button class="sk-btn small" onclick="skCart(false);skScrollBuy()">Wybierz zestaw</button></div>'}
+  cart.forEach(function(it,idx){
+    var p=u;tot+=p*it.qty;old+=it.old*it.qty;cnt+=it.qty;
+    var d=document.createElement("div");d.className="sk-item";
+    d.innerHTML='<img src="'+skSrc(it.img)+'" alt=""><div><div class="sk-item-top"><div><b>'+it.name+'</b><small>'+it.variant+'</small></div><button class="sk-trash" aria-label="Usuń">🗑</button></div><div class="sk-item-bot"><div class="sk-qty"><button aria-label="Mniej">−</button><span>'+it.qty+'</span><button aria-label="Więcej">+</button></div><div class="sk-item-price"><s>'+zl(it.old*it.qty)+'</s>'+zl(p*it.qty)+'<small style="color:var(--sk-ok)">Oszczędzasz '+zl((it.old-p)*it.qty)+'</small></div></div></div>';
+    var bs=d.querySelectorAll("button");
+    bs[0].onclick=function(){cart.splice(idx,1);save();drawCart()};
+    bs[1].onclick=function(){it.qty--;if(it.qty<1)cart.splice(idx,1);save();drawCart()};
+    bs[2].onclick=function(){it.qty++;save();drawCart()};
+    items.appendChild(d);
+  });
+  var pr=document.getElementById("skProgress");
+  if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>1 szt.</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za sztukę<div class="bar"><i style="width:100%"></i></div>';
+  document.getElementById("skTotal").textContent=zl(tot);document.getElementById("skDisc").textContent="−"+zl(old-tot);
+  document.getElementById("skDrCount").textContent=cnt;var c=document.getElementById("skCount");if(c){c.textContent=cnt;c.hidden=!cnt;}
+  document.getElementById("skCheckout").disabled=!cnt;document.getElementById("skCheckout").style.opacity=cnt?1:.5;
+}
+drawCart();
+function toast(){var t=document.getElementById("skToast");t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1600)}
+window.skCart=function(o){document.getElementById("skDrawer").classList.toggle("on",o);document.getElementById("skOverlay").classList.toggle("on",o);document.body.style.overflow=o?"hidden":""};
+window.skShipModal=function(o){document.getElementById("skShip").classList.toggle("on",o)};
+window.skPickShip=function(b){document.querySelectorAll(".sk-ship-opt").forEach(function(x){x.classList.toggle("on",x===b)});document.getElementById("skShipLine").textContent=b.dataset.ship==="kurier"?"Kurier pod adres · GRATIS":"Paczkomat InPost · GRATIS"};
+window.skGoCheckout=function(){window.location.href=CHECKOUT_URL};
+window.skMenu=function(o){document.getElementById("skMobile").classList.toggle("open",o);document.body.style.overflow=o?"hidden":""};
+window.skScrollBuy=function(){skShow("home");document.getElementById("skBundles").scrollIntoView({behavior:"smooth",block:"center"})};
+
+/* STICKY */
+window.addEventListener("scroll",function(){document.getElementById("skSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("skHome").classList.contains("on"))},{passive:true});
 ````
 
 ---
@@ -1740,33 +1800,12 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-tab-panel{background:var(--sk-surface);border-radius:16px;padding:18px 20px}
 .sk-tab-panel small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
-
-var gallery=[
- ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
- ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
- ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
- ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
- ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
- ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
-];
-var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
-gallery.forEach(function(g,i){
-  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
-  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
-});
-function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
-  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
-window.skGal=function(s){setG(gi+s)};setG(0);
-(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
- g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
- g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
-  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 
 /* TABS */
 window.skTab=function(i){document.querySelectorAll(".sk-tabs-list button").forEach(function(b,k){b.classList.toggle("on",k===i)});document.querySelectorAll(".sk-tab").forEach(function(t,k){t.classList.toggle("on",k===i)})};
@@ -2149,33 +2188,12 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-rev .who small{font-size:11.5px;color:var(--sk-ok);font-weight:600}
 .sk-rev .var{font-size:11.5px;color:var(--sk-muted)}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
-
-var gallery=[
- ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
- ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
- ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
- ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
- ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
- ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
-];
-var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
-gallery.forEach(function(g,i){
-  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
-  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
-});
-function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
-  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
-window.skGal=function(s){setG(gi+s)};setG(0);
-(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
- g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
- g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
-  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 
 /* REVIEWS */
 var R=[
@@ -2592,33 +2610,12 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
 .sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
-
-var gallery=[
- ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
- ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
- ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
- ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
- ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
- ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
-];
-var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
-gallery.forEach(function(g,i){
-  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
-  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
-});
-function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
-  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
-window.skGal=function(s){setG(gi+s)};setG(0);
-(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
- g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
- g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
-  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 
 /* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
 var SK_END;try{SK_END=+localStorage.getItem("skDealEnd")}catch(e){}
@@ -2811,33 +2808,12 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-acc .a{display:none;padding:0 4px 24px;color:var(--sk-muted);font-size:14.5px}
 .sk-acc.open .a{display:block}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
-
-var gallery=[
- ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
- ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
- ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
- ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
- ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
- ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
-];
-var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
-gallery.forEach(function(g,i){
-  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
-  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
-});
-function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
-  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
-window.skGal=function(s){setG(gi+s)};setG(0);
-(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
- g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
- g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
-  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 
 /* FAQ */
 var F=[
@@ -3083,33 +3059,12 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-ship-opt.on small{color:rgba(255,255,255,.75)}
 .sk-ship-opt.on .p{color:#9FE0B8}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
-
-var gallery=[
- ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
- ["foto-2.jpg","⭐ [PODPIS ZDJĘCIA 2 – korzyść]"],
- ["foto-3.jpg","⭐ [PODPIS ZDJĘCIA 3 – korzyść]"],
- ["foto-4.jpg","⭐ [PODPIS ZDJĘCIA 4 – korzyść]"],
- ["foto-5.jpg","⭐ [PODPIS ZDJĘCIA 5 – korzyść]"],
- ["foto-6.jpg","⭐ [PODPIS ZDJĘCIA 6 – korzyść]"]
-];
-var gi=0,main=document.getElementById("skMain"),cap=document.getElementById("skCaption"),dots=document.getElementById("skDots"),th=document.getElementById("skThumbs");
-gallery.forEach(function(g,i){
-  var d=document.createElement("button");d.setAttribute("aria-label","Zdjęcie "+(i+1));d.onclick=function(){setG(i)};dots.appendChild(d);
-  var t=document.createElement("button");t.innerHTML='<img src="'+skSrc(g[0])+'" width="200" height="200" loading="lazy" alt="">';t.onclick=function(){setG(i)};th.appendChild(t);
-});
-function setG(i){gi=(i+gallery.length)%gallery.length;main.style.opacity=.3;setTimeout(function(){main.src=skSrc(gallery[gi][0]);main.style.opacity=1},120);cap.textContent=gallery[gi][1];
-  [].forEach.call(dots.children,function(b,k){b.classList.toggle("on",k===gi)});[].forEach.call(th.children,function(b,k){b.classList.toggle("on",k===gi)});}
-window.skGal=function(s){setG(gi+s)};setG(0);
-(function(){var g=document.querySelector(".sk-gallery-main"),x0=null,y0=null;
- g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
- g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
-  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 
 /* POLICY PAGES */
 var SELLER="[NAZWA SKLEPU]";
@@ -3165,7 +3120,6 @@ window.skSend=function(f){var b="Imię: "+f.imie.value+"%0D%0AE-mail: "+f.email.
 window.skShow=function(k){var home=k==="home";document.getElementById("skHome").classList.toggle("on",home);
   document.querySelectorAll("#skPages .sk-page").forEach(function(p){p.classList.toggle("on",p.id==="kwp-"+k)});
   if(!home){window.scrollTo(0,0);document.getElementById("skSticky").classList.remove("on")}};
-})();
 ````
 
 ---
@@ -3322,6 +3276,61 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-pills{flex-wrap:wrap!important;white-space:normal!important}
 
 === HTML SEKCJI ===
+<!-- PRODUKT I ZESTAWY (koszyk ich potrzebuje) -->
+<!-- HERO -->
+<section class="sk-hero" id="hero">
+  <div class="sk-container sk-hero-grid">
+    <div>
+      <div class="sk-gallery-main">
+        <img id="skMain" src="{{IMG}}/foto-1.jpg" width="1200" height="1200" alt="[OPIS ZDJĘCIA 1]">
+        <button class="sk-gallery-arrow prev" aria-label="Poprzednie zdjęcie" onclick="skGal(-1)">‹</button>
+        <button class="sk-gallery-arrow next" aria-label="Następne zdjęcie" onclick="skGal(1)">›</button>
+        <div class="sk-gallery-caption" id="skCaption">⭐ [PODPIS ZDJĘCIA 1 – korzyść]</div>
+      </div>
+      <div class="sk-dots" id="skDots"></div>
+      <div class="sk-thumbs" id="skThumbs"></div>
+    </div>
+
+    <div class="sk-buy">
+      <div class="sk-pills"><span class="sk-pill gold">★ [PLAKIETKA – np. Bestseller 2026]</span><span class="sk-pill sale">⚠️ [PILNOŚĆ – np. Liczba sztuk ograniczona]</span></div>
+      <h1>[NAGŁÓWEK GŁÓWNY – problem klienta + obietnica] <span class="sk-accent">[EFEKT KOŃCOWY]</span></h1>
+      <p class="sk-sub">[PODTYTUŁ – jak produkt zmienia dzień klienta, 1–2 zdania]</p>
+      <div class="sk-rating"><span class="sk-stars">★★★★★</span><b>[OCENA]</b> · [LICZBA] opinii · <span style="color:var(--sk-ok);font-weight:600">● [LICZBA] osób ogląda teraz</span></div>
+      <div class="sk-price-row">
+        <span class="sk-price" id="skPrice">199,99 zł</span>
+        <span class="sk-old" id="skOld">299,99 zł</span>
+        <span class="sk-save" id="skSave">−33%</span>
+      </div>
+      <ul class="sk-list">
+        <li><span class="sk-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 1]</b> [dopowiedzenie]</span></li>
+        <li><span class="sk-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 2]</b> [dopowiedzenie]</span></li>
+        <li><span class="sk-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 3]</b> [dopowiedzenie]</span></li>
+        <li><span class="sk-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 4]</b> [dopowiedzenie]</span></li>
+        <li><span class="sk-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 5]</b> [dopowiedzenie]</span></li>
+        <li><span class="sk-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 3" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span><b>[KORZYŚĆ 6]</b> [dopowiedzenie]</span></li>
+      </ul>
+
+      <div class="sk-bundles" id="skBundles">
+        <div class="sk-bundles-title">[WYBIERZ ZESTAW]</div>
+      </div>
+
+      <button class="sk-btn full" onclick="skAddBundle()">Dodaj do koszyka · <span id="skCtaPrice">199,99 zł</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="sk-pay"><span class="pay-blik">blik</span><span class="pay-visa">VISA</span><span class="pay-mc"><svg width="22" height="14" viewBox="0 0 22 14"><circle cx="7" cy="7" r="7" fill="#EB001B"/><circle cx="15" cy="7" r="7" fill="#F79E1B" fill-opacity=".9"/></svg>mastercard</span><span class="pay-apple"><svg width="12" height="14" viewBox="0 0 17 20" fill="#fff"><path d="M14.1 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9C3.6 4.8 2 5.8 1.1 7.4c-1.8 3.2-.5 7.9 1.3 10.5.9 1.3 1.9 2.7 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.7-1-2.7-4.3zM11.6 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>Pay</span><span class="pay-google"><svg width="13" height="13" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Pay</span><span class="pay-p24">P24</span></div>
+      <p class="sk-micro">🔒 [MIKROZAUFANIE – płatność · zwroty · kontakt]</p>
+    </div>
+  </div>
+</section>
+
+<div class="sk-strip">
+  <div class="sk-container sk-strip-in">
+    <div class="sk-strip-item"><span style="font-size:22px">🚚</span><div><b>[DOSTAWA]</b><small>[sposób dostawy]</small></div></div>
+    <div class="sk-strip-item"><span style="font-size:22px">↩️</span><div><b>[ZWROTY]</b><small>[krótki dopisek]</small></div></div>
+    <div class="sk-strip-item"><span style="font-size:22px">🔒</span><div><b>[PŁATNOŚCI]</b><small>[metody płatności]</small></div></div>
+    <div class="sk-strip-item"><span style="font-size:22px">⭐</span><div><b>[OCENA]</b><small>[liczba zadowolonych]</small></div></div>
+  </div>
+</div>
+
 <!-- CART DRAWER -->
 <div class="sk-overlay" id="skOverlay" onclick="skCart(false)"></div>
 <aside class="sk-drawer" id="skDrawer" aria-label="Koszyk">
@@ -3356,6 +3365,99 @@ html.sk-exp #skDealSec{display:none!important}
 <div class="sk-toast" id="skToast">Dodano do koszyka ✓</div>
 
 === CSS SEKCJI ===
+.sk-hero{padding:28px 0 56px}
+.sk-hero-grid{display:grid;gap:28px}
+@media(min-width:960px){.sk-hero-grid{grid-template-columns:1.05fr 1fr;gap:44px;align-items:start}}
+.sk-gallery-main{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:1/1;background:var(--sk-surface);box-shadow:var(--sk-shadow-card)}
+.sk-gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.sk-gallery-caption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;display:flex;gap:6px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.sk-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.sk-gallery-arrow.prev{left:12px}.sk-gallery-arrow.next{right:12px}
+.sk-dots{display:flex;justify-content:center;gap:6px;margin:12px 0}
+.sk-dots button{width:8px;height:8px;border-radius:4px;border:0;background:#D8D0C2;padding:0;transition:width .2s}
+.sk-dots button.on{width:24px;background:var(--sk-primary)}
+.sk-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.sk-thumbs button{border:2px solid transparent;border-radius:12px;overflow:hidden;padding:0;aspect-ratio:1/1;background:none}
+.sk-thumbs button.on{border-color:var(--sk-primary)}
+.sk-thumbs img{width:100%;height:100%;object-fit:cover}
+.sk-trust-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.sk-trust-tile{display:flex;gap:10px;align-items:center;border:1px solid var(--sk-border);border-radius:14px;padding:12px;background:#fff}
+.sk-trust-tile .ic{width:36px;height:36px;border-radius:10px;background:var(--sk-primary-soft);display:grid;place-items:center;flex:0 0 36px}
+.sk-trust-tile b{display:block;font-size:13px}
+.sk-trust-tile small{color:var(--sk-muted);font-size:11.5px;line-height:1.35;display:block}
+
+.sk-buy h1{font-size:28px;line-height:1.18;font-weight:800;margin:12px 0 10px;letter-spacing:-.015em}
+@media(min-width:768px){.sk-buy h1{font-size:36px}}
+.sk-sub{color:var(--sk-muted);font-size:15px;margin:0 0 14px}
+.sk-rating{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--sk-muted);margin-bottom:16px;flex-wrap:wrap}
+.sk-rating b{color:var(--sk-fg)}
+.sk-price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.sk-price{font-size:34px;font-weight:800;color:var(--sk-primary)}
+.sk-old{font-size:18px;color:var(--sk-muted);text-decoration:line-through}
+.sk-save{background:var(--sk-sale);color:#fff;border-radius:8px;padding:3px 9px;font-size:12.5px;font-weight:700}
+.sk-klarna{display:flex;align-items:center;gap:10px;border:1px solid rgba(30,91,61,.25);background:rgba(30,91,61,.05);border-radius:12px;padding:10px 12px;font-size:13px;margin:12px 0 18px}
+.sk-countdown{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--sk-sale-soft);border:1px dashed rgba(184,50,58,.4);border-radius:14px;padding:10px 14px;margin:18px 0;font-size:13px;font-weight:600;color:var(--sk-sale)}
+.sk-timer{display:flex;gap:6px}
+.sk-timer span{background:#fff;border-radius:8px;padding:4px 7px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--sk-fg);min-width:34px;text-align:center}
+.sk-bundles{display:grid;gap:12px;margin:18px 0}
+.sk-bundles-title{text-align:center;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sk-muted);display:flex;align-items:center;gap:12px}
+.sk-bundles-title::before,.sk-bundles-title::after{content:"";flex:1;height:1px;background:var(--sk-border)}
+.sk-flower{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:2px solid var(--sk-border);border-radius:12px;padding:8px 6px;background:#fff;font:inherit;font-weight:600;font-size:14px;color:var(--sk-fg);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}.sk-flower span{font-size:18px;line-height:1}.sk-flower.on{border-color:var(--sk-primary);background:var(--sk-primary-soft);transform:translateY(-1px)}
+.sk-bundle{position:relative;border:2px solid var(--sk-border);border-radius:18px;padding:14px 16px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
+.sk-bundle.on{border-color:var(--sk-primary);background:var(--sk-primary-soft)}
+.sk-bundle-head{display:flex;align-items:center;gap:12px}
+.sk-radio{width:20px;height:20px;border-radius:50%;border:2px solid #C9C0B0;flex:0 0 20px;display:grid;place-items:center}
+.sk-bundle.on .sk-radio{border-color:var(--sk-primary)}
+.sk-bundle.on .sk-radio::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--sk-primary)}
+.sk-bundle-name{font-weight:700;font-size:15px}
+.sk-bundle-desc{font-size:12.5px;color:var(--sk-muted)}
+.sk-bundle-price{margin-left:auto;text-align:right}
+.sk-bundle-price b{display:block;font-size:17px;color:var(--sk-primary)}
+.sk-bundle-price s{font-size:12.5px;color:var(--sk-muted)}
+.sk-bundle-tag{position:absolute;top:-11px;right:14px;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;color:#fff;background:var(--sk-gradient)}
+.sk-bundle-tag.gold{background:var(--sk-gradient-gold)}
+.sk-variants{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(30,91,61,.25)}
+.sk-bundle.on .sk-variants{display:grid;gap:10px}
+.sk-var-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px}
+.sk-var-row .lbl{color:var(--sk-muted);min-width:92px;font-weight:600}.sk-var-row{flex-wrap:nowrap!important}.sk-bundle-price b{white-space:nowrap}.sk-var-row .sk-flower{padding:6px 4px;font-size:13px}
+.sk-var-row .lbl b{color:var(--sk-primary)}
+.sk-swatch{width:38px;height:38px;border-radius:50%;border:2px solid #fff;outline:2px solid var(--sk-border);padding:0;overflow:hidden;background:#fff}
+.sk-swatch.on{outline-color:var(--sk-primary)}
+.sk-swatch img{width:100%;height:100%;object-fit:cover}
+.sk-ship-box{display:flex;gap:10px;align-items:flex-start;background:var(--sk-surface);border-radius:14px;padding:12px 14px;font-size:13px;margin:14px 0}
+.sk-pay{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:12px}
+.sk-micro{text-align:center;font-size:12.5px;color:var(--sk-muted);margin-top:10px}
+.sk-strip{background:var(--sk-primary-dark);color:#fff}
+.sk-strip-in{display:grid;grid-template-columns:1fr 1fr;gap:10px 48px;padding:10px 0;max-width:1120px}
+@media(min-width:768px){.sk-strip-in{grid-template-columns:repeat(4,1fr)}}
+.sk-strip-item{display:flex;gap:10px;align-items:center;justify-content:flex-start;font-size:13px;justify-self:center;width:100%;max-width:300px}
+.sk-strip-item b{display:block;font-size:14px}
+.sk-strip-item small{opacity:.75}
+.sk-upsell{display:grid;gap:0;overflow:hidden}
+@media(min-width:768px){.sk-upsell{grid-template-columns:1fr 1fr}}
+.sk-upsell img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+.sk-upsell .b{padding:28px}
+.sk-pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--sk-primary-soft);color:var(--sk-primary)}
+.sk-pill.gold{background:var(--sk-gold-soft);color:#8A6015}
+.sk-pill.sale{background:var(--sk-sale);color:#fff}
+.sk-gallery-main{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:1/1;background:var(--sk-surface);box-shadow:var(--sk-shadow-card)}
+.sk-gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.sk-gallery-caption{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;display:flex;gap:6px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.sk-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.sk-gallery-arrow.prev{left:12px}.sk-gallery-arrow.next{right:12px}
+.sk-flower{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:2px solid var(--sk-border);border-radius:12px;padding:8px 6px;background:#fff;font:inherit;font-weight:600;font-size:14px;color:var(--sk-fg);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}.sk-flower span{font-size:18px;line-height:1}.sk-flower.on{border-color:var(--sk-primary);background:var(--sk-primary-soft);transform:translateY(-1px)}
+.sk-variants{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(30,91,61,.25)}
+.sk-bundle.on .sk-variants{display:grid;gap:10px}
+.sk-var-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px}
+.sk-var-row .lbl{color:var(--sk-muted);min-width:92px;font-weight:600}.sk-var-row{flex-wrap:nowrap!important}.sk-bundle-price b{white-space:nowrap}.sk-var-row .sk-flower{padding:6px 4px;font-size:13px}
+.sk-var-row .lbl b{color:var(--sk-primary)}
+.sk-gallery-main img{height:100%!important;width:100%}
+.sk-gallery-caption{white-space:nowrap;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis}
+.sk-pills{display:flex;gap:6px;flex-wrap:nowrap;white-space:nowrap}
+@media(max-width:400px){.sk-pills .sk-pill{font-size:10.5px;padding:5px 9px}}
+.sk-gallery-main{touch-action:pan-y}
+.sk-gallery-arrow{display:none!important}
+.sk-pills{flex-wrap:wrap!important;white-space:normal!important}
 .sk-overlay{position:fixed;inset:0;background:rgba(15,25,20,.55);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
 .sk-overlay.on{opacity:1;pointer-events:auto}
 .sk-drawer{position:fixed;top:0;right:0;height:100%;width:100%;max-width:440px;background:#fff;z-index:95;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column}
@@ -3404,12 +3506,12 @@ html.sk-exp #skDealSec{display:none!important}
 .sk-sticky .p{font-size:13px;color:var(--sk-primary);font-weight:700}
 .sk-sticky .sk-btn{margin-left:auto}
 
-=== JS (wstaw do jednego <script> na końcu <body>, w środku (function(){ ... })();) ===
-(function(){
+=== JS (wszystko w jednym <script> na końcu <body>, owinięte w (function(){ ... })(); – część „pomocnicze” tylko raz) ===
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
 var CHECKOUT_URL="/checkout"; /* Shopify: podmień na link do kasy lub /cart */
 var EMAIL="[E-MAIL KONTAKTOWY]";
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
 
 var gallery=[
  ["foto-1.jpg","⭐ [PODPIS ZDJĘCIA 1 – korzyść]"],
@@ -3431,6 +3533,39 @@ window.skGal=function(s){setG(gi+s)};setG(0);
  g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
  g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
   if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+
+/* BUNDLES */
+/* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
+var SK_END;try{SK_END=+localStorage.getItem("skDealEnd")}catch(e){}
+if(!SK_END){SK_END=Date.now()+48*3600*1000;try{localStorage.setItem("skDealEnd",SK_END)}catch(e){}}
+var SK_EXP=Date.now()>=SK_END;if(SK_EXP)document.documentElement.classList.add("sk-exp");
+var BUNDLES=[
+ {q:1,name:"[Kup 1]",desc:"[Pakiet startowy]",price:99.99,old:149.99},
+ {q:2,name:"[Kup 2]",desc:"[Oszczędzasz X zł · cena za szt.]",price:179.98,old:299.98,tag:"[NAJCZĘŚCIEJ WYBIERANY]"},
+ {q:3,name:"[Kup 3]",desc:"[Najlepsza cena za szt.]",price:239.97,old:449.97,tag:"[NAJLEPSZA CENA]",gold:true}
+];
+var sel=0;
+function zl(n){return n.toFixed(2).replace(".",",").replace(/\B(?=(\d{3})+(?!\d))/g," ")+" zł"}
+var bw=document.getElementById("skBundles");
+var CH=BUNDLES.map(function(b){var a=[];for(var k=0;k<b.q;k++)a.push("[WARIANT A]");return a});
+BUNDLES.forEach(function(b,i){
+  var el=document.createElement("div");el.className="sk-bundle";el.onclick=function(){pick(i)};
+  el.innerHTML=(b.tag?'<span class="sk-bundle-tag'+(b.gold?' gold':'')+'">'+b.tag+'</span>':'')+
+   '<div class="sk-bundle-head"><span class="sk-radio"></span><div><div class="sk-bundle-name">'+b.name+'</div><div class="sk-bundle-desc">'+b.desc+'</div></div><div class="sk-bundle-price"><b>'+zl(b.price)+'</b><s>'+zl(b.old)+'</s></div></div>'+
+   '<div class="sk-variants">'+CH[i].map(function(f,k){return '<div class="sk-var-row"><span class="lbl">'+(b.q>1?'Sztuka '+(k+1)+':':'Wybierz wariant:')+'</span><button type="button" class="sk-flower'+(f==="[WARIANT A]"?' on':'')+'" data-i="'+i+'" data-k="'+k+'" data-f="[WARIANT A]"><span>🅰️</span>[WARIANT A]</button><button type="button" class="sk-flower'+(f==="[WARIANT B]"?' on':'')+'" data-i="'+i+'" data-k="'+k+'" data-f="[WARIANT B]"><span>🅱️</span>[WARIANT B]</button></div>'}).join('')+'</div>';
+  el.querySelectorAll('.sk-flower').forEach(function(btn){btn.onclick=function(e){e.stopPropagation();var ii=+btn.dataset.i,kk=+btn.dataset.k;CH[ii][kk]=btn.dataset.f;btn.parentNode.querySelectorAll('.sk-flower').forEach(function(x){x.classList.toggle('on',x===btn)});pick(ii)}});
+  bw.appendChild(el);
+});
+function pick(i){sel=i;render()}
+function render(){
+  [].forEach.call(bw.querySelectorAll(".sk-bundle"),function(el,i){el.classList.toggle("on",i===sel);});
+  var b=BUNDLES[sel];
+  document.getElementById("skPrice").textContent=zl(b.price);document.getElementById("skOld").textContent=zl(b.old);
+  document.getElementById("skSave").textContent="−"+Math.round((1-b.price/b.old)*100)+"%";
+  document.getElementById("skCtaPrice").textContent=zl(b.price);
+  document.getElementById("skStickyPrice").innerHTML=zl(b.price)+' <s style="color:var(--sk-muted);font-weight:400">'+zl(b.old)+'</s>';
+}
+render();
 
 /* CART */
 var cart=[];
@@ -3457,7 +3592,7 @@ function drawCart(){
   var pr=document.getElementById("skProgress");
   if(n===0)pr.innerHTML="";else if(n<3)pr.innerHTML='Dodaj jeszcze <b>1 szt.</b> i zapłać tylko <b>'+zl(unitFor(n+1))+'</b> za sztukę<div class="bar"><i style="width:'+(n/3*100)+'%"></i></div>';else pr.innerHTML='🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za sztukę<div class="bar"><i style="width:100%"></i></div>';
   document.getElementById("skTotal").textContent=zl(tot);document.getElementById("skDisc").textContent="−"+zl(old-tot);
-  document.getElementById("skDrCount").textContent=cnt;var c=document.getElementById("skCount");c.textContent=cnt;c.hidden=!cnt;
+  document.getElementById("skDrCount").textContent=cnt;var c=document.getElementById("skCount");if(c){c.textContent=cnt;c.hidden=!cnt;}
   document.getElementById("skCheckout").disabled=!cnt;document.getElementById("skCheckout").style.opacity=cnt?1:.5;
 }
 drawCart();
