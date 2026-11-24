@@ -399,7 +399,7 @@ var BUNDLES=[
  {q:2,name:"Kup 2",desc:"Graj z kumplem · 84,99 zł / szt.",price:169.98,old:299.98,tag:"Najczęściej wybierany"},
  {q:3,name:"Kup 3",desc:"Najniższa cena · 73,32 zł / szt.",price:219.97,old:449.97,tag:"Najlepsza cena",gold:true}
 ];
-var sel=1;
+var sel=0;
 var bw=document.getElementById("skBundles");
 var CH=BUNDLES.map(function(b){var a=[];for(var k=0;k<b.q;k++)a.push(VAR_A);return a});
 function varBtn(i,k,f,cur,icon){return '<button type="button" class="sk-flower'+(cur===f?' on':'')+'" data-i="'+i+'" data-k="'+k+'" data-f="'+f+'"><span>'+icon+'</span>'+f+'</button>'}
@@ -415,8 +415,10 @@ function pick(i){sel=i;render()}
 function render(){
   [].forEach.call(bw.querySelectorAll(".sk-bundle"),function(el,i){el.classList.toggle("on",i===sel);});
   var b=BUNDLES[sel];
-  document.getElementById("skPrice").textContent=zl(b.price);document.getElementById("skOld").textContent=zl(b.old);
-  document.getElementById("skSave").textContent="−"+Math.round((1-b.price/b.old)*100)+"%";
+  /* cena w nagłówku zawsze za 1 sztukę */
+  var one=BUNDLES[0];
+  document.getElementById("skPrice").textContent=zl(one.price);document.getElementById("skOld").textContent=zl(one.old);
+  document.getElementById("skSave").textContent="−"+Math.round((1-one.price/one.old)*100)+"%";
   document.getElementById("skCtaPrice").textContent=zl(b.price);
   document.getElementById("skStickyPrice").innerHTML=zl(b.price)+' <s style="color:var(--sk-muted);font-weight:400">'+zl(b.old)+'</s>';
 }
