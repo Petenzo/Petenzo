@@ -104,14 +104,15 @@ add('14. KOSZYK, OKNO DOSTAWY, PASEK NA DOLE TELEFONU',
  rng(ln('<!-- CART DRAWER -->'), ln('<!-- CONTACT MODAL -->')) + '\n\n' + rng(ln('<div class="sk-sticky"'), ln('<script>')), css('drawer', 'modal') + '\n' + stickyCSS, jsr('/* CART */', '/* TABS */') + '\n\n' + jsr('/* STICKY */', '/* REVIEWS */'))
 
 out = ['# Prompty do każdej sekcji sklepu (ogólne)', '',
- 'Jak używać: otwórz nowy czat w Claude Code i wklej **najpierw PROMPT 0**, potem kolejne prompty po kolei (albo wszystkie naraz). '
+ 'Kolejność: od PROMPTU 0 do PROMPTU 14, po kolei. Każdy prompt to JEDNO pole do skopiowania (opis + kod razem). '
  'Na początku dopisz swoje dane, np.: „Marka: …, produkt: …, kolor przewodni: …, ceny: …, e-mail: …” – Claude podmieni kolor w tokenach :root i teksty w [NAWIASACH]. '
  'Kod w każdym prompcie to WZÓR wyglądu i działania – Claude ma go odtworzyć 1:1 w strukturze i zachowaniu, a treści, zdjęcia i kolor dopasować do mojego produktu.', '',
  'Dopisek do każdego promptu (już jest wliczony): *teksty sprzedażowe po polsku, psychologiczne, bez nawiasów [ ] w wersji końcowej; zdjęcia moje albo wygenerowane; wszystko ma działać na telefonie.*', '']
-for t, p, h, c, j in sec:
-    out += ['---', '', '## PROMPT ' + t, '', '```text', p, 'Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.', '```', '']
-    if h: out += ['**HTML**', '', '```html', h, '```', '']
-    if c: out += ['**CSS**', '', '```css', c, '```', '']
-    if j: out += ['**JS**', '', '```js', j, '```', '']
+for n, (t, p, h, c, j) in enumerate(sec):
+    body = [p, '', 'Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.']
+    if h: body += ['', '=== HTML ===', h]
+    if c: body += ['', '=== CSS ===', c]
+    if j: body += ['', '=== JS ===', j]
+    out += ['---', '', '## PROMPT ' + t, '', 'Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.', '', '````text', 'PROMPT ' + t, ''] + body + ['````', '']
 open(os.path.join(H, 'PROMPTY-SEKCJE.md'), 'w', encoding='utf-8').write('\n'.join(out))
 print('OK', len(sec), 'promptów,', sum(len(x) for x in out) // 1024, 'KB')

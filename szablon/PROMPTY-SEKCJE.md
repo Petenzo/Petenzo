@@ -1,6 +1,6 @@
 # Prompty do każdej sekcji sklepu (ogólne)
 
-Jak używać: otwórz nowy czat w Claude Code i wklej **najpierw PROMPT 0**, potem kolejne prompty po kolei (albo wszystkie naraz). Na początku dopisz swoje dane, np.: „Marka: …, produkt: …, kolor przewodni: …, ceny: …, e-mail: …” – Claude podmieni kolor w tokenach :root i teksty w [NAWIASACH]. Kod w każdym prompcie to WZÓR wyglądu i działania – Claude ma go odtworzyć 1:1 w strukturze i zachowaniu, a treści, zdjęcia i kolor dopasować do mojego produktu.
+Kolejność: od PROMPTU 0 do PROMPTU 14, po kolei. Każdy prompt to JEDNO pole do skopiowania (opis + kod razem). Na początku dopisz swoje dane, np.: „Marka: …, produkt: …, kolor przewodni: …, ceny: …, e-mail: …” – Claude podmieni kolor w tokenach :root i teksty w [NAWIASACH]. Kod w każdym prompcie to WZÓR wyglądu i działania – Claude ma go odtworzyć 1:1 w strukturze i zachowaniu, a treści, zdjęcia i kolor dopasować do mojego produktu.
 
 Dopisek do każdego promptu (już jest wliczony): *teksty sprzedażowe po polsku, psychologiczne, bez nawiasów [ ] w wersji końcowej; zdjęcia moje albo wygenerowane; wszystko ma działać na telefonie.*
 
@@ -8,14 +8,16 @@ Dopisek do każdego promptu (już jest wliczony): *teksty sprzedażowe po polsku
 
 ## PROMPT 0. FUNDAMENT (wklej jako pierwszy)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 0. FUNDAMENT (wklej jako pierwszy)
+
 Zbuduj jednostronicowy sklep z jednym produktem jako JEDEN plik index.html (HTML + CSS + czysty JS, bez frameworków). Wszystkie kolory, cienie i zaokrąglenia trzymaj w tokenach CSS w :root (prefiks --sk-), żeby zmiana koloru marki była w jednym miejscu – kolor podam osobno, na razie użyj tego niebieskiego. Czcionki: Poppins (tekst) + Russo One (nagłówki, logo). Mobile-first, max szerokość treści ok. 1200 px, sekcje z dużym oddechem, karty z miękkim cieniem i zaokrągleniem 20 px, przyciski CTA z gradientem i cieniem. Strona ma dwa „widoki”: #skHome (strona produktu) i #skPages (podstrony polityk) przełączane funkcją skShow(). Poniżej: <head>, bazowy CSS (tokeny, reset, przyciski, kontenery, animacje, wersja mobilna) i początek skryptu (zdjęcia, galeria). Kolejne prompty dokładają po jednej sekcji – wstawiaj je w tej kolejności.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!doctype html>
 <html lang="pl">
 <head>
@@ -31,11 +33,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
-```
 
-**CSS**
-
-```css
+=== CSS ===
 :root{
   --sk-bg:#FFFFFF;
   --sk-surface:#F6F8FC;
@@ -155,11 +154,8 @@ img[width][height]{height:auto}
 html.sk-exp #skDealSec{display:none!important}
 .sk-hero-grid>*{min-width:0}
 .sk-pills{flex-wrap:wrap!important;white-space:normal!important}
-```
 
-**JS**
-
-```js
+=== JS ===
 (function(){
 var IMG="{{IMG}}";
 var KWI=window.SK_IMG||{};function skSrc(f){return KWI[f]||IMG+"/"+f}
@@ -186,20 +182,22 @@ window.skGal=function(s){setG(gi+s)};setG(0);
  g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
  g.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
   if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))setG(gi+(dx<0?1:-1));x0=null},{passive:true});})();
-```
+````
 
 ---
 
 ## PROMPT 1. PASEK PROMOCJI + MENU Z LOGO
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 1. PASEK PROMOCJI + MENU Z LOGO
+
 Na samej górze cienki pasek w kolorze marki z napisami przesuwającymi się płynnie od prawej do lewej w nieskończoność (np. darmowa dostawa, zwroty, promocja, hasło marki – teksty powielone 3×, żeby nie było przerwy). Pod nim biały, przyklejony nagłówek: po lewej logo (mała ikona produktu ok. 46 px + nazwa sklepu i mały podpis wersalikami), na środku menu z kotwicami do sekcji, po prawej ikona koszyka z licznikiem. Na telefonie menu chowa się pod „hamburgerem” i wysuwa na pełny ekran.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <div class="sk-topbar" aria-label="Promocje">
   <div class="sk-marquee">
     <span>[KORZYŚĆ 1 – np. Darmowa wysyłka]</span><span>[KORZYŚĆ 2 – np. 14 dni na zwrot]</span><span>[PROMOCJA]</span><span>[HASŁO MARKI]</span>
@@ -245,11 +243,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
   </nav>
   <button class="sk-mm-close" onclick="skMenu(false)">Zamknij menu.</button>
 </div>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-topbar{background:var(--sk-primary-dark);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:9px 0}
 .sk-marquee{display:inline-flex;gap:42px;animation:sk-scroll 40s linear infinite;padding-left:42px}
 .sk-marquee span{display:inline-flex;align-items:center;gap:42px}
@@ -282,20 +277,22 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-mobile-menu nav{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
 .sk-mobile-menu nav a{font-size:24px;font-weight:700;text-decoration:none}
 .sk-mobile-menu .sk-mm-close{margin:0 auto 40px;background:none;border:0;text-decoration:underline;color:var(--sk-muted);font-size:15px}
-```
+````
 
 ---
 
 ## PROMPT 2. HERO: GALERIA, CENA, ZESTAWY + PASEK KORZYŚCI
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 2. HERO: GALERIA, CENA, ZESTAWY + PASEK KORZYŚCI
+
 Pierwszy ekran sprzedażowy w dwóch kolumnach. Lewa: galeria (duże zdjęcie z podpisem na dole + miniatury), na komputerze przyklejona (sticky) podczas przewijania, na telefonie przesuwana palcem (swipe), bez strzałek. Pierwsze zdjęcie = ludzie używający produktu. Prawa: plakietki („Hit…” + „Liczba sztuk ograniczona”), nazwa, gwiazdki z liczbą opinii i „X osób ogląda teraz”, cena + cena przekreślona + procent rabatu, lista 6 korzyści z ikonami „✓”, wybór zestawu 1/2/3 sztuki jako karty z radiem (plakietki „Najczęściej wybierany”, „Najlepsza cena”) – po kliknięciu zestawu pod nim pojawia się wybór wariantu dla każdej sztuki (dwa małe przyciski A/B na każdą sztukę), duży przycisk „Dodaj do koszyka · cena”, linijka zaufania i kolorowe logotypy płatności. Cena w nagłówku, przycisku i pasku na dole zmienia się po wyborze zestawu. Pod hero pełnoszeroki pasek w kolorze marki z 4 kafelkami (dostawa, zwroty, płatności, ocena) – na telefonie 2×2.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- HERO -->
 <section class="sk-hero" id="hero">
   <div class="sk-container sk-hero-grid">
@@ -349,11 +346,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     <div class="sk-strip-item"><span style="font-size:22px">⭐</span><div><b>[OCENA]</b><small>[liczba zadowolonych]</small></div></div>
   </div>
 </div>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-hero{padding:28px 0 56px}
 .sk-hero-grid{display:grid;gap:28px}
 @media(min-width:960px){.sk-hero-grid{grid-template-columns:1.05fr 1fr;gap:44px;align-items:start}}
@@ -447,11 +441,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-gallery-main{touch-action:pan-y}
 .sk-gallery-arrow{display:none!important}
 .sk-pills{flex-wrap:wrap!important;white-space:normal!important}
-```
 
-**JS**
-
-```js
+=== JS ===
 /* BUNDLES */
 /* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
 var SK_END;try{SK_END=+localStorage.getItem("skDealEnd")}catch(e){}
@@ -484,20 +475,22 @@ function render(){
   document.getElementById("skStickyPrice").innerHTML=zl(b.price)+' <s style="color:var(--sk-muted);font-weight:400">'+zl(b.old)+'</s>';
 }
 render();
-```
+````
 
 ---
 
 ## PROMPT 3. PROBLEM
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 3. PROBLEM
+
 Sekcja „ból klienta”: dwie kolumny – zdjęcie (na telefonie nad tekstem) i tekst: mały nadtytuł wersalikami, mocny nagłówek nazywający problem, 2 krótkie akapity budujące emocję i lista 3–4 punktów z czerwonym „✕”. Tło jasne, zdjęcie z zaokrągleniem i cieniem.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- PROBLEM -->
 <section class="sk-section sk-alt" id="problem">
   <div class="sk-container sk-two">
@@ -518,30 +511,29 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     <div class="sk-photo" style="aspect-ratio:4/3"><img src="{{IMG}}/problem.jpg" width="1200" height="900" loading="lazy" alt="[OPIS ZDJĘCIA]"></div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-two{display:grid;gap:32px;align-items:center}
 @media(min-width:900px){.sk-two{grid-template-columns:1fr 1fr;gap:56px}}
 .sk-pain{display:grid;gap:10px}
 .sk-pain li{background:#fff;border:1px solid var(--sk-border);border-radius:14px;padding:12px 14px}
 .sk-bridge{margin-top:18px;border-radius:16px;background:var(--sk-primary-soft);padding:16px 18px;font-size:15px;font-weight:600;color:var(--sk-primary-dark)}
-```
+````
 
 ---
 
 ## PROMPT 4. KOMU SPRAWISZ RADOŚĆ (3 KARTY)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 4. KOMU SPRAWISZ RADOŚĆ (3 KARTY)
+
 Wyśrodkowany nagłówek + podtytuł, pod spodem 3 karty obok siebie (na telefonie jedna pod drugą): zdjęcie u góry, krótki tytuł i 1–2 zdania. Karty lekko unoszą się po najechaniu.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- USES -->
 <section class="sk-section" id="zastosowania">
   <div class="sk-container">
@@ -555,11 +547,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     </div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-uses{display:grid;gap:18px}
 @media(min-width:768px){.sk-uses{grid-template-columns:repeat(3,1fr)}}
 .sk-use{overflow:hidden}
@@ -567,20 +556,22 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-use div{padding:18px 20px 22px}
 .sk-use h3{margin:0 0 6px;font-size:17px}
 .sk-use p{margin:0;color:var(--sk-muted);font-size:14px}
-```
+````
 
 ---
 
 ## PROMPT 5. ROZWIĄZANIE
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 5. ROZWIĄZANIE
+
 Lustrzane odbicie sekcji „Problem”: tekst po lewej, zdjęcie po prawej. Nadtytuł, nagłówek przedstawiający produkt jako rozwiązanie, akapit i lista korzyści z zielonym „✓”, na końcu przycisk CTA przewijający do wyboru zestawu.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- SOLUTION -->
 <section class="sk-section sk-alt">
   <div class="sk-container sk-two">
@@ -600,30 +591,29 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     </div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-two{display:grid;gap:32px;align-items:center}
 @media(min-width:900px){.sk-two{grid-template-columns:1fr 1fr;gap:56px}}
 .sk-pain{display:grid;gap:10px}
 .sk-pain li{background:#fff;border:1px solid var(--sk-border);border-radius:14px;padding:12px 14px}
 .sk-bridge{margin-top:18px;border-radius:16px;background:var(--sk-primary-soft);padding:16px 18px;font-size:15px;font-weight:600;color:var(--sk-primary-dark)}
-```
+````
 
 ---
 
 ## PROMPT 6. W 3 KROKACH
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 6. W 3 KROKACH
+
 Nagłówek „Jak to działa” + 3 kroki w rzędzie (na telefonie w kolumnie): duży numer w kółku w kolorze marki, zdjęcie, tytuł kroku i jedno zdanie. Między krokami subtelna linia/strzałka.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- HOW IT WORKS -->
 <section class="sk-section" id="jak-dziala">
   <div class="sk-container">
@@ -638,11 +628,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     <p class="sk-steps-foot">[ZDANIE PODSUMOWANIA KROKÓW]</p>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-steps{display:grid;gap:18px}
 @media(min-width:768px){.sk-steps{grid-template-columns:repeat(3,1fr)}}
 .sk-step{overflow:hidden;position:relative}
@@ -652,20 +639,22 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-step h3{margin:0 0 6px;font-size:17px}
 .sk-step p{margin:0;color:var(--sk-muted);font-size:14px}
 .sk-steps-foot{text-align:center;margin-top:26px;color:var(--sk-muted);font-size:14.5px}
-```
+````
 
 ---
 
 ## PROMPT 7. CO DOSTAJESZ (ZAKŁADKI)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 7. CO DOSTAJESZ (ZAKŁADKI)
+
 Sekcja z 3 zakładkami (np. „W zestawie”, „Specyfikacja”, „Dla kogo”): przyciski-pigułki u góry, aktywna wypełniona kolorem marki; treść zakładki to lista lub krótki tekst obok zdjęcia. Przełączanie bez przeładowania.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- WHAT YOU GET -->
 <section class="sk-section sk-alt" id="zestaw">
   <div class="sk-container">
@@ -691,11 +680,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     </div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-tabs-list{display:flex;justify-content:center;gap:6px;background:var(--sk-surface);border-radius:999px;padding:6px;width:max-content;max-width:100%;margin:0 auto 22px;overflow-x:auto}
 .sk-tabs-list button{border:0;background:none;border-radius:999px;padding:10px 18px;font-weight:600;font-size:14px;color:var(--sk-muted);white-space:nowrap}
 .sk-tabs-list button.on{background:#fff;color:var(--sk-primary);box-shadow:0 2px 10px rgba(0,0,0,.08)}
@@ -706,27 +692,26 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-tab p{margin:0;color:var(--sk-muted);font-size:14.5px}
 .sk-tab-panel{background:var(--sk-surface);border-radius:16px;padding:18px 20px}
 .sk-tab-panel small{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sk-gold);margin-bottom:10px}
-```
 
-**JS**
-
-```js
+=== JS ===
 /* TABS */
 window.skTab=function(i){document.querySelectorAll(".sk-tabs-list button").forEach(function(b,k){b.classList.toggle("on",k===i)});document.querySelectorAll(".sk-tab").forEach(function(t,k){t.classList.toggle("on",k===i)})};
-```
+````
 
 ---
 
 ## PROMPT 8. TABELA PORÓWNAWCZA (MY vs INNI)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 8. TABELA PORÓWNAWCZA (MY vs INNI)
+
 Tabela 3 kolumny: cecha | nasz produkt (kolumna wyróżniona kolorem marki, z logo) | „zwykłe rozwiązanie”. Wiersze z „✓” i „✕”/„–”, pod tabelą krótka legenda co znaczy „–”. Na telefonie tabela mieści się bez przewijania w bok.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- COMPARE -->
 <section class="sk-section" id="porownanie">
   <div class="sk-container">
@@ -748,11 +733,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     </div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .sk-table{width:100%;min-width:680px;border-collapse:separate;border-spacing:0;font-size:14px;background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--sk-border)}
 .sk-table th,.sk-table td{padding:15px 14px;text-align:center;border-bottom:1px solid var(--sk-border)}
@@ -764,20 +746,22 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-yes{color:var(--sk-primary);font-weight:800;font-size:17px}
 .sk-no{color:#C3BBAF;font-weight:700;font-size:17px}
 .sk-mid{color:#C3BBAF;font-weight:800}
-```
+````
 
 ---
 
 ## PROMPT 9. OPINIE (JEDEN PASEK PRZEWIJANY W LEWO)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 9. OPINIE (JEDEN PASEK PRZEWIJANY W LEWO)
+
 Nagłówek z oceną (np. 4,9/5 i liczba opinii). Pod spodem JEDEN rząd kart opinii, który sam płynnie przesuwa się w lewo w pętli (animacja startuje, gdy sekcja pojawi się na ekranie, translate3d, bez zacięć; pauza po najechaniu tylko na komputerze). Karta: awatar w kółku (zdjęcie krajobrazu, nie twarz), imię + miasto, 5 gwiazdek, „Zweryfikowany zakup”, tekst opinii – wszystkie opinie podobnej długości, bez dat. 12 opinii z polskimi imionami.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- REVIEWS -->
 <section class="sk-section sk-alt" id="opinie">
   <div class="sk-container">
@@ -790,11 +774,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
   </div>
   <div class="sk-rev-track"><div class="sk-rev-row" id="skRev1"></div></div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-rev-head{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:28px}
 .sk-rev-score{display:flex;align-items:center;gap:10px;font-size:15px}
 .sk-rev-score b{font-size:28px}
@@ -813,11 +794,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-rev .who b{font-size:13.5px;display:block}
 .sk-rev .who small{font-size:11.5px;color:var(--sk-ok);font-weight:600}
 .sk-rev .var{font-size:11.5px;color:var(--sk-muted)}
-```
 
-**JS**
-
-```js
+=== JS ===
 /* REVIEWS */
 var R=[
  ["Amelia","Kraków","opinia-1.jpg","","[TREŚĆ OPINII 1 – 2–3 zdania, konkretna korzyść, ok. 25 słów]"],
@@ -837,20 +815,22 @@ function card(r){return '<article class="sk-card sk-rev"><img src="'+skSrc(r[2])
 document.getElementById("skRev1").innerHTML=(R.concat(R)).map(card).join("");
 (function(){var row=document.getElementById("skRev1");row.querySelectorAll("img").forEach(function(i){i.decoding="async"});
  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){row.classList.add("run");io.disconnect()}},{threshold:.05});io.observe(row)}else{row.classList.add("run")}})();
-```
+````
 
 ---
 
 ## PROMPT 10. SEKCJA Z 4 PUNKTAMI (DLA KOGO / DLACZEGO)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 10. SEKCJA Z 4 PUNKTAMI (DLA KOGO / DLACZEGO)
+
 Dwie kolumny: duże zdjęcie i blok tekstu z nagłówkiem oraz 4 punktami z ikonami w kółkach (każdy punkt w jednej linijce: pogrubiony początek + dopowiedzenie). Na końcu przycisk CTA.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- ADULT -->
 <section class="sk-section sk-adult">
   <div class="sk-container sk-two">
@@ -869,26 +849,25 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     </div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-adult{background:var(--sk-gold-soft)}
-```
+````
 
 ---
 
 ## PROMPT 11. KARTA PROMOCJI 48 H Z ANIMACJAMI
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 11. KARTA PROMOCJI 48 H Z ANIMACJAMI
+
 Duża karta w kolorze marki: po lewej zdjęcie produktu, które delikatnie unosi się w górę i w dół (float) z iskierkami; po prawej nazwa z przelatującym połyskiem co 1,5 s, plakietka z dzwoniącym zegarem, tekst „cena promocyjna tylko przez 48 godzin” + „Liczba sztuk ograniczona”, licznik GG:MM:SS (sekundy „tykają”) i przycisk CTA z lekkim drganiem co 2 s. Licznik liczony od PIERWSZEJ wizyty na danym urządzeniu (koniec zapisany w localStorage) – przy kolejnej wizycie czas leci dalej. Po upływie 48 h cała ta sekcja znika (ceny zostają bez zmian).
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- FINAL CTA: 48h -->
 <section class="sk-section sk-alt" id="skDealSec">
   <div class="sk-container">
@@ -911,11 +890,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     </div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-final{text-align:center;max-width:680px;margin:0 auto;padding:36px 24px}
 .sk-final .ic{width:56px;height:56px;border-radius:16px;background:var(--sk-gradient);display:grid;place-items:center;margin:0 auto 16px}
 @keyframes sk-scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
@@ -954,11 +930,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 @keyframes sk-nudge{0%,60%,100%{transform:translateX(0)}68%{transform:translateX(-5px)}76%{transform:translateX(5px)}84%{transform:translateX(-3px)}92%{transform:translateX(2px)}}
 .sk-beat{display:inline-block;animation:sk-pulse 1s ease-in-out infinite}
 .sk-limit{display:inline-block;margin-top:8px;font-weight:800;color:var(--sk-sale);}
-```
 
-**JS**
-
-```js
+=== JS ===
 /* PROMO 48h: liczona od pierwszej wizyty na tym urządzeniu */
 var SK_END;try{SK_END=+localStorage.getItem("skDealEnd")}catch(e){}
 if(!SK_END){SK_END=Date.now()+48*3600*1000;try{localStorage.setItem("skDealEnd",SK_END)}catch(e){}}
@@ -969,20 +942,22 @@ var skDEnd=SK_END;
 function dtick(){var s=Math.max(0,Math.ceil((skDEnd-Date.now())/1000));
   document.getElementById("skDH").textContent=String(Math.floor(s/3600)).padStart(2,"0");document.getElementById("skDM").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");var ds=document.getElementById("skDS");ds.textContent=String(s%60).padStart(2,"0");ds.classList.remove("tick");void ds.offsetWidth;ds.classList.add("tick")}
 dtick();var skDT=setInterval(function(){dtick();if(!SK_EXP&&Date.now()>=SK_END){clearInterval(skDT);location.reload()}},1000);
-```
+````
 
 ---
 
 ## PROMPT 12. FAQ (NAJCZĘŚCIEJ ZADAWANE PYTANIA)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 12. FAQ (NAJCZĘŚCIEJ ZADAWANE PYTANIA)
+
 Wyśrodkowany nagłówek + mail kontaktowy pod spodem. Lista 8 pytań jako akordeon, wyśrodkowana, wąska kolumna: każde pytanie w jednej linijce z numerem (01, 02…) po lewej i plusem po prawej, który obraca się w „×”; odpowiedź rozwija się płynnie. Otwarte jest jedno pytanie naraz.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- FAQ -->
 <section class="sk-section" id="faq">
   <div class="sk-container">
@@ -993,11 +968,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     <div id="skFaq" class="sk-faq-list"></div>
   </div>
 </section>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-faq-grid{display:grid;gap:28px}
 @media(min-width:900px){.sk-faq-grid{grid-template-columns:minmax(0,1fr) 1.4fr;gap:48px}}
 .sk-faq-list{max-width:760px;margin:0 auto}
@@ -1010,11 +982,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-acc.open button::after{transform:rotate(45deg)}
 .sk-acc .a{display:none;padding:0 4px 24px;color:var(--sk-muted);font-size:14.5px}
 .sk-acc.open .a{display:block}
-```
 
-**JS**
-
-```js
+=== JS ===
 /* FAQ */
 var F=[
  ["[PYTANIE 1]","[ODPOWIEDŹ 1]"],
@@ -1028,20 +997,22 @@ var F=[
 ];
 document.getElementById("skFaq").innerHTML=F.map(function(f,i){return '<div class="sk-acc"><button><span class="q"><span class="n">'+String(i+1).padStart(2,'0')+'</span>'+f[0]+'</span></button><div class="a">'+f[1]+'</div></div>'}).join("");
 document.querySelectorAll("#skFaq .sk-acc button").forEach(function(b){b.onclick=function(){var p=b.parentNode,o=p.classList.contains("open");document.querySelectorAll("#skFaq .sk-acc").forEach(function(x){x.classList.remove("open")});if(!o)p.classList.add("open")}});
-```
+````
 
 ---
 
 ## PROMPT 13. STOPKA + WSZYSTKIE POLITYKI (REGULAMIN, PRYWATNOŚĆ, WYSYŁKA, ZWROTY, KONTAKT)
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 13. STOPKA + WSZYSTKIE POLITYKI (REGULAMIN, PRYWATNOŚĆ, WYSYŁKA, ZWROTY, KONTAKT)
+
 Stopka od logo do samego dołu: po lewej logo + nazwa, krótki opis sklepu, mail i informacja o kontakcie; po prawej kolumna „Informacje” z linkami: Regulamin, Polityka prywatności, Polityka wysyłki, Zwroty i reklamacje, Kontakt. Na dole pasek z „© rok” i skrótem zaufania. Kliknięcie linku NIE przeładowuje strony – pokazuje podstronę (widok #skPages) w tym samym stylu: nagłówek, punkty numerowane z tytułem i akapitem, przycisk „← Wróć do sklepu”, a pod treścią każdej polityki formularz „Skontaktuj się z nami” (imię, e-mail, wiadomość → otwiera mail do sklepu). Teksty polityk ogólne, trochę dłuższe, bez ryzykownych obietnic (bez „wysyłamy w 24 h”, bez konkretnych godzin odpowiedzi; terminy reklamacji/zwrotu pieniędzy „w terminie przewidzianym przepisami prawa”, 14 dni na odstąpienie). Sklep prowadzi [NAZWA SKLEPU], kontakt tylko przez [E-MAIL], BEZ imienia, nazwiska i adresu.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- POLICY PAGES -->
 <main id="skPages"></main>
 
@@ -1078,11 +1049,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
     <p>Skontaktuj się tutaj z nami: <a href="mailto:[E-MAIL KONTAKTOWY]" style="color:var(--sk-primary);font-weight:700">[E-MAIL KONTAKTOWY]</a></p>
   </div>
 </div>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-footer{background:var(--sk-surface);padding:52px 0 26px;border-top:1px solid var(--sk-border)}
 .sk-footer-grid{display:grid;gap:30px}
 @media(min-width:768px){.sk-footer-grid{grid-template-columns:1.3fr 1fr}}
@@ -1119,11 +1087,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-ship-opt.on{background:var(--sk-primary-dark);color:#fff;border-color:var(--sk-primary-dark)}
 .sk-ship-opt.on small{color:rgba(255,255,255,.75)}
 .sk-ship-opt.on .p{color:#9FE0B8}
-```
 
-**JS**
-
-```js
+=== JS ===
 /* POLICY PAGES */
 var SELLER="[NAZWA SKLEPU]";
 var L=function(k,t){return "<a href='#' onclick=\"skShow('"+k+"');return false\" style='color:var(--sk-primary)'>"+t+"</a>"};
@@ -1179,20 +1144,22 @@ window.skShow=function(k){var home=k==="home";document.getElementById("skHome").
   document.querySelectorAll("#skPages .sk-page").forEach(function(p){p.classList.toggle("on",p.id==="kwp-"+k)});
   if(!home){window.scrollTo(0,0);document.getElementById("skSticky").classList.remove("on")}};
 })();
-```
+````
 
 ---
 
 ## PROMPT 14. KOSZYK, OKNO DOSTAWY, PASEK NA DOLE TELEFONU
 
-```text
+Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.
+
+````text
+PROMPT 14. KOSZYK, OKNO DOSTAWY, PASEK NA DOLE TELEFONU
+
 Koszyk jako panel wysuwany z prawej (z przyciemnieniem tła): pozycje ze zdjęciem, nazwą, wybranym wariantem, licznikiem –/+ i koszem; pasek postępu „Dodaj jeszcze 1 szt. i zapłać mniej”; podsumowanie (cena regularna, łączny rabat, razem); przycisk „Realizuj zakup” i logotypy płatności. Koszyk zapisuje się w localStorage. „Realizuj zakup” otwiera małe okno wyboru dostawy (np. „📦 Paczkomat – GRATIS”, „🚚 Kurier pod adres – GRATIS”, dopisek, że adres poda się w kasie) i przycisk „Przejdź do płatności”, który od razu przenosi do kasy (w Shopify: link /cart/IDwariantu:ilość,… – bez czekania). Na telefonie przy przewijaniu pojawia się przyklejony dolny pasek z nazwą, ceną i przyciskiem „Do koszyka”; po dodaniu wyskakuje mały komunikat „Dodano do koszyka ✓”.
-Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści dopasuj do mojego produktu.
-```
 
-**HTML**
+Wzoruj się dokładnie na poniższym kodzie. Zachowaj klasy z prefiksem sk- i tokeny --sk-, treści i zdjęcia dopasuj do mojego produktu.
 
-```html
+=== HTML ===
 <!-- CART DRAWER -->
 <div class="sk-overlay" id="skOverlay" onclick="skCart(false)"></div>
 <aside class="sk-drawer" id="skDrawer" aria-label="Koszyk">
@@ -1225,11 +1192,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
   <button class="sk-btn small" onclick="skAddBundle()">Do koszyka</button>
 </div>
 <div class="sk-toast" id="skToast">Dodano do koszyka ✓</div>
-```
 
-**CSS**
-
-```css
+=== CSS ===
 .sk-overlay{position:fixed;inset:0;background:rgba(15,25,20,.55);z-index:90;opacity:0;pointer-events:none;transition:opacity .2s}
 .sk-overlay.on{opacity:1;pointer-events:auto}
 .sk-drawer{position:fixed;top:0;right:0;height:100%;width:100%;max-width:440px;background:#fff;z-index:95;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column}
@@ -1277,11 +1241,8 @@ Wzoruj się dokładnie na poniższym kodzie (HTML/CSS/JS). Zachowaj klasy z pref
 .sk-sticky .n{font-size:13px;font-weight:700;line-height:1.2}
 .sk-sticky .p{font-size:13px;color:var(--sk-primary);font-weight:700}
 .sk-sticky .sk-btn{margin-left:auto}
-```
 
-**JS**
-
-```js
+=== JS ===
 /* CART */
 var cart=[];
 function save(){try{localStorage.setItem("skCart2",JSON.stringify(cart))}catch(e){}}
@@ -1321,4 +1282,4 @@ window.skScrollBuy=function(){skShow("home");document.getElementById("skBundles"
 
 /* STICKY */
 window.addEventListener("scroll",function(){document.getElementById("skSticky").classList.toggle("on",window.scrollY>700&&document.getElementById("skHome").classList.contains("on"))},{passive:true});
-```
+````
