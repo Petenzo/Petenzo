@@ -125,3 +125,17 @@ for n, (t, p, h, c, j) in enumerate(sec):
     out += ['---', '', '## PROMPT ' + t, '', 'Skopiuj całe pole poniżej jednym kliknięciem i wklej do Claude.', '', '````text', 'PROMPT ' + t, ''] + body + ['````', '']
 open(os.path.join(H, 'PROMPTY-SEKCJE.md'), 'w', encoding='utf-8').write('\n'.join(out))
 print('OK', len(sec), 'promptów,', sum(len(x) for x in out) // 1024, 'KB')
+
+# ---- JEDEN PROMPT NA CAŁY SKLEP ----
+intro = ('Zbuduj mi cały jednostronicowy sklep z jednym produktem jako JEDEN plik index.html – dokładnie według poniższego kodu-wzoru '
+ '(układ, wygląd, animacje i działanie 1:1), tylko z MOIMI danymi. Nie pytaj o nic – brakujące teksty wymyśl sam: sprzedażowe, psychologiczne, po polsku.\n\n'
+ 'MOJE DANE (wstaw wszędzie zamiast [NAWIASÓW]):\nMarka: …\nProdukt: … (2–3 zdania)\nKolor przewodni: … (podmień tylko tokeny --sk- w :root)\n'
+ 'Ceny: 1 szt. … zł (przekreślona … zł), 2 szt. … zł, 3 szt. … zł\nWarianty: … / …\nE-mail: …\nZdjęcia: w załączniku (albo: wygeneruj)\n\n'
+ 'Kolejność sekcji: 1 góra strony (pasek z napisami, menu, koszyk, galeria, cena, zestawy z wariantami, płatności w kolorach, pasek 4 korzyści), '
+ '2 problem, 3 komu sprawisz radość, 4 rozwiązanie, 5 w 3 krokach, 6 co dostajesz (zakładki), 7 tabela porównawcza, 8 opinie (pasek w lewo), '
+ '9 „nie tylko dla…”, 10 karta 48 h (licznik od pierwszej wizyty, po 48 h znika) + FAQ, 11 stopka + regulamin, prywatność, wysyłka, zwroty, kontakt '
+ '(teksty ogólne, bez ryzykownych obietnic, bez imienia, nazwiska i adresu – tylko e-mail). Koszyk, okno dostawy i pasek na dole telefonu działają jak we wzorze. '
+ 'Wszystko ma działać na telefonie.\n\n=== CAŁY KOD WZORU ===\n')
+open(os.path.join(H, 'PROMPT-CALY-SKLEP.md'), 'w', encoding='utf-8').write(
+ '# Jeden prompt – cały sklep\n\nSkopiuj całe pole poniżej jednym kliknięciem, uzupełnij „MOJE DANE” i wklej do Claude.\n\n````text\n' + intro + s + '\n````\n')
+print('OK PROMPT-CALY-SKLEP.md', len(s)//1024, 'KB')
