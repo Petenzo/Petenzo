@@ -24,7 +24,8 @@ export function build({ stage, words }) {
   const tower = (x, z, w, h, col = '#c9a27a', roof = null) => { // a stone tower with battlements
     const g = new THREE.Group(); g.position.set(x, 0, z);
     const m = mesh(new THREE.BoxGeometry(w, h, w), toon(col)); m.position.y = h / 2; g.add(m);
-    for (let i = 0; i < 4; i++) for (let k = 0; k < 3; k++) { const c = mesh(new THREE.BoxGeometry(w / 5, w / 5, w / 5), toon(col)); const a = (k - 1) * w * 0.38; const p = [[a, w / 2], [a, -w / 2], [w / 2, a], [-w / 2, a]][i]; c.position.set(p[0], h + w / 10, p[1]); g.add(c); }
+    const n = Math.max(3, Math.round(w / 0.7)), cs = w / (n * 2 - 1);
+    for (let k = 0; k < n; k++) { const a = -w / 2 + cs / 2 + k * cs * 2; for (const [px, pz] of [[a, w / 2 - cs / 2], [a, -w / 2 + cs / 2], [w / 2 - cs / 2, a], [-w / 2 + cs / 2, a]]) { const c = mesh(new THREE.BoxGeometry(cs, cs * 1.2, cs), toon(col)); c.position.set(px, h + cs * 0.6, pz); g.add(c); } }
     if (roof) { const r = mesh(new THREE.ConeGeometry(w * 0.75, w * 1.1, 4), toon(roof)); r.rotation.y = Math.PI / 4; r.position.y = h + w * 0.55; g.add(r); }
     stage.add(g); return g;
   };
@@ -39,8 +40,11 @@ export function build({ stage, words }) {
   const cyp = (x, z, s = 1) => { const g = new THREE.Group(); const c = mesh(new THREE.ConeGeometry(0.7 * s, 5 * s, 10), toon('#3f6a3a')); c.position.y = 2.6 * s; g.add(c); g.position.set(x, 0, z); stage.add(g); };
   for (const [x, z, s] of [[-14, -10, 1.1], [-16, -12, 0.9], [15, -14, 1.2], [18, -11, 1], [-26, 4, 1.2], [27, 2, 1.1], [-8, -26, 1], [9, -27, 1.1]]) cyp(x, z, s);
   const hill = mesh(new THREE.SphereGeometry(16, 24, 12), toon('#a9b878')); hill.scale.y = 0.35; hill.position.set(0, -1, -48); stage.add(hill);
-  tower(-3.2, -46, 4, 9, '#c9a27a', '#a8483a'); tower(3.8, -46.5, 3.2, 7, '#c9a27a'); tower(0.4, -44, 6, 4.5, '#d4b48a');
-  flag(-3.2, -46, '#2f5fa8', 13);
+  tower(-3.6, -46, 3.6, 9, '#c9a27a', '#a8483a'); tower(4.0, -46, 3.0, 7.5, '#c9a27a', '#a8483a');
+  { const cw = mesh(new THREE.BoxGeometry(7.6, 4.2, 1.4), toon('#d4b48a')); cw.position.set(0.2, 2.1, -45.4); stage.add(cw);
+    for (let k = 0; k < 9; k++) { const c = mesh(new THREE.BoxGeometry(0.45, 0.55, 1.4), toon('#d4b48a')); c.position.set(-3.4 + 0.2 + k * 0.85, 4.47, -45.4); stage.add(c); }
+    const gate = mesh(new THREE.PlaneGeometry(1.6, 2.4), toon('#3a2a20')); gate.position.set(0.2, 1.2, -44.68); stage.add(gate); }
+  flag(-3.6, -46, '#2f5fa8', 14);
 
   // BOLOGNA'S WALLS AND GATE (x = 300)
   const brick = K.TEX2.bricks('#b5623b'); brick.repeat.set(12, 2);
@@ -100,7 +104,7 @@ export function build({ stage, words }) {
 
   const reset = () => {
     for (const a of ALL) { a.g.visible = false; a.set({ pose: 'idle', expr: 'neutral', walk: null, flip: false, hop: 0, lean: 0, squash: 0, talk: false, hold: null, bubble: null }); a.g.position.y = 0; }
-    B1.position.set(304.5, 1.05, -3); B1.rotation.set(0, 0, 0); door.position.y = 2.5; rope.visible = true;
+    B1.position.set(304.5, 1.05, -3); B1.rotation.set(0, 0, 0); door.position.y = 2.5; rope.visible = false;
   };
   const show = (a, x, z, o = {}) => { a.g.visible = true; a.at(x, 0, z).set(o); return a; };
   const lift = (a, b, up = 0.35) => { const p = a.g.position; b.position.set(p.x, a.top + up, p.z + 0.06); }; // bucket held over the head
@@ -133,9 +137,9 @@ export function build({ stage, words }) {
   const shot = (from, light, cam, update, extra = {}) => S.push({ from, light, cam, update: (tt, c) => { reset(); update(tt, c); }, ...extra });
 
   // 1. "In 1325, two Italian cities went to war."  two armies face each other across the road
-  shot(0, 'day', keys([{ t: 0, pos: [0, 2.2, 10.5], look: [0, 1.3, -0.5], fov: 46 }, { t: t.prize, pos: [0, 1.6, 8.2], look: [0, 1.3, -0.5], fov: 46 }]), (tt) => {
-    army(REDS, 12, 1.9, 0.5, 3, 0.85, (i) => ({ flip: true, expr: 'angry', pose: i % 4 === 0 && tt > 2.8 ? 'point' : 'idle' }));
-    army(BLUES, 9, -1.9, 0.5, 3, 0.85, () => ({ expr: 'determined' }));
+  shot(0, 'day', keys([{ t: 0, pos: [0, 2.0, 8.6], look: [0, 1.2, -1], fov: 46 }, { t: t.prize, pos: [0, 1.6, 7.6], look: [0, 1.2, -1], fov: 46 }]), (tt) => {
+    army(REDS, 10, 1.15, 0.5, 2, 0.7, (i) => ({ flip: true, expr: 'angry', pose: i % 4 === 0 && tt > 2.8 ? 'point' : 'idle' }));
+    army(BLUES, 8, -1.15, 0.5, 2, 0.7, () => ({ expr: 'determined' }));
   }, { dof: () => ({ target: [0, 1.4, 0], cInf: 5 }) });
   // 2. "The winner's prize?"
   shot(t.prize, 'day', creep(() => ({ pos: [0.3, 1.55, 3.2], look: [0.1, 1.42, 0.2], fov: 40 }), t.prize, 0.04), () => {
@@ -143,21 +147,21 @@ export function build({ stage, words }) {
   }, { dof: () => ({ target: [0.1, 1.45, 0.2], cInf: 10 }) });
   // 3. "A wooden bucket."
   shot(t.wooden, 'day', creep(() => ({ pos: [304.5, 1.55, -0.4], look: [304.5, 1.15, -3], fov: 40 }), t.wooden, 0.05), () => {
-    rope.position.set(304.5, 1.7, -3); rope.scale.y = 0.6;
+    rope.visible = true; rope.position.set(304.5, 1.7, -3); rope.scale.y = 0.6;
   }, { dof: () => ({ target: [304.5, 1.2, -3], cInf: 12 }) });
   // 4. "Modena and Bologna were neighbours, about forty kilometres apart."
   shot(t.neigh, 'day', keys([{ t: t.neigh, pos: [-150, 26, 32], look: [-150, 0, -7], fov: 50 }, { t: t.hated, pos: [-150, 20, 28], look: [-150, 0.5, -7], fov: 50 }]), () => {});
   // 5. "And they hated each other."
-  shot(t.hated, 'day', creep(() => ({ pos: [0, 1.25, 5.6], look: [0, 1.15, 0.5], fov: 40 }), t.hated, 0.03), () => {
+  shot(t.hated, 'day', creep(() => ({ pos: [0, 1.25, 6.6], look: [0, 1.15, 0.5], fov: 40 }), t.hated, 0.03), () => {
     show(MNOB, -0.7, 0.5, { pose: 'hips', expr: 'angry', bubble: { kind: 'anger', t0: t.hated + 0.4 } });
     show(BNOB, 0.7, 0.5, { pose: 'point', expr: 'angry', flip: true, bubble: { kind: 'anger', t0: t.hated + 0.7 } });
   }, { dof: () => ({ target: [0, 1.3, 0.5], cInf: 8 }) });
   // 6. "Bologna backed the Pope."
-  shot(t.pope, 'day', creep(() => ({ pos: [1.0, 1.45, 4.6], look: [1.0, 1.35, 0.5], fov: 40 }), t.pope, 0.04), () => {
+  shot(t.pope, 'day', creep(() => ({ pos: [0.85, 1.45, 5.0], look: [0.85, 1.35, 0.5], fov: 40 }), t.pope, 0.04), () => {
     show(BNOB, 0.7, 0.5, { pose: 'idle', expr: 'smug', hold: 'flag' });
   }, { dof: () => ({ target: [0.7, 1.4, 0.5], cInf: 10 }) });
   // 7. "Modena backed the Emperor."
-  shot(t.emperor, 'day', creep(() => ({ pos: [-0.4, 1.45, 4.6], look: [-0.4, 1.35, 0.5], fov: 40 }), t.emperor, 0.04), () => {
+  shot(t.emperor, 'day', creep(() => ({ pos: [-0.55, 1.45, 5.0], look: [-0.55, 1.35, 0.5], fov: 40 }), t.emperor, 0.04), () => {
     show(MNOB, -0.7, 0.5, { pose: 'idle', expr: 'smug', hold: 'flag' });
   }, { dof: () => ({ target: [-0.7, 1.4, 0.5], cInf: 10 }) });
   // 8. "That November, Bologna marched out with around thirty thousand soldiers."
@@ -166,8 +170,8 @@ export function build({ stage, words }) {
     army(REDS, 30, 0, z, 5, 1.15, () => ({ walk: { speed: 1.8 }, expr: 'determined', flip: true }));
   });
   // 9. "Modena had about seven thousand."
-  shot(t.seven, 'storm', creep(() => ({ pos: [-2.5, 1.7, 7.2], look: [-2.5, 1.2, 0.5], fov: 42 }), t.seven, 0.03), () => {
-    army(BLUES, 6, -2.5, 0.8, 3, 1.0, (i) => ({ expr: 'worried', bubble: i === 1 ? { kind: 'sweat', t0: t.seven + 0.6 } : null }));
+  shot(t.seven, 'storm', creep(() => ({ pos: [-2.5, 1.7, 8.4], look: [-2.5, 1.2, 0.2], fov: 42 }), t.seven, 0.03), () => {
+    army(BLUES, 6, -2.5, 0.8, 3, 0.8, (i) => ({ expr: 'worried', bubble: i === 1 ? { kind: 'sweat', t0: t.seven + 0.6 } : null }));
   });
   // 10. "Easy win."
   shot(t.easy, 'storm', creep(() => ({ pos: [0.2, 1.0, 3.6], look: [0.1, 1.55, 0.5], fov: 40 }), t.easy, 0.04), () => {
@@ -212,8 +216,8 @@ export function build({ stage, words }) {
     show(HERO, 300, 2, { pose: 'arms_up', expr: 'grin', bubble: { kind: '$', t0: t.gold + 0.3 } });
   }, { dof: () => ({ target: [300, 1.5, 2], cInf: 10 }) });
   // 19. "Prisoners."
-  shot(t.prisoners, 'golden', creep(() => ({ pos: [297.5, 1.5, 4.6], look: [298.2, 1.3, 1.2], fov: 40 }), t.prisoners, 0.04), () => {
-    show(REDS[0], 297.7, 1.2, { pose: 'arms_up', expr: 'worried', bubble: 'sweat' }); show(BLUES[0], 298.8, 1.0, { pose: 'point', expr: 'smug', flip: true });
+  shot(t.prisoners, 'golden', creep(() => ({ pos: [298.25, 1.4, 7.4], look: [298.25, 1.15, 1.1], fov: 40 }), t.prisoners, 0.04), () => {
+    show(REDS[0], 297.85, 1.2, { pose: 'arms_up', expr: 'worried', bubble: 'sweat' }); show(BLUES[0], 298.65, 1.0, { pose: 'point', expr: 'smug', flip: true });
   }, { dof: () => ({ target: [298.2, 1.4, 1.2], cInf: 9 }) });
   // 20. "Maybe the whole city."
   shot(t.city, 'golden', keys([{ t: t.city, pos: [301.5, 0.6, 6], look: [300, 6, -12], fov: 50 }, { t: t.instead, pos: [301.5, 0.5, 4.5], look: [300, 7, -12], fov: 52 }]), () => {
@@ -222,38 +226,38 @@ export function build({ stage, words }) {
   // 21. "Instead, they walked up to a well."
   shot(t.instead, 'golden', () => ({ pos: [307.2, 1.6, 4.4], look: [305.3, 1.15, -2.6], fov: 42 }), (tt) => {
     const u = prog(tt, t.instead, 1.6);
-    show(HERO, lerp(309, 305.9, u), lerp(1, -2.4, u), { walk: u < 1 ? { speed: 1.6 } : null, expr: u < 1 ? 'neutral' : 'smile', flip: true, bubble: u >= 1 ? { kind: 'idea', t0: t.instead + 1.7 } : null });
-    rope.position.set(304.5, 1.7, -3); rope.scale.y = 0.6;
+    show(HERO, lerp(306.6, 305.9, u), lerp(0.2, -2.4, u), { walk: u < 1 ? { speed: 1.6 } : null, expr: u < 1 ? 'neutral' : 'smile', flip: true, bubble: u >= 1 ? { kind: 'idea', t0: t.instead + 1.7 } : null });
+    rope.visible = true; rope.position.set(304.5, 1.7, -3); rope.scale.y = 0.6;
   });
   // 22. "And stole the bucket."
   shot(t.stole, 'golden', creep(() => ({ pos: [305.4, 1.3, 1.6], look: [305.7, 1.6, -2.4], fov: 40 }), t.stole, 0.03), (tt) => {
     const up = tt > t.stole + 0.4;
     show(HERO, 305.9, -2.4, { pose: up ? 'arms_up' : 'idle', expr: up ? 'laugh' : 'smug', hop: up ? Math.max(0, Math.sin((tt - t.stole - 0.4) * 9)) * 0.12 : 0 });
-    if (up) { lift(HERO, B1, 0.05); rope.visible = false; } else { rope.position.set(304.5, 1.7, -3); rope.scale.y = 0.6; }
+    if (up) { lift(HERO, B1, 0.05); rope.visible = false; } else { rope.visible = true; rope.position.set(304.5, 1.7, -3); rope.scale.y = 0.6; }
   }, { dof: () => ({ target: [305.9, 1.6, -2.4], cInf: 9 }) });
   // 23. "Then, the story goes, they held horse races outside Bologna's walls."
-  shot(t.races, 'day', (tt) => ({ pos: [292.5 + (tt - t.races) * 4.2, 1.2, 3.2], look: [293 + (tt - t.races) * 4.2, 1.3, -4.5], fov: 46 }), (tt) => {
+  shot(t.races, 'day', (tt) => ({ pos: [292.5 + (tt - t.races) * 4.2, 1.3, 7.5], look: [293 + (tt - t.races) * 4.2, 1.0, 0], fov: 44 }), (tt) => {
     const u = tt - t.races;
-    for (let i = 0; i < 4; i++) show(HORSES[i], 290.5 + u * 4.2 + i * 1.1, -3.6 - (i % 2) * 1.3, { walk: { speed: 3.6, run: true }, pose: 'run', expr: 'happy' });
+    for (let i = 0; i < 4; i++) show(HORSES[i], 291.4 + u * 4.2 + i * 0.75, 0.9 - (i % 2) * 1.1, { walk: { speed: 3.6, run: true }, pose: 'run', expr: 'happy' });
   });
   // 24. "Just to rub it in."  angry Bolognese on top of their wall
   shot(t.rub, 'day', creep(() => ({ pos: [300, 8.9, -1.5], look: [300, 8.2, -9.6], fov: 42 }), t.rub, 0.03), () => {
-    for (let i = 0; i < 4; i++) { show(REDS[i], 298.2 + i * 1.2, -9.6, { pose: i % 2 ? 'point' : 'hips', expr: 'angry', flip: i > 1, bubble: i === 1 ? { kind: 'anger', t0: t.rub + 0.2 } : i === 2 ? { kind: 'anger', t0: t.rub + 0.5 } : null }); REDS[i].g.position.y = 7; }
+    for (let i = 0; i < 3; i++) { show(REDS[i], 298.9 + i * 1.1, -9.6, { pose: i % 2 ? 'point' : 'hips', expr: 'angry', flip: i > 1, bubble: i === 1 ? { kind: 'anger', t0: t.rub + 0.2 } : i === 2 ? { kind: 'anger', t0: t.rub + 0.5 } : null }); REDS[i].g.position.y = 7; }
   });
   // 25. "Around two thousand men died that day."  quiet, empty field
   shot(t.died, 'storm', creep(() => ({ pos: [0, 1.2, 10], look: [0, 1.6, -10], fov: 44 }), t.died, 0.02), () => {}, { exposure: 0.9 });
   // 26. "And the war changed almost nothing."
-  shot(t.nothing, 'day', creep(() => ({ pos: [0, 1.25, 5.6], look: [0, 1.15, 0.5], fov: 40 }), t.nothing, 0.03), () => {
+  shot(t.nothing, 'day', creep(() => ({ pos: [0, 1.25, 6.6], look: [0, 1.15, 0.5], fov: 40 }), t.nothing, 0.03), () => {
     show(MNOB, -0.7, 0.5, { pose: 'shrug', expr: 'neutral' }); show(BNOB, 0.7, 0.5, { pose: 'shrug', expr: 'sad', flip: true, bubble: { kind: '...', t0: t.nothing + 0.5 } });
   }, { dof: () => ({ target: [0, 1.3, 0.5], cInf: 8 }) });
   // 27. "But the bucket went home to Modena as a trophy."  victory parade
   shot(t.trophy, 'golden', keys([{ t: t.trophy, pos: [0, 0.8, 7.2], look: [0, 2.0, 0], fov: 46 }, { t: t.poet, pos: [0, 0.6, 6.0], look: [0, 2.1, 0], fov: 46 }]), (tt) => {
     show(HERO, 0, 0, { pose: 'arms_up', expr: 'laugh', hop: Math.max(0, Math.sin(tt * 7)) * 0.1 }); lift(HERO, B1, 0.05);
-    for (let i = 0; i < 8; i++) show(BLUES[i], (i % 4 - 1.5) * 1.3 + (i % 4 > 1 ? 0.6 : -0.6), -1.4 - Math.floor(i / 4) * 1.2, { pose: i % 2 ? 'cheer' : 'arms_up', expr: 'laugh', flip: i % 4 > 1 });
+    for (let i = 0; i < 8; i++) show(BLUES[i], (i % 4 - 1.5) * 0.7 + (i % 4 > 1 ? 0.4 : -0.4), -1.4 - Math.floor(i / 4) * 1.2, { pose: i % 2 ? 'cheer' : 'arms_up', expr: 'laugh', flip: i % 4 > 1 });
   });
   // 28. "Three hundred years later, a poet wrote a whole comic epic about it, called The Stolen Bucket."
-  shot(t.poet, 'indoor', creep(() => ({ pos: [-300.1, 1.3, 3.4], look: [-300.1, 1.2, -1.6], fov: 40 }), t.poet, 0.03), (tt) => {
-    show(POET, -300.3, -1.75, { pose: tt > t.called ? 'present' : 'think', expr: tt > t.called ? 'grin' : 'smug', hold: tt > t.called ? 'book' : null, bubble: { kind: 'idea', t0: t.poet + 1.2 } });
+  shot(t.poet, 'indoor', creep(() => ({ pos: [-299.75, 1.3, 3.4], look: [-299.75, 1.2, -1.6], fov: 40 }), t.poet, 0.03), (tt) => {
+    show(POET, -299.9, -1.75, { pose: tt > t.called ? 'present' : 'think', expr: tt > t.called ? 'grin' : 'smug', hold: tt > t.called ? 'book' : null, bubble: { kind: 'idea', t0: t.poet + 1.2 } });
   }, { dof: () => ({ target: [-300.2, 1.4, -1.7], cInf: 9 }) });
   // 29. "Bologna never got it back."
   shot(t.never, 'day', creep(() => ({ pos: [0.7, 1.55, 3.0], look: [0.7, 1.4, 0.5], fov: 40 }), t.never, 0.04), () => {
@@ -295,9 +299,7 @@ export function build({ stage, words }) {
       { from: t.seven7 + 0.1, to: END, text: '700 YEARS', y: 0.14, size: 130 },
     ],
     audio: {
-      music: [{ at: 0, mood: 'epic' }, { at: t.prize, mood: 'quirky' }, { at: t.nov, mood: 'tension' }, { at: t.easy, mood: 'quirky' }, { at: t.wasnt, mood: 'stop' },
-        { at: t.castle, mood: 'epic' }, { at: t.home, mood: 'upbeat' }, { at: t.gold, mood: 'sneaky' }, { at: t.stole + 0.4, mood: 'quirky' },
-        { at: t.died, mood: 'sad', gain: 0.8 }, { at: t.trophy, mood: 'upbeat' }, { at: t.poet, mood: 'mystery' }, { at: t.never, mood: 'quirky', gain: 0.8 }, { at: t.seven7, mood: 'epic', gain: 0.8 }],
+      music: [], // no music: voice + sound effects only
       sfx: [
         [0.2, 'boom'], [t.prize + 0.3, 'pop'], [t.wooden + 0.1, 'magic'], [t.forty, 'tick', { d: 1.2 }], [t.hated + 0.4, 'punch'], [t.hated + 0.7, 'punch'],
         [t.pope + 0.1, 'pop'], [t.emperor + 0.1, 'pop'], [t.nov + 0.2, 'footsteps', { d: 2.4, gain: 0.8 }], [t.thirty, 'drumroll', { d: 1.2 }],
