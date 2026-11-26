@@ -108,6 +108,32 @@ def load_config(extra_path: str | None = None) -> dict:
     return cfg
 
 
+PROFILE_WORDS = {
+    "podcast": ["podcast", "interview", "episode", "ep.", "talk", "q&a", "trading", "trader", "stocks", "crypto",
+                "watch", "watches", "rolex", "business", "money", "finance", "lesson", "explained", "story", "advice"],
+    "entertainment": ["challenge", "survive", "vs", "last to", "$", "won", "win", "prank", "vlog", "i tried", "spent"],
+}
+
+
+def detect_profile(meta: dict) -> str:
+    if meta.get("chat_files") or meta.get("was_live") or meta.get("live_status") == "was_live":
+        return "stream"
+    t = f"{meta.get('title', '')} {meta.get('description', '')[:300]}".lower()
+    scores = {p: sum(1 for w in ws if w in t) for p, ws in PROFILE_WORDS.items()}
+    best = max(scores, key=scores.get)
+    if scores[best] == 0:
+        return "stream" if any(w in t for w in ["stream", "live", "gameplay", "playing"]) else "general"
+    return best
+
+
+def apply_profile(cfg: dict, profile: str) -> dict:
+    prof = (cfg.get("profiles") or {}).get(profile) or {}
+    prof = {k: v for k, v in prof.items() if k not in ("description", "_comment")}
+    out = deep_merge(cfg, prof)
+    out["active_profile"] = profile
+    return out
+
+
 def slugify(text: str, max_len: int = 60) -> str:
     s = re.sub(r"[^A-Za-z0-9]+", "-", text or "").strip("-").lower()
     return (s[:max_len].strip("-")) or "video"

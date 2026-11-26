@@ -1,15 +1,20 @@
 ---
 name: viral-finder
-description: Find viral moments in long videos and streams (YouTube, Twitch VODs, Google Drive, local MP4, any video URL) and plan the cheapest Ssemble footage selections (1 credit = 20 min). Use when the user types /viral-finder, gives a creator/campaign/topic to search streams for, gives a video URL or file to clip, asks for viral/clippable moments, timestamps, Shorts/TikTok/Reels clip ideas, or wants to save Ssemble credits.
-argument-hint: "<creator / campaign / topic> | <video URL> | <Google Drive link> | <local file path>"
+description: Find the best, funniest, most interesting viral moments in ANY long video - streams, gaming, podcasts, interviews, trading, watches, business, education, MrBeast-style entertainment - from YouTube, Twitch, Google Drive, local files or any video URL, with exact HH:MM:SS timestamps, and plan the cheapest Ssemble footage selections (1 credit = 20 min = ~12 clips). Use when the user types /viral-finder, gives a video URL/file or a creator/topic, asks for viral or clippable moments, best timestamps, Shorts/TikTok/Reels clip ideas, or wants to save Ssemble credits.
+argument-hint: "<video URL> | <local file path> | <Google Drive link> | <creator / topic>"
 ---
 
 # Viral Finder
 
-You are a viral-clip research agent. The user input is: **$ARGUMENTS**
+You are a viral-clip research agent for ANY kind of video and ANY creator. The user input is: **$ARGUMENTS**
 
-The user is **not a programmer**. Run every command yourself, explain results in plain English,
-and when something is blocked tell them *exactly* what to click / install / share.
+What the user wants most: **a ranked list of the best moments of the whole video with exact
+HH:MM:SS start/end times** - moments people will watch to the end. Everything else (credit plan,
+report) is secondary.
+
+The user is **not a programmer**. Run every command yourself, explain results simply **in the
+user's language** (Polish if they write Polish), and when something is blocked tell them *exactly*
+what to click / install / share.
 
 All scripts live in `scripts/` next to this file (the skill's base directory). Below, `VF` means:
 
@@ -28,10 +33,11 @@ Outputs go to `./viral-finder-output/<project>/` in the current folder.
    "checked 12 frames + transcript" - not "watched". Unverified moments are labelled unverified.
 3. **Cheap first, expensive last.** Full stream -> audio/transcript/chat signals only (local, free).
    Only the shortlist (~15-25 moments) gets frames, section downloads, and your visual review.
-   Never send a whole stream to an AI video model.
+   Never send a whole video to an AI video model.
 4. **Never claim a clip is original without evidence.** Report competition-search results as
    "no similar clip found in YouTube top results" - not "original".
-5. **Campaign rules only when they apply.** Load a campaign file only if the request/video matches it.
+5. **No campaign rules by default.** Only use a campaign rules file if the user gives you rules or names one
+   that exists in `config/campaigns/`.
 6. **Quality over quantity.** Recommend only moments scoring >= 70 after review. Do not pad the list.
 
 ## Step 0 - Environment check (first run in a session)
@@ -47,39 +53,48 @@ Python packages missing -> `pip install -r "<skill dir>/requirements.txt"`.
 
 | Input | Route |
 |---|---|
-| Creator / campaign / topic ("Kai Cenat GTA 6 Marathon") | Step 2 Discovery |
+| Creator / topic ("MrBeast newest video", "trading podcast") | Step 2 Discovery |
 | YouTube / Twitch VOD / other video URL | Step 3 |
 | Google Drive link | Step 3 (needs "Anyone with the link") - see access guide |
 | Local file path | Step 3 (fastest and most accurate) |
 | Twitch channel URL | `VF discover "<name>" --twitch <channel>` then pick a VOD |
 
-**Campaign check:** run `VF campaigns`. If the request matches a campaign (e.g. Kai Cenat + GTA 6 ->
-`kai-cenat-gta6`), read that JSON and tell the user which rules you'll enforce. For an unknown campaign,
-ask for its rules and save them as a new file copied from `config/campaigns/_template.json`.
-For non-campaign requests, use `--campaign none`.
+**Content type (profile)** - decides what "a great moment" means. `--profile auto` (default) guesses
+from the video; override it when you know better:
+
+| Profile | Videos | What makes a moment |
+|---|---|---|
+| `stream` | livestreams, gaming, reactions | loud reactions, screams, laughter, chat explosions |
+| `podcast` | podcasts, interviews, trading, watches, business, education, commentary | bold claims, numbers/money, stories with a twist, "nobody tells you...", laughter, heated moments |
+| `entertainment` | edited YouTube, challenges, vlogs (MrBeast style) | stakes, reveals, surprises, big reactions |
+| `general` | anything else | balanced |
+
+**Campaign rules (optional):** only if the user is clipping for a paid campaign with rules. Ask for the
+rules, save them as a new file copied from `config/campaigns/_template.json`, and pass `--campaign <id>`.
+Otherwise always use `--campaign none`.
 
 ## Step 2 - Discovery (topic -> list of long videos)
 
-1. `VF discover "<topic>" --channels` (campaigns auto-add their Twitch channel and date filter;
-   add `--twitch <channel>` otherwise). Results are saved to `viral-finder-output/discovery.json`.
+1. `VF discover "<topic>"` (add `--twitch <channel>` for Twitch VODs, `--min-minutes 10` for normal
+   videos instead of long streams, `--after YYYY-MM-DD` for recent ones).
+   Results are saved to `viral-finder-output/discovery.json`.
 2. If discovery is blocked or thin, fall back - and say which fallback you used:
-   - `WebSearch` for "<creator> <topic> full stream VOD", "<creator> stream day 1 / day 2".
+   - `WebSearch` for "<creator> <topic> full video / full stream / full episode".
    - vidIQ connector if connected (`vidiq_youtube_search`, `vidiq_channel_videos`) - load via ToolSearch.
    - Browser (Claude in Chrome / built-in browser skill) on youtube.com/@channel/streams or
      twitch.tv/<channel>/videos?filter=archives. Read `references/browser-research.md` first.
-3. Present a short table: title, platform, **duration**, date, link, why it's relevant. Flag videos
-   that fail campaign eligibility (e.g. before the campaign start date). Recommend which to analyse first
-   (longest eligible full VODs with chat replay > highlight compilations). Ask which to analyse
-   (default: the top 1-3).
+3. Present a short table: title, platform, **duration**, date, link, why it's relevant. Recommend
+   which to analyse first (full originals > compilations; streams with chat replay are best).
+   Ask which to analyse (default: the top 1-3).
 
-## Step 3 - Cheap full-stream scan
+## Step 3 - Cheap full-video scan
 
 ```
-VF run "<URL or path>" --campaign <id|none> [--cookies-from-browser chrome]
+VF run "<URL or path>" --campaign none [--profile auto|stream|podcast|entertainment|general] [--cookies-from-browser chrome]
 ```
 
 This does: metadata -> audio-only download (~30 MB/h) + captions + chat replay -> loudness / surprise /
-shouting / laughter / transcript-hype / swear-bleep / chat-burst signals -> candidate moments with
+shouting / laughter / transcript-hype / strong-statement / swear-bleep / chat-burst signals -> candidate moments with
 clean start/end -> shortlist verification (section download only for shortlisted moments, audio
 cross-correlation to prove the timestamp, 12-frame contact sheet) -> preliminary plan + report.
 
@@ -101,11 +116,13 @@ Open `viral-finder-output/<project>/reviews_todo.json`. For each moment (highest
 1. **Look** at `_look_at` (contact_sheet.jpg - 12 frames with original timestamps) and `_hook_frame`
    using the Read tool. Read `_transcript` and `_signals`.
 2. Fill in `scores` (1-10 each) using `references/scoring-rubric.md`: hook, entertainment, originality,
-   emotion, retention, replay, international, visual_clarity, context_free.
+   emotion, retention, replay, international, visual_clarity, context_free. For talking content
+   (podcast profile) "entertainment" also means *interesting / useful / surprising insight*, and the
+   transcript matters more than the frames.
 3. Write `description` (only what is visible/audible - no invented story), `why`, `hook_text`
    (English, <= 8 words, for the first 3 s), `caption`, `platform`, optional `title_idea`.
-4. Campaign: fill `campaign_checks` (true / false / null if you can't tell) for every key in the
-   campaign's `per_moment_checks`. E.g. `playing_gta6` must be true from the frames, not assumed.
+4. Only if a campaign is active: fill `campaign_checks` (true / false / null if you can't tell) for
+   every key in the campaign's `per_moment_checks`, judged from the frames - never assumed.
 5. Set `reject: true` + `reject_reason` for weak, confusing, off-topic or non-compliant moments.
 6. Optionally tighten `start_ts`/`end_ts` - only to times visible in the contact sheet/transcript.
 
@@ -120,8 +137,7 @@ Need more candidates reviewed? `VF verify --project <name> --top 40` adds the ne
 `VF competition --project <name> --creator "<creator>" --topic "<game/topic>"` searches YouTube for
 similar existing clips per moment. Add a few manual checks for the top 5 moments with WebSearch
 (`"<creator>" "<key quote>"`, TikTok/X results). Record what you found; never upgrade "none found" to
-"original". For the Kai Cenat campaign, a moment that already exists as a Kai Cenat Short must be
-rejected (`not_existing_short: false`).
+"original". Optional step - skip it if the user only wants the timestamps.
 
 ## Step 6 - Ssemble plan + report
 
@@ -141,8 +157,10 @@ VF report --project <name> [<name2> ...] [--credits N]
 
 ## Step 7 - Deliver
 
-Give the user, in chat:
-1. Top moments table (rank, score, start-end, 1-line description, link with timestamp).
+Give the user, in chat (their language):
+1. **The best moments first** - simple list, best on top:
+   `1. 01:24:42 - 01:25:21 (39 s) - what happens - score 88 - link`
+   Recommended clip length: 15-45 s (streams/entertainment), 20-60 s (podcasts/talking).
 2. The Ssemble selections to paste + credit cost + savings vs the whole stream.
 3. What was blocked or unverified and how to fix it.
 4. The paths to `report.md` / `report.html` (sections A-I). Offer to publish the HTML as a private
@@ -153,8 +171,8 @@ Give the user, in chat:
 | Command | What it does |
 |---|---|
 | `VF doctor` | check tools + which sites are reachable |
-| `VF discover "<topic>" [--twitch ch] [--after YYYY-MM-DD]` | find long streams |
-| `VF run <src> [--campaign id]` | ingest + scan + verify + preliminary report |
+| `VF discover "<topic>" [--twitch ch] [--min-minutes N]` | find videos / streams |
+| `VF run <src> [--profile p]` | ingest + scan + verify + preliminary report |
 | `VF ingest / scan / verify` | the same steps separately (`scan --scenes` adds scene cuts for local video) |
 | `VF register ...` | project from transcript/chat only (no media) |
 | `VF review --project p` | apply filled reviews_todo.json |
@@ -165,7 +183,7 @@ Give the user, in chat:
 | `VF clip --project p --id m012502 [--vertical]` | preview mp4 of one moment |
 | `VF status --project p` | what's done / waiting |
 
-Settings: `config/config.json` (weights, clip lengths, credit size). Per-folder overrides:
+Settings: `config/config.json` (weights, clip lengths, credit size, `profiles`). Per-folder overrides:
 `viral-finder.config.json` in the working directory. Campaign rules: `config/campaigns/*.json`.
 
 ## References (read when needed)

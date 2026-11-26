@@ -15,6 +15,16 @@ Score each criterion **1-10** from what you actually saw (contact sheet, hook fr
 | replay | 8 | Short, punchy, loopable, quotable | Long and meandering |
 | visual_clarity | 8 | Face cam + gameplay both readable, works when cropped 9:16 | Tiny facecam, dark/cluttered screen |
 
+## Talking content (podcast profile: interviews, trading, watches, business, education)
+
+The frames matter less, the words matter more. Translate the criteria like this:
+- **hook** - a bold claim, number or question in the first 3 s ("I lost $2M because of one rule").
+- **entertainment** - surprising, useful or controversial insight; a story with a payoff; real laughter.
+- **emotion** - conviction, anger, shock, a heated disagreement, a big laugh.
+- **context_free** - the point is complete inside the clip (setup + payoff), no "as I said earlier".
+- **visual_clarity** - speaker clearly visible, works with captions in 9:16.
+Best clips: one clear idea, one strong line, 20-60 s.
+
 Tiers: **S >= 85**, **A >= 75**, **B >= 65**. Only >= 70 is recommended (config `report.min_recommend_score`).
 Be strict: most moments of a 10 h stream are B or C. A good stream gives roughly 5-15 S/A moments.
 
@@ -22,7 +32,7 @@ Be strict: most moments of a 10 h stream are B or C. A good stream gives roughly
 
 - The "excitement" is a song, an ad read, a donation alert, or a game cutscene without reaction.
 - It needs too much context to make sense.
-- Campaign check fails (e.g. Kai not on screen, not GTA 6 gameplay, already an existing Short).
+- A campaign rule fails (only when a campaign is active).
 - The clip would mislead (cutting so it looks like something that didn't happen).
 
 ## Boundaries
@@ -43,7 +53,8 @@ Avoid clickbait that the clip doesn't deliver (misleading = campaign violation).
 ## Caption formula
 
 `<what happens in plain words> <emoji?> <required mention> <required hashtags> <2-3 topic hashtags>`
-e.g. `Kai Cenat tried to outrun the cops in GTA 6 and instantly regretted it 😭 #KAICENAT #GTA6 #gaming`
+e.g. `He tried to outrun the cops and instantly regretted it 😭 #gaming #funny`
+or `This trader lost $40,000 in 10 minutes - here's why #trading #money`
 The report auto-adds missing required mentions/hashtags for the active campaign.
 
 ## Platform choice

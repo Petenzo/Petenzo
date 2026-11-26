@@ -108,7 +108,7 @@ def scan(proj: Project, cfg: dict, use_scenes: bool = False) -> dict:
     fused = sum(weights[k] * z[k] for k in z) / max(wsum, 1e-6)
     # Bonus when several independent signal families agree
     fams = {"audio": ["audio_loudness", "audio_surprise", "shout", "laughter"],
-            "text": ["transcript_hype", "transcript_laughter", "transcript_bleeps"],
+            "text": ["transcript_hype", "transcript_laughter", "transcript_bleeps", "transcript_insight"],
             "chat": ["chat_rate", "chat_hype"]}
     agree = np.zeros(n, np.float32)
     for keys in fams.values():
@@ -232,6 +232,8 @@ def _reasons(p, z, sec, cues, chat_samples, start, end) -> list[str]:
         r.append("Laughter-like rhythmic audio pattern (heuristic)")
     if g("transcript_hype") > 1.5:
         r.append("Excited words in transcript (e.g. 'no way', 'what', repeated words, CAPS)")
+    if g("transcript_insight") > 1.5:
+        r.append("Strong statement in transcript (bold claim, numbers/money, story twist, 'nobody tells you...')")
     if g("transcript_laughter") > 1.5:
         r.append("Laughter marked in captions")
     if g("transcript_bleeps") > 1.5:

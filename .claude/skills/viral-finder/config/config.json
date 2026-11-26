@@ -1,7 +1,6 @@
 {
-  "_comment": "Viral Finder settings. Safe to edit. Weights are relative; set a weight to 0 to ignore a signal.",
+  "_comment": "Viral Finder settings. Safe to edit. Weights are relative; set a weight to 0 to ignore a signal. 'profiles' adjust settings per content type.",
   "output_root": "viral-finder-output",
-
   "analysis": {
     "audio_sample_rate": 16000,
     "frame_seconds": 0.05,
@@ -15,11 +14,10 @@
     "clip_pre_roll": 20,
     "clip_post_roll": 15,
     "clip_min": 15,
-    "clip_max": 90,
+    "clip_max": 45,
     "chat_lag_seconds": 8,
     "scene_threshold": 0.35
   },
-
   "signal_weights": {
     "audio_loudness": 0.8,
     "audio_surprise": 1.0,
@@ -31,9 +29,9 @@
     "speech_rate": 0.3,
     "chat_rate": 1.5,
     "chat_hype": 1.2,
-    "scene_cuts": 0.2
+    "scene_cuts": 0.2,
+    "transcript_insight": 0.6
   },
-
   "rubric_weights": {
     "hook": 15,
     "entertainment": 15,
@@ -45,14 +43,15 @@
     "visual_clarity": 8,
     "context_free": 12
   },
-
-  "tiers": { "S": 85, "A": 75, "B": 65 },
-
+  "tiers": {
+    "S": 85,
+    "A": 75,
+    "B": 65
+  },
   "report": {
     "min_recommend_score": 70,
     "max_recommended": 30
   },
-
   "verify": {
     "top_n": 25,
     "section_padding": 5,
@@ -61,7 +60,6 @@
     "alignment_search_seconds": 15,
     "min_alignment_correlation": 0.6
   },
-
   "assemble": {
     "minutes_per_credit": 20,
     "clips_per_credit": 12,
@@ -74,21 +72,199 @@
     "hot_zone_window_minutes": 120,
     "hot_zone_min_strong_per_20min": 3
   },
-
   "lexicon": {
     "hype": [
-      "no way", "oh my god", "omg", "what the", "let's go", "lets go", "are you serious",
-      "no no no", "nah nah", "bro what", "what is that", "what was that", "oh no", "holy",
-      "clip that", "clip it", "i'm crying", "im crying", "shut up", "run", "help", "yo yo",
-      "chat chat", "wait wait", "get out", "what happened", "i can't", "i cant", "bruh",
-      "w", "dawg", "on god", "this is crazy", "that's crazy", "thats crazy", "insane", "yes yes"
+      "no way",
+      "oh my god",
+      "omg",
+      "what the",
+      "let's go",
+      "lets go",
+      "are you serious",
+      "no no no",
+      "nah nah",
+      "bro what",
+      "what is that",
+      "what was that",
+      "oh no",
+      "holy",
+      "clip that",
+      "clip it",
+      "i'm crying",
+      "im crying",
+      "shut up",
+      "run",
+      "help",
+      "yo yo",
+      "chat chat",
+      "wait wait",
+      "get out",
+      "what happened",
+      "i can't",
+      "i cant",
+      "bruh",
+      "w",
+      "dawg",
+      "on god",
+      "this is crazy",
+      "that's crazy",
+      "thats crazy",
+      "insane",
+      "yes yes"
     ],
-    "laughter": ["[laughter]", "[laughs]", "(laughs)", "haha", "hahaha", "lmao", "lmfao", "lol"],
-    "bleep": ["[ __ ]", "[__]", "[ ___ ]"],
+    "laughter": [
+      "[laughter]",
+      "[laughs]",
+      "(laughs)",
+      "haha",
+      "hahaha",
+      "lmao",
+      "lmfao",
+      "lol"
+    ],
+    "bleep": [
+      "[ __ ]",
+      "[__]",
+      "[ ___ ]"
+    ],
     "chat_hype": [
-      "kekw", "lul", "lulw", "omegalul", "lmao", "lmfao", "icant", "😂", "🤣", "💀", "pog",
-      "pogchamp", "poggers", "pogu", "monkas", "omg", "clip", "clip it", "w", "www", "l", "???",
-      "????", "nooo", "noway", "no way", "aware", "sheesh", "🔥", "😭"
+      "kekw",
+      "lul",
+      "lulw",
+      "omegalul",
+      "lmao",
+      "lmfao",
+      "icant",
+      "😂",
+      "🤣",
+      "💀",
+      "pog",
+      "pogchamp",
+      "poggers",
+      "pogu",
+      "monkas",
+      "omg",
+      "clip",
+      "clip it",
+      "w",
+      "www",
+      "l",
+      "???",
+      "????",
+      "nooo",
+      "noway",
+      "no way",
+      "aware",
+      "sheesh",
+      "🔥",
+      "😭"
+    ],
+    "insight": [
+      "the secret",
+      "nobody tells you",
+      "no one tells you",
+      "biggest mistake",
+      "most people",
+      "here's the thing",
+      "the truth is",
+      "the problem is",
+      "the reason",
+      "that's why",
+      "you need to",
+      "you have to",
+      "stop doing",
+      "never",
+      "always",
+      "million",
+      "billion",
+      "thousand",
+      "percent",
+      "dollars",
+      "i lost",
+      "i made",
+      "i bought",
+      "i sold",
+      "worth",
+      "price",
+      "profit",
+      "loss",
+      "how to",
+      "the best",
+      "the worst",
+      "number one",
+      "craziest",
+      "unbelievable",
+      "insane",
+      "shocking",
+      "plot twist",
+      "turns out",
+      "and then",
+      "suddenly",
+      "guess what",
+      "you won't believe",
+      "i was wrong",
+      "here's why",
+      "biggest",
+      "cheapest",
+      "most expensive",
+      "rich",
+      "broke",
+      "scam",
+      "fake",
+      "real",
+      "warning",
+      "mistake",
+      "rule"
     ]
+  },
+  "default_profile": "auto",
+  "profiles": {
+    "_comment": "auto = picked from the video: livestream/chat -> stream, podcast/interview/talk words -> podcast, otherwise general.",
+    "general": {},
+    "stream": {
+      "description": "Livestreams, gaming, reaction content (loud reactions, chat explosions)",
+      "signal_weights": {
+        "chat_rate": 1.6,
+        "chat_hype": 1.3,
+        "transcript_insight": 0.3
+      },
+      "analysis": {
+        "clip_min": 15,
+        "clip_max": 45
+      }
+    },
+    "podcast": {
+      "description": "Talking content: podcasts, interviews, trading, watches, business, education, commentary",
+      "signal_weights": {
+        "audio_loudness": 0.4,
+        "audio_surprise": 0.6,
+        "shout": 0.3,
+        "laughter": 1.0,
+        "transcript_insight": 1.6,
+        "transcript_hype": 0.6,
+        "transcript_bleeps": 0.3,
+        "speech_rate": 0.5
+      },
+      "analysis": {
+        "clip_min": 20,
+        "clip_max": 60,
+        "clip_pre_roll": 8,
+        "clip_post_roll": 25,
+        "candidates_per_hour": 10
+      }
+    },
+    "entertainment": {
+      "description": "Edited YouTube videos, challenges, vlogs (MrBeast style: stakes, reveals, surprises)",
+      "signal_weights": {
+        "audio_surprise": 1.3,
+        "scene_cuts": 0.6,
+        "transcript_insight": 0.9
+      },
+      "analysis": {
+        "clip_min": 15,
+        "clip_max": 45,
+        "candidates_per_hour": 12
+      }
+    }
   }
 }

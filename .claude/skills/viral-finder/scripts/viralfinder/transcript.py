@@ -114,6 +114,7 @@ def text_signals(cues: list[dict], n_sec: int, lex: dict) -> dict:
     hype = np.zeros(n_sec, np.float32)
     laugh = np.zeros(n_sec, np.float32)
     bleep = np.zeros(n_sec, np.float32)
+    insight = np.zeros(n_sec, np.float32)
     for c in cues:
         a, b = int(c["start"]), int(min(max(c["end"], c["start"] + 1), n_sec))
         if a >= n_sec or b <= a:
@@ -127,7 +128,11 @@ def text_signals(cues: list[dict], n_sec: int, lex: dict) -> dict:
         hype[a:b] += (_count(text, lex.get("hype", [])) + 0.5 * excl + 0.5 * caps + _repetition(text)) / span
         laugh[a:b] += _count(text, lex.get("laughter", [])) / span
         bleep[a:b] += _count(text, lex.get("bleep", [])) / span
-    return {"transcript_hype": hype, "transcript_laughter": laugh, "transcript_bleeps": bleep, "speech_rate": words}
+        # strong claims, numbers, money, story twists -> quotable moments in talking content
+        nums = len(re.findall(r"\d[\d,.]*\s*(?:%|k|m|x)?|\$|€|£", text, re.I))
+        insight[a:b] += (_count(text, lex.get("insight", [])) + 0.5 * nums + 0.5 * text.count("?")) / span
+    return {"transcript_hype": hype, "transcript_laughter": laugh, "transcript_bleeps": bleep,
+            "transcript_insight": insight, "speech_rate": words}
 
 
 def _repetition(text: str) -> float:

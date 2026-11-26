@@ -2,7 +2,7 @@
 """Viral Finder - one command for the whole pipeline.
 
     python vf.py doctor                         check tools + network access
-    python vf.py discover "Kai Cenat GTA 6"      find long streams / VODs
+    python vf.py discover "MrBeast challenge"    find long videos / streams / VODs
     python vf.py run <URL | file | Drive link>  ingest + cheap scan + verify shortlist + preliminary plan/report
     python vf.py review   --project NAME        apply filled-in reviews_todo.json
     python vf.py competition --project NAME     look for already-reposted clips
@@ -23,8 +23,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from viralfinder import assemble, ranking, research, sources  # noqa: E402
-from viralfinder.common import (Project, fmt_duration, fmt_ts, have, load_config, log, read_json,  # noqa: E402
-                                timestamp_url, write_json, ytdlp_cmd)
+from viralfinder.common import (Project, apply_profile, detect_profile, fmt_duration, fmt_ts, have,  # noqa: E402
+                                load_config, log, read_json, timestamp_url, write_json, ytdlp_cmd)
 from viralfinder.sources import AccessError  # noqa: E402
 
 
@@ -40,6 +40,22 @@ def _campaign_for(proj: Project, explicit: str | None):
     if saved:
         return ranking.match_campaign("", saved)
     return ranking.match_campaign(f"{meta.get('title', '')} {meta.get('uploader', '')} {meta.get('description', '')[:300]}")
+
+
+def profile_cfg(proj: Project, cfg: dict, explicit: str | None = None) -> dict:
+    """Pick the content type (stream / podcast / entertainment / general) and apply its settings."""
+    meta = proj.meta()
+    prof = explicit or meta.get("profile") or cfg.get("default_profile", "auto")
+    if prof == "auto":
+        prof = detect_profile(meta)
+    valid = [k for k in (cfg.get("profiles") or {}) if not k.startswith("_")]
+    if prof not in valid:
+        raise SystemExit(f"Unknown profile '{prof}'. Choose one of: {', '.join(valid)}")
+    meta["profile"] = prof
+    proj.save_meta(meta)
+    desc = ((cfg.get("profiles") or {}).get(prof) or {}).get("description", "balanced settings for any video")
+    log(f"Content type: {prof} - {desc}")
+    return apply_profile(cfg, prof)
 
 
 def do_rank(proj: Project, cfg: dict, campaign=None) -> list[dict]:
@@ -184,7 +200,7 @@ def cmd_register(args, cfg):
 def cmd_scan(args, cfg):
     from viralfinder.scan import scan
     proj = Project.open(args.project, cfg)
-    scan(proj, cfg, use_scenes=args.scenes)
+    scan(proj, profile_cfg(proj, cfg, args.profile), use_scenes=args.scenes)
     return proj
 
 
@@ -313,10 +329,11 @@ def cmd_run(args, cfg):
     src = sources.detect_source(args.source)
     if src["kind"] == "topic":
         log(f"'{args.source}' looks like a search topic -> running discovery instead.\n")
-        args.query, args.twitch, args.limit, args.min_minutes, args.after, args.channels = args.source, None, 15, 60, None, True
+        args.query, args.twitch, args.limit, args.min_minutes, args.after, args.channels = args.source, None, 15, 10, None, False
         return cmd_discover(args, cfg)
     proj = sources.ingest(args.source, args.project, cfg, args.cookies_from_browser, args.no_chat)
     camp = _campaign_for(proj, args.campaign)
+    cfg = profile_cfg(proj, cfg, args.profile)
     scan(proj, cfg, use_scenes=args.scenes)
     if not args.no_verify:
         verify(proj, cfg, args.top, None, args.transcribe)
@@ -345,7 +362,7 @@ def main(argv=None) -> int:
     d.add_argument("query")
     d.add_argument("--twitch", help="Twitch channel name to list VODs from")
     d.add_argument("--limit", type=int, default=15)
-    d.add_argument("--min-minutes", type=float, default=60)
+    d.add_argument("--min-minutes", type=float, default=10)
     d.add_argument("--after", help="only videos uploaded on/after YYYY-MM-DD")
     d.add_argument("--channels", action="store_true", help="also list the campaign's YouTube channels' streams")
     d.add_argument("--campaign")
@@ -354,7 +371,8 @@ def main(argv=None) -> int:
     def common_src(p):
         p.add_argument("source", help="YouTube/Twitch/Drive URL, other video URL, or local file path")
         p.add_argument("--project", help="project folder name (default: from title)")
-        p.add_argument("--campaign", help="campaign id (e.g. kai-cenat-gta6) or 'none'")
+        p.add_argument("--campaign", help="campaign rules file id (optional) or 'none'")
+        p.add_argument("--profile", help="auto (default) / stream / podcast / entertainment / general")
         p.add_argument("--cookies-from-browser", help="chrome / firefox / edge / safari (for sign-in walls)")
         p.add_argument("--no-chat", action="store_true", help="skip chat replay download")
 
@@ -375,6 +393,7 @@ def main(argv=None) -> int:
     s = sub.add_parser("scan", help="cheap full-stream scan -> candidates")
     s.add_argument("--project", required=True)
     s.add_argument("--scenes", action="store_true", help="also detect scene changes (local video files only)")
+    s.add_argument("--profile", help="auto / stream / podcast / entertainment / general")
 
     v = sub.add_parser("verify", help="check shortlisted timestamps against the footage, make contact sheets")
     v.add_argument("--project", required=True)

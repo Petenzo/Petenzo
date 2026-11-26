@@ -1,14 +1,15 @@
 # Viral Finder - user guide
 
-Finds the most viral moments in long streams and videos, verifies the timestamps against the
-original footage, and tells you which 20-minute footage selections to give Ssemble so every
-credit produces as many strong clips as possible.
+Finds the best, funniest and most interesting moments in ANY video - streams, gaming, podcasts,
+interviews, trading, watches, business, MrBeast-style entertainment - gives exact HH:MM:SS times,
+checks them against the original footage, and tells you which 20-minute selections to give
+Ssemble (1 credit = 20 min = ~12 clips).
 
 You type one command; Claude runs everything and explains the results.
 
 ```
-/viral-finder Kai Cenat GTA 6 Marathon
 /viral-finder https://www.youtube.com/watch?v=XXXXXXXXXXX
+/viral-finder MrBeast newest video
 /viral-finder https://www.twitch.tv/videos/1234567890
 /viral-finder https://drive.google.com/file/d/XXXX/view
 /viral-finder C:\Users\me\Videos\stream.mp4
@@ -58,9 +59,14 @@ environment's network settings.
 
 ## 4. Search for streams
 
-`/viral-finder Kai Cenat GTA 6 Marathon` -> Claude searches YouTube (+ the campaign's Twitch
-channel), lists long videos with **duration, date and links**, flags ones that don't qualify for
-the campaign, and asks which to analyse.
+`/viral-finder MrBeast newest video` (or any creator/topic) -> Claude searches YouTube (and Twitch
+if you name a channel), lists videos with **duration, date and links**, and asks which to analyse.
+
+The skill recognises the type of video automatically and adjusts what it looks for:
+- **streams / gaming** - screams, laughter, chat explosions (clips 15-45 s),
+- **podcasts / talking** (trading, watches, business, interviews) - bold claims, numbers, stories, laughter (20-60 s),
+- **entertainment** (challenges, vlogs) - stakes, reveals, surprises (15-45 s).
+You can force it: "use podcast mode".
 
 ## 5. Analyse videos
 
@@ -100,8 +106,6 @@ E number of clips, F ranking with details, G hooks & captions, H source links, I
   transcribes shortlisted moments.
 - **Twitch chat replay** often needs TwitchDownloader (see references/sources-and-access.md).
 - **Originality** is checked against search results, never guaranteed.
-- **Campaign rules** like audience location (50% US/CA/UK/AU/NZ) depend on your posting account -
-  the skill cannot verify them.
 - **Ssemble details** (whether combined timestamps are allowed, partial credit rounding) are
   settings you confirm; defaults assume 20 min/credit, rounded up.
 - Private, members-only, subscriber-only or expired videos cannot be accessed.
@@ -116,7 +120,7 @@ viral-finder/
   install.sh / install.ps1    installers
   requirements.txt
   config/config.json          all settings (weights, clip lengths, credit size)
-  config/campaigns/*.json     campaign rules (kai-cenat-gta6.json, _template.json)
+  config/campaigns/*.json     optional campaign rules (_template.json to copy)
   scripts/vf.py               the command Claude runs
   scripts/viralfinder/        modules: sources, audio, transcript, chat, video, scan,
                               verify, ranking, research, assemble, report

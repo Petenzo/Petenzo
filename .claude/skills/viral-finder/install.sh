@@ -20,4 +20,4 @@ if [ "$1" = "--global" ]; then
   echo "Copied to $HOME/.claude/skills/viral-finder"
 fi
 $PY "$HERE/scripts/vf.py" doctor || true
-echo "Done. In Claude Code type:  /viral-finder Kai Cenat GTA 6 Marathon"
+echo "Done. In Claude Code type:  /viral-finder <link do filmu>"

@@ -24,10 +24,10 @@ def test_timestamps():
 def test_detect_source():
     assert detect_source("https://www.youtube.com/watch?v=abcdefghijk")["kind"] == "youtube"
     assert detect_source("https://www.twitch.tv/videos/2233445566")["kind"] == "twitch"
-    assert detect_source("https://www.twitch.tv/kaicenat")["kind"] == "twitch_channel"
+    assert detect_source("https://www.twitch.tv/somechannel")["kind"] == "twitch_channel"
     d = detect_source("https://drive.google.com/file/d/1AbCdEfGhIjKlMnOp/view?usp=sharing")
     assert d["kind"] == "gdrive" and d["id"] == "1AbCdEfGhIjKlMnOp"
-    assert detect_source("Kai Cenat GTA 6 Marathon")["kind"] == "topic"
+    assert detect_source("MrBeast newest video")["kind"] == "topic"
     assert detect_source("missing_video.mp4")["kind"] == "missing_file"
 
 
@@ -55,14 +55,27 @@ def test_vtt_rolling_dedupe(tmp_path):
     assert sig["transcript_hype"][3] > 0 and sig["transcript_bleeps"][5] > 0
 
 
-def test_caption_rules():
-    camp = ranking.match_campaign("Kai Cenat GTA 6 Marathon")
-    assert camp and camp["id"] == "kai-cenat-gta6"
-    cap, notes = ranking.fix_caption("bro got chased by the cops", camp)
-    assert "Kai Cenat" in cap and "#KAICENAT" in cap
+def test_no_campaign_by_default_and_optional_rules():
     assert ranking.match_campaign("MrBeast challenge video") is None
-    el = ranking.eligibility({"upload_date": "20261110", "title": "Kai Cenat GTA 6"}, camp)
-    assert el[0]["ok"] is False
+    assert ranking.match_campaign("trading podcast episode 12") is None
+    camp = {"caption_rules": {"must_mention": ["Creator"], "required_hashtags": ["#TAG"]},
+            "eligibility": {"footage_date_from": "2026-11-18"}}
+    cap, notes = ranking.fix_caption("he got chased by the cops", camp)
+    assert "Creator" in cap and "#TAG" in cap
+    assert ranking.fix_caption("plain", None) == ("plain", [])
+    assert ranking.eligibility({"upload_date": "20261110"}, camp)[0]["ok"] is False
+
+
+def test_profiles():
+    from viralfinder.common import apply_profile, detect_profile
+    assert detect_profile({"title": "Rolex vs Omega - which watch to buy? | Podcast ep. 41"}) == "podcast"
+    assert detect_profile({"title": "Day trading lesson: my biggest loss"}) == "podcast"
+    assert detect_profile({"title": "Last To Leave Circle Wins $500,000"}) == "entertainment"
+    assert detect_profile({"title": "anything", "chat_files": ["x.json"]}) == "stream"
+    pc = apply_profile(CFG, "podcast")
+    assert pc["analysis"]["clip_max"] == 60 and pc["signal_weights"]["transcript_insight"] > CFG["signal_weights"]["transcript_insight"]
+    sig = transcript.text_signals([{"start": 0, "end": 4, "text": "Nobody tells you this: I lost $40,000 in 10 minutes"}], 6, CFG["lexicon"])
+    assert sig["transcript_insight"][1] > 0
 
 
 def _m(i, start, score):

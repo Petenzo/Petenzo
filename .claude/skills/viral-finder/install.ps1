@@ -18,4 +18,4 @@ if ($Global) {
   Write-Host "Copied to $dest"
 }
 python "$here\scripts\vf.py" doctor
-Write-Host "Done. In Claude Code type:  /viral-finder Kai Cenat GTA 6 Marathon"
+Write-Host "Done. In Claude Code type:  /viral-finder <link do filmu>"
