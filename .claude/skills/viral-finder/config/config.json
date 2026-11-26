@@ -64,6 +64,7 @@
 
   "assemble": {
     "minutes_per_credit": 20,
+    "clips_per_credit": 12,
     "round_partial_credit_up": true,
     "allow_non_consecutive": "ask",
     "segment_lead_in": 20,

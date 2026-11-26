@@ -134,6 +134,8 @@ VF report --project <name> [<name2> ...] [--credits N]
   `references/assemble-credits.md`. Ask the user once whether Ssemble accepts non-consecutive
   timestamps; save the answer as `assemble.allow_non_consecutive` (true/false) in
   `viral-finder.config.json` in the working folder (`{"assemble": {"allow_non_consecutive": true}}`).
+- Ssemble gives ~12 clips per credit: aim for 12 strong moments per 20-min selection. Say how many
+  clip slots each credit fills (e.g. "credit 1: 12/12, credit 2: 7/12").
 - Only suggest Plan C hot-zone extra credits when the report says density justifies it.
 - If the plan is PRELIMINARY (nothing reviewed), say so and do not tell them to spend credits yet.
 

@@ -91,3 +91,10 @@ def test_unreviewed_never_recommended():
     assert r2["recommended"] is True and r2["tier"] == "S"
     c["footage_check"] = {"ok": False}
     assert ranking.apply_review(c, {"scores": {k: 9 for k in ranking.CRITERIA}}, CFG)["recommended"] is False
+
+
+def test_clips_per_credit_cap():
+    moments = [_m(i, 600 + i * 300, 85) for i in range(20)]   # 20 strong moments
+    b = assemble.plan(moments, 4 * 3600, CFG)["plan_b_combined"]
+    assert all(len(sel["segments"]) <= CFG["assemble"]["clips_per_credit"] for sel in b["selections"])
+    assert b["credits"] == 2 and b["strong_moments"] == 20

@@ -1,6 +1,10 @@
 # Ssemble credit optimisation
 
-**1 credit = 20 minutes of footage.** A credit pays for footage, not for clips. The goal is
+**1 credit = 20 minutes of footage = about 12 clips from Ssemble.** So the ideal selection holds
+exactly ~12 strong moments: fewer wastes clip slots, more wastes moments (Ssemble still makes ~12).
+Plan B therefore puts at most `clips_per_credit` (12) moments into one credit.
+
+ A credit pays for footage, not for clips. The goal is
 many excellent moments per 20 minutes so each credit yields several strong clips.
 
 ## The math

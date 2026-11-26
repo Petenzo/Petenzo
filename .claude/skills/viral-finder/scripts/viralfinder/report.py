@@ -100,7 +100,8 @@ def build(projects: list, cfg: dict, campaign: dict | None, out_dir: Path, title
             L.append(f"| {i} | {_link(url, blk['start_ts'])} | {blk['end_ts']} | {blk['strong_moments']} | {blk['avg_score']} | {', '.join(blk['moments'])} |")
         L.append("\n**Plan B selections (each = 1 credit, segments in chronological order):**\n")
         for i, sel in enumerate(b["selections"], 1):
-            L.append(f"- Credit {i} ({sel['footage_minutes']} min, {sel['strong_moments']} strong + {sel['filler_moments']} filler): " +
+            slots = f", {sel['strong_moments'] + sel['filler_moments']}/{plan['clips_per_credit']} clip slots" if plan.get("clips_per_credit") else ""
+            L.append(f"- Credit {i} ({sel['footage_minutes']} min, {sel['strong_moments']} strong + {sel['filler_moments']} filler{slots}): " +
                      ", ".join(f"{s['start_ts']}-{s['end_ts']}{' (filler)' if s['filler'] else ''}" for s in sel["segments"]))
         if plan.get("plan_c_hot_zones"):
             L.append("\n**Plan C - hot zones (optional extra credits):**\n")

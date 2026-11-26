@@ -83,10 +83,11 @@ def combined_plan(pool: list[dict], all_moments: list[dict], cfg: dict, budget: 
 
     segs = sorted((seg(m) for m in pool), key=lambda s: -s["score"])
     bins: list[dict] = []
+    cap = int(a.get("clips_per_credit") or 999)  # Ssemble makes ~12 clips per credit -> max 12 moments per selection
     for idx, s in enumerate(segs):
         ln = s["end"] - s["start"]
         for b in bins:
-            if b["used"] + ln <= L:
+            if b["used"] + ln <= L and len(b["segs"]) < cap:
                 b["segs"].append(s)
                 b["used"] += ln
                 break
@@ -105,6 +106,8 @@ def combined_plan(pool: list[dict], all_moments: list[dict], cfg: dict, budget: 
                     key=lambda m: -m.get("viral_score", m.get("signal_score", 0)))
     for b in bins:
         for m in list(extras):
+            if len(b["segs"]) >= cap:
+                break
             s = seg(m)
             s["score"] = m.get("viral_score", m.get("signal_score", 0))
             s["fill"] = True
@@ -197,6 +200,7 @@ def plan(moments: list[dict], duration: float, cfg: dict, budget: int | None = N
         "plan_b_combined": {"credits": comb_cost, "strong_moments": comb_strong, "total_moments_incl_filler": comb_total,
                             "moments_per_credit": round(comb_strong / comb_cost, 1) if comb_cost else 0, "selections": comb},
         "plan_c_hot_zones": zones,
+        "clips_per_credit": a.get("clips_per_credit"),
         "savings_vs_full_video": {"plan_a": full_cost - cont_cost, "plan_b": full_cost - comb_cost},
         "recommendations": rec,
     }
