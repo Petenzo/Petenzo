@@ -74,7 +74,7 @@ def build(projects: list, cfg: dict, campaign: dict | None, out_dir: Path, title
                      f"{fmt_duration(m['duration'])} | {(m.get('description') or '')[:90]} | {meta.get('title', '')[:40]} |")
         L.append("")
 
-    L.append("## C + D. Best footage selections for Assemble and estimated credit consumption\n")
+    L.append("## C + D. Best footage selections for Ssemble and estimated credit consumption\n")
     for p, meta, plan, summ in plans:
         if not plan:
             L.append(f"_No plan yet for {meta.get('title')}. Run `plan`._\n")
@@ -92,7 +92,7 @@ def build(projects: list, cfg: dict, campaign: dict | None, out_dir: Path, title
                  f"Saves {plan['savings_vs_full_video']['plan_b']} credits.")
         for r in plan.get("recommendations", []):
             L.append(f"- {r}")
-        L.append("\n**Plan A blocks (paste these ranges into Assemble):**\n")
+        L.append("\n**Plan A blocks (paste these ranges into Ssemble):**\n")
         L.append("| Credit | Start | End | Strong moments | Avg score | Moment IDs |")
         L.append("|---|---|---|---|---|---|")
         for i, blk in enumerate(a["blocks"], 1):
@@ -113,7 +113,7 @@ def build(projects: list, cfg: dict, campaign: dict | None, out_dir: Path, title
     tiers = {t: sum(1 for m in rec_all if m["tier"] == t) for t in ("S", "A", "B")}
     L.append(f"- Recommended clips: **{len(rec_all)}** (S-tier {tiers['S']}, A-tier {tiers['A']}, B-tier {tiers['B']})")
     L.append(f"- Unreviewed candidates still in the pool: {len(unrev)}")
-    L.append("- Assemble may generate extra clips from the same footage; these counts are moments verified by this skill.\n")
+    L.append("- Ssemble may generate extra clips from the same footage; these counts are moments verified by this skill.\n")
 
     L.append("## F. Ranking of the strongest moments (details)\n")
     for i, m in enumerate(rec_all, 1):

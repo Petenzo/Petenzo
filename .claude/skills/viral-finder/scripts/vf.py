@@ -6,7 +6,7 @@
     python vf.py run <URL | file | Drive link>  ingest + cheap scan + verify shortlist + preliminary plan/report
     python vf.py review   --project NAME        apply filled-in reviews_todo.json
     python vf.py competition --project NAME     look for already-reposted clips
-    python vf.py plan     --project NAME        Assemble credit plan
+    python vf.py plan     --project NAME        Ssemble credit plan
     python vf.py report   --project NAME [...]  report.md + report.html
 
 Individual steps: ingest, scan, verify, rank, clip, campaigns, status.
@@ -334,7 +334,7 @@ def cmd_run(args, cfg):
 
 # --------------------------------------------------------------------------- main
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser(prog="vf.py", description="Viral Finder: cheap full-stream scan -> verified viral moments -> Assemble plan")
+    ap = argparse.ArgumentParser(prog="vf.py", description="Viral Finder: cheap full-stream scan -> verified viral moments -> Ssemble plan")
     ap.add_argument("--config", help="extra JSON config to merge")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
@@ -397,7 +397,7 @@ def main(argv=None) -> int:
     c.add_argument("--creator")
     c.add_argument("--topic", default="")
 
-    p = sub.add_parser("plan", help="Assemble credit plan")
+    p = sub.add_parser("plan", help="Ssemble credit plan")
     p.add_argument("--project", required=True)
     p.add_argument("--credits", type=int, help="maximum credits to spend")
 

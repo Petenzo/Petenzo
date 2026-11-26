@@ -1,4 +1,4 @@
-# Assemble credit optimisation
+# Ssemble credit optimisation
 
 **1 credit = 20 minutes of footage.** A credit pays for footage, not for clips. The goal is
 many excellent moments per 20 minutes so each credit yields several strong clips.
@@ -16,14 +16,14 @@ strong (>= 70) moments, weighted by score (an S-tier moment counts far more than
 A new block is only added if it contains at least `min_strong_moments_per_credit` (default 3)
 strong moments - otherwise that credit would not pay for itself.
 
-## Plan B - combined non-consecutive segments (if Assemble allows it)
+## Plan B - combined non-consecutive segments (if Ssemble allows it)
 
 Each strong moment becomes a segment (20 s lead-in + moment + 10 s tail). Segments are packed
 (best first) into 20-minute selections, listed chronologically. 20 min fits ~15-20 moments, so
 this gives the most strong moments per credit. If a selection still has free minutes, the next
 best moments (>= B tier) are added as **free filler** - you pay for the full credit anyway.
 
-Ask the user once whether their Assemble workflow accepts multiple timestamp ranges in one
+Ask the user once whether their Ssemble workflow accepts multiple timestamp ranges in one
 selection, then set `assemble.allow_non_consecutive` to `true`/`false` in
 `viral-finder.config.json` so the report recommends the right plan.
 

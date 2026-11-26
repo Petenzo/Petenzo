@@ -1,4 +1,4 @@
-"""Assemble credit optimiser.   1 credit = 20 minutes of footage (configurable).
+"""Ssemble credit optimiser.   1 credit = 20 minutes of footage (configurable).
 
 A credit buys FOOTAGE, not clips. The goal is to put as many excellent moments as
 possible inside every 20-minute footage selection, so each credit yields several
@@ -7,7 +7,7 @@ strong clips instead of one.
 Three plans are produced and compared:
   A. Contiguous blocks  - the best continuous 20-min windows (always supported).
   B. Combined segments  - non-consecutive moment segments packed into 20-min
-                          selections (only if Assemble lets you combine timestamps).
+                          selections (only if Ssemble lets you combine timestamps).
   C. Hot-zone extras    - 2-3 h sections so dense with strong moments that sending
                           the whole section (extra credits) is likely worth it.
 """
@@ -170,9 +170,9 @@ def plan(moments: list[dict], duration: float, cfg: dict, budget: int | None = N
     if a["allow_non_consecutive"] is True:
         rec.append("Use Plan B (combined segments): it packs the most strong moments per credit.")
     elif a["allow_non_consecutive"] is False:
-        rec.append("Use Plan A (continuous blocks) - your Assemble setup does not combine timestamps.")
+        rec.append("Use Plan A (continuous blocks) - your Ssemble setup does not combine timestamps.")
     else:
-        rec.append("If Assemble lets you combine non-consecutive timestamps in one selection, use Plan B; otherwise Plan A. "
+        rec.append("If Ssemble lets you combine non-consecutive timestamps in one selection, use Plan B; otherwise Plan A. "
                    "(Set assemble.allow_non_consecutive to true/false in config.json once you know.)")
     for i, sel in enumerate(comb, 1):
         free = a["minutes_per_credit"] - sel["footage_minutes"]
@@ -182,7 +182,7 @@ def plan(moments: list[dict], duration: float, cfg: dict, budget: int | None = N
     for z in zones:
         rec.append(f"Hot zone {z['start_ts']}-{z['end_ts']}: {z['strong_moments']} strong moments "
                    f"({z['moments_per_20min']} per 20 min). Worth {z['extra_credits']} extra credits ONLY if you want "
-                   f"Assemble to find more moments in that section than the scan shortlisted.")
+                   f"Ssemble to find more moments in that section than the scan shortlisted.")
     if prelim:
         rec.insert(0, "PRELIMINARY: no moments have been reviewed yet - this plan uses raw signal strength. "
                       "Review the shortlist first, then re-run 'plan' before spending credits.")

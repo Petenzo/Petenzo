@@ -1,6 +1,6 @@
 ---
 name: viral-finder
-description: Find viral moments in long videos and streams (YouTube, Twitch VODs, Google Drive, local MP4, any video URL) and plan the cheapest Assemble footage selections (1 credit = 20 min). Use when the user types /viral-finder, gives a creator/campaign/topic to search streams for, gives a video URL or file to clip, asks for viral/clippable moments, timestamps, Shorts/TikTok/Reels clip ideas, or wants to save Assemble credits.
+description: Find viral moments in long videos and streams (YouTube, Twitch VODs, Google Drive, local MP4, any video URL) and plan the cheapest Ssemble footage selections (1 credit = 20 min). Use when the user types /viral-finder, gives a creator/campaign/topic to search streams for, gives a video URL or file to clip, asks for viral/clippable moments, timestamps, Shorts/TikTok/Reels clip ideas, or wants to save Ssemble credits.
 argument-hint: "<creator / campaign / topic> | <video URL> | <Google Drive link> | <local file path>"
 ---
 
@@ -123,7 +123,7 @@ similar existing clips per moment. Add a few manual checks for the top 5 moments
 "original". For the Kai Cenat campaign, a moment that already exists as a Kai Cenat Short must be
 rejected (`not_existing_short: false`).
 
-## Step 6 - Assemble plan + report
+## Step 6 - Ssemble plan + report
 
 ```
 VF report --project <name> [<name2> ...] [--credits N]
@@ -131,7 +131,7 @@ VF report --project <name> [<name2> ...] [--credits N]
 
 - Explain the plan simply: "The whole stream would cost X credits. Plan A (continuous 20-min blocks)
   costs Y credits for Z strong moments. Plan B (combined timestamps) costs ..." - see
-  `references/assemble-credits.md`. Ask the user once whether Assemble accepts non-consecutive
+  `references/assemble-credits.md`. Ask the user once whether Ssemble accepts non-consecutive
   timestamps; save the answer as `assemble.allow_non_consecutive` (true/false) in
   `viral-finder.config.json` in the working folder (`{"assemble": {"allow_non_consecutive": true}}`).
 - Only suggest Plan C hot-zone extra credits when the report says density justifies it.
@@ -141,7 +141,7 @@ VF report --project <name> [<name2> ...] [--credits N]
 
 Give the user, in chat:
 1. Top moments table (rank, score, start-end, 1-line description, link with timestamp).
-2. The Assemble selections to paste + credit cost + savings vs the whole stream.
+2. The Ssemble selections to paste + credit cost + savings vs the whole stream.
 3. What was blocked or unverified and how to fix it.
 4. The paths to `report.md` / `report.html` (sections A-I). Offer to publish the HTML as a private
    artifact page if they want to share it.
@@ -158,7 +158,7 @@ Give the user, in chat:
 | `VF review --project p` | apply filled reviews_todo.json |
 | `VF rank --project p` | ranking table in the terminal |
 | `VF competition --project p` | look for existing reposts |
-| `VF plan --project p [--credits N]` | Assemble plan |
+| `VF plan --project p [--credits N]` | Ssemble plan |
 | `VF report --project p [p2 ...]` | report.md + report.html (multi-video supported) |
 | `VF clip --project p --id m012502 [--vertical]` | preview mp4 of one moment |
 | `VF status --project p` | what's done / waiting |
