@@ -1,0 +1,6 @@
+# Required
+yt-dlp>=2025.1.1
+numpy>=1.24
+# Optional (uncomment to enable)
+# faster-whisper   # local transcription of shortlisted moments when a video has no captions
+# gdown            # fallback for very large Google Drive files

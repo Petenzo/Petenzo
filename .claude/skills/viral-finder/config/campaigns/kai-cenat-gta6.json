@@ -1,0 +1,43 @@
+{
+  "id": "kai-cenat-gta6",
+  "name": "Kai Cenat GTA 6 Marathon",
+  "match_keywords": ["kai cenat", "kaicenat", "gta 6", "gta vi", "gta6", "marathon"],
+  "match_requires_all_groups": [["kai cenat", "kaicenat", "kai"], ["gta 6", "gta vi", "gta6"]],
+  "creator": "Kai Cenat",
+  "search_queries": [
+    "Kai Cenat GTA 6 marathon full stream",
+    "Kai Cenat GTA 6 stream VOD",
+    "Kai Cenat GTA VI livestream",
+    "kaicenat GTA 6 day"
+  ],
+  "twitch_channel": "kaicenat",
+  "youtube_channels": ["https://www.youtube.com/@KaiCenatLive", "https://www.youtube.com/@KaiCenat"],
+  "eligibility": {
+    "footage_date_from": "2026-11-18",
+    "title_should_contain_any": ["gta 6", "gta vi", "gta6", "grand theft auto"]
+  },
+  "content_rules": [
+    "Footage must be from the qualifying GTA 6 Marathon, beginning November 18, 2026.",
+    "Kai Cenat must be the main focus of the clip.",
+    "Kai must be shown playing GTA 6 in the clip.",
+    "No fake engagement (bought views, likes, comments, bots).",
+    "No misleading narratives (do not invent context, beef or events that did not happen).",
+    "No added logos / watermarks of other brands or clipping tools.",
+    "Do not repost existing Kai Cenat Shorts - clips must be cut from original stream footage."
+  ],
+  "per_moment_checks": {
+    "kai_main_focus": "Is Kai Cenat clearly the main focus (face cam / voice dominant)?",
+    "playing_gta6": "Is Kai visibly playing GTA 6 in this moment (gameplay on screen)?",
+    "no_third_party_logos": "Is the clip free of third-party logos/watermarks that would remain after editing?",
+    "not_existing_short": "Was no identical existing Kai Cenat Short found in competition research?"
+  },
+  "allowed_platforms": ["TikTok", "YouTube Shorts", "Instagram Reels", "X"],
+  "caption_rules": {
+    "must_mention": ["Kai Cenat"],
+    "required_hashtags": ["#KAICENAT"]
+  },
+  "audience_rules": [
+    "At least 50% of the audience must come from USA, Canada, UK, Australia and New Zealand. This depends on the posting account - check your account analytics before posting; the skill cannot verify it."
+  ],
+  "notes": "Rules were supplied by the user. Re-read the official campaign brief before posting in case they changed."
+}

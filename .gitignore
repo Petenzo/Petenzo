@@ -1,0 +1,4 @@
+# Viral Finder working files (audio, frames, reports)
+viral-finder-output/
+__pycache__/
+.pytest_cache/

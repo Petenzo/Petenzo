@@ -1,0 +1,93 @@
+{
+  "_comment": "Viral Finder settings. Safe to edit. Weights are relative; set a weight to 0 to ignore a signal.",
+  "output_root": "viral-finder-output",
+
+  "analysis": {
+    "audio_sample_rate": 16000,
+    "frame_seconds": 0.05,
+    "smooth_seconds": 5,
+    "baseline_minutes": 5,
+    "peak_min_separation": 45,
+    "candidates_per_hour": 8,
+    "min_candidates": 15,
+    "min_signal_value": 1.0,
+    "max_candidates": 150,
+    "clip_pre_roll": 20,
+    "clip_post_roll": 15,
+    "clip_min": 15,
+    "clip_max": 90,
+    "chat_lag_seconds": 8,
+    "scene_threshold": 0.35
+  },
+
+  "signal_weights": {
+    "audio_loudness": 0.8,
+    "audio_surprise": 1.0,
+    "laughter": 1.2,
+    "shout": 0.8,
+    "transcript_hype": 1.0,
+    "transcript_laughter": 1.0,
+    "transcript_bleeps": 0.6,
+    "speech_rate": 0.3,
+    "chat_rate": 1.5,
+    "chat_hype": 1.2,
+    "scene_cuts": 0.2
+  },
+
+  "rubric_weights": {
+    "hook": 15,
+    "entertainment": 15,
+    "originality": 10,
+    "emotion": 12,
+    "retention": 10,
+    "replay": 8,
+    "international": 10,
+    "visual_clarity": 8,
+    "context_free": 12
+  },
+
+  "tiers": { "S": 85, "A": 75, "B": 65 },
+
+  "report": {
+    "min_recommend_score": 70,
+    "max_recommended": 30
+  },
+
+  "verify": {
+    "top_n": 25,
+    "section_padding": 5,
+    "max_height": 480,
+    "contact_sheet_frames": 12,
+    "alignment_search_seconds": 15,
+    "min_alignment_correlation": 0.6
+  },
+
+  "assemble": {
+    "minutes_per_credit": 20,
+    "round_partial_credit_up": true,
+    "allow_non_consecutive": "ask",
+    "segment_lead_in": 20,
+    "segment_tail": 10,
+    "min_moment_score": 70,
+    "min_strong_moments_per_credit": 3,
+    "hot_zone_window_minutes": 120,
+    "hot_zone_min_strong_per_20min": 3
+  },
+
+  "lexicon": {
+    "hype": [
+      "no way", "oh my god", "omg", "what the", "let's go", "lets go", "are you serious",
+      "no no no", "nah nah", "bro what", "what is that", "what was that", "oh no", "holy",
+      "clip that", "clip it", "i'm crying", "im crying", "shut up", "run", "help", "yo yo",
+      "chat chat", "wait wait", "get out", "what happened", "i can't", "i cant", "bruh",
+      "w", "dawg", "on god", "this is crazy", "that's crazy", "thats crazy", "insane", "yes yes"
+    ],
+    "laughter": ["[laughter]", "[laughs]", "(laughs)", "haha", "hahaha", "lmao", "lmfao", "lol"],
+    "bleep": ["[ __ ]", "[__]", "[ ___ ]"],
+    "chat_hype": [
+      "kekw", "lul", "lulw", "omegalul", "lmao", "lmfao", "icant", "😂", "🤣", "💀", "pog",
+      "pogchamp", "poggers", "pogu", "monkas", "omg", "clip", "clip it", "w", "www", "l", "???",
+      "????", "nooo", "noway", "no way", "aware", "sheesh", "🔥", "😭"
+    ]
+  }
+}

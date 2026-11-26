@@ -1,0 +1,27 @@
+{
+  "id": "my-campaign",
+  "name": "Human readable campaign name",
+  "match_keywords": ["creator name", "game or topic"],
+  "match_requires_all_groups": [["creator name"], ["topic"]],
+  "creator": "Creator Name",
+  "search_queries": ["Creator Name topic full stream"],
+  "twitch_channel": "",
+  "youtube_channels": [],
+  "eligibility": {
+    "footage_date_from": "",
+    "title_should_contain_any": []
+  },
+  "content_rules": [
+    "Copy every rule from the campaign brief here, one rule per line."
+  ],
+  "per_moment_checks": {
+    "creator_main_focus": "Is the creator clearly the main focus?"
+  },
+  "allowed_platforms": ["TikTok", "YouTube Shorts", "Instagram Reels", "X"],
+  "caption_rules": {
+    "must_mention": [],
+    "required_hashtags": []
+  },
+  "audience_rules": [],
+  "notes": "Copy this file, rename it (e.g. my-campaign.json) and fill it in. Only campaigns that match the request are applied."
+}
