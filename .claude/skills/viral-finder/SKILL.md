@@ -69,6 +69,14 @@ from the video; override it when you know better:
 | `entertainment` | edited YouTube, challenges, vlogs (MrBeast style) | stakes, reveals, surprises, big reactions |
 | `general` | anything else | balanced |
 
+**Any other kind of video works too** (sports, cooking, fitness, tutorials, tech, cars, science, news,
+music, comedy, vlogs, expert/advanced content for professionals, any language or niche). Use `general`
+(or the closest profile) and, in the review, judge "what would make THIS video's audience stop
+scrolling and watch to the end": for beginners - surprising facts and simple aha moments; for
+experienced/expert audiences - non-obvious pro tips, costly mistakes, strong opinions, real numbers,
+debates; for entertainment - funny, shocking or emotional peaks. Moments that are quiet but valuable
+(great tip, strong line) count - read the transcript excerpts, not only the loud parts.
+
 **Campaign rules (optional):** only if the user is clipping for a paid campaign with rules. Ask for the
 rules, save them as a new file copied from `config/campaigns/_template.json`, and pass `--campaign <id>`.
 Otherwise always use `--campaign none`.

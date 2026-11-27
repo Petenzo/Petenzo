@@ -25,6 +25,12 @@ The frames matter less, the words matter more. Translate the criteria like this:
 - **visual_clarity** - speaker clearly visible, works with captions in 9:16.
 Best clips: one clear idea, one strong line, 20-60 s.
 
+## Any other niche (sports, cooking, tech, expert content...)
+
+Ask: "would the people who watch this kind of video stop scrolling for this?" For expert audiences
+the best clips are non-obvious tips, expensive mistakes, strong opinions and real numbers - a calm
+voice is fine. For general audiences, prefer surprise, humour and emotion.
+
 Tiers: **S >= 85**, **A >= 75**, **B >= 65**. Only >= 70 is recommended (config `report.min_recommend_score`).
 Be strict: most moments of a 10 h stream are B or C. A good stream gives roughly 5-15 S/A moments.
 
