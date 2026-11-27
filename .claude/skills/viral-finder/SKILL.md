@@ -69,6 +69,13 @@ from the video; override it when you know better:
 | `entertainment` | edited YouTube, challenges, vlogs (MrBeast style) | stakes, reveals, surprises, big reactions |
 | `general` | anything else | balanced |
 
+**Target audience (always do this):** before the review, decide who watches this creator - from the
+channel, title, topic and comments (or the user tells you, e.g. "dla: gracze 13-18", "dla traderów").
+Write one line: "Audience: ...". Then judge every moment ONLY by: *would THIS audience stop scrolling
+and watch it to the very end?* Reject anything boring, slow, too long, confusing or off-topic for
+them, even if it was loud. Prefer clips with a hook in the first 3 s and a payoff at the end.
+Show the audience line at the top of the results.
+
 **Any other kind of video works too** (sports, cooking, fitness, tutorials, tech, cars, science, news,
 music, comedy, vlogs, expert/advanced content for professionals, any language or niche). Use `general`
 (or the closest profile) and, in the review, judge "what would make THIS video's audience stop
@@ -127,7 +134,8 @@ Open `viral-finder-output/<project>/reviews_todo.json`. For each moment (highest
    emotion, retention, replay, international, visual_clarity, context_free. For talking content
    (podcast profile) "entertainment" also means *interesting / useful / surprising insight*, and the
    transcript matters more than the frames.
-3. Write `description` (only what is visible/audible - no invented story), `why`, `hook_text`
+3. Write `description` (only what is visible/audible - no invented story), `why` (why THIS audience
+   will watch to the end), `hook_text`
    (English, <= 8 words, for the first 3 s), `caption`, `platform`, optional `title_idea`.
 4. Only if a campaign is active: fill `campaign_checks` (true / false / null if you can't tell) for
    every key in the campaign's `per_moment_checks`, judged from the frames - never assumed.
