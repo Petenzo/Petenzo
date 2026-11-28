@@ -2,7 +2,7 @@ import base64,io,os,re,sys
 from PIL import Image
 src=open('src.html',encoding='utf-8').read()
 # 1) wersja lokalna i Shopify
-open('odbitka-shopify.html','w',encoding='utf-8').write(src.replace('{{IMG}}','https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/drukarka/img'))
+open('nostalio-shopify.html','w',encoding='utf-8').write(src.replace('{{IMG}}','https://raw.githubusercontent.com/Petenzo/Petenzo/claude/gracious-bell-yojazo/drukarka/img'))
 # 2) index.html: zdjęcia wbudowane (działa wszędzie, także w podglądzie)
 cache={}
 def data(f):

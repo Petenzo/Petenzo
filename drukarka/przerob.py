@@ -13,9 +13,9 @@ CHK='<span class="kw-check"><svg viewBox="0 0 12 12"><path d="M2 6.2l2.4 2.3L10 
 def li(b,t): return '<li>'+CHK+'<span><b>'+b+'</b>'+t+'</span></li>'
 def li2(t): return '<li>'+CHK+t+'</li>'
 # ---- HEAD ----
-R('<title>Kwiatora – Kalendarz adwentowy z kwiatami z klocków</title>','<title>Odbitka – drukarka zdjęć do telefonu</title>')
-RX(r'<meta name="description" content="[^"]*">','<meta name="description" content="Drukuj prawdziwe zdjęcia 10×15 cm prosto z telefonu, w domu, w kilka sekund. Drukarka Odbitka: darmowa dostawa, 14 dni na zwrot.">')
-RX(r'<meta property="og:title" content="[^"]*">','<meta property="og:title" content="Odbitka – Twoje wspomnienia w dłoni">')
+R('<title>Kwiatora – Kalendarz adwentowy z kwiatami z klocków</title>','<title>Nostalio – drukarka zdjęć do telefonu</title>')
+RX(r'<meta name="description" content="[^"]*">','<meta name="description" content="Drukuj prawdziwe zdjęcia 10×15 cm prosto z telefonu, w domu, w kilka sekund. Drukarka Nostalio: darmowa dostawa, 14 dni na zwrot.">')
+RX(r'<meta property="og:title" content="[^"]*">','<meta property="og:title" content="Nostalio – Twoje wspomnienia w dłoni">')
 RX(r'<meta property="og:description" content="[^"]*">','<meta property="og:description" content="Domowa drukarka zdjęć do telefonu. Postaw telefon, wybierz zdjęcie, odbierz gotową odbitkę.">')
 # ---- KOLORY ----
 pal={'--kw-surface:#FBF7F0':'--kw-surface:#F8F4FD','--kw-surface-2:#F3EDE2':'--kw-surface-2:#EFE7FA','--kw-fg:#18241D':'--kw-fg:#1E1530',
@@ -34,12 +34,12 @@ s=s.replace('logo-ikona.png" width="26" height="46"','logo-ikona.png" width="44"
 # ---- TOPBAR / NAV ----
 mq='<span>📸 Twoje wspomnienia w dłoni</span><span>🚚 Darmowa dostawa</span><span>↩️ 14 dni na zwrot</span><span>🎁 Idealny prezent na Święta</span>'
 RX(r'(<div class="kw-marquee">\n)(    <span>Darmowa wysyłka</span>.*?\n){3}',r'\1'+('    '+mq+'\n')*3)
-s=s.replace('<div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div>','<div><span>Odbitka</span><small>DRUKARKA ZDJĘĆ</small></div>')
-R('onclick="kwMenu(false);kwShow(\'home\')">Kalendarz Kwiatora</a>','onclick="kwMenu(false);kwShow(\'home\')">Drukarka Odbitka</a>')
+s=s.replace('<div><span>Kwiatora</span><small>KALENDARZ Z KWIATAMI</small></div>','<div><span>Nostalio</span><small>DRUKARKA ZDJĘĆ</small></div>')
+R('onclick="kwMenu(false);kwShow(\'home\')">Kalendarz Kwiatora</a>','onclick="kwMenu(false);kwShow(\'home\')">Drukarka Nostalio</a>')
 R('<a href="#jak-dziala" onclick="kwMenu(false);kwShow(\'home\')">Jak to działa</a>','<a href="#zastosowania" onclick="kwMenu(false);kwShow(\'home\')">Dla kogo</a>\n    <a href="#jak-dziala" onclick="kwMenu(false);kwShow(\'home\')">Jak to działa</a>\n    <a href="#zestaw" onclick="kwMenu(false);kwShow(\'home\')">Co dostajesz</a>')
 R('<a href="#" onclick="kwMenu(false);kwShow(\'kontakt\');return false">Kontakt</a>','<a href="#" onclick="kwMenu(false);kwShow(\'kontakt\');return false">Kontakt z nami</a>')
 # ---- HERO ----
-R('alt="Para składa kwiaty z klocków przy stole w świątecznym salonie"','alt="Para drukuje zdjęcia z telefonu na drukarce Odbitka"')
+R('alt="Para składa kwiaty z klocków przy stole w świątecznym salonie"','alt="Para drukuje zdjęcia z telefonu na drukarce Nostalio"')
 R('<div class="kw-gallery-caption" id="kwCaption">🎁 Prezent, który rozpakowuje się 24 razy</div>','<div class="kw-gallery-caption" id="kwCaption">📸 Z telefonu na papier w kilka sekund</div>')
 R('<span class="kw-pill gold">★ Hit Adwentu 2026</span>','<span class="kw-pill gold">★ Hit prezentowy 2026</span>')
 RX(r'<h1>Odliczaj do Świąt.*?</h1>','<h1>Zdjęcia z telefonu <span class="kw-accent">w Twoich dłoniach w kilka sekund</span></h1>')
@@ -80,7 +80,7 @@ RX(r'<!-- PROBLEM -->.*?</section>','''<!-- PROBLEM -->
 </section>''')
 # ---- USES ----
 R('<span class="kw-eyebrow">Jeden kalendarz, wiele okazji</span>','<span class="kw-eyebrow">Jedna drukarka, mnóstwo okazji</span>')
-R('<p class="kw-lead">Kwiatora łączy to, czego brakuje w grudniu: wspólny czas, chwilę spokoju i prezent, który ma sens.</p>','<p class="kw-lead">Odbitka zamienia zdjęcia z telefonu w pamiątki, które można dotknąć, podarować i powiesić na ścianie.</p>')
+R('<p class="kw-lead">Kwiatora łączy to, czego brakuje w grudniu: wspólny czas, chwilę spokoju i prezent, który ma sens.</p>','<p class="kw-lead">Nostalio zamienia zdjęcia z telefonu w pamiątki, które można dotknąć, podarować i powiesić na ścianie.</p>')
 RX(r'<article class="kw-card kw-use"><img src="\{\{IMG\}\}/05-razem.jpg".*?</article>','<article class="kw-card kw-use"><img src="{{IMG}}/05-razem.jpg" width="1200" height="1200" loading="lazy" alt="Przyjaciółki oglądają świeżo wydrukowane zdjęcia"><div><h3>Dla przyjaciółki i na wspólne wieczory</h3><p>Drukujecie zdjęcia od razu po imprezie czy wyjeździe. Każda wychodzi z odbitką, a śmiechu jest więcej niż przy przewijaniu telefonu.</p></div></article>')
 RX(r'<article class="kw-card kw-use"><img src="\{\{IMG\}\}/11b-dla-niej.jpg".*?</article>','<article class="kw-card kw-use"><img src="{{IMG}}/11b-dla-niej.jpg" width="1200" height="900" loading="lazy" alt="Para wkłada wydrukowane zdjęcie do ramki"><div><h3>Dla niej, dla niego, dla pary</h3><p>Wasze wspólne chwile w ramkach i na ścianie. Prezent na rocznicę, walentynki albo po prostu bez okazji.</p></div></article>')
 RX(r'<article class="kw-card kw-use"><img src="\{\{IMG\}\}/03b-bukiet-szeroki.jpg".*?</article>','<article class="kw-card kw-use"><img src="{{IMG}}/03b-bukiet-szeroki.jpg" width="1200" height="675" loading="lazy" alt="Dziadkowie z wnuczką oglądają wydrukowane zdjęcia"><div><h3>Dla mamy, babci i dziadka</h3><p>Zdjęcia wnuków prosto do rąk, zamiast na ekranie telefonu. Takie prezenty wzruszają najbardziej.</p></div></article>')
@@ -107,17 +107,17 @@ R('<p class="kw-lead">Otwierasz paczkę i możesz zaczynać. Nie trzeba niczego 
 R('<button onclick="kwTab(1)">Kwiaty</button>','<button onclick="kwTab(1)">Zdjęcia</button>')
 R('<button onclick="kwTab(2)">Wymiary</button>','<button onclick="kwTab(2)">Specyfikacja</button>')
 RX(r'<div class="kw-card kw-tab on">.*?</div>\s*</div>\s*<div class="kw-card kw-tab">.*?</div>\s*</div>\s*<div class="kw-card kw-tab">.*?</div>\s*</div>',
- '<div class="kw-card kw-tab on">\n      <div><h3>Drukarka zdjęć Odbitka</h3><p>Elegancka biała drukarka z żółtą tacką na papier, zapakowana w fioletowe pudełko prezentowe. Pięknie wygląda na półce i od razu nadaje się na prezent.</p></div>\n      <div class="kw-tab-panel"><small>W zestawie</small><ul class="kw-list">'+''.join(li2(t) for t in ['Drukarka zdjęć ze stacją na telefon','Tacka na papier','Zasilacz','Złącze do telefonu','Kaseta z tuszem','10 arkuszy papieru fotograficznego','Instrukcja szybkiego startu'])+'</ul></div>\n    </div>\n    <div class="kw-card kw-tab">\n      <div><h3>Prawdziwe zdjęcia 10×15 cm</h3><p>Klasyczny format odbitek, ten sam co w albumach i ramkach. Żywe kolory i gładki papier fotograficzny.</p></div>\n      <div class="kw-tab-panel"><small>Idealne do</small><ul class="kw-list">'+''.join(li2(t) for t in ['Albumów i ramek','Lodówki, tablicy i girland ze zdjęciami','Kartek i prezentów dla bliskich','Pamiątek z wakacji, ślubu i urodzin'])+'</ul></div>\n    </div>\n    <div class="kw-card kw-tab">\n      <div><h3>Specyfikacja</h3><p>Drukarka ze stacją dokującą na telefon i wysuwaną tacką na papier.</p></div>\n      <div class="kw-tab-panel"><small>Najważniejsze</small><ul class="kw-list">'+''.join(li2(t) for t in ['Format zdjęć: 10×15 cm','Druk prosto z telefonu','Kolor: biała obudowa, żółta tacka','Zasilanie: zasilacz w zestawie'])+'</ul></div>\n    </div>')
+ '<div class="kw-card kw-tab on">\n      <div><h3>Drukarka zdjęć Nostalio</h3><p>Elegancka biała drukarka z żółtą tacką na papier, zapakowana w fioletowe pudełko prezentowe. Pięknie wygląda na półce i od razu nadaje się na prezent.</p></div>\n      <div class="kw-tab-panel"><small>W zestawie</small><ul class="kw-list">'+''.join(li2(t) for t in ['Drukarka zdjęć ze stacją na telefon','Tacka na papier','Zasilacz','Złącze do telefonu','Kaseta z tuszem','10 arkuszy papieru fotograficznego','Instrukcja szybkiego startu'])+'</ul></div>\n    </div>\n    <div class="kw-card kw-tab">\n      <div><h3>Prawdziwe zdjęcia 10×15 cm</h3><p>Klasyczny format odbitek, ten sam co w albumach i ramkach. Żywe kolory i gładki papier fotograficzny.</p></div>\n      <div class="kw-tab-panel"><small>Idealne do</small><ul class="kw-list">'+''.join(li2(t) for t in ['Albumów i ramek','Lodówki, tablicy i girland ze zdjęciami','Kartek i prezentów dla bliskich','Pamiątek z wakacji, ślubu i urodzin'])+'</ul></div>\n    </div>\n    <div class="kw-card kw-tab">\n      <div><h3>Specyfikacja</h3><p>Drukarka ze stacją dokującą na telefon i wysuwaną tacką na papier.</p></div>\n      <div class="kw-tab-panel"><small>Najważniejsze</small><ul class="kw-list">'+''.join(li2(t) for t in ['Format zdjęć: 10×15 cm','Druk prosto z telefonu','Kolor: biała obudowa, żółta tacka','Zasilanie: zasilacz w zestawie'])+'</ul></div>\n    </div>')
 # ---- COMPARE ----
 RX(r'<!-- COMPARE -->.*?</section>','''<!-- COMPARE -->
 <section class="kw-section" id="porownanie">
   <div class="kw-container">
     <span class="kw-eyebrow">Zobacz różnicę</span>
-    <h2 class="kw-h2">Dlaczego <span class="kw-accent">Odbitka</span>, a nie punkt foto?</h2>
+    <h2 class="kw-h2">Dlaczego <span class="kw-accent">Nostalio</span>, a nie punkt foto?</h2>
     <p class="kw-lead">Porównaj, ile wysiłku kosztuje jedno zdjęcie w dłoni.</p>
     <div class="kw-table-wrap">
       <table class="kw-table">
-        <thead><tr><th>Kryterium</th><th class="us">Odbitka</th><th>Punkt foto</th><th>Zamawianie online</th><th>Zwykła drukarka</th></tr></thead>
+        <thead><tr><th>Kryterium</th><th class="us">Nostalio</th><th>Punkt foto</th><th>Zamawianie online</th><th>Zwykła drukarka</th></tr></thead>
         <tbody>
           <tr><td>Zdjęcie w dłoni po kilku sekundach</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-mid">–</span></td></tr>
           <tr><td>Bez wychodzenia z domu</td><td class="us"><span class="kw-yes">✓</span></td><td><span class="kw-no">✕</span></td><td><span class="kw-yes" style="color:#B8A6D3">✓</span></td><td><span class="kw-yes" style="color:#B8A6D3">✓</span></td></tr>
@@ -142,10 +142,10 @@ RX(r'<!-- FINAL CTA: 48h -->.*?</section>','''<!-- FINAL CTA: WYPRZEDAŻ 1h -->
     <div class="kw-deal">
       <div class="kw-deal-img">
         <span class="kw-spark s1"></span><span class="kw-spark s2"></span>
-        <img class="kw-float" src="{{IMG}}/01-hero.jpg" width="1200" height="1200" loading="lazy" alt="Drukarka zdjęć Odbitka">
+        <img class="kw-float" src="{{IMG}}/01-hero.jpg" width="1200" height="1200" loading="lazy" alt="Drukarka zdjęć Nostalio">
       </div>
       <div class="kw-deal-body">
-        <h2 class="kw-shine">Drukarka Odbitka</h2>
+        <h2 class="kw-shine">Drukarka Nostalio</h2>
         <div class="kw-deal-badge"><svg class="kw-ring" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2M5 4 2.5 6.5M19 4l2.5 2.5"/></svg><b class="kw-pulse">−29%</b></div>
         <p class="kw-nudge"><span class="kw-blink">🔥 WYPRZEDAŻ KOŃCZY SIĘ ZA</span><br><span class="kw-limit">⚠️ Zostało tylko kilka sztuk w tej cenie</span> <span class="kw-gold kw-beat">♡</span></p>
         <div class="kw-deal-timer">
@@ -158,11 +158,11 @@ RX(r'<!-- FINAL CTA: 48h -->.*?</section>','''<!-- FINAL CTA: WYPRZEDAŻ 1h -->
   </div>
 </section>''')
 # ---- FAQ / stopka / kontakt ----
-s=s.replace('kontakt@kwiatora.pl','kontakt@odbitka.pl')
+s=s.replace('kontakt@kwiatora.pl','kontakt@nostalio.pl')
 R('Kalendarze adwentowe z kwiatami z klocków. Tworzymy prezenty, które łączą rodziny i zostają na dłużej niż jeden sezon.','Domowe drukarki zdjęć do telefonu. Pomagamy zamieniać zdjęcia z galerii w prawdziwe pamiątki, które można dotknąć i podarować.')
-R('<span>Kwiatora © 2026</span>','<span>Odbitka © 2026</span>')
+R('<span>Kwiatora © 2026</span>','<span>Nostalio © 2026</span>')
 R('<div class="kw-dr-bar">🚚 Darmowa dostawa InPost · ↩️ 14 dni na zwrot</div>','<div class="kw-dr-bar">🚚 Darmowa dostawa · ↩️ 14 dni na zwrot</div>')
-R('<div class="n">Kalendarz Kwiatora</div><div class="p" id="kwStickyPrice">199,99 zł <s style="color:var(--kw-muted);font-weight:400">299,99 zł</s></div>','<div class="n">Drukarka Odbitka</div><div class="p" id="kwStickyPrice">249,99 zł <s style="color:var(--kw-muted);font-weight:400">349,99 zł</s></div>')
+R('<div class="n">Kalendarz Kwiatora</div><div class="p" id="kwStickyPrice">199,99 zł <s style="color:var(--kw-muted);font-weight:400">299,99 zł</s></div>','<div class="n">Drukarka Nostalio</div><div class="p" id="kwStickyPrice">249,99 zł <s style="color:var(--kw-muted);font-weight:400">349,99 zł</s></div>')
 # ---- JS ----
 RX(r'var gallery=\[.*?\n\];','''var gallery=[
  ["00-hero-stol.jpg","📸 Z telefonu na papier w kilka sekund"],
@@ -195,7 +195,7 @@ R('''  document.getElementById("kwPrice").textContent=zl(b.price);document.getEl
   document.getElementById("kwStickyPrice").innerHTML=zl(b1.price)+' <s style="color:var(--kw-muted);font-weight:400">'+zl(b1.old)+'</s>';''')
 R('localStorage.setItem("kwCart2"','localStorage.setItem("odbCart"'); R('localStorage.getItem("kwCart2"','localStorage.getItem("odbCart"')
 R('function unitFor(q){return q>=3?569.99/3:q===2?385.99/2:199.99}','function unitFor(q){return q>=3?709.99/3:q===2?479.99/2:249.99}')
-RX(r'window\.kwAddBundle=function\(\)\{.*?kwCart\(true\)\};','window.kwAddBundle=function(){addItem({key:"odb",name:"Drukarka zdjęć Odbitka",variant:"Biała z żółtą tacką · 10×15 cm",img:"01-hero.jpg",qty:BUNDLES[sel].q,old:349.99});kwCart(true)};')
+RX(r'window\.kwAddBundle=function\(\)\{.*?kwCart\(true\)\};','window.kwAddBundle=function(){addItem({key:"odb",name:"Drukarka zdjęć Nostalio",variant:"Biała z żółtą tacką · 10×15 cm",img:"01-hero.jpg",qty:BUNDLES[sel].q,old:349.99});kwCart(true)};')
 R("Twój koszyk jest pusty 🌷","Twój koszyk jest pusty 📸")
 R("""'Dodaj jeszcze <b>'+(n===1?"1 kalendarz":"1 kalendarz")+'</b>""","""'Dodaj jeszcze <b>1 drukarkę</b>""")
 R("'🎉 Masz najniższą cenę: <b>ok. 190 zł</b> za kalendarz","'🎉 Masz najniższą cenę: <b>'+zl(unitFor(3))+'</b> za drukarkę")
@@ -225,8 +225,8 @@ RX(r'var F=\[.*?\n\];','''var F=[
  ["Czy mogę zwrócić produkt?","Tak. Masz 14 dni od otrzymania paczki na zwrot bez podawania przyczyny. Wystarczy napisać na "+EMAIL+"."],
  ["Czy to dobry prezent?","Zdecydowanie. Drukarka przychodzi w eleganckim pudełku i sprawdza się jako prezent dla mamy, babci, pary, przyjaciółki i każdego, kto kocha zdjęcia."]
 ];''')
-s=s.replace('var SELLER="Kwiatora";','var SELLER="Odbitka";')
-s=s.replace('<b>Kwiatora</b>','<b>Odbitka</b>').replace('"Wiadomość ze sklepu Kwiatora"','"Wiadomość ze sklepu Odbitka"')
+s=s.replace('var SELLER="Kwiatora";','var SELLER="Nostalio";')
+s=s.replace('<b>Kwiatora</b>','<b>Nostalio</b>').replace('"Wiadomość ze sklepu Kwiatora"','"Wiadomość ze sklepu Nostalio"')
 s=s.replace('Czas dostawy wynosi zwykle <b>6–10 dni roboczych</b>','Czas dostawy wynosi zwykle <b>kilka dni roboczych</b>')
 s=s.replace('do paczkomatów InPost oraz kurierem','do paczkomatów oraz kurierem')
 s=s.replace('<span>📦 Paczkomat InPost</span>','<span>📦 Paczkomat</span>').replace('"Paczkomat InPost · GRATIS"','"Paczkomat · GRATIS"')
